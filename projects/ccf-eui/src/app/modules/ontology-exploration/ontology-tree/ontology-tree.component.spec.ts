@@ -111,6 +111,18 @@ describe('OntologyTreeComponent', () => {
     expect(outputs.nodeChanged.emit).toHaveBeenCalled();
   });
 
+  it('should return number of children when getNumResults is called', async () => {
+    const { instance } = await shallow.render();
+    const total = instance.getNumResults('body', 1);
+    expect(total).toEqual('Total: 1');
+  });
+
+  it('should return label for node', async () => {
+    const { instance } = await shallow.render();
+    const label = instance.getNodeLabel('body');
+    expect(label).toEqual('Anatomical Structures (AS)');
+  });
+
   it('should update the opacity', async () => {
     const { instance } = await shallow.render();
     instance.updateOpacity(flatNode1, 50);
