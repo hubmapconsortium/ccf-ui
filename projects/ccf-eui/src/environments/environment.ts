@@ -36,6 +36,11 @@ export const environment = {
     theme: 'default',
     header: true,
     homeUrl: 'https://portal.hubmapconsortium.org/',
+    referenceOrgans: [
+      'Heart',
+      'Kidney',
+      'Spleen'
+    ],
     logoTooltip: 'Human BioMolecular Atlas Project',
     loginDisabled: false
   },

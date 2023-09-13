@@ -29,6 +29,7 @@ function parseDataSources(value: unknown): string[] {
 })
 export class AppWebComponent extends BaseWebComponent {
   @Input() dataSources: string | string[];
+  @Input() selectedOrgans: string[];
 
   @Input() hubmapDataService: string;
   @Input() hubmapDataUrl: string;
@@ -62,6 +63,8 @@ export class AppWebComponent extends BaseWebComponent {
         dataSources: parseDataSources,
         useRemoteApi: BUILTIN_PARSERS.boolean,
         header: BUILTIN_PARSERS.boolean,
+        //using parseDataSources since both have same types
+        selectedOrgans: parseDataSources,
         loginDisabled: BUILTIN_PARSERS.boolean
       }
     });

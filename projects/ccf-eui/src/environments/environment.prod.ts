@@ -29,6 +29,10 @@ export const environment = {
     theme: 'hubmap',
     header: true,
     homeUrl: 'https://portal.hubmapconsortium.org/',
+    referenceOrgans: [
+      'heart',
+      'kidney'
+    ],
     logoTooltip: 'Human BioMolecular Atlas Project'
   },
   googleAnalyticsToken: window.location.hostname === 'portal.hubmapconsortium.org' ? 'G-1WRJHN9FM6' : 'G-J9HWV9QPJ4'

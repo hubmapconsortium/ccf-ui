@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { Injectable, Injector } from '@angular/core';
+import { Injectable, Injector, inject } from '@angular/core';
 import { DataAction, Payload, StateRepository } from '@angular-ru/ngxs/decorators';
 import { NgxsImmutableDataRepository } from '@angular-ru/ngxs/repositories';
 import { NgxsOnInit, Selector, State } from '@ngxs/store';
 import { NodeClickEvent, SpatialSceneNode } from 'ccf-body-ui';
 import { SpatialEntity } from 'ccf-database';
-import { ALL_POSSIBLE_ORGANS, DataSourceService, OrganInfo } from 'ccf-shared';
+import { ALL_POSSIBLE_ORGANS, DataSourceService, GlobalConfigState, OrganInfo } from 'ccf-shared';
 import { combineLatest } from 'rxjs';
 import { distinctUntilChanged, map, take, tap } from 'rxjs/operators';
 
@@ -69,6 +69,7 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
 
   readonly highlightedId$ = this.state$.pipe(map(x => x?.highlightedId), distinctUntilChanged());
 
+  defaultSelectedOrgans: Set<string>;
   /** The data state */
   private dataState: DataState;
 
@@ -76,6 +77,9 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
   private colorAssignments: ColorAssignmentState;
 
   private listResults: ListResultsState;
+
+  private globalConfig = inject(GlobalConfigState<unknown>);
+
 
   /**
    * Creates an instance of scene state.
@@ -87,6 +91,9 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
     private readonly injector: Injector
   ) {
     super();
+    this.globalConfig.getOption('referenceOrgans').subscribe(organs=>{
+      this.defaultSelectedOrgans = new Set(organs);
+    });
   }
 
   /**
@@ -177,7 +184,8 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
       take(1),
       tap(organs => {
         this.setReferenceOrgans(organs);
-        this.setSelectedReferenceOrgans(organs.filter(organ => DEFAULT_SELECTED_ORGANS.has(organ.organ)));
+        const defaultSelectedOrgans = this.defaultSelectedOrgans.size ? this.defaultSelectedOrgans : DEFAULT_SELECTED_ORGANS;
+        this.setSelectedReferenceOrgans(organs.filter(organ => defaultSelectedOrgans.has(organ.organ)));
       })
     ).subscribe();
 
