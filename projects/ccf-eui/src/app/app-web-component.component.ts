@@ -39,7 +39,7 @@ function checkOptionalProperty(
   /** first check if prop(property name) is present in the obj(value) and then apply the validator function whose
    *logic is passed when the checkProp() is called.
   */
-  const valid = prop in obj && validator(obj[prop]);
+  const valid = prop in obj && validator(obj[prop]); //obj[prop] is value for eg. 'Male' in sex
   if (!valid) {
     throw new Error(`Invalid property ${prop} in ${name}`);
   }
