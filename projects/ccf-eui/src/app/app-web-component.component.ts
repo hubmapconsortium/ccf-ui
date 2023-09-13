@@ -1,14 +1,51 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  Input,
+} from '@angular/core';
 import { GlobalConfigState } from 'ccf-shared';
-import { BaseWebComponent, BUILTIN_PARSERS, GenericGlobalConfig } from 'ccf-shared/web-components';
+import {
+  BaseWebComponent,
+  BUILTIN_PARSERS,
+  GenericGlobalConfig,
+} from 'ccf-shared/web-components';
 
 import { environment } from '../environments/environment';
+import { Filter } from 'ccf-database';
 
+function isNumber(value: unknown): value is number {
+  return typeof value === 'number';
+}
+
+function isNumberArray(value: unknown): value is number[] {
+  return Array.isArray(value) && value.every(isNumber);
+}
+
+function isString(value: unknown): value is string {
+  return typeof value === 'string';
+}
+
+function isStringArray(value: unknown): value is string[] {
+  return Array.isArray(value) && value.every(isString);
+}
+
+function checkOptionalProperty(
+  name: string,
+  obj: object,
+  prop: string,
+  validator: (value: unknown) => boolean // returns boolean after being called. Logic is passed as an argument when 'checkProp()' is called.
+): void {
+  /** first check if prop(property name) is present in the obj(value) and then apply the validator function whose
+   *logic is passed when the checkProp() is called.
+  */
+  const valid = prop in obj && validator(obj[prop]);
+  if (!valid) {
+    throw new Error(`Invalid property ${prop} in ${name}`);
+  }
+}
 
 function parseDataSources(value: unknown): string[] {
-  const isString = (val: unknown): val is string => typeof val === 'string';
-  const isStringArray = (val: unknown): val is string[] => Array.isArray(val) && val.every(isString);
-
   if (typeof value === 'string') {
     const json = BUILTIN_PARSERS.json(value);
     if (isStringArray(json)) {
@@ -21,11 +58,31 @@ function parseDataSources(value: unknown): string[] {
   throw new Error('Invalid data sources');
 }
 
+function parseFilter(value: unknown): Partial<Filter> {
+  if (typeof value === 'string') {
+    value = BUILTIN_PARSERS.json(value);
+  }
+
+  if (typeof value === 'object') {
+    const sexOptions = ['Both', 'Male', 'Female'];
+    // predefine name as 'filter' and obj as value. 'this' is set to undefined
+    const checkProp = checkOptionalProperty.bind(undefined, 'filter', value);
+    checkProp('sex', val => isString(val) && sexOptions.includes(val));
+    checkProp('ageRange', val => isNumberArray(val) && val.length === 2);
+    checkProp('bmiRange', val => isNumberArray(val) && val.length === 2);
+    checkProp('tmc', isStringArray);
+    checkProp('technologies', isStringArray);
+    checkProp('ontologyTerms', isStringArray);
+    checkProp('cellTypeTerms', isStringArray);
+  }
+
+  throw new Error('Invalid filter');
+}
 
 @Component({
   selector: 'ccf-root-wc',
   template: '<ccf-root *ngIf="initialized"></ccf-root>',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppWebComponent extends BaseWebComponent {
   @Input() dataSources: string | string[];
@@ -43,6 +100,7 @@ export class AppWebComponent extends BaseWebComponent {
   @Input() homeUrl: string;
   @Input() logoTooltip: string;
   @Input() loginDisabled: boolean;
+  @Input() filter: string | Partial<Filter>;
 
   initialized: boolean;
 
@@ -56,14 +114,15 @@ export class AppWebComponent extends BaseWebComponent {
       initialConfig: {
         ...environment.dbOptions,
         ...globalThis['dbOptions'],
-        ...environment.customization
+        ...environment.customization,
       },
       parse: {
         dataSources: parseDataSources,
         useRemoteApi: BUILTIN_PARSERS.boolean,
         header: BUILTIN_PARSERS.boolean,
-        loginDisabled: BUILTIN_PARSERS.boolean
-      }
+        loginDisabled: BUILTIN_PARSERS.boolean,
+        filter: parseFilter,
+      },
     });
   }
 }
