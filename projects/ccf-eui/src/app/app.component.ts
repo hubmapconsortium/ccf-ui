@@ -1,11 +1,23 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Injector, OnInit, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  Injector,
+  OnInit,
+  ViewChild
+} from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
 import { Select } from '@ngxs/store';
 import { CCFDatabaseOptions, OntologyTreeModel } from 'ccf-database';
-import { DataSourceService, GlobalConfigState, TrackingPopupComponent } from 'ccf-shared';
+import {
+  DataSourceService,
+  GlobalConfigState,
+  TrackingPopupComponent,
+} from 'ccf-shared';
 import { ConsentService } from 'ccf-shared/analytics';
-import { combineLatest, Observable, ReplaySubject } from 'rxjs';
+import { Observable, ReplaySubject, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { BodyUiComponent } from '../../../ccf-shared/src/lib/components/body-ui/body-ui.component';
@@ -18,7 +30,10 @@ import { DataStateSelectors } from './core/store/data/data.selectors';
 import { DataQueryState, DataState } from './core/store/data/data.state';
 import { ListResultsState } from './core/store/list-results/list-results.state';
 import { SceneState } from './core/store/scene/scene.state';
-import { RemoveSearch, SetSelectedSearches } from './core/store/spatial-search-filter/spatial-search-filter.actions';
+import {
+  RemoveSearch,
+  SetSelectedSearches,
+} from './core/store/spatial-search-filter/spatial-search-filter.actions';
 import { SpatialSearchFilterSelectors } from './core/store/spatial-search-filter/spatial-search-filter.selectors';
 import { SpatialSearchFilterItem } from './core/store/spatial-search-filter/spatial-search-filter.state';
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
@@ -73,7 +88,7 @@ export class AppComponent implements OnInit {
 
   selectionLabel = 'body | cell';
 
-  groupToggleOptions=['AS','CT','B'];
+  selectedtoggleOptions: string[] = [];
 
   /**
    * Whether or not organ carousel is open
@@ -150,6 +165,18 @@ export class AppComponent implements OnInit {
         cdr.markForCheck();
       }
     );
+    this.ontologyTreeModel$.subscribe((x) => {
+      if (x.nodes[x.root]) {
+        this.ontologySelectionLabel = x.nodes[x.root].label ?? '';
+        this.selectedtoggleOptions.push(x.nodes[x.root].label ?? '');
+      }
+    });
+    this.cellTypeTreeModel$.subscribe((x) => {
+      if (x.nodes[x.root]) {
+        this.cellTypeSelectionLabel = x.nodes[x.root].label ?? '';
+        this.selectedtoggleOptions.push(x.nodes[x.root].label ?? '');
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -303,5 +330,19 @@ export class AppComponent implements OnInit {
   get loggedIn(): boolean {
     const token = this.globalConfig.snapshot.hubmapToken ?? '';
     return token.length > 0;
+  }
+
+  isItemSelected(item: string) {
+    return this.selectedtoggleOptions.includes(item);
+  }
+
+  toggleSelection(value) {
+    if (this.isItemSelected(value)) {
+      this.selectedtoggleOptions = this.selectedtoggleOptions.filter(
+        (el) => el != value
+      );
+    } else {
+      this.selectedtoggleOptions.push(value);
+    }
   }
 }

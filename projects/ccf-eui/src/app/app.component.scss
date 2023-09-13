@@ -39,6 +39,14 @@
     ccf-drawer {
       width: 28.5rem;
 
+      div {
+        .button-toggle-group {
+          height: 4rem;
+          display: flex;
+          align-items: center;
+        }
+      }
+
       .drawer-icons {
         display: flex;
         padding-left: 1.5rem;

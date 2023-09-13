@@ -3,7 +3,7 @@
   [class.selected]="isItemSelected(item)"
   *ngFor="let item of menuOptions"
   [value]="item"
-  (change)="toggleSelection($event)"
+  (change)="this.selectionChange.emit($event.value)"
   >
     <mat-icon [class.hidden]="!isItemSelected(item)">done</mat-icon>
     <span> {{item}}</span>

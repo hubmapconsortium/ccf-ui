@@ -2,16 +2,24 @@
   .hidden {
     visibility: hidden;
   }
-
+  mat-button-toggle {
+    min-width: 8.75rem;
+    text-align: center;
+    width: inherit;
+    line-height: 0px;
+  }
+  .mat-button-toggle-checked {
+    background-color: rgb(255, 255, 255);
+  }
   .selected {
-    background-color: #C2CAE5;
+    background-color: #c2cae5;
   }
   .toggleGroup {
     border-radius: 35px;
+    width: 100%;
+    overflow-x: auto;
   }
-  mat-button-toggle {
-    min-width: 8.75rem;
-    height: 3rem;
-    text-align: center;
+  ::ng-deep .mat-button-toggle-label-content {
+    line-height: 2rem !important;
   }
 }

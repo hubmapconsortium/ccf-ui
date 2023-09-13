@@ -1,16 +1,16 @@
 import {
-  Component,
   ChangeDetectionStrategy,
-  Input,
-  Output,
+  Component,
   EventEmitter,
-} from "@angular/core";
+  Input,
+  Output
+} from '@angular/core';
 
 @Component({
-  selector: "ccf-button-toggle",
-  templateUrl: "./button-toggle.component.html",
-  styleUrls: ["./button-toggle.component.scss"],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'ccf-button-toggle',
+  templateUrl: './button-toggle.component.html',
+  styleUrls: ['./button-toggle.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Default,
 })
 export class ButtonToggleComponent {
   @Input() menuOptions: string[];
@@ -24,14 +24,5 @@ export class ButtonToggleComponent {
 
   isItemSelected(item: string) {
     return this.selectedItems.includes(item);
-  }
-
-  toggleSelection({ value }) {
-    if (this.isItemSelected(value)) {
-      this.selectedItems = this.selectedItems.filter((el) => el != value);
-    } else {
-      this.selectedItems.push(value);
-    }
-    this.selectionChange.emit(value);
   }
 }
