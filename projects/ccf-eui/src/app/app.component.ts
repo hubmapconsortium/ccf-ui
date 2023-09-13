@@ -166,15 +166,15 @@ export class AppComponent implements OnInit {
       }
     );
     this.ontologyTreeModel$.subscribe((x) => {
-      if (x.nodes[x.root]) {
-        this.ontologySelectionLabel = x.nodes[x.root].label ?? '';
-        this.selectedtoggleOptions.push(x.nodes[x.root].label ?? '');
+      if (x?.nodes?.[x.root]) {
+        this.ontologySelectionLabel = x.nodes?.[x.root].label ?? '';
+        this.selectedtoggleOptions.push(x.nodes?.[x.root].label ?? '');
       }
     });
     this.cellTypeTreeModel$.subscribe((x) => {
-      if (x.nodes[x.root]) {
-        this.cellTypeSelectionLabel = x.nodes[x.root].label ?? '';
-        this.selectedtoggleOptions.push(x.nodes[x.root].label ?? '');
+      if (x?.nodes?.[x.root]) {
+        this.cellTypeSelectionLabel = x.nodes?.[x.root].label ?? '';
+        this.selectedtoggleOptions.push(x.nodes?.[x.root].label ?? '');
       }
     });
   }
