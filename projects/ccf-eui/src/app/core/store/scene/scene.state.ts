@@ -8,7 +8,7 @@ import { NodeClickEvent, SpatialSceneNode } from 'ccf-body-ui';
 import { SpatialEntity } from 'ccf-database';
 import { ALL_POSSIBLE_ORGANS, DataSourceService, GlobalConfigState, OrganInfo } from 'ccf-shared';
 import { combineLatest } from 'rxjs';
-import { distinctUntilChanged, map, take, tap } from 'rxjs/operators';
+import { distinctUntilChanged, map, take, tap, withLatestFrom } from 'rxjs/operators';
 
 import { ColorAssignmentState } from '../color-assignment/color-assignment.state';
 import { DataState } from '../data/data.state';
@@ -91,9 +91,6 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
     private readonly injector: Injector
   ) {
     super();
-    this.globalConfig.getOption('referenceOrgans').subscribe(organs=>{
-      this.defaultSelectedOrgans = new Set(organs);
-    });
   }
 
   /**
@@ -182,12 +179,9 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
           .map(organ => ({ ...organ, disabled: false, numResults: 0 }));
       }),
       take(1),
-      tap(organs => {
-        this.setReferenceOrgans(organs);
-        const defaultSelectedOrgans = this.defaultSelectedOrgans.size ? this.defaultSelectedOrgans : DEFAULT_SELECTED_ORGANS;
-        this.setSelectedReferenceOrgans(organs.filter(organ => defaultSelectedOrgans.has(organ.organ)));
-      })
-    ).subscribe();
+      tap((organs: OrganInfo[]) => this.setReferenceOrgans(organs)), withLatestFrom(this.globalConfig.getOption('selectedOrgans').pipe(map((ar: string[]) => ar.length ? ar : undefined)))
+    ).pipe(tap(([organs, defaultSelectedOrgans = DEFAULT_SELECTED_ORGANS]) => this.setSelectedReferenceOrgans(organs.filter(organ => new Set(defaultSelectedOrgans).has(organ.organ)))))
+      .subscribe();
 
     // Update scene as the overall state changes
     combineLatest([
