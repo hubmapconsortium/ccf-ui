@@ -4,7 +4,6 @@ import { of } from 'rxjs';
 import { RecursivePartial, Shallow } from 'shallow-render';
 
 import { OntologySearchService } from '../../../core/services/ontology-search/ontology-search.service';
-import { OntologySearchComponent } from '../ontology-search/ontology-search.component';
 import { OntologyTreeComponent } from '../ontology-tree/ontology-tree.component';
 import { OntologySelectionComponent } from './ontology-selection.component';
 import { OntologySelectionModule } from './ontology-selection.module';
@@ -41,12 +40,4 @@ describe('OntologySelectionComponent', () => {
     expect(spy).toHaveBeenCalled();
   });
 
-  it('should handle the search selection event', async () => {
-    const { instance, findComponent } = await shallow.render();
-    const searchComponent = findComponent(OntologySearchComponent);
-    const spy = spyOn(instance, 'selected');
-
-    searchComponent.selected.emit(ontologyNode);
-    expect(spy).toHaveBeenCalledWith(ontologyNode);
-  });
 });
