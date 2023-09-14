@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { PageState, Person } from '../../../core/store/page/page.state';
-import { ModelState, RUI_ORGANS } from '../../../core/store/model/model.state';
-import { map } from 'rxjs/operators';
 import { OrganInfo } from 'ccf-shared';
+import { map } from 'rxjs/operators';
+
+import { ModelState, RUI_ORGANS } from '../../../core/store/model/model.state';
+import { PageState, Person } from '../../../core/store/page/page.state';
 
 
 /**
@@ -54,6 +55,11 @@ export class RegistrationContentComponent {
     readonly model: ModelState,
     public dialogRef: MatDialogRef<RegistrationContentComponent>
   ) {
+    page.user$.subscribe(user => this.checkNameValid(user));
+    model.organ$.subscribe(organ => {
+      this.organSelected = organ.src !== '';
+    });
+    this.sexByLabel$.subscribe(sex => this.setSexFromLabel(sex));
     dialogRef.disableClose = true;
   }
 
