@@ -51,7 +51,7 @@
     </button>
 
     <ng-container *ngTemplateOutlet="selectableRegion; context: { node: node }"></ng-container>
-    <div class="num-results" [class.suborgan]="node.level > 1">{{ getNumResults(node.label, occurenceData[node.original.id]) }}</div>
+    <div class="num-results" [class.suborgan]="node.level > 1">{{ getCountLabel(node) }}{{ occurenceData[node.original.id] || 0 }}</div>
 
   </mat-tree-node>
 

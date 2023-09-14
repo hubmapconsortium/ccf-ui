@@ -190,16 +190,16 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
 
   highlightedNode: FlatNode | undefined;
 
-  labelMap = new Map();
+  private readonly labelMap = new Map([
+    ['colon', 'large intestine'],
+    ['body', 'Anatomical Structures (AS)'],
+    ['cell', 'Cell Types (CT)']
+  ]);
 
   /**
    * Expand the body node when the component is initialized.
    */
   ngOnInit(): void {
-
-    this.labelMap.set('colon','large intestine');
-    this.labelMap.set('body', 'Anatomical Structures (AS)');
-    this.labelMap.set('cell', 'Cell Types (CT)');
     if (this.control.dataNodes) {
       this.control.expand(this.control.dataNodes[0]);
     }
@@ -286,13 +286,12 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
   }
 
   /**
-   * Gets number of results for node
-   * @param label The label of ndoe
-   * @param count Counf of children
-   * @returns Number of childs
+   * Gets a label for the count
+   * @param node The flat node instance
+   * @returns Label for the count
    */
-  getNumResults(label: string, count=0): string | number {
-    return ['body','cell'].includes(label) ? `Total: ${count}`: count;
+  getCountLabel(node: FlatNode): string {
+    return !node.original.parent ? 'Total: ' : '';
   }
 
   /**
@@ -301,7 +300,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
    * @returns label for node
    */
   getNodeLabel(label: string): string {
-    return this.labelMap.get(label) || label;
+    return this.labelMap.get(label) ?? label;
   }
   /**
    * Determines whether a node is currently selected.
