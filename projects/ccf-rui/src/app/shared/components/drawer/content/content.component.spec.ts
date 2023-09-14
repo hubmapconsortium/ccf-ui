@@ -1,3 +1,0 @@
-describe('ContentComponent', () => {
-  // Add tests
-});

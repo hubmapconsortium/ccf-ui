@@ -1,8 +1,8 @@
-import { TestBed } from '@angular/core/testing';
 import { NgxsDataPluginModule } from '@angular-ru/ngxs';
+import { TestBed } from '@angular/core/testing';
 import { NgxsModule, Store } from '@ngxs/store';
 import { GlobalConfigState, OrganInfo } from 'ccf-shared';
-import { Observable, lastValueFrom } from 'rxjs';
+import { lastValueFrom, Observable, of } from 'rxjs';
 import { take } from 'rxjs/operators';
 
 import { ExtractionSet } from '../../models/extraction-set';
@@ -54,7 +54,8 @@ describe('ModelState', () => {
         {
           provide: PageState,
           useValue: {
-            setHasChanges: () => undefined
+            setHasChanges: () => undefined,
+            registrationStarted$: of([])
           }
         }
       ]
