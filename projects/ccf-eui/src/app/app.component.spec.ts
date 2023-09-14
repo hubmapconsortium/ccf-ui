@@ -2,13 +2,17 @@ import { Immutable } from '@angular-ru/common/typings';
 import { NgModule } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
-import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { NgxsModule } from '@ngxs/store';
+import {
+  BrowserAnimationsModule,
+  NoopAnimationsModule,
+} from '@angular/platform-browser/animations';
+import { NgxsModule, Store } from '@ngxs/store';
 import { GlobalConfigState } from 'ccf-shared';
 import { ConsentService } from 'ccf-shared/analytics';
 import { Observable, of } from 'rxjs';
 import { Shallow } from 'shallow-render';
 
+import { Filter, OntologyTreeModel } from 'ccf-database';
 import { AppComponent } from './app.component';
 import { AppModule } from './app.module';
 import { OntologySelection } from './core/models/ontology-selection';
@@ -20,36 +24,69 @@ import { StoreModule } from './core/store/store.module';
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
 
-
 @NgModule()
-class EmptyModule { }
+class EmptyModule {}
 
 describe('AppComponent', () => {
   let shallow: Shallow<AppComponent>;
   let left: jasmine.SpyObj<DrawerComponent>;
   let right: jasmine.SpyObj<DrawerComponent>;
   let filterbox: jasmine.SpyObj<FiltersPopoverComponent>;
-  const testFilter = { sex: 'Both', ageRange: [5, 99], bmiRange: [30, 80] };
+  const testFilter: Filter = {
+    sex: 'Both',
+    ageRange: [5, 99],
+    bmiRange: [30, 80],
+    ontologyTerms: [],
+    cellTypeTerms: [],
+    tmc: [],
+    spatialSearches: [],
+    technologies: [],
+  };
+  const testTreeStr: OntologyTreeModel = {
+    root: 'a',
+    nodes: {
+      a: {
+        '@id': 'a',
+        '@type': 'OntologyTreeNode',
+        children: [],
+        id: 'a',
+        label: 'a',
+        parent: 'a',
+        synonymLabels: [],
+      },
+    },
+  };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [NgxsModule.forRoot([], {})]
+      imports: [NgxsModule.forRoot([DataState], {})],
     });
 
-    const mockConsentService = jasmine.createSpyObj<ConsentService>(['setConsent']);
-    left = jasmine.createSpyObj<DrawerComponent>('Drawer', ['open', 'closeExpanded']);
-    right = jasmine.createSpyObj<DrawerComponent>('Drawer', ['open', 'closeExpanded']);
-    filterbox = jasmine.createSpyObj<FiltersPopoverComponent>('FiltersPopover', ['removeBox']);
+    const mockConsentService = jasmine.createSpyObj<ConsentService>([
+      'setConsent',
+    ]);
+    left = jasmine.createSpyObj<DrawerComponent>('Drawer', [
+      'open',
+      'closeExpanded',
+    ]);
+    right = jasmine.createSpyObj<DrawerComponent>('Drawer', [
+      'open',
+      'closeExpanded',
+    ]);
+    filterbox = jasmine.createSpyObj<FiltersPopoverComponent>(
+      'FiltersPopover',
+      ['removeBox']
+    );
     shallow = new Shallow(AppComponent, AppModule)
       .replaceModule(BrowserAnimationsModule, NoopAnimationsModule)
       .replaceModule(StoreModule, EmptyModule)
       .mock(ListResultsState, {
-        listResults$: of([])
+        listResults$: of([]),
       })
       .mock(SceneState, {
         referenceOrgans$: of([]),
         selectedReferenceOrgans$: of([]),
-        scene$: of([])
+        scene$: of([]),
       })
       .mock(DataState, {
         state$: of({ status: 'Ready' }),
@@ -67,21 +104,26 @@ describe('AppComponent', () => {
       })
       .mock(ConsentService, {
         ...mockConsentService,
-        consent: 'not-set'
+        consent: 'not-set',
       })
       .mock(MatSnackBar, {
-        openFromComponent: (): MatSnackBarRef<unknown> => ({} as unknown as MatSnackBarRef<unknown>)
+        openFromComponent: (): MatSnackBarRef<unknown> =>
+          ({} as unknown as MatSnackBarRef<unknown>),
       })
       .mock(ThemingService, {
         initialize: () => undefined,
         getTheme: () => 'theme',
-        setTheme: () => undefined
+        setTheme: () => undefined,
       })
+      // .mock(DataStateSelectors, {
+      //   anatomicalStructuresTreeModel: () => testTreeStr,
+      //   cellTypesTreeModel: () => testTreeStr,
+      // })
       .mock(GlobalConfigState, {
         snapshot: {},
-        config$: new Observable<Immutable<unknown>>,
+        config$: new Observable<Immutable<unknown>>(),
         patchConfig: () => undefined,
-        getOption: () => of(undefined)
+        getOption: () => of(undefined),
       });
   });
 
@@ -89,7 +131,6 @@ describe('AppComponent', () => {
     const { instance } = await shallow.render();
     expect(instance).toBeDefined();
   });
-
 
   it('should close the left drawer when reset() is called', async () => {
     const { instance } = await shallow.render();
@@ -169,7 +210,7 @@ describe('AppComponent', () => {
     expect(instance.bodyUI.target).toEqual([0, 0, 0]);
     expect(instance.bodyUI.rotation).toEqual(0);
     expect(instance.bodyUI.rotationX).toEqual(0);
-    expect(instance.bodyUI.bounds).toEqual({ x:2.2, y:2, z:0.4 });
+    expect(instance.bodyUI.bounds).toEqual({ x: 2.2, y: 2, z: 0.4 });
   });
 
   it('resets the view if body is selected in the ontology', async () => {
@@ -181,5 +222,34 @@ describe('AppComponent', () => {
     expect(spy).toHaveBeenCalledTimes(0);
     instance.ontologySelected(mockOntologySelection, 'anatomical-structures');
     expect(spy).toHaveBeenCalled();
+  });
+
+  it('it injects DataState', async () => {
+    const { instance, inject } = await shallow.render();
+    inject(Store).reset({
+      data: {
+        anatomicalStructuresTreeModel: testTreeStr,
+        cellTypesTreeModel: testTreeStr
+      }
+    });
+
+    expect(instance.selectedtoggleOptions).toBeDefined();
+  });
+
+  it(': toggleSelection works', async () => {
+    const { instance, inject } = await shallow.render();
+    inject(Store).reset({
+      data: {
+        anatomicalStructuresTreeModel: testTreeStr,
+        cellTypesTreeModel: testTreeStr
+      }
+    });
+    instance.selectedtoggleOptions=['body','cell'];
+    instance.toggleSelection('body')
+
+    expect(instance.selectedtoggleOptions).toBeDefined();
+    instance.toggleSelection('a')
+
+    expect(instance.selectedtoggleOptions).toBeDefined();
   });
 });
