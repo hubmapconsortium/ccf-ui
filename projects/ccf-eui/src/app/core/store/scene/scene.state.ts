@@ -179,7 +179,7 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
           .map(organ => ({ ...organ, disabled: false, numResults: 0 }));
       }),
       take(1),
-      tap((organs: OrganInfo[]) => this.setReferenceOrgans(organs)), withLatestFrom(this.globalConfig.getOption('selectedOrgans').pipe(map((ar: string[]) => ar.length ? ar : undefined)))
+      tap((organs: OrganInfo[]) => this.setReferenceOrgans(organs)), withLatestFrom(this.globalConfig.getOption('selectedOrgans').pipe(map((ar: string[]) => ar?.length ? ar : undefined)))
     ).pipe(tap(([organs, defaultSelectedOrgans = DEFAULT_SELECTED_ORGANS]) => this.setSelectedReferenceOrgans(organs.filter(organ => new Set(defaultSelectedOrgans).has(organ.organ)))))
       .subscribe();
 
