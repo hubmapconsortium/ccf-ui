@@ -69,7 +69,6 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
 
   readonly highlightedId$ = this.state$.pipe(map(x => x?.highlightedId), distinctUntilChanged());
 
-  defaultSelectedOrgans: Set<string>;
   /** The data state */
   private dataState: DataState;
 
