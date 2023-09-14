@@ -178,9 +178,10 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
           .map(organ => ({ ...organ, disabled: false, numResults: 0 }));
       }),
       take(1),
-      tap((organs: OrganInfo[]) => this.setReferenceOrgans(organs)), withLatestFrom(this.globalConfig.getOption('selectedOrgans').pipe(map((ar: string[]) => ar?.length ? ar : undefined)))
-    ).pipe(tap(([organs, defaultSelectedOrgans = DEFAULT_SELECTED_ORGANS]) => this.setSelectedReferenceOrgans(organs.filter(organ => new Set(defaultSelectedOrgans).has(organ.organ)))))
-      .subscribe();
+      tap((organs: OrganInfo[]) => this.setReferenceOrgans(organs)),
+      withLatestFrom(this.globalConfig.getOption('selectedOrgans')),
+      tap(([organs, selected]) => this.setSelectedReferenceOrgansWithDefaults(organs, selected))
+    ).subscribe();
 
     // Update scene as the overall state changes
     combineLatest([
@@ -208,5 +209,11 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
       }),
       tap(scene => this.setScene(scene))
     ).subscribe();
+  }
+
+  setSelectedReferenceOrgansWithDefaults(organs: OrganInfo[], selected: string[]) {
+    const selectedSet = new Set(selected?.length ? selected : DEFAULT_SELECTED_ORGANS);
+    const filteredOrgans = organs.filter(({ organ }) => selectedSet.has(organ));
+    this.setSelectedReferenceOrgans(filteredOrgans);
   }
 }

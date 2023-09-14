@@ -5,7 +5,7 @@ import { BaseWebComponent, BUILTIN_PARSERS, GenericGlobalConfig } from 'ccf-shar
 import { environment } from '../environments/environment';
 
 
-function parseDataSources(value: unknown): string[] {
+function parseStringArray(value: unknown): string[] {
   const isString = (val: unknown): val is string => typeof val === 'string';
   const isStringArray = (val: unknown): val is string[] => Array.isArray(val) && val.every(isString);
 
@@ -18,7 +18,7 @@ function parseDataSources(value: unknown): string[] {
     return value;
   }
 
-  throw new Error('Invalid data sources');
+  throw new Error('Invalid type for string array');
 }
 
 
@@ -60,11 +60,10 @@ export class AppWebComponent extends BaseWebComponent {
         ...environment.customization
       },
       parse: {
-        dataSources: parseDataSources,
+        dataSources: parseStringArray,
         useRemoteApi: BUILTIN_PARSERS.boolean,
         header: BUILTIN_PARSERS.boolean,
-        //using parseDataSources since both have same types
-        selectedOrgans: parseDataSources,
+        selectedOrgans: parseStringArray,
         loginDisabled: BUILTIN_PARSERS.boolean
       }
     });
