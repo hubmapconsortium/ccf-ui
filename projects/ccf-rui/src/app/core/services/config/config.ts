@@ -11,7 +11,7 @@ export interface GlobalConfig {
     ontologyId?: string;
     sex?: 'male' | 'female';
     side?: 'left' | 'right';
-  };
+  } | string;
   user?: {
     firstName: string;
     lastName: string;

@@ -55,7 +55,7 @@ export class AppWebComponent extends BaseWebComponent {
       parse: {
         useDownload: BP.boolean,
         user: BP.json,
-        organ: BP.json,
+        // organ: BP.json,
         editRegistration: BP.json,
         register: BP.function,
         cancelRegistration: BP.function,
