@@ -5,9 +5,19 @@ import { Shallow } from 'shallow-render';
 
 import { ModelState } from '../../../core/store/model/model.state';
 import { PageState, Person } from '../../../core/store/page/page.state';
+import { ReferenceDataState, ReferenceDataStateModel } from '../../../core/store/reference-data/reference-data.state';
 import { RegistrationModalComponent } from './registration-modal.component';
 import { RegistrationModalModule } from './registration-modal.module';
 
+const initialReferenceDataState = {
+  organIRILookup: {},
+  organSpatialEntities: {},
+  anatomicalStructures: {},
+  extractionSets: {},
+  sceneNodeLookup: {},
+  simpleSceneNodeLookup: {},
+  placementPatches: {}
+};
 
 function wait(duration = 0): Promise<void> {
   return new Promise(resolve => {
@@ -19,10 +29,12 @@ describe('RegistrationModalComponent', () => {
   let shallow: Shallow<RegistrationModalComponent>;
   let userSubject: Subject<Person>;
   let organSubject: Subject<OrganInfo>;
+  let referenceSubject: Subject<ReferenceDataStateModel>;
 
   beforeEach(() => {
     userSubject = new Subject();
     organSubject = new Subject();
+    referenceSubject = new Subject();
 
     shallow = new Shallow(RegistrationModalComponent, RegistrationModalModule)
       .mock(MatDialog, {
@@ -33,6 +45,9 @@ describe('RegistrationModalComponent', () => {
       })
       .mock(ModelState, {
         organ$: organSubject
+      })
+      .mock(ReferenceDataState, {
+        state$: referenceSubject
       });
   });
 
@@ -46,9 +61,10 @@ describe('RegistrationModalComponent', () => {
     const { instance } = await shallow.render();
     const spy = spyOn(instance, 'openDialog');
     instance.ngOnInit();
+    referenceSubject.next(initialReferenceDataState);
+    await wait(700);
     userSubject.next({ firstName: '', lastName: '' });
     organSubject.next({ src: '', name: '', organ: '' });
-    await wait(700);
     expect(spy).toHaveBeenCalled();
   });
 
@@ -56,9 +72,10 @@ describe('RegistrationModalComponent', () => {
     const { instance } = await shallow.render();
     const spy = spyOn(instance, 'openDialog');
     instance.ngOnInit();
+    referenceSubject.next(initialReferenceDataState);
+    await wait(700);
     userSubject.next({ firstName: 'John', lastName: 'Doe' });
     organSubject.next({ src: 'areallygoodvalue', name: '', organ: '' });
-    await wait(700);
     expect(spy).not.toHaveBeenCalled();
   });
 });

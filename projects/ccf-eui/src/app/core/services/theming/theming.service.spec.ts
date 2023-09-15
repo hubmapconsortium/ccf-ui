@@ -1,3 +1,0 @@
-describe('ThemingService', () => {
-  // Add tests
-});

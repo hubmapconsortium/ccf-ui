@@ -12,6 +12,15 @@ import { ReferenceDataState } from '../reference-data/reference-data.state';
 import { GLOBAL_CONFIG, GlobalConfig } from './../../services/config/config';
 import { ModelState, SlicesConfig, ViewSide, ViewType, XYZTriplet } from './model.state';
 
+const initialReferenceDataState = {
+  organIRILookup: {},
+  organSpatialEntities: {},
+  anatomicalStructures: {},
+  extractionSets: {},
+  sceneNodeLookup: {},
+  simpleSceneNodeLookup: {},
+  placementPatches: {}
+};
 
 function nextValue<T>(obs: Observable<T>): Promise<T> {
   return lastValueFrom(obs.pipe(take(1)));
@@ -46,7 +55,12 @@ describe('ModelState', () => {
       ],
       providers: [
         GlobalConfigState,
-        { provide: ReferenceDataState, useValue: mockDataSource },
+        { provide: ReferenceDataState,
+          useValue: {
+            ...mockDataSource,
+            state$: of(initialReferenceDataState)
+          }
+        },
         {
           provide: GLOBAL_CONFIG,
           useValue: mockGlobalConfig
