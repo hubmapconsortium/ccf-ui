@@ -1,7 +1,7 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { combineLatest } from 'rxjs';
-import { debounceTime, filter, skipUntil, take, tap } from 'rxjs/operators';
+import { debounceTime, take, tap } from 'rxjs/operators';
 
 import { ModelState } from '../../../core/store/model/model.state';
 import { PageState } from '../../../core/store/page/page.state';
@@ -39,9 +39,6 @@ export class RegistrationModalComponent implements OnInit {
   ngOnInit(): void {
     this.referenceData.state$.pipe(
       debounceTime(500),
-      skipUntil(this.referenceData.state$.pipe(
-        filter(data => Object.keys(data.organIRILookup).length > 0),
-      )),
       tap(() => {
         combineLatest([this.page.user$, this.model.organ$]).pipe(
           take(1),
