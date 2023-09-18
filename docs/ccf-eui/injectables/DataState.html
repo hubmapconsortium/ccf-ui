@@ -9,11 +9,11 @@
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 	   <link rel="stylesheet" href="../styles/style.css">
-        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
+        <link rel="stylesheet" href="../styles/dark.css">
     </head>
     <body>
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">Application ccf-eui documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
@@ -37,22 +37,29 @@
 
 
 
+
 <ol class="breadcrumb">
-  <li>Injectables</li>
-  <li >DataState</li>
+  <li class="breadcrumb-item">Injectables</li>
+  <li class="breadcrumb-item" >DataState</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
-        <li class="active">
-            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
         </li>
-        <li >
-            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
         </li>
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="c-info">
+    <div class="tab-pane fade active in" id="info">
         <p class="comment">
             <h3>File</h3>
         </p>
@@ -77,7 +84,7 @@
             </p>
 
 
-            <section>
+            <section data-compodoc="block-index">
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
@@ -213,10 +220,12 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Private</span>
                                 <a href="#aggregateData" >aggregateData</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Private</span>
                                 <a href="#cellTypeTermOccurencesData" >cellTypeTermOccurencesData</a>
                             </li>
@@ -224,38 +233,48 @@
                                 <a href="#ngxsOnInit" >ngxsOnInit</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Private</span>
                                 <a href="#ontologyTermOccurencesData" >ontologyTermOccurencesData</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Private</span>
                                 <a href="#providerFilterData" >providerFilterData</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Private</span>
                                 <a href="#sceneData" >sceneData</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Private</span>
                                 <a href="#technologyFilterData" >technologyFilterData</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Private</span>
                                 <a href="#tissueBlockData" >tissueBlockData</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                 <a href="#updateAnatomicalStructuresTreeModel" >updateAnatomicalStructuresTreeModel</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                 <a href="#updateCellTypesTreeModel" >updateCellTypesTreeModel</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                 <a href="#updateFilter" >updateFilter</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                 <a href="#updateFilterHandler" >updateFilterHandler</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                 <a href="#updateStatus" >updateStatus</a>
                             </li>
                             <li>
@@ -274,7 +293,7 @@
     </table>
 </section>
 
-            <section>
+            <section data-compodoc="block-constructor">
     <h3 id="constructor">Constructor</h3>
         <table class="table table-sm table-bordered">
             <tbody>
@@ -317,8 +336,8 @@
                                                     </td>
                                                     
                                                         <td>
-                                                                <code><p>Data query service.</p>
-</code>
+                                                                <p>Data query service.</p>
+
                                                         </td>
                                                 </tr>
                                         </tbody>
@@ -330,7 +349,7 @@
         </table>
 </section>
 
-            <section>
+            <section data-compodoc="block-methods">
     
     <h3 id="methods">
         Methods
@@ -341,6 +360,7 @@
                 <td class="col-md-4">
                     <a name="aggregateData"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span class="modifier">Private</span>
                         <span ><b>aggregateData</b></span>
                         <a href="#aggregateData"><span class="icon ion-ios-link"></span></a>
@@ -377,6 +397,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -426,6 +447,7 @@
                 <td class="col-md-4">
                     <a name="cellTypeTermOccurencesData"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span class="modifier">Private</span>
                         <span ><b>cellTypeTermOccurencesData</b></span>
                         <a href="#cellTypeTermOccurencesData"><span class="icon ion-ios-link"></span></a>
@@ -462,6 +484,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -548,6 +571,7 @@
                 <td class="col-md-4">
                     <a name="ontologyTermOccurencesData"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span class="modifier">Private</span>
                         <span ><b>ontologyTermOccurencesData</b></span>
                         <a href="#ontologyTermOccurencesData"><span class="icon ion-ios-link"></span></a>
@@ -584,6 +608,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -633,6 +658,7 @@
                 <td class="col-md-4">
                     <a name="providerFilterData"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span class="modifier">Private</span>
                         <span ><b>providerFilterData</b></span>
                         <a href="#providerFilterData"><span class="icon ion-ios-link"></span></a>
@@ -687,6 +713,7 @@
                 <td class="col-md-4">
                     <a name="sceneData"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span class="modifier">Private</span>
                         <span ><b>sceneData</b></span>
                         <a href="#sceneData"><span class="icon ion-ios-link"></span></a>
@@ -723,6 +750,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -772,6 +800,7 @@
                 <td class="col-md-4">
                     <a name="technologyFilterData"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span class="modifier">Private</span>
                         <span ><b>technologyFilterData</b></span>
                         <a href="#technologyFilterData"><span class="icon ion-ios-link"></span></a>
@@ -826,6 +855,7 @@
                 <td class="col-md-4">
                     <a name="tissueBlockData"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span class="modifier">Private</span>
                         <span ><b>tissueBlockData</b></span>
                         <a href="#tissueBlockData"><span class="icon ion-ios-link"></span></a>
@@ -862,6 +892,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -911,6 +942,7 @@
                 <td class="col-md-4">
                     <a name="updateAnatomicalStructuresTreeModel"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span ><b>updateAnatomicalStructuresTreeModel</b></span>
                         <a href="#updateAnatomicalStructuresTreeModel"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -918,7 +950,8 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>updateAnatomicalStructuresTreeModel(model: OntologyTreeModel)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updateAnatomicalStructuresTreeModel(model: OntologyTreeModel)</code>
                 </td>
             </tr>
 
@@ -943,6 +976,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -986,6 +1020,7 @@
                 <td class="col-md-4">
                     <a name="updateCellTypesTreeModel"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span ><b>updateCellTypesTreeModel</b></span>
                         <a href="#updateCellTypesTreeModel"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -993,7 +1028,8 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>updateCellTypesTreeModel(model: OntologyTreeModel)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updateCellTypesTreeModel(model: OntologyTreeModel)</code>
                 </td>
             </tr>
 
@@ -1018,6 +1054,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -1061,6 +1098,7 @@
                 <td class="col-md-4">
                     <a name="updateFilter"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span ><b>updateFilter</b></span>
                         <a href="#updateFilter"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -1068,7 +1106,8 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>updateFilter(filter: Partial<Filter>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updateFilter(filter: Partial<Filter>)</code>
                 </td>
             </tr>
 
@@ -1095,6 +1134,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -1143,6 +1183,7 @@
                 <td class="col-md-4">
                     <a name="updateFilterHandler"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span ><b>updateFilterHandler</b></span>
                         <a href="#updateFilterHandler"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -1150,7 +1191,8 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>updateFilterHandler(_ctx, undefined: <a href="../classes/UpdateFilter.html" target="_self">UpdateFilter</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updateFilterHandler(_ctx, undefined: <a href="../classes/UpdateFilter.html" target="_self">UpdateFilter</a>)</code>
                 </td>
             </tr>
 
@@ -1175,6 +1217,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -1228,6 +1271,7 @@
                 <td class="col-md-4">
                     <a name="updateStatus"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span ><b>updateStatus</b></span>
                         <a href="#updateStatus"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -1235,7 +1279,8 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>updateStatus(status: DatabaseStatus)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updateStatus(status: DatabaseStatus)</code>
                 </td>
             </tr>
 
@@ -1260,6 +1305,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -1337,7 +1383,7 @@
         </tbody>
     </table>
 </section>
-            <section>
+            <section data-compodoc="block-properties">
     
     <h3 id="inputs">
         Properties
@@ -1751,7 +1797,7 @@
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>this.state$.pipe(pluck(&#x27;status&#x27;), distinct(), rxjsFilter((status) &#x3D;&gt; status &#x3D;&#x3D;&#x3D; &#x27;Ready&#x27;))</code>
+                        <i>Default value : </i><code>this.state$.pipe(map(x &#x3D;&gt; x?.status), distinct(), rxjsFilter((status) &#x3D;&gt; status &#x3D;&#x3D;&#x3D; &#x27;Ready&#x27;))</code>
                     </td>
                 </tr>
                     <tr>
@@ -1783,7 +1829,7 @@
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>this.state$.pipe(pluck(&#x27;filter&#x27;))</code>
+                        <i>Default value : </i><code>this.state$.pipe(map(x &#x3D;&gt; x?.filter))</code>
                     </td>
                 </tr>
                     <tr>
@@ -2211,16 +2257,16 @@
     </div>
 
 
-    <div class="tab-pane fade  tab-source-code" id="c-source">
+    <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
-import { DataAction, Payload, StateRepository } from &#x27;@ngxs-labs/data/decorators&#x27;;
-import { NgxsDataRepository } from &#x27;@ngxs-labs/data/repositories&#x27;;
-import { Action, NgxsOnInit, Selector, State } from &#x27;@ngxs/store&#x27;;
+import { DataAction, Payload, StateRepository } from &#x27;@angular-ru/ngxs/decorators&#x27;;
+import { NgxsDataRepository } from &#x27;@angular-ru/ngxs/repositories&#x27;;
+import { Action, NgxsOnInit, State } from &#x27;@ngxs/store&#x27;;
 import { bind } from &#x27;bind-decorator&#x27;;
 import { AggregateResult, DatabaseStatus, Filter, OntologyTreeModel, SpatialSceneNode, TissueBlockResult } from &#x27;ccf-database&#x27;;
 import { DataSourceService } from &#x27;ccf-shared&#x27;;
 import { combineLatest, defer, ObservableInput, ObservedValueOf, OperatorFunction, ReplaySubject, Subject } from &#x27;rxjs&#x27;;
-import { delay, distinct, filter as rxjsFilter, map, pluck, publishReplay, refCount, repeat, switchMap, take, takeWhile, tap } from &#x27;rxjs/operators&#x27;;
+import { delay, distinct, filter as rxjsFilter, map, publishReplay, refCount, repeat, switchMap, take, takeWhile, tap } from &#x27;rxjs/operators&#x27;;
 import { UpdateFilter } from &#x27;./data.actions&#x27;;
 
 
@@ -2310,7 +2356,7 @@ export interface DataStateModel {
 @Injectable()
 export class DataState extends NgxsDataRepository&lt;DataStateModel&gt; implements NgxsOnInit {
   /** Emits when the database is ready. */
-  readonly databaseReady$ &#x3D; this.state$.pipe(pluck(&#x27;status&#x27;), distinct(), rxjsFilter((status) &#x3D;&gt; status &#x3D;&#x3D;&#x3D; &#x27;Ready&#x27;));
+  readonly databaseReady$ &#x3D; this.state$.pipe(map(x &#x3D;&gt; x?.status), distinct(), rxjsFilter((status) &#x3D;&gt; status &#x3D;&#x3D;&#x3D; &#x27;Ready&#x27;));
 
   /** Implementation subject for tissueBlockDataQueryStatus$. */
   private readonly _tissueBlockDataQueryStatus$ &#x3D; new ReplaySubject&lt;DataQueryState&gt;(1);
@@ -2332,7 +2378,7 @@ export class DataState extends NgxsDataRepository&lt;DataStateModel&gt; implemen
   readonly cellTypeTermsFullData$ &#x3D; new ReplaySubject&lt;Record&lt;string, number&gt;&gt;(1);
 
   /** Current filter. */
-  readonly filter$ &#x3D; this.state$.pipe(pluck(&#x27;filter&#x27;));
+  readonly filter$ &#x3D; this.state$.pipe(map(x &#x3D;&gt; x?.filter));
   /** Latest tissue block query data. */
   readonly tissueBlockData$ &#x3D; this.filter$.pipe(queryData(
     this.tissueBlockData, sendCompletedTo(this._tissueBlockDataQueryStatus$)
@@ -2574,14 +2620,15 @@ export class DataState extends NgxsDataRepository&lt;DataStateModel&gt; implemen
 
 
 
-                   
+
+
 
 
 
 
                    </div><div class="search-results">
     <div class="has-results">
-        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
         <ul class="search-results-list"></ul>
     </div>
     <div class="no-results">
@@ -2593,6 +2640,15 @@ export class DataState extends NgxsDataRepository&lt;DataStateModel&gt; implemen
            </div>
        </div>
 
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
@@ -2602,8 +2658,8 @@ export class DataState extends NgxsDataRepository&lt;DataStateModel&gt; implemen
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       
-       <script type="module" src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/menu-wc.js" defer></script>
        <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>

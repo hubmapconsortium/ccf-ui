@@ -9,11 +9,11 @@
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 	   <link rel="stylesheet" href="../styles/style.css">
-        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
+        <link rel="stylesheet" href="../styles/dark.css">
     </head>
     <body>
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">Application ccf-eui documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
@@ -35,32 +35,37 @@
 
 
 <ol class="breadcrumb">
-  <li>Components</li>
-  <li
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
   >
   OntologyTreeComponent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
-        <li class="active">
-            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
         </li>
-        <li >
-            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
         </li>
-        <li >
-            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
         </li>
-        <li >
-            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
         </li>
-        <li >
-            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
         </li>
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
     <h3>File</h3>
 </p>
 <p class="comment">
@@ -81,14 +86,14 @@
         <h3>Implements</h3>
     </p>
     <p class="comment">
-                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
-                    <code><a href="https://angular.io/api/core/OnChanges" target="_blank" >OnChanges</a></code>
+                <code>OnInit</code>
+                <code>OnChanges</code>
     </p>
 
 
-<section>
+<section data-compodoc="block-metadata">
     <h3>Metadata</h3>
-    <table class="table table-sm table-hover">
+    <table class="table table-sm table-hover metadata">
         <tbody>
 
             <tr>
@@ -105,10 +110,13 @@
 
 
 
+
             <tr>
                 <td class="col-md-3">selector</td>
                 <td class="col-md-9"><code>ccf-ontology-tree</code></td>
             </tr>
+
+
 
             <tr>
                 <td class="col-md-3">styleUrls</td>
@@ -133,7 +141,7 @@
     </table>
 </section>
 
-    <section>
+    <section data-compodoc="block-index">
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
@@ -189,6 +197,11 @@
                                 <a href="#indent" >indent</a>
                             </li>
                             <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#labelMap" >labelMap</a>
+                            </li>
+                            <li>
                                 <a href="#selectedNodes" >selectedNodes</a>
                             </li>
                         </ul>
@@ -207,7 +220,13 @@
                                 <a href="#expandAndSelect" >expandAndSelect</a>
                             </li>
                             <li>
+                                <a href="#getCountLabel" >getCountLabel</a>
+                            </li>
+                            <li>
                                 <a href="#getLeftIndent" >getLeftIndent</a>
+                            </li>
+                            <li>
+                                <a href="#getNodeLabel" >getNodeLabel</a>
                             </li>
                             <li>
                                 <a href="#isInnerNode" >isInnerNode</a>
@@ -329,13 +348,13 @@
     </table>
 </section>
 
-    <section>
+    <section data-compodoc="block-constructor">
     <h3 id="constructor">Constructor</h3>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(cdr: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>, ga: GoogleAnalyticsService)</code>
+<code>constructor(cdr: ChangeDetectorRef, ga: GoogleAnalyticsService)</code>
                     </td>
                 </tr>
                         <tr>
@@ -364,7 +383,7 @@
                                                         <td>cdr</td>
                                                   
                                                         <td>
-                                                                        <code><a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank" >ChangeDetectorRef</a></code>
+                                                                    <code>ChangeDetectorRef</code>
                                                         </td>
                                                   
                                                     <td>
@@ -372,8 +391,8 @@
                                                     </td>
                                                     
                                                         <td>
-                                                                <code><p>The change detector.</p>
-</code>
+                                                                <p>The change detector.</p>
+
                                                         </td>
                                                 </tr>
                                                 <tr>
@@ -388,8 +407,8 @@
                                                     </td>
                                                     
                                                         <td>
-                                                                <code><p>Analytics service</p>
-</code>
+                                                                <p>Analytics service</p>
+
                                                         </td>
                                                 </tr>
                                         </tbody>
@@ -401,7 +420,7 @@
         </table>
 </section>
 
-    <section>
+    <section data-compodoc="block-inputs">
     <h3 id="inputs">Inputs</h3>
         <table class="table table-sm table-bordered">
             <tbody>
@@ -409,6 +428,12 @@
                     <td class="col-md-4">
                         <a name="getChildren"></a>
                         <b>getChildren</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#GetChildrenFunc" target="_self" >GetChildrenFunc | undefined</a></code>
+
                     </td>
                 </tr>
                         <tr>
@@ -453,6 +478,12 @@
                         <b>nodes</b>
                     </td>
                 </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[] | undefined</code>
+
+                    </td>
+                </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
                                     <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-tree/ontology-tree.component.ts:53</a></div>
@@ -472,6 +503,12 @@
                     <td class="col-md-4">
                         <a name="occurenceData"></a>
                         <b>occurenceData</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Record&lt;string, number&gt;</code>
+
                     </td>
                 </tr>
                         <tr>
@@ -550,6 +587,12 @@ from outside this component.</p>
                         <b>termData</b>
                     </td>
                 </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Record&lt;string, number&gt;</code>
+
+                    </td>
+                </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
                                     <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-tree/ontology-tree.component.ts:106</a></div>
@@ -564,7 +607,7 @@ from outside this component.</p>
             </tbody>
         </table>
 </section>
-    <section>
+    <section data-compodoc="block-outputs">
     <h3 id="outputs">Outputs</h3>
         <table class="table table-sm table-bordered">
             <tbody>
@@ -576,7 +619,7 @@ from outside this component.</p>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+                        <i>Type : </i>    <code>EventEmitter</code>
 
                     </td>
                 </tr>
@@ -603,7 +646,7 @@ from outside this component.</p>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+                        <i>Type : </i>    <code>EventEmitter</code>
 
                     </td>
                 </tr>
@@ -623,7 +666,7 @@ from outside this component.</p>
 </section>
 
 
-    <section>
+    <section data-compodoc="block-methods">
     
     <h3 id="methods">
         Methods
@@ -648,8 +691,8 @@ from outside this component.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="236"
-                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-tree/ontology-tree.component.ts:236</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="242"
+                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-tree/ontology-tree.component.ts:242</a></div>
                 </td>
             </tr>
 
@@ -661,6 +704,7 @@ from outside this component.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -742,6 +786,83 @@ from outside this component.</p>
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="getCountLabel"></a>
+                    <span class="name">
+                        <span ><b>getCountLabel</b></span>
+                        <a href="#getCountLabel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getCountLabel(node: <a href="../classes/FlatNode.html" target="_self">FlatNode</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="293"
+                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-tree/ontology-tree.component.ts:293</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Gets a label for the count</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>node</td>
+                                    <td>
+                                                <code><a href="../classes/FlatNode.html" target="_self" >FlatNode</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The flat node instance</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>Label for the count</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="getLeftIndent"></a>
                     <span class="name">
                         <span ><b>getLeftIndent</b></span>
@@ -758,8 +879,8 @@ from outside this component.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="392"
-                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-tree/ontology-tree.component.ts:392</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="415"
+                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-tree/ontology-tree.component.ts:415</a></div>
                 </td>
             </tr>
 
@@ -771,6 +892,7 @@ from outside this component.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -818,6 +940,83 @@ from outside this component.</p>
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="getNodeLabel"></a>
+                    <span class="name">
+                        <span ><b>getNodeLabel</b></span>
+                        <a href="#getNodeLabel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getNodeLabel(label: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="302"
+                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-tree/ontology-tree.component.ts:302</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Gets Node label</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>label</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>node label</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>label for node</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="isInnerNode"></a>
                     <span class="name">
                         <span ><b>isInnerNode</b></span>
@@ -834,8 +1033,8 @@ from outside this component.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="278"
-                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-tree/ontology-tree.component.ts:278</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="284"
+                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-tree/ontology-tree.component.ts:284</a></div>
                 </td>
             </tr>
 
@@ -847,6 +1046,7 @@ from outside this component.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -938,8 +1138,8 @@ from outside this component.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="289"
-                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-tree/ontology-tree.component.ts:289</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="312"
+                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-tree/ontology-tree.component.ts:312</a></div>
                 </td>
             </tr>
 
@@ -952,6 +1152,7 @@ Only a single node can be selected at any time.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -1015,8 +1216,8 @@ Only a single node can be selected at any time.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="347"
-                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-tree/ontology-tree.component.ts:347</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="370"
+                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-tree/ontology-tree.component.ts:370</a></div>
                 </td>
             </tr>
 
@@ -1054,8 +1255,8 @@ Only a single node can be selected at any time.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="340"
-                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-tree/ontology-tree.component.ts:340</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="363"
+                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-tree/ontology-tree.component.ts:363</a></div>
                 </td>
             </tr>
 
@@ -1067,6 +1268,7 @@ Only a single node can be selected at any time.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -1117,15 +1319,15 @@ Only a single node can be selected at any time.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>ngOnChanges(changes: <a href="https://angular.io/api/core/SimpleChanges" target="_blank">SimpleChanges</a>)</code>
+<code>ngOnChanges(changes: SimpleChanges)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="202"
-                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-tree/ontology-tree.component.ts:202</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="208"
+                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-tree/ontology-tree.component.ts:208</a></div>
                 </td>
             </tr>
 
@@ -1135,6 +1337,7 @@ Only a single node can be selected at any time.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -1147,7 +1350,7 @@ Only a single node can be selected at any time.</p>
                                 <tr>
                                     <td>changes</td>
                                     <td>
-                                                <code><a href="https://angular.io/api/core/SimpleChanges" target="_blank" >SimpleChanges</a></code>
+                                            <code>SimpleChanges</code>
                                     </td>
 
                                     <td>
@@ -1192,8 +1395,8 @@ Only a single node can be selected at any time.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="196"
-                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-tree/ontology-tree.component.ts:196</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="202"
+                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-tree/ontology-tree.component.ts:202</a></div>
                 </td>
             </tr>
 
@@ -1231,8 +1434,8 @@ Only a single node can be selected at any time.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="401"
-                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-tree/ontology-tree.component.ts:401</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="424"
+                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-tree/ontology-tree.component.ts:424</a></div>
                 </td>
             </tr>
 
@@ -1244,6 +1447,7 @@ Only a single node can be selected at any time.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -1306,8 +1510,8 @@ Only a single node can be selected at any time.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="368"
-                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-tree/ontology-tree.component.ts:368</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="391"
+                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-tree/ontology-tree.component.ts:391</a></div>
                 </td>
             </tr>
 
@@ -1319,6 +1523,7 @@ Only a single node can be selected at any time.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -1381,8 +1586,8 @@ Only a single node can be selected at any time.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="300"
-                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-tree/ontology-tree.component.ts:300</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="323"
+                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-tree/ontology-tree.component.ts:323</a></div>
                 </td>
             </tr>
 
@@ -1394,6 +1599,7 @@ Only a single node can be selected at any time.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -1500,8 +1706,8 @@ Only a single node can be selected at any time.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="215"
-                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-tree/ontology-tree.component.ts:215</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="221"
+                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-tree/ontology-tree.component.ts:221</a></div>
                 </td>
             </tr>
 
@@ -1511,6 +1717,7 @@ Only a single node can be selected at any time.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -1568,8 +1775,8 @@ Only a single node can be selected at any time.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="380"
-                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-tree/ontology-tree.component.ts:380</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="403"
+                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-tree/ontology-tree.component.ts:403</a></div>
                 </td>
             </tr>
 
@@ -1581,6 +1788,7 @@ Only a single node can be selected at any time.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -1643,8 +1851,8 @@ Only a single node can be selected at any time.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="357"
-                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-tree/ontology-tree.component.ts:357</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="380"
+                            class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-tree/ontology-tree.component.ts:380</a></div>
                 </td>
             </tr>
 
@@ -1656,6 +1864,7 @@ Only a single node can be selected at any time.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -1715,7 +1924,7 @@ Only a single node can be selected at any time.</p>
         </tbody>
     </table>
 </section>
-    <section>
+    <section data-compodoc="block-properties">
     
     <h3 id="inputs">
         Properties
@@ -2084,6 +2293,37 @@ is unselected as expected.</p>
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="labelMap"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>labelMap</b></span>
+                        <a href="#labelMap"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Map([
+    [&#x27;colon&#x27;, &#x27;large intestine&#x27;],
+    [&#x27;body&#x27;, &#x27;Anatomical Structures (AS)&#x27;],
+    [&#x27;cell&#x27;, &#x27;Cell Types (CT)&#x27;]
+  ])</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="193" class="link-to-prism">projects/ccf-eui/src/app/modules/ontology-exploration/ontology-tree/ontology-tree.component.ts:193</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="selectedNodes"></a>
                     <span class="name">
                         <span ><b>selectedNodes</b></span>
@@ -2119,7 +2359,7 @@ is unselected as expected.</p>
     </table>
 </section>
 
-    <section>
+    <section data-compodoc="block-accessors">
     <h3 id="accessors">
         Accessors
     </h3>
@@ -2422,7 +2662,7 @@ is unselected as expected.</p>
 </div>
 
 
-    <div class="tab-pane fade  tab-source-code" id="c-source">
+    <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { FlatTreeControl } from &#x27;@angular/cdk/tree&#x27;;
 import {
   ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges
@@ -2613,6 +2853,12 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
 
   highlightedNode: FlatNode | undefined;
 
+  private readonly labelMap &#x3D; new Map([
+    [&#x27;colon&#x27;, &#x27;large intestine&#x27;],
+    [&#x27;body&#x27;, &#x27;Anatomical Structures (AS)&#x27;],
+    [&#x27;cell&#x27;, &#x27;Cell Types (CT)&#x27;]
+  ]);
+
   /**
    * Expand the body node when the component is initialized.
    */
@@ -2702,6 +2948,23 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
     return node.expandable;
   }
 
+  /**
+   * Gets a label for the count
+   * @param node The flat node instance
+   * @returns Label for the count
+   */
+  getCountLabel(node: FlatNode): string {
+    return !node.original.parent ? &#x27;Total: &#x27; : &#x27;&#x27;;
+  }
+
+  /**
+   * Gets Node label
+   * @param label node label
+   * @returns label for node
+   */
+  getNodeLabel(label: string): string {
+    return this.labelMap.get(label) ?? label;
+  }
   /**
    * Determines whether a node is currently selected.
    * Only a single node can be selected at any time.
@@ -2833,7 +3096,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
 </code></pre>
     </div>
 
-    <div class="tab-pane fade " id="c-templateData">
+    <div class="tab-pane fade " id="templateData">
         <pre class="line-numbers"><code class="language-html">&lt;mat-tree class&#x3D;&quot;ccf-ontology-tree&quot; [class.header-hidden]&#x3D;&quot;!header&quot; [dataSource]&#x3D;&quot;dataSource&quot; [treeControl]&#x3D;&quot;control&quot; (scroll)&#x3D;&quot;onScroll($event)&quot;&gt;
   &lt;!-- Templates with common structures for inner and leaf nodes --&gt;
   &lt;ng-template #selectableRegion let-node&#x3D;&quot;node&quot;&gt;
@@ -2844,7 +3107,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
       [class.unavailable]&#x3D;&quot;!termData[node.original.id]&quot;
       [class.selected]&#x3D;&quot;isSelected(node)&quot;
       (click)&#x3D;&quot;select($event.ctrlKey, node, true, !isSelected(node))&quot;
-    &gt;{{ node.label &#x3D;&#x3D;&#x3D; &#x27;colon&#x27; ? &#x27;large intestine&#x27; : node.label }}&lt;/div&gt;
+    &gt;{{ getNodeLabel(node.label) }}&lt;/div&gt;
   &lt;/ng-template&gt;
 
   &lt;!-- Leaf node template --&gt;
@@ -2887,7 +3150,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
     &lt;/button&gt;
 
     &lt;ng-container *ngTemplateOutlet&#x3D;&quot;selectableRegion; context: { node: node }&quot;&gt;&lt;/ng-container&gt;
-    &lt;div class&#x3D;&quot;num-results&quot; [class.suborgan]&#x3D;&quot;node.level &gt; 1&quot;&gt;{{ occurenceData[node.original.id] || 0 }}&lt;/div&gt;
+    &lt;div class&#x3D;&quot;num-results&quot; [class.suborgan]&#x3D;&quot;node.level &gt; 1&quot;&gt;{{ getCountLabel(node) }}{{ occurenceData[node.original.id] || 0 }}&lt;/div&gt;
 
   &lt;/mat-tree-node&gt;
 
@@ -2895,7 +3158,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
 </code></pre>
     </div>
 
-    <div class="tab-pane fade " id="c-styleData">
+    <div class="tab-pane fade " id="styleData">
                 <p class="comment">
                     <code>./ontology-tree.component.scss</code>
                 </p>
@@ -2989,6 +3252,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
       width: 1.5rem;
       height: 1.5rem;
       line-height: normal;
+      padding: 0;
     }
 
     .autocomplete-open .toggle {
@@ -3039,7 +3303,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
 </code></pre>
     </div>
 
-    <div class="tab-pane fade " id="c-tree">
+    <div class="tab-pane fade " id="tree">
         <div id="tree-container"></div>
         <div class="tree-legend">
             <div class="title">
@@ -3064,7 +3328,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><mat-tree class="ccf-ontology-tree" [class.header-hidden]="!header" [dataSource]="dataSource" [treeControl]="control" (scroll)="onScroll($event)">  <!-- Templates with common structures for inner and leaf nodes -->  <ng-template #selectableRegion let-node="node">    <div      class="text"      [class.hidden]="node.label === highlightedNode?.label"      [class.filtered-out]="!occurenceData[node.original.id] && !!termData[node.original.id]"      [class.unavailable]="!termData[node.original.id]"      [class.selected]="isSelected(node)"      (click)="select($event.ctrlKey, node, true, !isSelected(node))"    >{{ node.label === \'colon\' ? \'large intestine\' : node.label }}</div>  </ng-template>  <!-- Leaf node template -->  <mat-tree-node *matTreeNodeDef="let node" class="node leaf-node" matTreeNodePadding  [matTreeNodePaddingIndent]="indent" (mouseleave)="mouseOut(); slider1.reset()">    <div [style.display]="node.opacity !== -1 ? \'none\' : \'block\'">      <mat-icon class="icon opacity" [style.left]="getLeftIndent(node.level)" [class.fade]="node.visible !== true" (mouseenter)="mouseOver(node)" svgIcon="app:opacity"></mat-icon>      <div class="slider" [style.left]="getLeftIndent(node.level)" [class.hidden]="node.label !== highlightedNode?.label">        <ccf-opacity-slider #slider1 [visible]="node.visible" [opacity]="node.opacity"        (opacityChange)="updateOpacity(node, $event)" (opacityReset)="resetNode(node)" (visibilityToggle)="toggleVisibility(node)">        </ccf-opacity-slider>      </div>    </div>    <!-- Disabled button used to add equal amount of space as an inner node\'s button -->    <div class="non-expandable"></div>    <ng-container *ngTemplateOutlet="selectableRegion; context: { node: node }"></ng-container>    <div class="num-results" [class.suborgan]="node.level > 1">{{ occurenceData[node.original.id] || 0}}</div>  </mat-tree-node>  <!-- Inner node template -->  <mat-tree-node *matTreeNodeDef="let node; when: isInnerNode" class="node inner-node" matTreeNodePadding                 [matTreeNodePaddingIndent]="indent" (mouseleave)="mouseOut(); slider2.reset()">    <div [style.display]="node.opacity !== -1 ? \'none\' : \'block\'">      <mat-icon class="icon opacity" [style.left]="getLeftIndent(node.level)" [class.fade]="node.visible !== true" (mouseenter)="mouseOver(node)" svgIcon="app:opacity"></mat-icon>      <div class="slider" [style.left]="getLeftIndent(node.level)" [class.hidden]="node.label !== highlightedNode?.label">        <ccf-opacity-slider #slider2 [visible]="node.visible" [opacity]="node.opacity"          (opacityChange)="updateOpacity(node, $event)" (opacityReset)="resetNode(node)" (visibilityToggle)="toggleVisibility(node)">        </ccf-opacity-slider>      </div>    </div>    <button class="toggle" [class.hidden]="node.label === highlightedNode?.label" mat-icon-button matTreeNodeToggle attr.aria-label="Toggle {{ node.label }}">      <mat-icon class="icon font-icon">        {{ control.isExpanded(node) ? \'expand_less\' : \'expand_more\' }}      </mat-icon>    </button>    <ng-container *ngTemplateOutlet="selectableRegion; context: { node: node }"></ng-container>    <div class="num-results" [class.suborgan]="node.level > 1">{{ occurenceData[node.original.id] || 0 }}</div>  </mat-tree-node></mat-tree></div>'
+        var COMPONENT_TEMPLATE = '<div><mat-tree class="ccf-ontology-tree" [class.header-hidden]="!header" [dataSource]="dataSource" [treeControl]="control" (scroll)="onScroll($event)">  <!-- Templates with common structures for inner and leaf nodes -->  <ng-template #selectableRegion let-node="node">    <div      class="text"      [class.hidden]="node.label === highlightedNode?.label"      [class.filtered-out]="!occurenceData[node.original.id] && !!termData[node.original.id]"      [class.unavailable]="!termData[node.original.id]"      [class.selected]="isSelected(node)"      (click)="select($event.ctrlKey, node, true, !isSelected(node))"    >{{ getNodeLabel(node.label) }}</div>  </ng-template>  <!-- Leaf node template -->  <mat-tree-node *matTreeNodeDef="let node" class="node leaf-node" matTreeNodePadding  [matTreeNodePaddingIndent]="indent" (mouseleave)="mouseOut(); slider1.reset()">    <div [style.display]="node.opacity !== -1 ? \'none\' : \'block\'">      <mat-icon class="icon opacity" [style.left]="getLeftIndent(node.level)" [class.fade]="node.visible !== true" (mouseenter)="mouseOver(node)" svgIcon="app:opacity"></mat-icon>      <div class="slider" [style.left]="getLeftIndent(node.level)" [class.hidden]="node.label !== highlightedNode?.label">        <ccf-opacity-slider #slider1 [visible]="node.visible" [opacity]="node.opacity"        (opacityChange)="updateOpacity(node, $event)" (opacityReset)="resetNode(node)" (visibilityToggle)="toggleVisibility(node)">        </ccf-opacity-slider>      </div>    </div>    <!-- Disabled button used to add equal amount of space as an inner node\'s button -->    <div class="non-expandable"></div>    <ng-container *ngTemplateOutlet="selectableRegion; context: { node: node }"></ng-container>    <div class="num-results" [class.suborgan]="node.level > 1">{{ occurenceData[node.original.id] || 0}}</div>  </mat-tree-node>  <!-- Inner node template -->  <mat-tree-node *matTreeNodeDef="let node; when: isInnerNode" class="node inner-node" matTreeNodePadding                 [matTreeNodePaddingIndent]="indent" (mouseleave)="mouseOut(); slider2.reset()">    <div [style.display]="node.opacity !== -1 ? \'none\' : \'block\'">      <mat-icon class="icon opacity" [style.left]="getLeftIndent(node.level)" [class.fade]="node.visible !== true" (mouseenter)="mouseOver(node)" svgIcon="app:opacity"></mat-icon>      <div class="slider" [style.left]="getLeftIndent(node.level)" [class.hidden]="node.label !== highlightedNode?.label">        <ccf-opacity-slider #slider2 [visible]="node.visible" [opacity]="node.opacity"          (opacityChange)="updateOpacity(node, $event)" (opacityReset)="resetNode(node)" (visibilityToggle)="toggleVisibility(node)">        </ccf-opacity-slider>      </div>    </div>    <button class="toggle" [class.hidden]="node.label === highlightedNode?.label" mat-icon-button matTreeNodeToggle attr.aria-label="Toggle {{ node.label }}">      <mat-icon class="icon font-icon">        {{ control.isExpanded(node) ? \'expand_less\' : \'expand_more\' }}      </mat-icon>    </button>    <ng-container *ngTemplateOutlet="selectableRegion; context: { node: node }"></ng-container>    <div class="num-results" [class.suborgan]="node.level > 1">{{ getCountLabel(node) }}{{ occurenceData[node.original.id] || 0 }}</div>  </mat-tree-node></mat-tree></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppWebComponent', 'selector': 'ccf-root-wc'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DonorCardComponent', 'selector': 'ccf-donor-card'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'RunSpatialSearchComponent', 'selector': 'ccf-run-spatial-search'},{'name': 'SpatialSearchConfigBehaviorComponent', 'selector': 'ccf-spatial-search-config-behavior'},{'name': 'SpatialSearchConfigComponent', 'selector': 'ccf-spatial-search-config'},{'name': 'SpatialSearchKeyboardUIBehaviorComponent', 'selector': 'ccf-spatial-search-keyboard-ui-behavior'},{'name': 'SpatialSearchKeyboardUIComponent', 'selector': 'ccf-spatial-search-keyboard-ui'},{'name': 'SpatialSearchUiBehaviorComponent', 'selector': 'ccf-spatial-search-ui-behavior'},{'name': 'SpatialSearchUiComponent', 'selector': 'ccf-spatial-search-ui'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'TermOccurrenceListComponent', 'selector': 'ccf-term-occurrence-list'},{'name': 'ThumbnailCarouselComponent', 'selector': 'ccf-thumbnail-carousel'},{'name': 'TissueBlockListComponent', 'selector': 'ccf-tissue-block-list'},{'name': 'TissueSectionVisComponent', 'selector': 'ccf-tissue-section-vis'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ViewerComponent', 'selector': 'ccf-viewer'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'OntologyTreeComponent'};
@@ -3080,14 +3344,16 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
 
 
 
-                   
+
+
+
 
 
 
 
                    </div><div class="search-results">
     <div class="has-results">
-        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
         <ul class="search-results-list"></ul>
     </div>
     <div class="no-results">
@@ -3099,6 +3365,15 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
            </div>
        </div>
 
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
@@ -3108,8 +3383,8 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       
-       <script type="module" src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/menu-wc.js" defer></script>
        <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>

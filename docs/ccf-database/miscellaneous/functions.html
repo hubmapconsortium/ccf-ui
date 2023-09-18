@@ -9,11 +9,11 @@
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 	   <link rel="stylesheet" href="../styles/style.css">
-        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
+        <link rel="stylesheet" href="../styles/dark.css">
     </head>
     <body>
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">Library ccf-database documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
@@ -44,14 +44,16 @@
 
 
 
-                   
+
+
+
 
 <ol class="breadcrumb">
-  <li>Miscellaneous</li>
-  <li>Functions</li>
+  <li class="breadcrumb-item">Miscellaneous</li>
+  <li class="breadcrumb-item">Functions</li>
 </ol>
 
-<section>
+<section data-compodoc="block-index">
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
@@ -246,7 +248,7 @@
 </section>
 
     <h3>projects/ccf-database/src/lib/hubmap/hubmap-data-import.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -260,7 +262,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>addHubmapDataToStore(store, dataUrl, serviceType, serviceToken?, assetsApi: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, portalUrl: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+<code>addHubmapDataToStore(store: Store, dataUrl: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, serviceType, serviceToken?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, assetsApi: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, portalUrl: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -274,12 +276,14 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Default value</td>
                                     <td>Description</td>
                                 </tr>
                             </thead>
@@ -287,12 +291,15 @@
                                 <tr>
                                     <td>store</td>
                                     <td>
+                                            <code>Store</code>
                                     </td>
 
                                     <td>
                                         No
                                     </td>
 
+                                    <td>
+                                    </td>
 
                                     <td>
                                         <p>The triple store.</p>
@@ -302,12 +309,15 @@
                                 <tr>
                                     <td>dataUrl</td>
                                     <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                     </td>
 
                                     <td>
                                         No
                                     </td>
 
+                                    <td>
+                                    </td>
 
                                     <td>
                                         <p>The data url.</p>
@@ -323,6 +333,8 @@
                                         No
                                     </td>
 
+                                    <td>
+                                    </td>
 
                                     <td>
                                         <p>The service type.</p>
@@ -332,12 +344,15 @@
                                 <tr>
                                     <td>serviceToken</td>
                                     <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                     </td>
 
                                     <td>
                                         Yes
                                     </td>
 
+                                    <td>
+                                    </td>
 
                                     <td>
                                     </td>
@@ -352,6 +367,9 @@
                                         No
                                     </td>
 
+                                    <td>
+                                        <code>&#x27;&#x27;</code>
+                                    </td>
 
                                     <td>
                                     </td>
@@ -366,6 +384,9 @@
                                         No
                                     </td>
 
+                                    <td>
+                                        <code>&#x27;&#x27;</code>
+                                    </td>
 
                                     <td>
                                     </td>
@@ -399,7 +420,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>doApiSearch(url, token?, query?)</code>
+<code>doApiSearch(url: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, token?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, query?)</code>
                 </td>
             </tr>
 
@@ -411,16 +432,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>url</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -430,6 +456,9 @@
                                 </tr>
                                 <tr>
                                     <td>token</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         Yes
@@ -439,6 +468,8 @@
                                 </tr>
                                 <tr>
                                     <td>query</td>
+                                    <td>
+                                    </td>
 
                                     <td>
                                         Yes
@@ -475,7 +506,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>doSearchRequest(url, init?)</code>
+<code>doSearchRequest(url: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, init?: RequestInit)</code>
                 </td>
             </tr>
 
@@ -487,16 +518,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>url</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -506,6 +542,9 @@
                                 </tr>
                                 <tr>
                                     <td>init</td>
+                                    <td>
+                                            <code>RequestInit</code>
+                                    </td>
 
                                     <td>
                                         Yes
@@ -542,7 +581,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getApiSearchBody(from, size, query?)</code>
+<code>getApiSearchBody(from: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, size: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, query?)</code>
                 </td>
             </tr>
 
@@ -554,16 +593,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>from</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -573,6 +617,9 @@
                                 </tr>
                                 <tr>
                                     <td>size</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -582,6 +629,8 @@
                                 </tr>
                                 <tr>
                                     <td>query</td>
+                                    <td>
+                                    </td>
 
                                     <td>
                                         Yes
@@ -618,7 +667,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getApiSearchHeaders(token?)</code>
+<code>getApiSearchHeaders(token?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -630,16 +679,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>token</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         Yes
@@ -676,7 +730,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>searchHubmap(dataUrl, serviceType, query?, serviceToken?, assetsApi: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, portalUrl: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+<code>searchHubmap(dataUrl: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, serviceType, query?, serviceToken?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, assetsApi: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, portalUrl: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -690,12 +744,14 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Default value</td>
                                     <td>Description</td>
                                 </tr>
                             </thead>
@@ -703,12 +759,15 @@
                                 <tr>
                                     <td>dataUrl</td>
                                     <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                     </td>
 
                                     <td>
                                         No
                                     </td>
 
+                                    <td>
+                                    </td>
 
                                     <td>
                                         <p>the search API url</p>
@@ -724,6 +783,8 @@
                                         No
                                     </td>
 
+                                    <td>
+                                    </td>
 
                                     <td>
                                         <p>&#39;static&#39; if a statically saved response or &#39;search-api&#39; if querying the search-api live</p>
@@ -739,6 +800,8 @@
                                         Yes
                                     </td>
 
+                                    <td>
+                                    </td>
 
                                     <td>
                                         <p>the elastic search query to use</p>
@@ -748,12 +811,15 @@
                                 <tr>
                                     <td>serviceToken</td>
                                     <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                     </td>
 
                                     <td>
                                         Yes
                                     </td>
 
+                                    <td>
+                                    </td>
 
                                     <td>
                                         <p>the api key to the search-api</p>
@@ -770,6 +836,9 @@
                                         No
                                     </td>
 
+                                    <td>
+                                        <code>&#x27;&#x27;</code>
+                                    </td>
 
                                     <td>
                                         <p>the assets api endpoint</p>
@@ -786,6 +855,9 @@
                                         No
                                     </td>
 
+                                    <td>
+                                        <code>&#x27;&#x27;</code>
+                                    </td>
 
                                     <td>
                                         <p>the portal url to point to</p>
@@ -810,7 +882,7 @@
         </tbody>
     </table>
 </section>    <h3>projects/ccf-database/src/lib/ccf-spatial-graph.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -824,7 +896,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>applySpatialPlacement(tx, placement)</code>
+<code>applySpatialPlacement(tx: Matrix4, placement: <a href="../interfaces/SpatialPlacement.html" target="_self">SpatialPlacement</a>)</code>
                 </td>
             </tr>
 
@@ -836,16 +908,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>tx</td>
+                                    <td>
+                                            <code>Matrix4</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -855,6 +932,9 @@
                                 </tr>
                                 <tr>
                                     <td>placement</td>
+                                    <td>
+                                                <code><a href="../interfaces/SpatialPlacement.html" target="_self" >SpatialPlacement</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -879,7 +959,7 @@
         </tbody>
     </table>
 </section>    <h3>projects/ccf-database/src/lib/hubmap/hubmap-data.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -905,6 +985,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -944,7 +1025,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>hubmapResponseAsJsonLd(data, assetsApi: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, portalUrl: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, serviceToken?, debug)</code>
+<code>hubmapResponseAsJsonLd(data, assetsApi: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, portalUrl: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, serviceToken?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, debug)</code>
                 </td>
             </tr>
 
@@ -958,12 +1039,14 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Default value</td>
                                     <td>Description</td>
                                 </tr>
                             </thead>
@@ -977,6 +1060,8 @@
                                         No
                                     </td>
 
+                                    <td>
+                                    </td>
 
                                     <td>
                                         <p>The hubmap data.</p>
@@ -993,6 +1078,9 @@
                                         No
                                     </td>
 
+                                    <td>
+                                        <code>&#x27;&#x27;</code>
+                                    </td>
 
                                     <td>
                                     </td>
@@ -1007,6 +1095,9 @@
                                         No
                                     </td>
 
+                                    <td>
+                                        <code>&#x27;&#x27;</code>
+                                    </td>
 
                                     <td>
                                     </td>
@@ -1014,12 +1105,15 @@
                                 <tr>
                                     <td>serviceToken</td>
                                     <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                     </td>
 
                                     <td>
                                         Yes
                                     </td>
 
+                                    <td>
+                                    </td>
 
                                     <td>
                                     </td>
@@ -1033,6 +1127,9 @@
                                         No
                                     </td>
 
+                                    <td>
+                                        <code>false</code>
+                                    </td>
 
                                     <td>
                                     </td>
@@ -1055,7 +1152,7 @@
         </tbody>
     </table>
 </section>    <h3>projects/ccf-database/src/lib/queries/find-ids-n3.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -1069,7 +1166,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>differenceCallback(seen, newSeen)</code>
+<code>differenceCallback(seen: Set, newSeen: Set)</code>
                 </td>
             </tr>
 
@@ -1083,10 +1180,12 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                     <td>Description</td>
                                 </tr>
@@ -1094,6 +1193,9 @@
                             <tbody>
                                 <tr>
                                     <td>seen</td>
+                                    <td>
+                                            <code>Set</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1107,6 +1209,9 @@
                                 </tr>
                                 <tr>
                                     <td>newSeen</td>
+                                    <td>
+                                            <code>Set</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1148,7 +1253,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>filterByAge(store, seen, minAge, maxAge)</code>
+<code>filterByAge(store: Store, seen: Set, minAge: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, maxAge: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
                 </td>
             </tr>
 
@@ -1162,10 +1267,12 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                     <td>Description</td>
                                 </tr>
@@ -1173,6 +1280,9 @@
                             <tbody>
                                 <tr>
                                     <td>store</td>
+                                    <td>
+                                            <code>Store</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1186,6 +1296,9 @@
                                 </tr>
                                 <tr>
                                     <td>seen</td>
+                                    <td>
+                                            <code>Set</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1199,6 +1312,9 @@
                                 </tr>
                                 <tr>
                                     <td>minAge</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1212,6 +1328,9 @@
                                 </tr>
                                 <tr>
                                     <td>maxAge</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1253,7 +1372,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>filterByBMI(store, seen, minBMI, maxBMI)</code>
+<code>filterByBMI(store: Store, seen: Set, minBMI: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, maxBMI: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
                 </td>
             </tr>
 
@@ -1267,10 +1386,12 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                     <td>Description</td>
                                 </tr>
@@ -1278,6 +1399,9 @@
                             <tbody>
                                 <tr>
                                     <td>store</td>
+                                    <td>
+                                            <code>Store</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1291,6 +1415,9 @@
                                 </tr>
                                 <tr>
                                     <td>seen</td>
+                                    <td>
+                                            <code>Set</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1304,6 +1431,9 @@
                                 </tr>
                                 <tr>
                                     <td>minBMI</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1317,6 +1447,9 @@
                                 </tr>
                                 <tr>
                                     <td>maxBMI</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1358,7 +1491,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>filterByCellTypeTerms(store, seen, terms)</code>
+<code>filterByCellTypeTerms(store: Store, seen: Set, terms)</code>
                 </td>
             </tr>
 
@@ -1372,10 +1505,12 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                     <td>Description</td>
                                 </tr>
@@ -1383,6 +1518,9 @@
                             <tbody>
                                 <tr>
                                     <td>store</td>
+                                    <td>
+                                            <code>Store</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1396,6 +1534,9 @@
                                 </tr>
                                 <tr>
                                     <td>seen</td>
+                                    <td>
+                                            <code>Set</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1409,6 +1550,8 @@
                                 </tr>
                                 <tr>
                                     <td>terms</td>
+                                    <td>
+                                    </td>
 
                                     <td>
                                         No
@@ -1450,7 +1593,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>filterByGroupName(store, seen, groupNames)</code>
+<code>filterByGroupName(store: Store, seen: Set, groupNames)</code>
                 </td>
             </tr>
 
@@ -1464,10 +1607,12 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                     <td>Description</td>
                                 </tr>
@@ -1475,6 +1620,9 @@
                             <tbody>
                                 <tr>
                                     <td>store</td>
+                                    <td>
+                                            <code>Store</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1488,6 +1636,9 @@
                                 </tr>
                                 <tr>
                                     <td>seen</td>
+                                    <td>
+                                            <code>Set</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1501,6 +1652,8 @@
                                 </tr>
                                 <tr>
                                     <td>groupNames</td>
+                                    <td>
+                                    </td>
 
                                     <td>
                                         No
@@ -1542,7 +1695,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>filterByHasSpatialEntity(store, seen, hasSpatialEntity)</code>
+<code>filterByHasSpatialEntity(store: Store, seen: Set, hasSpatialEntity)</code>
                 </td>
             </tr>
 
@@ -1556,22 +1709,30 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Default value</td>
                                     <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>store</td>
+                                    <td>
+                                            <code>Store</code>
+                                    </td>
 
                                     <td>
                                         No
                                     </td>
 
+                                    <td>
+                                    </td>
 
                                     <td>
                                         <p>The triple store.</p>
@@ -1580,11 +1741,16 @@
                                 </tr>
                                 <tr>
                                     <td>seen</td>
+                                    <td>
+                                            <code>Set</code>
+                                    </td>
 
                                     <td>
                                         No
                                     </td>
 
+                                    <td>
+                                    </td>
 
                                     <td>
                                         <p>All ids to choose from.</p>
@@ -1593,11 +1759,16 @@
                                 </tr>
                                 <tr>
                                     <td>hasSpatialEntity</td>
+                                    <td>
+                                    </td>
 
                                     <td>
                                         No
                                     </td>
 
+                                    <td>
+                                        <code>true</code>
+                                    </td>
 
                                     <td>
                                         <p>Whether the filtered objects should have a spatial entity.</p>
@@ -1634,7 +1805,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>filterByOntologyTerms(store, seen, terms)</code>
+<code>filterByOntologyTerms(store: Store, seen: Set, terms)</code>
                 </td>
             </tr>
 
@@ -1648,10 +1819,12 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                     <td>Description</td>
                                 </tr>
@@ -1659,6 +1832,9 @@
                             <tbody>
                                 <tr>
                                     <td>store</td>
+                                    <td>
+                                            <code>Store</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1672,6 +1848,9 @@
                                 </tr>
                                 <tr>
                                     <td>seen</td>
+                                    <td>
+                                            <code>Set</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1685,6 +1864,8 @@
                                 </tr>
                                 <tr>
                                     <td>terms</td>
+                                    <td>
+                                    </td>
 
                                     <td>
                                         No
@@ -1726,7 +1907,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>filterBySex(store, seen, sex)</code>
+<code>filterBySex(store: Store, seen: Set, sex)</code>
                 </td>
             </tr>
 
@@ -1740,10 +1921,12 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                     <td>Description</td>
                                 </tr>
@@ -1751,6 +1934,9 @@
                             <tbody>
                                 <tr>
                                     <td>store</td>
+                                    <td>
+                                            <code>Store</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1764,6 +1950,9 @@
                                 </tr>
                                 <tr>
                                     <td>seen</td>
+                                    <td>
+                                            <code>Set</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1777,6 +1966,8 @@
                                 </tr>
                                 <tr>
                                     <td>sex</td>
+                                    <td>
+                                    </td>
 
                                     <td>
                                         No
@@ -1818,7 +2009,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>filterBySpatialSearches(store, graph, seen, spatialSearches)</code>
+<code>filterBySpatialSearches(store: Store, graph: <a href="../classes/CCFSpatialGraph.html" target="_self">CCFSpatialGraph</a>, seen: Set, spatialSearches)</code>
                 </td>
             </tr>
 
@@ -1830,16 +2021,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>store</td>
+                                    <td>
+                                            <code>Store</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1849,6 +2045,9 @@
                                 </tr>
                                 <tr>
                                     <td>graph</td>
+                                    <td>
+                                                <code><a href="../classes/CCFSpatialGraph.html" target="_self" >CCFSpatialGraph</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1858,6 +2057,9 @@
                                 </tr>
                                 <tr>
                                     <td>seen</td>
+                                    <td>
+                                            <code>Set</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1867,6 +2069,8 @@
                                 </tr>
                                 <tr>
                                     <td>spatialSearches</td>
+                                    <td>
+                                    </td>
 
                                     <td>
                                         No
@@ -1903,7 +2107,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>filterByTechnology(store, seen, technologies)</code>
+<code>filterByTechnology(store: Store, seen: Set, technologies)</code>
                 </td>
             </tr>
 
@@ -1917,10 +2121,12 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                     <td>Description</td>
                                 </tr>
@@ -1928,6 +2134,9 @@
                             <tbody>
                                 <tr>
                                     <td>store</td>
+                                    <td>
+                                            <code>Store</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1941,6 +2150,9 @@
                                 </tr>
                                 <tr>
                                     <td>seen</td>
+                                    <td>
+                                            <code>Set</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1954,6 +2166,8 @@
                                 </tr>
                                 <tr>
                                     <td>technologies</td>
+                                    <td>
+                                    </td>
 
                                     <td>
                                         No
@@ -1995,7 +2209,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>filterWithDataset(store, seen, callback)</code>
+<code>filterWithDataset(store: Store, seen: Set, callback)</code>
                 </td>
             </tr>
 
@@ -2007,16 +2221,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>store</td>
+                                    <td>
+                                            <code>Store</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -2026,6 +2245,9 @@
                                 </tr>
                                 <tr>
                                     <td>seen</td>
+                                    <td>
+                                            <code>Set</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -2035,6 +2257,8 @@
                                 </tr>
                                 <tr>
                                     <td>callback</td>
+                                    <td>
+                                    </td>
 
                                     <td>
                                         No
@@ -2071,7 +2295,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>filterWithDonor(store, seen, callback)</code>
+<code>filterWithDonor(store: Store, seen: Set, callback)</code>
                 </td>
             </tr>
 
@@ -2083,16 +2307,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>store</td>
+                                    <td>
+                                            <code>Store</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -2102,6 +2331,9 @@
                                 </tr>
                                 <tr>
                                     <td>seen</td>
+                                    <td>
+                                            <code>Set</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -2111,6 +2343,8 @@
                                 </tr>
                                 <tr>
                                     <td>callback</td>
+                                    <td>
+                                    </td>
 
                                     <td>
                                         No
@@ -2147,7 +2381,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>filterWithSpatialEntity(store, seen, callback)</code>
+<code>filterWithSpatialEntity(store: Store, seen: Set, callback)</code>
                 </td>
             </tr>
 
@@ -2159,16 +2393,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>store</td>
+                                    <td>
+                                            <code>Store</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -2178,6 +2417,9 @@
                                 </tr>
                                 <tr>
                                     <td>seen</td>
+                                    <td>
+                                            <code>Set</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -2187,6 +2429,8 @@
                                 </tr>
                                 <tr>
                                     <td>callback</td>
+                                    <td>
+                                    </td>
 
                                     <td>
                                         No
@@ -2223,7 +2467,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>findIds(store, graph, filter)</code>
+<code>findIds(store: Store, graph: <a href="../classes/CCFSpatialGraph.html" target="_self">CCFSpatialGraph</a>, filter: <a href="../interfaces/Filter.html" target="_self">Filter</a>)</code>
                 </td>
             </tr>
 
@@ -2237,10 +2481,12 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                     <td>Description</td>
                                 </tr>
@@ -2248,6 +2494,9 @@
                             <tbody>
                                 <tr>
                                     <td>store</td>
+                                    <td>
+                                            <code>Store</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -2261,6 +2510,9 @@
                                 </tr>
                                 <tr>
                                     <td>graph</td>
+                                    <td>
+                                                <code><a href="../classes/CCFSpatialGraph.html" target="_self" >CCFSpatialGraph</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -2272,6 +2524,9 @@
                                 </tr>
                                 <tr>
                                     <td>filter</td>
+                                    <td>
+                                                <code><a href="../interfaces/Filter.html" target="_self" >Filter</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -2313,7 +2568,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getAllEntities(store)</code>
+<code>getAllEntities(store: Store)</code>
                 </td>
             </tr>
 
@@ -2327,10 +2582,12 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                     <td>Description</td>
                                 </tr>
@@ -2338,6 +2595,9 @@
                             <tbody>
                                 <tr>
                                     <td>store</td>
+                                    <td>
+                                            <code>Store</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -2367,7 +2627,7 @@
         </tbody>
     </table>
 </section>    <h3>projects/ccf-database/src/lib/util/enrich-rui-locations.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -2381,7 +2641,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>enrichRuiLocations(store)</code>
+<code>enrichRuiLocations(store: Store)</code>
                 </td>
             </tr>
 
@@ -2396,10 +2656,12 @@ reference organ it was placed relative to.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                     <td>Description</td>
                                 </tr>
@@ -2407,6 +2669,9 @@ reference organ it was placed relative to.</p>
                             <tbody>
                                 <tr>
                                     <td>store</td>
+                                    <td>
+                                            <code>Store</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -2435,7 +2700,7 @@ reference organ it was placed relative to.</p>
         </tbody>
     </table>
 </section>    <h3>projects/ccf-database/src/lib/queries/spatial-search-n3.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -2449,7 +2714,7 @@ reference organ it was placed relative to.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>filterByProbingSphere(store, graph, seen, search)</code>
+<code>filterByProbingSphere(store: Store, graph: <a href="../classes/CCFSpatialGraph.html" target="_self">CCFSpatialGraph</a>, seen: Set, search: <a href="../interfaces/SpatialSearch.html" target="_self">SpatialSearch</a>)</code>
                 </td>
             </tr>
 
@@ -2461,16 +2726,21 @@ reference organ it was placed relative to.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>store</td>
+                                    <td>
+                                            <code>Store</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -2480,6 +2750,9 @@ reference organ it was placed relative to.</p>
                                 </tr>
                                 <tr>
                                     <td>graph</td>
+                                    <td>
+                                                <code><a href="../classes/CCFSpatialGraph.html" target="_self" >CCFSpatialGraph</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -2489,6 +2762,9 @@ reference organ it was placed relative to.</p>
                                 </tr>
                                 <tr>
                                     <td>seen</td>
+                                    <td>
+                                            <code>Set</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -2498,6 +2774,9 @@ reference organ it was placed relative to.</p>
                                 </tr>
                                 <tr>
                                     <td>search</td>
+                                    <td>
+                                                <code><a href="../interfaces/SpatialSearch.html" target="_self" >SpatialSearch</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -2534,7 +2813,7 @@ reference organ it was placed relative to.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getOrientedBoundingBox(store, graph, sourceIri, targetIri)</code>
+<code>getOrientedBoundingBox(store: Store, graph: <a href="../classes/CCFSpatialGraph.html" target="_self">CCFSpatialGraph</a>, sourceIri: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, targetIri: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -2546,16 +2825,21 @@ reference organ it was placed relative to.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>store</td>
+                                    <td>
+                                            <code>Store</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -2565,6 +2849,9 @@ reference organ it was placed relative to.</p>
                                 </tr>
                                 <tr>
                                     <td>graph</td>
+                                    <td>
+                                                <code><a href="../classes/CCFSpatialGraph.html" target="_self" >CCFSpatialGraph</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -2574,6 +2861,9 @@ reference organ it was placed relative to.</p>
                                 </tr>
                                 <tr>
                                     <td>sourceIri</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -2583,6 +2873,9 @@ reference organ it was placed relative to.</p>
                                 </tr>
                                 <tr>
                                     <td>targetIri</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -2619,7 +2912,7 @@ reference organ it was placed relative to.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getSpatialEntityDimensions(store, iri)</code>
+<code>getSpatialEntityDimensions(store: Store, iri: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -2631,16 +2924,21 @@ reference organ it was placed relative to.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>store</td>
+                                    <td>
+                                            <code>Store</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -2650,6 +2948,9 @@ reference organ it was placed relative to.</p>
                                 </tr>
                                 <tr>
                                     <td>iri</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -2667,7 +2968,7 @@ reference organ it was placed relative to.</p>
         </tbody>
     </table>
 </section>    <h3>projects/ccf-database/src/lib/queries/aggregate-results-n3.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -2681,7 +2982,7 @@ reference organ it was placed relative to.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getAggregateResults(ids, store)</code>
+<code>getAggregateResults(ids: Set, store: Store)</code>
                 </td>
             </tr>
 
@@ -2695,10 +2996,12 @@ reference organ it was placed relative to.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                     <td>Description</td>
                                 </tr>
@@ -2706,6 +3009,9 @@ reference organ it was placed relative to.</p>
                             <tbody>
                                 <tr>
                                     <td>ids</td>
+                                    <td>
+                                            <code>Set</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -2719,6 +3025,9 @@ reference organ it was placed relative to.</p>
                                 </tr>
                                 <tr>
                                     <td>store</td>
+                                    <td>
+                                            <code>Store</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -2760,7 +3069,7 @@ reference organ it was placed relative to.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getDatasetTechnologyNames(store)</code>
+<code>getDatasetTechnologyNames(store: Store)</code>
                 </td>
             </tr>
 
@@ -2774,10 +3083,12 @@ reference organ it was placed relative to.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                     <td>Description</td>
                                 </tr>
@@ -2785,6 +3096,9 @@ reference organ it was placed relative to.</p>
                             <tbody>
                                 <tr>
                                     <td>store</td>
+                                    <td>
+                                            <code>Store</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -2826,7 +3140,7 @@ reference organ it was placed relative to.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getObjects(store, ids, predicate)</code>
+<code>getObjects(store: Store, ids: Set, predicate: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -2838,16 +3152,21 @@ reference organ it was placed relative to.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>store</td>
+                                    <td>
+                                            <code>Store</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -2857,6 +3176,9 @@ reference organ it was placed relative to.</p>
                                 </tr>
                                 <tr>
                                     <td>ids</td>
+                                    <td>
+                                            <code>Set</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -2866,6 +3188,9 @@ reference organ it was placed relative to.</p>
                                 </tr>
                                 <tr>
                                     <td>predicate</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -2902,7 +3227,7 @@ reference organ it was placed relative to.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getProviderNames(store)</code>
+<code>getProviderNames(store: Store)</code>
                 </td>
             </tr>
 
@@ -2916,10 +3241,12 @@ reference organ it was placed relative to.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                     <td>Description</td>
                                 </tr>
@@ -2927,6 +3254,9 @@ reference organ it was placed relative to.</p>
                             <tbody>
                                 <tr>
                                     <td>store</td>
+                                    <td>
+                                            <code>Store</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -2956,7 +3286,7 @@ reference organ it was placed relative to.</p>
         </tbody>
     </table>
 </section>    <h3>projects/ccf-database/src/lib/queries/ontology-term-occurences-n3.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -2970,7 +3300,7 @@ reference organ it was placed relative to.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getAnatomicalStructureMapping(ids, store)</code>
+<code>getAnatomicalStructureMapping(ids: Set, store: Store)</code>
                 </td>
             </tr>
 
@@ -2982,16 +3312,21 @@ reference organ it was placed relative to.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>ids</td>
+                                    <td>
+                                            <code>Set</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -3001,6 +3336,9 @@ reference organ it was placed relative to.</p>
                                 </tr>
                                 <tr>
                                     <td>store</td>
+                                    <td>
+                                            <code>Store</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -3037,7 +3375,7 @@ reference organ it was placed relative to.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getCellTypeTermOccurences(ids, store)</code>
+<code>getCellTypeTermOccurences(ids: Set, store: Store)</code>
                 </td>
             </tr>
 
@@ -3051,10 +3389,12 @@ reference organ it was placed relative to.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                     <td>Description</td>
                                 </tr>
@@ -3062,6 +3402,9 @@ reference organ it was placed relative to.</p>
                             <tbody>
                                 <tr>
                                     <td>ids</td>
+                                    <td>
+                                            <code>Set</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -3075,6 +3418,9 @@ reference organ it was placed relative to.</p>
                                 </tr>
                                 <tr>
                                     <td>store</td>
+                                    <td>
+                                            <code>Store</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -3116,7 +3462,7 @@ reference organ it was placed relative to.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getOntologyTermOccurences(ids, store)</code>
+<code>getOntologyTermOccurences(ids: Set, store: Store)</code>
                 </td>
             </tr>
 
@@ -3130,10 +3476,12 @@ reference organ it was placed relative to.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                     <td>Description</td>
                                 </tr>
@@ -3141,6 +3489,9 @@ reference organ it was placed relative to.</p>
                             <tbody>
                                 <tr>
                                     <td>ids</td>
+                                    <td>
+                                            <code>Set</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -3154,6 +3505,9 @@ reference organ it was placed relative to.</p>
                                 </tr>
                                 <tr>
                                     <td>store</td>
+                                    <td>
+                                            <code>Store</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -3195,7 +3549,7 @@ reference organ it was placed relative to.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getSpatialEntityMapping(subjects, store)</code>
+<code>getSpatialEntityMapping(subjects: Set, store: Store)</code>
                 </td>
             </tr>
 
@@ -3207,16 +3561,21 @@ reference organ it was placed relative to.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>subjects</td>
+                                    <td>
+                                            <code>Set</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -3226,6 +3585,9 @@ reference organ it was placed relative to.</p>
                                 </tr>
                                 <tr>
                                     <td>store</td>
+                                    <td>
+                                            <code>Store</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -3250,7 +3612,7 @@ reference organ it was placed relative to.</p>
         </tbody>
     </table>
 </section>    <h3>projects/ccf-database/src/lib/queries/spatial-result-n3.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -3264,7 +3626,7 @@ reference organ it was placed relative to.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getAnatomicalStructures(store, iri)</code>
+<code>getAnatomicalStructures(store: Store, iri: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -3278,10 +3640,12 @@ reference organ it was placed relative to.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                     <td>Description</td>
                                 </tr>
@@ -3289,6 +3653,9 @@ reference organ it was placed relative to.</p>
                             <tbody>
                                 <tr>
                                     <td>store</td>
+                                    <td>
+                                            <code>Store</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -3302,6 +3669,9 @@ reference organ it was placed relative to.</p>
                                 </tr>
                                 <tr>
                                     <td>iri</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -3343,7 +3713,7 @@ reference organ it was placed relative to.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getExtractionSet(store, iri)</code>
+<code>getExtractionSet(store: Store, iri: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -3357,10 +3727,12 @@ reference organ it was placed relative to.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                     <td>Description</td>
                                 </tr>
@@ -3368,6 +3740,9 @@ reference organ it was placed relative to.</p>
                             <tbody>
                                 <tr>
                                     <td>store</td>
+                                    <td>
+                                            <code>Store</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -3381,6 +3756,9 @@ reference organ it was placed relative to.</p>
                                 </tr>
                                 <tr>
                                     <td>iri</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -3422,7 +3800,7 @@ reference organ it was placed relative to.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getExtractionSets(store, iri)</code>
+<code>getExtractionSets(store: Store, iri: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -3436,10 +3814,12 @@ reference organ it was placed relative to.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                     <td>Description</td>
                                 </tr>
@@ -3447,6 +3827,9 @@ reference organ it was placed relative to.</p>
                             <tbody>
                                 <tr>
                                     <td>store</td>
+                                    <td>
+                                            <code>Store</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -3460,6 +3843,9 @@ reference organ it was placed relative to.</p>
                                 </tr>
                                 <tr>
                                     <td>iri</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -3501,7 +3887,7 @@ reference organ it was placed relative to.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getReferenceOrgans(store)</code>
+<code>getReferenceOrgans(store: Store)</code>
                 </td>
             </tr>
 
@@ -3515,10 +3901,12 @@ reference organ it was placed relative to.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                     <td>Description</td>
                                 </tr>
@@ -3526,6 +3914,9 @@ reference organ it was placed relative to.</p>
                             <tbody>
                                 <tr>
                                     <td>store</td>
+                                    <td>
+                                            <code>Store</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -3567,7 +3958,7 @@ reference organ it was placed relative to.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getSpatialEntity(store, iri)</code>
+<code>getSpatialEntity(store: Store, iri: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -3581,10 +3972,12 @@ reference organ it was placed relative to.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                     <td>Description</td>
                                 </tr>
@@ -3592,6 +3985,9 @@ reference organ it was placed relative to.</p>
                             <tbody>
                                 <tr>
                                     <td>store</td>
+                                    <td>
+                                            <code>Store</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -3605,6 +4001,9 @@ reference organ it was placed relative to.</p>
                                 </tr>
                                 <tr>
                                     <td>iri</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -3646,7 +4045,7 @@ reference organ it was placed relative to.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getSpatialEntityForEntity(store, entityIRI)</code>
+<code>getSpatialEntityForEntity(store: Store, entityIRI: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -3660,10 +4059,12 @@ reference organ it was placed relative to.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                     <td>Description</td>
                                 </tr>
@@ -3671,6 +4072,9 @@ reference organ it was placed relative to.</p>
                             <tbody>
                                 <tr>
                                     <td>store</td>
+                                    <td>
+                                            <code>Store</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -3684,6 +4088,9 @@ reference organ it was placed relative to.</p>
                                 </tr>
                                 <tr>
                                     <td>entityIRI</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -3725,7 +4132,7 @@ reference organ it was placed relative to.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getSpatialObjectReference(store, iri)</code>
+<code>getSpatialObjectReference(store: Store, iri: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -3739,10 +4146,12 @@ reference organ it was placed relative to.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                     <td>Description</td>
                                 </tr>
@@ -3750,6 +4159,9 @@ reference organ it was placed relative to.</p>
                             <tbody>
                                 <tr>
                                     <td>store</td>
+                                    <td>
+                                            <code>Store</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -3763,6 +4175,9 @@ reference organ it was placed relative to.</p>
                                 </tr>
                                 <tr>
                                     <td>iri</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -3804,7 +4219,7 @@ reference organ it was placed relative to.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getSpatialPlacement(store, iri)</code>
+<code>getSpatialPlacement(store: Store, iri: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -3818,10 +4233,12 @@ reference organ it was placed relative to.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                     <td>Description</td>
                                 </tr>
@@ -3829,6 +4246,9 @@ reference organ it was placed relative to.</p>
                             <tbody>
                                 <tr>
                                     <td>store</td>
+                                    <td>
+                                            <code>Store</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -3842,6 +4262,9 @@ reference organ it was placed relative to.</p>
                                 </tr>
                                 <tr>
                                     <td>iri</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -3897,6 +4320,7 @@ reference organ it was placed relative to.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -3937,7 +4361,7 @@ reference organ it was placed relative to.</p>
         </tbody>
     </table>
 </section>    <h3>projects/ccf-database/src/lib/queries/ontology-tree-n3.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -3951,7 +4375,7 @@ reference organ it was placed relative to.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getAnatomicalStructureTreeModelSlowly(store)</code>
+<code>getAnatomicalStructureTreeModelSlowly(store: Store)</code>
                 </td>
             </tr>
 
@@ -3963,16 +4387,21 @@ reference organ it was placed relative to.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>store</td>
+                                    <td>
+                                            <code>Store</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -4009,7 +4438,7 @@ reference organ it was placed relative to.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getCellTypeTreeModel(store)</code>
+<code>getCellTypeTreeModel(store: Store)</code>
                 </td>
             </tr>
 
@@ -4021,16 +4450,21 @@ reference organ it was placed relative to.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>store</td>
+                                    <td>
+                                            <code>Store</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -4067,7 +4501,7 @@ reference organ it was placed relative to.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getOntologyTreeModel(store, rootIri, rootLabel, relationshipIri)</code>
+<code>getOntologyTreeModel(store: Store, rootIri: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, rootLabel: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, relationshipIri: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -4079,16 +4513,21 @@ reference organ it was placed relative to.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>store</td>
+                                    <td>
+                                            <code>Store</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -4098,6 +4537,9 @@ reference organ it was placed relative to.</p>
                                 </tr>
                                 <tr>
                                     <td>rootIri</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -4107,6 +4549,9 @@ reference organ it was placed relative to.</p>
                                 </tr>
                                 <tr>
                                     <td>rootLabel</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -4116,6 +4561,9 @@ reference organ it was placed relative to.</p>
                                 </tr>
                                 <tr>
                                     <td>relationshipIri</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -4152,7 +4600,7 @@ reference organ it was placed relative to.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getOntologyTreeNode(store, iri, relationshipIri)</code>
+<code>getOntologyTreeNode(store: Store, iri: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, relationshipIri: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -4164,16 +4612,21 @@ reference organ it was placed relative to.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>store</td>
+                                    <td>
+                                            <code>Store</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -4183,6 +4636,9 @@ reference organ it was placed relative to.</p>
                                 </tr>
                                 <tr>
                                     <td>iri</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -4192,6 +4648,9 @@ reference organ it was placed relative to.</p>
                                 </tr>
                                 <tr>
                                     <td>relationshipIri</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -4228,7 +4687,7 @@ reference organ it was placed relative to.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>treeify(model, nodeIri, seen)</code>
+<code>treeify(model: <a href="../interfaces/OntologyTreeModel.html" target="_self">OntologyTreeModel</a>, nodeIri, seen: Set)</code>
                 </td>
             </tr>
 
@@ -4242,22 +4701,30 @@ reference organ it was placed relative to.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Default value</td>
                                     <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>model</td>
+                                    <td>
+                                                <code><a href="../interfaces/OntologyTreeModel.html" target="_self" >OntologyTreeModel</a></code>
+                                    </td>
 
                                     <td>
                                         No
                                     </td>
 
+                                    <td>
+                                    </td>
 
                                     <td>
                                         <p>the ontology tree model to mutate</p>
@@ -4266,11 +4733,16 @@ reference organ it was placed relative to.</p>
                                 </tr>
                                 <tr>
                                     <td>nodeIri</td>
+                                    <td>
+                                    </td>
 
                                     <td>
                                         No
                                     </td>
 
+                                    <td>
+                                        <code>undefined</code>
+                                    </td>
 
                                     <td>
                                         <p>the tree node iri to modify. Starts at root in the base case</p>
@@ -4279,11 +4751,17 @@ reference organ it was placed relative to.</p>
                                 </tr>
                                 <tr>
                                     <td>seen</td>
+                                    <td>
+                                            <code>Set</code>
+                                    </td>
 
                                     <td>
                                         No
                                     </td>
 
+                                    <td>
+                                        <code>new Set()</code>
+                                    </td>
 
                                     <td>
                                         <p>a set of IRIs that have been &#39;seen&#39; so far to remove loops in the graph</p>
@@ -4300,7 +4778,7 @@ reference organ it was placed relative to.</p>
         </tbody>
     </table>
 </section>    <h3>projects/ccf-database/src/lib/queries/tissue-block-result-n3.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -4314,7 +4792,7 @@ reference organ it was placed relative to.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getDatasetResult(store, iri)</code>
+<code>getDatasetResult(store: Store, iri: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -4328,10 +4806,12 @@ reference organ it was placed relative to.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                     <td>Description</td>
                                 </tr>
@@ -4339,6 +4819,9 @@ reference organ it was placed relative to.</p>
                             <tbody>
                                 <tr>
                                     <td>store</td>
+                                    <td>
+                                            <code>Store</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -4352,6 +4835,9 @@ reference organ it was placed relative to.</p>
                                 </tr>
                                 <tr>
                                     <td>iri</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -4393,7 +4879,7 @@ reference organ it was placed relative to.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getDonorResult(store, iri)</code>
+<code>getDonorResult(store: Store, iri: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -4407,10 +4893,12 @@ reference organ it was placed relative to.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                     <td>Description</td>
                                 </tr>
@@ -4418,6 +4906,9 @@ reference organ it was placed relative to.</p>
                             <tbody>
                                 <tr>
                                     <td>store</td>
+                                    <td>
+                                            <code>Store</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -4431,6 +4922,9 @@ reference organ it was placed relative to.</p>
                                 </tr>
                                 <tr>
                                     <td>iri</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -4472,7 +4966,7 @@ reference organ it was placed relative to.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getTissueBlockResult(store, iri)</code>
+<code>getTissueBlockResult(store: Store, iri: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -4486,10 +4980,12 @@ reference organ it was placed relative to.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                     <td>Description</td>
                                 </tr>
@@ -4497,6 +4993,9 @@ reference organ it was placed relative to.</p>
                             <tbody>
                                 <tr>
                                     <td>store</td>
+                                    <td>
+                                            <code>Store</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -4510,6 +5009,9 @@ reference organ it was placed relative to.</p>
                                 </tr>
                                 <tr>
                                     <td>iri</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -4551,7 +5053,7 @@ reference organ it was placed relative to.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getTissueSectionResult(store, iri)</code>
+<code>getTissueSectionResult(store: Store, iri: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -4565,10 +5067,12 @@ reference organ it was placed relative to.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                     <td>Description</td>
                                 </tr>
@@ -4576,6 +5080,9 @@ reference organ it was placed relative to.</p>
                             <tbody>
                                 <tr>
                                     <td>store</td>
+                                    <td>
+                                            <code>Store</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -4589,6 +5096,9 @@ reference organ it was placed relative to.</p>
                                 </tr>
                                 <tr>
                                     <td>iri</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -4618,7 +5128,7 @@ reference organ it was placed relative to.</p>
         </tbody>
     </table>
 </section>    <h3>projects/ccf-database/src/lib/util/n3-functions.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -4632,7 +5142,7 @@ reference organ it was placed relative to.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getEntries(store, iri, mapping)</code>
+<code>getEntries(store: Store, iri: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, mapping)</code>
                 </td>
             </tr>
 
@@ -4646,10 +5156,12 @@ reference organ it was placed relative to.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                     <td>Description</td>
                                 </tr>
@@ -4657,6 +5169,9 @@ reference organ it was placed relative to.</p>
                             <tbody>
                                 <tr>
                                     <td>store</td>
+                                    <td>
+                                            <code>Store</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -4670,6 +5185,9 @@ reference organ it was placed relative to.</p>
                                 </tr>
                                 <tr>
                                     <td>iri</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -4683,6 +5201,8 @@ reference organ it was placed relative to.</p>
                                 </tr>
                                 <tr>
                                     <td>mapping</td>
+                                    <td>
+                                    </td>
 
                                     <td>
                                         No
@@ -4724,7 +5244,7 @@ reference organ it was placed relative to.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getMappedResult(store, iri, type, mapping)</code>
+<code>getMappedResult(store: Store, iri: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, type: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, mapping)</code>
                 </td>
             </tr>
 
@@ -4738,10 +5258,12 @@ reference organ it was placed relative to.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                     <td>Description</td>
                                 </tr>
@@ -4749,6 +5271,9 @@ reference organ it was placed relative to.</p>
                             <tbody>
                                 <tr>
                                     <td>store</td>
+                                    <td>
+                                            <code>Store</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -4762,6 +5287,9 @@ reference organ it was placed relative to.</p>
                                 </tr>
                                 <tr>
                                     <td>iri</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -4775,6 +5303,9 @@ reference organ it was placed relative to.</p>
                                 </tr>
                                 <tr>
                                     <td>type</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -4788,6 +5319,8 @@ reference organ it was placed relative to.</p>
                                 </tr>
                                 <tr>
                                     <td>mapping</td>
+                                    <td>
+                                    </td>
 
                                     <td>
                                         No
@@ -4817,7 +5350,7 @@ reference organ it was placed relative to.</p>
         </tbody>
     </table>
 </section>    <h3>projects/ccf-database/src/lib/util/origin-scene.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -4831,7 +5364,7 @@ reference organ it was placed relative to.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getOriginScene(node, includeLetters)</code>
+<code>getOriginScene(node: <a href="../interfaces/SpatialEntity.html" target="_self">SpatialEntity</a>, includeLetters)</code>
                 </td>
             </tr>
 
@@ -4845,22 +5378,30 @@ reference organ it was placed relative to.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Default value</td>
                                     <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>node</td>
+                                    <td>
+                                                <code><a href="../interfaces/SpatialEntity.html" target="_self" >SpatialEntity</a></code>
+                                    </td>
 
                                     <td>
                                         No
                                     </td>
 
+                                    <td>
+                                    </td>
 
                                     <td>
                                         <p>the Spatial Entity (usually a reference organ) that the origin is defined by</p>
@@ -4869,11 +5410,16 @@ reference organ it was placed relative to.</p>
                                 </tr>
                                 <tr>
                                     <td>includeLetters</td>
+                                    <td>
+                                    </td>
 
                                     <td>
                                         No
                                     </td>
 
+                                    <td>
+                                        <code>false</code>
+                                    </td>
 
                                     <td>
                                         <p>whether to show the keyboard letters associated with the origin points</p>
@@ -4898,7 +5444,7 @@ reference organ it was placed relative to.</p>
         </tbody>
     </table>
 </section>    <h3>projects/ccf-database/src/lib/util/probing-sphere-scene.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -4912,7 +5458,7 @@ reference organ it was placed relative to.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getProbingSphereScene(node, sphere?)</code>
+<code>getProbingSphereScene(node: <a href="../interfaces/SpatialEntity.html" target="_self">SpatialEntity</a>, sphere?: <a href="../interfaces/SpatialSearch.html" target="_self">SpatialSearch</a>)</code>
                 </td>
             </tr>
 
@@ -4927,10 +5473,12 @@ for a given spatial search.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                     <td>Description</td>
                                 </tr>
@@ -4938,6 +5486,9 @@ for a given spatial search.</p>
                             <tbody>
                                 <tr>
                                     <td>node</td>
+                                    <td>
+                                                <code><a href="../interfaces/SpatialEntity.html" target="_self" >SpatialEntity</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -4951,6 +5502,9 @@ for a given spatial search.</p>
                                 </tr>
                                 <tr>
                                     <td>sphere</td>
+                                    <td>
+                                                <code><a href="../interfaces/SpatialSearch.html" target="_self" >SpatialSearch</a></code>
+                                    </td>
 
                                     <td>
                                         Yes
@@ -4980,7 +5534,7 @@ for a given spatial search.</p>
         </tbody>
     </table>
 </section>    <h3>projects/ccf-database/src/cache-ccf-api-data.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -4994,7 +5548,7 @@ for a given spatial search.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>main(inputCCF, outputDir)</code>
+<code>main(inputCCF: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, outputDir: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -5006,16 +5560,21 @@ for a given spatial search.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>inputCCF</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -5025,6 +5584,9 @@ for a given spatial search.</p>
                                 </tr>
                                 <tr>
                                     <td>outputDir</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -5049,7 +5611,7 @@ for a given spatial search.</p>
         </tbody>
     </table>
 </section>    <h3>projects/ccf-database/src/lib/util/patch-jsonld.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -5063,7 +5625,7 @@ for a given spatial search.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>patchJsonLd(jsonLdString, context)</code>
+<code>patchJsonLd(jsonLdString: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, context)</code>
                 </td>
             </tr>
 
@@ -5077,22 +5639,30 @@ for a given spatial search.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Default value</td>
                                     <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>jsonLdString</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
                                     </td>
 
+                                    <td>
+                                    </td>
 
                                     <td>
                                         <p>the input JSON-LD as a string</p>
@@ -5101,11 +5671,16 @@ for a given spatial search.</p>
                                 </tr>
                                 <tr>
                                     <td>context</td>
+                                    <td>
+                                    </td>
 
                                     <td>
                                         No
                                     </td>
 
+                                    <td>
+                                        <code>CCF_CONTEXT</code>
+                                    </td>
 
                                     <td>
                                     </td>
@@ -5132,7 +5707,7 @@ for a given spatial search.</p>
 
                    </div><div class="search-results">
     <div class="has-results">
-        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
         <ul class="search-results-list"></ul>
     </div>
     <div class="no-results">
@@ -5144,6 +5719,15 @@ for a given spatial search.</p>
            </div>
        </div>
 
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'miscellaneous-functions';
@@ -5153,8 +5737,8 @@ for a given spatial search.</p>
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       
-       <script type="module" src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/menu-wc.js" defer></script>
        <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>

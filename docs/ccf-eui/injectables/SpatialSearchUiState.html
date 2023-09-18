@@ -9,11 +9,11 @@
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 	   <link rel="stylesheet" href="../styles/style.css">
-        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
+        <link rel="stylesheet" href="../styles/dark.css">
     </head>
     <body>
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">Application ccf-eui documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
@@ -37,22 +37,29 @@
 
 
 
+
 <ol class="breadcrumb">
-  <li>Injectables</li>
-  <li >SpatialSearchUiState</li>
+  <li class="breadcrumb-item">Injectables</li>
+  <li class="breadcrumb-item" >SpatialSearchUiState</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
-        <li class="active">
-            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
         </li>
-        <li >
-            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
         </li>
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="c-info">
+    <div class="tab-pane fade active in" id="info">
         <p class="comment">
             <h3>File</h3>
         </p>
@@ -64,7 +71,7 @@
 
 
 
-            <section>
+            <section data-compodoc="block-index">
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
@@ -78,12 +85,15 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier"></span>
                                 <a href="#generateSpatialSearch" >generateSpatialSearch</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                 <a href="#moveToNode" >moveToNode</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Static</span>
                                 <a href="#organEntity" >organEntity</a>
                             </li>
@@ -92,30 +102,39 @@
                                 <a href="#organValidForSex" >organValidForSex</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                 <a href="#resetPosition" >resetPosition</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                 <a href="#resetRadius" >resetRadius</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                 <a href="#setExecuteSearchOnGenerate" >setExecuteSearchOnGenerate</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                 <a href="#setOrgan" >setOrgan</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                 <a href="#setPosition" >setPosition</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                 <a href="#setRadius" >setRadius</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                 <a href="#setSex" >setSex</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                 <a href="#startSpatialSearchFlow" >startSpatialSearchFlow</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                 <a href="#updateSpatialSearch" >updateSpatialSearch</a>
                             </li>
                         </ul>
@@ -130,7 +149,7 @@
     </table>
 </section>
 
-            <section>
+            <section data-compodoc="block-constructor">
     <h3 id="constructor">Constructor</h3>
         <table class="table table-sm table-bordered">
             <tbody>
@@ -141,7 +160,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:87</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:88</a></div>
                             </td>
                         </tr>
 
@@ -215,7 +234,7 @@
         </table>
 </section>
 
-            <section>
+            <section data-compodoc="block-methods">
     
     <h3 id="methods">
         Methods
@@ -226,6 +245,7 @@
                 <td class="col-md-4">
                     <a name="generateSpatialSearch"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span ><b>generateSpatialSearch</b></span>
                         <a href="#generateSpatialSearch"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -233,7 +253,8 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>generateSpatialSearch(ctx: <a href="../interfaces/SpatialSearchUiModel.html" target="_self">StateContext&lt;SpatialSearchUiModel&gt;</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>generateSpatialSearch(ctx: <a href="../interfaces/SpatialSearchUiModel.html" target="_self">StateContext&lt;SpatialSearchUiModel&gt;</a>)</code>
                 </td>
             </tr>
 
@@ -247,8 +268,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="271"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:271</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="272"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:272</a></div>
                 </td>
             </tr>
 
@@ -260,6 +281,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -303,6 +325,7 @@
                 <td class="col-md-4">
                     <a name="moveToNode"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span ><b>moveToNode</b></span>
                         <a href="#moveToNode"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -310,7 +333,8 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>moveToNode(ctx: <a href="../interfaces/SpatialSearchUiModel.html" target="_self">StateContext&lt;SpatialSearchUiModel&gt;</a>, undefined: <a href="../classes/MoveToNode.html" target="_self">MoveToNode</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>moveToNode(ctx: <a href="../interfaces/SpatialSearchUiModel.html" target="_self">StateContext&lt;SpatialSearchUiModel&gt;</a>, undefined: <a href="../classes/MoveToNode.html" target="_self">MoveToNode</a>)</code>
                 </td>
             </tr>
 
@@ -324,8 +348,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="205"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:205</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="206"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:206</a></div>
                 </td>
             </tr>
 
@@ -335,6 +359,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -389,6 +414,7 @@
                 <td class="col-md-4">
                     <a name="organEntity"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span class="modifier">Static</span>
                         <span ><b>organEntity</b></span>
                         <a href="#organEntity"><span class="icon ion-ios-link"></span></a>
@@ -412,8 +438,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="84"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:84</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="85"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:85</a></div>
                 </td>
             </tr>
 
@@ -423,6 +449,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -494,8 +521,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="312"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:312</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="313"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:313</a></div>
                 </td>
             </tr>
 
@@ -507,6 +534,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -562,6 +590,7 @@
                 <td class="col-md-4">
                     <a name="resetPosition"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span ><b>resetPosition</b></span>
                         <a href="#resetPosition"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -569,7 +598,8 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>resetPosition(ctx: <a href="../interfaces/SpatialSearchUiModel.html" target="_self">StateContext&lt;SpatialSearchUiModel&gt;</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>resetPosition(ctx: <a href="../interfaces/SpatialSearchUiModel.html" target="_self">StateContext&lt;SpatialSearchUiModel&gt;</a>)</code>
                 </td>
             </tr>
 
@@ -583,8 +613,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="195"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:195</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="196"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:196</a></div>
                 </td>
             </tr>
 
@@ -594,6 +624,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -637,6 +668,7 @@
                 <td class="col-md-4">
                     <a name="resetRadius"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span ><b>resetRadius</b></span>
                         <a href="#resetRadius"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -644,7 +676,8 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>resetRadius(ctx: <a href="../interfaces/SpatialSearchUiModel.html" target="_self">StateContext&lt;SpatialSearchUiModel&gt;</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>resetRadius(ctx: <a href="../interfaces/SpatialSearchUiModel.html" target="_self">StateContext&lt;SpatialSearchUiModel&gt;</a>)</code>
                 </td>
             </tr>
 
@@ -658,8 +691,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="225"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:225</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="226"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:226</a></div>
                 </td>
             </tr>
 
@@ -669,6 +702,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -712,6 +746,7 @@
                 <td class="col-md-4">
                     <a name="setExecuteSearchOnGenerate"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span ><b>setExecuteSearchOnGenerate</b></span>
                         <a href="#setExecuteSearchOnGenerate"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -719,7 +754,8 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>setExecuteSearchOnGenerate(ctx: <a href="../interfaces/SpatialSearchUiModel.html" target="_self">StateContext&lt;SpatialSearchUiModel&gt;</a>, undefined: <a href="../classes/SetExecuteSearchOnGenerate.html" target="_self">SetExecuteSearchOnGenerate</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>setExecuteSearchOnGenerate(ctx: <a href="../interfaces/SpatialSearchUiModel.html" target="_self">StateContext&lt;SpatialSearchUiModel&gt;</a>, undefined: <a href="../classes/SetExecuteSearchOnGenerate.html" target="_self">SetExecuteSearchOnGenerate</a>)</code>
                 </td>
             </tr>
 
@@ -733,8 +769,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="303"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:303</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="304"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:304</a></div>
                 </td>
             </tr>
 
@@ -744,6 +780,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -798,6 +835,7 @@
                 <td class="col-md-4">
                     <a name="setOrgan"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span ><b>setOrgan</b></span>
                         <a href="#setOrgan"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -805,7 +843,8 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>setOrgan(ctx: <a href="../interfaces/SpatialSearchUiModel.html" target="_self">StateContext&lt;SpatialSearchUiModel&gt;</a>, undefined: <a href="../classes/SetOrgan.html" target="_self">SetOrgan</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>setOrgan(ctx: <a href="../interfaces/SpatialSearchUiModel.html" target="_self">StateContext&lt;SpatialSearchUiModel&gt;</a>, undefined: <a href="../classes/SetOrgan.html" target="_self">SetOrgan</a>)</code>
                 </td>
             </tr>
 
@@ -819,8 +858,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="145"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:145</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="146"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:146</a></div>
                 </td>
             </tr>
 
@@ -832,6 +871,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -886,6 +926,7 @@
                 <td class="col-md-4">
                     <a name="setPosition"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span ><b>setPosition</b></span>
                         <a href="#setPosition"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -893,7 +934,8 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>setPosition(ctx: <a href="../interfaces/SpatialSearchUiModel.html" target="_self">StateContext&lt;SpatialSearchUiModel&gt;</a>, undefined: <a href="../interfaces/Position.html" target="_self">SetPosition</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>setPosition(ctx: <a href="../interfaces/SpatialSearchUiModel.html" target="_self">StateContext&lt;SpatialSearchUiModel&gt;</a>, undefined: <a href="../classes/SetPosition.html" target="_self">SetPosition</a>)</code>
                 </td>
             </tr>
 
@@ -907,8 +949,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="186"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:186</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="187"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:187</a></div>
                 </td>
             </tr>
 
@@ -920,6 +962,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -943,7 +986,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                                <code><a href="../interfaces/Position.html" target="_self" >SetPosition</a></code>
+                                                <code><a href="../classes/SetPosition.html" target="_self" >SetPosition</a></code>
                                     </td>
 
                                     <td>
@@ -974,6 +1017,7 @@
                 <td class="col-md-4">
                     <a name="setRadius"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span ><b>setRadius</b></span>
                         <a href="#setRadius"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -981,7 +1025,8 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>setRadius(ctx: <a href="../interfaces/SpatialSearchUiModel.html" target="_self">StateContext&lt;SpatialSearchUiModel&gt;</a>, undefined: <a href="../classes/SetRadius.html" target="_self">SetRadius</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>setRadius(ctx: <a href="../interfaces/SpatialSearchUiModel.html" target="_self">StateContext&lt;SpatialSearchUiModel&gt;</a>, undefined: <a href="../classes/SetRadius.html" target="_self">SetRadius</a>)</code>
                 </td>
             </tr>
 
@@ -995,8 +1040,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="217"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:217</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="218"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:218</a></div>
                 </td>
             </tr>
 
@@ -1008,6 +1053,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -1062,6 +1108,7 @@
                 <td class="col-md-4">
                     <a name="setSex"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span ><b>setSex</b></span>
                         <a href="#setSex"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -1069,7 +1116,8 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>setSex(ctx: <a href="../interfaces/SpatialSearchUiModel.html" target="_self">StateContext&lt;SpatialSearchUiModel&gt;</a>, undefined: <a href="../classes/SetSex.html" target="_self">SetSex</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>setSex(ctx: <a href="../interfaces/SpatialSearchUiModel.html" target="_self">StateContext&lt;SpatialSearchUiModel&gt;</a>, undefined: <a href="../classes/SetSex.html" target="_self">SetSex</a>)</code>
                 </td>
             </tr>
 
@@ -1083,8 +1131,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="115"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:115</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="116"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:116</a></div>
                 </td>
             </tr>
 
@@ -1096,6 +1144,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -1150,6 +1199,7 @@
                 <td class="col-md-4">
                     <a name="startSpatialSearchFlow"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span ><b>startSpatialSearchFlow</b></span>
                         <a href="#startSpatialSearchFlow"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -1157,7 +1207,8 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>startSpatialSearchFlow(ctx: <a href="../interfaces/SpatialSearchUiModel.html" target="_self">StateContext&lt;SpatialSearchUiModel&gt;</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>startSpatialSearchFlow(ctx: <a href="../interfaces/SpatialSearchUiModel.html" target="_self">StateContext&lt;SpatialSearchUiModel&gt;</a>)</code>
                 </td>
             </tr>
 
@@ -1171,8 +1222,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="103"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:103</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="104"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:104</a></div>
                 </td>
             </tr>
 
@@ -1182,6 +1233,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -1225,6 +1277,7 @@
                 <td class="col-md-4">
                     <a name="updateSpatialSearch"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span ><b>updateSpatialSearch</b></span>
                         <a href="#updateSpatialSearch"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -1232,7 +1285,8 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>updateSpatialSearch(ctx: <a href="../interfaces/SpatialSearchUiModel.html" target="_self">StateContext&lt;SpatialSearchUiModel&gt;</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updateSpatialSearch(ctx: <a href="../interfaces/SpatialSearchUiModel.html" target="_self">StateContext&lt;SpatialSearchUiModel&gt;</a>)</code>
                 </td>
             </tr>
 
@@ -1246,8 +1300,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="238"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:238</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="239"
+                            class="link-to-prism">projects/ccf-eui/src/app/core/store/spatial-search-ui/spatial-search-ui.state.ts:239</a></div>
                 </td>
             </tr>
 
@@ -1259,6 +1313,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -1301,7 +1356,7 @@
     </div>
 
 
-    <div class="tab-pane fade  tab-source-code" id="c-source">
+    <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
 import { Matrix4 } from &#x27;@math.gl/core&#x27;;
 import { Action, Actions, ofActionDispatched, Selector, State, StateContext, Store } from &#x27;@ngxs/store&#x27;;
@@ -1345,6 +1400,7 @@ export interface RadiusSettings {
 }
 
 export interface TermResult {
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   &#x27;@id&#x27;: string;
   label: string;
   count: number;
@@ -1631,14 +1687,15 @@ export class SpatialSearchUiState {
 
 
 
-                   
+
+
 
 
 
 
                    </div><div class="search-results">
     <div class="has-results">
-        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
         <ul class="search-results-list"></ul>
     </div>
     <div class="no-results">
@@ -1650,6 +1707,15 @@ export class SpatialSearchUiState {
            </div>
        </div>
 
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
@@ -1659,8 +1725,8 @@ export class SpatialSearchUiState {
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       
-       <script type="module" src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/menu-wc.js" defer></script>
        <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>

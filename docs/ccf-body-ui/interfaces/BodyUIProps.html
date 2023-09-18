@@ -9,11 +9,11 @@
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 	   <link rel="stylesheet" href="../styles/style.css">
-        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
+        <link rel="stylesheet" href="../styles/dark.css">
     </head>
     <body>
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">Library ccf-body-ui documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
@@ -42,24 +42,31 @@
 
 
 
+
 <ol class="breadcrumb">
-  <li>Interfaces</li>
-  <li
+  <li class="breadcrumb-item">Interfaces</li>
+  <li class="breadcrumb-item"
   >
   BodyUIProps</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
-        <li class="active">
-            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
         </li>
-        <li >
-            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
         </li>
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="c-info">
+    <div class="tab-pane fade active in" id="info">
         <p class="comment">
             <h3>File</h3>
         </p>
@@ -70,7 +77,7 @@
 
 
 
-        <section>
+        <section data-compodoc="block-index">
             <h3 id="index">Index</h3>
             <table class="table table-sm table-bordered index-table">
                 <tbody>
@@ -165,7 +172,7 @@
 
 
 
-            <section>
+            <section data-compodoc="block-properties">
                 <h3 id="inputs">Properties</h3>
                     <table class="table table-sm table-bordered">
                         <tbody>
@@ -577,11 +584,11 @@
     </div>
 
 
-    <div class="tab-pane fade  tab-source-code" id="c-source">
+    <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { AmbientLight, Deck, LightingEffect, OrbitView, OrthographicView } from &#x27;@deck.gl/core&#x27;;
 import { ViewStateProps } from &#x27;@deck.gl/core/lib/deck&#x27;;
 import { Matrix4 } from &#x27;@math.gl/core&#x27;;
-import bind from &#x27;bind-decorator&#x27;;
+import { bind } from &#x27;bind-decorator&#x27;;
 import { BehaviorSubject, Subject } from &#x27;rxjs&#x27;;
 import { share } from &#x27;rxjs/operators&#x27;;
 
@@ -662,7 +669,7 @@ export class BodyUI {
         flipY: false,
         near: -1000
       }) : new OrbitView({ orbitAxis: &#x27;Y&#x27; }) ],
-      controller: deckProps.interactive !&#x3D;&#x3D; undefined ? deckProps.interactive : true,
+      controller: deckProps.interactive ?? true,
       layers: [ this.bodyUILayer ],
       onHover: this._onHover,
       onClick: this._onClick,
@@ -818,7 +825,7 @@ export class BodyUI {
   private _onHover(e: { picked: boolean; object: SpatialSceneNode }): void {
     const { lastHovered } &#x3D; this;
     this.cursor &#x3D; e.picked ? &#x27;pointer&#x27; : undefined;
-    if (e.picked &amp;&amp; e.object &amp;&amp; e.object[&#x27;@id&#x27;]) {
+    if (e.picked &amp;&amp; e.object?.[&#x27;@id&#x27;]) {
       if (lastHovered !&#x3D;&#x3D; e.object) {
         if (lastHovered) {
           this.nodeHoverStopSubject.next(lastHovered);
@@ -834,7 +841,7 @@ export class BodyUI {
 
   @bind
   private _onClick(info: PickInfo&lt;SpatialSceneNode&gt;, e: { srcEvent: { ctrlKey: boolean } }): void {
-    if (info.picked &amp;&amp; info.object &amp;&amp; info.object[&#x27;@id&#x27;]) {
+    if (info.picked &amp;&amp; info.object?.[&#x27;@id&#x27;]) {
       this.nodeClickSubject.next({ node: info.object, ctrlClick: e?.srcEvent?.ctrlKey ?? undefined });
     }
   }
@@ -878,14 +885,15 @@ export class BodyUI {
 </div>
 
 
-                   
+
+
 
 
 
 
                    </div><div class="search-results">
     <div class="has-results">
-        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
         <ul class="search-results-list"></ul>
     </div>
     <div class="no-results">
@@ -897,6 +905,15 @@ export class BodyUI {
            </div>
        </div>
 
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
@@ -906,8 +923,8 @@ export class BodyUI {
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       
-       <script type="module" src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/menu-wc.js" defer></script>
        <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>

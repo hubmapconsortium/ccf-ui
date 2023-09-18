@@ -9,11 +9,11 @@
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 	   <link rel="stylesheet" href="../styles/style.css">
-        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
+        <link rel="stylesheet" href="../styles/dark.css">
     </head>
     <body>
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">Application ccf-rui documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
@@ -35,32 +35,37 @@
 
 
 <ol class="breadcrumb">
-  <li>Components</li>
-  <li
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
   >
   ContainerComponent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
-        <li class="active">
-            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
         </li>
-        <li >
-            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
         </li>
-        <li >
-            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
         </li>
-        <li >
-            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
         </li>
-        <li >
-            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
         </li>
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
     <h3>File</h3>
 </p>
 <p class="comment">
@@ -81,20 +86,21 @@
         <h3>Implements</h3>
     </p>
     <p class="comment">
-                    <code><a href="https://angular.io/api/core/AfterViewInit" target="_blank" >AfterViewInit</a></code>
-                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+                <code>AfterViewInit</code>
+                <code>OnDestroy</code>
     </p>
 
 
-<section>
+<section data-compodoc="block-metadata">
     <h3>Metadata</h3>
-    <table class="table table-sm table-hover">
+    <table class="table table-sm table-hover metadata">
         <tbody>
 
             <tr>
                 <td class="col-md-3">changeDetection</td>
                 <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
             </tr>
+
 
 
 
@@ -120,6 +126,8 @@
                 <td class="col-md-9"><code>ccf-drawer-container</code></td>
             </tr>
 
+
+
             <tr>
                 <td class="col-md-3">styleUrls</td>
                 <td class="col-md-9"><code>./container.component.scss</code></td>
@@ -143,7 +151,7 @@
     </table>
 </section>
 
-    <section>
+    <section data-compodoc="block-index">
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
@@ -160,18 +168,22 @@
                                 <a href="#channel" >channel</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#className" >className</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Private</span>
                                 <a href="#content1" >content1</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Private</span>
                                 <a href="#content2" >content2</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Private</span>
                                 <a href="#drawers" >drawers</a>
                             </li>
@@ -248,13 +260,13 @@
     </table>
 </section>
 
-    <section>
+    <section data-compodoc="block-constructor">
     <h3 id="constructor">Constructor</h3>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(messageService: <a href="../injectables/MessageService.html" target="_self">MessageService</a>, cdr: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>)</code>
+<code>constructor(messageService: <a href="../injectables/MessageService.html" target="_self">MessageService</a>, cdr: ChangeDetectorRef)</code>
                     </td>
                 </tr>
                         <tr>
@@ -291,15 +303,15 @@
                                                     </td>
                                                     
                                                         <td>
-                                                                <code><p>The service used to send event messages.</p>
-</code>
+                                                                <p>The service used to send event messages.</p>
+
                                                         </td>
                                                 </tr>
                                                 <tr>
                                                         <td>cdr</td>
                                                   
                                                         <td>
-                                                                        <code><a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank" >ChangeDetectorRef</a></code>
+                                                                    <code>ChangeDetectorRef</code>
                                                         </td>
                                                   
                                                     <td>
@@ -307,8 +319,8 @@
                                                     </td>
                                                     
                                                         <td>
-                                                                <code><p>The change detector reference.</p>
-</code>
+                                                                <p>The change detector reference.</p>
+
                                                         </td>
                                                 </tr>
                                         </tbody>
@@ -322,7 +334,7 @@
 
 
 
-    <section>
+    <section data-compodoc="block-properties">
     <h3>HostBindings</h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -363,7 +375,7 @@
 </section>
 
 
-    <section>
+    <section data-compodoc="block-methods">
     
     <h3 id="methods">
         Methods
@@ -403,6 +415,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -564,7 +577,7 @@
         </tbody>
     </table>
 </section>
-    <section>
+    <section data-compodoc="block-properties">
     
     <h3 id="inputs">
         Properties
@@ -583,7 +596,7 @@
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../interfaces/Message.html" target="_self" >MessageChannel</a></code>
+                        <i>Type : </i>        <code><a href="../classes/MessageChannel.html" target="_self" >MessageChannel</a></code>
 
                     </td>
                 </tr>
@@ -608,6 +621,7 @@
                 <td class="col-md-4">
                     <a name="className"></a>
                     <span class="name">
+                            <span class="modifier"></span>
                             <span class="modifier">Readonly</span>
                         <span ><b>className</b></span>
                         <a href="#className"><span class="icon ion-ios-link"></span></a>
@@ -655,6 +669,7 @@
                 <td class="col-md-4">
                     <a name="content1"></a>
                     <span class="name">
+                            <span class="modifier"></span>
                             <span class="modifier">Private</span>
                         <span ><b>content1</b></span>
                         <a href="#content1"><span class="icon ion-ios-link"></span></a>
@@ -697,6 +712,7 @@
                 <td class="col-md-4">
                     <a name="content2"></a>
                     <span class="name">
+                            <span class="modifier"></span>
                             <span class="modifier">Private</span>
                         <span ><b>content2</b></span>
                         <a href="#content2"><span class="icon ion-ios-link"></span></a>
@@ -739,6 +755,7 @@
                 <td class="col-md-4">
                     <a name="drawers"></a>
                     <span class="name">
+                            <span class="modifier"></span>
                             <span class="modifier">Private</span>
                         <span ><b>drawers</b></span>
                         <a href="#drawers"><span class="icon ion-ios-link"></span></a>
@@ -809,7 +826,7 @@
     </table>
 </section>
 
-    <section>
+    <section data-compodoc="block-accessors">
     <h3 id="accessors">
         Accessors
     </h3>
@@ -883,7 +900,7 @@
 </div>
 
 
-    <div class="tab-pane fade  tab-source-code" id="c-source">
+    <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
   AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, HostBinding, OnDestroy, QueryList,
   ViewChildren,
@@ -1025,7 +1042,7 @@ export class ContainerComponent implements AfterViewInit, OnDestroy {
 </code></pre>
     </div>
 
-    <div class="tab-pane fade " id="c-templateData">
+    <div class="tab-pane fade " id="templateData">
         <pre class="line-numbers"><code class="language-html">&lt;ng-content select&#x3D;&quot;ccf-drawer&quot;&gt;&lt;/ng-content&gt;
 
 &lt;ng-content select&#x3D;&quot;ccf-drawer-content&quot;&gt;&lt;/ng-content&gt;
@@ -1035,7 +1052,7 @@ export class ContainerComponent implements AfterViewInit, OnDestroy {
 </code></pre>
     </div>
 
-    <div class="tab-pane fade " id="c-styleData">
+    <div class="tab-pane fade " id="styleData">
                 <p class="comment">
                     <code>./container.component.scss</code>
                 </p>
@@ -1049,7 +1066,7 @@ export class ContainerComponent implements AfterViewInit, OnDestroy {
 </code></pre>
     </div>
 
-    <div class="tab-pane fade " id="c-tree">
+    <div class="tab-pane fade " id="tree">
         <div id="tree-container"></div>
         <div class="tree-legend">
             <div class="title">
@@ -1090,14 +1107,16 @@ export class ContainerComponent implements AfterViewInit, OnDestroy {
 
 
 
-                   
+
+
+
 
 
 
 
                    </div><div class="search-results">
     <div class="has-results">
-        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
         <ul class="search-results-list"></ul>
     </div>
     <div class="no-results">
@@ -1109,6 +1128,15 @@ export class ContainerComponent implements AfterViewInit, OnDestroy {
            </div>
        </div>
 
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
@@ -1118,8 +1146,8 @@ export class ContainerComponent implements AfterViewInit, OnDestroy {
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       
-       <script type="module" src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/menu-wc.js" defer></script>
        <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>

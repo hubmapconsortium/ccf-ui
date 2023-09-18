@@ -9,11 +9,11 @@
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 	   <link rel="stylesheet" href="../styles/style.css">
-        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
+        <link rel="stylesheet" href="../styles/dark.css">
     </head>
     <body>
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">Application ccf-eui documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
@@ -35,29 +35,33 @@
 
 
 <ol class="breadcrumb">
-  <li>Components</li>
-  <li
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
   >
   SpatialSearchUiBehaviorComponent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
-        <li class="active">
-            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
         </li>
-        <li >
-            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
         </li>
-        <li >
-            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
         </li>
-        <li >
-            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
         </li>
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
     <h3>File</h3>
 </p>
 <p class="comment">
@@ -76,9 +80,9 @@
 
 
 
-<section>
+<section data-compodoc="block-metadata">
     <h3>Metadata</h3>
-    <table class="table table-sm table-hover">
+    <table class="table table-sm table-hover metadata">
         <tbody>
 
             <tr>
@@ -95,10 +99,13 @@
 
 
 
+
             <tr>
                 <td class="col-md-3">selector</td>
                 <td class="col-md-9"><code>ccf-spatial-search-ui-behavior</code></td>
             </tr>
+
+
 
 
 
@@ -119,7 +126,7 @@
     </table>
 </section>
 
-    <section>
+    <section data-compodoc="block-index">
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
@@ -132,14 +139,17 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#anatomicalStructures$" >anatomicalStructures$</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#cellTypes$" >cellTypes$</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#defaultPosition$" >defaultPosition$</a>
                             </li>
@@ -148,10 +158,12 @@
                                 <a href="#dialog" >dialog</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#moveToNode" >moveToNode</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#organ$" >organ$</a>
                             </li>
@@ -159,38 +171,47 @@
                                 <a href="#panelData" >panelData</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#position$" >position$</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#radius$" >radius$</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#radiusSettings$" >radiusSettings$</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#resetPosition" >resetPosition</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#resetRadius" >resetRadius</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#scene$" >scene$</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#sceneBounds$" >sceneBounds$</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#sceneTarget$" >sceneTarget$</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#sex$" >sex$</a>
                             </li>
@@ -200,14 +221,17 @@
                                 <a href="#subscriptions" >subscriptions</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#tissueBlocks$" >tissueBlocks$</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#updatePosition" >updatePosition</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#updateRadius" >updateRadius</a>
                             </li>
@@ -224,6 +248,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier"></span>
                                 <a href="#addSpatialSearch" >addSpatialSearch</a>
                             </li>
                             <li>
@@ -250,7 +275,7 @@
     </table>
 </section>
 
-    <section>
+    <section data-compodoc="block-constructor">
     <h3 id="constructor">Constructor</h3>
         <table class="table table-sm table-bordered">
             <tbody>
@@ -327,7 +352,7 @@
 
 
 
-    <section>
+    <section data-compodoc="block-methods">
     
     <h3 id="methods">
         Methods
@@ -338,6 +363,7 @@
                 <td class="col-md-4">
                     <a name="addSpatialSearch"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span ><b>addSpatialSearch</b></span>
                         <a href="#addSpatialSearch"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -345,7 +371,8 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>addSpatialSearch()</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>addSpatialSearch()</code>
                 </td>
             </tr>
 
@@ -456,6 +483,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -577,7 +605,7 @@
         </tbody>
     </table>
 </section>
-    <section>
+    <section data-compodoc="block-properties">
     
     <h3 id="inputs">
         Properties
@@ -588,6 +616,7 @@
                 <td class="col-md-4">
                     <a name="anatomicalStructures$"></a>
                     <span class="name">
+                            <span class="modifier"></span>
                             <span class="modifier">Readonly</span>
                         <span ><b>anatomicalStructures$</b></span>
                         <a href="#anatomicalStructures$"><span class="icon ion-ios-link"></span></a>
@@ -624,6 +653,7 @@
                 <td class="col-md-4">
                     <a name="cellTypes$"></a>
                     <span class="name">
+                            <span class="modifier"></span>
                             <span class="modifier">Readonly</span>
                         <span ><b>cellTypes$</b></span>
                         <a href="#cellTypes$"><span class="icon ion-ios-link"></span></a>
@@ -660,6 +690,7 @@
                 <td class="col-md-4">
                     <a name="defaultPosition$"></a>
                     <span class="name">
+                            <span class="modifier"></span>
                             <span class="modifier">Readonly</span>
                         <span ><b>defaultPosition$</b></span>
                         <a href="#defaultPosition$"><span class="icon ion-ios-link"></span></a>
@@ -723,6 +754,7 @@
                 <td class="col-md-4">
                     <a name="moveToNode"></a>
                     <span class="name">
+                            <span class="modifier"></span>
                             <span class="modifier">Readonly</span>
                         <span ><b>moveToNode</b></span>
                         <a href="#moveToNode"><span class="icon ion-ios-link"></span></a>
@@ -758,6 +790,7 @@
                 <td class="col-md-4">
                     <a name="organ$"></a>
                     <span class="name">
+                            <span class="modifier"></span>
                             <span class="modifier">Readonly</span>
                         <span ><b>organ$</b></span>
                         <a href="#organ$"><span class="icon ion-ios-link"></span></a>
@@ -826,6 +859,7 @@
                 <td class="col-md-4">
                     <a name="position$"></a>
                     <span class="name">
+                            <span class="modifier"></span>
                             <span class="modifier">Readonly</span>
                         <span ><b>position$</b></span>
                         <a href="#position$"><span class="icon ion-ios-link"></span></a>
@@ -862,6 +896,7 @@
                 <td class="col-md-4">
                     <a name="radius$"></a>
                     <span class="name">
+                            <span class="modifier"></span>
                             <span class="modifier">Readonly</span>
                         <span ><b>radius$</b></span>
                         <a href="#radius$"><span class="icon ion-ios-link"></span></a>
@@ -898,6 +933,7 @@
                 <td class="col-md-4">
                     <a name="radiusSettings$"></a>
                     <span class="name">
+                            <span class="modifier"></span>
                             <span class="modifier">Readonly</span>
                         <span ><b>radiusSettings$</b></span>
                         <a href="#radiusSettings$"><span class="icon ion-ios-link"></span></a>
@@ -934,6 +970,7 @@
                 <td class="col-md-4">
                     <a name="resetPosition"></a>
                     <span class="name">
+                            <span class="modifier"></span>
                             <span class="modifier">Readonly</span>
                         <span ><b>resetPosition</b></span>
                         <a href="#resetPosition"><span class="icon ion-ios-link"></span></a>
@@ -969,6 +1006,7 @@
                 <td class="col-md-4">
                     <a name="resetRadius"></a>
                     <span class="name">
+                            <span class="modifier"></span>
                             <span class="modifier">Readonly</span>
                         <span ><b>resetRadius</b></span>
                         <a href="#resetRadius"><span class="icon ion-ios-link"></span></a>
@@ -1004,6 +1042,7 @@
                 <td class="col-md-4">
                     <a name="scene$"></a>
                     <span class="name">
+                            <span class="modifier"></span>
                             <span class="modifier">Readonly</span>
                         <span ><b>scene$</b></span>
                         <a href="#scene$"><span class="icon ion-ios-link"></span></a>
@@ -1040,6 +1079,7 @@
                 <td class="col-md-4">
                     <a name="sceneBounds$"></a>
                     <span class="name">
+                            <span class="modifier"></span>
                             <span class="modifier">Readonly</span>
                         <span ><b>sceneBounds$</b></span>
                         <a href="#sceneBounds$"><span class="icon ion-ios-link"></span></a>
@@ -1076,6 +1116,7 @@
                 <td class="col-md-4">
                     <a name="sceneTarget$"></a>
                     <span class="name">
+                            <span class="modifier"></span>
                             <span class="modifier">Readonly</span>
                         <span ><b>sceneTarget$</b></span>
                         <a href="#sceneTarget$"><span class="icon ion-ios-link"></span></a>
@@ -1112,6 +1153,7 @@
                 <td class="col-md-4">
                     <a name="sex$"></a>
                     <span class="name">
+                            <span class="modifier"></span>
                             <span class="modifier">Readonly</span>
                         <span ><b>sex$</b></span>
                         <a href="#sex$"><span class="icon ion-ios-link"></span></a>
@@ -1181,6 +1223,7 @@
                 <td class="col-md-4">
                     <a name="tissueBlocks$"></a>
                     <span class="name">
+                            <span class="modifier"></span>
                             <span class="modifier">Readonly</span>
                         <span ><b>tissueBlocks$</b></span>
                         <a href="#tissueBlocks$"><span class="icon ion-ios-link"></span></a>
@@ -1217,6 +1260,7 @@
                 <td class="col-md-4">
                     <a name="updatePosition"></a>
                     <span class="name">
+                            <span class="modifier"></span>
                             <span class="modifier">Readonly</span>
                         <span ><b>updatePosition</b></span>
                         <a href="#updatePosition"><span class="icon ion-ios-link"></span></a>
@@ -1252,6 +1296,7 @@
                 <td class="col-md-4">
                     <a name="updateRadius"></a>
                     <span class="name">
+                            <span class="modifier"></span>
                             <span class="modifier">Readonly</span>
                         <span ><b>updateRadius</b></span>
                         <a href="#updateRadius"><span class="icon ion-ios-link"></span></a>
@@ -1286,7 +1331,7 @@
 </div>
 
 
-    <div class="tab-pane fade  tab-source-code" id="c-source">
+    <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, Component } from &#x27;@angular/core&#x27;;
 import { MatDialog, MatDialogRef } from &#x27;@angular/material/dialog&#x27;;
 import { Dispatch } from &#x27;@ngxs-labs/dispatch-decorator&#x27;;
@@ -1446,7 +1491,7 @@ export class SpatialSearchUiBehaviorComponent {
 </code></pre>
     </div>
 
-    <div class="tab-pane fade " id="c-templateData">
+    <div class="tab-pane fade " id="templateData">
         <pre class="line-numbers"><code class="language-html">&lt;ccf-spatial-search-ui *ngIf&#x3D;&quot;organ$ | async as organ&quot; [sex]&#x3D;&quot;sex$ | async&quot; [referenceOrgan]&#x3D;&quot;organ&quot;
   [radius]&#x3D;&quot;radius$ | async&quot; [radiusSettings]&#x3D;&quot;radiusSettings$ | async&quot; [defaultPosition]&#x3D;&quot;defaultPosition$ | async&quot;
   [position]&#x3D;&quot;position$ | async&quot; [scene]&#x3D;&quot;scene$ | async&quot; [sceneBounds]&#x3D;&quot;sceneBounds$ | async&quot;
@@ -1461,7 +1506,7 @@ export class SpatialSearchUiBehaviorComponent {
     </div>
 
 
-    <div class="tab-pane fade " id="c-tree">
+    <div class="tab-pane fade " id="tree">
         <div id="tree-container"></div>
         <div class="tree-legend">
             <div class="title">
@@ -1502,14 +1547,16 @@ export class SpatialSearchUiBehaviorComponent {
 
 
 
-                   
+
+
+
 
 
 
 
                    </div><div class="search-results">
     <div class="has-results">
-        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
         <ul class="search-results-list"></ul>
     </div>
     <div class="no-results">
@@ -1521,6 +1568,15 @@ export class SpatialSearchUiBehaviorComponent {
            </div>
        </div>
 
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
@@ -1530,8 +1586,8 @@ export class SpatialSearchUiBehaviorComponent {
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       
-       <script type="module" src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/menu-wc.js" defer></script>
        <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>

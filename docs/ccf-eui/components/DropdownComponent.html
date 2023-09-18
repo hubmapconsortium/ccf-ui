@@ -9,11 +9,11 @@
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 	   <link rel="stylesheet" href="../styles/style.css">
-        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
+        <link rel="stylesheet" href="../styles/dark.css">
     </head>
     <body>
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">Application ccf-eui documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
@@ -35,32 +35,37 @@
 
 
 <ol class="breadcrumb">
-  <li>Components</li>
-  <li
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
   >
   DropdownComponent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
-        <li class="active">
-            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
         </li>
-        <li >
-            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
         </li>
-        <li >
-            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
         </li>
-        <li >
-            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
         </li>
-        <li >
-            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
         </li>
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
     <h3>File</h3>
 </p>
 <p class="comment">
@@ -79,9 +84,9 @@
 
 
 
-<section>
+<section data-compodoc="block-metadata">
     <h3>Metadata</h3>
-    <table class="table table-sm table-hover">
+    <table class="table table-sm table-hover metadata">
         <tbody>
 
             <tr>
@@ -98,10 +103,13 @@
 
 
 
+
             <tr>
                 <td class="col-md-3">selector</td>
                 <td class="col-md-9"><code>ccf-dropdown</code></td>
             </tr>
+
+
 
             <tr>
                 <td class="col-md-3">styleUrls</td>
@@ -126,7 +134,7 @@
     </table>
 </section>
 
-    <section>
+    <section data-compodoc="block-index">
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
@@ -205,7 +213,7 @@
     </table>
 </section>
 
-    <section>
+    <section data-compodoc="block-constructor">
     <h3 id="constructor">Constructor</h3>
         <table class="table table-sm table-bordered">
             <tbody>
@@ -248,8 +256,8 @@
                                                     </td>
                                                     
                                                         <td>
-                                                                <code><p>Analytics service</p>
-</code>
+                                                                <p>Analytics service</p>
+
                                                         </td>
                                                 </tr>
                                         </tbody>
@@ -261,7 +269,7 @@
         </table>
 </section>
 
-    <section>
+    <section data-compodoc="block-inputs">
     <h3 id="inputs">Inputs</h3>
         <table class="table table-sm table-bordered">
             <tbody>
@@ -345,7 +353,7 @@
             </tbody>
         </table>
 </section>
-    <section>
+    <section data-compodoc="block-outputs">
     <h3 id="outputs">Outputs</h3>
         <table class="table table-sm table-bordered">
             <tbody>
@@ -357,7 +365,7 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+                        <i>Type : </i>    <code>EventEmitter</code>
 
                     </td>
                 </tr>
@@ -377,7 +385,7 @@
 </section>
 
 
-    <section>
+    <section data-compodoc="block-methods">
     
     <h3 id="methods">
         Methods
@@ -415,6 +423,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -497,7 +506,7 @@
         </tbody>
     </table>
 </section>
-    <section>
+    <section data-compodoc="block-properties">
     
     <h3 id="inputs">
         Properties
@@ -544,7 +553,7 @@
 </div>
 
 
-    <div class="tab-pane fade  tab-source-code" id="c-source">
+    <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from &#x27;@angular/core&#x27;;
 import { GoogleAnalyticsService } from &#x27;ngx-google-analytics&#x27;;
 
@@ -612,16 +621,16 @@ export class DropdownComponent {
 </code></pre>
     </div>
 
-    <div class="tab-pane fade " id="c-templateData">
+    <div class="tab-pane fade " id="templateData">
         <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;ccf-dropdown wrapper&quot;&gt;
   &lt;div class&#x3D;&quot;container&quot;&gt;
-    &lt;mat-form-field class&#x3D;&quot;dropdown-form-field&quot;&gt;
+    &lt;mat-form-field class&#x3D;&quot;dropdown-form-field&quot; subscriptSizing&#x3D;&quot;dynamic&quot;&gt;
       &lt;div class&#x3D;&quot;label&quot;&gt;
         {{ label }}
       &lt;/div&gt;
       &lt;mat-select class&#x3D;&quot;selected-value&quot; [value]&#x3D;&quot;selection&quot; (selectionChange)&#x3D;&quot;selectionChanged($event.value)&quot;
                   disableOptionCentering&#x3D;true panelClass&#x3D;&quot;option-panel&quot; (openedChange)&#x3D;&quot;toggleOptions()&quot;
-                  disableRipple&#x3D;true&gt;
+                  disableRipple&#x3D;true hideSingleSelectionIndicator&#x3D;&quot;true&quot;&gt;
         &lt;mat-option *ngFor&#x3D;&quot;let option of options&quot; [value]&#x3D;&quot;option&quot;&gt;
           &lt;div class&#x3D;&quot;{{optionsVisible}}&quot;&gt;
             {{ option }}
@@ -634,7 +643,7 @@ export class DropdownComponent {
 </code></pre>
     </div>
 
-    <div class="tab-pane fade " id="c-styleData">
+    <div class="tab-pane fade " id="styleData">
                 <p class="comment">
                     <code>./dropdown.component.scss</code>
                 </p>
@@ -660,28 +669,34 @@ export class DropdownComponent {
   width: 100%;
   height: 3rem;
 
-  ::ng-deep .mat-form-field-wrapper {
-    padding-left: 1em;
-    padding-right: 1em;
-    height: 3rem;
+  ::ng-deep .mat-mdc-text-field-wrapper {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
 
-    .mat-form-field-flex {
-      .mat-form-field-infix {
+    .mat-mdc-form-field-flex {
+      .mat-mdc-form-field-infix {
         font-size: 0.875rem;
         border: none;
+
+        .label {
+          height: 19.25px;
+        }
 
         mat-select {
           font-size: 1rem;
           font-weight: bold;
+
+          .mat-mdc-select-arrow-wrapper {
+            position: relative;
+            bottom: 0.25rem;
+            right: 0.25rem;
+          }
         }
       }
     }
 
-    .mat-form-field-underline {
-      left: 0rem;
-      bottom: 0rem;
-      transform: none;
-      height: 0.125rem;
+    .mdc-line-ripple::before {
+      border-bottom-width: 2px;
     }
   }
 }
@@ -699,15 +714,14 @@ export class DropdownComponent {
 ::ng-deep .option-panel {
   animation: slideInHorizontalDropdown .3s;
   animation-fill-mode: forwards;
-  box-shadow: 0.2rem 0.2rem 1rem 0rem #0000003e;
-  position: absolute !important;
-  top: 1.55rem;
   max-width: 9.5rem;
+  padding: 0 !important;
 
-  .mat-option {
+  mat-option {
     border-bottom-width: 1px;
     border-bottom-style: solid;
     padding-left: 1em;
+    font-size: 16px;
   }
 
   :last-child {
@@ -719,19 +733,6 @@ export class DropdownComponent {
   min-width: 0rem !important;
 }
 
-.dropdown-form-field {
-  height: 3rem;
-  width: 100%;
-  
-  .label {
-    padding-bottom: 0.063rem;
-  }
-  ::ng-deep .mat-form-field-wrapper {
-    padding-left: 0.25rem;
-    padding-right: 0.25rem;
-  }
-}
-
 ::ng-deep .ccf-dropdown {
   .mat-select-arrow-wrapper {
     transform: translatey(-.5em);
@@ -740,7 +741,7 @@ export class DropdownComponent {
 </code></pre>
     </div>
 
-    <div class="tab-pane fade " id="c-tree">
+    <div class="tab-pane fade " id="tree">
         <div id="tree-container"></div>
         <div class="tree-legend">
             <div class="title">
@@ -765,7 +766,7 @@ export class DropdownComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="ccf-dropdown wrapper">  <div class="container">    <mat-form-field class="dropdown-form-field">      <div class="label">        {{ label }}      </div>      <mat-select class="selected-value" [value]="selection" (selectionChange)="selectionChanged($event.value)"                  disableOptionCentering=true panelClass="option-panel" (openedChange)="toggleOptions()"                  disableRipple=true>        <mat-option *ngFor="let option of options" [value]="option">          <div class="{{optionsVisible}}">            {{ option }}          </div>        </mat-option>      </mat-select>    </mat-form-field>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="ccf-dropdown wrapper">  <div class="container">    <mat-form-field class="dropdown-form-field" subscriptSizing="dynamic">      <div class="label">        {{ label }}      </div>      <mat-select class="selected-value" [value]="selection" (selectionChange)="selectionChanged($event.value)"                  disableOptionCentering=true panelClass="option-panel" (openedChange)="toggleOptions()"                  disableRipple=true hideSingleSelectionIndicator="true">        <mat-option *ngFor="let option of options" [value]="option">          <div class="{{optionsVisible}}">            {{ option }}          </div>        </mat-option>      </mat-select>    </mat-form-field>  </div></div></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppWebComponent', 'selector': 'ccf-root-wc'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DonorCardComponent', 'selector': 'ccf-donor-card'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'RunSpatialSearchComponent', 'selector': 'ccf-run-spatial-search'},{'name': 'SpatialSearchConfigBehaviorComponent', 'selector': 'ccf-spatial-search-config-behavior'},{'name': 'SpatialSearchConfigComponent', 'selector': 'ccf-spatial-search-config'},{'name': 'SpatialSearchKeyboardUIBehaviorComponent', 'selector': 'ccf-spatial-search-keyboard-ui-behavior'},{'name': 'SpatialSearchKeyboardUIComponent', 'selector': 'ccf-spatial-search-keyboard-ui'},{'name': 'SpatialSearchUiBehaviorComponent', 'selector': 'ccf-spatial-search-ui-behavior'},{'name': 'SpatialSearchUiComponent', 'selector': 'ccf-spatial-search-ui'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'TermOccurrenceListComponent', 'selector': 'ccf-term-occurrence-list'},{'name': 'ThumbnailCarouselComponent', 'selector': 'ccf-thumbnail-carousel'},{'name': 'TissueBlockListComponent', 'selector': 'ccf-tissue-block-list'},{'name': 'TissueSectionVisComponent', 'selector': 'ccf-tissue-section-vis'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ViewerComponent', 'selector': 'ccf-viewer'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'DropdownComponent'};
@@ -781,14 +782,16 @@ export class DropdownComponent {
 
 
 
-                   
+
+
+
 
 
 
 
                    </div><div class="search-results">
     <div class="has-results">
-        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
         <ul class="search-results-list"></ul>
     </div>
     <div class="no-results">
@@ -800,6 +803,15 @@ export class DropdownComponent {
            </div>
        </div>
 
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
@@ -809,8 +821,8 @@ export class DropdownComponent {
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       
-       <script type="module" src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/menu-wc.js" defer></script>
        <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>

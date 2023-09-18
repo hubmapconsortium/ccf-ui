@@ -9,11 +9,11 @@
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 	   <link rel="stylesheet" href="../styles/style.css">
-        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
+        <link rel="stylesheet" href="../styles/dark.css">
     </head>
     <body>
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">Application ccf-rui documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
@@ -37,22 +37,29 @@
 
 
 
+
 <ol class="breadcrumb">
-  <li>Injectables</li>
-  <li >IconRegistryState</li>
+  <li class="breadcrumb-item">Injectables</li>
+  <li class="breadcrumb-item" >IconRegistryState</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
-        <li class="active">
-            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
         </li>
-        <li >
-            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
         </li>
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="c-info">
+    <div class="tab-pane fade active in" id="info">
         <p class="comment">
             <h3>File</h3>
         </p>
@@ -77,7 +84,7 @@
             </p>
 
 
-            <section>
+            <section data-compodoc="block-index">
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
@@ -102,6 +109,7 @@
                                 <a href="#ngxsOnInit" >ngxsOnInit</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                 <a href="#registerIcon" >registerIcon</a>
                             </li>
                             <li>
@@ -120,13 +128,13 @@
     </table>
 </section>
 
-            <section>
+            <section data-compodoc="block-constructor">
     <h3 id="constructor">Constructor</h3>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(registry: MatIconRegistry | null, sanitizer: <a href="https://angular.io/api/platform-browser/DomSanitizer" target="_blank">DomSanitizer</a>, globalConfig: <a href="../interfaces/GlobalConfig.html" target="_self">GlobalConfigState&lt;GlobalConfig&gt;</a>)</code>
+<code>constructor(registry: MatIconRegistry | null, sanitizer: DomSanitizer, globalConfig: <a href="../interfaces/GlobalConfig.html" target="_self">GlobalConfigState&lt;GlobalConfig&gt;</a>)</code>
                     </td>
                 </tr>
                         <tr>
@@ -163,15 +171,15 @@
                                                     </td>
                                                     
                                                         <td>
-                                                                <code><p>Material icon registry.</p>
-</code>
+                                                                <p>Material icon registry.</p>
+
                                                         </td>
                                                 </tr>
                                                 <tr>
                                                         <td>sanitizer</td>
                                                   
                                                         <td>
-                                                                        <code><a href="https://angular.io/api/platform-browser/DomSanitizer" target="_blank" >DomSanitizer</a></code>
+                                                                    <code>DomSanitizer</code>
                                                         </td>
                                                   
                                                     <td>
@@ -179,8 +187,8 @@
                                                     </td>
                                                     
                                                         <td>
-                                                                <code><p>Service used to sanitize default imported urls and html.</p>
-</code>
+                                                                <p>Service used to sanitize default imported urls and html.</p>
+
                                                         </td>
                                                 </tr>
                                                 <tr>
@@ -206,7 +214,7 @@
         </table>
 </section>
 
-            <section>
+            <section data-compodoc="block-methods">
     
     <h3 id="methods">
         Methods
@@ -246,6 +254,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -318,6 +327,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -398,6 +408,7 @@
                 <td class="col-md-4">
                     <a name="registerIcon"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span ><b>registerIcon</b></span>
                         <a href="#registerIcon"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -405,7 +416,8 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>registerIcon(definition: <a href="../interfaces/IconDefinition.html" target="_self">IconDefinition</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>registerIcon(definition: <a href="../interfaces/IconDefinition.html" target="_self">IconDefinition</a>)</code>
                 </td>
             </tr>
 
@@ -432,6 +444,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -510,6 +523,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -558,12 +572,12 @@
     </div>
 
 
-    <div class="tab-pane fade  tab-source-code" id="c-source">
+    <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, Optional } from &#x27;@angular/core&#x27;;
 import { MatIconRegistry } from &#x27;@angular/material/icon&#x27;;
 import { DomSanitizer, SafeHtml, SafeResourceUrl } from &#x27;@angular/platform-browser&#x27;;
-import { DataAction, StateRepository } from &#x27;@ngxs-labs/data/decorators&#x27;;
-import { NgxsDataRepository } from &#x27;@ngxs-labs/data/repositories&#x27;;
+import { DataAction, StateRepository } from &#x27;@angular-ru/ngxs/decorators&#x27;;
+import { NgxsDataRepository } from &#x27;@angular-ru/ngxs/repositories&#x27;;
 import { State } from &#x27;@ngxs/store&#x27;;
 import { GlobalConfigState } from &#x27;ccf-shared&#x27;;
 
@@ -629,7 +643,7 @@ export class IconRegistryState extends NgxsDataRepository&lt;void&gt; {
         icon &#x3D;&gt; (icon.name ?? &#x27;&#x27;) &#x3D;&#x3D;&#x3D; name &amp;&amp; (icon.namespace ?? &#x27;&#x27;) &#x3D;&#x3D;&#x3D; namespace
       );
 
-      if (def &#x3D;&#x3D;&#x3D; undefined || def.url &#x3D;&#x3D;&#x3D; undefined) {
+      if (def?.url &#x3D;&#x3D;&#x3D; undefined) {
         return null;
       }
 
@@ -721,14 +735,15 @@ export class IconRegistryState extends NgxsDataRepository&lt;void&gt; {
 
 
 
-                   
+
+
 
 
 
 
                    </div><div class="search-results">
     <div class="has-results">
-        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
         <ul class="search-results-list"></ul>
     </div>
     <div class="no-results">
@@ -740,6 +755,15 @@ export class IconRegistryState extends NgxsDataRepository&lt;void&gt; {
            </div>
        </div>
 
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
@@ -749,8 +773,8 @@ export class IconRegistryState extends NgxsDataRepository&lt;void&gt; {
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       
-       <script type="module" src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/menu-wc.js" defer></script>
        <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>

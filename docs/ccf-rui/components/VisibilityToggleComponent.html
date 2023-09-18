@@ -9,11 +9,11 @@
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 	   <link rel="stylesheet" href="../styles/style.css">
-        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
+        <link rel="stylesheet" href="../styles/dark.css">
     </head>
     <body>
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">Application ccf-rui documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
@@ -35,32 +35,37 @@
 
 
 <ol class="breadcrumb">
-  <li>Components</li>
-  <li
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
   >
   VisibilityToggleComponent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
-        <li class="active">
-            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
         </li>
-        <li >
-            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
         </li>
-        <li >
-            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
         </li>
-        <li >
-            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
         </li>
-        <li >
-            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
         </li>
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
     <h3>File</h3>
 </p>
 <p class="comment">
@@ -80,9 +85,9 @@ pre set up emitter.</p>
 
 
 
-<section>
+<section data-compodoc="block-metadata">
     <h3>Metadata</h3>
-    <table class="table table-sm table-hover">
+    <table class="table table-sm table-hover metadata">
         <tbody>
 
             <tr>
@@ -99,10 +104,13 @@ pre set up emitter.</p>
 
 
 
+
             <tr>
                 <td class="col-md-3">selector</td>
                 <td class="col-md-9"><code>ccf-visibility-toggle</code></td>
             </tr>
+
+
 
             <tr>
                 <td class="col-md-3">styleUrls</td>
@@ -127,7 +135,7 @@ pre set up emitter.</p>
     </table>
 </section>
 
-    <section>
+    <section data-compodoc="block-index">
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
@@ -140,6 +148,7 @@ pre set up emitter.</p>
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#clsName" >clsName</a>
                             </li>
@@ -218,7 +227,7 @@ pre set up emitter.</p>
     </table>
 </section>
 
-    <section>
+    <section data-compodoc="block-constructor">
     <h3 id="constructor">Constructor</h3>
         <table class="table table-sm table-bordered">
             <tbody>
@@ -261,8 +270,8 @@ pre set up emitter.</p>
                                                     </td>
                                                     
                                                         <td>
-                                                                <code><p>Analytics service</p>
-</code>
+                                                                <p>Analytics service</p>
+
                                                         </td>
                                                 </tr>
                                         </tbody>
@@ -274,7 +283,7 @@ pre set up emitter.</p>
         </table>
 </section>
 
-    <section>
+    <section data-compodoc="block-inputs">
     <h3 id="inputs">Inputs</h3>
         <table class="table table-sm table-bordered">
             <tbody>
@@ -374,7 +383,7 @@ making it more reusable.</p>
             </tbody>
         </table>
 </section>
-    <section>
+    <section data-compodoc="block-outputs">
     <h3 id="outputs">Outputs</h3>
         <table class="table table-sm table-bordered">
             <tbody>
@@ -386,7 +395,7 @@ making it more reusable.</p>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+                        <i>Type : </i>    <code>EventEmitter</code>
 
                     </td>
                 </tr>
@@ -405,7 +414,7 @@ changes it.</p>
             </tbody>
         </table>
 </section>
-    <section>
+    <section data-compodoc="block-properties">
     <h3>HostBindings</h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -446,7 +455,7 @@ changes it.</p>
 </section>
 
 
-    <section>
+    <section data-compodoc="block-methods">
     
     <h3 id="methods">
         Methods
@@ -491,7 +500,7 @@ changes it.</p>
         </tbody>
     </table>
 </section>
-    <section>
+    <section data-compodoc="block-properties">
     
     <h3 id="inputs">
         Properties
@@ -502,6 +511,7 @@ changes it.</p>
                 <td class="col-md-4">
                     <a name="clsName"></a>
                     <span class="name">
+                            <span class="modifier"></span>
                             <span class="modifier">Readonly</span>
                         <span ><b>clsName</b></span>
                         <a href="#clsName"><span class="icon ion-ios-link"></span></a>
@@ -548,7 +558,7 @@ changes it.</p>
 </div>
 
 
-    <div class="tab-pane fade  tab-source-code" id="c-source">
+    <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output } from &#x27;@angular/core&#x27;;
 import { GoogleAnalyticsService } from &#x27;ngx-google-analytics&#x27;;
 
@@ -610,87 +620,98 @@ export class VisibilityToggleComponent {
 </code></pre>
     </div>
 
-    <div class="tab-pane fade " id="c-templateData">
+    <div class="tab-pane fade " id="templateData">
         <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;toggle-div&quot;&gt;
-    &lt;mat-chip (click)&#x3D;&quot;toggleVisibility()&quot; class&#x3D;&quot;toggle-wrapper&quot; [class.disabled]&#x3D;&quot;disabled&quot;&gt;
-        &lt;div class&#x3D;&quot;icon-background&quot; [class.disabled]&#x3D;&quot;disabled&quot;&gt;
-            &lt;mat-icon class&#x3D;&quot;icon block&quot; [class.hidden]&#x3D;&quot;visible&quot; svgIcon&#x3D;&quot;app:visibility_off_cube&quot;&gt;&lt;/mat-icon&gt;
-            &lt;mat-icon class&#x3D;&quot;icon green&quot; [class.hidden]&#x3D;&quot;!visible&quot;&gt;done&lt;/mat-icon&gt;
-        &lt;/div&gt;
-       
-        &lt;div class&#x3D;&quot;toggle-label&quot;&gt;{{ toggleLabel }}&lt;/div&gt;
-    &lt;/mat-chip&gt;    
-&lt;/div&gt;</code></pre>
+  &lt;mat-chip (click)&#x3D;&quot;toggleVisibility()&quot; class&#x3D;&quot;toggle-wrapper&quot; [class.disabled]&#x3D;&quot;disabled&quot;&gt;
+    &lt;div class&#x3D;&quot;icon-background&quot; [class.disabled]&#x3D;&quot;disabled&quot;&gt;
+      &lt;mat-icon class&#x3D;&quot;icon block&quot; [class.hidden]&#x3D;&quot;visible&quot; svgIcon&#x3D;&quot;app:visibility_off_cube&quot;&gt;&lt;/mat-icon&gt;
+      &lt;mat-icon class&#x3D;&quot;icon green&quot; [class.hidden]&#x3D;&quot;!visible&quot;&gt;done&lt;/mat-icon&gt;
+    &lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;toggle-label&quot;&gt;{{ toggleLabel }}&lt;/div&gt;
+  &lt;/mat-chip&gt;
+&lt;/div&gt;
+</code></pre>
     </div>
 
-    <div class="tab-pane fade " id="c-styleData">
+    <div class="tab-pane fade " id="styleData">
                 <p class="comment">
                     <code>./visibility-toggle.component.scss</code>
                 </p>
                 <pre class="line-numbers"><code class="language-scss">:host {
-    height: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+
+  ::ng-deep .mat-mdc-chip {
+    padding: 0 !important;
+
+    &amp;.disabled {
+      cursor: not-allowed !important;
+      pointer-events: none;
+    }
+
+    .mdc-evolution-chip__action--primary {
+      padding: 0;
+      cursor: pointer;
+    }
+
+    .mdc-evolution-chip__text-label {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+    }
+  }
+
+  .toggle-div {
+    width: 100%;
     display: flex;
-    align-items: center;
-    
-    ::ng-deep .mat-chip {
-        padding: 0 !important;
+    justify-content: center;
+    padding-top: 1.5rem;
 
-        &amp;.disabled {
-            cursor: not-allowed !important;
-        }
-    }
+    .toggle-wrapper {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      cursor: pointer;
+      border-width: 0.075rem;
+      border-style: solid;
+      height: 2.25rem;
+      border-radius: 1.5rem;
+      transition: background-color 0.2s ease-in-out;
 
-    .toggle-div {
-        width: 100%;
+      .icon-background {
+        border-radius: 1.5rem;
+        height: 2.06rem;
+        width: 2.06rem;
         display: flex;
+        align-items: center;
         justify-content: center;
-        padding-top: 1.5rem;
 
-        .toggle-wrapper {
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            display: flex;
-            padding-left: .5rem;
-            cursor: pointer;
-            align-items: center;
-            position: relative;
-            border-width: 0.075rem;
-            border-style: solid;
-            height: 2.25rem;
-            border-radius: 1.5rem;
-            transition: background-color 0.2s ease-in-out;
-
-            .icon-background {
-                border-radius: 1.5rem;
-                height: 2.06rem;
-                width: 2.06rem;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                .icon {
-                    transition: .6s;
-                    position: absolute;
-                    &amp;.block {
-                        width: 1.125rem;
-                    }
-                    &amp;.hidden {
-                        opacity: 0;
-                    }
-                }
-            }
-            
-            .toggle-label {
-                font-weight: bold;
-                margin-left: 0.5rem;
-                padding-right: 1.25rem;
-                padding-left: 0.25rem;
-            }
+        .icon {
+          transition: .6s;
+          position: absolute;
+          &amp;.block {
+              width: 1.125rem;
+          }
+          &amp;.hidden {
+              opacity: 0;
+          }
         }
+      }
+
+      .toggle-label {
+        font-weight: bold;
+        margin-left: 0.5rem;
+        padding-right: 1.25rem;
+        padding-left: 0.25rem;
+      }
     }
-}</code></pre>
+  }
+}
+</code></pre>
     </div>
 
-    <div class="tab-pane fade " id="c-tree">
+    <div class="tab-pane fade " id="tree">
         <div id="tree-container"></div>
         <div class="tree-legend">
             <div class="title">
@@ -715,7 +736,7 @@ export class VisibilityToggleComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="toggle-div">    <mat-chip (click)="toggleVisibility()" class="toggle-wrapper" [class.disabled]="disabled">        <div class="icon-background" [class.disabled]="disabled">            <mat-icon class="icon block" [class.hidden]="visible" svgIcon="app:visibility_off_cube"></mat-icon>            <mat-icon class="icon green" [class.hidden]="!visible">done</mat-icon>        </div>               <div class="toggle-label">{{ toggleLabel }}</div>    </mat-chip>    </div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="toggle-div">  <mat-chip (click)="toggleVisibility()" class="toggle-wrapper" [class.disabled]="disabled">    <div class="icon-background" [class.disabled]="disabled">      <mat-icon class="icon block" [class.hidden]="visible" svgIcon="app:visibility_off_cube"></mat-icon>      <mat-icon class="icon green" [class.hidden]="!visible">done</mat-icon>    </div>    <div class="toggle-label">{{ toggleLabel }}</div>  </mat-chip></div></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppWebComponent', 'selector': 'ccf-root-wc'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DetailsLabelComponent', 'selector': 'ccf-details-label'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'ExtractionSetDropdownComponent', 'selector': 'ccf-extraction-set-dropdown'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'JsonFileReaderComponent', 'selector': 'ccf-json-file-reader'},{'name': 'LabeledSlideToggleComponent', 'selector': 'ccf-labeled-slide-toggle'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'NameInputComponent', 'selector': 'ccf-name-input'},{'name': 'RegistrationContentComponent', 'selector': 'ccf-registration-content'},{'name': 'RegistrationModalComponent', 'selector': 'ccf-registration-modal'},{'name': 'ReviewButtonComponent', 'selector': 'ccf-review-button'},{'name': 'ReviewModalComponent', 'selector': 'ccf-review-modal'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'TagListComponent', 'selector': 'ccf-tag-list'},{'name': 'TagSearchComponent', 'selector': 'ccf-tag-search'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'VideoModalComponent', 'selector': 'ccf-video-modal'},{'name': 'VideoModalLauncherComponent', 'selector': 'ccf-video-modal-launcher'},{'name': 'VisibilityMenuComponent', 'selector': 'ccf-visibility-menu'},{'name': 'VisibilityToggleComponent', 'selector': 'ccf-visibility-toggle'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'VisibilityToggleComponent'};
@@ -731,14 +752,16 @@ export class VisibilityToggleComponent {
 
 
 
-                   
+
+
+
 
 
 
 
                    </div><div class="search-results">
     <div class="has-results">
-        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
         <ul class="search-results-list"></ul>
     </div>
     <div class="no-results">
@@ -750,6 +773,15 @@ export class VisibilityToggleComponent {
            </div>
        </div>
 
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
@@ -759,8 +791,8 @@ export class VisibilityToggleComponent {
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       
-       <script type="module" src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/menu-wc.js" defer></script>
        <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>

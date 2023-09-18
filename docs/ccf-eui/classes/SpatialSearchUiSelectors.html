@@ -9,11 +9,11 @@
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 	   <link rel="stylesheet" href="../styles/style.css">
-        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
+        <link rel="stylesheet" href="../styles/dark.css">
     </head>
     <body>
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">Application ccf-eui documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
@@ -41,22 +41,29 @@
 
 
 
+
 <ol class="breadcrumb">
-  <li>Classes</li>
-  <li >SpatialSearchUiSelectors</li>
+  <li class="breadcrumb-item">Classes</li>
+  <li class="breadcrumb-item" >SpatialSearchUiSelectors</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
-        <li class="active">
-            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
         </li>
-        <li >
-            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
         </li>
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="c-info">
+    <div class="tab-pane fade active in" id="info">
         <p class="comment">
             <h3>File</h3>
         </p>
@@ -69,7 +76,7 @@
 
 
 
-            <section>
+            <section data-compodoc="block-index">
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
@@ -99,14 +106,17 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Static</span>
                                 <a href="#anatomicalStructures" >anatomicalStructures</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Static</span>
                                 <a href="#cellTypes" >cellTypes</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Static</span>
                                 <a href="#defaultPosition" >defaultPosition</a>
                             </li>
@@ -116,10 +126,12 @@
                                 <a href="#getTermCounts" >getTermCounts</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Static</span>
                                 <a href="#organ" >organ</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Static</span>
                                 <a href="#organId" >organId</a>
                             </li>
@@ -128,42 +140,52 @@
                                 <a href="#organMatchesSex" >organMatchesSex</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Static</span>
                                 <a href="#organs" >organs</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Static</span>
                                 <a href="#position" >position</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Static</span>
                                 <a href="#radius" >radius</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Static</span>
                                 <a href="#radiusSettings" >radiusSettings</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Static</span>
                                 <a href="#referenceOrgans" >referenceOrgans</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Static</span>
                                 <a href="#scene" >scene</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Static</span>
                                 <a href="#sceneBounds" >sceneBounds</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Static</span>
                                 <a href="#sceneTarget" >sceneTarget</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Static</span>
                                 <a href="#sex" >sex</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Static</span>
                                 <a href="#tissueBlocks" >tissueBlocks</a>
                             </li>
@@ -180,7 +202,7 @@
 </section>
 
 
-            <section>
+            <section data-compodoc="block-properties">
     
     <h3 id="inputs">
         Properties
@@ -214,7 +236,7 @@
     </table>
 </section>
 
-            <section>
+            <section data-compodoc="block-methods">
     
     <h3 id="methods">
         Methods
@@ -225,6 +247,7 @@
                 <td class="col-md-4">
                     <a name="anatomicalStructures"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span class="modifier">Static</span>
                         <span ><b>anatomicalStructures</b></span>
                         <a href="#anatomicalStructures"><span class="icon ion-ios-link"></span></a>
@@ -259,6 +282,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -314,6 +338,7 @@
                 <td class="col-md-4">
                     <a name="cellTypes"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span class="modifier">Static</span>
                         <span ><b>cellTypes</b></span>
                         <a href="#cellTypes"><span class="icon ion-ios-link"></span></a>
@@ -348,6 +373,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -403,6 +429,7 @@
                 <td class="col-md-4">
                     <a name="defaultPosition"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span class="modifier">Static</span>
                         <span ><b>defaultPosition</b></span>
                         <a href="#defaultPosition"><span class="icon ion-ios-link"></span></a>
@@ -437,6 +464,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -508,6 +536,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -563,6 +592,7 @@
                 <td class="col-md-4">
                     <a name="organ"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span class="modifier">Static</span>
                         <span ><b>organ</b></span>
                         <a href="#organ"><span class="icon ion-ios-link"></span></a>
@@ -597,6 +627,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -652,6 +683,7 @@
                 <td class="col-md-4">
                     <a name="organId"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span class="modifier">Static</span>
                         <span ><b>organId</b></span>
                         <a href="#organId"><span class="icon ion-ios-link"></span></a>
@@ -686,6 +718,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -756,6 +789,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -811,6 +845,7 @@
                 <td class="col-md-4">
                     <a name="organs"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span class="modifier">Static</span>
                         <span ><b>organs</b></span>
                         <a href="#organs"><span class="icon ion-ios-link"></span></a>
@@ -845,6 +880,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -900,6 +936,7 @@
                 <td class="col-md-4">
                     <a name="position"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span class="modifier">Static</span>
                         <span ><b>position</b></span>
                         <a href="#position"><span class="icon ion-ios-link"></span></a>
@@ -934,6 +971,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -977,6 +1015,7 @@
                 <td class="col-md-4">
                     <a name="radius"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span class="modifier">Static</span>
                         <span ><b>radius</b></span>
                         <a href="#radius"><span class="icon ion-ios-link"></span></a>
@@ -1011,6 +1050,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -1054,6 +1094,7 @@
                 <td class="col-md-4">
                     <a name="radiusSettings"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span class="modifier">Static</span>
                         <span ><b>radiusSettings</b></span>
                         <a href="#radiusSettings"><span class="icon ion-ios-link"></span></a>
@@ -1088,6 +1129,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -1131,6 +1173,7 @@
                 <td class="col-md-4">
                     <a name="referenceOrgans"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span class="modifier">Static</span>
                         <span ><b>referenceOrgans</b></span>
                         <a href="#referenceOrgans"><span class="icon ion-ios-link"></span></a>
@@ -1165,6 +1208,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -1208,6 +1252,7 @@
                 <td class="col-md-4">
                     <a name="scene"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span class="modifier">Static</span>
                         <span ><b>scene</b></span>
                         <a href="#scene"><span class="icon ion-ios-link"></span></a>
@@ -1242,6 +1287,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -1321,6 +1367,7 @@
                 <td class="col-md-4">
                     <a name="sceneBounds"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span class="modifier">Static</span>
                         <span ><b>sceneBounds</b></span>
                         <a href="#sceneBounds"><span class="icon ion-ios-link"></span></a>
@@ -1355,6 +1402,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -1398,6 +1446,7 @@
                 <td class="col-md-4">
                     <a name="sceneTarget"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span class="modifier">Static</span>
                         <span ><b>sceneTarget</b></span>
                         <a href="#sceneTarget"><span class="icon ion-ios-link"></span></a>
@@ -1432,6 +1481,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -1468,6 +1518,7 @@
                 <td class="col-md-4">
                     <a name="sex"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span class="modifier">Static</span>
                         <span ><b>sex</b></span>
                         <a href="#sex"><span class="icon ion-ios-link"></span></a>
@@ -1502,6 +1553,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -1545,6 +1597,7 @@
                 <td class="col-md-4">
                     <a name="tissueBlocks"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span class="modifier">Static</span>
                         <span ><b>tissueBlocks</b></span>
                         <a href="#tissueBlocks"><span class="icon ion-ios-link"></span></a>
@@ -1579,6 +1632,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -1625,7 +1679,7 @@
     </div>
 
 
-    <div class="tab-pane fade  tab-source-code" id="c-source">
+    <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Selector } from &#x27;@ngxs/store&#x27;;
 import { SpatialSceneNode } from &#x27;ccf-body-ui&#x27;;
 import { getProbingSphereScene, OntologyTreeModel, SpatialEntity, TissueBlockResult } from &#x27;ccf-database&#x27;;
@@ -1742,6 +1796,7 @@ export class SpatialSearchUiSelectors {
 
   private static getTermCounts(counts: Record&lt;string, number&gt; | undefined, tree: OntologyTreeModel): TermResult[] {
     return Object.entries(counts ?? {}).filter(([_, count]) &#x3D;&gt; count &gt; 0).map(([term, count]) &#x3D;&gt; ({
+      // eslint-disable-next-line @typescript-eslint/naming-convention
       &#x27;@id&#x27;: term,
       label: tree.nodes[term]?.label ?? term.split(&#x27;/&#x27;).slice(-1)[0],
       count
@@ -1754,14 +1809,15 @@ export class SpatialSearchUiSelectors {
 
 
 
-                   
+
+
 
 
 
 
                    </div><div class="search-results">
     <div class="has-results">
-        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
         <ul class="search-results-list"></ul>
     </div>
     <div class="no-results">
@@ -1773,6 +1829,15 @@ export class SpatialSearchUiSelectors {
            </div>
        </div>
 
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
@@ -1782,8 +1847,8 @@ export class SpatialSearchUiSelectors {
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       
-       <script type="module" src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/menu-wc.js" defer></script>
        <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
