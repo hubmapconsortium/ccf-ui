@@ -24,7 +24,6 @@ import { SpatialSearchFilterItem } from './core/store/spatial-search-filter/spat
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
 
-
 interface AppOptions extends CCFDatabaseOptions {
   theme?: string;
   header?: boolean;
@@ -116,6 +115,7 @@ export class AppComponent implements OnInit {
   readonly homeUrl$ = this.globalConfig.getOption('homeUrl');
   readonly logoTooltip$ = this.globalConfig.getOption('logoTooltip');
   readonly loginDisabled$ = this.globalConfig.getOption('loginDisabled');
+  readonly filter$ = this.globalConfig.getOption('filter');
 
   /**
    * Creates an instance of app component.
@@ -141,6 +141,7 @@ export class AppComponent implements OnInit {
     data.providerFilterData$.subscribe();
     this.ontologyTerms$ = data.filter$.pipe(map(x => x?.ontologyTerms));
     this.cellTypeTerms$ = data.filter$.pipe(map(x => x?.cellTypeTerms));
+    this.filter$.subscribe((filter:any)=> data.updateFilter(filter));
 
     combineLatest([this.theme$, this.themeMode$]).subscribe(
       ([theme, mode]) => {
