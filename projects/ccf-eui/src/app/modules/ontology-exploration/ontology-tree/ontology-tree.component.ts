@@ -10,6 +10,11 @@ import { filter, invoke, property } from 'lodash';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { FlatNode } from '../../../core/models/flat-node';
 
+export const labelMap = new Map([
+  ['colon', 'large intestine'],
+  ['body', 'Anatomical Structures (AS)'],
+  ['cell', 'Cell Types (CT)']
+]);
 
 /** Type of function for getting child nodes from a parent node. */
 type GetChildrenFunc = (o: OntologyTreeNode) => OntologyTreeNode[];
@@ -190,11 +195,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
 
   highlightedNode: FlatNode | undefined;
 
-  private readonly labelMap = new Map([
-    ['colon', 'large intestine'],
-    ['body', 'Anatomical Structures (AS)'],
-    ['cell', 'Cell Types (CT)']
-  ]);
+
 
   /**
    * Expand the body node when the component is initialized.
@@ -300,7 +301,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
    * @returns label for node
    */
   getNodeLabel(label: string): string {
-    return this.labelMap.get(label) ?? label;
+    return labelMap.get(label) ?? label;
   }
   /**
    * Determines whether a node is currently selected.

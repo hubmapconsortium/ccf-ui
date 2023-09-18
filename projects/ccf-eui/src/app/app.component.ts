@@ -38,6 +38,7 @@ import { SpatialSearchFilterSelectors } from './core/store/spatial-search-filter
 import { SpatialSearchFilterItem } from './core/store/spatial-search-filter/spatial-search-filter.state';
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
+import { labelMap } from './modules/ontology-exploration/ontology-tree/ontology-tree.component';
 
 
 interface AppOptions extends CCFDatabaseOptions {
@@ -167,14 +168,14 @@ export class AppComponent implements OnInit {
     );
     this.ontologyTreeModel$.subscribe((x) => {
       if (x?.nodes?.[x.root]) {
-        this.ontologySelectionLabel = x.nodes?.[x.root].label ?? '';
-        this.selectedtoggleOptions.push(x.nodes?.[x.root].label ?? '');
+        this.ontologySelectionLabel = labelMap.get(x.nodes?.[x.root].label) ?? '';
+        this.selectedtoggleOptions.push(labelMap.get(x.nodes?.[x.root].label) ?? '');
       }
     });
     this.cellTypeTreeModel$.subscribe((x) => {
       if (x?.nodes?.[x.root]) {
-        this.cellTypeSelectionLabel = x.nodes?.[x.root].label ?? '';
-        this.selectedtoggleOptions.push(x.nodes?.[x.root].label ?? '');
+        this.cellTypeSelectionLabel = labelMap.get(x.nodes?.[x.root].label) ?? '';
+        this.selectedtoggleOptions.push( labelMap.get(x.nodes?.[x.root].label) ?? '');
       }
     });
   }
