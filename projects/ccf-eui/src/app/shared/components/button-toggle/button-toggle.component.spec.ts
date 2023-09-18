@@ -1,21 +1,19 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { Shallow } from 'shallow-render';
 import { ButtonToggleComponent } from './button-toggle.component';
 
 describe('ButtonToggleComponent', () => {
-  let component: ButtonToggleComponent;
-  let fixture: ComponentFixture<ButtonToggleComponent>;
+  let shallow: Shallow<ButtonToggleComponent>;
+  const menu= ['a','b','c'];
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [ButtonToggleComponent]
-    });
-    fixture = TestBed.createComponent(ButtonToggleComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    shallow = new Shallow(ButtonToggleComponent,ButtonToggleComponent);
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('Should Check if item is selected', async () => {
+    const { instance } = await shallow.render({ bind: { menuOptions:menu,selectedItems:[menu[0]] } });
+
+    expect(instance.isItemSelected(menu[0])).toBeTrue();
+    expect(instance.isItemSelected(menu[1])).toBeFalse();
   });
 });

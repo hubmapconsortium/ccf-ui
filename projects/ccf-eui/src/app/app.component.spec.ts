@@ -46,8 +46,8 @@ describe('AppComponent', () => {
     root: 'a',
     nodes: {
       a: {
-        '@id': 'a',
-        '@type': 'OntologyTreeNode',
+        ['@id']: 'a',
+        ['@type']: 'OntologyTreeNode',
         children: [],
         id: 'a',
         label: 'a',
@@ -245,10 +245,10 @@ describe('AppComponent', () => {
       }
     });
     instance.selectedtoggleOptions=['body','cell'];
-    instance.toggleSelection('body')
+    instance.toggleSelection('body');
 
     expect(instance.selectedtoggleOptions).toBeDefined();
-    instance.toggleSelection('a')
+    instance.toggleSelection('a');
 
     expect(instance.selectedtoggleOptions).toBeDefined();
   });
