@@ -24,23 +24,23 @@
 <title>cluster_SpatialSearchUiBehaviorModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="33,-70 33,-268 463,-268 463,-70 33,-70"/>
 </g>
+<g id="clust4" class="cluster">
+<title>cluster_SpatialSearchUiBehaviorModule_imports</title>
+<polygon fill="none" stroke="black" points="289,-78 289,-130 455,-130 455,-78 289,-78"/>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_SpatialSearchUiBehaviorModule_declarations</title>
+<polygon fill="none" stroke="black" points="41,-78 41,-130 281,-130 281,-78 41,-78"/>
+</g>
 <g id="clust5" class="cluster">
 <title>cluster_SpatialSearchUiBehaviorModule_exports</title>
 <polygon fill="none" stroke="black" points="126,-208 126,-260 370,-260 370,-208 126,-208"/>
 </g>
-<g id="clust2" class="cluster">
-<title>cluster_SpatialSearchUiBehaviorModule_declarations</title>
-<polygon fill="none" stroke="black" points="215,-78 215,-130 455,-130 455,-78 215,-78"/>
-</g>
-<g id="clust4" class="cluster">
-<title>cluster_SpatialSearchUiBehaviorModule_imports</title>
-<polygon fill="none" stroke="black" points="41,-78 41,-130 207,-130 207,-78 41,-78"/>
-</g>
 <!-- SpatialSearchUiBehaviorComponent -->
 <g id="node1" class="node">
 <title>SpatialSearchUiBehaviorComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="446.62,-122 223.38,-122 223.38,-86 446.62,-86 446.62,-122"/>
-<text text-anchor="middle" x="335" y="-99.8" font-family="Times,serif" font-size="14.00">SpatialSearchUiBehaviorComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="272.62,-122 49.38,-122 49.38,-86 272.62,-86 272.62,-122"/>
+<text text-anchor="middle" x="161" y="-99.8" font-family="Times,serif" font-size="14.00">SpatialSearchUiBehaviorComponent</text>
 </g>
 <!-- SpatialSearchUiBehaviorModule -->
 <g id="node2" class="node">
@@ -51,8 +51,8 @@
 <!-- SpatialSearchUiBehaviorComponent&#45;&gt;SpatialSearchUiBehaviorModule -->
 <g id="edge1" class="edge">
 <title>SpatialSearchUiBehaviorComponent&#45;&gt;SpatialSearchUiBehaviorModule</title>
-<path fill="none" stroke="black" d="M286.05,-122.11C286.05,-122.11 286.05,-140.99 286.05,-140.99"/>
-<polygon fill="black" stroke="black" points="282.55,-140.99 286.05,-150.99 289.55,-140.99 282.55,-140.99"/>
+<path fill="none" stroke="black" d="M209.95,-122.11C209.95,-122.11 209.95,-140.99 209.95,-140.99"/>
+<polygon fill="black" stroke="black" points="206.45,-140.99 209.95,-150.99 213.45,-140.99 206.45,-140.99"/>
 </g>
 <!-- SpatialSearchUiBehaviorComponent  -->
 <g id="node4" class="node">
@@ -69,14 +69,14 @@
 <!-- SpatialSearchUiModule -->
 <g id="node3" class="node">
 <title>SpatialSearchUiModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="199.02,-122 196.02,-126 175.02,-126 172.02,-122 48.98,-122 48.98,-86 199.02,-86 199.02,-122"/>
-<text text-anchor="middle" x="124" y="-99.8" font-family="Times,serif" font-size="14.00">SpatialSearchUiModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="447.02,-122 444.02,-126 423.02,-126 420.02,-122 296.98,-122 296.98,-86 447.02,-86 447.02,-122"/>
+<text text-anchor="middle" x="372" y="-99.8" font-family="Times,serif" font-size="14.00">SpatialSearchUiModule</text>
 </g>
 <!-- SpatialSearchUiModule&#45;&gt;SpatialSearchUiBehaviorModule -->
 <g id="edge2" class="edge">
 <title>SpatialSearchUiModule&#45;&gt;SpatialSearchUiBehaviorModule</title>
-<path fill="none" stroke="black" d="M173.17,-122.11C173.17,-122.11 173.17,-140.99 173.17,-140.99"/>
-<polygon fill="black" stroke="black" points="169.67,-140.99 173.17,-150.99 176.67,-140.99 169.67,-140.99"/>
+<path fill="none" stroke="black" d="M322.83,-122.11C322.83,-122.11 322.83,-140.99 322.83,-140.99"/>
+<polygon fill="black" stroke="black" points="319.33,-140.99 322.83,-150.99 326.33,-140.99 319.33,-140.99"/>
 </g>
 </g>
 </svg>
