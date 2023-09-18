@@ -30,7 +30,7 @@
         (selectionChange)="toggleSelection($event)"
         ></ccf-button-toggle>
         <ccf-ontology-selection class="ontology-selection"
-                                *ngIf="isItemSelected('Anatomical Structures (AS)')"
+                                *ngIf="isItemSelected('AS')"
                                 [treeModel]="ontologyTreeModel$ | async"
                                 [termData]="data.ontologyTermsFullData$ | async"
                                 [occurenceData]="data.ontologyTermOccurencesData$ | async"
@@ -39,7 +39,7 @@
                                 [header]="header$ | async">
         </ccf-ontology-selection>
         <ccf-ontology-selection class="cell-type-selection"
-                                *ngIf="isItemSelected('Cell Types (CT)')"
+                                *ngIf="isItemSelected('CT')"
                                 [treeModel]="cellTypeTreeModel$ | async"
                                 [termData]="data.cellTypeTermsFullData$ | async"
                                 [occurenceData]="data.cellTypeTermOccurencesData$ | async"
