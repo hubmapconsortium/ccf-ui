@@ -133,7 +133,12 @@ describe('RegistrationState', () => {
         {
           provide: ReferenceDataState, useValue: {
             state$: referenceDataStateSubject,
-            snapshot: initialReferenceDataState
+            snapshot: initialReferenceDataState,
+            getSourceDB: () => (
+              {
+                subscribe: () => undefined
+              }
+            )
           }
         },
         {

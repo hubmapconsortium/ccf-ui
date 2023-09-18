@@ -1,11 +1,13 @@
-import { TestBed } from '@angular/core/testing';
 import { NgxsDataPluginModule } from '@angular-ru/ngxs';
+import { TestBed } from '@angular/core/testing';
 import { NgxsModule, Store } from '@ngxs/store';
 import { GlobalConfigState } from 'ccf-shared';
-import { Observable, lastValueFrom } from 'rxjs';
+import { lastValueFrom, Observable, of } from 'rxjs';
 import { take } from 'rxjs/operators';
 
 import { PageState } from '../page/page.state';
+import { ReferenceDataState } from '../reference-data/reference-data.state';
+import { RegistrationState } from '../registration/registration.state';
 import { GLOBAL_CONFIG } from './../../services/config/config';
 import { ModelState } from './../model/model.state';
 import { SceneState } from './../scene/scene.state';
@@ -27,8 +29,15 @@ describe('AnatomicalStructureTagsState', () => {
       ],
       providers: [
         AnatomicalStructureTagState,
+        RegistrationState,
         SceneState,
-        ModelState,
+        {
+          provide: ModelState,
+          useValue: {
+            modelChanged$: of([])
+          }
+        },
+        ReferenceDataState,
         GlobalConfigState,
         {
           provide: GLOBAL_CONFIG,
