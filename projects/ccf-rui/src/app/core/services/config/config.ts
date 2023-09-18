@@ -31,6 +31,7 @@ export interface GlobalConfig {
   header?: boolean;
   homeUrl?: string;
   logoTooltip?: string;
+  organOptions?: string[];
 }
 
 declare global {

@@ -55,6 +55,22 @@ export class RegistrationContentComponent {
     public dialogRef: MatDialogRef<RegistrationContentComponent>
   ) {
     dialogRef.disableClose = true;
+    this.page.state$.subscribe(state => {
+      if (state.organOptions) {
+        console.warn(state.organOptions);
+        console.warn(RUI_ORGANS)
+        this.organList = RUI_ORGANS.filter(organ => {
+          if (!organ.id) {
+            return false;
+          } else {
+            return state.organOptions?.includes(organ.id);
+          }
+        });
+        console.warn(this.organList);
+      } else {
+        this.organList = RUI_ORGANS;
+      }
+    });
   }
 
   /**
