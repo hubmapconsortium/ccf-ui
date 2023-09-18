@@ -79,6 +79,7 @@ export class AppComponent implements OnInit {
   @Dispatch()
   readonly removeSpatialSearch = actionAsFn(RemoveSearch);
 
+  menuOptions: string[] = [];
   /**
    * Used to keep track of the ontology label to be passed down to the
    * results-browser component.
@@ -168,14 +169,18 @@ export class AppComponent implements OnInit {
     );
     this.ontologyTreeModel$.subscribe((x) => {
       if (x?.nodes?.[x.root]) {
-        this.ontologySelectionLabel = labelMap.get(x.nodes?.[x.root].label) ?? '';
-        this.selectedtoggleOptions.push(labelMap.get(x.nodes?.[x.root].label) ?? '');
+        this.menuOptions.push(labelMap.get(x.nodes?.[x.root].label) ?? '');
+        this.selectedtoggleOptions.push(
+          labelMap.get(x.nodes?.[x.root].label) ?? ''
+        );
       }
     });
     this.cellTypeTreeModel$.subscribe((x) => {
       if (x?.nodes?.[x.root]) {
-        this.cellTypeSelectionLabel = labelMap.get(x.nodes?.[x.root].label) ?? '';
-        this.selectedtoggleOptions.push( labelMap.get(x.nodes?.[x.root].label) ?? '');
+        this.menuOptions.push(labelMap.get(x.nodes?.[x.root].label) ?? '');
+        this.selectedtoggleOptions.push(
+          labelMap.get(x.nodes?.[x.root].label) ?? ''
+        );
       }
     });
   }
