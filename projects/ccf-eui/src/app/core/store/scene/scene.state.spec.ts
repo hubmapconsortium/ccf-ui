@@ -10,7 +10,7 @@ import { of } from 'rxjs/internal/observable/of';
 
 
 
-fdescribe('SceneState', () => {
+describe('SceneState', () => {
   let sceneState: SceneState;
   const globalConfigState = jasmine.createSpyObj<GlobalConfigState<unknown>>('GlobalConfigState',['getOption']);
   beforeEach(() => {
