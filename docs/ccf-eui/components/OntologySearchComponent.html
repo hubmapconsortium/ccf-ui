@@ -9,11 +9,11 @@
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 	   <link rel="stylesheet" href="../styles/style.css">
-        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
+        <link rel="stylesheet" href="../styles/dark.css">
     </head>
     <body>
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">Application ccf-eui documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
@@ -35,32 +35,37 @@
 
 
 <ol class="breadcrumb">
-  <li>Components</li>
-  <li
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
   >
   OntologySearchComponent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
-        <li class="active">
-            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
         </li>
-        <li >
-            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
         </li>
-        <li >
-            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
         </li>
-        <li >
-            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
         </li>
-        <li >
-            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
         </li>
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
     <h3>File</h3>
 </p>
 <p class="comment">
@@ -81,13 +86,13 @@
         <h3>Implements</h3>
     </p>
     <p class="comment">
-                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                <code>OnInit</code>
     </p>
 
 
-<section>
+<section data-compodoc="block-metadata">
     <h3>Metadata</h3>
-    <table class="table table-sm table-hover">
+    <table class="table table-sm table-hover metadata">
         <tbody>
 
             <tr>
@@ -104,10 +109,13 @@
 
 
 
+
             <tr>
                 <td class="col-md-3">selector</td>
                 <td class="col-md-9"><code>ccf-ontology-search</code></td>
             </tr>
+
+
 
             <tr>
                 <td class="col-md-3">styleUrls</td>
@@ -132,7 +140,7 @@
     </table>
 </section>
 
-    <section>
+    <section data-compodoc="block-index">
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
@@ -224,7 +232,7 @@
     </table>
 </section>
 
-    <section>
+    <section data-compodoc="block-constructor">
     <h3 id="constructor">Constructor</h3>
         <table class="table table-sm table-bordered">
             <tbody>
@@ -267,8 +275,8 @@
                                                     </td>
                                                     
                                                         <td>
-                                                                <code><p>instance of searchService which provides all the search functionality</p>
-</code>
+                                                                <p>instance of searchService which provides all the search functionality</p>
+
                                                         </td>
                                                 </tr>
                                                 <tr>
@@ -283,8 +291,8 @@
                                                     </td>
                                                     
                                                         <td>
-                                                                <code><p>Analytics service</p>
-</code>
+                                                                <p>Analytics service</p>
+
                                                         </td>
                                                 </tr>
                                         </tbody>
@@ -296,7 +304,7 @@
         </table>
 </section>
 
-    <section>
+    <section data-compodoc="block-inputs">
     <h3 id="inputs">Inputs</h3>
         <table class="table table-sm table-bordered">
             <tbody>
@@ -320,7 +328,7 @@
             </tbody>
         </table>
 </section>
-    <section>
+    <section data-compodoc="block-outputs">
     <h3 id="outputs">Outputs</h3>
         <table class="table table-sm table-bordered">
             <tbody>
@@ -332,7 +340,7 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+                        <i>Type : </i>    <code>EventEmitter</code>
 
                     </td>
                 </tr>
@@ -353,7 +361,7 @@ selected by the user in the search-results</p>
 </section>
 
 
-    <section>
+    <section data-compodoc="block-methods">
     
     <h3 id="methods">
         Methods
@@ -391,6 +399,7 @@ selected by the user in the search-results</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -508,6 +517,7 @@ and gets the search results from the service</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -583,6 +593,7 @@ and gets the search results from the service</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -673,6 +684,7 @@ and gets the search results from the service</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -731,7 +743,7 @@ and gets the search results from the service</p>
         </tbody>
     </table>
 </section>
-    <section>
+    <section data-compodoc="block-properties">
     
     <h3 id="inputs">
         Properties
@@ -812,7 +824,7 @@ and gets the search results from the service</p>
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>new FormControl(&#x27;&#x27;)</code>
+                        <i>Default value : </i><code>new UntypedFormControl(&#x27;&#x27;)</code>
                     </td>
                 </tr>
                     <tr>
@@ -867,9 +879,9 @@ and gets the search results from the service</p>
 </div>
 
 
-    <div class="tab-pane fade  tab-source-code" id="c-source">
+    <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Input, Output } from &#x27;@angular/core&#x27;;
-import { FormControl } from &#x27;@angular/forms&#x27;;
+import { UntypedFormControl } from &#x27;@angular/forms&#x27;;
 import { MatAutocompleteSelectedEvent } from &#x27;@angular/material/autocomplete&#x27;;
 import { OntologyTreeNode } from &#x27;ccf-database&#x27;;
 import { get, sortBy } from &#x27;lodash&#x27;;
@@ -901,7 +913,7 @@ export class OntologySearchComponent implements OnInit {
   /**
    * Instance of FormControl - tracks the value and validation status of an individual form control
    */
-  formControl &#x3D; new FormControl(&#x27;&#x27;);
+  formControl &#x3D; new UntypedFormControl(&#x27;&#x27;);
 
 
   /**
@@ -986,9 +998,9 @@ export class OntologySearchComponent implements OnInit {
 </code></pre>
     </div>
 
-    <div class="tab-pane fade " id="c-templateData">
+    <div class="tab-pane fade " id="templateData">
         <pre class="line-numbers"><code class="language-html">&lt;form class&#x3D;&quot;ccf-ontology-search&quot; [class.autocomplete-open]&#x3D;&quot;autoCompleteOpen&quot;&gt;
-  &lt;mat-form-field appearance&#x3D;&quot;outline&quot; class&#x3D;&quot;field&quot;&gt;
+  &lt;mat-form-field appearance&#x3D;&quot;outline&quot; class&#x3D;&quot;field&quot; subscriptSizing&#x3D;&quot;dynamic&quot;&gt;
     &lt;mat-icon matPrefix color&#x3D;&quot;primary&quot; class&#x3D;&quot;search&quot;&gt;search&lt;/mat-icon&gt;
     &lt;input class&#x3D;&quot;input&quot; type&#x3D;&quot;text&quot; [placeholder]&#x3D;&quot;placeholderText&quot; matInput [formControl]&#x3D;&quot;formControl&quot;
            [matAutocomplete]&#x3D;&quot;autocomplete&quot;&gt;
@@ -1009,7 +1021,7 @@ export class OntologySearchComponent implements OnInit {
 </code></pre>
     </div>
 
-    <div class="tab-pane fade " id="c-styleData">
+    <div class="tab-pane fade " id="styleData">
                 <p class="comment">
                     <code>./ontology-search.component.scss</code>
                 </p>
@@ -1018,48 +1030,47 @@ export class OntologySearchComponent implements OnInit {
 
   .field {
     width: 100%;
-    
-  }
+    padding-bottom: 1.34375em;
+    font-size: inherit;
+    line-height: 1.125;
+    letter-spacing: normal;
 
-  ::ng-deep .mat-form-field-appearance-outline {
-    .mat-form-field-outline-end {
-      border-radius: 0 0.25rem 0.25rem 0;
+    ::ng-deep .mat-mdc-text-field-wrapper {
       margin: 0;
-    }
+      height: 2.75rem;
 
-    .mat-form-field-wrapper {
-      margin: 0;
-      
+      .mat-mdc-form-field-flex {
+        align-items: center;
+        height: 2.75rem;
 
-      .mat-form-field-flex {
-        .mat-form-field-infix {
-          border: none;
-          height: 3rem;
-          
+        .mat-mdc-form-field-infix {
+          padding: 1rem 0;
 
           input {
             margin-left: .4rem;
           }
         }
-        .mat-form-field-prefix {
-          top: .5rem;
-          border: none;
+
+        .mat-mdc-form-field-icon-prefix {
+          padding: 0;
+        }
+
+        mat-icon {
+          padding-right: 0;
         }
       }
     }
-
-    .mat-form-field-outline-start {
-      border-radius: 0.25rem 0 0 0.25rem;
-      min-width: 2.5rem;
-	  }
   }
 }
+
 
 ::ng-deep .ccf-ontology-search.detached {
   border: 0.125rem solid;
   border-top: none;
   border-radius: 0 0 0.25rem 0.25rem;
   max-height: 18rem;
+  padding: 0;
+  box-shadow: none;
 
   .results-container {
     width: 23.75rem;
@@ -1069,33 +1080,34 @@ export class OntologySearchComponent implements OnInit {
     scrollbar-width: thin;
 
     mat-option {
-      height: 1.5rem;
-      width: 23.75rem;
-      
+      min-height: 1.5rem;
+      font-size: 1rem;
+      font-weight: 500;
+
       .search-term {
         text-decoration: underline;
       }
     }
   }
-
 }
 
 .autocomplete-open {
-  ::ng-deep .mat-form-field-appearance-outline {
-    .mat-form-field-outline-start {
+  ::ng-deep .mdc-notched-outline {
+    .mdc-notched-outline__leading {
       border-radius: 0.25rem 0 0 0;
       border-bottom: none;
     }
 
-    .mat-form-field-outline-end {
+    .mdc-notched-outline__trailing {
       border-radius: 0 0.25rem 0 0;
       border-bottom: none;
     }
   }
-}</code></pre>
+}
+</code></pre>
     </div>
 
-    <div class="tab-pane fade " id="c-tree">
+    <div class="tab-pane fade " id="tree">
         <div id="tree-container"></div>
         <div class="tree-legend">
             <div class="title">
@@ -1120,7 +1132,7 @@ export class OntologySearchComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><form class="ccf-ontology-search" [class.autocomplete-open]="autoCompleteOpen">  <mat-form-field appearance="outline" class="field">    <mat-icon matPrefix color="primary" class="search">search</mat-icon>    <input class="input" type="text" [placeholder]="placeholderText" matInput [formControl]="formControl"           [matAutocomplete]="autocomplete">    <mat-autocomplete class="ccf-ontology-search detached autocomplete" [displayWith]="displayFormatter"                      (optionSelected)="onSelect($event)" (opened)="autoCompleteOpen = true"                      (closed)="autoCompleteOpen = false" #autocomplete>      <div class="results-container">        <mat-option *ngFor="let option of filteredResults$ | async" [value]="option">          <span class="prefix">{{option.displayLabel[0]}}</span>          <span class="search-term">{{option.displayLabel[1]}}</span>          <span class="suffix">{{option.displayLabel[2]}}</span>        </mat-option>      </div>    </mat-autocomplete>  </mat-form-field></form></div>'
+        var COMPONENT_TEMPLATE = '<div><form class="ccf-ontology-search" [class.autocomplete-open]="autoCompleteOpen">  <mat-form-field appearance="outline" class="field" subscriptSizing="dynamic">    <mat-icon matPrefix color="primary" class="search">search</mat-icon>    <input class="input" type="text" [placeholder]="placeholderText" matInput [formControl]="formControl"           [matAutocomplete]="autocomplete">    <mat-autocomplete class="ccf-ontology-search detached autocomplete" [displayWith]="displayFormatter"                      (optionSelected)="onSelect($event)" (opened)="autoCompleteOpen = true"                      (closed)="autoCompleteOpen = false" #autocomplete>      <div class="results-container">        <mat-option *ngFor="let option of filteredResults$ | async" [value]="option">          <span class="prefix">{{option.displayLabel[0]}}</span>          <span class="search-term">{{option.displayLabel[1]}}</span>          <span class="suffix">{{option.displayLabel[2]}}</span>        </mat-option>      </div>    </mat-autocomplete>  </mat-form-field></form></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppWebComponent', 'selector': 'ccf-root-wc'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DonorCardComponent', 'selector': 'ccf-donor-card'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'RunSpatialSearchComponent', 'selector': 'ccf-run-spatial-search'},{'name': 'SpatialSearchConfigBehaviorComponent', 'selector': 'ccf-spatial-search-config-behavior'},{'name': 'SpatialSearchConfigComponent', 'selector': 'ccf-spatial-search-config'},{'name': 'SpatialSearchKeyboardUIBehaviorComponent', 'selector': 'ccf-spatial-search-keyboard-ui-behavior'},{'name': 'SpatialSearchKeyboardUIComponent', 'selector': 'ccf-spatial-search-keyboard-ui'},{'name': 'SpatialSearchUiBehaviorComponent', 'selector': 'ccf-spatial-search-ui-behavior'},{'name': 'SpatialSearchUiComponent', 'selector': 'ccf-spatial-search-ui'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'TermOccurrenceListComponent', 'selector': 'ccf-term-occurrence-list'},{'name': 'ThumbnailCarouselComponent', 'selector': 'ccf-thumbnail-carousel'},{'name': 'TissueBlockListComponent', 'selector': 'ccf-tissue-block-list'},{'name': 'TissueSectionVisComponent', 'selector': 'ccf-tissue-section-vis'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ViewerComponent', 'selector': 'ccf-viewer'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'OntologySearchComponent'};
@@ -1136,14 +1148,16 @@ export class OntologySearchComponent implements OnInit {
 
 
 
-                   
+
+
+
 
 
 
 
                    </div><div class="search-results">
     <div class="has-results">
-        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
         <ul class="search-results-list"></ul>
     </div>
     <div class="no-results">
@@ -1155,6 +1169,15 @@ export class OntologySearchComponent implements OnInit {
            </div>
        </div>
 
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
@@ -1164,8 +1187,8 @@ export class OntologySearchComponent implements OnInit {
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       
-       <script type="module" src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/menu-wc.js" defer></script>
        <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>

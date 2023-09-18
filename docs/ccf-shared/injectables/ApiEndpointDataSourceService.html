@@ -9,11 +9,11 @@
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 	   <link rel="stylesheet" href="../styles/style.css">
-        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
+        <link rel="stylesheet" href="../styles/dark.css">
     </head>
     <body>
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">Library ccf-shared documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
@@ -37,22 +37,29 @@
 
 
 
+
 <ol class="breadcrumb">
-  <li>Injectables</li>
-  <li >ApiEndpointDataSourceService</li>
+  <li class="breadcrumb-item">Injectables</li>
+  <li class="breadcrumb-item" >ApiEndpointDataSourceService</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
-        <li class="active">
-            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
         </li>
-        <li >
-            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
         </li>
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="c-info">
+    <div class="tab-pane fade active in" id="info">
         <p class="comment">
             <h3>File</h3>
         </p>
@@ -64,7 +71,7 @@
 
 
 
-            <section>
+            <section data-compodoc="block-index">
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
@@ -90,39 +97,50 @@
                                 <a href="#doRequest" >doRequest</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                 <a href="#getAggregateResults" >getAggregateResults</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                 <a href="#getCellTypeTermOccurences" >getCellTypeTermOccurences</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                 <a href="#getCellTypeTreeModel" >getCellTypeTreeModel</a>
                             </li>
                             <li>
                                 <a href="#getDatabaseStatus" >getDatabaseStatus</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                 <a href="#getDatasetTechnologyNames" >getDatasetTechnologyNames</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                 <a href="#getOntologyTermOccurences" >getOntologyTermOccurences</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                 <a href="#getOntologyTreeModel" >getOntologyTreeModel</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                 <a href="#getProviderNames" >getProviderNames</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                 <a href="#getReferenceOrgans" >getReferenceOrgans</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                 <a href="#getReferenceOrganScene" >getReferenceOrganScene</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                 <a href="#getScene" >getScene</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                 <a href="#getTissueBlockResults" >getTissueBlockResults</a>
                             </li>
                         </ul>
@@ -137,7 +155,7 @@
     </table>
 </section>
 
-            <section>
+            <section data-compodoc="block-constructor">
     <h3 id="constructor">Constructor</h3>
         <table class="table table-sm table-bordered">
             <tbody>
@@ -198,7 +216,7 @@
         </table>
 </section>
 
-            <section>
+            <section data-compodoc="block-methods">
     
     <h3 id="methods">
         Methods
@@ -245,6 +263,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -349,6 +368,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -463,6 +483,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -542,6 +563,7 @@
                 <td class="col-md-4">
                     <a name="getAggregateResults"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span ><b>getAggregateResults</b></span>
                         <a href="#getAggregateResults"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -549,7 +571,8 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getAggregateResults(filter?: Filter)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getAggregateResults(filter?: Filter)</code>
                 </td>
             </tr>
 
@@ -574,6 +597,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -617,6 +641,7 @@
                 <td class="col-md-4">
                     <a name="getCellTypeTermOccurences"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span ><b>getCellTypeTermOccurences</b></span>
                         <a href="#getCellTypeTermOccurences"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -624,7 +649,8 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getCellTypeTermOccurences(filter?: Filter)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getCellTypeTermOccurences(filter?: Filter)</code>
                 </td>
             </tr>
 
@@ -649,6 +675,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -692,6 +719,7 @@
                 <td class="col-md-4">
                     <a name="getCellTypeTreeModel"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span ><b>getCellTypeTreeModel</b></span>
                         <a href="#getCellTypeTreeModel"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -699,7 +727,8 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getCellTypeTreeModel()</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getCellTypeTreeModel()</code>
                 </td>
             </tr>
 
@@ -773,6 +802,7 @@
                 <td class="col-md-4">
                     <a name="getDatasetTechnologyNames"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span ><b>getDatasetTechnologyNames</b></span>
                         <a href="#getDatasetTechnologyNames"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -780,7 +810,8 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getDatasetTechnologyNames()</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getDatasetTechnologyNames()</code>
                 </td>
             </tr>
 
@@ -817,6 +848,7 @@
                 <td class="col-md-4">
                     <a name="getOntologyTermOccurences"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span ><b>getOntologyTermOccurences</b></span>
                         <a href="#getOntologyTermOccurences"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -824,7 +856,8 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getOntologyTermOccurences(filter?: Filter)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getOntologyTermOccurences(filter?: Filter)</code>
                 </td>
             </tr>
 
@@ -849,6 +882,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -892,6 +926,7 @@
                 <td class="col-md-4">
                     <a name="getOntologyTreeModel"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span ><b>getOntologyTreeModel</b></span>
                         <a href="#getOntologyTreeModel"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -899,7 +934,8 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getOntologyTreeModel()</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getOntologyTreeModel()</code>
                 </td>
             </tr>
 
@@ -936,6 +972,7 @@
                 <td class="col-md-4">
                     <a name="getProviderNames"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span ><b>getProviderNames</b></span>
                         <a href="#getProviderNames"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -943,7 +980,8 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getProviderNames()</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getProviderNames()</code>
                 </td>
             </tr>
 
@@ -980,6 +1018,7 @@
                 <td class="col-md-4">
                     <a name="getReferenceOrgans"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span ><b>getReferenceOrgans</b></span>
                         <a href="#getReferenceOrgans"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -987,7 +1026,8 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getReferenceOrgans()</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getReferenceOrgans()</code>
                 </td>
             </tr>
 
@@ -1024,6 +1064,7 @@
                 <td class="col-md-4">
                     <a name="getReferenceOrganScene"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span ><b>getReferenceOrganScene</b></span>
                         <a href="#getReferenceOrganScene"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -1031,7 +1072,8 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getReferenceOrganScene(organIri: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, filter?: Filter)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getReferenceOrganScene(organIri: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, filter?: Filter)</code>
                 </td>
             </tr>
 
@@ -1056,6 +1098,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -1111,6 +1154,7 @@
                 <td class="col-md-4">
                     <a name="getScene"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span ><b>getScene</b></span>
                         <a href="#getScene"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -1118,7 +1162,8 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getScene(filter?: Filter)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getScene(filter?: Filter)</code>
                 </td>
             </tr>
 
@@ -1143,6 +1188,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -1186,6 +1232,7 @@
                 <td class="col-md-4">
                     <a name="getTissueBlockResults"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span ><b>getTissueBlockResults</b></span>
                         <a href="#getTissueBlockResults"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -1193,7 +1240,8 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getTissueBlockResults(filter?: Filter)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getTissueBlockResults(filter?: Filter)</code>
                 </td>
             </tr>
 
@@ -1218,6 +1266,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -1260,7 +1309,7 @@
     </div>
 
 
-    <div class="tab-pane fade  tab-source-code" id="c-source">
+    <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
 import { Matrix4 } from &#x27;@math.gl/core&#x27;;
 import {
@@ -1497,14 +1546,15 @@ export class ApiEndpointDataSourceService implements DataSource {
 
 
 
-                   
+
+
 
 
 
 
                    </div><div class="search-results">
     <div class="has-results">
-        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
         <ul class="search-results-list"></ul>
     </div>
     <div class="no-results">
@@ -1516,6 +1566,15 @@ export class ApiEndpointDataSourceService implements DataSource {
            </div>
        </div>
 
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
@@ -1525,8 +1584,8 @@ export class ApiEndpointDataSourceService implements DataSource {
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       
-       <script type="module" src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/menu-wc.js" defer></script>
        <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>

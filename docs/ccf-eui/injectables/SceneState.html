@@ -9,11 +9,11 @@
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 	   <link rel="stylesheet" href="../styles/style.css">
-        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
+        <link rel="stylesheet" href="../styles/dark.css">
     </head>
     <body>
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">Application ccf-eui documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
@@ -37,22 +37,29 @@
 
 
 
+
 <ol class="breadcrumb">
-  <li>Injectables</li>
-  <li >SceneState</li>
+  <li class="breadcrumb-item">Injectables</li>
+  <li class="breadcrumb-item" >SceneState</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
-        <li class="active">
-            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
         </li>
-        <li >
-            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
         </li>
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="c-info">
+    <div class="tab-pane fade active in" id="info">
         <p class="comment">
             <h3>File</h3>
         </p>
@@ -77,7 +84,7 @@
             </p>
 
 
-            <section>
+            <section data-compodoc="block-index">
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
@@ -133,10 +140,12 @@
                                 <a href="#ngxsOnInit" >ngxsOnInit</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Static</span>
                                 <a href="#referenceOrganEntities" >referenceOrganEntities</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Static</span>
                                 <a href="#referenceOrgans" >referenceOrgans</a>
                             </li>
@@ -150,15 +159,19 @@
                                 <a href="#sceneNodeUnhover" >sceneNodeUnhover</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                 <a href="#setReferenceOrganEntities" >setReferenceOrganEntities</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                 <a href="#setReferenceOrgans" >setReferenceOrgans</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                 <a href="#setScene" >setScene</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                 <a href="#setSelectedReferenceOrgans" >setSelectedReferenceOrgans</a>
                             </li>
                         </ul>
@@ -173,13 +186,13 @@
     </table>
 </section>
 
-            <section>
+            <section data-compodoc="block-constructor">
     <h3 id="constructor">Constructor</h3>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(dataService: DataSourceService, injector: <a href="https://angular.io/api/core/Injector" target="_blank">Injector</a>)</code>
+<code>constructor(dataService: DataSourceService, injector: Injector)</code>
                     </td>
                 </tr>
                         <tr>
@@ -222,7 +235,7 @@
                                                         <td>injector</td>
                                                   
                                                         <td>
-                                                                        <code><a href="https://angular.io/api/core/Injector" target="_blank" >Injector</a></code>
+                                                                    <code>Injector</code>
                                                         </td>
                                                   
                                                     <td>
@@ -230,8 +243,8 @@
                                                     </td>
                                                     
                                                         <td>
-                                                                <code><p>Injector service used to lazy load data state</p>
-</code>
+                                                                <p>Injector service used to lazy load data state</p>
+
                                                         </td>
                                                 </tr>
                                         </tbody>
@@ -243,7 +256,7 @@
         </table>
 </section>
 
-            <section>
+            <section data-compodoc="block-methods">
     
     <h3 id="methods">
         Methods
@@ -293,6 +306,7 @@
                 <td class="col-md-4">
                     <a name="referenceOrganEntities"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span class="modifier">Static</span>
                         <span ><b>referenceOrganEntities</b></span>
                         <a href="#referenceOrganEntities"><span class="icon ion-ios-link"></span></a>
@@ -302,7 +316,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>referenceOrganEntities(state: <a href="../injectables/SceneState.html" target="_self">SceneStateModel</a>)</code>
+                    <code>referenceOrganEntities(state: <a href="../interfaces/SceneStateModel.html" target="_self">SceneStateModel</a>)</code>
                 </td>
             </tr>
 
@@ -327,6 +341,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -339,7 +354,7 @@
                                 <tr>
                                     <td>state</td>
                                     <td>
-                                                <code><a href="../injectables/SceneState.html" target="_self" >SceneStateModel</a></code>
+                                                <code><a href="../interfaces/SceneStateModel.html" target="_self" >SceneStateModel</a></code>
                                     </td>
 
                                     <td>
@@ -370,6 +385,7 @@
                 <td class="col-md-4">
                     <a name="referenceOrgans"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span class="modifier">Static</span>
                         <span ><b>referenceOrgans</b></span>
                         <a href="#referenceOrgans"><span class="icon ion-ios-link"></span></a>
@@ -379,7 +395,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>referenceOrgans(state: <a href="../injectables/SceneState.html" target="_self">SceneStateModel</a>)</code>
+                    <code>referenceOrgans(state: <a href="../interfaces/SceneStateModel.html" target="_self">SceneStateModel</a>)</code>
                 </td>
             </tr>
 
@@ -404,6 +420,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -416,7 +433,7 @@
                                 <tr>
                                     <td>state</td>
                                     <td>
-                                                <code><a href="../injectables/SceneState.html" target="_self" >SceneStateModel</a></code>
+                                                <code><a href="../interfaces/SceneStateModel.html" target="_self" >SceneStateModel</a></code>
                                     </td>
 
                                     <td>
@@ -474,6 +491,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -541,6 +559,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -621,6 +640,7 @@
                 <td class="col-md-4">
                     <a name="setReferenceOrganEntities"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span ><b>setReferenceOrganEntities</b></span>
                         <a href="#setReferenceOrganEntities"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -628,7 +648,8 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>setReferenceOrganEntities(referenceOrganEntities: SpatialEntity[])</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>setReferenceOrganEntities(referenceOrganEntities: SpatialEntity[])</code>
                 </td>
             </tr>
 
@@ -655,6 +676,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -703,6 +725,7 @@
                 <td class="col-md-4">
                     <a name="setReferenceOrgans"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span ><b>setReferenceOrgans</b></span>
                         <a href="#setReferenceOrgans"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -710,7 +733,8 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>setReferenceOrgans(referenceOrgans: OrganInfo[])</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>setReferenceOrgans(referenceOrgans: OrganInfo[])</code>
                 </td>
             </tr>
 
@@ -737,6 +761,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -785,6 +810,7 @@
                 <td class="col-md-4">
                     <a name="setScene"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span ><b>setScene</b></span>
                         <a href="#setScene"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -792,7 +818,8 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>setScene(scene: SpatialSceneNode[])</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>setScene(scene: SpatialSceneNode[])</code>
                 </td>
             </tr>
 
@@ -819,6 +846,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -867,6 +895,7 @@
                 <td class="col-md-4">
                     <a name="setSelectedReferenceOrgans"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span ><b>setSelectedReferenceOrgans</b></span>
                         <a href="#setSelectedReferenceOrgans"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -874,7 +903,8 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>setSelectedReferenceOrgans(selectedReferenceOrgans: OrganInfo[])</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>setSelectedReferenceOrgans(selectedReferenceOrgans: OrganInfo[])</code>
                 </td>
             </tr>
 
@@ -901,6 +931,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -939,7 +970,7 @@
         </tbody>
     </table>
 </section>
-            <section>
+            <section data-compodoc="block-properties">
     
     <h3 id="inputs">
         Properties
@@ -1024,7 +1055,7 @@
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>this.state$.pipe(pluck(&#x27;highlightedId&#x27;), distinctUntilChanged())</code>
+                        <i>Default value : </i><code>this.state$.pipe(map(x &#x3D;&gt; x?.highlightedId), distinctUntilChanged())</code>
                     </td>
                 </tr>
                     <tr>
@@ -1077,7 +1108,7 @@
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>this.state$.pipe(pluck(&#x27;referenceOrgans&#x27;), distinctUntilChanged())</code>
+                        <i>Default value : </i><code>this.state$.pipe(map(x &#x3D;&gt; x?.referenceOrgans), distinctUntilChanged())</code>
                     </td>
                 </tr>
                     <tr>
@@ -1109,7 +1140,7 @@
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>this.state$.pipe(pluck(&#x27;scene&#x27;), distinctUntilChanged())</code>
+                        <i>Default value : </i><code>this.state$.pipe(map(x &#x3D;&gt; x?.scene), distinctUntilChanged())</code>
                     </td>
                 </tr>
                     <tr>
@@ -1141,7 +1172,7 @@
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>this.state$.pipe(pluck(&#x27;selectedReferenceOrgans&#x27;), distinctUntilChanged())</code>
+                        <i>Default value : </i><code>this.state$.pipe(map(x &#x3D;&gt; x?.selectedReferenceOrgans), distinctUntilChanged())</code>
                     </td>
                 </tr>
                     <tr>
@@ -1164,16 +1195,16 @@
     </div>
 
 
-    <div class="tab-pane fade  tab-source-code" id="c-source">
+    <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, Injector } from &#x27;@angular/core&#x27;;
-import { DataAction, Payload, StateRepository } from &#x27;@ngxs-labs/data/decorators&#x27;;
-import { NgxsImmutableDataRepository } from &#x27;@ngxs-labs/data/repositories&#x27;;
+import { DataAction, Payload, StateRepository } from &#x27;@angular-ru/ngxs/decorators&#x27;;
+import { NgxsImmutableDataRepository } from &#x27;@angular-ru/ngxs/repositories&#x27;;
 import { NgxsOnInit, Selector, State } from &#x27;@ngxs/store&#x27;;
 import { NodeClickEvent, SpatialSceneNode } from &#x27;ccf-body-ui&#x27;;
 import { SpatialEntity } from &#x27;ccf-database&#x27;;
 import { ALL_POSSIBLE_ORGANS, DataSourceService, OrganInfo } from &#x27;ccf-shared&#x27;;
 import { combineLatest } from &#x27;rxjs&#x27;;
-import { distinctUntilChanged, map, pluck, take, tap } from &#x27;rxjs/operators&#x27;;
+import { distinctUntilChanged, map, take, tap } from &#x27;rxjs/operators&#x27;;
 
 import { ColorAssignmentState } from &#x27;../color-assignment/color-assignment.state&#x27;;
 import { DataState } from &#x27;../data/data.state&#x27;;
@@ -1226,13 +1257,13 @@ export class SceneState extends NgxsImmutableDataRepository&lt;SceneStateModel&g
   }
 
   /** Available Reference Organs */
-  readonly referenceOrgans$ &#x3D; this.state$.pipe(pluck(&#x27;referenceOrgans&#x27;), distinctUntilChanged());
+  readonly referenceOrgans$ &#x3D; this.state$.pipe(map(x &#x3D;&gt; x?.referenceOrgans), distinctUntilChanged());
   /** Selected Reference Organs */
-  readonly selectedReferenceOrgans$ &#x3D; this.state$.pipe(pluck(&#x27;selectedReferenceOrgans&#x27;), distinctUntilChanged());
+  readonly selectedReferenceOrgans$ &#x3D; this.state$.pipe(map(x &#x3D;&gt; x?.selectedReferenceOrgans), distinctUntilChanged());
   /** Scene to display in the 3d Scene */
-  readonly scene$ &#x3D; this.state$.pipe(pluck(&#x27;scene&#x27;), distinctUntilChanged());
+  readonly scene$ &#x3D; this.state$.pipe(map(x &#x3D;&gt; x?.scene), distinctUntilChanged());
 
-  readonly highlightedId$ &#x3D; this.state$.pipe(pluck(&#x27;highlightedId&#x27;), distinctUntilChanged());
+  readonly highlightedId$ &#x3D; this.state$.pipe(map(x &#x3D;&gt; x?.highlightedId), distinctUntilChanged());
 
   /** The data state */
   private dataState: DataState;
@@ -1358,7 +1389,7 @@ export class SceneState extends NgxsImmutableDataRepository&lt;SceneStateModel&g
         const activeOrgans &#x3D; new Set(selectedOrgans.map(o &#x3D;&gt; o.id));
         const refOrgans &#x3D; new Set(refOrganData.filter(o &#x3D;&gt; activeOrgans.has(o.representation_of)).map(o &#x3D;&gt; o[&#x27;@id&#x27;]));
         return scene.filter(node &#x3D;&gt;
-          (node.ccf_annotations?.some?.(tag &#x3D;&gt; activeOrgans.has(tag))) ||
+          (node.ccf_annotations?.some?.(tag &#x3D;&gt; activeOrgans.has(tag))) ??
           (node.reference_organ &amp;&amp; refOrgans.has(node.reference_organ))
         ).map((node): SpatialSceneNode &#x3D;&gt;
           node.entityId &amp;&amp; (Object.prototype.hasOwnProperty.call(colors, node[&#x27;@id&#x27;]) || highlightedNodeId &#x3D;&#x3D;&#x3D; node[&#x27;@id&#x27;]) ?
@@ -1385,14 +1416,15 @@ export class SceneState extends NgxsImmutableDataRepository&lt;SceneStateModel&g
 
 
 
-                   
+
+
 
 
 
 
                    </div><div class="search-results">
     <div class="has-results">
-        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
         <ul class="search-results-list"></ul>
     </div>
     <div class="no-results">
@@ -1404,6 +1436,15 @@ export class SceneState extends NgxsImmutableDataRepository&lt;SceneStateModel&g
            </div>
        </div>
 
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
@@ -1413,8 +1454,8 @@ export class SceneState extends NgxsImmutableDataRepository&lt;SceneStateModel&g
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       
-       <script type="module" src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/menu-wc.js" defer></script>
        <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>

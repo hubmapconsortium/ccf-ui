@@ -9,11 +9,11 @@
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 	   <link rel="stylesheet" href="../styles/style.css">
-        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
+        <link rel="stylesheet" href="../styles/dark.css">
     </head>
     <body>
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">Library ccf-api documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
@@ -44,14 +44,16 @@
 
 
 
-                   
+
+
+
 
 <ol class="breadcrumb">
-  <li>Miscellaneous</li>
-  <li>Functions</li>
+  <li class="breadcrumb-item">Miscellaneous</li>
+  <li class="breadcrumb-item">Functions</li>
 </ol>
 
-<section>
+<section data-compodoc="block-index">
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
@@ -222,7 +224,7 @@
 </section>
 
     <h3>projects/ccf-api/src/lib/middleware/response-cache.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -236,7 +238,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>cacheResponses(options?)</code>
+<code>cacheResponses(options?: <a href="../interfaces/CacheOptions.html" target="_self">CacheOptions</a>)</code>
                 </td>
             </tr>
 
@@ -248,16 +250,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>options</td>
+                                    <td>
+                                                <code><a href="../interfaces/CacheOptions.html" target="_self" >CacheOptions</a></code>
+                                    </td>
 
                                     <td>
                                         Yes
@@ -306,11 +313,13 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
                                     <td>Optional</td>
+                                    <td>Default value</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -321,6 +330,8 @@
                                         No
                                     </td>
 
+                                    <td>
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -330,6 +341,9 @@
                                         No
                                     </td>
 
+                                    <td>
+                                        <code>false</code>
+                                    </td>
 
                                 </tr>
                             </tbody>
@@ -349,7 +363,7 @@
         </tbody>
     </table>
 </section>    <h3>projects/ccf-api/src/lib/routes/v1/utils/parse-filter.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -363,7 +377,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>clamp(value, min, max)</code>
+<code>clamp(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, min: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, max: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
                 </td>
             </tr>
 
@@ -375,16 +389,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>value</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -394,6 +413,9 @@
                                 </tr>
                                 <tr>
                                     <td>min</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -403,6 +425,9 @@
                                 </tr>
                                 <tr>
                                     <td>max</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -451,6 +476,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -497,7 +523,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>parseMinMaxRange(value, min, max)</code>
+<code>parseMinMaxRange(value, min: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, max: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
                 </td>
             </tr>
 
@@ -509,16 +535,20 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>value</td>
+                                    <td>
+                                    </td>
 
                                     <td>
                                         No
@@ -528,6 +558,9 @@
                                 </tr>
                                 <tr>
                                     <td>min</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -537,6 +570,9 @@
                                 </tr>
                                 <tr>
                                     <td>max</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -573,7 +609,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>parseRange(value, min, max)</code>
+<code>parseRange(value, min: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, max: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
                 </td>
             </tr>
 
@@ -585,16 +621,20 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>value</td>
+                                    <td>
+                                    </td>
 
                                     <td>
                                         No
@@ -604,6 +644,9 @@
                                 </tr>
                                 <tr>
                                     <td>min</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -613,6 +656,9 @@
                                 </tr>
                                 <tr>
                                     <td>max</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -661,6 +707,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -719,6 +766,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -765,7 +813,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>processParameter(result, key, value)</code>
+<code>processParameter(result: Filter, key: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, value)</code>
                 </td>
             </tr>
 
@@ -777,16 +825,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>result</td>
+                                    <td>
+                                            <code>Filter</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -796,6 +849,9 @@
                                 </tr>
                                 <tr>
                                     <td>key</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -805,6 +861,8 @@
                                 </tr>
                                 <tr>
                                     <td>value</td>
+                                    <td>
+                                    </td>
 
                                     <td>
                                         No
@@ -841,7 +899,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>queryParametersToFilter(query)</code>
+<code>queryParametersToFilter(query: ParsedQs)</code>
                 </td>
             </tr>
 
@@ -853,16 +911,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>query</td>
+                                    <td>
+                                            <code>ParsedQs</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -899,7 +962,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>setIfDefined(obj, prop, value)</code>
+<code>setIfDefined(obj: T, prop: P, value)</code>
                 </td>
             </tr>
 
@@ -911,16 +974,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>obj</td>
+                                    <td>
+                                            <code>T</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -930,6 +998,9 @@
                                 </tr>
                                 <tr>
                                     <td>prop</td>
+                                    <td>
+                                            <code>P</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -939,6 +1010,8 @@
                                 </tr>
                                 <tr>
                                     <td>value</td>
+                                    <td>
+                                    </td>
 
                                     <td>
                                         No
@@ -963,7 +1036,7 @@
         </tbody>
     </table>
 </section>    <h3>projects/ccf-api/src/lib/app.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -977,7 +1050,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>createApp(options)</code>
+<code>createApp(options: <a href="../interfaces/AppOptions.html" target="_self">AppOptions</a>)</code>
                 </td>
             </tr>
 
@@ -989,16 +1062,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>options</td>
+                                    <td>
+                                                <code><a href="../interfaces/AppOptions.html" target="_self" >AppOptions</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1023,7 +1101,7 @@
         </tbody>
     </table>
 </section>    <h3>projects/ccf-api/src/lib/utils/ccf-database-worker.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -1037,7 +1115,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>createCCFDatabaseWorker(options)</code>
+<code>createCCFDatabaseWorker(options: CCFDatabaseOptions)</code>
                 </td>
             </tr>
 
@@ -1049,16 +1127,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>options</td>
+                                    <td>
+                                            <code>CCFDatabaseOptions</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1083,7 +1166,7 @@
         </tbody>
     </table>
 </section>    <h3>projects/ccf-api/src/lib/middleware/database-loader.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -1097,7 +1180,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>createDatabase(token, options)</code>
+<code>createDatabase(token: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, options: CCFDatabaseOptions)</code>
                 </td>
             </tr>
 
@@ -1109,16 +1192,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>token</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1128,6 +1216,9 @@
                                 </tr>
                                 <tr>
                                     <td>options</td>
+                                    <td>
+                                            <code>CCFDatabaseOptions</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1164,7 +1255,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>databaseLoader(options)</code>
+<code>databaseLoader(options: <a href="../interfaces/DatabaseLoaderOptions.html" target="_self">DatabaseLoaderOptions</a>)</code>
                 </td>
             </tr>
 
@@ -1176,16 +1267,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>options</td>
+                                    <td>
+                                                <code><a href="../interfaces/DatabaseLoaderOptions.html" target="_self" >DatabaseLoaderOptions</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1222,7 +1318,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getDatabaseInstance(req, token, doConnect)</code>
+<code>getDatabaseInstance(req: Request, token, doConnect)</code>
                 </td>
             </tr>
 
@@ -1234,39 +1330,56 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Default value</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>req</td>
+                                    <td>
+                                            <code>Request</code>
+                                    </td>
 
                                     <td>
                                         No
                                     </td>
 
+                                    <td>
+                                    </td>
 
                                 </tr>
                                 <tr>
                                     <td>token</td>
+                                    <td>
+                                    </td>
 
                                     <td>
                                         No
                                     </td>
 
+                                    <td>
+                                    </td>
 
                                 </tr>
                                 <tr>
                                     <td>doConnect</td>
+                                    <td>
+                                    </td>
 
                                     <td>
                                         No
                                     </td>
 
+                                    <td>
+                                        <code>false</code>
+                                    </td>
 
                                 </tr>
                             </tbody>
@@ -1298,7 +1411,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>selectToken(token, req)</code>
+<code>selectToken(token, req: Request)</code>
                 </td>
             </tr>
 
@@ -1310,16 +1423,20 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>token</td>
+                                    <td>
+                                    </td>
 
                                     <td>
                                         No
@@ -1329,6 +1446,9 @@
                                 </tr>
                                 <tr>
                                     <td>req</td>
+                                    <td>
+                                            <code>Request</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1353,7 +1473,7 @@
         </tbody>
     </table>
 </section>    <h3>projects/ccf-api/src/lib/routes/v1/utils/forward-database-query.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -1367,7 +1487,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>forwardDatabaseQuery(method)</code>
+<code>forwardDatabaseQuery(method: <a href="../undefineds/DatabaseQueryMethods.html" target="_self">DatabaseQueryMethods</a>)</code>
                 </td>
             </tr>
 
@@ -1379,16 +1499,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>method</td>
+                                    <td>
+                                                <code><a href="../miscellaneous/typealiases.html#DatabaseQueryMethods" target="_self" >DatabaseQueryMethods</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1413,7 +1538,7 @@
         </tbody>
     </table>
 </section>    <h3>projects/ccf-api/src/lib/environment.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -1427,7 +1552,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>get(key)</code>
+<code>get(key: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -1439,16 +1564,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>key</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1485,7 +1615,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>get(key, throwIfNotFound)</code>
+<code>get(key: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, throwIfNotFound: <a href="../undefineds/ThrowIndicator.html" target="_self">ThrowIndicator</a>)</code>
                 </td>
             </tr>
 
@@ -1497,16 +1627,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>key</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1516,6 +1651,9 @@
                                 </tr>
                                 <tr>
                                     <td>throwIfNotFound</td>
+                                    <td>
+                                                <code><a href="../miscellaneous/typealiases.html#ThrowIndicator" target="_self" >ThrowIndicator</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1552,7 +1690,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>get(key, defaultValue)</code>
+<code>get(key: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, defaultValue)</code>
                 </td>
             </tr>
 
@@ -1564,16 +1702,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>key</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1583,6 +1726,8 @@
                                 </tr>
                                 <tr>
                                     <td>defaultValue</td>
+                                    <td>
+                                    </td>
 
                                     <td>
                                         No
@@ -1619,7 +1764,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>get(key, defaultValue?)</code>
+<code>get(key: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, defaultValue?)</code>
                 </td>
             </tr>
 
@@ -1631,16 +1776,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>key</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1650,6 +1800,8 @@
                                 </tr>
                                 <tr>
                                     <td>defaultValue</td>
+                                    <td>
+                                    </td>
 
                                     <td>
                                         Yes
@@ -1686,7 +1838,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getBoolean(key, defaultValue?)</code>
+<code>getBoolean(key: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, defaultValue?)</code>
                 </td>
             </tr>
 
@@ -1698,16 +1850,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>key</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1717,6 +1874,8 @@
                                 </tr>
                                 <tr>
                                     <td>defaultValue</td>
+                                    <td>
+                                    </td>
 
                                     <td>
                                         Yes
@@ -1753,7 +1912,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getNumber(key)</code>
+<code>getNumber(key: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -1765,16 +1924,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>key</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1811,7 +1975,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getNumber(key, defaultValue)</code>
+<code>getNumber(key: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, defaultValue)</code>
                 </td>
             </tr>
 
@@ -1823,16 +1987,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>key</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1842,6 +2011,8 @@
                                 </tr>
                                 <tr>
                                     <td>defaultValue</td>
+                                    <td>
+                                    </td>
 
                                     <td>
                                         No
@@ -1878,7 +2049,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getNumber(key, defaultValue?)</code>
+<code>getNumber(key: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, defaultValue?)</code>
                 </td>
             </tr>
 
@@ -1890,16 +2061,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>key</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1909,6 +2085,8 @@
                                 </tr>
                                 <tr>
                                     <td>defaultValue</td>
+                                    <td>
+                                    </td>
 
                                     <td>
                                         Yes
@@ -1945,7 +2123,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>has(key)</code>
+<code>has(key: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -1957,16 +2135,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>key</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -2046,6 +2229,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -2092,7 +2276,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>parseNumber(value)</code>
+<code>parseNumber(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -2104,16 +2288,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>value</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -2138,7 +2327,7 @@
         </tbody>
     </table>
 </section>    <h3>projects/ccf-api/src/lib/server.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -2245,7 +2434,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>loadDatabaseSource(source)</code>
+<code>loadDatabaseSource(source: <a href="../undefineds/DatabaseSource.html" target="_self">DatabaseSource</a>)</code>
                 </td>
             </tr>
 
@@ -2257,16 +2446,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>source</td>
+                                    <td>
+                                                <code><a href="../miscellaneous/typealiases.html#DatabaseSource" target="_self" >DatabaseSource</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -2303,7 +2497,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>parseDatabaseSources(text)</code>
+<code>parseDatabaseSources(text: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -2315,16 +2509,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>text</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -2392,7 +2591,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>tryJsonParse(text)</code>
+<code>tryJsonParse(text: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -2404,16 +2603,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>text</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -2438,7 +2642,7 @@
         </tbody>
     </table>
 </section>    <h3>projects/ccf-api/src/lib/routes/v1/database-status.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -2495,6 +2699,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -2529,7 +2734,7 @@
         </tbody>
     </table>
 </section>    <h3>projects/ccf-api/src/lib/routes/v1/gtex/rui-locations.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -2605,7 +2810,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>updateEntry(resultsList, tissueInfo, sex)</code>
+<code>updateEntry(resultsList, tissueInfo: <a href="../interfaces/GtexTissue.html" target="_self">GtexTissue</a>, sex)</code>
                 </td>
             </tr>
 
@@ -2617,16 +2822,20 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>resultsList</td>
+                                    <td>
+                                    </td>
 
                                     <td>
                                         No
@@ -2636,6 +2845,9 @@
                                 </tr>
                                 <tr>
                                     <td>tissueInfo</td>
+                                    <td>
+                                                <code><a href="../interfaces/GtexTissue.html" target="_self" >GtexTissue</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -2645,6 +2857,8 @@
                                 </tr>
                                 <tr>
                                     <td>sex</td>
+                                    <td>
+                                    </td>
 
                                     <td>
                                         No
@@ -2669,7 +2883,7 @@
         </tbody>
     </table>
 </section>    <h3>projects/ccf-api/src/lib/routes/v1/hubmap/rui-locations.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -2683,7 +2897,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getLocations(token, options)</code>
+<code>getLocations(token: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, options: CCFDatabaseOptions)</code>
                 </td>
             </tr>
 
@@ -2695,16 +2909,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>token</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -2714,6 +2933,9 @@
                                 </tr>
                                 <tr>
                                     <td>options</td>
+                                    <td>
+                                            <code>CCFDatabaseOptions</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -2769,7 +2991,7 @@
         </tbody>
     </table>
 </section>    <h3>projects/ccf-api/src/lib/routes/v1/reference-organ-scene.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -2826,6 +3048,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -2860,7 +3083,7 @@
         </tbody>
     </table>
 </section>    <h3>projects/ccf-api/src/lib/routes/v1/get-spatial-placement.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -2917,6 +3140,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -2951,7 +3175,7 @@
         </tbody>
     </table>
 </section>    <h3>projects/ccf-api/src/lib/routes/v1/sparql.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -2977,6 +3201,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -3042,7 +3267,7 @@
         </tbody>
     </table>
 </section>    <h3>projects/ccf-api/src/lib/polyfills.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -3056,7 +3281,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>patchGlobal(key, value)</code>
+<code>patchGlobal(key: K, value)</code>
                 </td>
             </tr>
 
@@ -3068,16 +3293,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>key</td>
+                                    <td>
+                                            <code>K</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -3087,6 +3317,8 @@
                                 </tr>
                                 <tr>
                                     <td>value</td>
+                                    <td>
+                                    </td>
 
                                     <td>
                                         No
@@ -3111,7 +3343,7 @@
         </tbody>
     </table>
 </section>    <h3>projects/ccf-api/src/lib/routes/v1/utils/use-cached-result.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -3125,7 +3357,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>useCachedResult(filename)</code>
+<code>useCachedResult(filename: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -3137,16 +3369,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>filename</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -3175,7 +3412,7 @@
 
                    </div><div class="search-results">
     <div class="has-results">
-        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
         <ul class="search-results-list"></ul>
     </div>
     <div class="no-results">
@@ -3187,6 +3424,15 @@
            </div>
        </div>
 
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'miscellaneous-functions';
@@ -3196,8 +3442,8 @@
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       
-       <script type="module" src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/menu-wc.js" defer></script>
        <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>

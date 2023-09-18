@@ -9,11 +9,11 @@
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 	   <link rel="stylesheet" href="../styles/style.css">
-        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
+        <link rel="stylesheet" href="../styles/dark.css">
     </head>
     <body>
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">Application ccf-eui documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
@@ -35,29 +35,33 @@
 
 
 <ol class="breadcrumb">
-  <li>Components</li>
-  <li
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
   >
   SpatialSearchKeyboardUIBehaviorComponent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
-        <li class="active">
-            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
         </li>
-        <li >
-            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
         </li>
-        <li >
-            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
         </li>
-        <li >
-            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
         </li>
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
     <h3>File</h3>
 </p>
 <p class="comment">
@@ -76,9 +80,9 @@
 
 
 
-<section>
+<section data-compodoc="block-metadata">
     <h3>Metadata</h3>
-    <table class="table table-sm table-hover">
+    <table class="table table-sm table-hover metadata">
         <tbody>
 
             <tr>
@@ -95,10 +99,13 @@
 
 
 
+
             <tr>
                 <td class="col-md-3">selector</td>
                 <td class="col-md-9"><code>ccf-spatial-search-keyboard-ui-behavior</code></td>
             </tr>
+
+
 
 
 
@@ -119,7 +126,7 @@
     </table>
 </section>
 
-    <section>
+    <section data-compodoc="block-index">
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
@@ -132,6 +139,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#className" >className</a>
                             </li>
@@ -158,6 +166,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier"></span>
                                 <a href="#handleKey" >handleKey</a>
                             </li>
                             <li>
@@ -167,6 +176,7 @@
                                 <a href="#keyHover" >keyHover</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                 <a href="#keyUp" >keyUp</a>
                             </li>
                             <li>
@@ -250,7 +260,7 @@
 </section>
 
 
-    <section>
+    <section data-compodoc="block-inputs">
     <h3 id="inputs">Inputs</h3>
         <table class="table table-sm table-bordered">
             <tbody>
@@ -344,7 +354,7 @@
             </tbody>
         </table>
 </section>
-    <section>
+    <section data-compodoc="block-outputs">
     <h3 id="outputs">Outputs</h3>
         <table class="table table-sm table-bordered">
             <tbody>
@@ -356,7 +366,7 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+                        <i>Type : </i>    <code>EventEmitter</code>
 
                     </td>
                 </tr>
@@ -374,7 +384,7 @@
             </tbody>
         </table>
 </section>
-    <section>
+    <section data-compodoc="block-properties">
     <h3>HostBindings</h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -414,7 +424,7 @@
     </table>
 </section>
 
-    <section>
+    <section data-compodoc="block-methods">
     <h3>HostListeners</h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -453,6 +463,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -522,6 +533,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -554,7 +566,7 @@
         </tbody>
     </table>
 </section>
-    <section>
+    <section data-compodoc="block-methods">
     
     <h3 id="methods">
         Methods
@@ -565,6 +577,7 @@
                 <td class="col-md-4">
                     <a name="handleKey"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span ><b>handleKey</b></span>
                         <a href="#handleKey"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -572,7 +585,8 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>handleKey(target: KeyboardEvent)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>handleKey(target: KeyboardEvent)</code>
                 </td>
             </tr>
 
@@ -599,6 +613,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -674,6 +689,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -749,6 +765,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -797,6 +814,7 @@
                 <td class="col-md-4">
                     <a name="keyUp"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span ><b>keyUp</b></span>
                         <a href="#keyUp"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -804,7 +822,8 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>keyUp(target: KeyboardEvent)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>keyUp(target: KeyboardEvent)</code>
                 </td>
             </tr>
 
@@ -831,6 +850,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -906,6 +926,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -949,7 +970,7 @@
         </tbody>
     </table>
 </section>
-    <section>
+    <section data-compodoc="block-properties">
     
     <h3 id="inputs">
         Properties
@@ -960,6 +981,7 @@
                 <td class="col-md-4">
                     <a name="className"></a>
                     <span class="name">
+                            <span class="modifier"></span>
                             <span class="modifier">Readonly</span>
                         <span ><b>className</b></span>
                         <a href="#className"><span class="icon ion-ios-link"></span></a>
@@ -1102,7 +1124,7 @@
 </div>
 
 
-    <div class="tab-pane fade  tab-source-code" id="c-source">
+    <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, HostListener, Input, Output } from &#x27;@angular/core&#x27;;
 
 import { Position } from &#x27;../../../core/store/spatial-search-ui/spatial-search-ui.state&#x27;;
@@ -1219,14 +1241,14 @@ export class SpatialSearchKeyboardUIBehaviorComponent {
 </code></pre>
     </div>
 
-    <div class="tab-pane fade " id="c-templateData">
+    <div class="tab-pane fade " id="templateData">
         <pre class="line-numbers"><code class="language-html">&lt;ccf-spatial-search-keyboard-ui [currentKey]&#x3D;&quot;currentKey&quot; [shiftPressed]&#x3D;&quot;shiftPressed&quot; (keyClicked)&#x3D;&quot;keyClick($event)&quot;
   (keyHovered)&#x3D;&quot;keyHover($event)&quot;&gt;&lt;/ccf-spatial-search-keyboard-ui&gt;
 </code></pre>
     </div>
 
 
-    <div class="tab-pane fade " id="c-tree">
+    <div class="tab-pane fade " id="tree">
         <div id="tree-container"></div>
         <div class="tree-legend">
             <div class="title">
@@ -1267,14 +1289,16 @@ export class SpatialSearchKeyboardUIBehaviorComponent {
 
 
 
-                   
+
+
+
 
 
 
 
                    </div><div class="search-results">
     <div class="has-results">
-        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
         <ul class="search-results-list"></ul>
     </div>
     <div class="no-results">
@@ -1286,6 +1310,15 @@ export class SpatialSearchKeyboardUIBehaviorComponent {
            </div>
        </div>
 
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
@@ -1295,8 +1328,8 @@ export class SpatialSearchKeyboardUIBehaviorComponent {
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       
-       <script type="module" src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/menu-wc.js" defer></script>
        <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>

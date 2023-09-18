@@ -9,11 +9,11 @@
 
         <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
 	   <link rel="stylesheet" href="./styles/style.css">
-        <link rel="stylesheet" href="./styles/dark.css" media="(prefers-color-scheme: dark)">
+        <link rel="stylesheet" href="./styles/dark.css">
     </head>
     <body>
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="./" class="navbar-brand">Library ccf-database documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
@@ -31,7 +31,7 @@
                <div class="content getting-started">
                    <div class="content-data">
 
-<h1 id="human-reference-atlas-hra-and-common-coordinate-framework-ccf---user-interfaces">Human Reference Atlas (HRA) and Common Coordinate Framework (CCF) - User Interfaces</h1>
+<h1>Human Reference Atlas (HRA) and Common Coordinate Framework (CCF) - User Interfaces</h1>
 <p><a href="https://www.jsdelivr.com/package/gh/hubmapconsortium/ccf-ui"><img src="https://data.jsdelivr.com/v1/package/gh/hubmapconsortium/ccf-ui/badge" alt="Production CDN by JSDelivr" class="img-responsive"></a>
 <a href="https://github.com/hubmapconsortium/ccf-ui/actions/workflows/tests.yml"><img src="https://github.com/hubmapconsortium/ccf-ui/actions/workflows/tests.yml/badge.svg?branch=develop" alt="Tests" class="img-responsive"></a>
 <a href="https://github.com/hubmapconsortium/ccf-ui/commits/develop"><img src="https://img.shields.io/github/last-commit/hubmapconsortium/ccf-ui.svg" alt="GitHub last commit" class="img-responsive"></a>
@@ -40,7 +40,7 @@
 <a href="https://sonarcloud.io/component_measures/metric/coverage/list?id=hubmapconsortium_ccf-ui"><img src="https://sonarcloud.io/api/project_badges/measure?project=hubmapconsortium_ccf-ui&metric=coverage" alt="SonarCloud Coverage" class="img-responsive"></a>
 <a href="https://hubmap-ccf-ui.netlify.com/docs/index.html"><img src="https://cdn.jsdelivr.net/gh/hubmapconsortium/ccf-ui@staging/docs/images/coverage-badge-documentation.svg" alt="Documentation Status" class="img-responsive"></a></p>
 <p>This repository is a <a href="https://en.wikipedia.org/wiki/Monorepo">monorepo</a> (multiple projects in one repository) containing the software to build the CCF-EUI, CCF-RUI, and CCF-Organ-Info.</p>
-<h2 id="website-links">Website Links</h2>
+<h2>Website Links</h2>
 <ul>
 <li>CCF Exploration User Interface (CCF-EUI)<ul>
 <li>:star2: 4.0 BETA: <a href="https://beta--hubmap-ccf-ui.netlify.app">https://beta--hubmap-ccf-ui.netlify.app</a></li>
@@ -88,11 +88,11 @@
 </ul>
 </li>
 </ul>
-<h2 id="background-and-more-information">Background and More Information</h2>
+<h2>Background and More Information</h2>
 <p>For more information about the Human Reference Atlas (HRA) and the Common Coordinate Framework (CCF), see the HuBMAP HRA Portal at <a href="https://humanatlas.io">https://humanatlas.io</a>.</p>
-<h2 id="change-log">Change Log</h2>
+<h2>Change Log</h2>
 <p>See the <a href="CHANGELOG.md">ChangeLog</a> for the latest developments.</p>
-<h2 id="credits">Credits</h2>
+<h2>Credits</h2>
 <p>This software is developed by the <a href="http://cns.iu.edu/">Cyberinfrastructure for Network Science Center at Indiana University</a>. It is funded by NIH Award <a href="https://projectreporter.nih.gov/project_info_description.cfm?aid=9687220%22">OT2OD026671</a>.</p>
 
 
@@ -108,14 +108,16 @@
 
 
 
-                   
+
+
+
 
 
 
 
                    </div><div class="search-results">
     <div class="has-results">
-        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
         <ul class="search-results-list"></ul>
     </div>
     <div class="no-results">
@@ -127,6 +129,15 @@
            </div>
        </div>
 
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 0;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'getting-started';
@@ -136,8 +147,8 @@
 
        <script src="./js/libs/custom-elements.min.js"></script>
        <script src="./js/libs/lit-html.js"></script>
-       
-       <script type="module" src="./js/menu-wc.js" defer></script>
+
+       <script src="./js/menu-wc.js" defer></script>
        <script nomodule src="./js/menu-wc_es5.js" defer></script>
 
        <script src="./js/libs/bootstrap-native.js"></script>

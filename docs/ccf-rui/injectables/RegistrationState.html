@@ -9,11 +9,11 @@
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 	   <link rel="stylesheet" href="../styles/style.css">
-        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
+        <link rel="stylesheet" href="../styles/dark.css">
     </head>
     <body>
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">Application ccf-rui documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
@@ -37,22 +37,29 @@
 
 
 
+
 <ol class="breadcrumb">
-  <li>Injectables</li>
-  <li >RegistrationState</li>
+  <li class="breadcrumb-item">Injectables</li>
+  <li class="breadcrumb-item" >RegistrationState</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
-        <li class="active">
-            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
         </li>
-        <li >
-            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
         </li>
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="c-info">
+    <div class="tab-pane fade active in" id="info">
         <p class="comment">
             <h3>File</h3>
         </p>
@@ -77,7 +84,7 @@
             </p>
 
 
-            <section>
+            <section data-compodoc="block-index">
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
@@ -122,6 +129,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier"></span>
                                 <a href="#addRegistration" >addRegistration</a>
                             </li>
                             <li>
@@ -146,9 +154,11 @@
                                 <a href="#register" >register</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                 <a href="#setDisplayErrors" >setDisplayErrors</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                 <a href="#setUseRegistrationCallback" >setUseRegistrationCallback</a>
                             </li>
                             <li>
@@ -199,13 +209,13 @@
     </table>
 </section>
 
-            <section>
+            <section data-compodoc="block-constructor">
     <h3 id="constructor">Constructor</h3>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(injector: <a href="https://angular.io/api/core/Injector" target="_blank">Injector</a>, globalConfig: <a href="../interfaces/GlobalConfig.html" target="_self">GlobalConfigState&lt;GlobalConfig&gt;</a>)</code>
+<code>constructor(injector: Injector, globalConfig: <a href="../interfaces/GlobalConfig.html" target="_self">GlobalConfigState&lt;GlobalConfig&gt;</a>)</code>
                     </td>
                 </tr>
                         <tr>
@@ -234,7 +244,7 @@
                                                         <td>injector</td>
                                                   
                                                         <td>
-                                                                        <code><a href="https://angular.io/api/core/Injector" target="_blank" >Injector</a></code>
+                                                                    <code>Injector</code>
                                                         </td>
                                                   
                                                     <td>
@@ -242,8 +252,8 @@
                                                     </td>
                                                     
                                                         <td>
-                                                                <code><p>Injector service used to lazy load page and model state</p>
-</code>
+                                                                <p>Injector service used to lazy load page and model state</p>
+
                                                         </td>
                                                 </tr>
                                                 <tr>
@@ -258,8 +268,8 @@
                                                     </td>
                                                     
                                                         <td>
-                                                                <code><p>The global configuration</p>
-</code>
+                                                                <p>The global configuration</p>
+
                                                         </td>
                                                 </tr>
                                         </tbody>
@@ -271,7 +281,7 @@
         </table>
 </section>
 
-            <section>
+            <section data-compodoc="block-methods">
     
     <h3 id="methods">
         Methods
@@ -282,6 +292,7 @@
                 <td class="col-md-4">
                     <a name="addRegistration"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span ><b>addRegistration</b></span>
                         <a href="#addRegistration"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -289,7 +300,8 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>addRegistration(registration: Record<string | >)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>addRegistration(registration: Record<string | >)</code>
                 </td>
             </tr>
 
@@ -303,8 +315,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="220"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:220</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="222"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:222</a></div>
                 </td>
             </tr>
 
@@ -316,6 +328,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -380,8 +393,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="317"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:317</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="319"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:319</a></div>
                 </td>
             </tr>
 
@@ -393,6 +406,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -488,8 +502,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="283"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:283</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="285"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:285</a></div>
                 </td>
             </tr>
 
@@ -501,6 +515,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -596,8 +611,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="157"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:157</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="159"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:159</a></div>
                 </td>
             </tr>
 
@@ -607,6 +622,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -664,8 +680,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="226"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:226</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="228"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:228</a></div>
                 </td>
             </tr>
 
@@ -675,6 +691,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -783,8 +800,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="248"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:248</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="250"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:250</a></div>
                 </td>
             </tr>
 
@@ -796,6 +813,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -844,6 +862,7 @@
                 <td class="col-md-4">
                     <a name="setDisplayErrors"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span ><b>setDisplayErrors</b></span>
                         <a href="#setDisplayErrors"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -851,7 +870,8 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>setDisplayErrors(displayErrors: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>setDisplayErrors(displayErrors: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
                 </td>
             </tr>
 
@@ -865,8 +885,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="210"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:210</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="212"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:212</a></div>
                 </td>
             </tr>
 
@@ -878,6 +898,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -926,6 +947,7 @@
                 <td class="col-md-4">
                     <a name="setUseRegistrationCallback"></a>
                     <span class="name">
+                        <span class="modifier"></span>
                         <span ><b>setUseRegistrationCallback</b></span>
                         <a href="#setUseRegistrationCallback"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -933,7 +955,8 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>setUseRegistrationCallback(use: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>setUseRegistrationCallback(use: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
                 </td>
             </tr>
 
@@ -947,8 +970,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="200"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:200</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="202"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:202</a></div>
                 </td>
             </tr>
 
@@ -960,6 +983,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -1024,8 +1048,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="370"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:370</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="372"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:372</a></div>
                 </td>
             </tr>
 
@@ -1037,6 +1061,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -1081,7 +1106,7 @@
         </tbody>
     </table>
 </section>
-            <section>
+            <section data-compodoc="block-properties">
     
     <h3 id="inputs">
         Properties
@@ -1100,7 +1125,7 @@
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>this.state$.pipe(pluck(&#x27;displayErrors&#x27;))</code>
+                        <i>Default value : </i><code>this.state$.pipe(map(x &#x3D;&gt; x?.displayErrors))</code>
                     </td>
                 </tr>
                     <tr>
@@ -1246,7 +1271,7 @@
     </table>
 </section>
 
-            <section>
+            <section data-compodoc="block-accessors">
     <h3 id="accessors">
         Accessors
     </h3>
@@ -1453,7 +1478,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="239" class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:239</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="241" class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:241</a></div>
                                 </td>
                             </tr>
 
@@ -1463,11 +1488,11 @@
     </div>
 
 
-    <div class="tab-pane fade  tab-source-code" id="c-source">
+    <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Immutable } from &#x27;@angular-ru/common/typings&#x27;;
 import { Injectable, Injector } from &#x27;@angular/core&#x27;;
-import { Computed, DataAction, StateRepository } from &#x27;@ngxs-labs/data/decorators&#x27;;
-import { NgxsImmutableDataRepository } from &#x27;@ngxs-labs/data/repositories&#x27;;
+import { Computed, DataAction, StateRepository } from &#x27;@angular-ru/ngxs/decorators&#x27;;
+import { NgxsImmutableDataRepository } from &#x27;@angular-ru/ngxs/repositories&#x27;;
 import { State } from &#x27;@ngxs/store&#x27;;
 import { insertItem, patch } from &#x27;@ngxs/store/operators&#x27;;
 import { SpatialEntityJsonLd } from &#x27;ccf-body-ui&#x27;;
@@ -1475,7 +1500,7 @@ import { GlobalConfigState } from &#x27;ccf-shared&#x27;;
 import { filterNulls } from &#x27;ccf-shared/rxjs-ext/operators&#x27;;
 import { saveAs } from &#x27;file-saver&#x27;;
 import { combineLatest, Observable } from &#x27;rxjs&#x27;;
-import { map, pluck, startWith, switchMap, take, tap } from &#x27;rxjs/operators&#x27;;
+import { map, startWith, switchMap, take, tap } from &#x27;rxjs/operators&#x27;;
 import { v4 as uuidV4 } from &#x27;uuid&#x27;;
 
 import { Tag } from &#x27;../../models/anatomical-structure-tag&#x27;;
@@ -1514,7 +1539,7 @@ export interface RegistrationStateModel {
 })
 @Injectable()
 export class RegistrationState extends NgxsImmutableDataRepository&lt;RegistrationStateModel&gt; {
-  readonly displayErrors$ &#x3D; this.state$.pipe(pluck(&#x27;displayErrors&#x27;));
+  readonly displayErrors$ &#x3D; this.state$.pipe(map(x &#x3D;&gt; x?.displayErrors));
 
   /** Observable of registration metadata */
   @Computed()
@@ -1545,7 +1570,7 @@ export class RegistrationState extends NgxsImmutableDataRepository&lt;Registrati
   @Computed()
   get previousRegistrations$(): Observable&lt;Record&lt;string, unknown&gt;[]&gt; {
     const { globalConfig, state$ } &#x3D; this;
-    const regs &#x3D; state$.pipe(pluck(&#x27;registrations&#x27;));
+    const regs &#x3D; state$.pipe(map(x &#x3D;&gt; x?.registrations));
     const fetched &#x3D; globalConfig.getOption(&#x27;fetchPreviousRegistrations&#x27;).pipe(
       switchMap(fetch &#x3D;&gt; fetch?.() ?? [[]]),
       startWith([])
@@ -1606,17 +1631,19 @@ export class RegistrationState extends NgxsImmutableDataRepository&lt;Registrati
     this.tags &#x3D; this.injector.get(AnatomicalStructureTagState);
     this.refData &#x3D; this.injector.get(ReferenceDataState);
 
-    this.globalConfig.config$.pipe(
-      take(1),
-      tap(({ useDownload, register }) &#x3D;&gt; this.ctx.patchState({
-        useRegistrationCallback: !!(!useDownload &amp;&amp; register)
-      }))
-    ).subscribe();
+    this.refData.state$.subscribe(() &#x3D;&gt; {
+      this.globalConfig.config$.pipe(
+        take(1),
+        tap(({ useDownload, register }) &#x3D;&gt; this.ctx.patchState({
+          useRegistrationCallback: !!(!useDownload &amp;&amp; register)
+        }))
+      ).subscribe();
 
-    this.globalConfig.getOption(&#x27;editRegistration&#x27;).pipe(
-      filterNulls(),
-      tap(reg &#x3D;&gt; this.editRegistration(reg as SpatialEntityJsonLd))
-    ).subscribe();
+      this.globalConfig.getOption(&#x27;editRegistration&#x27;).pipe(
+        filterNulls(),
+        tap(reg &#x3D;&gt; this.editRegistration(reg as SpatialEntityJsonLd))
+      ).subscribe();
+    });
   }
 
   async editRegistration(reg: SpatialEntityJsonLd): Promise&lt;void&gt; {
@@ -1683,7 +1710,7 @@ export class RegistrationState extends NgxsImmutableDataRepository&lt;Registrati
    */
   @DataAction()
   addRegistration(registration: Record&lt;string, unknown&gt;): void {
-    this.ctx.setState(patch&lt;Immutable&lt;RegistrationStateModel&gt;&gt;({
+    this.ctx.setState(patch({
       registrations: insertItem(registration as Immutable&lt;Record&lt;string, unknown&gt;&gt;)
     }));
   }
@@ -1722,7 +1749,7 @@ export class RegistrationState extends NgxsImmutableDataRepository&lt;Registrati
     const jsonObj &#x3D; this.buildJsonLd(page.snapshot, model.snapshot, this.tags.latestTags);
     const json &#x3D; JSON.stringify(jsonObj, undefined, 2);
 
-    if (useCallback || (useCallback &#x3D;&#x3D;&#x3D; undefined &amp;&amp; snapshot.useRegistrationCallback)) {
+    if (useCallback ?? (useCallback &#x3D;&#x3D;&#x3D; undefined &amp;&amp; snapshot.useRegistrationCallback)) {
       registrationCallback?.(json);
     } else {
       const data &#x3D; new Blob([json], {
@@ -1847,14 +1874,15 @@ export class RegistrationState extends NgxsImmutableDataRepository&lt;Registrati
 
 
 
-                   
+
+
 
 
 
 
                    </div><div class="search-results">
     <div class="has-results">
-        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
         <ul class="search-results-list"></ul>
     </div>
     <div class="no-results">
@@ -1866,6 +1894,15 @@ export class RegistrationState extends NgxsImmutableDataRepository&lt;Registrati
            </div>
        </div>
 
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
@@ -1875,8 +1912,8 @@ export class RegistrationState extends NgxsImmutableDataRepository&lt;Registrati
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       
-       <script type="module" src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/menu-wc.js" defer></script>
        <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>

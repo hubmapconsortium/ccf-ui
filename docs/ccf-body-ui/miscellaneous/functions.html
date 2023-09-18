@@ -9,11 +9,11 @@
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 	   <link rel="stylesheet" href="../styles/style.css">
-        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
+        <link rel="stylesheet" href="../styles/dark.css">
     </head>
     <body>
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">Library ccf-body-ui documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
@@ -44,14 +44,16 @@
 
 
 
-                   
+
+
+
 
 <ol class="breadcrumb">
-  <li>Miscellaneous</li>
-  <li>Functions</li>
+  <li class="breadcrumb-item">Miscellaneous</li>
+  <li class="breadcrumb-item">Functions</li>
 </ol>
 
-<section>
+<section data-compodoc="block-index">
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
@@ -120,7 +122,7 @@
 </section>
 
     <h3>projects/ccf-body-ui/src/global-fixes.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -146,6 +148,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -173,7 +176,7 @@
         </tbody>
     </table>
 </section>    <h3>projects/ccf-body-ui/src/lib/util/process-scene-nodes.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -199,11 +202,13 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
                                     <td>Optional</td>
+                                    <td>Default value</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -214,6 +219,8 @@
                                         No
                                     </td>
 
+                                    <td>
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -223,6 +230,9 @@
                                         No
                                     </td>
 
+                                    <td>
+                                        <code>[]</code>
+                                    </td>
 
                                 </tr>
                             </tbody>
@@ -254,7 +264,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>processSceneNodes(gltfUrl, worldMatrix?, scenegraphNode?, gltfCache?)</code>
+<code>processSceneNodes(gltfUrl: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, worldMatrix?: Matrix4, scenegraphNode?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, gltfCache?)</code>
                 </td>
             </tr>
 
@@ -266,16 +276,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>gltfUrl</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -285,6 +300,9 @@
                                 </tr>
                                 <tr>
                                     <td>worldMatrix</td>
+                                    <td>
+                                            <code>Matrix4</code>
+                                    </td>
 
                                     <td>
                                         Yes
@@ -294,6 +312,9 @@
                                 </tr>
                                 <tr>
                                     <td>scenegraphNode</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         Yes
@@ -303,6 +324,8 @@
                                 </tr>
                                 <tr>
                                     <td>gltfCache</td>
+                                    <td>
+                                    </td>
 
                                     <td>
                                         Yes
@@ -327,7 +350,7 @@
         </tbody>
     </table>
 </section>    <h3>projects/ccf-body-ui/src/lib/util/load-gltf.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -341,7 +364,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>deriveScenegraph(scenegraphNodeName, gltf)</code>
+<code>deriveScenegraph(scenegraphNodeName: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, gltf: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
                 </td>
             </tr>
 
@@ -353,16 +376,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>scenegraphNodeName</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -372,6 +400,9 @@
                                 </tr>
                                 <tr>
                                     <td>gltf</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -408,7 +439,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>loadGLTF(model, cache?)</code>
+<code>loadGLTF(model: <a href="../interfaces/SpatialSceneNode.html" target="_self">SpatialSceneNode</a>, cache?)</code>
                 </td>
             </tr>
 
@@ -420,16 +451,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>model</td>
+                                    <td>
+                                                <code><a href="../interfaces/SpatialSceneNode.html" target="_self" >SpatialSceneNode</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -439,6 +475,8 @@
                                 </tr>
                                 <tr>
                                     <td>cache</td>
+                                    <td>
+                                    </td>
 
                                     <td>
                                         Yes
@@ -475,7 +513,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>loadGLTF2(scenegraphNodeName, gltfPromise)</code>
+<code>loadGLTF2(scenegraphNodeName: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, gltfPromise: Promise)</code>
                 </td>
             </tr>
 
@@ -487,16 +525,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>scenegraphNodeName</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -506,6 +549,9 @@
                                 </tr>
                                 <tr>
                                     <td>gltfPromise</td>
+                                    <td>
+                                            <code>Promise</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -561,7 +607,7 @@
         </tbody>
     </table>
 </section>    <h3>projects/ccf-body-ui/src/lib/util/spatial-scene-collider.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -587,6 +633,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -621,7 +668,7 @@
         </tbody>
     </table>
 </section>    <h3>projects/ccf-body-ui/src/lib/body-ui-layer.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -635,7 +682,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>meshLayer(id, data, options)</code>
+<code>meshLayer(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, data, options)</code>
                 </td>
             </tr>
 
@@ -647,16 +694,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>id</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -666,6 +718,8 @@
                                 </tr>
                                 <tr>
                                     <td>data</td>
+                                    <td>
+                                    </td>
 
                                     <td>
                                         No
@@ -675,6 +729,8 @@
                                 </tr>
                                 <tr>
                                     <td>options</td>
+                                    <td>
+                                    </td>
 
                                     <td>
                                         No
@@ -711,7 +767,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>textLayer(id, data, options)</code>
+<code>textLayer(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, data, options)</code>
                 </td>
             </tr>
 
@@ -723,16 +779,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>id</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -742,6 +803,8 @@
                                 </tr>
                                 <tr>
                                     <td>data</td>
+                                    <td>
+                                    </td>
 
                                     <td>
                                         No
@@ -751,6 +814,8 @@
                                 </tr>
                                 <tr>
                                     <td>options</td>
+                                    <td>
+                                    </td>
 
                                     <td>
                                         No
@@ -775,7 +840,7 @@
         </tbody>
     </table>
 </section>    <h3>projects/ccf-body-ui/src/lib/util/parse-csv.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -789,7 +854,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>parseCSV(sourceUrl, firstFieldName?)</code>
+<code>parseCSV(sourceUrl: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, firstFieldName?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -801,16 +866,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>sourceUrl</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -820,6 +890,9 @@
                                 </tr>
                                 <tr>
                                     <td>firstFieldName</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         Yes
@@ -856,7 +929,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>parseCSVText(csvText, firstFieldName?)</code>
+<code>parseCSVText(csvText: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, firstFieldName?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -868,16 +941,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>csvText</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -887,6 +965,9 @@
                                 </tr>
                                 <tr>
                                     <td>firstFieldName</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         Yes
@@ -911,7 +992,7 @@
         </tbody>
     </table>
 </section>    <h3>projects/ccf-body-ui/src/lib/util/process-anatomical-structures.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -925,7 +1006,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>processAnatomicalStructures(sourceUrl, entities)</code>
+<code>processAnatomicalStructures(sourceUrl: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, entities)</code>
                 </td>
             </tr>
 
@@ -937,16 +1018,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>sourceUrl</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -956,6 +1042,8 @@
                                 </tr>
                                 <tr>
                                     <td>entities</td>
+                                    <td>
+                                    </td>
 
                                     <td>
                                         No
@@ -980,7 +1068,7 @@
         </tbody>
     </table>
 </section>    <h3>projects/ccf-body-ui/src/lib/util/process-extraction-sites.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -994,7 +1082,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>processExtractionSites(sourceUrl, entities)</code>
+<code>processExtractionSites(sourceUrl: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, entities)</code>
                 </td>
             </tr>
 
@@ -1006,16 +1094,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>sourceUrl</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1025,6 +1118,8 @@
                                 </tr>
                                 <tr>
                                     <td>entities</td>
+                                    <td>
+                                    </td>
 
                                     <td>
                                         No
@@ -1049,7 +1144,7 @@
         </tbody>
     </table>
 </section>    <h3>projects/ccf-body-ui/src/lib/util/process-reference-data.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -1075,11 +1170,13 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
                                     <td>Optional</td>
+                                    <td>Default value</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -1090,6 +1187,8 @@
                                         No
                                     </td>
 
+                                    <td>
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -1099,6 +1198,9 @@
                                         No
                                     </td>
 
+                                    <td>
+                                        <code>referenceDataConfig</code>
+                                    </td>
 
                                 </tr>
                             </tbody>
@@ -1118,7 +1220,7 @@
         </tbody>
     </table>
 </section>    <h3>projects/ccf-body-ui/src/lib/util/process-spatial-entities.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -1132,7 +1234,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>processSpatialEntities(parent, gltfOverride?)</code>
+<code>processSpatialEntities(parent: <a href="../interfaces/SpatialEntityJsonLd.html" target="_self">SpatialEntityJsonLd</a>, gltfOverride?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -1144,16 +1246,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>parent</td>
+                                    <td>
+                                                <code><a href="../interfaces/SpatialEntityJsonLd.html" target="_self" >SpatialEntityJsonLd</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1163,6 +1270,9 @@
                                 </tr>
                                 <tr>
                                     <td>gltfOverride</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
                                     <td>
                                         Yes
@@ -1187,7 +1297,7 @@
         </tbody>
     </table>
 </section>    <h3>projects/ccf-body-ui/src/lib/util/simplify-scene.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -1213,6 +1323,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -1247,7 +1358,7 @@
         </tbody>
     </table>
 </section>    <h3>projects/ccf-body-ui/src/lib/util/scene-traversal.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -1261,7 +1372,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>traverseScene(scene, worldMatrix, visitor)</code>
+<code>traverseScene(scene, worldMatrix: Matrix4, visitor: <a href="../undefineds/SceneTraversalVisitor.html" target="_self">SceneTraversalVisitor</a>)</code>
                 </td>
             </tr>
 
@@ -1273,16 +1384,20 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>scene</td>
+                                    <td>
+                                    </td>
 
                                     <td>
                                         No
@@ -1292,6 +1407,9 @@
                                 </tr>
                                 <tr>
                                     <td>worldMatrix</td>
+                                    <td>
+                                            <code>Matrix4</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1301,6 +1419,9 @@
                                 </tr>
                                 <tr>
                                     <td>visitor</td>
+                                    <td>
+                                                <code><a href="../miscellaneous/typealiases.html#SceneTraversalVisitor" target="_self" >SceneTraversalVisitor</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1329,7 +1450,7 @@
 
                    </div><div class="search-results">
     <div class="has-results">
-        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
         <ul class="search-results-list"></ul>
     </div>
     <div class="no-results">
@@ -1341,6 +1462,15 @@
            </div>
        </div>
 
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'miscellaneous-functions';
@@ -1350,8 +1480,8 @@
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       
-       <script type="module" src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/menu-wc.js" defer></script>
        <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>

@@ -9,11 +9,11 @@
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 	   <link rel="stylesheet" href="../styles/style.css">
-        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
+        <link rel="stylesheet" href="../styles/dark.css">
     </head>
     <body>
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">Library ccf-shared documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
@@ -44,14 +44,16 @@
 
 
 
-                   
+
+
+
 
 <ol class="breadcrumb">
-  <li>Miscellaneous</li>
-  <li>Functions</li>
+  <li class="breadcrumb-item">Miscellaneous</li>
+  <li class="breadcrumb-item">Functions</li>
 </ol>
 
-<section>
+<section data-compodoc="block-index">
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
@@ -132,7 +134,7 @@
 </section>
 
     <h3>projects/ccf-shared/src/lib/services/data-source/api-endpoint.service.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -177,7 +179,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>filterToParams(filter?)</code>
+<code>filterToParams(filter?: Filter)</code>
                 </td>
             </tr>
 
@@ -189,16 +191,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>filter</td>
+                                    <td>
+                                            <code>Filter</code>
+                                    </td>
 
                                     <td>
                                         Yes
@@ -235,7 +242,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>rangeToMinMax(range, low, high)</code>
+<code>rangeToMinMax(range, low: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, high: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
                 </td>
             </tr>
 
@@ -247,16 +254,20 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>range</td>
+                                    <td>
+                                    </td>
 
                                     <td>
                                         No
@@ -266,6 +277,9 @@
                                 </tr>
                                 <tr>
                                     <td>low</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -275,6 +289,9 @@
                                 </tr>
                                 <tr>
                                     <td>high</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -323,6 +340,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -357,7 +375,7 @@
         </tbody>
     </table>
 </section>    <h3>projects/ccf-shared/rxjs-ext/operators/src/lib/filter-nulls.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -398,7 +416,7 @@
         </tbody>
     </table>
 </section>    <h3>projects/ccf-shared/rxjs-ext/operators/src/lib/flatten.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -439,7 +457,7 @@
         </tbody>
     </table>
 </section>    <h3>projects/ccf-shared/src/lib/analytics/tracking.state.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -472,7 +490,7 @@
         </tbody>
     </table>
 </section>    <h3>projects/ccf-shared/analytics/src/lib/analytics.module.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -486,7 +504,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>initCommands(options)</code>
+<code>initCommands(options: <a href="../interfaces/AnalyticsOptions.html" target="_self">AnalyticsOptions</a>)</code>
                 </td>
             </tr>
 
@@ -498,16 +516,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>options</td>
+                                    <td>
+                                                <code><a href="../interfaces/AnalyticsOptions.html" target="_self" >AnalyticsOptions</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -544,7 +567,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>toAttributes(obj)</code>
+<code>toAttributes(obj: Record)</code>
                 </td>
             </tr>
 
@@ -556,16 +579,21 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>obj</td>
+                                    <td>
+                                            <code>Record</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -590,7 +618,7 @@
         </tbody>
     </table>
 </section>    <h3>projects/ccf-shared/rxjs-ext/operators/src/lib/inner-map.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -618,6 +646,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -658,7 +687,7 @@
         </tbody>
     </table>
 </section>    <h3>projects/ccf-shared/src/lib/components/decorated-text/decorated-range.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -672,7 +701,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>normalize(range, length)</code>
+<code>normalize(range: Partial, length: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
                 </td>
             </tr>
 
@@ -686,10 +715,12 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                     <td>Description</td>
                                 </tr>
@@ -697,6 +728,9 @@
                             <tbody>
                                 <tr>
                                     <td>range</td>
+                                    <td>
+                                            <code>Partial</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -710,6 +744,9 @@
                                 </tr>
                                 <tr>
                                     <td>length</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -752,7 +789,7 @@ where all indices have been constrained to the range [0, length].</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>resolveIndex(index, length)</code>
+<code>resolveIndex(index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, length: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
                 </td>
             </tr>
 
@@ -766,10 +803,12 @@ where all indices have been constrained to the range [0, length].</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                     <td>Description</td>
                                 </tr>
@@ -777,6 +816,9 @@ where all indices have been constrained to the range [0, length].</p>
                             <tbody>
                                 <tr>
                                     <td>index</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -790,6 +832,9 @@ where all indices have been constrained to the range [0, length].</p>
                                 </tr>
                                 <tr>
                                     <td>length</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -819,7 +864,7 @@ where all indices have been constrained to the range [0, length].</p>
         </tbody>
     </table>
 </section>    <h3>projects/ccf-shared/rxjs-ext/operators/src/lib/pluck-unique.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -833,7 +878,7 @@ where all indices have been constrained to the range [0, length].</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>pluckUnique(k1, opts?)</code>
+<code>pluckUnique(k1: K1, opts?: <a href="../interfaces/PluckUniqueOptions.html" target="_self">PluckUniqueOptions</a>)</code>
                 </td>
             </tr>
 
@@ -848,10 +893,12 @@ as well as adding a <code>shareReplay</code>.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                     <td>Description</td>
                                 </tr>
@@ -859,6 +906,9 @@ as well as adding a <code>shareReplay</code>.</p>
                             <tbody>
                                 <tr>
                                     <td>k1</td>
+                                    <td>
+                                            <code>K1</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -870,6 +920,9 @@ as well as adding a <code>shareReplay</code>.</p>
                                 </tr>
                                 <tr>
                                     <td>opts</td>
+                                    <td>
+                                                <code><a href="../interfaces/PluckUniqueOptions.html" target="_self" >PluckUniqueOptions</a></code>
+                                    </td>
 
                                     <td>
                                         Yes
@@ -911,7 +964,7 @@ as well as adding a <code>shareReplay</code>.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>pluckUnique(k1, k2, opts?)</code>
+<code>pluckUnique(k1: K1, k2: K2, opts?: <a href="../interfaces/PluckUniqueOptions.html" target="_self">PluckUniqueOptions</a>)</code>
                 </td>
             </tr>
 
@@ -923,16 +976,21 @@ as well as adding a <code>shareReplay</code>.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>k1</td>
+                                    <td>
+                                            <code>K1</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -942,6 +1000,9 @@ as well as adding a <code>shareReplay</code>.</p>
                                 </tr>
                                 <tr>
                                     <td>k2</td>
+                                    <td>
+                                            <code>K2</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -951,6 +1012,9 @@ as well as adding a <code>shareReplay</code>.</p>
                                 </tr>
                                 <tr>
                                     <td>opts</td>
+                                    <td>
+                                                <code><a href="../interfaces/PluckUniqueOptions.html" target="_self" >PluckUniqueOptions</a></code>
+                                    </td>
 
                                     <td>
                                         Yes
@@ -987,7 +1051,7 @@ as well as adding a <code>shareReplay</code>.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>pluckUnique(k1, k2, k3, opts?)</code>
+<code>pluckUnique(k1: K1, k2: K2, k3: K3, opts?: <a href="../interfaces/PluckUniqueOptions.html" target="_self">PluckUniqueOptions</a>)</code>
                 </td>
             </tr>
 
@@ -999,16 +1063,21 @@ as well as adding a <code>shareReplay</code>.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>k1</td>
+                                    <td>
+                                            <code>K1</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1018,6 +1087,9 @@ as well as adding a <code>shareReplay</code>.</p>
                                 </tr>
                                 <tr>
                                     <td>k2</td>
+                                    <td>
+                                            <code>K2</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1027,6 +1099,9 @@ as well as adding a <code>shareReplay</code>.</p>
                                 </tr>
                                 <tr>
                                     <td>k3</td>
+                                    <td>
+                                            <code>K3</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1036,6 +1111,9 @@ as well as adding a <code>shareReplay</code>.</p>
                                 </tr>
                                 <tr>
                                     <td>opts</td>
+                                    <td>
+                                                <code><a href="../interfaces/PluckUniqueOptions.html" target="_self" >PluckUniqueOptions</a></code>
+                                    </td>
 
                                     <td>
                                         Yes
@@ -1072,7 +1150,7 @@ as well as adding a <code>shareReplay</code>.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>pluckUnique(k1, k2, k3, k4, opts?)</code>
+<code>pluckUnique(k1: K1, k2: K2, k3: K3, k4: K4, opts?: <a href="../interfaces/PluckUniqueOptions.html" target="_self">PluckUniqueOptions</a>)</code>
                 </td>
             </tr>
 
@@ -1084,16 +1162,21 @@ as well as adding a <code>shareReplay</code>.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>k1</td>
+                                    <td>
+                                            <code>K1</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1103,6 +1186,9 @@ as well as adding a <code>shareReplay</code>.</p>
                                 </tr>
                                 <tr>
                                     <td>k2</td>
+                                    <td>
+                                            <code>K2</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1112,6 +1198,9 @@ as well as adding a <code>shareReplay</code>.</p>
                                 </tr>
                                 <tr>
                                     <td>k3</td>
+                                    <td>
+                                            <code>K3</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1121,6 +1210,9 @@ as well as adding a <code>shareReplay</code>.</p>
                                 </tr>
                                 <tr>
                                     <td>k4</td>
+                                    <td>
+                                            <code>K4</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1130,6 +1222,9 @@ as well as adding a <code>shareReplay</code>.</p>
                                 </tr>
                                 <tr>
                                     <td>opts</td>
+                                    <td>
+                                                <code><a href="../interfaces/PluckUniqueOptions.html" target="_self" >PluckUniqueOptions</a></code>
+                                    </td>
 
                                     <td>
                                         Yes
@@ -1166,7 +1261,7 @@ as well as adding a <code>shareReplay</code>.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>pluckUnique(k1, k2, k3, k4, k5, opts?)</code>
+<code>pluckUnique(k1: K1, k2: K2, k3: K3, k4: K4, k5: K5, opts?: <a href="../interfaces/PluckUniqueOptions.html" target="_self">PluckUniqueOptions</a>)</code>
                 </td>
             </tr>
 
@@ -1178,16 +1273,21 @@ as well as adding a <code>shareReplay</code>.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>k1</td>
+                                    <td>
+                                            <code>K1</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1197,6 +1297,9 @@ as well as adding a <code>shareReplay</code>.</p>
                                 </tr>
                                 <tr>
                                     <td>k2</td>
+                                    <td>
+                                            <code>K2</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1206,6 +1309,9 @@ as well as adding a <code>shareReplay</code>.</p>
                                 </tr>
                                 <tr>
                                     <td>k3</td>
+                                    <td>
+                                            <code>K3</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1215,6 +1321,9 @@ as well as adding a <code>shareReplay</code>.</p>
                                 </tr>
                                 <tr>
                                     <td>k4</td>
+                                    <td>
+                                            <code>K4</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1224,6 +1333,9 @@ as well as adding a <code>shareReplay</code>.</p>
                                 </tr>
                                 <tr>
                                     <td>k5</td>
+                                    <td>
+                                            <code>K5</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1233,6 +1345,9 @@ as well as adding a <code>shareReplay</code>.</p>
                                 </tr>
                                 <tr>
                                     <td>opts</td>
+                                    <td>
+                                                <code><a href="../interfaces/PluckUniqueOptions.html" target="_self" >PluckUniqueOptions</a></code>
+                                    </td>
 
                                     <td>
                                         Yes
@@ -1269,7 +1384,7 @@ as well as adding a <code>shareReplay</code>.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>pluckUnique(k1, k2, k3, k4, k5, k6, opts?)</code>
+<code>pluckUnique(k1: K1, k2: K2, k3: K3, k4: K4, k5: K5, k6: K6, opts?: <a href="../interfaces/PluckUniqueOptions.html" target="_self">PluckUniqueOptions</a>)</code>
                 </td>
             </tr>
 
@@ -1281,16 +1396,21 @@ as well as adding a <code>shareReplay</code>.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>k1</td>
+                                    <td>
+                                            <code>K1</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1300,6 +1420,9 @@ as well as adding a <code>shareReplay</code>.</p>
                                 </tr>
                                 <tr>
                                     <td>k2</td>
+                                    <td>
+                                            <code>K2</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1309,6 +1432,9 @@ as well as adding a <code>shareReplay</code>.</p>
                                 </tr>
                                 <tr>
                                     <td>k3</td>
+                                    <td>
+                                            <code>K3</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1318,6 +1444,9 @@ as well as adding a <code>shareReplay</code>.</p>
                                 </tr>
                                 <tr>
                                     <td>k4</td>
+                                    <td>
+                                            <code>K4</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1327,6 +1456,9 @@ as well as adding a <code>shareReplay</code>.</p>
                                 </tr>
                                 <tr>
                                     <td>k5</td>
+                                    <td>
+                                            <code>K5</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1336,6 +1468,9 @@ as well as adding a <code>shareReplay</code>.</p>
                                 </tr>
                                 <tr>
                                     <td>k6</td>
+                                    <td>
+                                            <code>K6</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1345,6 +1480,9 @@ as well as adding a <code>shareReplay</code>.</p>
                                 </tr>
                                 <tr>
                                     <td>opts</td>
+                                    <td>
+                                                <code><a href="../interfaces/PluckUniqueOptions.html" target="_self" >PluckUniqueOptions</a></code>
+                                    </td>
 
                                     <td>
                                         Yes
@@ -1393,6 +1531,7 @@ as well as adding a <code>shareReplay</code>.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -1451,6 +1590,7 @@ as well as adding a <code>shareReplay</code>.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -1509,6 +1649,7 @@ as well as adding a <code>shareReplay</code>.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
@@ -1543,7 +1684,7 @@ as well as adding a <code>shareReplay</code>.</p>
         </tbody>
     </table>
 </section>    <h3>projects/ccf-shared/src/lib/analytics/mouse-position-tracker.module.ts</h3>
-    <section>
+    <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -1557,7 +1698,7 @@ as well as adding a <code>shareReplay</code>.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>trackMousePosition(el, ga)</code>
+<code>trackMousePosition(el: HTMLElement, ga: GoogleAnalyticsService)</code>
                 </td>
             </tr>
 
@@ -1569,16 +1710,21 @@ as well as adding a <code>shareReplay</code>.</p>
 
                     <div class="io-description">
                         <b>Parameters :</b>
+                        
                         <table class="params">
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>el</td>
+                                    <td>
+                                            <code>HTMLElement</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1588,6 +1734,9 @@ as well as adding a <code>shareReplay</code>.</p>
                                 </tr>
                                 <tr>
                                     <td>ga</td>
+                                    <td>
+                                            <code>GoogleAnalyticsService</code>
+                                    </td>
 
                                     <td>
                                         No
@@ -1616,7 +1765,7 @@ as well as adding a <code>shareReplay</code>.</p>
 
                    </div><div class="search-results">
     <div class="has-results">
-        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
         <ul class="search-results-list"></ul>
     </div>
     <div class="no-results">
@@ -1628,6 +1777,15 @@ as well as adding a <code>shareReplay</code>.</p>
            </div>
        </div>
 
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'miscellaneous-functions';
@@ -1637,8 +1795,8 @@ as well as adding a <code>shareReplay</code>.</p>
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       
-       <script type="module" src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/menu-wc.js" defer></script>
        <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>

@@ -9,11 +9,11 @@
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 	   <link rel="stylesheet" href="../styles/style.css">
-        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
+        <link rel="stylesheet" href="../styles/dark.css">
     </head>
     <body>
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">Library ccf-shared documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
@@ -35,32 +35,37 @@
 
 
 <ol class="breadcrumb">
-  <li>Components</li>
-  <li
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
   >
   InfoDialogComponent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
-        <li class="active">
-            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
         </li>
-        <li >
-            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
         </li>
-        <li >
-            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
         </li>
-        <li >
-            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
         </li>
-        <li >
-            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
         </li>
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
     <h3>File</h3>
 </p>
 <p class="comment">
@@ -81,14 +86,19 @@
         <h3>Implements</h3>
     </p>
     <p class="comment">
-                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                <code>OnInit</code>
     </p>
 
 
-<section>
+<section data-compodoc="block-metadata">
     <h3>Metadata</h3>
-    <table class="table table-sm table-hover">
+    <table class="table table-sm table-hover metadata">
         <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
 
 
 
@@ -104,6 +114,8 @@
                 <td class="col-md-3">selector</td>
                 <td class="col-md-9"><code>ccf-info-dialog</code></td>
             </tr>
+
+
 
             <tr>
                 <td class="col-md-3">styleUrls</td>
@@ -128,7 +140,7 @@
     </table>
 </section>
 
-    <section>
+    <section data-compodoc="block-index">
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
@@ -141,6 +153,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier">Public</span>
                                 <a href="#data" >data</a>
                             </li>
@@ -187,7 +200,7 @@
     </table>
 </section>
 
-    <section>
+    <section data-compodoc="block-constructor">
     <h3 id="constructor">Constructor</h3>
         <table class="table table-sm table-bordered">
             <tbody>
@@ -198,7 +211,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">projects/ccf-shared/src/lib/components/info/info-dialog/info-dialog.component.ts:34</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">projects/ccf-shared/src/lib/components/info/info-dialog/info-dialog.component.ts:35</a></div>
                             </td>
                         </tr>
 
@@ -230,8 +243,8 @@
                                                     </td>
                                                     
                                                         <td>
-                                                                <code><p>A reference to the dialog that this component creates, used to call the dialog&#39;s methods</p>
-</code>
+                                                                <p>A reference to the dialog that this component creates, used to call the dialog&#39;s methods</p>
+
                                                         </td>
                                                 </tr>
                                                 <tr>
@@ -246,8 +259,8 @@
                                                     </td>
                                                     
                                                         <td>
-                                                                <code><p>Data being injected into the dialog</p>
-</code>
+                                                                <p>Data being injected into the dialog</p>
+
                                                         </td>
                                                 </tr>
                                         </tbody>
@@ -263,7 +276,7 @@
 
 
 
-    <section>
+    <section data-compodoc="block-methods">
     
     <h3 id="methods">
         Methods
@@ -288,8 +301,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="62"
-                            class="link-to-prism">projects/ccf-shared/src/lib/components/info/info-dialog/info-dialog.component.ts:62</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="63"
+                            class="link-to-prism">projects/ccf-shared/src/lib/components/info/info-dialog/info-dialog.component.ts:63</a></div>
                 </td>
             </tr>
 
@@ -327,8 +340,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="53"
-                            class="link-to-prism">projects/ccf-shared/src/lib/components/info/info-dialog/info-dialog.component.ts:53</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="54"
+                            class="link-to-prism">projects/ccf-shared/src/lib/components/info/info-dialog/info-dialog.component.ts:54</a></div>
                 </td>
             </tr>
 
@@ -347,7 +360,7 @@
         </tbody>
     </table>
 </section>
-    <section>
+    <section data-compodoc="block-properties">
     
     <h3 id="inputs">
         Properties
@@ -358,6 +371,7 @@
                 <td class="col-md-4">
                     <a name="data"></a>
                     <span class="name">
+                            <span class="modifier"></span>
                             <span class="modifier">Public</span>
                         <span ><b>data</b></span>
                         <a href="#data"><span class="icon ion-ios-link"></span></a>
@@ -381,7 +395,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">projects/ccf-shared/src/lib/components/info/info-dialog/info-dialog.component.ts:43</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">projects/ccf-shared/src/lib/components/info/info-dialog/info-dialog.component.ts:44</a></div>
                         </td>
                     </tr>
 
@@ -413,7 +427,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">projects/ccf-shared/src/lib/components/info/info-dialog/info-dialog.component.ts:42</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">projects/ccf-shared/src/lib/components/info/info-dialog/info-dialog.component.ts:43</a></div>
                         </td>
                     </tr>
 
@@ -444,7 +458,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">projects/ccf-shared/src/lib/components/info/info-dialog/info-dialog.component.ts:26</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">projects/ccf-shared/src/lib/components/info/info-dialog/info-dialog.component.ts:27</a></div>
                         </td>
                     </tr>
 
@@ -476,7 +490,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">projects/ccf-shared/src/lib/components/info/info-dialog/info-dialog.component.ts:30</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">projects/ccf-shared/src/lib/components/info/info-dialog/info-dialog.component.ts:31</a></div>
                         </td>
                     </tr>
 
@@ -508,7 +522,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">projects/ccf-shared/src/lib/components/info/info-dialog/info-dialog.component.ts:34</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">projects/ccf-shared/src/lib/components/info/info-dialog/info-dialog.component.ts:35</a></div>
                         </td>
                     </tr>
 
@@ -526,8 +540,8 @@
 </div>
 
 
-    <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Inject, OnInit } from &#x27;@angular/core&#x27;;
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, Component, Inject, OnInit } from &#x27;@angular/core&#x27;;
 import { MAT_DIALOG_DATA, MatDialogRef } from &#x27;@angular/material/dialog&#x27;;
 import { DocumentationContent } from &#x27;../info-button/info-button.service&#x27;;
 
@@ -546,7 +560,8 @@ export interface InfoDialogData {
 @Component({
   selector: &#x27;ccf-info-dialog&#x27;,
   templateUrl: &#x27;./info-dialog.component.html&#x27;,
-  styleUrls: [&#x27;./info-dialog.component.scss&#x27;]
+  styleUrls: [&#x27;./info-dialog.component.scss&#x27;],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InfoDialogComponent implements OnInit {
   /**
@@ -599,8 +614,8 @@ export class InfoDialogComponent implements OnInit {
 </code></pre>
     </div>
 
-    <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;rui-about wrapper&quot;&gt;
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;about wrapper&quot;&gt;
   &lt;div class&#x3D;&quot;container&quot;&gt;
     &lt;div class&#x3D;&quot;content&quot;&gt;
       &lt;div class&#x3D;&quot;header&quot;&gt;
@@ -609,7 +624,7 @@ export class InfoDialogComponent implements OnInit {
           &lt;mat-icon class&#x3D;&quot;material-icons close-icon&quot; (click)&#x3D;&quot;close()&quot;&gt;clear&lt;/mat-icon&gt;
         &lt;/div&gt;
       &lt;/div&gt;
-      
+
       &lt;mat-dialog-content class&#x3D;&quot;mat-typography dialog-content&quot;&gt;
         &lt;div *ngFor&#x3D;&quot;let content of documentationContents; let i &#x3D; index;&quot; class&#x3D;&quot;panel&quot;&gt;
           &lt;mat-expansion-panel *ngIf&#x3D;&quot;content&quot; [expanded]&#x3D;&quot;i &#x3D;&#x3D;&#x3D; 0&quot;&gt;
@@ -619,7 +634,7 @@ export class InfoDialogComponent implements OnInit {
               &lt;div class&#x3D;&quot;top-padding&quot;&gt;
                 &lt;markdown class&#x3D;&quot;variable-binding&quot; [class.first]&#x3D;&quot;i &#x3D;&#x3D;&#x3D; 0&quot; [data]&#x3D;&quot;content.content&quot;&gt;&lt;/markdown&gt;
                 &lt;div class&#x3D;&quot;video-player&quot; *ngIf&#x3D;&quot;i &#x3D;&#x3D;&#x3D; 0&quot;&gt;
-                  &lt;youtube-player videoId&#x3D;&quot;{{videoID}}&quot;&gt;&lt;/youtube-player&gt; 
+                  &lt;youtube-player videoId&#x3D;&quot;{{videoID}}&quot;&gt;&lt;/youtube-player&gt;
                 &lt;/div&gt;
               &lt;/div&gt;
           &lt;/mat-expansion-panel&gt;
@@ -627,10 +642,11 @@ export class InfoDialogComponent implements OnInit {
       &lt;/mat-dialog-content&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-&lt;/div&gt;</code></pre>
+&lt;/div&gt;
+</code></pre>
     </div>
 
-    <div class="tab-pane fade " id="c-styleData">
+    <div class="tab-pane fade " id="styleData">
                 <p class="comment">
                     <code>./info-dialog.component.scss</code>
                 </p>
@@ -638,10 +654,10 @@ export class InfoDialogComponent implements OnInit {
   padding: 0;
 }
 
-.rui-about.wrapper {
+.about.wrapper {
   .container {
     .content {
-      padding: 3rem;
+      padding: 1.5rem;
       text-align: left;
 
       .header {
@@ -706,6 +722,7 @@ export class InfoDialogComponent implements OnInit {
     .dialog-content {
       height: 50rem;
       min-height: 10rem;
+      padding: 0 1.5rem;
 
       .variable-binding {
         font-weight: 300;
@@ -742,7 +759,7 @@ export class InfoDialogComponent implements OnInit {
 </code></pre>
     </div>
 
-    <div class="tab-pane fade " id="c-tree">
+    <div class="tab-pane fade " id="tree">
         <div id="tree-container"></div>
         <div class="tree-legend">
             <div class="title">
@@ -767,7 +784,7 @@ export class InfoDialogComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="rui-about wrapper">  <div class="container">    <div class="content">      <div class="header">        <h2 class="title" mat-dialog-title>{{infoTitle}}</h2>        <div class="close">          <mat-icon class="material-icons close-icon" (click)="close()">clear</mat-icon>        </div>      </div>            <mat-dialog-content class="mat-typography dialog-content">        <div *ngFor="let content of documentationContents; let i = index;" class="panel">          <mat-expansion-panel *ngIf="content" [expanded]="i === 0">            <mat-expansion-panel-header>              <h2 class="no-header-margin">{{content.title}}</h2>            </mat-expansion-panel-header>              <div class="top-padding">                <markdown class="variable-binding" [class.first]="i === 0" [data]="content.content"></markdown>                <div class="video-player" *ngIf="i === 0">                  <youtube-player videoId="{{videoID}}"></youtube-player>                 </div>              </div>          </mat-expansion-panel>        </div>      </mat-dialog-content>    </div>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="about wrapper">  <div class="container">    <div class="content">      <div class="header">        <h2 class="title" mat-dialog-title>{{infoTitle}}</h2>        <div class="close">          <mat-icon class="material-icons close-icon" (click)="close()">clear</mat-icon>        </div>      </div>      <mat-dialog-content class="mat-typography dialog-content">        <div *ngFor="let content of documentationContents; let i = index;" class="panel">          <mat-expansion-panel *ngIf="content" [expanded]="i === 0">            <mat-expansion-panel-header>              <h2 class="no-header-margin">{{content.title}}</h2>            </mat-expansion-panel-header>              <div class="top-padding">                <markdown class="variable-binding" [class.first]="i === 0" [data]="content.content"></markdown>                <div class="video-player" *ngIf="i === 0">                  <youtube-player videoId="{{videoID}}"></youtube-player>                </div>              </div>          </mat-expansion-panel>        </div>      </mat-dialog-content>    </div>  </div></div></div>'
     var COMPONENTS = [{'name': 'BodyUiComponent', 'selector': 'ccf-body-ui'},{'name': 'CallToActionBehaviorComponent', 'selector': 'ccf-call-to-action-behavior'},{'name': 'CallToActionComponent', 'selector': 'ccf-call-to-action'},{'name': 'DecoratedTextComponent', 'selector': 'ccf-decorated-text'},{'name': 'InfoButtonComponent', 'selector': 'ccf-info-button'},{'name': 'InfoDialogComponent', 'selector': 'ccf-info-dialog'},{'name': 'OpacitySliderComponent', 'selector': 'ccf-opacity-slider'},{'name': 'OrganSelectorComponent', 'selector': 'ccf-organ-selector'},{'name': 'SpatialSearchListComponent', 'selector': 'ccf-spatial-search-list'},{'name': 'StoreDebugComponent', 'selector': 'ccf-store-debug'},{'name': 'TextSearchComponent', 'selector': 'ccf-text-search'},{'name': 'TrackingPopupComponent', 'selector': 'ccf-tracking-popup'},{'name': 'XYZPositionComponent', 'selector': 'ccf-xyz-position'}];
     var DIRECTIVES = [{'name': 'NumberDirective', 'selector': 'input[ccfNumbersOnly]'}];
     var ACTUAL_COMPONENT = {'name': 'InfoDialogComponent'};
@@ -783,14 +800,16 @@ export class InfoDialogComponent implements OnInit {
 
 
 
-                   
+
+
+
 
 
 
 
                    </div><div class="search-results">
     <div class="has-results">
-        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
         <ul class="search-results-list"></ul>
     </div>
     <div class="no-results">
@@ -802,6 +821,15 @@ export class InfoDialogComponent implements OnInit {
            </div>
        </div>
 
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
@@ -811,8 +839,8 @@ export class InfoDialogComponent implements OnInit {
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       
-       <script type="module" src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/menu-wc.js" defer></script>
        <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
