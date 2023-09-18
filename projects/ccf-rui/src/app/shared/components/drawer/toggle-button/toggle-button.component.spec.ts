@@ -1,3 +1,0 @@
-describe('ToggleButtonComponent', () => {
-  // Add tests
-});

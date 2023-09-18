@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { Injectable, Injector } from '@angular/core';
-import { DataAction, Payload, StateRepository } from '@ngxs-labs/data/decorators';
-import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
+import { DataAction, Payload, StateRepository } from '@angular-ru/ngxs/decorators';
+import { NgxsImmutableDataRepository } from '@angular-ru/ngxs/repositories';
 import { NgxsOnInit, Selector, State } from '@ngxs/store';
 import { NodeClickEvent, SpatialSceneNode } from 'ccf-body-ui';
 import { SpatialEntity } from 'ccf-database';
 import { ALL_POSSIBLE_ORGANS, DataSourceService, OrganInfo } from 'ccf-shared';
 import { combineLatest } from 'rxjs';
-import { distinctUntilChanged, map, pluck, take, tap } from 'rxjs/operators';
+import { distinctUntilChanged, map, take, tap } from 'rxjs/operators';
 
 import { ColorAssignmentState } from '../color-assignment/color-assignment.state';
 import { DataState } from '../data/data.state';
@@ -61,13 +61,13 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
   }
 
   /** Available Reference Organs */
-  readonly referenceOrgans$ = this.state$.pipe(pluck('referenceOrgans'), distinctUntilChanged());
+  readonly referenceOrgans$ = this.state$.pipe(map(x => x?.referenceOrgans), distinctUntilChanged());
   /** Selected Reference Organs */
-  readonly selectedReferenceOrgans$ = this.state$.pipe(pluck('selectedReferenceOrgans'), distinctUntilChanged());
+  readonly selectedReferenceOrgans$ = this.state$.pipe(map(x => x?.selectedReferenceOrgans), distinctUntilChanged());
   /** Scene to display in the 3d Scene */
-  readonly scene$ = this.state$.pipe(pluck('scene'), distinctUntilChanged());
+  readonly scene$ = this.state$.pipe(map(x => x?.scene), distinctUntilChanged());
 
-  readonly highlightedId$ = this.state$.pipe(pluck('highlightedId'), distinctUntilChanged());
+  readonly highlightedId$ = this.state$.pipe(map(x => x?.highlightedId), distinctUntilChanged());
 
   /** The data state */
   private dataState: DataState;
@@ -193,7 +193,7 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
         const activeOrgans = new Set(selectedOrgans.map(o => o.id));
         const refOrgans = new Set(refOrganData.filter(o => activeOrgans.has(o.representation_of)).map(o => o['@id']));
         return scene.filter(node =>
-          (node.ccf_annotations?.some?.(tag => activeOrgans.has(tag))) ||
+          (node.ccf_annotations?.some?.(tag => activeOrgans.has(tag))) ??
           (node.reference_organ && refOrgans.has(node.reference_organ))
         ).map((node): SpatialSceneNode =>
           node.entityId && (Object.prototype.hasOwnProperty.call(colors, node['@id']) || highlightedNodeId === node['@id']) ?

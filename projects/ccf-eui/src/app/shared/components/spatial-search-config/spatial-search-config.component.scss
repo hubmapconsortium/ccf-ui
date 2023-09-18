@@ -18,7 +18,8 @@
     justify-content: space-between;
     width: 100%;
     font-size: 1.25rem;
-  
+    align-items: center;
+
     .header-left {
       display: flex;
       align-items: center;
@@ -36,6 +37,9 @@
       outline: none;
       border-radius: 0.25rem;
       transition: 0.6s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 
@@ -44,10 +48,16 @@
 
     .label {
       margin-right: 2rem;
+      line-height: 1.75rem;
     }
 
     .radio {
       margin-right: 4rem;
+
+      ::ng-deep .mdc-radio {
+        padding: 0;
+        padding-right: 0.5rem;
+      }
     }
   }
 
@@ -56,23 +66,24 @@
       height: 0rem;
     }
 
-    ::ng-deep .mat-form-field-wrapper {
-      padding-bottom: 1rem;
+    ::ng-deep .mat-mdc-text-field-wrapper {
+      font-size: 1rem;
+      padding-bottom: .75rem;
       padding-top: 3rem;
       margin-left: 0.5rem;
       width: 14rem;
 
-      .mat-form-field-infix {
+      .mat-mdc-form-field-infix {
         padding: 0;
         border-top: none;
       }
 
-      .mat-form-field-underline {
+      .mdc-line-ripple {
         bottom: 0rem;
         height: 0.125rem;
       }
 
-      .mat-select-arrow-wrapper {
+      .mat-mdc-select-arrow-wrapper {
         transform: translatey(0rem);
       }
     }
@@ -99,12 +110,9 @@
 }
 
 ::ng-deep .organ-select {
-  position: absolute;
   top: 2.5rem;
   left: -0.25rem;
-  border-radius: 0.5rem;
-  max-height: 24.5rem;
-  width: 14rem;
+  padding: 0 !important;
 
   .organ-select-option {
     height: 3.5rem;

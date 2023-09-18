@@ -1,20 +1,23 @@
-@use '~@angular/material' as mat;
-@use '~@angular/material/theming' as *;
+@use '@angular/material' as mat;
+@use '@angular/material/theming' as *;
 
 @mixin theme($theme) {
-  $primary: map-get($theme, primary);
-  $foreground: map-get($theme, foreground);
-  $background: map-get($theme, background);
-  $accent: map-get($theme, accent);
+  $color-config: mat.get-color-config($theme);
+  $primary: map-get($color-config, primary);
+  $background: map-get($color-config, background);
+  $foreground: map-get($color-config, foreground);
+  $accent: map-get($color-config, accent);
 
-  button {
-    color: mat.get-color-from-palette($foreground, light-button-text);
-    background-color: mat.get-color-from-palette($background, button-bg);
-    border-color: mat.get-color-from-palette($foreground, button-border);
+  ccf-filters-content .button-container {
+    button {
+      color: mat.get-color-from-palette($foreground, contrast-button-text) !important;
+      background-color: mat.get-color-from-palette($background, button-bg);
+      border-color: mat.get-color-from-palette($foreground, button-border);
 
-    &:hover {
-      color: mat.get-color-from-palette($foreground, color-hover);
-      background-color: mat.get-color-from-palette($background, button-background-hover);
+      &:hover {
+        color: mat.get-color-from-palette($foreground, color-hover) !important;
+        background-color: mat.get-color-from-palette($background, button-background-hover);
+      }
     }
   }
 

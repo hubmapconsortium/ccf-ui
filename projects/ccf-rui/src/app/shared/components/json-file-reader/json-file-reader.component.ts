@@ -1,11 +1,12 @@
-import { Component, ElementRef, EventEmitter, HostBinding, Input, Output, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, HostBinding, Input, Output, ViewChild } from '@angular/core';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 
 @Component({
   selector: 'ccf-json-file-reader',
   templateUrl: './json-file-reader.component.html',
-  styleUrls: ['./json-file-reader.component.scss']
+  styleUrls: ['./json-file-reader.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class JsonFileReaderComponent {
   /** HTML class name */

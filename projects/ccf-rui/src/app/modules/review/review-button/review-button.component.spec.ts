@@ -37,9 +37,9 @@ describe('ReviewButtonComponent', () => {
   });
 
   it('launchReviewModal opens the modal', async () => {
-    const { instance, get } = await shallow.render();
+    const { instance, inject } = await shallow.render();
     instance.launchReviewModal();
-    expect(get(MatDialog).open).toHaveBeenCalled();
+    expect(inject(MatDialog).open).toHaveBeenCalled();
   });
 
   it('should emit the event when the modal is closed via the download button', async () => {

@@ -5,8 +5,8 @@
 
   .header {
     display: flex;
-    height: 1.5rem;
     align-items: center;
+    height: 1.5rem;
 
     .title {
       font-weight: 600;
@@ -19,7 +19,7 @@
 
       &:hover {
         border-radius: 2px;
-      } 
+      }
     }
   }
 
@@ -35,6 +35,23 @@
 
       .input {
         text-align: center;
+      }
+
+      .suffix {
+        display: none;
+      }
+
+      ::ng-deep .mdc-text-field {
+        padding: 0;
+
+        .mat-mdc-form-field-infix {
+          padding-bottom: 0;
+          min-height: inherit;
+        }
+
+        .mat-mdc-form-field-icon-suffix {
+          padding: 1rem 0 0px .25rem;
+        }
       }
     }
   }

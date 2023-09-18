@@ -42,14 +42,14 @@ import { ViewerModule } from './shared/components/viewer/viewer.module';
     ViewerModule,
     TrackingPopupModule,
     MatSnackBarModule,
-    RunSpatialSearchModule
+    RunSpatialSearchModule,
+    MatSnackBarModule
   ],
   declarations: [AppComponent, AppWebComponent],
   providers: [
     { provide: DEFAULT_THEME, useValue: 'hubmap-theme-light' },
     { provide: OverlayContainer, useExisting: AppRootOverlayContainer }
-  ],
-  entryComponents: [AppComponent]
+  ]
 })
 export class AppModule implements DoBootstrap {
   constructor(private readonly injector: Injector) { }

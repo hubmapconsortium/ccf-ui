@@ -4,6 +4,10 @@
   <meta charset="utf-8">
   <title>HuBMAP CCF Registration User Interface (CCF-RUI)</title>
   <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
   <script>
     // To test embedded mode, from the console paste:
     // localStorage.setItem('TEST_EMBEDDED', true);
@@ -50,8 +54,8 @@
       window.addEventListener('DOMContentLoaded', () => {
         const rui = document.querySelector('ccf-rui');
         rui.baseHref = 'https://cdn.jsdelivr.net/gh/hubmapconsortium/ccf-ui@staging/rui/';
-        rui.user = {firstName: 'Jane', lastName: 'Doe'};
         rui.useDownload = true;
+        rui.user = {firstName: 'Jane', lastName: 'Doe'};
         rui.organ = { name: 'kidney', side: 'left', sex: 'female' };
         rui.editRegistration = sampleRegistration;
         rui.register = (data) => {
@@ -66,10 +70,6 @@
       });
     }
   </script>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Sharp" rel="stylesheet">
 </head>
 <body>
   <ccf-rui></ccf-rui>

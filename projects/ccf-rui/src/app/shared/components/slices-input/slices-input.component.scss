@@ -44,6 +44,19 @@
       &.mat-focused .suffix, .suffix.show {
         display: initial;
       }
+
+      ::ng-deep .mdc-text-field {
+        padding: 0;
+
+        .mat-mdc-form-field-infix {
+          padding-bottom: 0;
+          min-height: inherit;
+        }
+
+        .mat-mdc-form-field-icon-suffix {
+          padding: 1.5rem 0 0 0;
+        }
+      }
     }
   }
 

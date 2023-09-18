@@ -1,5 +1,5 @@
-@use '~@angular/material' as mat;
-@use '~@angular/material/theming' as *;
+@use '@angular/material' as mat;
+@use '@angular/material/theming' as *;
 @use 'common/utility';
 @import 'light';
 
@@ -57,9 +57,11 @@ $gtex-light-background: map-merge($background, (
 
 $theme: (
   is-dark: false,
-  primary: $primary,
-  accent: $accent,
-  warn: $warn,
-  foreground: $gtex-light-foreground,
-  background: $gtex-light-background
+  color: (
+    primary: $primary,
+    accent: $accent,
+    warn: $warn,
+    foreground: $gtex-light-foreground,
+    background: $gtex-light-background
+  ),
 );

@@ -1,5 +1,5 @@
-@use '~@angular/material' as mat;
-@use '~@angular/material/theming' as *;
+@use '@angular/material' as mat;
+@use '@angular/material/theming' as *;
 @use 'common/utility';
 @import 'light';
 
@@ -111,9 +111,11 @@ $sennet-light-background: map-merge($background, (
 
 $theme: (
   is-dark: false,
-  primary: $primary,
-  accent: $accent,
-  warn: $warn,
-  foreground: $sennet-light-foreground,
-  background: $sennet-light-background
+  color: (
+    primary: $primary,
+    accent: $accent,
+    warn: $warn,
+    foreground: $sennet-light-foreground,
+    background: $sennet-light-background
+  ),
 );

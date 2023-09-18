@@ -1,5 +1,5 @@
-@use '~@angular/material' as mat;
-@use '~@angular/material/theming' as *;
+@use '@angular/material' as mat;
+@use '@angular/material/theming' as *;
 @use 'common/utility';
 
 $sennet-palette: (
@@ -128,7 +128,7 @@ $background: map-merge(mat.$light-theme-background-palette, (
   dropdown-hover: map-get($sennet-palette, 400),
   image-placeholder: map-get($sennet-palette, 'disabled-text'),
   info-button-hover: map-get($sennet-palette, 'white-hover'),
-  card: map-get($sennet-palette, 'white'), 
+  card: map-get($sennet-palette, 'white'),
   content-background: map-get($sennet-palette, 'black'),
   legend-background: map-get($sennet-palette, 'white'),
   sidebar-background: map-get($sennet-palette,  'white'),
@@ -139,9 +139,11 @@ $background: map-merge(mat.$light-theme-background-palette, (
 
 $theme: (
   is-dark: false,
-  primary: $primary,
-  accent: $accent,
-  warn: $warn,
-  foreground: $foreground,
-  background: $background
+  color: (
+    primary: $primary,
+    accent: $accent,
+    warn: $warn,
+    foreground: $foreground,
+    background: $background
+  )
 );

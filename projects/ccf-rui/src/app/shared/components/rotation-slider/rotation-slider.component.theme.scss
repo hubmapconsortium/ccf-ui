@@ -1,6 +1,5 @@
-@use '~@angular/material' as mat;
-@use '~@angular/material/theming' as *;
-
+@use '@angular/material' as mat;
+@use '@angular/material/theming' as *;
 @mixin slider-theme($cls, $color, $lightColor) {
   .slider-box#{$cls} {
     .label {
@@ -27,9 +26,11 @@
 }
 
 @mixin theme($theme) {
-  $foreground: map-get($theme, foreground);
-  $background: map-get($theme, background);
-  $accent: map-get($theme, accent);
+  $color-config: mat.get-color-config($theme);
+  $primary: map-get($color-config, primary);
+  $background: map-get($color-config, background);
+  $foreground: map-get($color-config, foreground);
+  $accent: map-get($color-config, accent);
 
   .ccf-rotation-slider {
     .header .reset {

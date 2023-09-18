@@ -1,8 +1,8 @@
 import { Immutable } from '@angular-ru/common/typings';
 import { Injectable } from '@angular/core';
 import { Matrix4, toRadians } from '@math.gl/core';
-import { StateRepository } from '@ngxs-labs/data/decorators';
-import { NgxsImmutableDataRepository } from '@ngxs-labs/data/repositories';
+import { StateRepository } from '@angular-ru/ngxs/decorators';
+import { NgxsImmutableDataRepository } from '@angular-ru/ngxs/repositories';
 import { State } from '@ngxs/store';
 import { SpatialPlacementJsonLd, SpatialSceneNode } from 'ccf-body-ui';
 import { ExtractionSet, SpatialEntity } from 'ccf-database';

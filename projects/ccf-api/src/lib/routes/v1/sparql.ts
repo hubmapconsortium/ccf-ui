@@ -57,6 +57,7 @@ export function sparql(): RequestHandler {
         };
         return acc;
       }, {
+        /* eslint-disable-next-line @typescript-eslint/naming-convention */
         'text/plain': () => {
           mediaType = 'simple';
         }

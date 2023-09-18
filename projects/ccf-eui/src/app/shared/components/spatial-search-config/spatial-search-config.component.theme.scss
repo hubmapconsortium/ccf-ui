@@ -1,28 +1,33 @@
-@use '~@angular/material' as mat;
-@use '~@angular/material/theming' as *;
+@use '@angular/material' as mat;
+@use '@angular/material/theming' as *;
 
 @mixin theme($theme) {
-  $primary: map-get($theme, primary);
-  $foreground: map-get($theme, foreground);
-  $background: map-get($theme, background);
-  $accent: map-get($theme, accent);
+  $color-config: mat.get-color-config($theme);
+  $primary: map-get($color-config, primary);
+  $background: map-get($color-config, background);
+  $foreground: map-get($color-config, foreground);
+  $accent: map-get($color-config, accent);
 
   .organ-select {
     background-color: mat.get-color-from-palette($background, modal);
     border-color: mat.get-color-from-palette($foreground, modal-borders);
     box-shadow: 0.2rem 0.2rem 1rem 0rem #0000003e;
 
-    .mat-option {
+    .organ-select-option {
       background-color: mat.get-color-from-palette($background, modal);
       border-color: mat.get-color-from-palette($foreground, borders);
+      color: mat.get-color-from-palette($foreground, text);
+
+      &.mat-mdc-option-active {
+        background-color: mat.get-color-from-palette($background, mat-selected-option) !important;
+
+        .mdc-list-item__primary-text {
+          color: mat.get-color-from-palette($foreground, contrast-text) !important;
+        }
+      }
 
       &:hover {
         background-color: mat.get-color-from-palette($background, dropdown-hover);
-      }
-
-      &.mat-selected.mat-active {
-        background-color: mat.get-color-from-palette($background, mat-selected-option);
-        color: mat.get-color-from-palette($foreground, contrast-text);
       }
     }
   }
@@ -37,40 +42,40 @@
         background: map-get($foreground, text);
       }
     }
-  
+
     .form-field {
       .label {
-        color: mat.get-color-from-palette($foreground, text-muted)
+        color: mat.get-color-from-palette($foreground, text);
       }
-  
-      .mat-form-field-wrapper {
-        .mat-form-field-underline {
+
+      .mat-mdc-text-field-wrapper {
+        .mdc-line-ripple {
           background-color: mat.get-color-from-palette($foreground, text);
         }
       }
     }
-  
-    .mat-select-value {
+
+    .mat-mdc-select-value {
       color: mat.get-color-from-palette($foreground, text);
     }
-  
-    .mat-select-arrow {
+
+    .mat-mdc-select-arrow {
       color: mat.get-color-from-palette($foreground, contrast-icon);
     }
 
     .info, .close {
       color: mat.get-color-from-palette($foreground, main);
-  
+
       &:hover {
         background-color: mat.get-color-from-palette($background, icon-background-hover2) !important;
       }
     }
-  
+
     .continue-button {
-      color: mat.get-color-from-palette($foreground, light-button-text);
+      color: mat.get-color-from-palette($foreground, contrast-button-text);
       background-color: mat.get-color-from-palette($background, button-bg);
       border-color: mat.get-color-from-palette($foreground, button-border);
-  
+
       &:hover {
         color: mat.get-color-from-palette($foreground, color-hover);
         background-color: mat.get-color-from-palette($background, button-background-hover);

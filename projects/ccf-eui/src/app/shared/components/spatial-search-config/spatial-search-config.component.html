@@ -1,12 +1,12 @@
 <div class="header">
   <div class="header-left">
     <div class="title">Configure Spatial Search</div>
-    <button class="info" mat-icon-button>
-      <mat-icon (click)="infoClicked.emit()">info</mat-icon>
+    <button class="info" mat-icon-button (click)="infoClicked.emit()">
+      <mat-icon>info</mat-icon>
     </button>
   </div>
-  <button class="close" mat-icon-button>
-    <mat-icon (click)="closeDialog.emit()">close</mat-icon>
+  <button class="close" mat-icon-button (click)="closeDialog.emit()">
+    <mat-icon>close</mat-icon>
   </button>
 </div>
 
@@ -20,10 +20,10 @@
 
 <div class="organ-selector">
   <div class="label">Select an organ</div>
-  <mat-form-field class="form-field" appearance="fill">
+  <mat-form-field class="form-field" appearance="fill" subscriptSizing="dynamic">
     <div *ngIf="!selectedOrgan" class="label">Organs</div>
     <mat-select disableOptionCentering="true" panelClass="organ-select" [(value)]="selectedOrgan"
-      (selectionChange)="updateOrgan.emit($event.value)">
+      (selectionChange)="updateOrgan.emit($event.value)" hideSingleSelectionIndicator="true">
       <mat-option class="organ-select-option" *ngFor="let organ of organs" [value]="organ">
         {{organ.name}}
       </mat-option>

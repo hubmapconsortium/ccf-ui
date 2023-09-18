@@ -50,10 +50,10 @@ describe('ReviewModalComponent', () => {
   });
 
   it('should close the dialog when the close() method is called', async () => {
-    const { instance, get } = await shallow
+    const { instance, inject } = await shallow
       .mock(MatDialogRef, { close(): void { /* Empty */ } })
       .render();
-    const ref = get(MatDialogRef);
+    const ref = inject(MatDialogRef);
     instance.close();
     await wait(250);
 

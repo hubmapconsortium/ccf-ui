@@ -26,7 +26,7 @@ export function getOrientedBoundingBox(store: Store, graph: CCFSpatialGraph, sou
     const center = matrix.getTranslation();
     const halfSize = getSpatialEntityDimensions(store, sourceIri).map(n => n / 1000 / 2);
     const quaternion = new Euler().fromRotationMatrix(matrix, Euler.XYZ).toQuaternion().normalize().calculateW();
-    result = new OrientedBoundingBox().fromCenterHalfSizeQuaternion(center, halfSize, quaternion);
+    result = new OrientedBoundingBox().fromCenterHalfSizeQuaternion(center as number[], halfSize, quaternion);
   }
   return result;
 }

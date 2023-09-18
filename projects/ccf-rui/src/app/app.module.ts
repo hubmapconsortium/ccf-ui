@@ -44,13 +44,11 @@ import { DrawerModule } from './shared/components/drawer/drawer.module';
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: {
-        appearance: 'standard',
-        floatLabel: false,
+        floatLabel: true,
         hideRequiredMarker: true
       }
     }
-  ],
-  entryComponents: [AppComponent, AppWebComponent]
+  ]
 })
 export class AppModule implements DoBootstrap {
   constructor(private readonly injector: Injector) { }

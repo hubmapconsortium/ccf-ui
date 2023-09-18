@@ -2,6 +2,7 @@
   "name": "ccf-shared",
   "version": "0.0.1",
   "peerDependencies": {
+    "angular-ru/ngxs": "^14.1.4",
     "@angular/common": "^10.0.6",
     "@angular/core": "^10.0.6",
     "@angular/material": "^10.1.1",

@@ -18,7 +18,9 @@ function parseBoolean(value: unknown, defaultValue = false): boolean {
 
 
 export function cacheResponses(options?: CacheOptions): RequestHandler {
-  const cache = new AutoPruneLRUCache<string, unknown>({
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  type AnyObject = {};
+  const cache = new AutoPruneLRUCache<string, AnyObject>({
     max: 100,
     maxAge: 60 * 60 * 1000,
     ...options
@@ -28,6 +30,7 @@ export function cacheResponses(options?: CacheOptions): RequestHandler {
     const { query, originalUrl, url } = req;
     const useCache = parseBoolean(query.cache, true);
     const key = `__${ originalUrl || url }`;
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     const cachedResponse = cache.get(key);
 
     if (!useCache) {

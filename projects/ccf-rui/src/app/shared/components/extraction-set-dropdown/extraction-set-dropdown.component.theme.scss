@@ -1,54 +1,51 @@
-@use '~@angular/material' as mat;
-@use '~@angular/material/theming' as *;
+@use '@angular/material' as mat;
+@use '@angular/material/theming' as *;
 
 @mixin theme($theme) {
-  $foreground: map-get($theme, foreground);
-  $background: map-get($theme, background);
-  $primary: map-get($theme, primary);
-  $accent: map-get($theme, accent);
+  $color-config: mat.get-color-config($theme);
+  $primary: map-get($color-config, primary);
+  $background: map-get($color-config, background);
+  $foreground: map-get($color-config, foreground);
+  $accent: map-get($color-config, accent);
 
 
   .extraction-dropdown-label {
     color: mat.get-color-from-palette($foreground, placeholder-text);
   }
 
-  .mat-form-field-ripple {
-    background-color: mat.get-color-from-palette($accent) !important;
+  .mdc-line-ripple::after {
+    border-bottom-color: mat.get-color-from-palette($accent) !important;
   }
 
   .extraction-set-panel {
     background-color: mat.get-color-from-palette($primary, 'white');
 
-    .mat-option {
+    .mat-mdc-option {
       border-color: mat.get-color-from-palette($foreground, borders);
-      
-      .mat-option-text {
-        color: mat.get-color-from-palette($foreground, placeholder-text);
-      }
+      color: mat.get-color-from-palette($foreground, placeholder-text);
 
       &:hover {
         background-color: mat.get-color-from-palette($background, hover-background);
       }
 
-      &.mat-selected.mat-active {
+      &.mat-mdc-option-active {
         background-color: mat.get-color-from-palette($background, background);
       }
     }
   }
 
   .dropdown-form-field {
-    .mat-form-field-wrapper {
-      .mat-form-field-flex {
-        background-color: mat.get-color-from-palette($background, background);
-      }
+    .mat-mdc-text-field-wrapper,
+    .mat-mdc-form-field-focus-overlay {
+      background-color: mat.get-color-from-palette($background, background);
     }
   }
 
-  .mat-select-value {
+  .mat-mdc-select-value {
     color: mat.get-color-from-palette($foreground, placeholder-text);
   }
 
-  .mat-select-arrow {
+  .mat-mdc-select-arrow {
     color: mat.get-color-from-palette($foreground, icon);
   }
 }

@@ -1,9 +1,9 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { TissueSectionResult } from 'ccf-database';
 import { Shallow } from 'shallow-render';
 import { TissueSectionVisComponent } from './tissue-section-vis.component';
 import { TissueSectionVisModule } from './tissue-section-vis.module';
 
-const emptyTissueSections: TissueSectionResult[] = [];
 function getTissueSections(count: number): TissueSectionResult[] {
   const tempSections: TissueSectionResult[] = [];
 

@@ -41,8 +41,8 @@ function meshLayer(id: string, data: SpatialSceneNode[], options: { [key: string
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         mesh: mesh as any,
         wireframe: false,
-        getTransformMatrix: (d) => (d as { transformMatrix: number[][] }).transformMatrix,
-        getColor: (d) => (d as { color: [number, number, number, number] }).color || [255, 255, 255, 0.9*255]
+        getColor: (d) => (d as { color: [number, number, number, number] }).color || [255, 255, 255, 0.9*255],
+        getTransformMatrix: (d) => (d as { transformMatrix: number[] }).transformMatrix,
       },
       ...options
     });
@@ -107,7 +107,7 @@ export class BodyUILayer extends CompositeLayer<SpatialSceneNode> {
           layers.push(
             new ScenegraphLayer({
               id: 'models-' + model['@id'],
-              opacity: model.zoomBasedOpacity ? state.zoomOpacity : (model.opacity !== undefined ? model.opacity : 1.0),
+              opacity: model.zoomBasedOpacity ? state.zoomOpacity : (model.opacity ?? 1.0),
               pickable: !model.unpickable,
               coordinateSystem: COORDINATE_SYSTEM.CARTESIAN,
               data: [model],

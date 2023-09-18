@@ -190,6 +190,12 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
 
   highlightedNode: FlatNode | undefined;
 
+  private readonly labelMap = new Map([
+    ['colon', 'large intestine'],
+    ['body', 'Anatomical Structures (AS)'],
+    ['cell', 'Cell Types (CT)']
+  ]);
+
   /**
    * Expand the body node when the component is initialized.
    */
@@ -279,6 +285,23 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
     return node.expandable;
   }
 
+  /**
+   * Gets a label for the count
+   * @param node The flat node instance
+   * @returns Label for the count
+   */
+  getCountLabel(node: FlatNode): string {
+    return !node.original.parent ? 'Total: ' : '';
+  }
+
+  /**
+   * Gets Node label
+   * @param label node label
+   * @returns label for node
+   */
+  getNodeLabel(label: string): string {
+    return this.labelMap.get(label) ?? label;
+  }
   /**
    * Determines whether a node is currently selected.
    * Only a single node can be selected at any time.

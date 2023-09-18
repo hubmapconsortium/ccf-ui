@@ -9,7 +9,6 @@ import { TagListComponent } from './tag-list.component';
 @NgModule({
   imports: [
     CommonModule,
-
     MatChipsModule,
     MatIconModule
   ],

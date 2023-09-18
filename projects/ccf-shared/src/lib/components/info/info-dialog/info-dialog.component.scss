@@ -2,10 +2,10 @@
   padding: 0;
 }
 
-.rui-about.wrapper {
+.about.wrapper {
   .container {
     .content {
-      padding: 3rem;
+      padding: 1.5rem;
       text-align: left;
 
       .header {
@@ -70,6 +70,7 @@
     .dialog-content {
       height: 50rem;
       min-height: 10rem;
+      padding: 0 1.5rem;
 
       .variable-binding {
         font-weight: 300;

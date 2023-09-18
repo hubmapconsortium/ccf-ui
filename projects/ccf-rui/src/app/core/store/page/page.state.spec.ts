@@ -1,18 +1,19 @@
+import { NgxsDataPluginModule } from '@angular-ru/ngxs';
 import { TestBed } from '@angular/core/testing';
-import { NgxsDataPluginModule } from '@ngxs-labs/data';
 import { NgxsModule, Store } from '@ngxs/store';
 import { GlobalConfigState } from 'ccf-shared';
-import { Observable } from 'rxjs';
+import { lastValueFrom, Observable, of } from 'rxjs';
 import { take } from 'rxjs/operators';
 
 import { GLOBAL_CONFIG } from '../../services/config/config';
 import { AnatomicalStructureTagState } from '../anatomical-structure-tags/anatomical-structure-tags.state';
+import { ReferenceDataState } from '../reference-data/reference-data.state';
 import { ModelState } from './../model/model.state';
 import { PageState } from './page.state';
 
 
 function nextValue<T>(obs: Observable<T>): Promise<T> {
-  return obs.pipe(take(1)).toPromise();
+  return lastValueFrom(obs.pipe(take(1)));
 }
 
 describe('PageState', () => {
@@ -27,7 +28,12 @@ describe('PageState', () => {
       ],
       providers: [
         ModelState,
-        AnatomicalStructureTagState,
+        ReferenceDataState,
+        {
+          provide: AnatomicalStructureTagState, useValue: {
+            tags$: of([])
+          }
+        },
         GlobalConfigState,
         { provide: GLOBAL_CONFIG, useValue: {} }
       ]

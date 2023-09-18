@@ -2,7 +2,6 @@
   display: flex;
 
   .field {
-
     &:not(:last-child) {
       padding-right: 0.75rem;
     }
@@ -10,6 +9,10 @@
     .input {
       text-align: left;
       width: 100%;
+    }
+
+    ::ng-deep .mdc-text-field {
+      padding: 0;
     }
   }
 }

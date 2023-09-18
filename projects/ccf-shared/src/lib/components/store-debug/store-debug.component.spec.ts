@@ -19,15 +19,15 @@ describe('StoreDebugComponent', () => {
   });
 
   it('should turn the state into flat key-value lists', async () => {
-    const { instance, get } = await shallow.render();
-    get(Store).reset({ test: { key: 'value' } });
+    const { instance, inject } = await shallow.render();
+    inject(Store).reset({ test: { key: 'value' } });
 
     expect(instance.data).toEqual([['test', [['key', 'value']]]]);
   });
 
   it('excludes state with no data', async () => {
-    const { instance, get } = await shallow.render();
-    get(Store).reset({ test: { } });
+    const { instance, inject } = await shallow.render();
+    inject(Store).reset({ test: { } });
 
     expect(instance.data).toEqual([]);
   });

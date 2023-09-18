@@ -14,15 +14,13 @@ import { StatsListModule } from './modules/stats-list/stats-list.module';
 @NgModule({
   imports: [
     BrowserModule,
-
     CoreModule,
     LinkCardsModule,
     StatsListModule,
     OrganModule
   ],
   declarations: [AppComponent, AppWebComponent],
-  providers: [],
-  entryComponents: [AppComponent]
+  providers: []
 })
 export class AppModule implements DoBootstrap {
   constructor(private readonly injector: Injector) { }

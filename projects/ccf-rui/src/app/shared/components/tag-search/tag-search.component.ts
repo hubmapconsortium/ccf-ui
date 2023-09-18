@@ -3,7 +3,7 @@ import {
   ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, HostBinding, HostListener, Input,
   OnDestroy, Output, ViewChild,
 } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { bind as Bind } from 'bind-decorator';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { from, interval, ObservableInput, Subject } from 'rxjs';
@@ -53,12 +53,13 @@ export class TagSearchComponent implements OnDestroy {
 
   /** Mapping for pluralizing the result total count */
   readonly countMapping = {
+    /* eslint-disable-next-line @typescript-eslint/naming-convention */
     '=1': '1 result',
     other: '# results'
   };
 
   /** Search field controller */
-  readonly searchControl = new FormControl();
+  readonly searchControl = new UntypedFormControl();
 
   /** Search results */
   searchResults = EMPTY_RESULT;

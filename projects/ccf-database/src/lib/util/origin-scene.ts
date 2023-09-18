@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Matrix4, toRadians } from '@math.gl/core';
 import { SpatialSceneNode } from '../ccf-spatial-scene';
 import { SpatialEntity } from '../spatial-types';
@@ -153,5 +154,5 @@ export function getOriginScene(node: SpatialEntity, includeLetters = false): Spa
       transformMatrix: new Matrix4(Matrix4.IDENTITY).translate([0, 0, sceneDepth + originRadius * 2]).scale(originRadius),
       color: blue
     }
-  ].filter(n => (includeLetters && n.geometry === 'text' && n.text) || !n.text) as SpatialSceneNode[];
+  ].filter(n => (includeLetters && n.geometry === 'text' && n.text) ?? !n.text) as SpatialSceneNode[];
 }

@@ -91,8 +91,8 @@ describe('LeftSidebarComponent', () => {
   });
 
   it('should call the registration state method whenever update registration is called', async () => {
-    const { instance, get } = await shallow.render();
-    const spy = get(RegistrationState).editRegistration;
+    const { instance, inject } = await shallow.render();
+    const spy = inject(RegistrationState).editRegistration;
     instance.updateRegistration({} as SpatialEntityJsonLd);
     expect(spy).toHaveBeenCalled();
   });

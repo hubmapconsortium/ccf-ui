@@ -86,9 +86,9 @@ describe('RegistrationContentComponent', () => {
   });
 
   it('closeDialog closes the dialog', async () => {
-    const { instance, get } = await shallow.render();
+    const { instance, inject } = await shallow.render();
     instance.closeDialog();
-    expect(get(MatDialogRef).close).toHaveBeenCalled();
+    expect(inject(MatDialogRef).close).toHaveBeenCalled();
   });
 
   it('prevents default', async () => {

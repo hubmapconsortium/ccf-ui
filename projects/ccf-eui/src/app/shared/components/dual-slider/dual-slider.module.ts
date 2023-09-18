@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-import { Ng5SliderModule } from 'ng5-slider';
+import { NgxSliderModule } from 'ngx-slider-v2';
 
 import { DualSliderComponent } from './dual-slider.component';
 
@@ -13,9 +13,9 @@ import { DualSliderComponent } from './dual-slider.component';
     CommonModule,
     OverlayModule,
     PortalModule,
+    NgxSliderModule,
     MatFormFieldModule,
-    MatSelectModule,
-    Ng5SliderModule
+    MatSelectModule
   ],
   declarations: [DualSliderComponent],
   exports: [DualSliderComponent]

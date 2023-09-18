@@ -1,29 +1,30 @@
-@use '~@angular/material' as mat;
-@use '~@angular/material/theming' as *;
+@use '@angular/material' as mat;
+@use '@angular/material/theming' as *;
 
 @mixin theme($theme) {
-  $primary: map-get($theme, primary);
-  $foreground: map-get($theme, foreground);
-  $background: map-get($theme, background);
-  $accent: map-get($theme, accent);
+  $color-config: mat.get-color-config($theme);
+  $primary: map-get($color-config, primary);
+  $background: map-get($color-config, background);
+  $foreground: map-get($color-config, foreground);
+  $accent: map-get($color-config, accent);
 
   .slider-form-field {
 
-    .mat-form-field-wrapper {
-      .mat-form-field-underline {
-        background-color: mat.get-color-from-palette($foreground, contrast-icon);
+    .mat-mdc-text-field-wrapper {
+      .mdc-line-ripple {
+        color: mat.get-color-from-palette($foreground, contrast-icon);
       }
     }
   }
 
-  .mat-select-arrow-wrapper {
+  .mat-mdc-select-arrow {
     color: mat.get-color-from-palette($foreground, contrast-icon);
   }
 
   .name-label {
     color: mat.get-color-from-palette($foreground, text-muted);
   }
-  
+
   .range-label {
     color: mat.get-color-from-palette($background, text);
   }
@@ -36,13 +37,13 @@
     background-color: mat.get-color-from-palette($background, modal);
 
     .slider {
-      .ng5-slider-bar,
-      .ng5-slider-selection,
-      .ng5-slider-pointer {
+      .ngx-slider-bar,
+      .ngx-slider-selection,
+      .ngx-slider-pointer {
         background-color: mat.get-color-from-palette($background, mat-slider-primary);
       }
 
-      .ng5-slider-pointer {
+      .ngx-slider-pointer {
         border-color: mat.get-color-from-palette($background, modal);
       }
     }

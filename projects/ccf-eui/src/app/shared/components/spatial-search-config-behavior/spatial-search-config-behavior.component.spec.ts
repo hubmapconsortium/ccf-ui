@@ -31,8 +31,8 @@ describe('SpatialSearchConfigBehaviorComponent', () => {
   });
 
   it('should close the dialog when the close() method is called', async () => {
-    const { instance, get } = await shallow.render();
-    const ref = get(MatDialogRef);
+    const { instance, inject } = await shallow.render();
+    const ref = inject(MatDialogRef);
     instance.close();
     await wait(250);
     expect(ref.close).toHaveBeenCalled();

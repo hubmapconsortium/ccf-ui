@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /** Status of the database */
 export interface DatabaseStatus {
   /** Status of the database */
