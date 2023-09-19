@@ -1,8 +1,8 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Injector, OnDestroy, OnInit, HostListener } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostListener, Injector, OnDestroy, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { GlobalConfigState, TrackingPopupComponent } from 'ccf-shared';
+import { GlobalConfigState, OrganInfo, TrackingPopupComponent } from 'ccf-shared';
 import { ConsentService } from 'ccf-shared/analytics';
-import { combineLatest, Subscription, ReplaySubject } from 'rxjs';
+import { ReplaySubject, Subscription, combineLatest } from 'rxjs';
 
 import { GlobalConfig } from './core/services/config/config';
 import { ThemingService } from './core/services/theming/theming.service';
@@ -43,6 +43,8 @@ export class AppComponent implements OnDestroy, OnInit {
   /** Disables changes in block position */
   disablePositionChange = false;
 
+
+
   get isLightTheme(): boolean {
     return this.theming.getTheme().endsWith('light');
   }
@@ -59,6 +61,8 @@ export class AppComponent implements OnDestroy, OnInit {
   homeUrl: string;
 
   logoTooltip: string;
+
+  organ: OrganInfo;
 
   /** All subscriptions managed by the container. */
   private readonly subscriptions = new Subscription();
@@ -95,6 +99,9 @@ export class AppComponent implements OnDestroy, OnInit {
         cdr.markForCheck();
       }
     );
+    model.organ$.subscribe((organ => {
+      this.organ = organ;
+    }));
   }
 
   ngOnInit(): void {
