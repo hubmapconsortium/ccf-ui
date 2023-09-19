@@ -1,11 +1,11 @@
-FROM node:18 AS build
+FROM node:14 AS build
 WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm ci
 COPY . .
 RUN npm run build:server-libs && npm prune --production
 
-FROM node:18
+FROM node:14
 RUN npm install pm2 -g
 ENV NODE_ENV production
 ENV PORT 8080
