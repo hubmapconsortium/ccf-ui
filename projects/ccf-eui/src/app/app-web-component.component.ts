@@ -58,9 +58,12 @@ function parseDataSources(value: unknown): string[] {
   throw new Error('Invalid data sources');
 }
 
-function parseFilter(value: unknown): Partial<Filter> {
+function parseFilter(value: unknown): string | Partial<Filter> {
   if (typeof value === 'string') {
     value = BUILTIN_PARSERS.json(value);
+    if (isString(value)) {
+      return value;
+    }
   }
 
   if (typeof value === 'object') {
@@ -71,9 +74,11 @@ function parseFilter(value: unknown): Partial<Filter> {
     checkProp('ageRange', val => isNumberArray(val) && val.length === 2);
     checkProp('bmiRange', val => isNumberArray(val) && val.length === 2);
     checkProp('tmc', isStringArray);
-    checkProp('technologies', isStringArray);
-    checkProp('ontologyTerms', isStringArray);
-    checkProp('cellTypeTerms', isStringArray);
+    checkProp('technologies', val => isStringArray(val));
+    checkProp('ontologyTerms', val => isStringArray(val));
+    checkProp('cellTypeTerms', val => isStringArray(val));
+    // checkProp('spatialSearches', val => isStringArray(val));
+    return value as Filter;
   }
 
   throw new Error('Invalid filter');
