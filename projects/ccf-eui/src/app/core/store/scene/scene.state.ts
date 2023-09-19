@@ -14,7 +14,7 @@ import { ColorAssignmentState } from '../color-assignment/color-assignment.state
 import { DataState } from '../data/data.state';
 import { ListResultsState } from '../list-results/list-results.state';
 
-export const DEFAULT_SELECTED_ORGANS = new Set(['Skin', 'Heart', 'Kidney', 'Spleen']);
+export const DEFAULT_SELECTED_ORGANS = new Set(['http://purl.obolibrary.org/obo/UBERON_0002097', 'http://purl.obolibrary.org/obo/UBERON_0000948', 'http://purl.obolibrary.org/obo/UBERON_0002113', 'http://purl.obolibrary.org/obo/UBERON_0002106']);
 
 export interface SceneStateModel {
   scene: SpatialSceneNode[];
@@ -213,7 +213,7 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
 
   setSelectedReferenceOrgansWithDefaults(organs: OrganInfo[], selected: string[]) {
     const selectedSet = new Set(selected?.length ? selected : DEFAULT_SELECTED_ORGANS);
-    const filteredOrgans = organs.filter(({ organ }) => selectedSet.has(organ));
+    const filteredOrgans = organs.filter(({ id }) => selectedSet.has(id as string));
     this.setSelectedReferenceOrgans(filteredOrgans);
   }
 }

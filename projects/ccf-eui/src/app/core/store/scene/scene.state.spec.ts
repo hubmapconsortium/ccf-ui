@@ -1,18 +1,25 @@
 import { NgxsDataPluginModule } from '@angular-ru/ngxs';
 import { TestBed } from '@angular/core/testing';
 import { NgxsModule } from '@ngxs/store';
+import { NodeClickEvent } from 'ccf-body-ui';
 import { ALL_POSSIBLE_ORGANS, CCFDatabaseDataSourceService, DataSourceService, GlobalConfigState } from 'ccf-shared';
 import { ColorAssignmentState } from '../color-assignment/color-assignment.state';
 import { DataState } from '../data/data.state';
 import { ListResultsState } from '../list-results/list-results.state';
-import { SceneState } from './scene.state';
-import { of } from 'rxjs/internal/observable/of';
+import { DEFAULT_SELECTED_ORGANS, SceneState } from './scene.state';
 
 
 
-describe('SceneState', () => {
+fdescribe('SceneState', () => {
   let sceneState: SceneState;
-  const globalConfigState = jasmine.createSpyObj<GlobalConfigState<unknown>>('GlobalConfigState',['getOption']);
+  const defaultState = {
+    scene: [],
+    referenceOrgans: [],
+    referenceOrganEntities: [],
+    selectedReferenceOrgans: [],
+    selectedAnatomicalStructures: [],
+    anatomicalStructureSettings: {}
+  };
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -23,7 +30,6 @@ describe('SceneState', () => {
         { provide: DataSourceService, useExisting: CCFDatabaseDataSourceService }
       ]
     });
-    globalConfigState.getOption.and.returnValue(of(['Heart']));
     sceneState = TestBed.inject(SceneState);
   });
 
@@ -48,6 +54,14 @@ describe('SceneState', () => {
     expect(sceneState.getState().scene).toEqual([]);
   });
 
+  it('should return referenceOrgans', () => {
+    expect(SceneState.referenceOrgans(defaultState)).toEqual([]);
+  });
+
+  it('should return referenceOrgansEntities', () => {
+    expect(SceneState.referenceOrganEntities(defaultState)).toEqual([]);
+  });
+
   it('should call listResults highlightNode on calling sceneNodeHovered', () => {
     spyOn(sceneState['listResults'], 'highlightNode').and.callThrough();
     sceneState.sceneNodeHovered({} as never);
@@ -59,9 +73,42 @@ describe('SceneState', () => {
     expect(sceneState['listResults'].unHighlightNode).toHaveBeenCalled();
   });
 
+  it('should call updateFilter when sceneNode is Clicked', () => {
+    const nodeClickEvent: NodeClickEvent = {
+      node: {
+        // eslint-disable-next-line @typescript-eslint/naming-convention
+        '@id': '', '@type': '', representation_of: 'test', entityId: 'test',
+        transformMatrix: [] as never
+      }, ctrlClick: false
+    };
+    spyOn(sceneState['dataState'], 'updateFilter').and.callThrough();
+    sceneState.sceneNodeClicked(nodeClickEvent);
+    expect(sceneState['dataState'].updateFilter).toHaveBeenCalled();
+  });
+
+  it('should call assignColor when sceneNode is clicked with no representation', () => {
+    const nodeClickEvent: NodeClickEvent = {
+      node: {
+        // eslint-disable-next-line @typescript-eslint/naming-convention
+        '@id': '', '@type': '', representation_of: '', entityId: 'test',
+        transformMatrix: [] as never
+      }, ctrlClick: false
+    };
+    spyOn(sceneState['colorAssignments'], 'assignColor').and.callThrough();
+    sceneState.sceneNodeClicked(nodeClickEvent);
+    expect(sceneState['colorAssignments'].assignColor).toHaveBeenCalled();
+  });
+
   it('should call setSelectedReferenceOrgans on calling setSelectedReferenceOrgansWithDefaults', () => {
-    spyOn(sceneState,'setSelectedReferenceOrgans').and.callThrough();
-    sceneState.setSelectedReferenceOrgansWithDefaults(ALL_POSSIBLE_ORGANS, ['Heart']);
+    spyOn(sceneState, 'setSelectedReferenceOrgans').and.callThrough();
+    sceneState.setSelectedReferenceOrgansWithDefaults(ALL_POSSIBLE_ORGANS, ['http://purl.obolibrary.org/obo/UBERON_0004538']);
     expect(sceneState.setSelectedReferenceOrgans).toHaveBeenCalled();
+  });
+
+  it('should set selectedReferenceOrgans with default organs if referenceOrgans Input is empty', () => {
+    const defaultOrgans = ALL_POSSIBLE_ORGANS.filter(({ id }) => DEFAULT_SELECTED_ORGANS.has(id as string));
+    spyOn(sceneState, 'setSelectedReferenceOrgans').and.callThrough();
+    sceneState.setSelectedReferenceOrgansWithDefaults(ALL_POSSIBLE_ORGANS, []);
+    expect(sceneState.getState().selectedReferenceOrgans).toEqual(defaultOrgans);
   });
 });

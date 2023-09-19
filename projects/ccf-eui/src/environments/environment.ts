@@ -37,9 +37,9 @@ export const environment = {
     header: true,
     homeUrl: 'https://portal.hubmapconsortium.org/',
     selectedOrgans: [
-      'Heart',
-      'Kidney',
-      'Skin'
+      'http://purl.obolibrary.org/obo/UBERON_0000948',
+      'http://purl.obolibrary.org/obo/UBERON_0004538',
+      'http://purl.obolibrary.org/obo/UBERON_0002097'
     ],
     logoTooltip: 'Human BioMolecular Atlas Project',
     loginDisabled: false
