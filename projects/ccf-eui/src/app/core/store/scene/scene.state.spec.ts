@@ -10,7 +10,7 @@ import { DEFAULT_SELECTED_ORGANS, SceneState } from './scene.state';
 
 
 
-fdescribe('SceneState', () => {
+describe('SceneState', () => {
   let sceneState: SceneState;
   const defaultState = {
     scene: [],
