@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Inje
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
 import { Select } from '@ngxs/store';
-import { CCFDatabaseOptions, OntologyTreeModel } from 'ccf-database';
+import { CCFDatabaseOptions, Filter, OntologyTreeModel } from 'ccf-database';
 import { DataSourceService, GlobalConfigState, TrackingPopupComponent } from 'ccf-shared';
 import { ConsentService } from 'ccf-shared/analytics';
 import { combineLatest, Observable, ReplaySubject } from 'rxjs';
@@ -141,7 +141,7 @@ export class AppComponent implements OnInit {
     data.providerFilterData$.subscribe();
     this.ontologyTerms$ = data.filter$.pipe(map(x => x?.ontologyTerms));
     this.cellTypeTerms$ = data.filter$.pipe(map(x => x?.cellTypeTerms));
-    this.filter$.subscribe((filter:any)=> data.updateFilter(filter));
+    this.filter$.subscribe((filter: Partial<Filter>)=> data.updateFilter(filter));
 
     combineLatest([this.theme$, this.themeMode$]).subscribe(
       ([theme, mode]) => {
