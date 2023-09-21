@@ -39,9 +39,11 @@ function checkOptionalProperty(
   /** first check if prop(property name) is present in the obj(value) and then apply the validator function whose
    *logic is passed when the checkProp() is called.
   */
-  const valid = prop in obj && validator(obj[prop]); //obj[prop] is value for eg. 'Male' in sex
-  if (!valid) {
-    throw new Error(`Invalid property ${prop} in ${name}`);
+  if (prop in obj) {
+    //obj[prop] is value for eg. 'Male' in sex
+    if (!validator(obj[prop])) {
+      throw new Error(`Invalid property ${prop} in ${name}`);
+    }
   }
 }
 
@@ -77,7 +79,7 @@ function parseFilter(value: unknown): string | Partial<Filter> {
     checkProp('technologies', val => isStringArray(val));
     checkProp('ontologyTerms', val => isStringArray(val));
     checkProp('cellTypeTerms', val => isStringArray(val));
-    // checkProp('spatialSearches', val => isStringArray(val));
+    checkProp('spatialSearches', val => isStringArray(val));
     return value as Filter;
   }
 
@@ -108,6 +110,7 @@ export class AppWebComponent extends BaseWebComponent {
   @Input() filter: string | Partial<Filter>;
 
   initialized: boolean;
+
 
   constructor(
     configStore: GlobalConfigState<GenericGlobalConfig>,
