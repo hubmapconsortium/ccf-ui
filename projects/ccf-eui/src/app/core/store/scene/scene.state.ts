@@ -1,20 +1,26 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { Injectable, Injector, inject } from '@angular/core';
 import { DataAction, Payload, StateRepository } from '@angular-ru/ngxs/decorators';
 import { NgxsImmutableDataRepository } from '@angular-ru/ngxs/repositories';
+import { Injectable, Injector } from '@angular/core';
 import { NgxsOnInit, Selector, State } from '@ngxs/store';
 import { NodeClickEvent, SpatialSceneNode } from 'ccf-body-ui';
 import { SpatialEntity } from 'ccf-database';
-import { ALL_POSSIBLE_ORGANS, DataSourceService, GlobalConfigState, OrganInfo } from 'ccf-shared';
+import { ALL_POSSIBLE_ORGANS, DataSourceService, OrganInfo } from 'ccf-shared';
 import { combineLatest } from 'rxjs';
-import { distinctUntilChanged, map, take, tap, withLatestFrom } from 'rxjs/operators';
+import { distinctUntilChanged, map, take, tap } from 'rxjs/operators';
 
 import { ColorAssignmentState } from '../color-assignment/color-assignment.state';
 import { DataState } from '../data/data.state';
 import { ListResultsState } from '../list-results/list-results.state';
 
-export const DEFAULT_SELECTED_ORGANS = new Set(['http://purl.obolibrary.org/obo/UBERON_0002097', 'http://purl.obolibrary.org/obo/UBERON_0000948', 'http://purl.obolibrary.org/obo/UBERON_0002113', 'http://purl.obolibrary.org/obo/UBERON_0002106']);
+export const DEFAULT_SELECTED_ORGANS = new Set([
+  'http://purl.obolibrary.org/obo/UBERON_0002097',
+  'http://purl.obolibrary.org/obo/UBERON_0004538',
+  'http://purl.obolibrary.org/obo/UBERON_0004539',
+  'http://purl.obolibrary.org/obo/UBERON_0000948',
+  'http://purl.obolibrary.org/obo/UBERON_0002113',
+  'http://purl.obolibrary.org/obo/UBERON_0002106']);
 
 export interface SceneStateModel {
   scene: SpatialSceneNode[];
@@ -76,8 +82,6 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
   private colorAssignments: ColorAssignmentState;
 
   private listResults: ListResultsState;
-
-  private globalConfig = inject(GlobalConfigState<unknown>);
 
 
   /**
@@ -167,7 +171,6 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
     this.dataState = this.injector.get(DataState);
     this.colorAssignments = this.injector.get(ColorAssignmentState);
     this.listResults = this.injector.get(ListResultsState);
-
     // Initialize reference organ info
     this.dataService.getReferenceOrgans().pipe(
       tap(refOrgans => this.setReferenceOrganEntities(refOrgans)),
@@ -179,8 +182,6 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
       }),
       take(1),
       tap((organs: OrganInfo[]) => this.setReferenceOrgans(organs)),
-      withLatestFrom(this.globalConfig.getOption('selectedOrgans')),
-      tap(([organs, selected]) => this.setSelectedReferenceOrgansWithDefaults(organs, selected))
     ).subscribe();
 
     // Update scene as the overall state changes

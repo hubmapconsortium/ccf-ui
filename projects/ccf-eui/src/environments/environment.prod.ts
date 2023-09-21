@@ -29,11 +29,6 @@ export const environment = {
     theme: 'hubmap',
     header: true,
     homeUrl: 'https://portal.hubmapconsortium.org/',
-    selectedOrgans: [
-      'http://purl.obolibrary.org/obo/UBERON_0000948',
-      'http://purl.obolibrary.org/obo/UBERON_0004538',
-      'http://purl.obolibrary.org/obo/UBERON_0002097'
-    ],
     logoTooltip: 'Human BioMolecular Atlas Project'
   },
   googleAnalyticsToken: window.location.hostname === 'portal.hubmapconsortium.org' ? 'G-1WRJHN9FM6' : 'G-J9HWV9QPJ4'
