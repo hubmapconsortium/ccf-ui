@@ -13,7 +13,7 @@ import { AggregateResult, DatabaseStatus, Filter, OntologyTreeModel, TissueBlock
 import { getAggregateResults, getDatasetTechnologyNames, getProviderNames } from './queries/aggregate-results-n3';
 import { findIds } from './queries/find-ids-n3';
 import { getCellTypeTermOccurences, getOntologyTermOccurences } from './queries/ontology-term-occurences-n3';
-import { getAnatomicalStructureTreeModel, getCellTypeTreeModel } from './queries/ontology-tree-n3';
+import { getAnatomicalStructureTreeModel, getBiomarkersTreeModel, getCellTypeTreeModel } from './queries/ontology-tree-n3';
 import { getSpatialEntityForEntity } from './queries/spatial-result-n3';
 import { getTissueBlockResult } from './queries/tissue-block-result-n3';
 import { FlatSpatialPlacement, SpatialEntity } from './spatial-types';
@@ -356,6 +356,15 @@ export class CCFDatabase {
    */
   async getCellTypeTreeModel(): Promise<OntologyTreeModel> {
     return getCellTypeTreeModel(this.store);
+  }
+
+  /**
+   * Get biomarker tree nodes
+   *
+   * @returns Ontology term counts.
+   */
+  async getBiomarkersTreeModel(): Promise<OntologyTreeModel> {
+    return getBiomarkersTreeModel(this.store);
   }
 
   /**

@@ -50,6 +50,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
    */
   @Input() rootNode: string;
 
+  @Input() showtoggle: boolean=false;
   /**
    * The node like objects to display in the tree.
    */

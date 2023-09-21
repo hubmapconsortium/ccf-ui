@@ -142,3 +142,34 @@ export const getAnatomicalStructureTreeModel = memoize(getAnatomicalStructureTre
 export function getCellTypeTreeModel(store: Store): OntologyTreeModel {
   return getOntologyTreeModel(store, rui.cell.id, 'cell', ccf.asctb.ct_is_a.id);
 }
+
+function formBiomarkerNode(id,parent,children): OntologyTreeNode {
+  return {
+    ['@id']: `https://example.com${id}`,
+    id: id,
+    label: id,
+    parent: parent??'',
+    children: children??[],
+    synonymLabels: [],
+    ['@type']: 'OntologyTreeNode'
+  };
+}
+
+export function getBiomarkersTreeModel(_store: Store): OntologyTreeModel {
+  // dummy data here until below can be implemented.
+  return {
+    root:'biomarkers',
+    nodes: {
+      'biomarker1' : formBiomarkerNode('biomarker1','gene',[]),
+      'biomarker2' : formBiomarkerNode('biomarker2','gene',[]),
+      'biomarker3' : formBiomarkerNode('biomarker3','protein',[]),
+      'biomarker4' : formBiomarkerNode('biomarker4','protein',[]),
+      'biomarker5' : formBiomarkerNode('biomarker5','lipid',[]),
+      'biomarker6' : formBiomarkerNode('biomarker6','lipid',[]),
+      'gene' : formBiomarkerNode('gene','biomarkers',['biomarker1','biomarker2']),
+      'protein' : formBiomarkerNode('protein','biomarkers',['biomarker3','biomarker4']),
+      'lipid' : formBiomarkerNode('lipid','biomarkers',['biomarker5','biomarker6']),
+      'biomarkers' : formBiomarkerNode('biomarkers','',['gene','lipid','protein']),
+    }
+  };
+}

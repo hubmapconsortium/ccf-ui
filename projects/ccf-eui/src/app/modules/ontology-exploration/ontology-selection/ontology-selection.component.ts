@@ -47,6 +47,8 @@ export class OntologySelectionComponent implements OnChanges {
   @Input() header: boolean;
   @Input() placeholderText: string;
 
+  @Input() showtoggle?: boolean=false;
+
   /**
    * Captures and passes along the change in ontologySelections.
    */

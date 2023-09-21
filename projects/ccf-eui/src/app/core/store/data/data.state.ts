@@ -22,6 +22,7 @@ export const DEFAULT_FILTER: Filter = {
   technologies: [],
   ontologyTerms: ['http://purl.obolibrary.org/obo/UBERON_0013702'],
   cellTypeTerms: ['http://purl.obolibrary.org/obo/CL_0000000'],
+  biomarkerTerms: ['biomarkers'],
   spatialSearches: []
 };
 
@@ -82,6 +83,7 @@ export interface DataStateModel {
   statusMessage: string;
   anatomicalStructuresTreeModel?: OntologyTreeModel;
   cellTypesTreeModel?: OntologyTreeModel;
+  biomarkersTreeModel?: OntologyTreeModel;
 }
 
 /**
@@ -209,6 +211,7 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
     }
     this.source.getOntologyTreeModel().pipe(take(1)).subscribe((model) => this.updateAnatomicalStructuresTreeModel(model));
     this.source.getCellTypeTreeModel().pipe(take(1)).subscribe((model) => this.updateCellTypesTreeModel(model));
+    this.source.getBiomarkersTreeModel().pipe(take(1)).subscribe((model) => this.updateBiomarkersTreeModel(model));
     this.warmUpDatabase();
   }
 
@@ -241,6 +244,13 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
   updateCellTypesTreeModel(@Payload('treeModel') model: OntologyTreeModel): void {
     this.ctx.patchState({
       cellTypesTreeModel: model
+    });
+  }
+
+  @DataAction()
+  updateBiomarkersTreeModel(@Payload('treeModel') model: OntologyTreeModel): void {
+    this.ctx.patchState({
+      biomarkersTreeModel: model
     });
   }
 

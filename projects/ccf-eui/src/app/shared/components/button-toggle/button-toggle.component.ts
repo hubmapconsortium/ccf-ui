@@ -15,7 +15,7 @@ import {
 export class ButtonToggleComponent {
   @Input() menuOptions: string[];
 
-  @Input() selectedItems: string[];
+  @Input() selectedItems?: string[] = [];
 
   /**
    * Any time a button is clicked, event is emitted.
@@ -23,6 +23,6 @@ export class ButtonToggleComponent {
   @Output() readonly selectionChange = new EventEmitter<string[]>();
 
   isItemSelected(item: string) {
-    return this.selectedItems.includes(item);
+    return this.selectedItems?.includes(item);
   }
 }

@@ -14,6 +14,7 @@ export abstract class DataSourceService implements DataSource {
   abstract getDatasetTechnologyNames(): Observable<string[]>;
   abstract getOntologyTreeModel(): Observable<OntologyTreeModel>;
   abstract getCellTypeTreeModel(): Observable<OntologyTreeModel>;
+  abstract getBiomarkersTreeModel(): Observable<OntologyTreeModel>;
   abstract getReferenceOrgans(): Observable<SpatialEntity[]>;
 
   abstract getTissueBlockResults(filter?: Filter): Observable<TissueBlockResult[]>;

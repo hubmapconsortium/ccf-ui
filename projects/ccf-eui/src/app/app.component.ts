@@ -5,7 +5,7 @@ import {
   ElementRef,
   Injector,
   OnInit,
-  ViewChild
+  ViewChild,
 } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
@@ -69,6 +69,9 @@ export class AppComponent implements OnInit {
   @Select(DataStateSelectors.anatomicalStructuresTreeModel)
   readonly ontologyTreeModel$: Observable<OntologyTreeModel>;
 
+  @Select(DataStateSelectors.biomarkersTreeModel)
+  readonly biomarkersTreeModel$: Observable<OntologyTreeModel>;
+
   @Select(SpatialSearchFilterSelectors.items)
   readonly selectableSearches$: Observable<SpatialSearchFilterItem>;
 
@@ -78,7 +81,7 @@ export class AppComponent implements OnInit {
   @Dispatch()
   readonly removeSpatialSearch = actionAsFn(RemoveSearch);
 
-  menuOptions: string[] = ['AS','CT','B'];
+  menuOptions: string[] = ['AS', 'CT', 'B'];
   /**
    * Used to keep track of the ontology label to be passed down to the
    * results-browser component.
@@ -141,11 +144,18 @@ export class AppComponent implements OnInit {
    * @param data The data state.
    */
   constructor(
-    el: ElementRef<HTMLElement>, injector: Injector,
-    readonly data: DataState, readonly theming: ThemingService,
-    readonly scene: SceneState, readonly listResultsState: ListResultsState,
-    readonly consentService: ConsentService, readonly snackbar: MatSnackBar, overlay: AppRootOverlayContainer,
-    readonly dataSource: DataSourceService, private readonly globalConfig: GlobalConfigState<AppOptions>, cdr: ChangeDetectorRef
+    el: ElementRef<HTMLElement>,
+    injector: Injector,
+    readonly data: DataState,
+    readonly theming: ThemingService,
+    readonly scene: SceneState,
+    readonly listResultsState: ListResultsState,
+    readonly consentService: ConsentService,
+    readonly snackbar: MatSnackBar,
+    overlay: AppRootOverlayContainer,
+    readonly dataSource: DataSourceService,
+    private readonly globalConfig: GlobalConfigState<AppOptions>,
+    cdr: ChangeDetectorRef
   ) {
     theming.initialize(el, injector);
     overlay.setRootElement(el);
@@ -236,7 +246,7 @@ export class AppComponent implements OnInit {
    *
    * @param ontologySelection the list of currently selected organ nodes
    */
-  ontologySelected(ontologySelection: OntologySelection[] | undefined, type: 'anatomical-structures' | 'cell-type'): void {
+  ontologySelected(ontologySelection: OntologySelection[] | undefined, type: 'anatomical-structures' | 'cell-type' | 'biomarkers'): void {
     if (ontologySelection) {
       if (type === 'anatomical-structures') {
         this.data.updateFilter({ ontologyTerms: ontologySelection.map(selection => selection.id) });

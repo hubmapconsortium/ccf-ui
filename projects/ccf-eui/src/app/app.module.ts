@@ -23,6 +23,7 @@ import { SpinnerOverlayModule } from './shared/components/spinner-overlay/spinne
 import { ViewerModule } from './shared/components/viewer/viewer.module';
 import { ButtonToggleComponent } from './shared/components/button-toggle/button-toggle.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { ButtonToggleModule } from './shared/components/button-toggle/button-toggle.module';
 
 
 
@@ -47,9 +48,10 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     MatSnackBarModule,
     RunSpatialSearchModule,
     MatSnackBarModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    ButtonToggleModule
   ],
-  declarations: [AppComponent, AppWebComponent, ButtonToggleComponent],
+  declarations: [AppComponent, AppWebComponent],
   providers: [
     { provide: DEFAULT_THEME, useValue: 'hubmap-theme-light' },
     { provide: OverlayContainer, useExisting: AppRootOverlayContainer }

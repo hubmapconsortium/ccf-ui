@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Matrix4 } from '@math.gl/core';
 import {
-  AggregateResult, Filter, OntologyTreeModel, SpatialEntity, SpatialSceneNode, TissueBlockResult,
+  AggregateResult, Filter, OntologyTreeModel, OntologyTreeNode, SpatialEntity, SpatialSceneNode, TissueBlockResult,
 } from 'ccf-database';
 import { DatabaseStatus, DefaultService, MinMax, SpatialSearch, SpatialSceneNode as RawSpatialSceneNode } from 'ccf-openapi/angular-client';
-import { combineLatest, Observable, Subject } from 'rxjs';
+import { combineLatest, Observable, of, Subject } from 'rxjs';
 import { map, switchMap, take, tap } from 'rxjs/operators';
 import { Cacheable } from 'ts-cacheable';
 
@@ -130,6 +130,53 @@ export class ApiEndpointDataSourceService implements DataSource {
       undefined, {}, cast<OntologyTreeModel>()
     );
   }
+
+  // TODO: Remove mock code when this.api.biomarkerTreeModel is available
+  formBiomarkerNode(id,parent,children): OntologyTreeNode {
+    return {
+      ['@id']: id,
+      id: id,
+      label: id,
+      parent: parent??'',
+      children: children??[],
+      synonymLabels: [],
+      ['@type']: 'OntologyTreeNode'
+    };
+  }
+
+  /**
+   * Get the cell type tree model.
+   *
+   * @returns An observable emitting the results.
+   */
+  @Cacheable(CACHE_CONFIG_NO_PARAMS)
+  getBiomarkersTreeModel(): Observable<OntologyTreeModel> {
+    const a= {
+      root:'biomarkers',
+      nodes: {
+        'biomarker1' : this.formBiomarkerNode('biomarker1','gene',[]),
+        'biomarker2' : this.formBiomarkerNode('biomarker2','gene',[]),
+        'biomarker3' : this.formBiomarkerNode('biomarker3','protein',[]),
+        'biomarker4' : this.formBiomarkerNode('biomarker4','protein',[]),
+        'biomarker5' : this.formBiomarkerNode('biomarker5','lipid',[]),
+        'biomarker6' : this.formBiomarkerNode('biomarker6','lipid',[]),
+        'gene' : this.formBiomarkerNode('gene','biomarkers',['biomarker1','biomarker2']),
+        'protein' : this.formBiomarkerNode('protein','biomarkers',['biomarker3','biomarker4']),
+        'lipid' : this.formBiomarkerNode('lipid','biomarkers',['biomarker5','biomarker6']),
+        'biomarkers' : this.formBiomarkerNode('biomarkers','',['gene','lipid','protein']),
+      }
+    };
+    return of(a as OntologyTreeModel);
+  }
+
+  // TODO: Use this code when this.api.biomarkerTreeModel is available
+  // @Cacheable(CACHE_CONFIG_NO_PARAMS)
+  // getBiomarkersTreeModel(): Observable<OntologyTreeModel> {
+  //   return this.doRequest(
+  //     params => this.api.biomarkerTreeModel(params),
+  //     undefined, {}, cast<OntologyTreeModel>()
+  //   );
+  // }
 
   @Cacheable(CACHE_CONFIG_NO_PARAMS)
   getReferenceOrgans(): Observable<SpatialEntity[]> {
