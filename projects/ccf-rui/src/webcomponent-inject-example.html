@@ -40,7 +40,7 @@
           "@context": "https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld",
           "@id": "http://purl.org/ccf/1.5/523ad946-115b-433a-bd1d-ba4b75f8c493_placement",
           "@type": "SpatialPlacement",
-          "target": "http://purl.org/ccf/latest/ccf.owl#VHFLeftKidneyV1.1",
+          "target": "http://purl.org/ccf/latest/ccf.owl#VHFLeftKidney",
           "placement_date": "2023-08-29",
           "x_scaling": 1,
           "y_scaling": 1,
@@ -62,8 +62,9 @@
         const rui = document.createElement("ccf-rui");
         rui.baseHref = 'https://cdn.jsdelivr.net/gh/hubmapconsortium/ccf-ui@staging/rui/';
         rui.useDownload = true;
-        rui.user = {firstName: 'Jane', lastName: 'Doe'};
-        rui.organ = { name: 'kidney', side: 'left', sex: 'female' };
+        // rui.user = {firstName: 'Jane', lastName: 'Doe'};
+        // rui.organ = 'http://purl.org/ccf/latest/ccf.owl#VHFLeftKidney';
+        // rui.organ = { name: 'kidney', side: 'left', sex: 'female' };
         rui.editRegistration = sampleRegistration;
         document.body.appendChild(rui);
       });
