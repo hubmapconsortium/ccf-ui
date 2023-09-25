@@ -28,11 +28,11 @@ describe('RegistrationContentComponent', () => {
       .mock(ModelState, {
         ...mockModelState,
         sex$: of('male' as 'male' | 'female'),
-        organ$: of()
+        organ$: of({ src: '' })
       })
       .mock(PageState, {
         ...mockPageState,
-        user$: of()
+        user$: of({ firstName: '', lastName: '' })
       })
       .mock(MatDialogRef, {
         ...mockMatDialog,

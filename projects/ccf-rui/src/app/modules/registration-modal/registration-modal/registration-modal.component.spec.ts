@@ -82,6 +82,17 @@ describe('RegistrationModalComponent', () => {
     const { instance } = await shallow.render();
     const spy = spyOn(instance, 'openDialog');
     instance.ngOnInit();
+    referenceSubject.next(updatedReferenceDataState);
+    userSubject.next({ firstName: 'John', lastName: 'Doe' });
+    organSubject.next({ src: 'areallygoodvalue', name: '', organ: '' });
+    await wait(700);
+    expect(spy).not.toHaveBeenCalled();
+  });
+
+  it('should not open the dialog on init if reference data has not updated', async () => {
+    const { instance } = await shallow.render();
+    const spy = spyOn(instance, 'openDialog');
+    instance.ngOnInit();
     referenceSubject.next(initialReferenceDataState);
     userSubject.next({ firstName: 'John', lastName: 'Doe' });
     organSubject.next({ src: 'areallygoodvalue', name: '', organ: '' });
