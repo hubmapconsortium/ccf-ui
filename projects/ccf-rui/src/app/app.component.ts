@@ -1,12 +1,21 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Injector, OnDestroy, OnInit, HostListener } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  HostListener,
+  Injector,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { GlobalConfigState, TrackingPopupComponent } from 'ccf-shared';
+import { GlobalConfigState, OrganInfo, TrackingPopupComponent } from 'ccf-shared';
 import { ConsentService } from 'ccf-shared/analytics';
-import { combineLatest, Subscription, ReplaySubject } from 'rxjs';
+import { combineLatest, ReplaySubject, Subscription } from 'rxjs';
 
 import { GlobalConfig } from './core/services/config/config';
 import { ThemingService } from './core/services/theming/theming.service';
-import { ModelState, RUI_ORGANS } from './core/store/model/model.state';
+import { ModelState } from './core/store/model/model.state';
 import { PageState } from './core/store/page/page.state';
 
 export interface User {
@@ -32,7 +41,7 @@ interface AppOptions extends GlobalConfig {
 })
 export class AppComponent implements OnDestroy, OnInit {
   /** Organs to be displayed in the organ selector */
-  organList = RUI_ORGANS;
+  organList: OrganInfo[];
 
   /** True if the organ selector drawer is open */
   open = true;
@@ -87,6 +96,9 @@ export class AppComponent implements OnDestroy, OnInit {
     });
     this.globalConfig.getOption('logoTooltip').subscribe((tooltip: string) => {
       this.logoTooltip = tooltip;
+    });
+    this.page.organOptions$.subscribe((options: OrganInfo[]) => {
+      this.organList = options;
     });
 
     combineLatest([this.theme$, this.themeMode$]).subscribe(

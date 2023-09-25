@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { PageState, Person } from '../../../core/store/page/page.state';
-import { ModelState, RUI_ORGANS } from '../../../core/store/model/model.state';
-import { map } from 'rxjs/operators';
 import { OrganInfo } from 'ccf-shared';
+import { map } from 'rxjs/operators';
+
+import { ModelState, RUI_ORGANS } from '../../../core/store/model/model.state';
+import { PageState, Person } from '../../../core/store/page/page.state';
 
 
 /**
@@ -55,21 +56,8 @@ export class RegistrationContentComponent {
     public dialogRef: MatDialogRef<RegistrationContentComponent>
   ) {
     dialogRef.disableClose = true;
-    this.page.state$.subscribe(state => {
-      if (state.organOptions) {
-        console.warn(state.organOptions);
-        console.warn(RUI_ORGANS)
-        this.organList = RUI_ORGANS.filter(organ => {
-          if (!organ.id) {
-            return false;
-          } else {
-            return state.organOptions?.includes(organ.id);
-          }
-        });
-        console.warn(this.organList);
-      } else {
-        this.organList = RUI_ORGANS;
-      }
+    this.page.organOptions$.subscribe((options: OrganInfo[]) => {
+      this.organList = options;
     });
   }
 
