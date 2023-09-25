@@ -381,14 +381,17 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
     return `${Math.round(xyz.x)}, ${Math.round(xyz.y)}, ${Math.round(xyz.z)}`;
   }
 
-  private organListOptions(organOptions: string[]): OrganInfo[] {
-    const organList = RUI_ORGANS.filter(organ => {
-      if (!organ.id) {
-        return false;
-      } else {
-        return organOptions.includes(organ.id);
-      }
-    });
-    return organList;
+  private organListOptions(organOptions?: string[]): OrganInfo[] {
+    if (organOptions && organOptions.length > 0) {
+      return RUI_ORGANS.filter(organ => {
+        if (!organ.id) {
+          return false;
+        } else {
+          return organOptions.includes(organ.id);
+        }
+      });
+    } else {
+      return RUI_ORGANS;
+    }
   }
 }
