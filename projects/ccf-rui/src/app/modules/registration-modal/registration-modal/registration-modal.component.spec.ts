@@ -19,6 +19,16 @@ const initialReferenceDataState = {
   placementPatches: {}
 };
 
+const updatedReferenceDataState = {
+  organIRILookup: { test: 'value' },
+  organSpatialEntities: {},
+  anatomicalStructures: {},
+  extractionSets: {},
+  sceneNodeLookup: {},
+  simpleSceneNodeLookup: {},
+  placementPatches: {}
+};
+
 function wait(duration = 0): Promise<void> {
   return new Promise(resolve => {
     setTimeout(resolve, duration);
@@ -61,10 +71,10 @@ describe('RegistrationModalComponent', () => {
     const { instance } = await shallow.render();
     const spy = spyOn(instance, 'openDialog');
     instance.ngOnInit();
-    referenceSubject.next(initialReferenceDataState);
-    await wait(700);
+    referenceSubject.next(updatedReferenceDataState);
     userSubject.next({ firstName: '', lastName: '' });
     organSubject.next({ src: '', name: '', organ: '' });
+    await wait(700);
     expect(spy).toHaveBeenCalled();
   });
 
@@ -73,9 +83,9 @@ describe('RegistrationModalComponent', () => {
     const spy = spyOn(instance, 'openDialog');
     instance.ngOnInit();
     referenceSubject.next(initialReferenceDataState);
-    await wait(700);
     userSubject.next({ firstName: 'John', lastName: 'Doe' });
     organSubject.next({ src: 'areallygoodvalue', name: '', organ: '' });
+    await wait(700);
     expect(spy).not.toHaveBeenCalled();
   });
 });
