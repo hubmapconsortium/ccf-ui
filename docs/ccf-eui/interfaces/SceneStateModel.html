@@ -384,9 +384,9 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, Injector } from &#x27;@angular/core&#x27;;
-import { DataAction, Payload, StateRepository } from &#x27;@angular-ru/ngxs/decorators&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { DataAction, Payload, StateRepository } from &#x27;@angular-ru/ngxs/decorators&#x27;;
 import { NgxsImmutableDataRepository } from &#x27;@angular-ru/ngxs/repositories&#x27;;
+import { Injectable, Injector } from &#x27;@angular/core&#x27;;
 import { NgxsOnInit, Selector, State } from &#x27;@ngxs/store&#x27;;
 import { NodeClickEvent, SpatialSceneNode } from &#x27;ccf-body-ui&#x27;;
 import { SpatialEntity } from &#x27;ccf-database&#x27;;
@@ -398,7 +398,13 @@ import { ColorAssignmentState } from &#x27;../color-assignment/color-assignment.
 import { DataState } from &#x27;../data/data.state&#x27;;
 import { ListResultsState } from &#x27;../list-results/list-results.state&#x27;;
 
-export const DEFAULT_SELECTED_ORGANS &#x3D; new Set([&#x27;Skin&#x27;, &#x27;Heart&#x27;, &#x27;Kidney&#x27;, &#x27;Spleen&#x27;]);
+export const DEFAULT_SELECTED_ORGANS &#x3D; new Set([
+  &#x27;http://purl.obolibrary.org/obo/UBERON_0002097&#x27;,
+  &#x27;http://purl.obolibrary.org/obo/UBERON_0004538&#x27;,
+  &#x27;http://purl.obolibrary.org/obo/UBERON_0004539&#x27;,
+  &#x27;http://purl.obolibrary.org/obo/UBERON_0000948&#x27;,
+  &#x27;http://purl.obolibrary.org/obo/UBERON_0002113&#x27;,
+  &#x27;http://purl.obolibrary.org/obo/UBERON_0002106&#x27;]);
 
 export interface SceneStateModel {
   scene: SpatialSceneNode[];
@@ -460,6 +466,7 @@ export class SceneState extends NgxsImmutableDataRepository&lt;SceneStateModel&g
   private colorAssignments: ColorAssignmentState;
 
   private listResults: ListResultsState;
+
 
   /**
    * Creates an instance of scene state.
@@ -548,7 +555,6 @@ export class SceneState extends NgxsImmutableDataRepository&lt;SceneStateModel&g
     this.dataState &#x3D; this.injector.get(DataState);
     this.colorAssignments &#x3D; this.injector.get(ColorAssignmentState);
     this.listResults &#x3D; this.injector.get(ListResultsState);
-
     // Initialize reference organ info
     this.dataService.getReferenceOrgans().pipe(
       tap(refOrgans &#x3D;&gt; this.setReferenceOrganEntities(refOrgans)),
@@ -559,10 +565,7 @@ export class SceneState extends NgxsImmutableDataRepository&lt;SceneStateModel&g
           .map(organ &#x3D;&gt; ({ ...organ, disabled: false, numResults: 0 }));
       }),
       take(1),
-      tap(organs &#x3D;&gt; {
-        this.setReferenceOrgans(organs);
-        this.setSelectedReferenceOrgans(organs.filter(organ &#x3D;&gt; DEFAULT_SELECTED_ORGANS.has(organ.organ)));
-      })
+      tap((organs: OrganInfo[]) &#x3D;&gt; this.setReferenceOrgans(organs)),
     ).subscribe();
 
     // Update scene as the overall state changes
@@ -591,6 +594,12 @@ export class SceneState extends NgxsImmutableDataRepository&lt;SceneStateModel&g
       }),
       tap(scene &#x3D;&gt; this.setScene(scene))
     ).subscribe();
+  }
+
+  setSelectedReferenceOrgansWithDefaults(organs: OrganInfo[], selected: string[]) {
+    const selectedSet &#x3D; new Set(selected?.length ? selected : DEFAULT_SELECTED_ORGANS);
+    const filteredOrgans &#x3D; organs.filter(({ id }) &#x3D;&gt; selectedSet.has(id as string));
+    this.setSelectedReferenceOrgans(filteredOrgans);
   }
 }
 </code></pre>
