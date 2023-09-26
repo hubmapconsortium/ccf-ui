@@ -22,7 +22,8 @@ export const DEFAULT_FILTER: Filter = {
   technologies: [],
   ontologyTerms: ['http://purl.obolibrary.org/obo/UBERON_0013702'],
   cellTypeTerms: ['http://purl.obolibrary.org/obo/CL_0000000'],
-  spatialSearches: []
+  spatialSearches: [],
+  biomarkerTerms:[]
 };
 
 /** Current state of data queries. */

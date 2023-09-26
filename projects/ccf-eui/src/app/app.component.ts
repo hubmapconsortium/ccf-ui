@@ -327,12 +327,6 @@ export class AppComponent implements OnInit {
   }
 
   toggleSelection(value) {
-    if (this.isItemSelected(value)) {
-      this.selectedtoggleOptions = this.selectedtoggleOptions.filter(
-        (el) => el != value
-      );
-    } else {
-      this.selectedtoggleOptions.push(value);
-    }
+    this.selectedtoggleOptions = value;
   }
 }
