@@ -10,7 +10,7 @@ import { GlobalConfigState } from 'ccf-shared';
 import { filterNulls } from 'ccf-shared/rxjs-ext/operators';
 import { saveAs } from 'file-saver';
 import { combineLatest, Observable } from 'rxjs';
-import { map, startWith, switchMap, take, tap } from 'rxjs/operators';
+import { debounceTime, map, startWith, switchMap, take, tap } from 'rxjs/operators';
 import { v4 as uuidV4 } from 'uuid';
 
 import { Tag } from '../../models/anatomical-structure-tag';
@@ -32,6 +32,7 @@ export interface RegistrationStateModel {
   displayErrors: boolean;
   /** Previous registrations */
   registrations: Record<string, unknown>[];
+  initialRegistration?: SpatialEntityJsonLd;
 }
 
 
@@ -151,7 +152,11 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
 
       this.globalConfig.getOption('editRegistration').pipe(
         filterNulls(),
-        tap(reg => this.editRegistration(reg as SpatialEntityJsonLd))
+        debounceTime(1000),
+        tap(reg => {
+          this.ctx.patchState({ initialRegistration: reg as SpatialEntityJsonLd });
+          this.editRegistration(reg as SpatialEntityJsonLd);
+        })
       ).subscribe();
     });
   }
@@ -177,10 +182,6 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
     this.model.setBlockSize({ x: reg.x_dimension, y: reg.y_dimension, z: reg.z_dimension });
     this.model.setRotation({ x: place.x_rotation, y: place.y_rotation, z: place.z_rotation });
     this.model.setSlicesConfig({ thickness: reg.slice_thickness || NaN, numSlices: reg.slice_count || NaN });
-
-    await new Promise(r => {
-      setTimeout(r, 1000);
-    });
 
     this.model.setPosition({ x: place.x_translation, y: place.y_translation, z: place.z_translation });
     const iris = new Set<string>(reg.ccf_annotations);
@@ -371,5 +372,9 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
    */
   private xyzTripletToString(xyz: XYZTriplet): string {
     return `${Math.round(xyz.x)}, ${Math.round(xyz.y)}, ${Math.round(xyz.z)}`;
+  }
+
+  setToInitialRegistration() {
+    this.editRegistration(this.getState().initialRegistration as SpatialEntityJsonLd);
   }
 }
