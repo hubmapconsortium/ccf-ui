@@ -8,17 +8,23 @@
     .title {
       font-weight: 600;
     }
+  }
 
-    .reset {
-      transform: scaleX(-1);
-      cursor: pointer;
-      transition: .6s;
+  .reset {
+    transform: scaleX(-1);
+    cursor: pointer;
+    transition: .6s;
 
-      &:hover {
-        border-radius: 2px;
-      }
-
+    &:hover {
+      border-radius: 2px;
     }
+
+  }
+
+  .refresh-button-container {
+    display: flex;
+    height: 1rem;
+    justify-content: flex-end;
   }
 
   .slider-box {
