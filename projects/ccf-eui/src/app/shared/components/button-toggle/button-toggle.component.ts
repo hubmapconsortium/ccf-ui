@@ -28,11 +28,11 @@ export class ButtonToggleComponent {
 
   toggleSelection(value) {
     if (this.isItemSelected(value)) {
-      this.selectedItems = this.selectedItems.filter(
+      this.selectedItems = this.selectedItems?.filter(
         (el) => el != value
       );
     } else {
-      this.selectedItems.push(value);
+      this.selectedItems?.push(value);
     }
     this.selectionChange.emit(this.selectedItems);
   }
