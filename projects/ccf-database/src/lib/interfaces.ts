@@ -9,6 +9,8 @@ export interface DatabaseStatus {
   loadTime?: number;
   /** Human readable description of the current status */
   message?: string;
+  /** Timestamp of last update */
+  timestamp?: string;
 }
 
 /** Aggregate query result */

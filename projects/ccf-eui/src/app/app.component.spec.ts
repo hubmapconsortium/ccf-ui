@@ -41,6 +41,7 @@ describe('AppComponent', () => {
     tmc: [],
     spatialSearches: [],
     technologies: [],
+    biomarkerTerms: []
   };
   const testTreeStr: OntologyTreeModel = {
     root: 'a',
@@ -86,7 +87,8 @@ describe('AppComponent', () => {
       .mock(SceneState, {
         referenceOrgans$: of([]),
         selectedReferenceOrgans$: of([]),
-        scene$: of([]),
+        setSelectedReferenceOrgansWithDefaults: ()=>null,
+        scene$: of([])
       })
       .mock(DataState, {
         state$: of({ status: 'Ready' }),

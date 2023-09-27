@@ -11,11 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
 import { Select } from '@ngxs/store';
 import { CCFDatabaseOptions, OntologyTreeModel } from 'ccf-database';
-import {
-  DataSourceService,
-  GlobalConfigState,
-  TrackingPopupComponent,
-} from 'ccf-shared';
+import { DataSourceService, GlobalConfigState, OrganInfo, TrackingPopupComponent } from 'ccf-shared';
 import { ConsentService } from 'ccf-shared/analytics';
 import { Observable, ReplaySubject, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -45,6 +41,7 @@ interface AppOptions extends CCFDatabaseOptions {
   header?: boolean;
   homeUrl?: string;
   logoTooltip?: string;
+  selectedOrgans?: string[];
   loginEnabled?: boolean;
 }
 
@@ -137,7 +134,7 @@ export class AppComponent implements OnInit {
   readonly homeUrl$ = this.globalConfig.getOption('homeUrl');
   readonly logoTooltip$ = this.globalConfig.getOption('logoTooltip');
   readonly loginDisabled$ = this.globalConfig.getOption('loginDisabled');
-
+  readonly selectedOrgans$ = this.globalConfig.getOption('selectedOrgans');
   /**
    * Creates an instance of app component.
    *
@@ -170,7 +167,10 @@ export class AppComponent implements OnInit {
     data.providerFilterData$.subscribe();
     this.ontologyTerms$ = data.filter$.pipe(map(x => x?.ontologyTerms));
     this.cellTypeTerms$ = data.filter$.pipe(map(x => x?.cellTypeTerms));
-
+    combineLatest([scene.referenceOrgans$, this.selectedOrgans$]).subscribe(
+      ([refOrgans, selected]: [OrganInfo[], string[]]) => {
+        scene.setSelectedReferenceOrgansWithDefaults(refOrgans, selected);
+      });
     combineLatest([this.theme$, this.themeMode$]).subscribe(
       ([theme, mode]) => {
         this.theming.setTheme(`${theme}-theme-${mode}`);
