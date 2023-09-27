@@ -109,6 +109,7 @@ export class ContentComponent implements OnInit, OnDestroy {
 
   /**
    * Method to reset registration block, crosshairs, and x,y,z information.
+   * Resets to initial registration state if provided
    */
   resetStage(): void {
     if (this.registration.snapshot.initialRegistration) {
