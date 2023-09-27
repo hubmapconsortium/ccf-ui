@@ -37,18 +37,32 @@ describe('RotationSliderComponent', () => {
 
   it('should emit the rotation change whenever resetRotation is called.', async () => {
     const { instance, outputs } = await shallow.render();
-    instance.resetRotation();
+    instance.resetRotation(1);
 
     expect(outputs.rotationChange.emit).toHaveBeenCalled();
   });
 
-  it('should set the rotation to 0, 0, 0 when the resetRotation method is called.', async () => {
+  it('should set the rotation of X-axis to 0 when the resetRotation method is called.', async () => {
     const rotation: Rotation = { x: 100, y: 100, z: 100 };
     const { instance } = await shallow.render({ bind: { rotation } });
-    instance.resetRotation();
+    instance.resetRotation(1);
 
     expect(instance.rotation.x).toEqual(0);
+  });
+
+  it('should set the rotation of Y-axis to 0 when the resetRotation method is called.', async () => {
+    const rotation: Rotation = { x: 100, y: 100, z: 100 };
+    const { instance } = await shallow.render({ bind: { rotation } });
+    instance.resetRotation(2);
+
     expect(instance.rotation.y).toEqual(0);
+  });
+
+  it('should set the rotation of Z-axis to 0 when the resetRotation method is called.', async () => {
+    const rotation: Rotation = { x: 100, y: 100, z: 100 };
+    const { instance } = await shallow.render({ bind: { rotation } });
+    instance.resetRotation(3);
+
     expect(instance.rotation.z).toEqual(0);
   });
 });
