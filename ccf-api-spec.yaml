@@ -145,6 +145,26 @@ paths:
       responses:
         "200": { $ref: "#/components/responses/TermOccurences" }
 
+  /biomarker-term-occurences:
+    get:
+      summary: Get number of biomarker type term occurrences for a search
+      operationId: biomarker-term-occurences
+      parameters:
+        - $ref: "#/components/parameters/Age"
+        - $ref: "#/components/parameters/AgeRange"
+        - $ref: "#/components/parameters/Bmi"
+        - $ref: "#/components/parameters/BmiRange"
+        - $ref: "#/components/parameters/Cache"
+        - $ref: "#/components/parameters/OntologyTerms"
+        - $ref: "#/components/parameters/CellTypeTerms"
+        - $ref: "#/components/parameters/Providers"
+        - $ref: "#/components/parameters/Sex"
+        - $ref: "#/components/parameters/SpatialSearches"
+        - $ref: "#/components/parameters/Technologies"
+        - $ref: "#/components/parameters/Token"
+      responses:
+        "200": { $ref: "#/components/responses/TermOccurences" }
+
   /ontology-tree-model:
     get:
       summary: Get ontology term tree nodes
@@ -159,6 +179,16 @@ paths:
     get:
       summary: Get cell type tree nodes
       operationId: cell-type-tree-model
+      parameters:
+        - $ref: "#/components/parameters/Cache"
+        - $ref: "#/components/parameters/Token"
+      responses:
+        "200": { $ref: "#/components/responses/OntologyTree" }
+
+  /biomarker-tree-model:
+    get:
+      summary: Get biomarker tree nodes
+      operationId: biomarker-tree-model
       parameters:
         - $ref: "#/components/parameters/Cache"
         - $ref: "#/components/parameters/Token"

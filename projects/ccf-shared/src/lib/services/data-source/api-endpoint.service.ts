@@ -132,7 +132,7 @@ export class ApiEndpointDataSourceService implements DataSource {
   }
 
   // TODO: Remove mock code when this.api.biomarkerTreeModel is available
-  formBiomarkerNode(id,parent,children): OntologyTreeNode {
+  formBiomarkerNode(id,parent,children,nodeType=''): OntologyTreeNode {
     return {
       ['@id']: id,
       id: id,
@@ -140,7 +140,8 @@ export class ApiEndpointDataSourceService implements DataSource {
       parent: parent??'',
       children: children??[],
       synonymLabels: [],
-      ['@type']: 'OntologyTreeNode'
+      ['@type']: 'OntologyTreeNode',
+      nodeType: nodeType
     };
   }
 
@@ -154,16 +155,13 @@ export class ApiEndpointDataSourceService implements DataSource {
     const a= {
       root:'biomarkers',
       nodes: {
-        'biomarker1' : this.formBiomarkerNode('biomarker1','gene',[]),
-        'biomarker2' : this.formBiomarkerNode('biomarker2','gene',[]),
-        'biomarker3' : this.formBiomarkerNode('biomarker3','protein',[]),
-        'biomarker4' : this.formBiomarkerNode('biomarker4','protein',[]),
-        'biomarker5' : this.formBiomarkerNode('biomarker5','lipid',[]),
-        'biomarker6' : this.formBiomarkerNode('biomarker6','lipid',[]),
-        'gene' : this.formBiomarkerNode('gene','biomarkers',['biomarker1','biomarker2']),
-        'protein' : this.formBiomarkerNode('protein','biomarkers',['biomarker3','biomarker4']),
-        'lipid' : this.formBiomarkerNode('lipid','biomarkers',['biomarker5','biomarker6']),
-        'biomarkers' : this.formBiomarkerNode('biomarkers','',['gene','lipid','protein']),
+        'biomarker1' : this.formBiomarkerNode('biomarker1','biomarkers',[],'gene'),
+        'biomarker2' : this.formBiomarkerNode('biomarker2','biomarkers',[],'gene'),
+        'biomarker3' : this.formBiomarkerNode('biomarker3','biomarkers',[],'protein'),
+        'biomarker4' : this.formBiomarkerNode('biomarker4','biomarkers',[],'protein'),
+        'biomarker5' : this.formBiomarkerNode('biomarker5','biomarkers',[],'lipid'),
+        'biomarker6' : this.formBiomarkerNode('biomarker6','biomarkers',[],'lipid'),
+        'biomarkers' : this.formBiomarkerNode('biomarkers','',['biomarker1','biomarker2','biomarker3','biomarker4','biomarker5','biomarker6']),
       }
     };
     return of(a as OntologyTreeModel);
@@ -216,6 +214,23 @@ export class ApiEndpointDataSourceService implements DataSource {
       params => this.api.cellTypeTermOccurences(params),
       filter
     );
+  }
+
+  @Cacheable(CACHE_CONFIG_PARAMS)
+  getBiomarkersTermOccurences(_filter?: Filter): Observable<Record<string, number>> {
+    return of({
+      'biomarkers': 6,
+      'biomarker1' : 1,
+      'biomarker2' : 1,
+      'biomarker3' :1,
+      'biomarker4' : 1,
+      'biomarker5' : 1,
+      'biomarker6': 1
+    });
+    // return this.doRequest(
+    //   params => this.api.biomarkerTermOccurences(params),
+    //   filter
+    // );
   }
 
   @Cacheable(CACHE_CONFIG_PARAMS)

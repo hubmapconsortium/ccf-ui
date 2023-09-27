@@ -18,6 +18,7 @@ export interface DataSource {
   getAggregateResults(filter?: Filter): Observable<AggregateResult[]>;
   getOntologyTermOccurences(filter?: Filter): Observable<Record<string, number>>;
   getCellTypeTermOccurences(filter?: Filter): Observable<Record<string, number>>;
+  getBiomarkersTermOccurences(filter?: Filter): Observable<Record<string, number>>;
   getScene(filter?: Filter): Observable<SpatialSceneNode[]>;
   getReferenceOrganScene(organIri: string, filter?: Filter): Observable<SpatialSceneNode[]>;
 }
@@ -76,6 +77,10 @@ export abstract class ForwardingDataSource implements DataSource {
 
   getCellTypeTermOccurences(filter?: Filter): Observable<Record<string, number>> {
     return this.forwardCall('getCellTypeTermOccurences', filter);
+  }
+
+  getBiomarkersTermOccurences(filter?: Filter): Observable<Record<string, number>> {
+    return this.forwardCall('getBiomarkersTermOccurences', filter);
   }
 
   getScene(filter?: Filter): Observable<SpatialSceneNode[]> {

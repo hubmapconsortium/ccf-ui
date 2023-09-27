@@ -54,6 +54,18 @@ export function getOntologyTermOccurences(ids: Set<string>, store: Store): Recor
   return counts;
 }
 
+
+export function getBiomarkersTermOccurences(ids: Set<string>, store: Store): Record<string, number> {
+  const counts: Record<string, number> = {};
+  const term2entities = getAnatomicalStructureMapping(ids, store);
+
+  term2entities.forEach((value, key) => {
+    counts[key] = value.size;
+  });
+
+  return counts;
+}
+
 /**
  * Get number of occurrences of cell type terms for a set of ids.
  *

@@ -154,6 +154,8 @@ export interface OntologyTreeNode {
   children: string[];
   /** Synonym labels */
   synonymLabels: string[];
+
+  nodeType?: string;
 }
 
 /** Ontology tree model */

@@ -9,7 +9,7 @@
       [class.unavailable]="!termData[node.original.id]"
       [class.selected]="isSelected(node)"
       (click)="select($event.ctrlKey, node, true, !isSelected(node))"
-    >{{ getNodeLabel(node.label) }} 1 </div>
+    >{{ getNodeLabel(node.label) }}</div>
   </ng-template>
 
   <!-- Leaf node template -->
@@ -54,9 +54,8 @@
       <ng-container *ngTemplateOutlet="selectableRegion; context: { node: node }"></ng-container>
       <div class="num-results" [class.suborgan]="node.level > 1">{{ getCountLabel(node) }}{{ occurenceData[node.original.id] || 0 }}</div>
     </div>
-    <div *ngIf="showtoggle && node.label==='body'">
-      {{node}}
-      <ccf-button-toggle [menuOptions]="['A','B','C']" [selectedItems]="['A']"></ccf-button-toggle>
+    <div *ngIf="showtoggle && node.label==='biomarkers'">
+      <ccf-button-toggle [menuOptions]="menuOptions" [selectedItems]="selectedtoggleOptions" (selectionChange)="toggleSelection($event)"></ccf-button-toggle>
     </div>
   </mat-tree-node>
 

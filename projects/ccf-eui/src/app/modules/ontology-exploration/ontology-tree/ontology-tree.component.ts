@@ -123,6 +123,10 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
 
   @Input() header: boolean;
 
+  @Input() menuOptions: string[];
+
+  selectedtoggleOptions =['gene'];
+
   /**
    * Storage for the getter / setter
    */
@@ -147,6 +151,11 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
    * Emits an event whenever the node's visibility or opacity has changed
    */
   @Output() readonly nodeChanged = new EventEmitter<FlatNode>();
+
+  /**
+   * Any time a button is clicked, event is emitted.
+   */
+  @Output() readonly selectionChange = new EventEmitter<string[]>();
 
   /**
    * Indentation of each level in the tree.
@@ -208,6 +217,8 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void{
+    console.log(this.dataSource.data);
+
     if (changes.ontologyFilter) {
       const ontologyFilter: string[] = changes.ontologyFilter.currentValue as string[];
       if (ontologyFilter?.length >= 0) {
@@ -430,5 +441,24 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
     const { clientHeight, scrollHeight, scrollTop } = event.target as Element;
     const diff = scrollHeight - scrollTop - clientHeight;
     this.atScrollBottom = diff < 20;
+  }
+
+  isItemSelected(item: string) {
+    return this.selectedtoggleOptions.includes(item);
+  }
+
+  toggleSelection(value) {
+    if (this.isItemSelected(value)) {
+      this.selectedtoggleOptions = this.selectedtoggleOptions.filter(
+        (el) => el != value
+      );
+    } else {
+      this.selectedtoggleOptions.push(value);
+    }
+    this.filterNodes();
+  }
+
+  filterNodes() {
+    this.control.dataNodes= this.control.dataNodes.filter(node => this.selectedtoggleOptions.includes(node.original.nodeType??''));
   }
 }

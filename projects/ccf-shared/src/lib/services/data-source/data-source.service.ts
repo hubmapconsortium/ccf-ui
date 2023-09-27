@@ -21,6 +21,7 @@ export abstract class DataSourceService implements DataSource {
   abstract getAggregateResults(filter?: Filter): Observable<AggregateResult[]>;
   abstract getOntologyTermOccurences(filter?: Filter): Observable<Record<string, number>>;
   abstract getCellTypeTermOccurences(filter?: Filter): Observable<Record<string, number>>;
+  abstract getBiomarkersTermOccurences(filter?: Filter): Observable<Record<string, number>>;
   abstract getScene(filter?: Filter): Observable<SpatialSceneNode[]>;
   abstract getReferenceOrganScene(organIri: string, filter?: Filter): Observable<SpatialSceneNode[]>;
 }

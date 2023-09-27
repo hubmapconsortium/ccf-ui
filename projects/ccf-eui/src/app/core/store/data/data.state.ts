@@ -111,6 +111,8 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
   private readonly _ontologyTermOccurencesDataQueryStatus$ = new ReplaySubject<DataQueryState>(1);
   /** Implementation subject for cellTypeTermOccurencesDataQueryStatus$. */
   private readonly _cellTypeTermOccurencesDataQueryStatus$ = new ReplaySubject<DataQueryState>(1);
+  private readonly _biomarkersTermOccurencesDataQueryStatus$ = new ReplaySubject<DataQueryState>(1);
+
   /** Implementation subject for sceneDataQueryStatus$. */
   private readonly _sceneDataQueryStatus$ = new ReplaySubject<DataQueryState>(1);
   /** Implementation subject for technologyFilterQueryStatus$. */
@@ -121,6 +123,7 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
   readonly ontologyTermsFullData$ = new ReplaySubject<Record<string, number>>(1);
   /** Keeping track of all cell type terms there is data for. */
   readonly cellTypeTermsFullData$ = new ReplaySubject<Record<string, number>>(1);
+  readonly biomarkersTermsFullData$ = new ReplaySubject<Record<string, number>>(1);
 
   /** Current filter. */
   readonly filter$ = this.state$.pipe(map(x => x?.filter));
@@ -135,6 +138,10 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
   /** Latest ontology term occurences query data. */
   readonly ontologyTermOccurencesData$ = this.filter$.pipe(queryData(
     this.ontologyTermOccurencesData, sendCompletedTo(this._ontologyTermOccurencesDataQueryStatus$)
+  ));
+  /** Latest ontology term occurences query data. */
+  readonly biomarkersTermOccurencesData$ = this.filter$.pipe(queryData(
+    this.biomarkersTermOccurencesData, sendCompletedTo(this._biomarkersTermOccurencesDataQueryStatus$)
   ));
   /** Latest cell type term occurences query data. */
   readonly cellTypeTermOccurencesData$ = this.filter$.pipe(queryData(
@@ -161,6 +168,8 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
   readonly ontologyTermOccurencesDataQueryStatus$ = this._ontologyTermOccurencesDataQueryStatus$.pipe(distinct());
   /** Current status of queries in the cellTypeTermOccurrences$ observable. */
   readonly cellTypeTermOccurencesDataQueryStatus$ = this._cellTypeTermOccurencesDataQueryStatus$.pipe(distinct());
+
+  readonly biomarkersTermOccurencesDataQueryStatus$ = this._biomarkersTermOccurencesDataQueryStatus$.pipe(distinct());
   /** Current status of queries in the sceneData$ observable. */
   readonly sceneDataQueryStatus$ = this._sceneDataQueryStatus$.pipe(distinct());
   /** Current status of queries in the technologyFilter$ observable. */
@@ -200,14 +209,18 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
   }
 
   ngxsOnInit(): void {
-    const { ontologyTermsFullData$, ontologyTermOccurencesData$, cellTypeTermsFullData$, cellTypeTermOccurencesData$, source, snapshot: { filter } } = this;
+    const { ontologyTermsFullData$, ontologyTermOccurencesData$, cellTypeTermsFullData$, cellTypeTermOccurencesData$, source, snapshot: { filter } , biomarkersTermsFullData$, biomarkersTermOccurencesData$ } = this;
     if (filter === DEFAULT_FILTER) {
       // Common case - Reuse the result of the regular query
       ontologyTermOccurencesData$.pipe(take(1)).subscribe(ontologyTermsFullData$);
       cellTypeTermOccurencesData$.pipe(take(1)).subscribe(cellTypeTermsFullData$);
+      biomarkersTermOccurencesData$.pipe(take(1)).subscribe(biomarkersTermsFullData$);
+
     } else {
       source.getOntologyTermOccurences().pipe(take(1)).subscribe(ontologyTermsFullData$);
       source.getCellTypeTermOccurences().pipe(take(1)).subscribe(cellTypeTermsFullData$);
+      source.getBiomarkersTermOccurences().pipe(take(1)).subscribe(biomarkersTermsFullData$);
+
     }
     this.source.getOntologyTreeModel().pipe(take(1)).subscribe((model) => this.updateAnatomicalStructuresTreeModel(model));
     this.source.getCellTypeTreeModel().pipe(take(1)).subscribe((model) => this.updateCellTypesTreeModel(model));
@@ -326,6 +339,11 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
   private cellTypeTermOccurencesData(filter: Filter): ObservableInput<Record<string, number>> {
     this._cellTypeTermOccurencesDataQueryStatus$.next(DataQueryState.Running);
     return this.databaseReady$.pipe(switchMap(() => this.source.getCellTypeTermOccurences(filter)));
+  }
+  @bind
+  private biomarkersTermOccurencesData(filter: Filter): ObservableInput<Record<string, number>> {
+    this._biomarkersTermOccurencesDataQueryStatus$.next(DataQueryState.Running);
+    return this.databaseReady$.pipe(switchMap(() => this.source.getBiomarkersTermOccurences(filter)));
   }
 
   /**

@@ -54,6 +54,9 @@ export class OntologySelectionComponent implements OnChanges {
    */
   @Output() readonly ontologySelection = new EventEmitter<OntologySelection>();
 
+
+
+  menuOptions = ['gene','protein','lipid'];
   /**
    * Creates an instance of ontology selection component.
    *
