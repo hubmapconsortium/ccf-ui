@@ -47,16 +47,16 @@ export class OntologySelectionComponent implements OnChanges {
   @Input() header: boolean;
   @Input() placeholderText: string;
 
-  @Input() showtoggle?: boolean=false;
+  @Input() showtoggle: boolean;
 
   /**
    * Captures and passes along the change in ontologySelections.
    */
   @Output() readonly ontologySelection = new EventEmitter<OntologySelection>();
 
+  currentNodes: string[];
 
-
-  menuOptions = ['gene','protein','lipid'];
+  menuOptions = ['gene', 'protein', 'lipid'];
   /**
    * Creates an instance of ontology selection component.
    *
@@ -81,4 +81,17 @@ export class OntologySelectionComponent implements OnChanges {
     const nodes = this.treeModel?.nodes ?? {};
     this.tree.expandAndSelect(ontologyNode, node => nodes[node.parent]);
   }
+
+  filterNodes(selectedTypes: string[]): void {
+    const nodes = Object.values(this.treeModel.nodes);
+    const filteredNodes = nodes.filter(node => selectedTypes.includes(node.nodeType ?? ''));
+    this.currentNodes = filteredNodes.map(node => node.id);
+  }
+
+  getNodes(rootNode: OntologyTreeNode): OntologyTreeNode[] {
+    const node = { ...rootNode };
+    node.children = [...this.currentNodes];
+    return [node];
+  }
+
 }

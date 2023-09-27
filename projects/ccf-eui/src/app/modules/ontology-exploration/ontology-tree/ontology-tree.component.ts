@@ -50,7 +50,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
    */
   @Input() rootNode: string;
 
-  @Input() showtoggle: boolean=false;
+  @Input() showtoggle: boolean;
   /**
    * The node like objects to display in the tree.
    */
@@ -125,7 +125,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
 
   @Input() menuOptions: string[];
 
-  selectedtoggleOptions =['gene'];
+  selectedtoggleOptions = ['gene', 'protein', 'lipid'];
 
   /**
    * Storage for the getter / setter
@@ -156,6 +156,8 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
    * Any time a button is clicked, event is emitted.
    */
   @Output() readonly selectionChange = new EventEmitter<string[]>();
+
+  @Output() readonly selectedBiomarkerOptions = new EventEmitter<string[]>();
 
   /**
    * Indentation of each level in the tree.
@@ -216,9 +218,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
     }
   }
 
-  ngOnChanges(changes: SimpleChanges): void{
-    console.log(this.dataSource.data);
-
+  ngOnChanges(changes: SimpleChanges): void {
     if (changes.ontologyFilter) {
       const ontologyFilter: string[] = changes.ontologyFilter.currentValue as string[];
       if (ontologyFilter?.length >= 0) {
@@ -228,6 +228,9 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
     if (changes.rootNode) {
       const rootNode = changes.rootNode.currentValue;
       this.selectByIDs([rootNode]);
+    }
+    if (changes.nodes) {
+      this.selectByIDs([this.rootNode]);
     }
   }
 
@@ -277,7 +280,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
     for (const flat of parentFlatNodes) {
       control.expand(flat);
     }
-    if (node.label === 'body' && control.dataNodes?.length > 0) {
+    if ((node.label === 'body' || node.label==='biomarkers') && control.dataNodes?.length > 0) {
       control.expand(control.dataNodes[0]);
     }
 
@@ -426,7 +429,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
    * @returns left indent value
    */
   getLeftIndent(level: number): string {
-    return `${level*-1.5}rem`;
+    return `${level * -1.5}rem`;
   }
 
   /**
@@ -448,11 +451,14 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
   }
 
   toggleSelection(value) {
-    this.selectedtoggleOptions=value;
-    this.filterNodes();
+    this.selectedtoggleOptions = value;
+    this.selectedBiomarkerOptions.emit([...this.selectedtoggleOptions]);
+    // this.filterNodes();
   }
 
-  filterNodes() {
-    this.control.dataNodes= this.control.dataNodes.filter(node => this.selectedtoggleOptions.includes(node.original.nodeType??''));
-  }
+  // filterNodes() {
+  //   const dataNodes = this.control.dataNodes;
+  //   const selected = dataNodes.filter(node=>this.selectedtoggleOptions.includes(node.original.nodeType ?? ''));
+  //   console.log(selected);
+  // }
 }

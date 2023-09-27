@@ -10,7 +10,7 @@ import {
   selector: 'ccf-button-toggle',
   templateUrl: './button-toggle.component.html',
   styleUrls: ['./button-toggle.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Default,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonToggleComponent {
   @Input() menuOptions: string[];
