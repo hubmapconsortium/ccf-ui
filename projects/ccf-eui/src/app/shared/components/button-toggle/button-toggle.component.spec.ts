@@ -16,4 +16,14 @@ describe('ButtonToggleComponent', () => {
     expect(instance.isItemSelected(menu[0])).toBeTrue();
     expect(instance.isItemSelected(menu[1])).toBeFalse();
   });
+
+  it('Should toggle button selection', async () => {
+    const { instance } = await shallow.render({ bind: { menuOptions:menu,selectedItems:[menu[0]] } });
+    instance.toggleSelection(menu[1]);
+    expect(instance.isItemSelected(menu[1])).toBeTrue();
+    expect(instance.selectedItems).toBeDefined();
+    instance.toggleSelection(menu[1]);
+    instance.toggleSelection(menu[0]);
+    expect(instance.selectedItems?.length).toEqual(0);
+  });
 });

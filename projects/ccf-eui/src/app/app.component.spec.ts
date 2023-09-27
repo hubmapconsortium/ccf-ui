@@ -99,6 +99,8 @@ describe('AppComponent', () => {
         queryStatus$: of(),
         ontologyTermOccurencesData$: of(),
         cellTypeTermOccurencesData$: of(),
+        biomarkersTermOccurencesData$: of(),
+        biomarkersTermsFullData$: of(),
         sceneData$: of(),
         technologyFilterData$: of(),
         providerFilterData$: of(),
