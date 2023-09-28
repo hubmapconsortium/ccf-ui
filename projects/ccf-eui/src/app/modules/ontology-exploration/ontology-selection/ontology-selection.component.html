@@ -1,8 +1,8 @@
 <ccf-ontology-tree
-    *ngIf="ontologySearchService.rootNode$ | async as rootNode"
+    *ngIf="rootNode$ | async"
     class="tree"
     [showtoggle]="showtoggle"
-    [nodes]="currentNodes ? getNodes(rootNode): [rootNode]"
+    [nodes]="[rootNode]"
     [rootNode]="rootNode.id"
     [getChildren]="ontologySearchService.getChildren"
     (nodeSelected)="ontologySelection.emit($event)"

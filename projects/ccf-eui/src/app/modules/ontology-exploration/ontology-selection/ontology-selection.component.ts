@@ -4,6 +4,8 @@ import { OntologyTreeModel, OntologyTreeNode } from 'ccf-database';
 import { OntologySelection } from '../../../core/models/ontology-selection';
 import { OntologySearchService } from '../../../core/services/ontology-search/ontology-search.service';
 import { OntologyTreeComponent } from '../ontology-tree/ontology-tree.component';
+import { tap } from 'rxjs/operators';
+import { Observable } from 'rxjs/internal/Observable';
 
 
 /**
@@ -57,6 +59,8 @@ export class OntologySelectionComponent implements OnChanges {
   currentNodes: string[];
 
   menuOptions = ['gene', 'protein', 'lipid'];
+  rootNode: OntologyTreeNode;
+  rootNode$: Observable<OntologyTreeNode>;
   /**
    * Creates an instance of ontology selection component.
    *
@@ -64,7 +68,12 @@ export class OntologySelectionComponent implements OnChanges {
    */
   constructor(
     public ontologySearchService: OntologySearchService,
-  ) { }
+  ) {
+
+    this.rootNode$ = ontologySearchService.rootNode$.pipe(tap(rootNode => {
+      this.rootNode = { ...rootNode };
+    }));
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if ('treeModel' in changes && this.treeModel) {
@@ -85,13 +94,9 @@ export class OntologySelectionComponent implements OnChanges {
   filterNodes(selectedTypes: string[]): void {
     const nodes = Object.values(this.treeModel.nodes);
     const filteredNodes = nodes.filter(node => selectedTypes.includes(node.nodeType ?? ''));
-    this.currentNodes = filteredNodes.map(node => node.id);
-  }
-
-  getNodes(rootNode: OntologyTreeNode): OntologyTreeNode[] {
-    const node = { ...rootNode };
-    node.children = [...this.currentNodes];
-    return [node];
+    const rootNode = { ...this.rootNode };
+    rootNode.children = filteredNodes.map(node => node.id);
+    this.rootNode = { ...rootNode };
   }
 
 }
