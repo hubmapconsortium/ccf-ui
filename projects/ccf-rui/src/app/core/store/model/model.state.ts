@@ -7,7 +7,17 @@ import { filterNulls } from 'ccf-shared/rxjs-ext/operators';
 import { sortBy } from 'lodash';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { EMPTY, Observable } from 'rxjs';
-import { delay, distinctUntilChanged, filter, map, skipUntil, switchMap, throttleTime } from 'rxjs/operators';
+import {
+  debounceTime,
+  delay,
+  distinctUntilChanged,
+  filter,
+  map,
+  skipUntil,
+  switchMap,
+  tap,
+  throttleTime,
+} from 'rxjs/operators';
 
 import { ExtractionSet } from '../../models/extraction-set';
 import { VisibilityItem } from '../../models/visibility-item';
@@ -224,7 +234,10 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
               sex: organSex,
               side: organInfo?.side?.toLowerCase() as 'left' | 'right'
             });
-            this.onOrganIriChange();
+            return this.referenceData.state$.pipe(
+              debounceTime(100),
+              tap(() => this.onOrganIriChange())
+            );
           }
           return EMPTY;
         })
