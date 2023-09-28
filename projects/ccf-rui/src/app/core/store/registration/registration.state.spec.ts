@@ -121,7 +121,8 @@ describe('RegistrationState', () => {
           provide: PageState, useValue: {
             state$: pageStateSubject,
             snapshot: initialPageState,
-            clearHasChanges: () => undefined
+            clearHasChanges: () => undefined,
+            patchState: () => undefined
           }
         },
         {

@@ -202,7 +202,7 @@ This format of configuration only works with certain data types, namely strings 
 ></ccf-eui>
 ````
 
-Full RUI Example
+Full EUI Example
 
 ````html
 <!doctype html>
@@ -239,6 +239,7 @@ The following options are available for configuration
 - `hubmapDataUrl: string` - Hubmap data url.
 - `hubmapAssetsUrl: string` - Hubmap assets api url.
 - `hubmapToken: string` - Hubmap service token.
+- `selectedOrgans: string[]` - A list of organ IDs.
 
 The TypeScript definition for this configuration object is [here](projects/ccf-database/src/lib/ccf-database.ts).
 

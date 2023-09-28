@@ -6,7 +6,7 @@ import { NgxsImmutableDataRepository } from '@angular-ru/ngxs/repositories';
 import { State } from '@ngxs/store';
 import { insertItem, patch } from '@ngxs/store/operators';
 import { SpatialEntityJsonLd } from 'ccf-body-ui';
-import { GlobalConfigState } from 'ccf-shared';
+import { GlobalConfigState, OrganInfo } from 'ccf-shared';
 import { filterNulls } from 'ccf-shared/rxjs-ext/operators';
 import { saveAs } from 'file-saver';
 import { combineLatest, Observable } from 'rxjs';
@@ -17,7 +17,7 @@ import { Tag } from '../../models/anatomical-structure-tag';
 import { MetaData } from '../../models/meta-data';
 import { GlobalConfig } from '../../services/config/config';
 import { AnatomicalStructureTagState } from '../anatomical-structure-tags/anatomical-structure-tags.state';
-import { ModelState, ModelStateModel, XYZTriplet } from '../model/model.state';
+import { ModelState, ModelStateModel, RUI_ORGANS, XYZTriplet } from '../model/model.state';
 import { PageState, PageStateModel } from '../page/page.state';
 import { ReferenceDataState } from '../reference-data/reference-data.state';
 
@@ -144,9 +144,12 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
     this.refData.state$.subscribe(() => {
       this.globalConfig.config$.pipe(
         take(1),
-        tap(({ useDownload, register }) => this.ctx.patchState({
-          useRegistrationCallback: !!(!useDownload && register)
-        }))
+        tap(({ useDownload, register, organOptions }) => {
+          this.ctx.patchState({
+            useRegistrationCallback: !!(!useDownload && register),
+          });
+          this.setOrganSelection(organOptions as string[]);
+        })
       ).subscribe();
 
       this.globalConfig.getOption('editRegistration').pipe(
@@ -223,6 +226,11 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
     this.ctx.setState(patch({
       registrations: insertItem(registration as Immutable<Record<string, unknown>>)
     }));
+  }
+
+  @DataAction()
+  setOrganSelection(ids: string[] = []): void {
+    this.page.patchState({ organOptions: this.organListOptions(ids) });
   }
 
   isDataValid(page: Immutable<PageStateModel>, model: Immutable<ModelStateModel>): boolean {
@@ -371,5 +379,19 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
    */
   private xyzTripletToString(xyz: XYZTriplet): string {
     return `${Math.round(xyz.x)}, ${Math.round(xyz.y)}, ${Math.round(xyz.z)}`;
+  }
+
+  private organListOptions(organOptions?: string[]): OrganInfo[] {
+    if (organOptions && organOptions.length > 0) {
+      return RUI_ORGANS.filter(organ => {
+        if (!organ.id) {
+          return false;
+        } else {
+          return organOptions.includes(organ.id);
+        }
+      });
+    } else {
+      return RUI_ORGANS;
+    }
   }
 }

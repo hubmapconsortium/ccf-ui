@@ -3,7 +3,7 @@ import { Computed, DataAction, StateRepository } from '@angular-ru/ngxs/decorato
 import { NgxsImmutableDataRepository } from '@angular-ru/ngxs/repositories';
 import { State } from '@ngxs/store';
 import { iif, patch } from '@ngxs/store/operators';
-import { GlobalConfigState } from 'ccf-shared';
+import { GlobalConfigState, OrganInfo } from 'ccf-shared';
 import { pluckUnique } from 'ccf-shared/rxjs-ext/operators';
 import { Observable } from 'rxjs';
 import { distinctUntilChanged, filter, map, take, tap, withLatestFrom } from 'rxjs/operators';
@@ -29,6 +29,7 @@ export interface PageStateModel {
   registrationCallbackSet: boolean;
   skipConfirmation: boolean;
   hasChanges: boolean;
+  organOptions?: OrganInfo[];
 }
 
 
@@ -47,7 +48,8 @@ export interface PageStateModel {
     useCancelRegistrationCallback: false,
     registrationCallbackSet: false,
     skipConfirmation: true,
-    hasChanges: false
+    hasChanges: false,
+    organOptions: []
   }
 })
 @Injectable()
@@ -58,6 +60,7 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
   readonly registrationStarted$ = this.state$.pipe(pluckUnique('registrationStarted'));
   readonly useCancelRegistrationCallback$ = this.state$.pipe(map(x => x?.useCancelRegistrationCallback));
   readonly registrationCallbackSet$ = this.state$.pipe(map(x => x?.registrationCallbackSet));
+  readonly organOptions$ = this.state$.pipe(map(x => x?.organOptions));
 
   @Computed()
   get skipConfirmation$(): Observable<boolean> {

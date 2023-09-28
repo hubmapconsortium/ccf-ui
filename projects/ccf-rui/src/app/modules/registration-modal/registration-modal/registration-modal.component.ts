@@ -62,7 +62,7 @@ export class RegistrationModalComponent implements OnInit {
    */
   openDialog(): void {
     this.dialog.open(RegistrationContentComponent, {
-      autoFocus: false
+      autoFocus: false,
     });
   }
 }

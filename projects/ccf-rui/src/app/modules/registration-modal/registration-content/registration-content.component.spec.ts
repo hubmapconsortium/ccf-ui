@@ -32,7 +32,8 @@ describe('RegistrationContentComponent', () => {
       })
       .mock(PageState, {
         ...mockPageState,
-        user$: of({ firstName: '', lastName: '' })
+        user$: of({ firstName: '', lastName: '' }),
+        organOptions$: of([])
       })
       .mock(MatDialogRef, {
         ...mockMatDialog,

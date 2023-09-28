@@ -61,6 +61,9 @@ export class RegistrationContentComponent {
     });
     this.sexByLabel$.subscribe(sex => this.setSexFromLabel(sex));
     dialogRef.disableClose = true;
+    this.page.organOptions$.subscribe((options: OrganInfo[]) => {
+      this.organList = options;
+    });
   }
 
   /**
