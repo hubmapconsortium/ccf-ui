@@ -33,7 +33,7 @@ export class LeftSidebarComponent {
   );
 
   readonly sideByLabel$ = this.model.side$.pipe(
-    map(side => side === 'left' ? 'L' : 'R')
+    map(side => side === '' ? 'L' : 'R')
   );
 
   readonly organSelected$ = this.model.organ$.pipe(
