@@ -32,7 +32,7 @@
       <div class="num-results" [class.suborgan]="node.level > 1">{{ getCountLabel(node) }}{{
           occurenceData[node.original.id] || 0 }}</div>
     </div>
-  <div *ngIf="showtoggle && node.label==='biomarkers'">
+  <div class="biomarkers-toggle" *ngIf="showtoggle && node.label==='biomarkers'">
     <ccf-button-toggle [menuOptions]="menuOptions" [selectedItems]="selectedtoggleOptions"
       (selectionChange)="toggleSelection($event)"></ccf-button-toggle>
   </div>
@@ -64,7 +64,7 @@
       <div class="num-results" [class.suborgan]="node.level > 1">{{ getCountLabel(node) }}{{
         occurenceData[node.original.id] || 0 }}</div>
     </div>
-    <div *ngIf="showtoggle && node.label==='biomarkers'">
+    <div class="biomarkers-toggle" *ngIf="showtoggle && node.label==='biomarkers'">
       <ccf-button-toggle [menuOptions]="menuOptions" [selectedItems]="selectedtoggleOptions"
         (selectionChange)="toggleSelection($event)"></ccf-button-toggle>
     </div>

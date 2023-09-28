@@ -453,12 +453,6 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
   toggleSelection(value) {
     this.selectedtoggleOptions = value;
     this.selectedBiomarkerOptions.emit([...this.selectedtoggleOptions]);
-    // this.filterNodes();
   }
 
-  // filterNodes() {
-  //   const dataNodes = this.control.dataNodes;
-  //   const selected = dataNodes.filter(node=>this.selectedtoggleOptions.includes(node.original.nodeType ?? ''));
-  //   console.log(selected);
-  // }
 }

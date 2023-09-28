@@ -19,6 +19,16 @@
     }
   }
 
+  .biomarkers-toggle::ng-deep {
+    margin: 0.5rem;
+    padding-left: 1rem;
+    button {
+      mat-icon, span {
+        color: black;
+      }
+    }
+  }
+
   .node {
     min-height: 0;
     font-size: 1rem;
