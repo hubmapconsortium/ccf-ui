@@ -163,7 +163,7 @@
         overflow: hidden;
       }
 
-      .cell-type-selection {
+      .cell-type-selection, .biomarker-selection {
         ::ng-deep mat-tree {
           margin-top: 2rem;
         }

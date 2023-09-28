@@ -29,7 +29,7 @@
         [selectedItems]="selectedtoggleOptions"
         (selectionChange)="toggleSelection($event)"
         ></ccf-button-toggle>
-        <!-- <ccf-ontology-selection class="ontology-selection"
+        <ccf-ontology-selection class="ontology-selection"
                                 *ngIf="isItemSelected('AS')"
                                 [showtoggle]="false"
                                 [treeModel]="ontologyTreeModel$ | async"
@@ -38,7 +38,7 @@
                                 placeholderText="Search anatomical structures..."
                                 (ontologySelection)="ontologySelected($event, 'anatomical-structures')"
                                 [header]="header$ | async">
-        </ccf-ontology-selection>  -->
+        </ccf-ontology-selection>
         <ccf-ontology-selection class="cell-type-selection"
                                 *ngIf="isItemSelected('CT')"
                                 [showtoggle]="false"
@@ -49,7 +49,7 @@
                                 (ontologySelection)="ontologySelected($event, 'cell-type')"
                                 [header]="header$ | async">
         </ccf-ontology-selection>
-        <ccf-ontology-selection class="ontology-selection"
+        <ccf-ontology-selection class="biomarker-selection"
                                 *ngIf="isItemSelected('B')"
                                 [showtoggle]="true"
                                 [treeModel]="biomarkersTreeModel$ | async"

@@ -29,7 +29,8 @@
     <div class="non-expandable"></div>
     <div style="display: flex; width: 100%; justify-content: space-between;">
       <ng-container *ngTemplateOutlet="selectableRegion; context: { node: node }"></ng-container>
-      <div class="num-results" [class.suborgan]="node.level > 1">{{ occurenceData[node.original.id] || 0}}</div>
+      <div class="num-results" [class.suborgan]="node.level > 1">{{ getCountLabel(node) }}{{
+          occurenceData[node.original.id] || 0 }}</div>
     </div>
   <div *ngIf="showtoggle && node.label==='biomarkers'">
     <ccf-button-toggle [menuOptions]="menuOptions" [selectedItems]="selectedtoggleOptions"
