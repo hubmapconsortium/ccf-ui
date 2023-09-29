@@ -37,7 +37,7 @@ describe('RotationSliderComponent', () => {
 
   it('should emit the rotation change whenever resetRotation is called.', async () => {
     const { instance, outputs } = await shallow.render();
-    instance.resetRotation(1);
+    instance.resetRotation('x');
 
     expect(outputs.rotationChange.emit).toHaveBeenCalled();
   });
@@ -45,7 +45,7 @@ describe('RotationSliderComponent', () => {
   it('should set the rotation of X-axis to 0 when the resetRotation method is called.', async () => {
     const rotation: Rotation = { x: 100, y: 100, z: 100 };
     const { instance } = await shallow.render({ bind: { rotation } });
-    instance.resetRotation(1);
+    instance.resetRotation('x');
 
     expect(instance.rotation.x).toEqual(0);
   });
@@ -53,7 +53,7 @@ describe('RotationSliderComponent', () => {
   it('should set the rotation of Y-axis to 0 when the resetRotation method is called.', async () => {
     const rotation: Rotation = { x: 100, y: 100, z: 100 };
     const { instance } = await shallow.render({ bind: { rotation } });
-    instance.resetRotation(2);
+    instance.resetRotation('y');
 
     expect(instance.rotation.y).toEqual(0);
   });
@@ -61,7 +61,7 @@ describe('RotationSliderComponent', () => {
   it('should set the rotation of Z-axis to 0 when the resetRotation method is called.', async () => {
     const rotation: Rotation = { x: 100, y: 100, z: 100 };
     const { instance } = await shallow.render({ bind: { rotation } });
-    instance.resetRotation(3);
+    instance.resetRotation('z');
 
     expect(instance.rotation.z).toEqual(0);
   });
