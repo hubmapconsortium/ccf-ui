@@ -55,7 +55,7 @@ export function getOntologyTermOccurences(ids: Set<string>, store: Store): Recor
 }
 
 
-export function getBiomarkersTermOccurences(ids: Set<string>, store: Store): Record<string, number> {
+export function getBiomarkerTermOccurences(ids: Set<string>, store: Store): Record<string, number> {
   const counts: Record<string, number> = {};
   const term2entities = getAnatomicalStructureMapping(ids, store);
 

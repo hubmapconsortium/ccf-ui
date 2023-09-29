@@ -3,7 +3,7 @@ import { memoize } from 'lodash';
 import { readQuads, Store } from 'triple-store-utils';
 import { OntologyTreeModel, OntologyTreeNode } from '../interfaces';
 import { getEntries } from '../util/n3-functions';
-import { ccf, rui } from '../util/prefixes';
+import { ccf, rdfs, rui } from '../util/prefixes';
 
 export function getOntologyTreeNode(
   store: Store,
@@ -175,13 +175,14 @@ export function getCellTypeTreeModel(store: Store): OntologyTreeModel {
 
 function formBiomarkerNode(
   id: string,
+  label: string,
   parent: string,
   children: string[]
 ): OntologyTreeNode {
   return {
     ['@id']: `https://example.com${id}`,
-    id: id,
-    label: id,
+    id,
+    label,
     parent: parent ?? '',
     children: children ?? [],
     synonymLabels: [],
@@ -189,34 +190,42 @@ function formBiomarkerNode(
   };
 }
 
-export function getBiomarkersTreeModel(_store: Store): OntologyTreeModel {
-  // dummy data here until below can be implemented.
+export function getBiomarkersTreeModel(store: Store): OntologyTreeModel {
+  const bmType = ccf.x('ccf_biomarker_type');
+
+  const nodes: Record<string, OntologyTreeNode> = {
+    biomarkers: formBiomarkerNode('biomarkers', 'Biomarkers', '', []),
+  };
+  for (const quad of readQuads(store, null, bmType, null, null)) {
+    const bm = quad.object.value;
+    const iri = quad.subject.id;
+    if (!nodes[bm]) {
+      nodes[bm] = formBiomarkerNode(bm, bm[0].toUpperCase() + bm.slice(1), 'biomarkers', []);
+      nodes['biomarkers'].children.push(bm);
+    }
+    nodes[bm].children.push(iri);
+
+    const result = formBiomarkerNode(iri, '', bm, []);
+    const ontologyTreeNodeResult = {
+      [ccf.ontologyNode.label.id]: 'label',
+      [rdfs.label.id]: 'synonymLabels',
+    };
+
+    for (const [key, value] of getEntries(store, iri, ontologyTreeNodeResult)) {
+      if (key === 'synonymLabels') {
+        if (value !== result.label) {
+          result.synonymLabels.push(value as string);
+        }
+      } else {
+        result[key] = value;
+      }
+    }
+
+    nodes[iri] = result;
+  }
+
   return {
     root: 'biomarkers',
-    nodes: {
-      biomarker1: formBiomarkerNode('biomarker1', 'gene', []),
-      biomarker2: formBiomarkerNode('biomarker2', 'gene', []),
-      biomarker3: formBiomarkerNode('biomarker3', 'protein', []),
-      biomarker4: formBiomarkerNode('biomarker4', 'protein', []),
-      biomarker5: formBiomarkerNode('biomarker5', 'lipid', []),
-      biomarker6: formBiomarkerNode('biomarker6', 'lipid', []),
-      gene: formBiomarkerNode('gene', 'biomarkers', [
-        'biomarker1',
-        'biomarker2',
-      ]),
-      protein: formBiomarkerNode('protein', 'biomarkers', [
-        'biomarker3',
-        'biomarker4',
-      ]),
-      lipid: formBiomarkerNode('lipid', 'biomarkers', [
-        'biomarker5',
-        'biomarker6',
-      ]),
-      biomarkers: formBiomarkerNode('biomarkers', '', [
-        'gene',
-        'lipid',
-        'protein',
-      ]),
-    },
+    nodes
   };
 }

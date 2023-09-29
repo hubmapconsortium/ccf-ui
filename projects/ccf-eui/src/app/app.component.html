@@ -53,8 +53,8 @@
                                 *ngIf="isItemSelected('B')"
                                 [showtoggle]="true"
                                 [treeModel]="biomarkersTreeModel$ | async"
-                                [termData]="data.biomarkersTermsFullData$ | async"
-                                [occurenceData]="data.biomarkersTermOccurencesData$ | async"
+                                [termData]="data.biomarkerTermsFullData$ | async"
+                                [occurenceData]="data.biomarkerTermOccurencesData$ | async"
                                 placeholderText="Search Biomarkers..."
                                 (ontologySelection)="ontologySelected($event, 'biomarkers')"
                                 [header]="header$ | async">

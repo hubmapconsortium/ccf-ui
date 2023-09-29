@@ -160,7 +160,7 @@ export class AppComponent implements OnInit {
     data.aggregateData$.subscribe();
     data.ontologyTermOccurencesData$.subscribe();
     data.cellTypeTermOccurencesData$.subscribe();
-    data.biomarkersTermOccurencesData$.subscribe();
+    data.biomarkerTermOccurencesData$.subscribe();
     data.sceneData$.subscribe();
     data.filter$.subscribe();
     data.technologyFilterData$.subscribe();

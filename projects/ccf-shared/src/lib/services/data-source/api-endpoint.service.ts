@@ -131,50 +131,18 @@ export class ApiEndpointDataSourceService implements DataSource {
     );
   }
 
-  // TODO: Remove mock code when this.api.biomarkerTreeModel is available
-  formBiomarkerNode(id,parent,children,nodeType=''): OntologyTreeNode {
-    return {
-      ['@id']: id,
-      id: id,
-      label: id,
-      parent: parent??'',
-      children: children??[],
-      synonymLabels: [],
-      ['@type']: 'OntologyTreeNode',
-      nodeType: nodeType
-    };
-  }
-
   /**
-   * Get the cell type tree model.
+   * Get the biomarker type tree model.
    *
    * @returns An observable emitting the results.
    */
   @Cacheable(CACHE_CONFIG_NO_PARAMS)
   getBiomarkersTreeModel(): Observable<OntologyTreeModel> {
-    const a= {
-      root:'biomarkers',
-      nodes: {
-        'biomarker1' : this.formBiomarkerNode('biomarker1','biomarkers',[],'gene'),
-        'biomarker2' : this.formBiomarkerNode('biomarker2','biomarkers',[],'gene'),
-        'biomarker3' : this.formBiomarkerNode('biomarker3','biomarkers',[],'protein'),
-        'biomarker4' : this.formBiomarkerNode('biomarker4','biomarkers',[],'protein'),
-        'biomarker5' : this.formBiomarkerNode('biomarker5','biomarkers',[],'lipid'),
-        'biomarker6' : this.formBiomarkerNode('biomarker6','biomarkers',[],'lipid'),
-        'biomarkers' : this.formBiomarkerNode('biomarkers','',['biomarker1','biomarker2','biomarker3','biomarker4','biomarker5','biomarker6']),
-      }
-    };
-    return of(a as OntologyTreeModel);
+    return this.doRequest(
+      params => this.api.biomarkerTreeModel(params),
+      undefined, {}, cast<OntologyTreeModel>()
+    );
   }
-
-  // TODO: Use this code when this.api.biomarkerTreeModel is available
-  // @Cacheable(CACHE_CONFIG_NO_PARAMS)
-  // getBiomarkersTreeModel(): Observable<OntologyTreeModel> {
-  //   return this.doRequest(
-  //     params => this.api.biomarkerTreeModel(params),
-  //     undefined, {}, cast<OntologyTreeModel>()
-  //   );
-  // }
 
   @Cacheable(CACHE_CONFIG_NO_PARAMS)
   getReferenceOrgans(): Observable<SpatialEntity[]> {
@@ -217,20 +185,11 @@ export class ApiEndpointDataSourceService implements DataSource {
   }
 
   @Cacheable(CACHE_CONFIG_PARAMS)
-  getBiomarkersTermOccurences(_filter?: Filter): Observable<Record<string, number>> {
-    return of({
-      'biomarkers': 6,
-      'biomarker1' : 1,
-      'biomarker2' : 1,
-      'biomarker3' :1,
-      'biomarker4' : 1,
-      'biomarker5' : 1,
-      'biomarker6': 1
-    });
-    // return this.doRequest(
-    //   params => this.api.biomarkerTermOccurences(params),
-    //   filter
-    // );
+  getBiomarkerTermOccurences(filter?: Filter): Observable<Record<string, number>> {
+    return this.doRequest(
+      params => this.api.biomarkerTermOccurences(params),
+      filter
+    );
   }
 
   @Cacheable(CACHE_CONFIG_PARAMS)

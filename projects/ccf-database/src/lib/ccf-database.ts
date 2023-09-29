@@ -12,7 +12,7 @@ import { searchHubmap } from './hubmap/hubmap-data-import';
 import { AggregateResult, DatabaseStatus, Filter, OntologyTreeModel, TissueBlockResult } from './interfaces';
 import { getAggregateResults, getDatasetTechnologyNames, getProviderNames } from './queries/aggregate-results-n3';
 import { findIds } from './queries/find-ids-n3';
-import { getBiomarkersTermOccurences, getCellTypeTermOccurences, getOntologyTermOccurences } from './queries/ontology-term-occurences-n3';
+import { getBiomarkerTermOccurences, getCellTypeTermOccurences, getOntologyTermOccurences } from './queries/ontology-term-occurences-n3';
 import { getAnatomicalStructureTreeModel, getBiomarkersTreeModel, getCellTypeTreeModel } from './queries/ontology-tree-n3';
 import { getSpatialEntityForEntity } from './queries/spatial-result-n3';
 import { getTissueBlockResult } from './queries/tissue-block-result-n3';
@@ -346,8 +346,8 @@ export class CCFDatabase {
    * @param [filter] The filter.
    * @returns Cell type term counts.
    */
-  async getBiomarkersTermOccurences(filter?: Filter): Promise<Record<string, number>> {
-    return getBiomarkersTermOccurences(this.getIds(filter), this.store);
+  async getBiomarkerTermOccurences(filter?: Filter): Promise<Record<string, number>> {
+    return getBiomarkerTermOccurences(this.getIds(filter), this.store);
   }
 
 
