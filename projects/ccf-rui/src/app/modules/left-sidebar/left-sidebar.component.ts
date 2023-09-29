@@ -42,7 +42,9 @@ export class LeftSidebarComponent {
 
   readonly detailsLabels$: Observable<string[]> = combineLatest(
     [this.model.organ$, this.model.side$, this.model.sex$]).pipe(
-    map(([organ, side, sex]) => [organ?.organ , side as string, sex as string])
+    map(([organ, side, sex]) => [
+      this.capitalizeFirstLetter(organ?.organ), this.capitalizeFirstLetter(side as string), this.capitalizeFirstLetter(sex as string)
+    ])
   );
 
   /**
@@ -65,6 +67,17 @@ export class LeftSidebarComponent {
     readonly registration: RegistrationState
   ) { }
 
+  /**
+   * Takes the input string and capitalizes the first letter.
+   * @param inputString The string we want to capitalize it's first letter.
+   * @returns string with first letter capitalized.
+   */
+  capitalizeFirstLetter(inputString: string): string {
+    if (inputString) {
+      return inputString.charAt(0).toUpperCase() + inputString.slice(1);
+    }
+    return inputString;
+  }
 
   /**
    * Updates extraction site tooltip to either the VisibilityItem passed in's
