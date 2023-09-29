@@ -41,6 +41,7 @@ describe('AppComponent', () => {
     tmc: [],
     spatialSearches: [],
     technologies: [],
+    biomarkerTerms: []
   };
   const testTreeStr: OntologyTreeModel = {
     root: 'a',
