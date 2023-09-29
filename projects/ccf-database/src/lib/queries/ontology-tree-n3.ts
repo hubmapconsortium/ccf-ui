@@ -213,11 +213,17 @@ export function getBiomarkersTreeModel(store: Store): OntologyTreeModel {
 
     for (const [key, value] of getEntries(store, iri, ontologyTreeNodeResult)) {
       if (key === 'synonymLabels') {
-        if (value !== result.label) {
+        if (value && value !== result.label) {
           result.synonymLabels.push(value as string);
         }
       } else {
         result[key] = value;
+      }
+    }
+
+    for (const node of Object.values(nodes)) {
+      if (node.children.length > 1) {
+        node.children.sort((a, b) => nodes[a]?.label.localeCompare(nodes[b]?.label));
       }
     }
 
