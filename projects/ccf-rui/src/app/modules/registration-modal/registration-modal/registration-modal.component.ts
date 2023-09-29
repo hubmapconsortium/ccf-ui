@@ -38,7 +38,7 @@ export class RegistrationModalComponent implements OnInit {
    */
   ngOnInit(): void {
     combineLatest([this.page.user$, this.model.organ$, this.referenceData.state$]).pipe(
-      debounceTime(1000),
+      debounceTime(500),
       take(1),
       tap(([user, organ, data]) => {
         if (Object.keys(data.organIRILookup).length === 0) {

@@ -21,7 +21,7 @@ import {
 
 import { ExtractionSet } from '../../models/extraction-set';
 import { VisibilityItem } from '../../models/visibility-item';
-import { GlobalConfig } from '../../services/config/config';
+import { GlobalConfig, OrganConfig } from '../../services/config/config';
 import { PageState } from '../page/page.state';
 import { ReferenceDataState } from '../reference-data/reference-data.state';
 
@@ -205,52 +205,7 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
     this.referenceData = this.injector.get(ReferenceDataState);
     this.page = this.injector.get(PageState);
 
-    this.referenceData.state$.subscribe( () => {
-      let organInfo: OrganInfo | undefined;
-      let organSex: 'male' | 'female';
-      this.globalConfig.getOption('organ').pipe(
-        filterNulls(),
-        switchMap(organConfig => {
-          if (typeof(organConfig) === 'string') {
-            const updatedIri = this.referenceData.snapshot.placementPatches[organConfig]?.target;
-            const organData = this.referenceData.getOrganData(updatedIri);
-            organSex = organData?.sex?.toLowerCase() as 'male' | 'female';
-            organInfo = organData?.organ;
-          } else {
-            const organName = organConfig.name.toLowerCase();
-            const organSide = organConfig.side;
-            const ontologyId = organConfig.ontologyId;
-            organSex = organConfig.sex?.toLowerCase() as 'male' | 'female';
-            // check for an id match
-            organInfo = this.idMatches(ontologyId, organSide);
-            // if no id matches, check for a name match
-            if (!organInfo) {
-              organInfo = this.nameMatches(organName, organSide);
-            }
-          }
-          if (organInfo) {
-            this.ctx.patchState({
-              organ: organInfo,
-              sex: organSex,
-              side: organInfo?.side?.toLowerCase() as 'left' | 'right'
-            });
-            return this.referenceData.state$.pipe(
-              debounceTime(100),
-              tap(() => this.onOrganIriChange())
-            );
-          }
-          return EMPTY;
-        })
-      ).subscribe();
-
-      this.modelChanged$.pipe(
-        skipUntil(this.page.registrationStarted$.pipe(
-          filter(started => started),
-          delay(5)
-        ))
-      ).subscribe(() => this.page.setHasChanges());
-    });
-
+    this.referenceData.state$.subscribe(() => this.onReferenceDataChange());
   }
 
   idMatches(ontologyId?: string, organSide?: string): OrganInfo | undefined {
@@ -480,5 +435,55 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
 
     this.ctx.patchState({ organIri, organDimensions });
     this.ctx.patchState({ position: this.defaultPosition });
+  }
+
+  private onReferenceDataChange(): void {
+    this.globalConfig.getOption('organ').pipe(
+      filterNulls(),
+      switchMap(organ => this.onOrganChange(organ))
+    ).subscribe();
+
+    this.modelChanged$.pipe(
+      skipUntil(this.page.registrationStarted$.pipe(
+        filter(started => started),
+        delay(5)
+      ))
+    ).subscribe(() => this.page.setHasChanges());
+  }
+
+  private onOrganChange(organ: string | OrganConfig): Observable<unknown> {
+    let organInfo: OrganInfo | undefined;
+    let organSex: 'male' | 'female';
+    if (typeof organ === 'string') {
+      const updatedIri = this.referenceData.snapshot.placementPatches[organ]?.target;
+      const organData = this.referenceData.getOrganData(updatedIri);
+      organSex = organData?.sex?.toLowerCase() as 'male' | 'female';
+      organInfo = organData?.organ;
+    } else {
+      const organName = organ.name.toLowerCase();
+      const organSide = organ.side;
+      const ontologyId = organ.ontologyId;
+      organSex = organ.sex?.toLowerCase() as 'male' | 'female';
+      // check for an id match
+      organInfo = this.idMatches(ontologyId, organSide);
+      // if no id matches, check for a name match
+      if (!organInfo) {
+        organInfo = this.nameMatches(organName, organSide);
+      }
+    }
+
+    if (organInfo) {
+      this.ctx.patchState({
+        organ: organInfo,
+        sex: organSex,
+        side: organInfo?.side?.toLowerCase() as 'left' | 'right'
+      });
+      return this.referenceData.state$.pipe(
+        debounceTime(100),
+        tap(() => this.onOrganIriChange())
+      );
+    }
+
+    return EMPTY;
   }
 }
