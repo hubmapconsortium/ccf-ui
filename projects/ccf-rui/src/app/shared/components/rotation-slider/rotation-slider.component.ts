@@ -65,16 +65,8 @@ export class RotationSliderComponent {
   /**
    * Function to easily reset the rotations to 0 and emit this change.
    */
-  resetRotation(slider: number): void {
-    if (slider === 1){
-      this.rotation = { ...this.rotation, x:0 };
-    }
-    if (slider === 2){
-      this.rotation = { ...this.rotation, y:0 };
-    }
-    if (slider === 3){
-      this.rotation = { ...this.rotation, z:0 };
-    }
+  resetRotation(dimension: 'x' | 'y' | 'z'): void {
+    this.rotation = { ...this.rotation, [dimension]: 0 };
     this.ga.event('rotation_reset', 'rotation_slider');
     this.rotationChange.emit(this.rotation);
   }

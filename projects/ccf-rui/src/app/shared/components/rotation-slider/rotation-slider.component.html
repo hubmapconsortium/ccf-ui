@@ -1,11 +1,10 @@
 <div class="header">
   <span class="text title" matTooltip="Use sliders below to rotate tissue block for registration">Tissue Block Rotation</span>
   <div class="filler"></div>
-  <!-- <mat-icon matRipple [matRippleCentered]="true" [matRippleUnbounded]="true" class="icon reset" (click)="resetRotation()">refresh</mat-icon> -->
 </div>
 
 <div class="refresh-button-container">
-  <mat-icon matRipple [matRippleCentered]="true" [matRippleUnbounded]="true" class="icon reset" (click)="resetRotation(1)">refresh</mat-icon>
+  <mat-icon matRipple [matRippleCentered]="true" [matRippleUnbounded]="true" class="icon reset" (click)="resetRotation('x')">refresh</mat-icon>
 </div>
 <div class="slider-box red">
   <span class="text label">X</span>
@@ -24,7 +23,7 @@
 </div>
 
 <div class="refresh-button-container">
-  <mat-icon matRipple [matRippleCentered]="true" [matRippleUnbounded]="true" class="icon reset" (click)="resetRotation(2)">refresh</mat-icon>
+  <mat-icon matRipple [matRippleCentered]="true" [matRippleUnbounded]="true" class="icon reset" (click)="resetRotation('y')">refresh</mat-icon>
 </div>
 <div class="slider-box green">
   <span class="text label">Y</span>
@@ -43,7 +42,7 @@
 </div>
 
 <div class="refresh-button-container">
-  <mat-icon matRipple [matRippleCentered]="true" [matRippleUnbounded]="true" class="icon reset" (click)="resetRotation(3)">refresh</mat-icon>
+  <mat-icon matRipple [matRippleCentered]="true" [matRippleUnbounded]="true" class="icon reset" (click)="resetRotation('z')">refresh</mat-icon>
 </div>
 <div class="slider-box blue">
   <span class="text label">Z</span>
