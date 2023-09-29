@@ -10,8 +10,8 @@
   </ng-template>
 
   <!-- Leaf node template -->
-  <mat-tree-node *matTreeNodeDef="let node" class="node leaf-node" matTreeNodePadding
-    [matTreeNodePaddingIndent]="indent" (mouseleave)="mouseOut(); slider1.reset()" style="display: block;">
+  <mat-tree-node *matTreeNodeDef="let node" class="node leaf-node block" matTreeNodePadding
+    [matTreeNodePaddingIndent]="indent" (mouseleave)="mouseOut(); slider1.reset()">
 
     <div [style.display]="node.opacity !== -1 ? 'none' : 'block'">
       <mat-icon class="icon opacity" [style.left]="getLeftIndent(node.level)" [class.fade]="node.visible !== true"
@@ -39,8 +39,8 @@
   </mat-tree-node>
 
   <!-- Inner node template -->
-  <mat-tree-node *matTreeNodeDef="let node; when: isInnerNode" class="node inner-node" matTreeNodePadding
-    [matTreeNodePaddingIndent]="indent" (mouseleave)="mouseOut(); slider2.reset()" style="display: block;">
+  <mat-tree-node *matTreeNodeDef="let node; when: isInnerNode" class="node inner-node block" matTreeNodePadding
+    [matTreeNodePaddingIndent]="indent" (mouseleave)="mouseOut(); slider2.reset()">
 
     <div [style.display]="node.opacity !== -1 ? 'none' : 'block'">
       <mat-icon class="icon opacity" [style.left]="getLeftIndent(node.level)" [class.fade]="node.visible !== true"

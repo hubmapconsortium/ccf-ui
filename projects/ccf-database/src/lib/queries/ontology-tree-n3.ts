@@ -5,11 +5,19 @@ import { OntologyTreeModel, OntologyTreeNode } from '../interfaces';
 import { getEntries } from '../util/n3-functions';
 import { ccf, rui } from '../util/prefixes';
 
-
-export function getOntologyTreeNode(store: Store, iri: string, relationshipIri: string): OntologyTreeNode {
+export function getOntologyTreeNode(
+  store: Store,
+  iri: string,
+  relationshipIri: string
+): OntologyTreeNode {
   const result: OntologyTreeNode = {
-    '@id': iri, '@type': 'OntologyTreeNode', id: iri, parent: '',
-    children: [] as string[], synonymLabels: [] as string[], label: ''
+    '@id': iri,
+    '@type': 'OntologyTreeNode',
+    id: iri,
+    parent: '',
+    children: [] as string[],
+    synonymLabels: [] as string[],
+    label: '',
   };
 
   const ontologyTreeNodeResult = {
@@ -25,12 +33,19 @@ export function getOntologyTreeNode(store: Store, iri: string, relationshipIri: 
       result[key] = value;
     }
   }
-  result.children = store.getSubjects(relationshipIri, iri, null).map(s => s.id);
+  result.children = store
+    .getSubjects(relationshipIri, iri, null)
+    .map((s) => s.id);
 
   return result;
 }
 
-export function getOntologyTreeModel(store: Store, rootIri: string, rootLabel: string, relationshipIri: string): OntologyTreeModel {
+export function getOntologyTreeModel(
+  store: Store,
+  rootIri: string,
+  rootLabel: string,
+  relationshipIri: string
+): OntologyTreeModel {
   const result: OntologyTreeModel = { root: rootIri, nodes: {} };
   const seen = new Set<string>();
   for (const quad of readQuads(store, null, relationshipIri, null, null)) {
@@ -49,12 +64,13 @@ export function getOntologyTreeModel(store: Store, rootIri: string, rootLabel: s
       id: rootIri,
       label: rootLabel,
       children: [],
-      synonymLabels: []
+      synonymLabels: [],
     } as unknown as OntologyTreeNode;
   }
 
   const rootChildren = store
-    .getSubjects(relationshipIri, rootIri, null).map(o => o.id)
+    .getSubjects(relationshipIri, rootIri, null)
+    .map((o) => o.id)
     .sort((a, b) => result.nodes[a].label.localeCompare(result.nodes[b].label));
   result.nodes[rootIri].children = rootChildren;
 
@@ -70,11 +86,15 @@ export function getOntologyTreeModel(store: Store, rootIri: string, rootLabel: s
  * @param nodeIri the tree node iri to modify. Starts at root in the base case
  * @param seen a set of IRIs that have been 'seen' so far to remove loops in the graph
  */
-function treeify(model: OntologyTreeModel, nodeIri: string | undefined = undefined, seen: Set<string> = new Set()) {
+function treeify(
+  model: OntologyTreeModel,
+  nodeIri: string | undefined = undefined,
+  seen: Set<string> = new Set()
+) {
   const node = model.nodes[nodeIri ?? model.root];
   if (node) {
-    node.children = node.children.filter(n => !seen.has(n));
-    node.children.forEach(n => seen.add(n));
+    node.children = node.children.filter((n) => !seen.has(n));
+    node.children.forEach((n) => seen.add(n));
     for (const childId of node.children) {
       treeify(model, childId, seen);
       if (model.nodes[childId]) {
@@ -84,8 +104,15 @@ function treeify(model: OntologyTreeModel, nodeIri: string | undefined = undefin
   }
 }
 
-export function getAnatomicalStructureTreeModelSlowly(store: Store): OntologyTreeModel {
-  const model = getOntologyTreeModel(store, rui.body.id, 'body', ccf.asctb.part_of.id);
+export function getAnatomicalStructureTreeModelSlowly(
+  store: Store
+): OntologyTreeModel {
+  const model = getOntologyTreeModel(
+    store,
+    rui.body.id,
+    'body',
+    ccf.asctb.part_of.id
+  );
   model.nodes[rui.body.id].children = [
     'http://purl.obolibrary.org/obo/UBERON_0000955', // Brain
     'http://purl.obolibrary.org/obo/UBERON_0000029', // Lymph Node
@@ -132,44 +159,64 @@ export function getAnatomicalStructureTreeModelSlowly(store: Store): OntologyTre
     // 'http://purl.obolibrary.org/obo/UBERON_0001222', // Ureter, R
     'http://purl.obolibrary.org/obo/UBERON_0001255', // Urinary Bladder
     'http://purl.obolibrary.org/obo/UBERON_0000995', // Uterus
-    'http://purl.obolibrary.org/obo/UBERON_0004537' // Blood Vasculature
-  ].filter(iri => iri in model.nodes);
+    'http://purl.obolibrary.org/obo/UBERON_0004537', // Blood Vasculature
+  ].filter((iri) => iri in model.nodes);
   return model;
 }
 
-export const getAnatomicalStructureTreeModel = memoize(getAnatomicalStructureTreeModelSlowly, () => '');
+export const getAnatomicalStructureTreeModel = memoize(
+  getAnatomicalStructureTreeModelSlowly,
+  () => ''
+);
 
 export function getCellTypeTreeModel(store: Store): OntologyTreeModel {
   return getOntologyTreeModel(store, rui.cell.id, 'cell', ccf.asctb.ct_is_a.id);
 }
 
-function formBiomarkerNode(id,parent,children): OntologyTreeNode {
+function formBiomarkerNode(
+  id: string,
+  parent: string,
+  children: string[]
+): OntologyTreeNode {
   return {
     ['@id']: `https://example.com${id}`,
     id: id,
     label: id,
-    parent: parent??'',
-    children: children??[],
+    parent: parent ?? '',
+    children: children ?? [],
     synonymLabels: [],
-    ['@type']: 'OntologyTreeNode'
+    ['@type']: 'OntologyTreeNode',
   };
 }
 
 export function getBiomarkersTreeModel(_store: Store): OntologyTreeModel {
   // dummy data here until below can be implemented.
   return {
-    root:'biomarkers',
+    root: 'biomarkers',
     nodes: {
-      'biomarker1' : formBiomarkerNode('biomarker1','gene',[]),
-      'biomarker2' : formBiomarkerNode('biomarker2','gene',[]),
-      'biomarker3' : formBiomarkerNode('biomarker3','protein',[]),
-      'biomarker4' : formBiomarkerNode('biomarker4','protein',[]),
-      'biomarker5' : formBiomarkerNode('biomarker5','lipid',[]),
-      'biomarker6' : formBiomarkerNode('biomarker6','lipid',[]),
-      'gene' : formBiomarkerNode('gene','biomarkers',['biomarker1','biomarker2']),
-      'protein' : formBiomarkerNode('protein','biomarkers',['biomarker3','biomarker4']),
-      'lipid' : formBiomarkerNode('lipid','biomarkers',['biomarker5','biomarker6']),
-      'biomarkers' : formBiomarkerNode('biomarkers','',['gene','lipid','protein']),
-    }
+      biomarker1: formBiomarkerNode('biomarker1', 'gene', []),
+      biomarker2: formBiomarkerNode('biomarker2', 'gene', []),
+      biomarker3: formBiomarkerNode('biomarker3', 'protein', []),
+      biomarker4: formBiomarkerNode('biomarker4', 'protein', []),
+      biomarker5: formBiomarkerNode('biomarker5', 'lipid', []),
+      biomarker6: formBiomarkerNode('biomarker6', 'lipid', []),
+      gene: formBiomarkerNode('gene', 'biomarkers', [
+        'biomarker1',
+        'biomarker2',
+      ]),
+      protein: formBiomarkerNode('protein', 'biomarkers', [
+        'biomarker3',
+        'biomarker4',
+      ]),
+      lipid: formBiomarkerNode('lipid', 'biomarkers', [
+        'biomarker5',
+        'biomarker6',
+      ]),
+      biomarkers: formBiomarkerNode('biomarkers', '', [
+        'gene',
+        'lipid',
+        'protein',
+      ]),
+    },
   };
 }
