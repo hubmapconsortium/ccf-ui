@@ -455,8 +455,7 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
     let organInfo: OrganInfo | undefined;
     let organSex: 'male' | 'female';
     if (typeof organ === 'string') {
-      const updatedIri = this.referenceData.snapshot.placementPatches[organ]?.target;
-      const organData = this.referenceData.getOrganData(updatedIri);
+      const organData = this.referenceData.getOrganData(organ);
       organSex = organData?.sex?.toLowerCase() as 'male' | 'female';
       organInfo = organData?.organ;
     } else {

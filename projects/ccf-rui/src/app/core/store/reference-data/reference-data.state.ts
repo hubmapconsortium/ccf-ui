@@ -143,7 +143,7 @@ export class ReferenceDataState extends NgxsImmutableDataRepository<ReferenceDat
     // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
     const lookup = [organ, sex, side || organInfo?.side].join('|').toUpperCase();
     const key = Object.keys(db.organIRILookup).find((code) => code.toUpperCase().endsWith(lookup));
-    return key ? db.organIRILookup[key] : undefined;
+    return this.getLatestIri(key ? db.organIRILookup[key] : undefined);
   }
 
   /**
@@ -153,8 +153,9 @@ export class ReferenceDataState extends NgxsImmutableDataRepository<ReferenceDat
    * @returns A populated organ data if the IRI is valid, otherwise undefined
    */
   getOrganData(iri: string): OrganData | undefined {
+    const updatedIri = this.getLatestIri(iri);
     const state = this.snapshot;
-    const entity = state.organSpatialEntities[iri];
+    const entity = state.organSpatialEntities[updatedIri];
     if (!entity) {
       return undefined;
     }
@@ -170,5 +171,13 @@ export class ReferenceDataState extends NgxsImmutableDataRepository<ReferenceDat
       sex: entity.sex?.toLowerCase() as 'male' | 'female',
       side: entity.side?.toLowerCase() as 'left' | 'right'
     };
+  }
+
+  private getLatestIri(organ?: string): string {
+    if (!organ) {
+      return '';
+    }
+    const organEntry = this.snapshot.placementPatches[organ];
+    return organEntry ? this.getLatestIri(organEntry.target) : organ;
   }
 }
