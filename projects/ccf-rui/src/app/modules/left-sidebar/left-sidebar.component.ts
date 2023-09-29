@@ -42,7 +42,7 @@ export class LeftSidebarComponent {
 
   readonly detailsLabels$: Observable<string[]> = combineLatest(
     [this.model.organ$, this.model.side$, this.model.sex$]).pipe(
-    map(([organ, side, sex]) => [organ?.name , side as string, sex as string])
+    map(([organ, side, sex]) => [organ?.organ , side as string, sex as string])
   );
 
   /**
