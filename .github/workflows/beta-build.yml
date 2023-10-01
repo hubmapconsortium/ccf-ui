@@ -13,7 +13,7 @@ jobs:
         node-version: [18.x]
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           ref: ccf-v1.x
       - name: Use Node.js ${{ matrix.node-version }}
