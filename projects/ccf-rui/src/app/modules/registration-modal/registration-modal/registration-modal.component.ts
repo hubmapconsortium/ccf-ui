@@ -1,7 +1,7 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { combineLatest } from 'rxjs';
-import { debounceTime, take, tap } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 
 import { ModelState } from '../../../core/store/model/model.state';
 import { PageState } from '../../../core/store/page/page.state';
@@ -21,6 +21,8 @@ export class RegistrationModalComponent implements OnInit {
   /** HTML class name */
   @HostBinding('class') readonly clsName = 'ccf-registration-modal';
 
+  dialogOpen = false;
+
   /**
    * Creates an instance of registration modal component.
    *
@@ -37,16 +39,21 @@ export class RegistrationModalComponent implements OnInit {
    * Opens the dialog on startup (but not if cancel registration callback is set)
    */
   ngOnInit(): void {
-    combineLatest([this.page.user$, this.model.organ$, this.referenceData.state$]).pipe(
-      debounceTime(500),
-      take(1),
-      tap(([user, organ, data]) => {
+    combineLatest([this.page.state$, this.model.state$, this.referenceData.state$]).pipe(
+      tap(([page, model, data]) => {
+        if (this.dialogOpen) {
+          return;
+        }
+        if (!page.pageLoaded) {
+          return;
+        }
         if (Object.keys(data.organIRILookup).length === 0) {
           return;
         }
-        if (user.firstName !== '' && user.lastName !== '' && organ.src !== '') {
+        if (page.user.firstName !== '' && page.user.lastName !== '' && model.organ.src !== '') {
           return;
         }
+        this.dialogOpen = true;
         this.openDialog();
       })
     ).subscribe();

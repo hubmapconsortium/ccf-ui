@@ -55,8 +55,6 @@ export class AppWebComponent extends BaseWebComponent {
     const BP = BUILTIN_PARSERS;
 
     super(configStore, cdr, {
-      initialDelay: 500,
-
       initialConfig: {
         ...environment.dbOptions,
         ...globalThis['ruiConfig' as string],

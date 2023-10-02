@@ -74,7 +74,6 @@ describe('RegistrationModalComponent', () => {
     referenceSubject.next(updatedReferenceDataState);
     userSubject.next({ firstName: '', lastName: '' });
     organSubject.next({ src: '', name: '', organ: '' });
-    await wait(1200);
     expect(spy).toHaveBeenCalled();
   });
 
@@ -85,7 +84,6 @@ describe('RegistrationModalComponent', () => {
     referenceSubject.next(updatedReferenceDataState);
     userSubject.next({ firstName: 'John', lastName: 'Doe' });
     organSubject.next({ src: 'areallygoodvalue', name: '', organ: '' });
-    await wait(1200);
     expect(spy).not.toHaveBeenCalled();
   });
 

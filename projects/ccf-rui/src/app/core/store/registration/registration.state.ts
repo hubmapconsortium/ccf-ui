@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Immutable } from '@angular-ru/common/typings';
-import { Injectable, Injector } from '@angular/core';
 import { Computed, DataAction, StateRepository } from '@angular-ru/ngxs/decorators';
 import { NgxsImmutableDataRepository } from '@angular-ru/ngxs/repositories';
+import { Injectable, Injector } from '@angular/core';
 import { State } from '@ngxs/store';
 import { insertItem, patch } from '@ngxs/store/operators';
 import { SpatialEntityJsonLd } from 'ccf-body-ui';
@@ -10,7 +10,7 @@ import { GlobalConfigState, OrganInfo } from 'ccf-shared';
 import { filterNulls } from 'ccf-shared/rxjs-ext/operators';
 import { saveAs } from 'file-saver';
 import { combineLatest, Observable } from 'rxjs';
-import { debounceTime, map, startWith, switchMap, take, tap } from 'rxjs/operators';
+import { map, startWith, switchMap, take, tap } from 'rxjs/operators';
 import { v4 as uuidV4 } from 'uuid';
 
 import { Tag } from '../../models/anatomical-structure-tag';
@@ -149,13 +149,15 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
           this.ctx.patchState({
             useRegistrationCallback: !!(!useDownload && register),
           });
+          this.page.patchState({
+            pageLoaded: true
+          });
           this.setOrganSelection(organOptions as string[]);
         })
       ).subscribe();
 
       this.globalConfig.getOption('editRegistration').pipe(
         filterNulls(),
-        debounceTime(1000),
         tap(reg => {
           this.ctx.patchState({ initialRegistration: reg as SpatialEntityJsonLd });
           this.editRegistration(reg as SpatialEntityJsonLd);

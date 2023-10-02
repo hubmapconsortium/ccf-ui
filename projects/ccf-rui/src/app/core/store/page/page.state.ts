@@ -30,6 +30,7 @@ export interface PageStateModel {
   skipConfirmation: boolean;
   hasChanges: boolean;
   organOptions?: OrganInfo[];
+  pageLoaded: boolean;
 }
 
 
@@ -49,7 +50,8 @@ export interface PageStateModel {
     registrationCallbackSet: false,
     skipConfirmation: true,
     hasChanges: false,
-    organOptions: []
+    organOptions: [],
+    pageLoaded: false
   }
 })
 @Injectable()
