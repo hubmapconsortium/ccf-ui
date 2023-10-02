@@ -27,12 +27,12 @@
 
     <!-- Disabled button used to add equal amount of space as an inner node's button -->
     <div class="non-expandable"></div>
-    <div style="display: flex; width: 100%; justify-content: space-between;">
+    <div class="node-container">
       <ng-container *ngTemplateOutlet="selectableRegion; context: { node: node }"></ng-container>
       <div class="num-results" [class.suborgan]="node.level > 1">{{ getCountLabel(node) }}{{
           occurenceData[node.original.id] || 0 }}</div>
     </div>
-  <div class="biomarkers-toggle" *ngIf="showtoggle && node.label==='biomarkers'">
+  <div class="biomarkers-toggle" *ngIf="showtoggle && node.original.id==='biomarkers'">
     <ccf-button-toggle [menuOptions]="menuOptions" [selectedItems]="selectedtoggleOptions"
       (selectionChange)="toggleSelection($event)"></ccf-button-toggle>
   </div>
@@ -53,7 +53,7 @@
         </ccf-opacity-slider>
       </div>
     </div>
-    <div style="display: flex;">
+    <div class="node-container">
       <button class="toggle" [class.hidden]="node.label === highlightedNode?.label" mat-icon-button matTreeNodeToggle
         attr.aria-label="Toggle {{ node.label }}">
         <mat-icon class="icon font-icon">
@@ -64,8 +64,8 @@
       <div class="num-results" [class.suborgan]="node.level > 1">{{ getCountLabel(node) }}{{
         occurenceData[node.original.id] || 0 }}</div>
     </div>
-    <div class="biomarkers-toggle" *ngIf="showtoggle && node.label==='biomarkers'">
-      <ccf-button-toggle [menuOptions]="menuOptions" [selectedItems]="selectedtoggleOptions"
+    <div class="biomarkers-toggle" *ngIf="showtoggle && node.original.id==='biomarkers'">
+      <ccf-button-toggle [menuOptions]="menuOptions" [selectedItems]="selectedtoggleOptions ?? menuOptions"
         (selectionChange)="toggleSelection($event)"></ccf-button-toggle>
     </div>
   </mat-tree-node>

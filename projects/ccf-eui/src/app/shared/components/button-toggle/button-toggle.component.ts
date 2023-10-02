@@ -26,7 +26,7 @@ export class ButtonToggleComponent {
     return this.selectedItems?.includes(item);
   }
 
-  toggleSelection(value): void {
+  toggleSelection(value: string): void {
     if (this.isItemSelected(value)) {
       this.selectedItems = this.selectedItems?.filter(
         (el) => el != value

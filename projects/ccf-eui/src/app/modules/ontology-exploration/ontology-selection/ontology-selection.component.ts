@@ -58,7 +58,7 @@ export class OntologySelectionComponent implements OnChanges {
 
   currentNodes: string[];
 
-  menuOptions = ['gene', 'protein', 'lipid'];
+  menuOptions;
   rootNode: OntologyTreeNode;
   rootNode$: Observable<OntologyTreeNode>;
   /**
@@ -72,6 +72,10 @@ export class OntologySelectionComponent implements OnChanges {
 
     this.rootNode$ = ontologySearchService.rootNode$.pipe(tap(rootNode => {
       this.rootNode = { ...rootNode };
+      if (this.rootNode.id==='biomarkers') {
+        this.menuOptions = [...rootNode.children];
+        this.filterNodes(rootNode.children);
+      }
     }));
   }
 
@@ -93,7 +97,7 @@ export class OntologySelectionComponent implements OnChanges {
 
   filterNodes(selectedTypes: string[]): void {
     const nodes = Object.values(this.treeModel.nodes);
-    const filteredNodes = nodes.filter(node => selectedTypes.includes(node.nodeType ?? ''));
+    const filteredNodes = nodes.filter(node => selectedTypes.includes(node.parent ?? '')).sort((node1, node2)=>node1.label.trim().toLowerCase()>node2.label.trim().toLowerCase() ? 1 : -1);
     const rootNode = { ...this.rootNode };
     rootNode.children = filteredNodes.map(node => node.id);
     this.rootNode = { ...rootNode };

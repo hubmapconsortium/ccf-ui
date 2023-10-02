@@ -125,7 +125,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
 
   @Input() menuOptions: string[];
 
-  selectedtoggleOptions = ['gene', 'protein', 'lipid'];
+  selectedtoggleOptions: string[];
 
   /**
    * Storage for the getter / setter
@@ -280,7 +280,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
     for (const flat of parentFlatNodes) {
       control.expand(flat);
     }
-    if ((node.label === 'body' || node.label==='biomarkers') && control.dataNodes?.length > 0) {
+    if ((node.label === 'body' || node.id==='biomarkers') && control.dataNodes?.length > 0) {
       control.expand(control.dataNodes[0]);
     }
 
@@ -450,7 +450,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
     return this.selectedtoggleOptions.includes(item);
   }
 
-  toggleSelection(value) {
+  toggleSelection(value: string[]) {
     this.selectedtoggleOptions = value;
     this.selectedBiomarkerOptions.emit([...this.selectedtoggleOptions]);
   }
