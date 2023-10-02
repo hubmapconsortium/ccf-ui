@@ -1,8 +1,10 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { GlobalConfigState } from 'ccf-shared';
 import { combineLatest } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
+import { GlobalConfig } from '../../../core/services/config/config';
 import { ModelState } from '../../../core/store/model/model.state';
 import { PageState } from '../../../core/store/page/page.state';
 import { ReferenceDataState } from '../../../core/store/reference-data/reference-data.state';
@@ -32,19 +34,21 @@ export class RegistrationModalComponent implements OnInit {
     public dialog: MatDialog,
     private readonly page: PageState,
     private readonly model: ModelState,
-    private readonly referenceData: ReferenceDataState
+    private readonly referenceData: ReferenceDataState,
+    private readonly globalConfig: GlobalConfigState<GlobalConfig>
+
   ) {}
 
   /**
    * Opens the dialog on startup (but not if cancel registration callback is set)
    */
   ngOnInit(): void {
-    combineLatest([this.page.state$, this.model.state$, this.referenceData.state$]).pipe(
-      tap(([page, model, data]) => {
+    combineLatest([this.page.state$, this.model.state$, this.referenceData.state$, this.globalConfig.state$]).pipe(
+      tap(([page, model, data, global]) => {
         if (this.dialogOpen) {
           return;
         }
-        if (!page.pageLoaded) {
+        if (global.editRegistration) {
           return;
         }
         if (Object.keys(data.organIRILookup).length === 0) {

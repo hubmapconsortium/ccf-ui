@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
 import { Computed, DataAction, StateRepository } from '@angular-ru/ngxs/decorators';
 import { NgxsImmutableDataRepository } from '@angular-ru/ngxs/repositories';
+import { Injectable } from '@angular/core';
 import { State } from '@ngxs/store';
 import { iif, patch } from '@ngxs/store/operators';
 import { GlobalConfigState, OrganInfo } from 'ccf-shared';
@@ -30,9 +30,7 @@ export interface PageStateModel {
   skipConfirmation: boolean;
   hasChanges: boolean;
   organOptions?: OrganInfo[];
-  pageLoaded: boolean;
 }
-
 
 /**
  * General page global state
@@ -50,8 +48,7 @@ export interface PageStateModel {
     registrationCallbackSet: false,
     skipConfirmation: true,
     hasChanges: false,
-    organOptions: [],
-    pageLoaded: false
+    organOptions: []
   }
 })
 @Injectable()

@@ -62,6 +62,7 @@ export class RegistrationContentComponent {
     });
     model.organ$.subscribe(organ => {
       this.organSelected = organ.src !== '';
+      cdr.markForCheck();
     });
     this.sexByLabel$.subscribe(sex => {
       this.setSexFromLabel(sex);

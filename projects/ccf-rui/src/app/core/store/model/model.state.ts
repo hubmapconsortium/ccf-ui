@@ -430,13 +430,13 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
   private onReferenceDataChange(): void {
     this.globalConfig.getOption('organ').pipe(
       filterNulls(),
+      delay(0),
       switchMap(organ => this.onOrganChange(organ))
     ).subscribe();
 
     this.modelChanged$.pipe(
       skipUntil(this.page.registrationStarted$.pipe(
         filter(started => started),
-        delay(5)
       ))
     ).subscribe(() => this.page.setHasChanges());
   }
