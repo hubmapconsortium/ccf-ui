@@ -385,10 +385,10 @@
 import { MatSnackBar } from &#x27;@angular/material/snack-bar&#x27;;
 import { Dispatch } from &#x27;@ngxs-labs/dispatch-decorator&#x27;;
 import { Select } from &#x27;@ngxs/store&#x27;;
-import { CCFDatabaseOptions, OntologyTreeModel } from &#x27;ccf-database&#x27;;
+import { CCFDatabaseOptions, Filter, OntologyTreeModel } from &#x27;ccf-database&#x27;;
 import { DataSourceService, GlobalConfigState, OrganInfo, TrackingPopupComponent } from &#x27;ccf-shared&#x27;;
 import { ConsentService } from &#x27;ccf-shared/analytics&#x27;;
-import { combineLatest, Observable, ReplaySubject } from &#x27;rxjs&#x27;;
+import { Observable, ReplaySubject, combineLatest } from &#x27;rxjs&#x27;;
 import { map } from &#x27;rxjs/operators&#x27;;
 
 import { BodyUiComponent } from &#x27;../../../ccf-shared/src/lib/components/body-ui/body-ui.component&#x27;;
@@ -406,7 +406,6 @@ import { SpatialSearchFilterSelectors } from &#x27;./core/store/spatial-search-f
 import { SpatialSearchFilterItem } from &#x27;./core/store/spatial-search-filter/spatial-search-filter.state&#x27;;
 import { FiltersPopoverComponent } from &#x27;./modules/filters/filters-popover/filters-popover.component&#x27;;
 import { DrawerComponent } from &#x27;./shared/components/drawer/drawer/drawer.component&#x27;;
-
 
 interface AppOptions extends CCFDatabaseOptions {
   theme?: string;
@@ -500,6 +499,7 @@ export class AppComponent implements OnInit {
   readonly homeUrl$ &#x3D; this.globalConfig.getOption(&#x27;homeUrl&#x27;);
   readonly logoTooltip$ &#x3D; this.globalConfig.getOption(&#x27;logoTooltip&#x27;);
   readonly loginDisabled$ &#x3D; this.globalConfig.getOption(&#x27;loginDisabled&#x27;);
+  readonly filter$ &#x3D; this.globalConfig.getOption(&#x27;filter&#x27;);
   readonly selectedOrgans$ &#x3D; this.globalConfig.getOption(&#x27;selectedOrgans&#x27;);
   /**
    * Creates an instance of app component.
@@ -525,6 +525,8 @@ export class AppComponent implements OnInit {
     data.providerFilterData$.subscribe();
     this.ontologyTerms$ &#x3D; data.filter$.pipe(map(x &#x3D;&gt; x?.ontologyTerms));
     this.cellTypeTerms$ &#x3D; data.filter$.pipe(map(x &#x3D;&gt; x?.cellTypeTerms));
+    this.filter$.subscribe((filter: Partial&lt;Filter&gt;)&#x3D;&gt; data.updateFilter(filter));
+
     combineLatest([scene.referenceOrgans$, this.selectedOrgans$]).subscribe(
       ([refOrgans, selected]: [OrganInfo[], string[]]) &#x3D;&gt; {
         scene.setSelectedReferenceOrgansWithDefaults(refOrgans, selected);

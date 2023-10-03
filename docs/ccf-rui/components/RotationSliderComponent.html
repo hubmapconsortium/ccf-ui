@@ -496,7 +496,7 @@ or through an Input method.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>resetRotation()</code>
+<code>resetRotation(dimension: "x" | "y" | "z")</code>
                 </td>
             </tr>
 
@@ -515,8 +515,40 @@ or through an Input method.</p>
 </div>
 
                     <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>dimension</td>
+                                    <td>
+                                            <code>&quot;x&quot; | &quot;y&quot; | &quot;z&quot;</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
+                    </div>
+                    <div class="io-description">
+                        
                     </div>
                 </td>
             </tr>
@@ -649,8 +681,8 @@ export class RotationSliderComponent {
   /**
    * Function to easily reset the rotations to 0 and emit this change.
    */
-  resetRotation(): void {
-    this.rotation &#x3D; DEFAULT_ROTATION;
+  resetRotation(dimension: &#x27;x&#x27; | &#x27;y&#x27; | &#x27;z&#x27;): void {
+    this.rotation &#x3D; { ...this.rotation, [dimension]: 0 };
     this.ga.event(&#x27;rotation_reset&#x27;, &#x27;rotation_slider&#x27;);
     this.rotationChange.emit(this.rotation);
   }
@@ -662,9 +694,11 @@ export class RotationSliderComponent {
         <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;header&quot;&gt;
   &lt;span class&#x3D;&quot;text title&quot; matTooltip&#x3D;&quot;Use sliders below to rotate tissue block for registration&quot;&gt;Tissue Block Rotation&lt;/span&gt;
   &lt;div class&#x3D;&quot;filler&quot;&gt;&lt;/div&gt;
-  &lt;mat-icon matRipple [matRippleCentered]&#x3D;&quot;true&quot; [matRippleUnbounded]&#x3D;&quot;true&quot; class&#x3D;&quot;icon reset&quot; (click)&#x3D;&quot;resetRotation()&quot;&gt;refresh&lt;/mat-icon&gt;
 &lt;/div&gt;
 
+&lt;div class&#x3D;&quot;refresh-button-container&quot;&gt;
+  &lt;mat-icon matRipple [matRippleCentered]&#x3D;&quot;true&quot; [matRippleUnbounded]&#x3D;&quot;true&quot; class&#x3D;&quot;icon reset&quot; (click)&#x3D;&quot;resetRotation(&#x27;x&#x27;)&quot;&gt;refresh&lt;/mat-icon&gt;
+&lt;/div&gt;
 &lt;div class&#x3D;&quot;slider-box red&quot;&gt;
   &lt;span class&#x3D;&quot;text label&quot;&gt;X&lt;/span&gt;
   &lt;div class&#x3D;&quot;slider-container&quot;&gt;
@@ -681,6 +715,9 @@ export class RotationSliderComponent {
   &lt;span class&#x3D;&quot;text value&quot;&gt;{{ rotation.x }}&lt;/span&gt;
 &lt;/div&gt;
 
+&lt;div class&#x3D;&quot;refresh-button-container&quot;&gt;
+  &lt;mat-icon matRipple [matRippleCentered]&#x3D;&quot;true&quot; [matRippleUnbounded]&#x3D;&quot;true&quot; class&#x3D;&quot;icon reset&quot; (click)&#x3D;&quot;resetRotation(&#x27;y&#x27;)&quot;&gt;refresh&lt;/mat-icon&gt;
+&lt;/div&gt;
 &lt;div class&#x3D;&quot;slider-box green&quot;&gt;
   &lt;span class&#x3D;&quot;text label&quot;&gt;Y&lt;/span&gt;
   &lt;div class&#x3D;&quot;slider-container&quot;&gt;
@@ -697,6 +734,9 @@ export class RotationSliderComponent {
   &lt;span class&#x3D;&quot;text value&quot;&gt;{{ rotation.y }}&lt;/span&gt;
 &lt;/div&gt;
 
+&lt;div class&#x3D;&quot;refresh-button-container&quot;&gt;
+  &lt;mat-icon matRipple [matRippleCentered]&#x3D;&quot;true&quot; [matRippleUnbounded]&#x3D;&quot;true&quot; class&#x3D;&quot;icon reset&quot; (click)&#x3D;&quot;resetRotation(&#x27;z&#x27;)&quot;&gt;refresh&lt;/mat-icon&gt;
+&lt;/div&gt;
 &lt;div class&#x3D;&quot;slider-box blue&quot;&gt;
   &lt;span class&#x3D;&quot;text label&quot;&gt;Z&lt;/span&gt;
   &lt;div class&#x3D;&quot;slider-container&quot;&gt;
@@ -729,17 +769,23 @@ export class RotationSliderComponent {
     .title {
       font-weight: 600;
     }
+  }
 
-    .reset {
-      transform: scaleX(-1);
-      cursor: pointer;
-      transition: .6s;
+  .reset {
+    transform: scaleX(-1);
+    cursor: pointer;
+    transition: .6s;
 
-      &amp;:hover {
-        border-radius: 2px;
-      }
-
+    &amp;:hover {
+      border-radius: 2px;
     }
+
+  }
+
+  .refresh-button-container {
+    display: flex;
+    height: 1rem;
+    justify-content: flex-end;
   }
 
   .slider-box {
@@ -834,7 +880,7 @@ export class RotationSliderComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="header">  <span class="text title" matTooltip="Use sliders below to rotate tissue block for registration">Tissue Block Rotation</span>  <div class="filler"></div>  <mat-icon matRipple [matRippleCentered]="true" [matRippleUnbounded]="true" class="icon reset" (click)="resetRotation()">refresh</mat-icon></div><div class="slider-box red">  <span class="text label">X</span>  <div class="slider-container">    <mat-slider      class="slider"      [max]="180"      [min]="-180"      [step]="1"      [thumbLabel]="true"      [tickInterval]="180"      (input)="changeRotation($event.value, \'x\')"      [value]="rotation.x"></mat-slider>  </div>  <span class="text value">{{ rotation.x }}</span></div><div class="slider-box green">  <span class="text label">Y</span>  <div class="slider-container">    <mat-slider      class="slider"      [max]="180"      [min]="-180"      [step]="1"      [thumbLabel]="true"      [tickInterval]="180"      (input)="changeRotation($event.value, \'y\')"      [value]="rotation.y"></mat-slider>  </div>  <span class="text value">{{ rotation.y }}</span></div><div class="slider-box blue">  <span class="text label">Z</span>  <div class="slider-container">    <mat-slider      class="slider"      [max]="180"      [min]="-180"      [step]="1"      [thumbLabel]="true"      [tickInterval]="180"      (input)="changeRotation($event.value, \'z\')"      [value]="rotation.z"></mat-slider>  </div>  <span class="text value">{{ rotation.z }}</span></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="header">  <span class="text title" matTooltip="Use sliders below to rotate tissue block for registration">Tissue Block Rotation</span>  <div class="filler"></div></div><div class="refresh-button-container">  <mat-icon matRipple [matRippleCentered]="true" [matRippleUnbounded]="true" class="icon reset" (click)="resetRotation(\'x\')">refresh</mat-icon></div><div class="slider-box red">  <span class="text label">X</span>  <div class="slider-container">    <mat-slider      class="slider"      [max]="180"      [min]="-180"      [step]="1"      [thumbLabel]="true"      [tickInterval]="180"      (input)="changeRotation($event.value, \'x\')"      [value]="rotation.x"></mat-slider>  </div>  <span class="text value">{{ rotation.x }}</span></div><div class="refresh-button-container">  <mat-icon matRipple [matRippleCentered]="true" [matRippleUnbounded]="true" class="icon reset" (click)="resetRotation(\'y\')">refresh</mat-icon></div><div class="slider-box green">  <span class="text label">Y</span>  <div class="slider-container">    <mat-slider      class="slider"      [max]="180"      [min]="-180"      [step]="1"      [thumbLabel]="true"      [tickInterval]="180"      (input)="changeRotation($event.value, \'y\')"      [value]="rotation.y"></mat-slider>  </div>  <span class="text value">{{ rotation.y }}</span></div><div class="refresh-button-container">  <mat-icon matRipple [matRippleCentered]="true" [matRippleUnbounded]="true" class="icon reset" (click)="resetRotation(\'z\')">refresh</mat-icon></div><div class="slider-box blue">  <span class="text label">Z</span>  <div class="slider-container">    <mat-slider      class="slider"      [max]="180"      [min]="-180"      [step]="1"      [thumbLabel]="true"      [tickInterval]="180"      (input)="changeRotation($event.value, \'z\')"      [value]="rotation.z"></mat-slider>  </div>  <span class="text value">{{ rotation.z }}</span></div></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppWebComponent', 'selector': 'ccf-root-wc'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DetailsLabelComponent', 'selector': 'ccf-details-label'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'ExtractionSetDropdownComponent', 'selector': 'ccf-extraction-set-dropdown'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'JsonFileReaderComponent', 'selector': 'ccf-json-file-reader'},{'name': 'LabeledSlideToggleComponent', 'selector': 'ccf-labeled-slide-toggle'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'NameInputComponent', 'selector': 'ccf-name-input'},{'name': 'RegistrationContentComponent', 'selector': 'ccf-registration-content'},{'name': 'RegistrationModalComponent', 'selector': 'ccf-registration-modal'},{'name': 'ReviewButtonComponent', 'selector': 'ccf-review-button'},{'name': 'ReviewModalComponent', 'selector': 'ccf-review-modal'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'TagListComponent', 'selector': 'ccf-tag-list'},{'name': 'TagSearchComponent', 'selector': 'ccf-tag-search'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'VideoModalComponent', 'selector': 'ccf-video-modal'},{'name': 'VideoModalLauncherComponent', 'selector': 'ccf-video-modal-launcher'},{'name': 'VisibilityMenuComponent', 'selector': 'ccf-visibility-menu'},{'name': 'VisibilityToggleComponent', 'selector': 'ccf-visibility-toggle'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'RotationSliderComponent'};
