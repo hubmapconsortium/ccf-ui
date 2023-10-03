@@ -54,14 +54,38 @@ export function getOntologyTermOccurences(ids: Set<string>, store: Store): Recor
   return counts;
 }
 
-
+/**
+ * Get number of occurrences of biomarkers terms for a set of ids.
+ *
+ * @param ids Ids of objects to calculate aggregate over.
+ * @param store The triple store.
+ * @returns Ontology term counts.
+ */
 export function getBiomarkerTermOccurences(ids: Set<string>, store: Store): Record<string, number> {
-  const counts: Record<string, number> = {};
-  const term2entities = getAnatomicalStructureMapping(ids, store);
+  const bmLocatedIn = ccf.x('ccf_bm_located_in');
+  const asTerm2entities = getAnatomicalStructureMapping(ids, store);
+  const bmTerm2entities = new Map<string, Set<string>>();
 
-  term2entities.forEach((value, key) => {
+  for (const asTerm of asTerm2entities.keys()) {
+    const entities = asTerm2entities.get(asTerm)!;
+    for (const quad of readQuads(store, null, bmLocatedIn, asTerm, null)) {
+      const biomarker = quad.subject.id;
+      if (!bmTerm2entities.has(biomarker)) {
+        bmTerm2entities.set(biomarker, new Set<string>(entities));
+      } else {
+        const termEntities = bmTerm2entities.get(biomarker)!;
+        entities.forEach((value) => termEntities.add(value));
+      }
+    }
+  }
+
+  const counts: Record<string, number> = {};
+
+  bmTerm2entities.forEach((value, key) => {
     counts[key] = value.size;
   });
+
+  counts['biomarkers'] = asTerm2entities.get(rui.body.id)?.size ?? 0;
 
   return counts;
 }

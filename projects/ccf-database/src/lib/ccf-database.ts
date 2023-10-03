@@ -20,6 +20,7 @@ import { FlatSpatialPlacement, SpatialEntity } from './spatial-types';
 import { CCFDatabaseStatusTracker } from './util/ccf-database-status-tracker';
 import { patchJsonLd } from './util/patch-jsonld';
 import { enrichRuiLocations } from './util/enrich-rui-locations';
+import { getBmLocatedInAs } from './util/enrich-bm-located-in-as';
 
 
 /** Database initialization options. */
@@ -156,6 +157,10 @@ export class CCFDatabase {
     } else if (ccfOwlUrl?.length > 0) {
       sources.push(ccfOwlUrl);
     }
+
+    // Add a direct edge between BM and AS for queries
+    sources.push(await getBmLocatedInAs());
+
     if (this.options.hubmapDataUrl) {
       if (this.options.hubmapDataUrl.endsWith('jsonld')) {
         sources.push(this.options.hubmapDataUrl);
