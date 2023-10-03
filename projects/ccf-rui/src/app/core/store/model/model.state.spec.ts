@@ -26,6 +26,12 @@ function nextValue<T>(obs: Observable<T>): Promise<T> {
   return lastValueFrom(obs.pipe(take(1)));
 }
 
+function wait(duration = 0): Promise<void> {
+  return new Promise(resolve => {
+    setTimeout(resolve, duration);
+  });
+}
+
 
 describe('ModelState', () => {
   const initialXYZTriplet: XYZTriplet = { x: 0, y: 0, z: 0 };
@@ -36,7 +42,7 @@ describe('ModelState', () => {
   let state: ModelState;
   let mockGlobalConfig: jasmine.SpyObj<GlobalConfig>;
 
-  beforeEach(() => {
+  beforeEach(async () => {
     mockDataSource = jasmine.createSpyObj<ReferenceDataState>('ReferenceDataState', ['getReferenceOrganIri']);
     mockDataSource.getReferenceOrganIri.and.returnValue(undefined);
     mockGlobalConfig = jasmine.createSpyObj<GlobalConfig>('GlobalConfig', ['organ']);
@@ -125,11 +131,15 @@ describe('ModelState', () => {
   });
 
   it('has the latest organ', async () => {
+    state.ngxsOnInit();
+    await wait(500);
     const value = await nextValue(state.organ$);
     expect(value?.src).toEqual('app:kidney-left');
   });
 
   it('has the latest sex', async () => {
+    state.ngxsOnInit();
+    await wait(500);
     const value = await nextValue(state.sex$);
     expect(value).toEqual('female');
   });

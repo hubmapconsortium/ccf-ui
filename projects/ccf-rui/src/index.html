@@ -56,7 +56,7 @@
         rui.useDownload = true;
 
         // User: can be json or stringified json
-        // rui.user = {firstName: 'Jane', lastName: 'Doe'};
+        rui.user = {firstName: 'Jane', lastName: 'Doe'};
         // rui.user = '{"firstName": "Jane", "lastName": "Doe"}';
 
         // Organ: can be id, json, or stringified json
@@ -65,7 +65,7 @@
         // rui.organ = '{"name": "Kidney", "side": "left", "sex": "female"}';
 
         // Alternatively, user can preload a preexisting registration
-        rui.editRegistration = sampleRegistration;
+        // rui.editRegistration = sampleRegistration;
 
         rui.register = (data) => {
           prompt('Copy the JSON code to clipboard', data);
@@ -76,10 +76,10 @@
         rui.cancelRegistration = () => {
           window.location.href = 'https://ingest.hubmapconsortium.org/'
         };
-        rui.organOptions = [
-          'http://purl.obolibrary.org/obo/UBERON_0000948',
-          'http://purl.obolibrary.org/obo/UBERON_0004538'
-        ]
+        // rui.organOptions = [
+        //   'http://purl.obolibrary.org/obo/UBERON_0000948',
+        //   'http://purl.obolibrary.org/obo/UBERON_0004538'
+        // ]
       });
     }
   </script>

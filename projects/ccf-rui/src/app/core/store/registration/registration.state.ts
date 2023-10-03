@@ -32,6 +32,7 @@ export interface RegistrationStateModel {
   displayErrors: boolean;
   /** Previous registrations */
   registrations: Record<string, unknown>[];
+  /** Registration provided by user */
   initialRegistration?: SpatialEntityJsonLd;
 }
 
@@ -228,6 +229,10 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
     }));
   }
 
+  /**
+   * Sets organ options in the RUI
+   * @param ids list of organ ids
+   */
   @DataAction()
   setOrganSelection(ids: string[] = []): void {
     this.page.patchState({ organOptions: this.organListOptions(ids) });
@@ -281,6 +286,13 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
     this.addRegistration(jsonObj);
     this.setDisplayErrors(false);
     this.page.clearHasChanges();
+  }
+
+  /**
+   * Sets the state back to the initial registration
+   */
+  setToInitialRegistration() {
+    this.editRegistration(this.getState().initialRegistration as SpatialEntityJsonLd);
   }
 
   /**
@@ -381,10 +393,11 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
     return `${Math.round(xyz.x)}, ${Math.round(xyz.y)}, ${Math.round(xyz.z)}`;
   }
 
-  setToInitialRegistration() {
-    this.editRegistration(this.getState().initialRegistration as SpatialEntityJsonLd);
-  }
-
+  /**
+   * Provides list of organ objects given an array of organ ids
+   * @param organOptions array of organ ids
+   * @returns list of organ info
+   */
   private organListOptions(organOptions?: string[]): OrganInfo[] {
     if (organOptions && organOptions.length > 0) {
       return RUI_ORGANS.filter(organ => {
