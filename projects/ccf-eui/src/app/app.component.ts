@@ -121,12 +121,8 @@ export class AppComponent implements OnInit {
   readonly homeUrl$ = this.globalConfig.getOption('homeUrl');
   readonly logoTooltip$ = this.globalConfig.getOption('logoTooltip');
   readonly loginDisabled$ = this.globalConfig.getOption('loginDisabled');
-<<<<<<< HEAD
   readonly filter$ = this.globalConfig.getOption('filter');
-
-=======
   readonly selectedOrgans$ = this.globalConfig.getOption('selectedOrgans');
->>>>>>> f4f8521094e46dfee2e74ca87731a84c63d2059d
   /**
    * Creates an instance of app component.
    *
