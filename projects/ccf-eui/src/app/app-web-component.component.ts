@@ -57,7 +57,7 @@ function parseDataSources(value: unknown): string[] {
     return value;
   }
 
-  throw new Error('Invalid data sources');
+  throw new Error('Invalid type for string array');
 }
 
 function parseFilter(value: unknown): string | Partial<Filter> {
@@ -93,6 +93,7 @@ function parseFilter(value: unknown): string | Partial<Filter> {
 })
 export class AppWebComponent extends BaseWebComponent {
   @Input() dataSources: string | string[];
+  @Input() selectedOrgans: string[];
 
   @Input() hubmapDataService: string;
   @Input() hubmapDataUrl: string;
@@ -110,7 +111,6 @@ export class AppWebComponent extends BaseWebComponent {
   @Input() filter: string | Partial<Filter>;
 
   initialized: boolean;
-
 
   constructor(
     configStore: GlobalConfigState<GenericGlobalConfig>,

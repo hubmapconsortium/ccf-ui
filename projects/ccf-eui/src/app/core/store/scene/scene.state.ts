@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { Injectable, Injector } from '@angular/core';
 import { DataAction, Payload, StateRepository } from '@angular-ru/ngxs/decorators';
 import { NgxsImmutableDataRepository } from '@angular-ru/ngxs/repositories';
+import { Injectable, Injector } from '@angular/core';
 import { NgxsOnInit, Selector, State } from '@ngxs/store';
 import { NodeClickEvent, SpatialSceneNode } from 'ccf-body-ui';
 import { SpatialEntity } from 'ccf-database';
@@ -14,7 +14,13 @@ import { ColorAssignmentState } from '../color-assignment/color-assignment.state
 import { DataState } from '../data/data.state';
 import { ListResultsState } from '../list-results/list-results.state';
 
-export const DEFAULT_SELECTED_ORGANS = new Set(['Skin', 'Heart', 'Kidney', 'Spleen']);
+export const DEFAULT_SELECTED_ORGANS = new Set([
+  'http://purl.obolibrary.org/obo/UBERON_0002097',
+  'http://purl.obolibrary.org/obo/UBERON_0004538',
+  'http://purl.obolibrary.org/obo/UBERON_0004539',
+  'http://purl.obolibrary.org/obo/UBERON_0000948',
+  'http://purl.obolibrary.org/obo/UBERON_0002113',
+  'http://purl.obolibrary.org/obo/UBERON_0002106']);
 
 export interface SceneStateModel {
   scene: SpatialSceneNode[];
@@ -76,6 +82,7 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
   private colorAssignments: ColorAssignmentState;
 
   private listResults: ListResultsState;
+
 
   /**
    * Creates an instance of scene state.
@@ -164,7 +171,6 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
     this.dataState = this.injector.get(DataState);
     this.colorAssignments = this.injector.get(ColorAssignmentState);
     this.listResults = this.injector.get(ListResultsState);
-
     // Initialize reference organ info
     this.dataService.getReferenceOrgans().pipe(
       tap(refOrgans => this.setReferenceOrganEntities(refOrgans)),
@@ -175,10 +181,7 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
           .map(organ => ({ ...organ, disabled: false, numResults: 0 }));
       }),
       take(1),
-      tap(organs => {
-        this.setReferenceOrgans(organs);
-        this.setSelectedReferenceOrgans(organs.filter(organ => DEFAULT_SELECTED_ORGANS.has(organ.organ)));
-      })
+      tap((organs: OrganInfo[]) => this.setReferenceOrgans(organs)),
     ).subscribe();
 
     // Update scene as the overall state changes
@@ -207,5 +210,11 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
       }),
       tap(scene => this.setScene(scene))
     ).subscribe();
+  }
+
+  setSelectedReferenceOrgansWithDefaults(organs: OrganInfo[], selected: string[]) {
+    const selectedSet = new Set(selected?.length ? selected : DEFAULT_SELECTED_ORGANS);
+    const filteredOrgans = organs.filter(({ id }) => selectedSet.has(id as string));
+    this.setSelectedReferenceOrgans(filteredOrgans);
   }
 }

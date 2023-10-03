@@ -3,7 +3,7 @@ import { Context, JsonLd } from 'jsonld/jsonld-spec';
 
 /* eslint-disable @typescript-eslint/naming-convention */
 /** CCF v2.0 JSON-LD Context */
-const CCF_CONTEXT = {
+const CCF_CONTEXT: JsonLd = {
   '@context': {
     '@base': 'http://purl.org/ccf/',
     '@vocab': 'http://purl.org/ccf/',
@@ -126,7 +126,7 @@ const CCF_CONTEXT = {
  * @param jsonLdString the input JSON-LD as a string
  * @returns A JSON-LD object derived from the given string with updated data to be compatible with CCF v2.0
  */
-export function patchJsonLd(jsonLdString: string): JsonLd {
+export function patchJsonLd(jsonLdString: string, context: string | JsonLd = CCF_CONTEXT): JsonLd {
   return JSON.parse(jsonLdString, (key, value) => {
     if (key === 'ccf_annotations' && Array.isArray(value)) {
       return value.map((iri: string) => {
@@ -145,7 +145,7 @@ export function patchJsonLd(jsonLdString: string): JsonLd {
         || value === 'https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld'
         || (value as Context)['@base'] === 'http://purl.org/ccf/latest/ccf-entity.owl#'
     )) {
-      return CCF_CONTEXT;
+      return context;
     }
     return value;
   });
