@@ -2,15 +2,10 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Inje
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
 import { Select } from '@ngxs/store';
-<<<<<<< HEAD
 import { CCFDatabaseOptions, Filter, OntologyTreeModel } from 'ccf-database';
-import { DataSourceService, GlobalConfigState, TrackingPopupComponent } from 'ccf-shared';
-=======
-import { CCFDatabaseOptions, OntologyTreeModel } from 'ccf-database';
 import { DataSourceService, GlobalConfigState, OrganInfo, TrackingPopupComponent } from 'ccf-shared';
->>>>>>> f4f8521094e46dfee2e74ca87731a84c63d2059d
 import { ConsentService } from 'ccf-shared/analytics';
-import { combineLatest, Observable, ReplaySubject } from 'rxjs';
+import { Observable, ReplaySubject, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { BodyUiComponent } from '../../../ccf-shared/src/lib/components/body-ui/body-ui.component';
