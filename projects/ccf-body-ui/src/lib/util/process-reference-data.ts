@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { JsonLdObj } from 'jsonld/jsonld-spec';
-import { uniqBy } from 'lodash';
+import uniqBy from 'lodash/uniqBy';
 
 import { SpatialEntityJsonLd, SpatialPlacementJsonLd } from '../shared/ccf-spatial-jsonld';
 import { parseCSV } from './parse-csv';

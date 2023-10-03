@@ -2,9 +2,9 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { Euler, Matrix4, toDegrees, toRadians } from '@math.gl/core';
-import { DirectedGraph } from 'graphology';
+import graphology from 'graphology';
 import shortestPath from 'graphology-shortest-path/unweighted';
-import { get } from 'lodash';
+import get from 'lodash/get';
 import { readQuads } from 'triple-store-utils';
 import { v4 as uuidV4 } from 'uuid';
 
@@ -13,6 +13,9 @@ import { getSpatialPlacement } from './queries/spatial-result-n3';
 import { FlatSpatialPlacement, SpatialEntity, SpatialPlacement } from './spatial-types';
 import { ccf, rdf } from './util/prefixes';
 
+// Including TS ignore because of bad typings and node 18 support.
+// @ts-ignore
+const { DirectedGraph } = graphology;
 
 export function applySpatialPlacement(tx: Matrix4, placement: SpatialPlacement): Matrix4 {
   const p = placement;

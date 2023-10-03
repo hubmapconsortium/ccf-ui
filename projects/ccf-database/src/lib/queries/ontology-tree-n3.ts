@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { memoize } from 'lodash';
+import memoize from 'lodash/memoize';
 import { readQuads, Store } from 'triple-store-utils';
 import { OntologyTreeModel, OntologyTreeNode } from '../interfaces';
 import { getEntries } from '../util/n3-functions';

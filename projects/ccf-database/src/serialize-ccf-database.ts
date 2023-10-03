@@ -1,8 +1,6 @@
 import { writeFileSync } from 'fs';
-import fetch from 'node-fetch';
 import { argv } from 'process';
 import { serializeN3Store } from 'triple-store-utils';
-
 import { CCFDatabase } from './public-api';
 
 
