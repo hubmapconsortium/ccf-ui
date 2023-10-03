@@ -37,7 +37,8 @@ export const environment = {
     header: true,
     homeUrl: 'https://portal.hubmapconsortium.org/',
     logoTooltip: 'Human BioMolecular Atlas Project',
-    loginDisabled: false
+    loginDisabled: false,
+    // filter: { sex: 'Male' }
   },
   googleAnalyticsToken: 'G-B3DT7XPMRT'
 };
