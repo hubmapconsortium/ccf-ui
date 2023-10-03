@@ -6,7 +6,7 @@
 
   <ccf-drawer-container class="main-drawers" [class.header-hidden]="(header$ | async) === false">
     <ccf-drawer class="left-drawer" opened #left (stateChange)="filterbox.removeBox()">
-      <div>
+      <div class="left-drawer-container">
         <div class="filter-data">
           <ccf-filters-popover [filters]="data.filter$ | async" [drawerExpanded]="right.expanded"
                                (filtersChange)="data.updateFilter($event)" [technologyFilters]="data.technologyFilterData$ | async"
@@ -29,36 +29,39 @@
         [selectedItems]="selectedtoggleOptions"
         (selectionChange)="toggleSelection($event)"
         ></ccf-button-toggle>
-        <ccf-ontology-selection class="ontology-selection"
-                                *ngIf="isItemSelected('AS')"
-                                [showtoggle]="false"
-                                [treeModel]="ontologyTreeModel$ | async"
-                                [termData]="data.ontologyTermsFullData$ | async"
-                                [occurenceData]="data.ontologyTermOccurencesData$ | async"
-                                placeholderText="Search anatomical structures..."
-                                (ontologySelection)="ontologySelected($event, 'anatomical-structures')"
-                                [header]="header$ | async">
-        </ccf-ontology-selection>
-        <ccf-ontology-selection class="cell-type-selection"
-                                *ngIf="isItemSelected('CT')"
-                                [showtoggle]="false"
-                                [treeModel]="cellTypeTreeModel$ | async"
-                                [termData]="data.cellTypeTermsFullData$ | async"
-                                [occurenceData]="data.cellTypeTermOccurencesData$ | async"
-                                placeholderText="Search cell types..."
-                                (ontologySelection)="ontologySelected($event, 'cell-type')"
-                                [header]="header$ | async">
-        </ccf-ontology-selection>
-        <ccf-ontology-selection class="biomarker-selection"
-                                *ngIf="isItemSelected('B')"
-                                [showtoggle]="true"
-                                [treeModel]="biomarkersTreeModel$ | async"
-                                [termData]="data.biomarkerTermsFullData$ | async"
-                                [occurenceData]="data.biomarkerTermOccurencesData$ | async"
-                                placeholderText="Search Biomarkers..."
-                                (ontologySelection)="ontologySelected($event, 'biomarkers')"
-                                [header]="header$ | async">
+        <div class="ontologies">
+
+          <ccf-ontology-selection class="ontology-selection"
+                                  *ngIf="isItemSelected('AS')"
+                                  [showtoggle]="false"
+                                  [treeModel]="ontologyTreeModel$ | async"
+                                  [termData]="data.ontologyTermsFullData$ | async"
+                                  [occurenceData]="data.ontologyTermOccurencesData$ | async"
+                                  placeholderText="Search anatomical structures..."
+                                  (ontologySelection)="ontologySelected($event, 'anatomical-structures')"
+                                  [header]="header$ | async">
           </ccf-ontology-selection>
+          <ccf-ontology-selection class="cell-type-selection"
+                                  *ngIf="isItemSelected('CT')"
+                                  [showtoggle]="false"
+                                  [treeModel]="cellTypeTreeModel$ | async"
+                                  [termData]="data.cellTypeTermsFullData$ | async"
+                                  [occurenceData]="data.cellTypeTermOccurencesData$ | async"
+                                  placeholderText="Search cell types..."
+                                  (ontologySelection)="ontologySelected($event, 'cell-type')"
+                                  [header]="header$ | async">
+          </ccf-ontology-selection>
+          <ccf-ontology-selection class="biomarker-selection"
+                                  *ngIf="isItemSelected('B')"
+                                  [showtoggle]="true"
+                                  [treeModel]="biomarkersTreeModel$ | async"
+                                  [termData]="data.biomarkerTermsFullData$ | async"
+                                  [occurenceData]="data.biomarkerTermOccurencesData$ | async"
+                                  placeholderText="Search Biomarkers..."
+                                  (ontologySelection)="ontologySelected($event, 'biomarkers')"
+                                  [header]="header$ | async">
+            </ccf-ontology-selection>
+        </div>
         <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
       </div>
     </ccf-drawer>
