@@ -14,7 +14,7 @@
       width: 0.75rem;
     }
 
-    
+
 
     .container {
       display: flex;
@@ -22,6 +22,14 @@
       min-height: 100%;
       margin-left: 1.5rem;
       margin-right: 0.375rem;
+
+      .review-button {
+        position: fixed;
+        bottom: 1.4rem;
+        right: 0.7rem;
+        width: 23rem;
+        z-index: 999;
+      }
 
       .info-button-container {
         height: 3.75rem;
@@ -103,7 +111,7 @@
             }
 
             &.added {
-              
+
               margin-left: 1rem;
             }
           }
