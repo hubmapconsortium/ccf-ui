@@ -1,8 +1,6 @@
 import { readFileSync, writeFileSync } from 'fs';
-import fetch from 'node-fetch';
-import { argv } from 'process';
 import { resolve } from 'path';
-
+import { argv } from 'process';
 import { CCFDatabase } from './public-api';
 
 

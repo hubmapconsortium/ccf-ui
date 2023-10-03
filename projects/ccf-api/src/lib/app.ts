@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { json, urlencoded } from 'body-parser';
+import bodyParser from 'body-parser';
 import cors from 'cors';
 import express, { Express } from 'express';
 import helmet from 'helmet';
@@ -8,7 +8,6 @@ import qs, { ParsedQs } from 'qs';
 import { databaseLoader, DatabaseLoaderOptions } from './middleware/database-loader';
 import { routes as browserRoutes } from './routes/browser';
 import { routes as v1Routes } from './routes/v1';
-
 
 export interface AppOptions extends DatabaseLoaderOptions {
   placeholder?: never;
@@ -36,8 +35,8 @@ export function createApp(options: AppOptions): Express {
   }));
   app.use(cors());
 
-  app.use(urlencoded());
-  app.use(json());
+  app.use(bodyParser.urlencoded());
+  app.use(bodyParser.json());
 
   app.use(databaseLoader(options));
 

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/member-ordering */
-import { delMany, get, setMany } from 'idb-keyval';
+import * as idb from 'idb-keyval';
 import { JsonLd } from 'jsonld/jsonld-spec';
 import hash from 'object-hash';
 import {
@@ -21,6 +21,8 @@ import { CCFDatabaseStatusTracker } from './util/ccf-database-status-tracker';
 import { patchJsonLd } from './util/patch-jsonld';
 import { enrichRuiLocations } from './util/enrich-rui-locations';
 import { getBmLocatedInAs } from './util/enrich-bm-located-in-as';
+
+const { delMany, get, setMany } = idb;
 
 
 /** Database initialization options. */

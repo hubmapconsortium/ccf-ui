@@ -1,10 +1,9 @@
-import { sortBy } from 'lodash';
+import sortBy from 'lodash/sortBy';
 import { DataFactory, NamedNode, Store } from 'triple-store-utils';
 
 import { SpatialEntity, SpatialObjectReference, SpatialPlacement, ExtractionSet } from '../spatial-types';
 import { getMappedResult } from '../util/n3-functions';
 import { ccf, entity } from '../util/prefixes';
-
 
 /**
  * Reverses the keys and values in a mapping.
