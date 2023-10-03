@@ -46,6 +46,14 @@ describe('LeftSidebarComponent', () => {
       });
   });
 
+  it('should capitalize the first letter of the string', async () => {
+    const { instance } = await shallow.render();
+    const testString: string = 'testString';
+
+    const newString = instance.capitalizeFirstLetter(testString);
+    expect(newString).toEqual('TestString');
+  });
+
   it('should successfully set the extractionSiteTooltip to the VisibilityItem tooltip passed in', async () => {
     const { instance } = await shallow.render();
     const testVisibilityItem: VisibilityItem = {
