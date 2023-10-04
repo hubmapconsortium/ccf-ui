@@ -7,6 +7,7 @@ import { MatTreeModule } from '@angular/material/tree';
 
 import { OntologyTreeComponent } from './ontology-tree.component';
 import { OpacitySliderModule } from 'ccf-shared';
+import { ButtonToggleModule } from '../../../shared/components/button-toggle/button-toggle.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { OpacitySliderModule } from 'ccf-shared';
     MatIconModule,
     MatTooltipModule,
     MatTreeModule,
-    OpacitySliderModule
+    OpacitySliderModule,
+    ButtonToggleModule
   ],
   declarations: [OntologyTreeComponent],
   exports: [OntologyTreeComponent],

@@ -13,7 +13,7 @@ export class CCFDatabaseInstance {
 }
 
 export async function createCCFDatabaseWorker(options: CCFDatabaseOptions): Promise<CCFDatabaseInstance> {
-  const worker = new Worker('./projects/ccf-api/ccf-database.worker.js', { workerData: { options } });
+  const worker = new Worker('./dist/server/ccf-database.worker.js', { workerData: { options } });
   const dbWorker = wrap<{ database: CCFDatabase; sparqlQuery: SparqlQueryFunction }>(nodeEndpoint(worker));
   return new CCFDatabaseInstance(
     dbWorker.database as unknown as CCFDatabase,

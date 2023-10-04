@@ -39,6 +39,14 @@
     ccf-drawer {
       width: 28.5rem;
 
+      div {
+        .button-toggle-group {
+          height: 4rem;
+          display: flex;
+          align-items: center;
+        }
+      }
+
       .drawer-icons {
         display: flex;
         padding-left: 1.5rem;
@@ -150,15 +158,28 @@
       padding-right: 1.5rem;
       height: 100%;
       z-index: 3;
-
+      .left-drawer-container {
+        height: 100%;
+        .ontologies {
+          height: 100%;
+          display: flex;
+          gap: 1.5rem;
+          flex-direction: column;
+          ccf-ontology-selection {
+            flex: 1 1;
+            overflow: auto;
+            scrollbar-width: thin;
+            &::-webkit-scrollbar {
+              width: 0.25rem;
+            }
+            &.biomarker-selection {
+              flex-basis: 30%;
+            }
+          }
+        }
+      }
       ::ng-deep .cff-drawer-inner-container {
         overflow: hidden;
-      }
-
-      .cell-type-selection {
-        ::ng-deep mat-tree {
-          margin-top: 2rem;
-        }
       }
 
       .filter-data {

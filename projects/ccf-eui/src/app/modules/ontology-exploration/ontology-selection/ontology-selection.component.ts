@@ -4,6 +4,8 @@ import { OntologyTreeModel, OntologyTreeNode } from 'ccf-database';
 import { OntologySelection } from '../../../core/models/ontology-selection';
 import { OntologySearchService } from '../../../core/services/ontology-search/ontology-search.service';
 import { OntologyTreeComponent } from '../ontology-tree/ontology-tree.component';
+import { tap } from 'rxjs/operators';
+import { Observable } from 'rxjs/internal/Observable';
 
 
 /**
@@ -47,11 +49,18 @@ export class OntologySelectionComponent implements OnChanges {
   @Input() header: boolean;
   @Input() placeholderText: string;
 
+  @Input() showtoggle: boolean;
+
   /**
    * Captures and passes along the change in ontologySelections.
    */
   @Output() readonly ontologySelection = new EventEmitter<OntologySelection>();
 
+  currentNodes: string[];
+
+  menuOptions;
+  rootNode: OntologyTreeNode;
+  rootNode$: Observable<OntologyTreeNode>;
   /**
    * Creates an instance of ontology selection component.
    *
@@ -59,7 +68,16 @@ export class OntologySelectionComponent implements OnChanges {
    */
   constructor(
     public ontologySearchService: OntologySearchService,
-  ) { }
+  ) {
+
+    this.rootNode$ = ontologySearchService.rootNode$.pipe(tap(rootNode => {
+      this.rootNode = { ...rootNode };
+      if (this.rootNode.id==='biomarkers') {
+        this.menuOptions = [...rootNode.children];
+        this.filterNodes(rootNode.children);
+      }
+    }));
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if ('treeModel' in changes && this.treeModel) {
@@ -76,4 +94,13 @@ export class OntologySelectionComponent implements OnChanges {
     const nodes = this.treeModel?.nodes ?? {};
     this.tree.expandAndSelect(ontologyNode, node => nodes[node.parent]);
   }
+
+  filterNodes(selectedTypes: string[]): void {
+    const nodes = Object.values(this.treeModel.nodes);
+    const filteredNodes = nodes.filter(node => selectedTypes.includes(node.parent ?? '')).sort((node1, node2)=>node1.label.trim().toLowerCase()>node2.label.trim().toLowerCase() ? 1 : -1);
+    const rootNode = { ...this.rootNode };
+    rootNode.children = filteredNodes.map(node => node.id);
+    this.rootNode = { ...rootNode };
+  }
+
 }

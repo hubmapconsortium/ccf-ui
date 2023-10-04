@@ -1,8 +1,6 @@
 import { Matrix4 } from '@math.gl/core';
 import { writeFileSync } from 'fs';
-import fetch from 'node-fetch';
 import { argv } from 'process';
-
 import { simplifyScene } from '../../ccf-body-ui/src/lib/util/simplify-scene';
 import { getSpatialPlacement } from './lib/queries/spatial-result-n3';
 import { ccf } from './lib/util/prefixes';

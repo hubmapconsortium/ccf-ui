@@ -11,6 +11,7 @@
 @use 'themes/gtex_dark';
 
 @import 'swiper/swiper.min.css';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 // @import 'swiper/components/navigation/navigation';
 
 @include mat.core();

@@ -11,12 +11,14 @@ export interface DataSource {
   getDatasetTechnologyNames(): Observable<string[]>;
   getOntologyTreeModel(): Observable<OntologyTreeModel>;
   getCellTypeTreeModel(): Observable<OntologyTreeModel>;
+  getBiomarkersTreeModel(): Observable<OntologyTreeModel>;
   getReferenceOrgans(): Observable<SpatialEntity[]>;
 
   getTissueBlockResults(filter?: Filter): Observable<TissueBlockResult[]>;
   getAggregateResults(filter?: Filter): Observable<AggregateResult[]>;
   getOntologyTermOccurences(filter?: Filter): Observable<Record<string, number>>;
   getCellTypeTermOccurences(filter?: Filter): Observable<Record<string, number>>;
+  getBiomarkerTermOccurences(filter?: Filter): Observable<Record<string, number>>;
   getScene(filter?: Filter): Observable<SpatialSceneNode[]>;
   getReferenceOrganScene(organIri: string, filter?: Filter): Observable<SpatialSceneNode[]>;
 }
@@ -53,6 +55,10 @@ export abstract class ForwardingDataSource implements DataSource {
     return this.forwardCall('getCellTypeTreeModel');
   }
 
+  getBiomarkersTreeModel(): Observable<OntologyTreeModel> {
+    return this.forwardCall('getBiomarkersTreeModel');
+  }
+
   getReferenceOrgans(): Observable<SpatialEntity[]> {
     return this.forwardCall('getReferenceOrgans');
   }
@@ -71,6 +77,10 @@ export abstract class ForwardingDataSource implements DataSource {
 
   getCellTypeTermOccurences(filter?: Filter): Observable<Record<string, number>> {
     return this.forwardCall('getCellTypeTermOccurences', filter);
+  }
+
+  getBiomarkerTermOccurences(filter?: Filter): Observable<Record<string, number>> {
+    return this.forwardCall('getBiomarkerTermOccurences', filter);
   }
 
   getScene(filter?: Filter): Observable<SpatialSceneNode[]> {

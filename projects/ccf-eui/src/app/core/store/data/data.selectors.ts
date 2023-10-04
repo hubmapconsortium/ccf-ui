@@ -17,4 +17,9 @@ export class DataStateSelectors {
   static cellTypesTreeModel(state: DataStateModel): OntologyTreeModel {
     return state.cellTypesTreeModel ?? { root: '', nodes: {} };
   }
+
+  @Selector([DataState])
+  static biomarkersTreeModel(state: DataStateModel): OntologyTreeModel {
+    return state.biomarkersTreeModel ?? { root: '', nodes: {} };
+  }
 }

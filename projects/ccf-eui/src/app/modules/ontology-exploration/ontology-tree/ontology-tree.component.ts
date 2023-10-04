@@ -10,6 +10,11 @@ import { filter, invoke, property } from 'lodash';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { FlatNode } from '../../../core/models/flat-node';
 
+export const labelMap = new Map([
+  ['colon', 'large intestine'],
+  ['body', 'Anatomical Structures (AS)'],
+  ['cell', 'Cell Types (CT)']
+]);
 
 /** Type of function for getting child nodes from a parent node. */
 type GetChildrenFunc = (o: OntologyTreeNode) => OntologyTreeNode[];
@@ -45,6 +50,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
    */
   @Input() rootNode: string;
 
+  @Input() showtoggle: boolean;
   /**
    * The node like objects to display in the tree.
    */
@@ -117,6 +123,10 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
 
   @Input() header: boolean;
 
+  @Input() menuOptions: string[];
+
+  selectedtoggleOptions: string[];
+
   /**
    * Storage for the getter / setter
    */
@@ -141,6 +151,13 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
    * Emits an event whenever the node's visibility or opacity has changed
    */
   @Output() readonly nodeChanged = new EventEmitter<FlatNode>();
+
+  /**
+   * Any time a button is clicked, event is emitted.
+   */
+  @Output() readonly selectionChange = new EventEmitter<string[]>();
+
+  @Output() readonly selectedBiomarkerOptions = new EventEmitter<string[]>();
 
   /**
    * Indentation of each level in the tree.
@@ -190,11 +207,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
 
   highlightedNode: FlatNode | undefined;
 
-  private readonly labelMap = new Map([
-    ['colon', 'large intestine'],
-    ['body', 'Anatomical Structures (AS)'],
-    ['cell', 'Cell Types (CT)']
-  ]);
+
 
   /**
    * Expand the body node when the component is initialized.
@@ -205,7 +218,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
     }
   }
 
-  ngOnChanges(changes: SimpleChanges): void{
+  ngOnChanges(changes: SimpleChanges): void {
     if (changes.ontologyFilter) {
       const ontologyFilter: string[] = changes.ontologyFilter.currentValue as string[];
       if (ontologyFilter?.length >= 0) {
@@ -215,6 +228,9 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
     if (changes.rootNode) {
       const rootNode = changes.rootNode.currentValue;
       this.selectByIDs([rootNode]);
+    }
+    if (changes.nodes) {
+      this.selectByIDs([this.rootNode]);
     }
   }
 
@@ -264,7 +280,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
     for (const flat of parentFlatNodes) {
       control.expand(flat);
     }
-    if (node.label === 'body' && control.dataNodes?.length > 0) {
+    if ((node.label === 'body' || node.id==='biomarkers') && control.dataNodes?.length > 0) {
       control.expand(control.dataNodes[0]);
     }
 
@@ -300,7 +316,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
    * @returns label for node
    */
   getNodeLabel(label: string): string {
-    return this.labelMap.get(label) ?? label;
+    return labelMap.get(label) ?? label;
   }
   /**
    * Determines whether a node is currently selected.
@@ -413,7 +429,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
    * @returns left indent value
    */
   getLeftIndent(level: number): string {
-    return `${level*-1.5}rem`;
+    return `${level * -1.5}rem`;
   }
 
   /**
@@ -429,4 +445,14 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
     const diff = scrollHeight - scrollTop - clientHeight;
     this.atScrollBottom = diff < 20;
   }
+
+  isItemSelected(item: string) {
+    return this.selectedtoggleOptions.includes(item);
+  }
+
+  toggleSelection(value: string[]) {
+    this.selectedtoggleOptions = value;
+    this.selectedBiomarkerOptions.emit([...this.selectedtoggleOptions]);
+  }
+
 }

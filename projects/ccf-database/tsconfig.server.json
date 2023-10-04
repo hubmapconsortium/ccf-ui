@@ -5,10 +5,6 @@
     "module": "ESNext",
     "moduleResolution": "NodeNext",
     "paths": {
-      "ccf-database": [
-        "dist/ccf-database/ccf-database",
-        "dist/ccf-database"
-      ],
       "triple-store-utils": [
         "dist/triple-store-utils/triple-store-utils",
         "dist/triple-store-utils"

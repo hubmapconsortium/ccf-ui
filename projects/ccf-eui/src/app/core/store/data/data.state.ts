@@ -22,6 +22,7 @@ export const DEFAULT_FILTER: Filter = {
   technologies: [],
   ontologyTerms: ['http://purl.obolibrary.org/obo/UBERON_0013702'],
   cellTypeTerms: ['http://purl.obolibrary.org/obo/CL_0000000'],
+  biomarkerTerms: ['biomarkers'],
   spatialSearches: []
 };
 
@@ -82,6 +83,7 @@ export interface DataStateModel {
   statusMessage: string;
   anatomicalStructuresTreeModel?: OntologyTreeModel;
   cellTypesTreeModel?: OntologyTreeModel;
+  biomarkersTreeModel?: OntologyTreeModel;
 }
 
 /**
@@ -109,6 +111,8 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
   private readonly _ontologyTermOccurencesDataQueryStatus$ = new ReplaySubject<DataQueryState>(1);
   /** Implementation subject for cellTypeTermOccurencesDataQueryStatus$. */
   private readonly _cellTypeTermOccurencesDataQueryStatus$ = new ReplaySubject<DataQueryState>(1);
+  private readonly _biomarkerTermOccurencesDataQueryStatus$ = new ReplaySubject<DataQueryState>(1);
+
   /** Implementation subject for sceneDataQueryStatus$. */
   private readonly _sceneDataQueryStatus$ = new ReplaySubject<DataQueryState>(1);
   /** Implementation subject for technologyFilterQueryStatus$. */
@@ -119,6 +123,7 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
   readonly ontologyTermsFullData$ = new ReplaySubject<Record<string, number>>(1);
   /** Keeping track of all cell type terms there is data for. */
   readonly cellTypeTermsFullData$ = new ReplaySubject<Record<string, number>>(1);
+  readonly biomarkerTermsFullData$ = new ReplaySubject<Record<string, number>>(1);
 
   /** Current filter. */
   readonly filter$ = this.state$.pipe(map(x => x?.filter));
@@ -133,6 +138,10 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
   /** Latest ontology term occurences query data. */
   readonly ontologyTermOccurencesData$ = this.filter$.pipe(queryData(
     this.ontologyTermOccurencesData, sendCompletedTo(this._ontologyTermOccurencesDataQueryStatus$)
+  ));
+  /** Latest ontology term occurences query data. */
+  readonly biomarkerTermOccurencesData$ = this.filter$.pipe(queryData(
+    this.biomarkerTermOccurencesData, sendCompletedTo(this._biomarkerTermOccurencesDataQueryStatus$)
   ));
   /** Latest cell type term occurences query data. */
   readonly cellTypeTermOccurencesData$ = this.filter$.pipe(queryData(
@@ -159,6 +168,8 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
   readonly ontologyTermOccurencesDataQueryStatus$ = this._ontologyTermOccurencesDataQueryStatus$.pipe(distinct());
   /** Current status of queries in the cellTypeTermOccurrences$ observable. */
   readonly cellTypeTermOccurencesDataQueryStatus$ = this._cellTypeTermOccurencesDataQueryStatus$.pipe(distinct());
+
+  readonly biomarkerTermOccurencesDataQueryStatus$ = this._biomarkerTermOccurencesDataQueryStatus$.pipe(distinct());
   /** Current status of queries in the sceneData$ observable. */
   readonly sceneDataQueryStatus$ = this._sceneDataQueryStatus$.pipe(distinct());
   /** Current status of queries in the technologyFilter$ observable. */
@@ -198,17 +209,22 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
   }
 
   ngxsOnInit(): void {
-    const { ontologyTermsFullData$, ontologyTermOccurencesData$, cellTypeTermsFullData$, cellTypeTermOccurencesData$, source, snapshot: { filter } } = this;
+    const { ontologyTermsFullData$, ontologyTermOccurencesData$, cellTypeTermsFullData$, cellTypeTermOccurencesData$, source, snapshot: { filter } , biomarkerTermsFullData$, biomarkerTermOccurencesData$ } = this;
     if (filter === DEFAULT_FILTER) {
       // Common case - Reuse the result of the regular query
       ontologyTermOccurencesData$.pipe(take(1)).subscribe(ontologyTermsFullData$);
       cellTypeTermOccurencesData$.pipe(take(1)).subscribe(cellTypeTermsFullData$);
+      biomarkerTermOccurencesData$.pipe(take(1)).subscribe(biomarkerTermsFullData$);
+
     } else {
       source.getOntologyTermOccurences().pipe(take(1)).subscribe(ontologyTermsFullData$);
       source.getCellTypeTermOccurences().pipe(take(1)).subscribe(cellTypeTermsFullData$);
+      source.getBiomarkerTermOccurences().pipe(take(1)).subscribe(biomarkerTermsFullData$);
+
     }
     this.source.getOntologyTreeModel().pipe(take(1)).subscribe((model) => this.updateAnatomicalStructuresTreeModel(model));
     this.source.getCellTypeTreeModel().pipe(take(1)).subscribe((model) => this.updateCellTypesTreeModel(model));
+    this.source.getBiomarkersTreeModel().pipe(take(1)).subscribe((model) => this.updateBiomarkersTreeModel(model));
     this.warmUpDatabase();
   }
 
@@ -241,6 +257,13 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
   updateCellTypesTreeModel(@Payload('treeModel') model: OntologyTreeModel): void {
     this.ctx.patchState({
       cellTypesTreeModel: model
+    });
+  }
+
+  @DataAction()
+  updateBiomarkersTreeModel(@Payload('treeModel') model: OntologyTreeModel): void {
+    this.ctx.patchState({
+      biomarkersTreeModel: model
     });
   }
 
@@ -316,6 +339,11 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
   private cellTypeTermOccurencesData(filter: Filter): ObservableInput<Record<string, number>> {
     this._cellTypeTermOccurencesDataQueryStatus$.next(DataQueryState.Running);
     return this.databaseReady$.pipe(switchMap(() => this.source.getCellTypeTermOccurences(filter)));
+  }
+  @bind
+  private biomarkerTermOccurencesData(filter: Filter): ObservableInput<Record<string, number>> {
+    this._biomarkerTermOccurencesDataQueryStatus$.next(DataQueryState.Running);
+    return this.databaseReady$.pipe(switchMap(() => this.source.getBiomarkerTermOccurences(filter)));
   }
 
   /**

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/member-ordering */
-import { delMany, get, setMany } from 'idb-keyval';
+import * as idb from 'idb-keyval';
 import { JsonLd } from 'jsonld/jsonld-spec';
 import hash from 'object-hash';
 import {
@@ -12,14 +12,17 @@ import { searchHubmap } from './hubmap/hubmap-data-import';
 import { AggregateResult, DatabaseStatus, Filter, OntologyTreeModel, TissueBlockResult } from './interfaces';
 import { getAggregateResults, getDatasetTechnologyNames, getProviderNames } from './queries/aggregate-results-n3';
 import { findIds } from './queries/find-ids-n3';
-import { getCellTypeTermOccurences, getOntologyTermOccurences } from './queries/ontology-term-occurences-n3';
-import { getAnatomicalStructureTreeModel, getCellTypeTreeModel } from './queries/ontology-tree-n3';
+import { getBiomarkerTermOccurences, getCellTypeTermOccurences, getOntologyTermOccurences } from './queries/ontology-term-occurences-n3';
+import { getAnatomicalStructureTreeModel, getBiomarkersTreeModel, getCellTypeTreeModel } from './queries/ontology-tree-n3';
 import { getSpatialEntityForEntity } from './queries/spatial-result-n3';
 import { getTissueBlockResult } from './queries/tissue-block-result-n3';
 import { FlatSpatialPlacement, SpatialEntity } from './spatial-types';
 import { CCFDatabaseStatusTracker } from './util/ccf-database-status-tracker';
 import { patchJsonLd } from './util/patch-jsonld';
 import { enrichRuiLocations } from './util/enrich-rui-locations';
+import { getBmLocatedInAs } from './util/enrich-bm-located-in-as';
+
+const { delMany, get, setMany } = idb;
 
 
 /** Database initialization options. */
@@ -156,6 +159,10 @@ export class CCFDatabase {
     } else if (ccfOwlUrl?.length > 0) {
       sources.push(ccfOwlUrl);
     }
+
+    // Add a direct edge between BM and AS for queries
+    sources.push(await getBmLocatedInAs());
+
     if (this.options.hubmapDataUrl) {
       if (this.options.hubmapDataUrl.endsWith('jsonld')) {
         sources.push(this.options.hubmapDataUrl);
@@ -341,6 +348,17 @@ export class CCFDatabase {
   }
 
   /**
+   * Get number of occurrences of cell type terms for a set of ids.
+   *
+   * @param [filter] The filter.
+   * @returns Cell type term counts.
+   */
+  async getBiomarkerTermOccurences(filter?: Filter): Promise<Record<string, number>> {
+    return getBiomarkerTermOccurences(this.getIds(filter), this.store);
+  }
+
+
+  /**
    * Get ontology term tree nodes
    *
    * @returns Ontology term counts.
@@ -356,6 +374,15 @@ export class CCFDatabase {
    */
   async getCellTypeTreeModel(): Promise<OntologyTreeModel> {
     return getCellTypeTreeModel(this.store);
+  }
+
+  /**
+   * Get biomarker tree nodes
+   *
+   * @returns Ontology term counts.
+   */
+  async getBiomarkersTreeModel(): Promise<OntologyTreeModel> {
+    return getBiomarkersTreeModel(this.store);
   }
 
   /**

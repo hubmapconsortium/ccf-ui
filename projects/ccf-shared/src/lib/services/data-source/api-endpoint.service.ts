@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Matrix4 } from '@math.gl/core';
 import {
-  AggregateResult, Filter, OntologyTreeModel, SpatialEntity, SpatialSceneNode, TissueBlockResult,
+  AggregateResult, Filter, OntologyTreeModel, OntologyTreeNode, SpatialEntity, SpatialSceneNode, TissueBlockResult,
 } from 'ccf-database';
 import { DatabaseStatus, DefaultService, MinMax, SpatialSearch, SpatialSceneNode as RawSpatialSceneNode } from 'ccf-openapi/angular-client';
-import { combineLatest, Observable, Subject } from 'rxjs';
+import { combineLatest, Observable, of, Subject } from 'rxjs';
 import { map, switchMap, take, tap } from 'rxjs/operators';
 import { Cacheable } from 'ts-cacheable';
 
@@ -131,6 +131,19 @@ export class ApiEndpointDataSourceService implements DataSource {
     );
   }
 
+  /**
+   * Get the biomarker type tree model.
+   *
+   * @returns An observable emitting the results.
+   */
+  @Cacheable(CACHE_CONFIG_NO_PARAMS)
+  getBiomarkersTreeModel(): Observable<OntologyTreeModel> {
+    return this.doRequest(
+      params => this.api.biomarkerTreeModel(params),
+      undefined, {}, cast<OntologyTreeModel>()
+    );
+  }
+
   @Cacheable(CACHE_CONFIG_NO_PARAMS)
   getReferenceOrgans(): Observable<SpatialEntity[]> {
     return this.doRequest(
@@ -167,6 +180,14 @@ export class ApiEndpointDataSourceService implements DataSource {
   getCellTypeTermOccurences(filter?: Filter): Observable<Record<string, number>> {
     return this.doRequest(
       params => this.api.cellTypeTermOccurences(params),
+      filter
+    );
+  }
+
+  @Cacheable(CACHE_CONFIG_PARAMS)
+  getBiomarkerTermOccurences(filter?: Filter): Observable<Record<string, number>> {
+    return this.doRequest(
+      params => this.api.biomarkerTermOccurences(params),
       filter
     );
   }

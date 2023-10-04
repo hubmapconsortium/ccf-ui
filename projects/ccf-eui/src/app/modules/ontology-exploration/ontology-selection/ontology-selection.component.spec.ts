@@ -40,4 +40,11 @@ describe('OntologySelectionComponent', () => {
     expect(spy).toHaveBeenCalled();
   });
 
+  it('should call filterNodes method when selectedBiomarkerOptions triggers', async () => {
+    const { findComponent, instance } = await shallow.render();
+    spyOn(instance, 'filterNodes').and.callThrough();
+    findComponent(OntologyTreeComponent).selectedBiomarkerOptions.emit(['gene']);
+    expect(instance.filterNodes).toHaveBeenCalled();
+  });
+
 });
