@@ -219,7 +219,7 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { EventEmitter } from &#x27;events&#x27;;
-import { toRDF } from &#x27;jsonld&#x27;;
+import jsonld from &#x27;jsonld&#x27;;
 import { JsonLd, Url } from &#x27;jsonld/jsonld-spec&#x27;;
 import { DataFactory, Parser, Store, Quad } from &#x27;n3&#x27;;
 import * as RDF from &#x27;rdf-js&#x27;;
@@ -300,7 +300,7 @@ export async function addJsonLdToStore(
   }
 
   if (jsonLdData) {
-    const quads &#x3D; (await toRDF(jsonLdData)) as unknown[];
+    const quads &#x3D; (await jsonld.toRDF(jsonLdData)) as unknown[];
     store.import(arrayToStream(quads) as unknown as EventEmitter);
   }
   return store;

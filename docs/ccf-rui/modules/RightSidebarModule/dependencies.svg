@@ -24,119 +24,119 @@
 <title>cluster_RightSidebarModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="8,-70 8,-268 1084,-268 1084,-70 8,-70"/>
 </g>
-<g id="clust5" class="cluster">
-<title>cluster_RightSidebarModule_exports</title>
-<polygon fill="none" stroke="black" points="407,-208 407,-260 581,-260 581,-208 407,-208"/>
+<g id="clust4" class="cluster">
+<title>cluster_RightSidebarModule_imports</title>
+<polygon fill="none" stroke="black" points="196,-78 196,-130 1076,-130 1076,-78 196,-78"/>
 </g>
 <g id="clust2" class="cluster">
 <title>cluster_RightSidebarModule_declarations</title>
-<polygon fill="none" stroke="black" points="904,-78 904,-130 1076,-130 1076,-78 904,-78"/>
+<polygon fill="none" stroke="black" points="16,-78 16,-130 188,-130 188,-78 16,-78"/>
 </g>
-<g id="clust4" class="cluster">
-<title>cluster_RightSidebarModule_imports</title>
-<polygon fill="none" stroke="black" points="16,-78 16,-130 896,-130 896,-78 16,-78"/>
+<g id="clust5" class="cluster">
+<title>cluster_RightSidebarModule_exports</title>
+<polygon fill="none" stroke="black" points="437,-208 437,-260 611,-260 611,-208 437,-208"/>
 </g>
 <!-- RightSidebarComponent -->
 <g id="node1" class="node">
 <title>RightSidebarComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="1067.71,-122 912.29,-122 912.29,-86 1067.71,-86 1067.71,-122"/>
-<text text-anchor="middle" x="990" y="-99.8" font-family="Times,serif" font-size="14.00">RightSidebarComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="179.71,-122 24.29,-122 24.29,-86 179.71,-86 179.71,-122"/>
+<text text-anchor="middle" x="102" y="-99.8" font-family="Times,serif" font-size="14.00">RightSidebarComponent</text>
 </g>
 <!-- RightSidebarModule -->
 <g id="node2" class="node">
 <title>RightSidebarModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="560.93,-187 557.93,-191 536.93,-191 533.93,-187 427.07,-187 427.07,-151 560.93,-151 560.93,-187"/>
-<text text-anchor="middle" x="494" y="-164.8" font-family="Times,serif" font-size="14.00">RightSidebarModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="590.93,-187 587.93,-191 566.93,-191 563.93,-187 457.07,-187 457.07,-151 590.93,-151 590.93,-187"/>
+<text text-anchor="middle" x="524" y="-164.8" font-family="Times,serif" font-size="14.00">RightSidebarModule</text>
 </g>
 <!-- RightSidebarComponent&#45;&gt;RightSidebarModule -->
 <g id="edge1" class="edge">
 <title>RightSidebarComponent&#45;&gt;RightSidebarModule</title>
-<path fill="none" stroke="black" d="M990,-122.29C990,-144.21 990,-178 990,-178 990,-178 570.89,-178 570.89,-178"/>
-<polygon fill="black" stroke="black" points="570.89,-174.5 560.89,-178 570.89,-181.5 570.89,-174.5"/>
+<path fill="none" stroke="black" d="M102,-122.29C102,-144.21 102,-178 102,-178 102,-178 447.13,-178 447.13,-178"/>
+<polygon fill="black" stroke="black" points="447.13,-181.5 457.13,-178 447.13,-174.5 447.13,-181.5"/>
 </g>
 <!-- RightSidebarComponent  -->
 <g id="node9" class="node">
 <title>RightSidebarComponent </title>
-<polygon fill="#fb8072" stroke="black" points="573.21,-252 414.79,-252 414.79,-216 573.21,-216 573.21,-252"/>
-<text text-anchor="middle" x="494" y="-229.8" font-family="Times,serif" font-size="14.00">RightSidebarComponent </text>
+<polygon fill="#fb8072" stroke="black" points="603.21,-252 444.79,-252 444.79,-216 603.21,-216 603.21,-252"/>
+<text text-anchor="middle" x="524" y="-229.8" font-family="Times,serif" font-size="14.00">RightSidebarComponent </text>
 </g>
 <!-- RightSidebarModule&#45;&gt;RightSidebarComponent  -->
 <g id="edge8" class="edge">
 <title>RightSidebarModule&#45;&gt;RightSidebarComponent </title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M494,-187.11C494,-187.11 494,-205.99 494,-205.99"/>
-<polygon fill="black" stroke="black" points="490.5,-205.99 494,-215.99 497.5,-205.99 490.5,-205.99"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M524,-187.11C524,-187.11 524,-205.99 524,-205.99"/>
+<polygon fill="black" stroke="black" points="520.5,-205.99 524,-215.99 527.5,-205.99 520.5,-205.99"/>
 </g>
 <!-- BlockSizeInputModule -->
 <g id="node3" class="node">
 <title>BlockSizeInputModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="888.15,-122 885.15,-126 864.15,-126 861.15,-122 741.85,-122 741.85,-86 888.15,-86 888.15,-122"/>
-<text text-anchor="middle" x="815" y="-99.8" font-family="Times,serif" font-size="14.00">BlockSizeInputModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="1068.15,-122 1065.15,-126 1044.15,-126 1041.15,-122 921.85,-122 921.85,-86 1068.15,-86 1068.15,-122"/>
+<text text-anchor="middle" x="995" y="-99.8" font-family="Times,serif" font-size="14.00">BlockSizeInputModule</text>
 </g>
 <!-- BlockSizeInputModule&#45;&gt;RightSidebarModule -->
 <g id="edge2" class="edge">
 <title>BlockSizeInputModule&#45;&gt;RightSidebarModule</title>
-<path fill="none" stroke="black" d="M815,-122.11C815,-141.34 815,-169 815,-169 815,-169 570.9,-169 570.9,-169"/>
-<polygon fill="black" stroke="black" points="570.9,-165.5 560.9,-169 570.9,-172.5 570.9,-165.5"/>
+<path fill="none" stroke="black" d="M995,-122.29C995,-144.21 995,-178 995,-178 995,-178 600.98,-178 600.98,-178"/>
+<polygon fill="black" stroke="black" points="600.98,-174.5 590.98,-178 600.98,-181.5 600.98,-174.5"/>
 </g>
 <!-- ReviewButtonModule -->
 <g id="node4" class="node">
 <title>ReviewButtonModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="723.43,-122 720.43,-126 699.43,-126 696.43,-122 582.57,-122 582.57,-86 723.43,-86 723.43,-122"/>
-<text text-anchor="middle" x="653" y="-99.8" font-family="Times,serif" font-size="14.00">ReviewButtonModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="903.43,-122 900.43,-126 879.43,-126 876.43,-122 762.57,-122 762.57,-86 903.43,-86 903.43,-122"/>
+<text text-anchor="middle" x="833" y="-99.8" font-family="Times,serif" font-size="14.00">ReviewButtonModule</text>
 </g>
 <!-- ReviewButtonModule&#45;&gt;RightSidebarModule -->
 <g id="edge3" class="edge">
 <title>ReviewButtonModule&#45;&gt;RightSidebarModule</title>
-<path fill="none" stroke="black" d="M653,-122.03C653,-138.4 653,-160 653,-160 653,-160 570.97,-160 570.97,-160"/>
-<polygon fill="black" stroke="black" points="570.97,-156.5 560.97,-160 570.97,-163.5 570.97,-156.5"/>
+<path fill="none" stroke="black" d="M833,-122.11C833,-141.34 833,-169 833,-169 833,-169 601.05,-169 601.05,-169"/>
+<polygon fill="black" stroke="black" points="601.05,-165.5 591.05,-169 601.05,-172.5 601.05,-165.5"/>
 </g>
 <!-- RotationSliderModule -->
 <g id="node5" class="node">
 <title>RotationSliderModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="564.71,-122 561.71,-126 540.71,-126 537.71,-122 423.29,-122 423.29,-86 564.71,-86 564.71,-122"/>
-<text text-anchor="middle" x="494" y="-99.8" font-family="Times,serif" font-size="14.00">RotationSliderModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="744.71,-122 741.71,-126 720.71,-126 717.71,-122 603.29,-122 603.29,-86 744.71,-86 744.71,-122"/>
+<text text-anchor="middle" x="674" y="-99.8" font-family="Times,serif" font-size="14.00">RotationSliderModule</text>
 </g>
 <!-- RotationSliderModule&#45;&gt;RightSidebarModule -->
 <g id="edge4" class="edge">
 <title>RotationSliderModule&#45;&gt;RightSidebarModule</title>
-<path fill="none" stroke="black" d="M494,-122.11C494,-122.11 494,-140.99 494,-140.99"/>
-<polygon fill="black" stroke="black" points="490.5,-140.99 494,-150.99 497.5,-140.99 490.5,-140.99"/>
+<path fill="none" stroke="black" d="M674,-122.03C674,-138.4 674,-160 674,-160 674,-160 601.1,-160 601.1,-160"/>
+<polygon fill="black" stroke="black" points="601.1,-156.5 591.1,-160 601.1,-163.5 601.1,-156.5"/>
 </g>
 <!-- SlicesInputModule -->
 <g id="node6" class="node">
 <title>SlicesInputModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="405.04,-122 402.04,-126 381.04,-126 378.04,-122 282.96,-122 282.96,-86 405.04,-86 405.04,-122"/>
-<text text-anchor="middle" x="344" y="-99.8" font-family="Times,serif" font-size="14.00">SlicesInputModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="585.04,-122 582.04,-126 561.04,-126 558.04,-122 462.96,-122 462.96,-86 585.04,-86 585.04,-122"/>
+<text text-anchor="middle" x="524" y="-99.8" font-family="Times,serif" font-size="14.00">SlicesInputModule</text>
 </g>
 <!-- SlicesInputModule&#45;&gt;RightSidebarModule -->
 <g id="edge5" class="edge">
 <title>SlicesInputModule&#45;&gt;RightSidebarModule</title>
-<path fill="none" stroke="black" d="M344,-122.03C344,-138.4 344,-160 344,-160 344,-160 416.9,-160 416.9,-160"/>
-<polygon fill="black" stroke="black" points="416.9,-163.5 426.9,-160 416.9,-156.5 416.9,-163.5"/>
+<path fill="none" stroke="black" d="M524,-122.11C524,-122.11 524,-140.99 524,-140.99"/>
+<polygon fill="black" stroke="black" points="520.5,-140.99 524,-150.99 527.5,-140.99 520.5,-140.99"/>
 </g>
 <!-- TagListModule -->
 <g id="node7" class="node">
 <title>TagListModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="264.6,-122 261.6,-126 240.6,-126 237.6,-122 161.4,-122 161.4,-86 264.6,-86 264.6,-122"/>
-<text text-anchor="middle" x="213" y="-99.8" font-family="Times,serif" font-size="14.00">TagListModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="444.6,-122 441.6,-126 420.6,-126 417.6,-122 341.4,-122 341.4,-86 444.6,-86 444.6,-122"/>
+<text text-anchor="middle" x="393" y="-99.8" font-family="Times,serif" font-size="14.00">TagListModule</text>
 </g>
 <!-- TagListModule&#45;&gt;RightSidebarModule -->
 <g id="edge6" class="edge">
 <title>TagListModule&#45;&gt;RightSidebarModule</title>
-<path fill="none" stroke="black" d="M213,-122.11C213,-141.34 213,-169 213,-169 213,-169 417.05,-169 417.05,-169"/>
-<polygon fill="black" stroke="black" points="417.05,-172.5 427.05,-169 417.05,-165.5 417.05,-172.5"/>
+<path fill="none" stroke="black" d="M393,-122.03C393,-138.4 393,-160 393,-160 393,-160 446.96,-160 446.96,-160"/>
+<polygon fill="black" stroke="black" points="446.97,-163.5 456.96,-160 446.96,-156.5 446.97,-163.5"/>
 </g>
 <!-- TagSearchModule -->
 <g id="node8" class="node">
 <title>TagSearchModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="143.9,-122 140.9,-126 119.9,-126 116.9,-122 24.1,-122 24.1,-86 143.9,-86 143.9,-122"/>
-<text text-anchor="middle" x="84" y="-99.8" font-family="Times,serif" font-size="14.00">TagSearchModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="323.9,-122 320.9,-126 299.9,-126 296.9,-122 204.1,-122 204.1,-86 323.9,-86 323.9,-122"/>
+<text text-anchor="middle" x="264" y="-99.8" font-family="Times,serif" font-size="14.00">TagSearchModule</text>
 </g>
 <!-- TagSearchModule&#45;&gt;RightSidebarModule -->
 <g id="edge7" class="edge">
 <title>TagSearchModule&#45;&gt;RightSidebarModule</title>
-<path fill="none" stroke="black" d="M84,-122.29C84,-144.21 84,-178 84,-178 84,-178 417.21,-178 417.21,-178"/>
-<polygon fill="black" stroke="black" points="417.21,-181.5 427.21,-178 417.21,-174.5 417.21,-181.5"/>
+<path fill="none" stroke="black" d="M264,-122.11C264,-141.34 264,-169 264,-169 264,-169 447.04,-169 447.04,-169"/>
+<polygon fill="black" stroke="black" points="447.04,-172.5 457.04,-169 447.04,-165.5 447.04,-172.5"/>
 </g>
 </g>
 </svg>

@@ -105,6 +105,13 @@
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
+                                        <a href="#biomarkersTreeModel" 
+>
+                                            biomarkersTreeModel
+                                        </a>
+                                </li>
+                                <li>
+                                            <span class="modifier">Optional</span>
                                         <a href="#cellTypesTreeModel" 
 >
                                             cellTypesTreeModel
@@ -154,6 +161,44 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <code>anatomicalStructuresTreeModel:     <code>OntologyTreeModel</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>OntologyTreeModel</code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="biomarkersTreeModel"></a>
+                                        <span class="name "><b>biomarkersTreeModel</b>
+                                            <a href="#biomarkersTreeModel">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>biomarkersTreeModel:     <code>OntologyTreeModel</code>
 </code>
                                     </td>
                                 </tr>
@@ -346,6 +391,7 @@ export const DEFAULT_FILTER: Filter &#x3D; {
   technologies: [],
   ontologyTerms: [&#x27;http://purl.obolibrary.org/obo/UBERON_0013702&#x27;],
   cellTypeTerms: [&#x27;http://purl.obolibrary.org/obo/CL_0000000&#x27;],
+  biomarkerTerms: [&#x27;biomarkers&#x27;],
   spatialSearches: []
 };
 
@@ -406,6 +452,7 @@ export interface DataStateModel {
   statusMessage: string;
   anatomicalStructuresTreeModel?: OntologyTreeModel;
   cellTypesTreeModel?: OntologyTreeModel;
+  biomarkersTreeModel?: OntologyTreeModel;
 }
 
 /**
@@ -433,6 +480,8 @@ export class DataState extends NgxsDataRepository&lt;DataStateModel&gt; implemen
   private readonly _ontologyTermOccurencesDataQueryStatus$ &#x3D; new ReplaySubject&lt;DataQueryState&gt;(1);
   /** Implementation subject for cellTypeTermOccurencesDataQueryStatus$. */
   private readonly _cellTypeTermOccurencesDataQueryStatus$ &#x3D; new ReplaySubject&lt;DataQueryState&gt;(1);
+  private readonly _biomarkerTermOccurencesDataQueryStatus$ &#x3D; new ReplaySubject&lt;DataQueryState&gt;(1);
+
   /** Implementation subject for sceneDataQueryStatus$. */
   private readonly _sceneDataQueryStatus$ &#x3D; new ReplaySubject&lt;DataQueryState&gt;(1);
   /** Implementation subject for technologyFilterQueryStatus$. */
@@ -443,6 +492,7 @@ export class DataState extends NgxsDataRepository&lt;DataStateModel&gt; implemen
   readonly ontologyTermsFullData$ &#x3D; new ReplaySubject&lt;Record&lt;string, number&gt;&gt;(1);
   /** Keeping track of all cell type terms there is data for. */
   readonly cellTypeTermsFullData$ &#x3D; new ReplaySubject&lt;Record&lt;string, number&gt;&gt;(1);
+  readonly biomarkerTermsFullData$ &#x3D; new ReplaySubject&lt;Record&lt;string, number&gt;&gt;(1);
 
   /** Current filter. */
   readonly filter$ &#x3D; this.state$.pipe(map(x &#x3D;&gt; x?.filter));
@@ -457,6 +507,10 @@ export class DataState extends NgxsDataRepository&lt;DataStateModel&gt; implemen
   /** Latest ontology term occurences query data. */
   readonly ontologyTermOccurencesData$ &#x3D; this.filter$.pipe(queryData(
     this.ontologyTermOccurencesData, sendCompletedTo(this._ontologyTermOccurencesDataQueryStatus$)
+  ));
+  /** Latest ontology term occurences query data. */
+  readonly biomarkerTermOccurencesData$ &#x3D; this.filter$.pipe(queryData(
+    this.biomarkerTermOccurencesData, sendCompletedTo(this._biomarkerTermOccurencesDataQueryStatus$)
   ));
   /** Latest cell type term occurences query data. */
   readonly cellTypeTermOccurencesData$ &#x3D; this.filter$.pipe(queryData(
@@ -483,6 +537,8 @@ export class DataState extends NgxsDataRepository&lt;DataStateModel&gt; implemen
   readonly ontologyTermOccurencesDataQueryStatus$ &#x3D; this._ontologyTermOccurencesDataQueryStatus$.pipe(distinct());
   /** Current status of queries in the cellTypeTermOccurrences$ observable. */
   readonly cellTypeTermOccurencesDataQueryStatus$ &#x3D; this._cellTypeTermOccurencesDataQueryStatus$.pipe(distinct());
+
+  readonly biomarkerTermOccurencesDataQueryStatus$ &#x3D; this._biomarkerTermOccurencesDataQueryStatus$.pipe(distinct());
   /** Current status of queries in the sceneData$ observable. */
   readonly sceneDataQueryStatus$ &#x3D; this._sceneDataQueryStatus$.pipe(distinct());
   /** Current status of queries in the technologyFilter$ observable. */
@@ -522,17 +578,22 @@ export class DataState extends NgxsDataRepository&lt;DataStateModel&gt; implemen
   }
 
   ngxsOnInit(): void {
-    const { ontologyTermsFullData$, ontologyTermOccurencesData$, cellTypeTermsFullData$, cellTypeTermOccurencesData$, source, snapshot: { filter } } &#x3D; this;
+    const { ontologyTermsFullData$, ontologyTermOccurencesData$, cellTypeTermsFullData$, cellTypeTermOccurencesData$, source, snapshot: { filter } , biomarkerTermsFullData$, biomarkerTermOccurencesData$ } &#x3D; this;
     if (filter &#x3D;&#x3D;&#x3D; DEFAULT_FILTER) {
       // Common case - Reuse the result of the regular query
       ontologyTermOccurencesData$.pipe(take(1)).subscribe(ontologyTermsFullData$);
       cellTypeTermOccurencesData$.pipe(take(1)).subscribe(cellTypeTermsFullData$);
+      biomarkerTermOccurencesData$.pipe(take(1)).subscribe(biomarkerTermsFullData$);
+
     } else {
       source.getOntologyTermOccurences().pipe(take(1)).subscribe(ontologyTermsFullData$);
       source.getCellTypeTermOccurences().pipe(take(1)).subscribe(cellTypeTermsFullData$);
+      source.getBiomarkerTermOccurences().pipe(take(1)).subscribe(biomarkerTermsFullData$);
+
     }
     this.source.getOntologyTreeModel().pipe(take(1)).subscribe((model) &#x3D;&gt; this.updateAnatomicalStructuresTreeModel(model));
     this.source.getCellTypeTreeModel().pipe(take(1)).subscribe((model) &#x3D;&gt; this.updateCellTypesTreeModel(model));
+    this.source.getBiomarkersTreeModel().pipe(take(1)).subscribe((model) &#x3D;&gt; this.updateBiomarkersTreeModel(model));
     this.warmUpDatabase();
   }
 
@@ -565,6 +626,13 @@ export class DataState extends NgxsDataRepository&lt;DataStateModel&gt; implemen
   updateCellTypesTreeModel(@Payload(&#x27;treeModel&#x27;) model: OntologyTreeModel): void {
     this.ctx.patchState({
       cellTypesTreeModel: model
+    });
+  }
+
+  @DataAction()
+  updateBiomarkersTreeModel(@Payload(&#x27;treeModel&#x27;) model: OntologyTreeModel): void {
+    this.ctx.patchState({
+      biomarkersTreeModel: model
     });
   }
 
@@ -640,6 +708,11 @@ export class DataState extends NgxsDataRepository&lt;DataStateModel&gt; implemen
   private cellTypeTermOccurencesData(filter: Filter): ObservableInput&lt;Record&lt;string, number&gt;&gt; {
     this._cellTypeTermOccurencesDataQueryStatus$.next(DataQueryState.Running);
     return this.databaseReady$.pipe(switchMap(() &#x3D;&gt; this.source.getCellTypeTermOccurences(filter)));
+  }
+  @bind
+  private biomarkerTermOccurencesData(filter: Filter): ObservableInput&lt;Record&lt;string, number&gt;&gt; {
+    this._biomarkerTermOccurencesDataQueryStatus$.next(DataQueryState.Running);
+    return this.databaseReady$.pipe(switchMap(() &#x3D;&gt; this.source.getBiomarkerTermOccurences(filter)));
   }
 
   /**

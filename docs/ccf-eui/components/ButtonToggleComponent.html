@@ -38,7 +38,7 @@
   <li class="breadcrumb-item">Components</li>
   <li class="breadcrumb-item"
   >
-  DropdownComponent</li>
+  ButtonToggleComponent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -69,17 +69,10 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>projects/ccf-eui/src/app/shared/components/dropdown/dropdown.component.ts</code>
+    <code>projects/ccf-eui/src/app/shared/components/button-toggle/button-toggle.component.ts</code>
 </p>
 
 
-    <p class="comment">
-        <h3>Description</h3>
-    </p>
-    <p class="comment">
-        <p>Component for a dropdown menu.</p>
-
-    </p>
 
 
 
@@ -106,21 +99,21 @@
 
             <tr>
                 <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>ccf-dropdown</code></td>
+                <td class="col-md-9"><code>ccf-button-toggle</code></td>
             </tr>
 
 
 
             <tr>
                 <td class="col-md-3">styleUrls</td>
-                <td class="col-md-9"><code>./dropdown.component.scss</code></td>
+                <td class="col-md-9"><code>./button-toggle.component.scss</code></td>
             </tr>
 
 
 
             <tr>
                 <td class="col-md-3">templateUrl</td>
-                <td class="col-md-9"><code>./dropdown.component.html</code></td>
+                <td class="col-md-9"><code>./button-toggle.component.html</code></td>
             </tr>
 
 
@@ -138,20 +131,6 @@
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Properties</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                <a href="#optionsVisible" >optionsVisible</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
 
                 <tr>
                     <td class="col-md-4">
@@ -162,10 +141,10 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#selectionChanged" >selectionChanged</a>
+                                <a href="#isItemSelected" >isItemSelected</a>
                             </li>
                             <li>
-                                <a href="#toggleOptions" >toggleOptions</a>
+                                <a href="#toggleSelection" >toggleSelection</a>
                             </li>
                         </ul>
                     </td>
@@ -180,13 +159,10 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#label" >label</a>
+                                <a href="#menuOptions" >menuOptions</a>
                             </li>
                             <li>
-                                <a href="#options" >options</a>
-                            </li>
-                            <li>
-                                <a href="#selection" >selection</a>
+                                <a href="#selectedItems" >selectedItems</a>
                             </li>
                         </ul>
                     </td>
@@ -213,61 +189,6 @@
     </table>
 </section>
 
-    <section data-compodoc="block-constructor">
-    <h3 id="constructor">Constructor</h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-<code>constructor(ga: GoogleAnalyticsService)</code>
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">projects/ccf-eui/src/app/shared/components/dropdown/dropdown.component.ts:38</a></div>
-                            </td>
-                        </tr>
-
-                <tr>
-                    <td class="col-md-4">
-                            <div class="io-description"><p>Creates an instance of dropdown component.</p>
-</div>
-                            <div>
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                                    <td>Description</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>ga</td>
-                                                  
-                                                        <td>
-                                                                    <code>GoogleAnalyticsService</code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                        <td>
-                                                                <p>Analytics service</p>
-
-                                                        </td>
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-</section>
 
     <section data-compodoc="block-inputs">
     <h3 id="inputs">Inputs</h3>
@@ -275,35 +196,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="label"></a>
-                        <b>label</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">projects/ccf-eui/src/app/shared/components/dropdown/dropdown.component.ts:18</a></div>
-                            </td>
-                        </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <div class="io-description"><p>What the component is selecting for.</p>
-</div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="options"></a>
-                        <b>options</b>
+                        <a name="menuOptions"></a>
+                        <b>menuOptions</b>
                     </td>
                 </tr>
                 <tr>
@@ -314,42 +208,35 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">projects/ccf-eui/src/app/shared/components/dropdown/dropdown.component.ts:23</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">projects/ccf-eui/src/app/shared/components/button-toggle/button-toggle.component.ts:16</a></div>
                             </td>
                         </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <div class="io-description"><p>Choices displayed in the dropdown menu.</p>
-</div>
-                    </td>
-                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="selection"></a>
-                        <b>selection</b>
+                        <a name="selectedItems"></a>
+                        <b>selectedItems</b>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                        <i>Type : </i>    <code>string[]</code>
 
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">projects/ccf-eui/src/app/shared/components/dropdown/dropdown.component.ts:28</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">projects/ccf-eui/src/app/shared/components/button-toggle/button-toggle.component.ts:18</a></div>
                             </td>
                         </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <div class="io-description"><p>Current option selected.</p>
-</div>
-                    </td>
-                </tr>
             </tbody>
         </table>
 </section>
@@ -371,12 +258,12 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">projects/ccf-eui/src/app/shared/components/dropdown/dropdown.component.ts:33</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">projects/ccf-eui/src/app/shared/components/button-toggle/button-toggle.component.ts:23</a></div>
                             </td>
                         </tr>
                 <tr>
                     <td class="col-md-4">
-                        <div class="io-description"><p>Emits the new selected option when selection is changed.</p>
+                        <div class="io-description"><p>Any time a button is clicked, event is emitted.</p>
 </div>
                     </td>
                 </tr>
@@ -394,32 +281,30 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="selectionChanged"></a>
+                    <a name="isItemSelected"></a>
                     <span class="name">
-                        <span ><b>selectionChanged</b></span>
-                        <a href="#selectionChanged"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>isItemSelected</b></span>
+                        <a href="#isItemSelected"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>selectionChanged(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+<code>isItemSelected(item: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="59"
-                            class="link-to-prism">projects/ccf-eui/src/app/shared/components/dropdown/dropdown.component.ts:59</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="25"
+                            class="link-to-prism">projects/ccf-eui/src/app/shared/components/button-toggle/button-toggle.component.ts:25</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Updates the selected value.</p>
-</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -430,7 +315,75 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
-                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>item</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleSelection"></a>
+                    <span class="name">
+                        <span ><b>toggleSelection</b></span>
+                        <a href="#toggleSelection"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggleSelection(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="29"
+                            class="link-to-prism">projects/ccf-eui/src/app/shared/components/button-toggle/button-toggle.component.ts:29</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -445,10 +398,6 @@
                                     </td>
 
 
-                                    <td>
-                                        <p>The value that has been selected</p>
-
-                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -466,276 +415,98 @@
             </tr>
         </tbody>
     </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="toggleOptions"></a>
-                    <span class="name">
-                        <span ><b>toggleOptions</b></span>
-                        <a href="#toggleOptions"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>toggleOptions()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="50"
-                            class="link-to-prism">projects/ccf-eui/src/app/shared/components/dropdown/dropdown.component.ts:50</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Controls fade-in effect after dropdown menu opens</p>
-</div>
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</section>
-    <section data-compodoc="block-properties">
-    
-    <h3 id="inputs">
-        Properties
-    </h3>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="optionsVisible"></a>
-                    <span class="name">
-                        <span ><b>optionsVisible</b></span>
-                        <a href="#optionsVisible"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>&#x27;invisible&#x27;</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">projects/ccf-eui/src/app/shared/components/dropdown/dropdown.component.ts:38</a></div>
-                        </td>
-                    </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Determines if menu contents are visible (used for fade-in effect).</p>
-</div>
-                </td>
-            </tr>
-
-        </tbody>
-    </table>
 </section>
 
 </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from &#x27;@angular/core&#x27;;
-import { GoogleAnalyticsService } from &#x27;ngx-google-analytics&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output
+} from &#x27;@angular/core&#x27;;
 
-/**
- * Component for a dropdown menu.
- */
 @Component({
-  selector: &#x27;ccf-dropdown&#x27;,
-  templateUrl: &#x27;./dropdown.component.html&#x27;,
-  styleUrls: [&#x27;./dropdown.component.scss&#x27;],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  selector: &#x27;ccf-button-toggle&#x27;,
+  templateUrl: &#x27;./button-toggle.component.html&#x27;,
+  styleUrls: [&#x27;./button-toggle.component.scss&#x27;],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DropdownComponent {
+export class ButtonToggleComponent {
+  @Input() menuOptions: string[];
+
+  @Input() selectedItems?: string[] &#x3D; [];
 
   /**
-   * What the component is selecting for.
+   * Any time a button is clicked, event is emitted.
    */
-  @Input() label: string;
+  @Output() readonly selectionChange &#x3D; new EventEmitter&lt;string[]&gt;();
 
-  /**
-   * Choices displayed in the dropdown menu.
-   */
-  @Input() options: string[];
-
-  /**
-   * Current option selected.
-   */
-  @Input() selection: string;
-
-  /**
-   * Emits the new selected option when selection is changed.
-   */
-  @Output() readonly selectionChange &#x3D; new EventEmitter&lt;string&gt;();
-
-  /**
-   * Determines if menu contents are visible (used for fade-in effect).
-   */
-  optionsVisible &#x3D; &#x27;invisible&#x27;;
-
-  /**
-   * Creates an instance of dropdown component.
-   *
-   * @param ga Analytics service
-   */
-  constructor(private readonly ga: GoogleAnalyticsService) { }
-
-  /**
-   * Controls fade-in effect after dropdown menu opens
-   */
-  toggleOptions(): void {
-    this.optionsVisible &#x3D; this.optionsVisible &#x3D;&#x3D;&#x3D; &#x27;visible&#x27; ? &#x27;invisible&#x27; : &#x27;visible&#x27;;
+  isItemSelected(item: string) {
+    return this.selectedItems?.includes(item);
   }
 
-  /**
-   * Updates the selected value.
-   *
-   * @param value The value that has been selected
-   */
-  selectionChanged(value: string): void {
-    this.selection &#x3D; value;
-    this.ga.event(&#x27;selection_change&#x27;, &#x27;dropdown&#x27;, &#x60;${this.label}:${value}&#x60;);
-    this.selectionChange.emit(value);
+  toggleSelection(value: string): void {
+    if (this.isItemSelected(value)) {
+      this.selectedItems &#x3D; this.selectedItems?.filter(
+        (el) &#x3D;&gt; el !&#x3D; value
+      );
+    } else {
+      this.selectedItems?.push(value);
+    }
+    this.selectionChange.emit(this.selectedItems);
   }
 }
 </code></pre>
     </div>
 
     <div class="tab-pane fade " id="templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;ccf-dropdown wrapper&quot;&gt;
-  &lt;div class&#x3D;&quot;container&quot;&gt;
-    &lt;mat-form-field class&#x3D;&quot;dropdown-form-field&quot; subscriptSizing&#x3D;&quot;dynamic&quot;&gt;
-      &lt;div class&#x3D;&quot;label&quot;&gt;
-        {{ label }}
-      &lt;/div&gt;
-      &lt;mat-select class&#x3D;&quot;selected-value&quot; [value]&#x3D;&quot;selection&quot; (selectionChange)&#x3D;&quot;selectionChanged($event.value)&quot;
-                  disableOptionCentering&#x3D;true panelClass&#x3D;&quot;option-panel&quot; (openedChange)&#x3D;&quot;toggleOptions()&quot;
-                  disableRipple&#x3D;true hideSingleSelectionIndicator&#x3D;&quot;true&quot;&gt;
-        &lt;mat-option *ngFor&#x3D;&quot;let option of options&quot; [value]&#x3D;&quot;option&quot;&gt;
-          &lt;div class&#x3D;&quot;{{optionsVisible}}&quot;&gt;
-            {{ option }}
-          &lt;/div&gt;
-        &lt;/mat-option&gt;
-      &lt;/mat-select&gt;
-    &lt;/mat-form-field&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;mat-button-toggle-group class&#x3D;&quot;toggleGroup&quot; name&#x3D;&quot;menuOptions&quot; aria-label&#x3D;&quot;menuOptions&quot; multiple&gt;
+  &lt;mat-button-toggle
+  [class.selected]&#x3D;&quot;isItemSelected(item)&quot;
+  *ngFor&#x3D;&quot;let item of menuOptions&quot;
+  [value]&#x3D;&quot;item&quot;
+  (change)&#x3D;&quot;toggleSelection($event.value)&quot;
+  &gt;
+    &lt;mat-icon [class.hidden]&#x3D;&quot;!isItemSelected(item)&quot;&gt;done&lt;/mat-icon&gt;
+    &lt;span&gt; {{item}}&lt;/span&gt;
+  &lt;/mat-button-toggle&gt;
+&lt;/mat-button-toggle-group&gt;
 </code></pre>
     </div>
 
     <div class="tab-pane fade " id="styleData">
                 <p class="comment">
-                    <code>./dropdown.component.scss</code>
+                    <code>./button-toggle.component.scss</code>
                 </p>
-                <pre class="line-numbers"><code class="language-scss">@keyframes slideInHorizontalDropdown {
-  from {
-    width: 0;
+                <pre class="line-numbers"><code class="language-scss">:host {
+  font-family: &quot;Inter&quot;;
+  font-weight: 400;
+  font-size: 0.875rem;
+  .hidden {
+    visibility: hidden;
   }
-  to {
-    width: 9.85rem;
+  mat-button-toggle {
+    text-align: center;
+    width: inherit;
+    line-height: 0px;
   }
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
+  .mat-button-toggle-checked {
+    background-color: rgb(255, 255, 255);
   }
-  100% {
-    opacity: 1;
+  .selected {
+    background-color: #c2cae5;
   }
-}
-
-.dropdown-form-field {
-  width: 100%;
-  height: 3rem;
-
-  ::ng-deep .mat-mdc-text-field-wrapper {
-    padding-left: 0.25rem;
-    padding-right: 0.25rem;
-
-    .mat-mdc-form-field-flex {
-      .mat-mdc-form-field-infix {
-        font-size: 0.875rem;
-        border: none;
-
-        .label {
-          height: 19.25px;
-        }
-
-        mat-select {
-          font-size: 1rem;
-          font-weight: bold;
-
-          .mat-mdc-select-arrow-wrapper {
-            position: relative;
-            bottom: 0.25rem;
-            right: 0.25rem;
-          }
-        }
-      }
-    }
-
-    .mdc-line-ripple::before {
-      border-bottom-width: 2px;
-    }
+  .toggleGroup {
+    border-radius: 35px;
+    width: 100%;
+    overflow-x: auto;
   }
-}
-
-.visible {
-  animation: fadeIn 0.3s;
-  transition-delay: .275s;
-  animation-delay: .275s;
-}
-
-.invisible {
-  opacity: 0;
-}
-
-::ng-deep .option-panel {
-  animation: slideInHorizontalDropdown .3s;
-  animation-fill-mode: forwards;
-  max-width: 9.5rem;
-  padding: 0 !important;
-
-  mat-option {
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    padding-left: 1em;
-    font-size: 16px;
-  }
-
-  :last-child {
-    border-bottom: none;
-  }
-}
-
-::ng-deep .cdk-overlay-pane {
-  min-width: 0rem !important;
-}
-
-::ng-deep .ccf-dropdown {
-  .mat-select-arrow-wrapper {
-    transform: translatey(-.5em);
+  ::ng-deep .mat-button-toggle-label-content {
+    line-height: 2rem !important;
   }
 }
 </code></pre>
@@ -766,10 +537,10 @@ export class DropdownComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="ccf-dropdown wrapper">  <div class="container">    <mat-form-field class="dropdown-form-field" subscriptSizing="dynamic">      <div class="label">        {{ label }}      </div>      <mat-select class="selected-value" [value]="selection" (selectionChange)="selectionChanged($event.value)"                  disableOptionCentering=true panelClass="option-panel" (openedChange)="toggleOptions()"                  disableRipple=true hideSingleSelectionIndicator="true">        <mat-option *ngFor="let option of options" [value]="option">          <div class="{{optionsVisible}}">            {{ option }}          </div>        </mat-option>      </mat-select>    </mat-form-field>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><mat-button-toggle-group class="toggleGroup" name="menuOptions" aria-label="menuOptions" multiple>  <mat-button-toggle  [class.selected]="isItemSelected(item)"  *ngFor="let item of menuOptions"  [value]="item"  (change)="toggleSelection($event.value)"  >    <mat-icon [class.hidden]="!isItemSelected(item)">done</mat-icon>    <span> {{item}}</span>  </mat-button-toggle></mat-button-toggle-group></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppWebComponent', 'selector': 'ccf-root-wc'},{'name': 'ButtonToggleComponent', 'selector': 'ccf-button-toggle'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DonorCardComponent', 'selector': 'ccf-donor-card'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'RunSpatialSearchComponent', 'selector': 'ccf-run-spatial-search'},{'name': 'SpatialSearchConfigBehaviorComponent', 'selector': 'ccf-spatial-search-config-behavior'},{'name': 'SpatialSearchConfigComponent', 'selector': 'ccf-spatial-search-config'},{'name': 'SpatialSearchKeyboardUIBehaviorComponent', 'selector': 'ccf-spatial-search-keyboard-ui-behavior'},{'name': 'SpatialSearchKeyboardUIComponent', 'selector': 'ccf-spatial-search-keyboard-ui'},{'name': 'SpatialSearchUiBehaviorComponent', 'selector': 'ccf-spatial-search-ui-behavior'},{'name': 'SpatialSearchUiComponent', 'selector': 'ccf-spatial-search-ui'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'TermOccurrenceListComponent', 'selector': 'ccf-term-occurrence-list'},{'name': 'ThumbnailCarouselComponent', 'selector': 'ccf-thumbnail-carousel'},{'name': 'TissueBlockListComponent', 'selector': 'ccf-tissue-block-list'},{'name': 'TissueSectionVisComponent', 'selector': 'ccf-tissue-section-vis'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ViewerComponent', 'selector': 'ccf-viewer'}];
     var DIRECTIVES = [];
-    var ACTUAL_COMPONENT = {'name': 'DropdownComponent'};
+    var ACTUAL_COMPONENT = {'name': 'ButtonToggleComponent'};
 </script>
 <script src="../js/tree.js"></script>
 
@@ -815,7 +586,7 @@ export class DropdownComponent {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
-            var COMPODOC_CURRENT_PAGE_URL = 'DropdownComponent.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'ButtonToggleComponent.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

@@ -381,7 +381,15 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Injector, OnInit, ViewChild } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  Injector,
+  OnInit,
+  ViewChild,
+} from &#x27;@angular/core&#x27;;
 import { MatSnackBar } from &#x27;@angular/material/snack-bar&#x27;;
 import { Dispatch } from &#x27;@ngxs-labs/dispatch-decorator&#x27;;
 import { Select } from &#x27;@ngxs/store&#x27;;
@@ -401,7 +409,10 @@ import { DataStateSelectors } from &#x27;./core/store/data/data.selectors&#x27;;
 import { DataQueryState, DataState } from &#x27;./core/store/data/data.state&#x27;;
 import { ListResultsState } from &#x27;./core/store/list-results/list-results.state&#x27;;
 import { SceneState } from &#x27;./core/store/scene/scene.state&#x27;;
-import { RemoveSearch, SetSelectedSearches } from &#x27;./core/store/spatial-search-filter/spatial-search-filter.actions&#x27;;
+import {
+  RemoveSearch,
+  SetSelectedSearches,
+} from &#x27;./core/store/spatial-search-filter/spatial-search-filter.actions&#x27;;
 import { SpatialSearchFilterSelectors } from &#x27;./core/store/spatial-search-filter/spatial-search-filter.selectors&#x27;;
 import { SpatialSearchFilterItem } from &#x27;./core/store/spatial-search-filter/spatial-search-filter.state&#x27;;
 import { FiltersPopoverComponent } from &#x27;./modules/filters/filters-popover/filters-popover.component&#x27;;
@@ -437,6 +448,9 @@ export class AppComponent implements OnInit {
   @Select(DataStateSelectors.anatomicalStructuresTreeModel)
   readonly ontologyTreeModel$: Observable&lt;OntologyTreeModel&gt;;
 
+  @Select(DataStateSelectors.biomarkersTreeModel)
+  readonly biomarkersTreeModel$: Observable&lt;OntologyTreeModel&gt;;
+
   @Select(SpatialSearchFilterSelectors.items)
   readonly selectableSearches$: Observable&lt;SpatialSearchFilterItem&gt;;
 
@@ -446,6 +460,7 @@ export class AppComponent implements OnInit {
   @Dispatch()
   readonly removeSpatialSearch &#x3D; actionAsFn(RemoveSearch);
 
+  menuOptions: string[] &#x3D; [&#x27;AS&#x27;, &#x27;CT&#x27;, &#x27;B&#x27;];
   /**
    * Used to keep track of the ontology label to be passed down to the
    * results-browser component.
@@ -455,6 +470,8 @@ export class AppComponent implements OnInit {
   cellTypeSelectionLabel &#x3D; &#x27;cell&#x27;;
 
   selectionLabel &#x3D; &#x27;body | cell&#x27;;
+
+  selectedtoggleOptions: string[] &#x3D; [];
 
   /**
    * Whether or not organ carousel is open
@@ -507,11 +524,18 @@ export class AppComponent implements OnInit {
    * @param data The data state.
    */
   constructor(
-    el: ElementRef&lt;HTMLElement&gt;, injector: Injector,
-    readonly data: DataState, readonly theming: ThemingService,
-    readonly scene: SceneState, readonly listResultsState: ListResultsState,
-    readonly consentService: ConsentService, readonly snackbar: MatSnackBar, overlay: AppRootOverlayContainer,
-    readonly dataSource: DataSourceService, private readonly globalConfig: GlobalConfigState&lt;AppOptions&gt;, cdr: ChangeDetectorRef
+    el: ElementRef&lt;HTMLElement&gt;,
+    injector: Injector,
+    readonly data: DataState,
+    readonly theming: ThemingService,
+    readonly scene: SceneState,
+    readonly listResultsState: ListResultsState,
+    readonly consentService: ConsentService,
+    readonly snackbar: MatSnackBar,
+    overlay: AppRootOverlayContainer,
+    readonly dataSource: DataSourceService,
+    private readonly globalConfig: GlobalConfigState&lt;AppOptions&gt;,
+    cdr: ChangeDetectorRef
   ) {
     theming.initialize(el, injector);
     overlay.setRootElement(el);
@@ -519,6 +543,7 @@ export class AppComponent implements OnInit {
     data.aggregateData$.subscribe();
     data.ontologyTermOccurencesData$.subscribe();
     data.cellTypeTermOccurencesData$.subscribe();
+    data.biomarkerTermOccurencesData$.subscribe();
     data.sceneData$.subscribe();
     data.filter$.subscribe();
     data.technologyFilterData$.subscribe();
@@ -537,6 +562,7 @@ export class AppComponent implements OnInit {
         cdr.markForCheck();
       }
     );
+    this.selectedtoggleOptions&#x3D;this.menuOptions;
   }
 
   ngOnInit(): void {
@@ -606,7 +632,7 @@ export class AppComponent implements OnInit {
    *
    * @param ontologySelection the list of currently selected organ nodes
    */
-  ontologySelected(ontologySelection: OntologySelection[] | undefined, type: &#x27;anatomical-structures&#x27; | &#x27;cell-type&#x27;): void {
+  ontologySelected(ontologySelection: OntologySelection[] | undefined, type: &#x27;anatomical-structures&#x27; | &#x27;cell-type&#x27; | &#x27;biomarkers&#x27;): void {
     if (ontologySelection) {
       if (type &#x3D;&#x3D;&#x3D; &#x27;anatomical-structures&#x27;) {
         this.data.updateFilter({ ontologyTerms: ontologySelection.map(selection &#x3D;&gt; selection.id) });
@@ -690,6 +716,14 @@ export class AppComponent implements OnInit {
   get loggedIn(): boolean {
     const token &#x3D; this.globalConfig.snapshot.hubmapToken ?? &#x27;&#x27;;
     return token.length &gt; 0;
+  }
+
+  isItemSelected(item: string) {
+    return this.selectedtoggleOptions.includes(item);
+  }
+
+  toggleSelection(value) {
+    this.selectedtoggleOptions &#x3D; value;
   }
 }
 </code></pre>

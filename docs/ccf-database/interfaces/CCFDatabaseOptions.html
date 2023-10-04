@@ -523,7 +523,7 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { delMany, get, setMany } from &#x27;idb-keyval&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import * as idb from &#x27;idb-keyval&#x27;;
 import { JsonLd } from &#x27;jsonld/jsonld-spec&#x27;;
 import hash from &#x27;object-hash&#x27;;
 import {
@@ -536,14 +536,17 @@ import { searchHubmap } from &#x27;./hubmap/hubmap-data-import&#x27;;
 import { AggregateResult, DatabaseStatus, Filter, OntologyTreeModel, TissueBlockResult } from &#x27;./interfaces&#x27;;
 import { getAggregateResults, getDatasetTechnologyNames, getProviderNames } from &#x27;./queries/aggregate-results-n3&#x27;;
 import { findIds } from &#x27;./queries/find-ids-n3&#x27;;
-import { getCellTypeTermOccurences, getOntologyTermOccurences } from &#x27;./queries/ontology-term-occurences-n3&#x27;;
-import { getAnatomicalStructureTreeModel, getCellTypeTreeModel } from &#x27;./queries/ontology-tree-n3&#x27;;
+import { getBiomarkerTermOccurences, getCellTypeTermOccurences, getOntologyTermOccurences } from &#x27;./queries/ontology-term-occurences-n3&#x27;;
+import { getAnatomicalStructureTreeModel, getBiomarkersTreeModel, getCellTypeTreeModel } from &#x27;./queries/ontology-tree-n3&#x27;;
 import { getSpatialEntityForEntity } from &#x27;./queries/spatial-result-n3&#x27;;
 import { getTissueBlockResult } from &#x27;./queries/tissue-block-result-n3&#x27;;
 import { FlatSpatialPlacement, SpatialEntity } from &#x27;./spatial-types&#x27;;
 import { CCFDatabaseStatusTracker } from &#x27;./util/ccf-database-status-tracker&#x27;;
 import { patchJsonLd } from &#x27;./util/patch-jsonld&#x27;;
 import { enrichRuiLocations } from &#x27;./util/enrich-rui-locations&#x27;;
+import { getBmLocatedInAs } from &#x27;./util/enrich-bm-located-in-as&#x27;;
+
+const { delMany, get, setMany } &#x3D; idb;
 
 
 /** Database initialization options. */
@@ -680,6 +683,10 @@ export class CCFDatabase {
     } else if (ccfOwlUrl?.length &gt; 0) {
       sources.push(ccfOwlUrl);
     }
+
+    // Add a direct edge between BM and AS for queries
+    sources.push(await getBmLocatedInAs());
+
     if (this.options.hubmapDataUrl) {
       if (this.options.hubmapDataUrl.endsWith(&#x27;jsonld&#x27;)) {
         sources.push(this.options.hubmapDataUrl);
@@ -865,6 +872,17 @@ export class CCFDatabase {
   }
 
   /**
+   * Get number of occurrences of cell type terms for a set of ids.
+   *
+   * @param [filter] The filter.
+   * @returns Cell type term counts.
+   */
+  async getBiomarkerTermOccurences(filter?: Filter): Promise&lt;Record&lt;string, number&gt;&gt; {
+    return getBiomarkerTermOccurences(this.getIds(filter), this.store);
+  }
+
+
+  /**
    * Get ontology term tree nodes
    *
    * @returns Ontology term counts.
@@ -880,6 +898,15 @@ export class CCFDatabase {
    */
   async getCellTypeTreeModel(): Promise&lt;OntologyTreeModel&gt; {
     return getCellTypeTreeModel(this.store);
+  }
+
+  /**
+   * Get biomarker tree nodes
+   *
+   * @returns Ontology term counts.
+   */
+  async getBiomarkersTreeModel(): Promise&lt;OntologyTreeModel&gt; {
+    return getBiomarkersTreeModel(this.store);
   }
 
   /**

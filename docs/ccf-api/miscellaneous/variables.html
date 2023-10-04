@@ -505,6 +505,8 @@
   .get(&#x27;/aggregate-results&#x27;, forwardDatabaseQuery(&#x27;getAggregateResults&#x27;))
   .get(&#x27;/ontology-term-occurences&#x27;, forwardDatabaseQuery(&#x27;getOntologyTermOccurences&#x27;))
   .get(&#x27;/cell-type-term-occurences&#x27;, forwardDatabaseQuery(&#x27;getCellTypeTermOccurences&#x27;))
+  .get(&#x27;/biomarker-tree-model&#x27;, forwardDatabaseQuery(&#x27;getBiomarkersTreeModel&#x27;))
+  .get(&#x27;/biomarker-term-occurences&#x27;, forwardDatabaseQuery(&#x27;getBiomarkerTermOccurences&#x27;))
   .get(&#x27;/ontology-tree-model&#x27;, useCachedResult(&#x27;ontology-tree-model.json&#x27;), forwardDatabaseQuery(&#x27;getOntologyTreeModel&#x27;))
   .get(&#x27;/cell-type-tree-model&#x27;, useCachedResult(&#x27;cell-type-tree-model.json&#x27;), forwardDatabaseQuery(&#x27;getCellTypeTreeModel&#x27;))
   .get(&#x27;/reference-organs&#x27;, useCachedResult(&#x27;reference-organs.json&#x27;), forwardDatabaseQuery(&#x27;getReferenceOrgans&#x27;))
