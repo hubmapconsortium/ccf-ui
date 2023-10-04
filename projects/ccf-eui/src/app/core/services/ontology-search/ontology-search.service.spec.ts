@@ -1,3 +1,0 @@
-describe('OntologySearchService', () => {
-  // Add tests
-});

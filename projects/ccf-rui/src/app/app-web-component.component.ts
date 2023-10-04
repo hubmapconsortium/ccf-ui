@@ -16,6 +16,15 @@ export type CancelRegistrationCallback = () => void;
 export type FetchPreviousRegistrationsCallback = () => ObservableInput<Record<string, unknown>[]>;
 
 
+function parseOrgan(value: unknown): string | Organ {
+  try {
+    return BUILTIN_PARSERS.json(value) as Organ;
+  } catch {
+    return '' + value;
+  }
+}
+
+
 @Component({
   selector: 'ccf-root-wc',
   template: '<ccf-root *ngIf="initialized"></ccf-root>',
@@ -35,6 +44,7 @@ export class AppWebComponent extends BaseWebComponent {
   @Input() header: string | boolean;
   @Input() homeUrl: string;
   @Input() logoTooltip: string;
+  @Input() organOptions: string | string[];
 
   initialized: boolean;
 
@@ -45,8 +55,6 @@ export class AppWebComponent extends BaseWebComponent {
     const BP = BUILTIN_PARSERS;
 
     super(configStore, cdr, {
-      initialDelay: 500,
-
       initialConfig: {
         ...environment.dbOptions,
         ...globalThis['ruiConfig' as string],
@@ -55,13 +63,14 @@ export class AppWebComponent extends BaseWebComponent {
       parse: {
         useDownload: BP.boolean,
         user: BP.json,
-        organ: BP.json,
+        organ: parseOrgan,
         editRegistration: BP.json,
         register: BP.function,
         cancelRegistration: BP.function,
         fetchPreviousRegistrations: BP.function,
         skipUnsavedChangesConfirmation: BP.boolean,
         header: BP.boolean,
+        organOptions: BP.stringArray
       }
     });
   }

@@ -12,9 +12,24 @@ import { ReferenceDataState } from '../reference-data/reference-data.state';
 import { GLOBAL_CONFIG, GlobalConfig } from './../../services/config/config';
 import { ModelState, SlicesConfig, ViewSide, ViewType, XYZTriplet } from './model.state';
 
+const initialReferenceDataState = {
+  organIRILookup: {},
+  organSpatialEntities: {},
+  anatomicalStructures: {},
+  extractionSets: {},
+  sceneNodeLookup: {},
+  simpleSceneNodeLookup: {},
+  placementPatches: {}
+};
 
 function nextValue<T>(obs: Observable<T>): Promise<T> {
   return lastValueFrom(obs.pipe(take(1)));
+}
+
+function wait(duration = 0): Promise<void> {
+  return new Promise(resolve => {
+    setTimeout(resolve, duration);
+  });
 }
 
 
@@ -27,7 +42,7 @@ describe('ModelState', () => {
   let state: ModelState;
   let mockGlobalConfig: jasmine.SpyObj<GlobalConfig>;
 
-  beforeEach(() => {
+  beforeEach(async () => {
     mockDataSource = jasmine.createSpyObj<ReferenceDataState>('ReferenceDataState', ['getReferenceOrganIri']);
     mockDataSource.getReferenceOrganIri.and.returnValue(undefined);
     mockGlobalConfig = jasmine.createSpyObj<GlobalConfig>('GlobalConfig', ['organ']);
@@ -46,7 +61,12 @@ describe('ModelState', () => {
       ],
       providers: [
         GlobalConfigState,
-        { provide: ReferenceDataState, useValue: mockDataSource },
+        { provide: ReferenceDataState,
+          useValue: {
+            ...mockDataSource,
+            state$: of(initialReferenceDataState)
+          }
+        },
         {
           provide: GLOBAL_CONFIG,
           useValue: mockGlobalConfig
@@ -111,11 +131,15 @@ describe('ModelState', () => {
   });
 
   it('has the latest organ', async () => {
+    state.ngxsOnInit();
+    await wait(500);
     const value = await nextValue(state.organ$);
     expect(value?.src).toEqual('app:kidney-left');
   });
 
   it('has the latest sex', async () => {
+    state.ngxsOnInit();
+    await wait(500);
     const value = await nextValue(state.sex$);
     expect(value).toEqual('female');
   });

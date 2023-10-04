@@ -1,21 +1,19 @@
-import { Injectable, Injector } from '@angular/core';
 import { Computed, DataAction, StateRepository } from '@angular-ru/ngxs/decorators';
 import { NgxsImmutableDataRepository } from '@angular-ru/ngxs/repositories';
+import { Injectable, Injector } from '@angular/core';
 import { State } from '@ngxs/store';
 import { ALL_ORGANS, GlobalConfigState, OrganInfo } from 'ccf-shared';
 import { filterNulls } from 'ccf-shared/rxjs-ext/operators';
 import { sortBy } from 'lodash';
+import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { EMPTY, Observable } from 'rxjs';
-import {
-  debounceTime, delay, distinctUntilChanged, filter, map, skipUntil, switchMap, take, tap, throttleTime,
-} from 'rxjs/operators';
+import { delay, distinctUntilChanged, filter, map, skipUntil, switchMap, tap, throttleTime } from 'rxjs/operators';
 
 import { ExtractionSet } from '../../models/extraction-set';
 import { VisibilityItem } from '../../models/visibility-item';
-import { GlobalConfig } from '../../services/config/config';
+import { GlobalConfig, OrganConfig } from '../../services/config/config';
 import { PageState } from '../page/page.state';
 import { ReferenceDataState } from '../reference-data/reference-data.state';
-import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 
 /* eslint-disable @typescript-eslint/member-ordering */
@@ -197,41 +195,7 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
     this.referenceData = this.injector.get(ReferenceDataState);
     this.page = this.injector.get(PageState);
 
-    this.globalConfig.getOption('organ').pipe(
-      filterNulls(),
-      switchMap(organConfig => {
-        const organName = organConfig.name.toLowerCase();
-        const organSide = organConfig.side;
-        const ontologyId = organConfig.ontologyId;
-        // check for an id match
-        let organInfo = this.idMatches(ontologyId, organSide);
-        // if no id matches, check for a name match
-        if (!organInfo) {
-          organInfo = this.nameMatches(organName, organSide);
-        }
-        if (organInfo) {
-          this.ctx.patchState({
-            organ: organInfo,
-            sex: organConfig.sex?.toLowerCase() as 'male' | 'female',
-            side: organInfo?.side?.toLowerCase() as 'left' | 'right'
-          });
-          return this.referenceData.state$.pipe(
-            debounceTime(100),
-            take(1),
-            delay(200),
-            tap(() => this.onOrganIriChange())
-          );
-        }
-        return EMPTY;
-      })
-    ).subscribe();
-
-    this.modelChanged$.pipe(
-      skipUntil(this.page.registrationStarted$.pipe(
-        filter(started => started),
-        delay(5)
-      ))
-    ).subscribe(() => this.page.setHasChanges());
+    this.referenceData.state$.subscribe(() => this.onReferenceDataChange());
   }
 
   idMatches(ontologyId?: string, organSide?: string): OrganInfo | undefined {
@@ -321,12 +285,14 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
    */
   @DataAction()
   setOrgan(organ: OrganInfo): void {
-    this.ga.event('organ_select', 'organ', organ.name);
-    this.ctx.patchState({ organ });
-    if (organ.side) {
-      this.ctx.patchState({ side: organ.side });
+    if (organ) {
+      this.ga.event('organ_select', 'organ', organ.name);
+      this.ctx.patchState({ organ });
+      if (organ.side) {
+        this.ctx.patchState({ side: organ.side });
+      }
+      this.onOrganIriChange();
     }
-    this.onOrganIriChange();
   }
 
   /**
@@ -459,5 +425,53 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
 
     this.ctx.patchState({ organIri, organDimensions });
     this.ctx.patchState({ position: this.defaultPosition });
+  }
+
+  private onReferenceDataChange(): void {
+    this.globalConfig.getOption('organ').pipe(
+      filterNulls(),
+      delay(0),
+      switchMap(organ => this.onOrganChange(organ))
+    ).subscribe();
+
+    this.modelChanged$.pipe(
+      skipUntil(this.page.registrationStarted$.pipe(
+        filter(started => started),
+      ))
+    ).subscribe(() => this.page.setHasChanges());
+  }
+
+  private onOrganChange(organ: string | OrganConfig): Observable<unknown> {
+    let organInfo: OrganInfo | undefined;
+    let organSex: 'male' | 'female';
+    if (typeof organ === 'string') {
+      const organData = this.referenceData.getOrganData(organ);
+      organSex = organData?.sex?.toLowerCase() as 'male' | 'female';
+      organInfo = organData?.organ;
+    } else {
+      const organName = organ.name.toLowerCase();
+      const organSide = organ.side;
+      const ontologyId = organ.ontologyId;
+      organSex = organ.sex?.toLowerCase() as 'male' | 'female';
+      // check for an id match
+      organInfo = this.idMatches(ontologyId, organSide);
+      // if no id matches, check for a name match
+      if (!organInfo) {
+        organInfo = this.nameMatches(organName, organSide);
+      }
+    }
+
+    if (organInfo) {
+      this.ctx.patchState({
+        organ: organInfo,
+        sex: organSex,
+        side: organInfo?.side?.toLowerCase() as 'left' | 'right'
+      });
+      return this.referenceData.state$.pipe(
+        tap(() => this.onOrganIriChange())
+      );
+    }
+
+    return EMPTY;
   }
 }

@@ -1,15 +1,15 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/naming-convention */
-import { Injectable, Injector } from '@angular/core';
-import { Matrix4, toRadians } from '@math.gl/core';
 import { Computed, StateRepository } from '@angular-ru/ngxs/decorators';
 import { NgxsImmutableDataRepository } from '@angular-ru/ngxs/repositories';
+import { Injectable, Injector } from '@angular/core';
+import { Matrix4, toRadians } from '@math.gl/core';
 import { NgxsOnInit, State } from '@ngxs/store';
 import { AABB, Vec3 } from 'cannon-es';
 import { SpatialEntityJsonLd, SpatialSceneNode } from 'ccf-body-ui';
 import { combineLatest, Observable, of } from 'rxjs';
-import { debounceTime, filter, map } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 
 import { environment } from '../../../../environments/environment';
 import { ModelState } from '../model/model.state';
@@ -80,7 +80,6 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
   @Computed()
   get referenceOrganNodes$(): Observable<SpatialSceneNode[]> {
     return combineLatest([this.model.anatomicalStructures$, this.model.extractionSites$, this.model.organIri$]).pipe(
-      debounceTime(400),
       map(([anatomicalStructures, extractionSites, organIri]) =>
         this.createSceneNodes(organIri as string, [...anatomicalStructures, ...extractionSites] as VisibilityItem[])
       )
