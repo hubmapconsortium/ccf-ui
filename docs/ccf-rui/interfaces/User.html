@@ -183,15 +183,24 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Injector, OnDestroy, OnInit, HostListener } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  HostListener,
+  Injector,
+  OnDestroy,
+  OnInit,
+} from &#x27;@angular/core&#x27;;
 import { MatSnackBar } from &#x27;@angular/material/snack-bar&#x27;;
-import { GlobalConfigState, TrackingPopupComponent } from &#x27;ccf-shared&#x27;;
+import { GlobalConfigState, OrganInfo, TrackingPopupComponent } from &#x27;ccf-shared&#x27;;
 import { ConsentService } from &#x27;ccf-shared/analytics&#x27;;
-import { combineLatest, Subscription, ReplaySubject } from &#x27;rxjs&#x27;;
+import { combineLatest, ReplaySubject, Subscription } from &#x27;rxjs&#x27;;
 
 import { GlobalConfig } from &#x27;./core/services/config/config&#x27;;
 import { ThemingService } from &#x27;./core/services/theming/theming.service&#x27;;
-import { ModelState, RUI_ORGANS } from &#x27;./core/store/model/model.state&#x27;;
+import { ModelState } from &#x27;./core/store/model/model.state&#x27;;
 import { PageState } from &#x27;./core/store/page/page.state&#x27;;
 
 export interface User {
@@ -217,7 +226,7 @@ interface AppOptions extends GlobalConfig {
 })
 export class AppComponent implements OnDestroy, OnInit {
   /** Organs to be displayed in the organ selector */
-  organList &#x3D; RUI_ORGANS;
+  organList: OrganInfo[];
 
   /** True if the organ selector drawer is open */
   open &#x3D; true;
@@ -272,6 +281,9 @@ export class AppComponent implements OnDestroy, OnInit {
     });
     this.globalConfig.getOption(&#x27;logoTooltip&#x27;).subscribe((tooltip: string) &#x3D;&gt; {
       this.logoTooltip &#x3D; tooltip;
+    });
+    this.page.organOptions$.subscribe((options: OrganInfo[]) &#x3D;&gt; {
+      this.organList &#x3D; options;
     });
 
     combineLatest([this.theme$, this.themeMode$]).subscribe(

@@ -98,6 +98,10 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#getLatestIri" >getLatestIri</a>
+                            </li>
+                            <li>
                                 <a href="#getOrganData" >getOrganData</a>
                             </li>
                             <li>
@@ -191,6 +195,77 @@
     <h3 id="methods">
         Methods
     </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getLatestIri"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>getLatestIri</b></span>
+                        <a href="#getLatestIri"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getLatestIri(organ?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="176"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/reference-data/reference-data.state.ts:176</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>organ</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -689,7 +764,7 @@ export class ReferenceDataState extends NgxsImmutableDataRepository&lt;Reference
     // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
     const lookup &#x3D; [organ, sex, side || organInfo?.side].join(&#x27;|&#x27;).toUpperCase();
     const key &#x3D; Object.keys(db.organIRILookup).find((code) &#x3D;&gt; code.toUpperCase().endsWith(lookup));
-    return key ? db.organIRILookup[key] : undefined;
+    return this.getLatestIri(key ? db.organIRILookup[key] : undefined);
   }
 
   /**
@@ -699,8 +774,9 @@ export class ReferenceDataState extends NgxsImmutableDataRepository&lt;Reference
    * @returns A populated organ data if the IRI is valid, otherwise undefined
    */
   getOrganData(iri: string): OrganData | undefined {
+    const updatedIri &#x3D; this.getLatestIri(iri);
     const state &#x3D; this.snapshot;
-    const entity &#x3D; state.organSpatialEntities[iri];
+    const entity &#x3D; state.organSpatialEntities[updatedIri];
     if (!entity) {
       return undefined;
     }
@@ -716,6 +792,14 @@ export class ReferenceDataState extends NgxsImmutableDataRepository&lt;Reference
       sex: entity.sex?.toLowerCase() as &#x27;male&#x27; | &#x27;female&#x27;,
       side: entity.side?.toLowerCase() as &#x27;left&#x27; | &#x27;right&#x27;
     };
+  }
+
+  private getLatestIri(organ?: string): string {
+    if (!organ) {
+      return &#x27;&#x27;;
+    }
+    const organEntry &#x3D; this.snapshot.placementPatches[organ];
+    return organEntry ? this.getLatestIri(organEntry.target) : organ;
   }
 }
 </code></pre>

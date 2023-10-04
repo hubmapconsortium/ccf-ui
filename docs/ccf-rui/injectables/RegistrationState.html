@@ -151,11 +151,22 @@
                                 <a href="#ngxsOnInit" >ngxsOnInit</a>
                             </li>
                             <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#organListOptions" >organListOptions</a>
+                            </li>
+                            <li>
                                 <a href="#register" >register</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
                                 <a href="#setDisplayErrors" >setDisplayErrors</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#setOrganSelection" >setOrganSelection</a>
+                            </li>
+                            <li>
+                                <a href="#setToInitialRegistration" >setToInitialRegistration</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
@@ -220,7 +231,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="116" class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:116</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="118" class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:118</a></div>
                             </td>
                         </tr>
 
@@ -315,8 +326,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="222"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:222</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="226"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:226</a></div>
                 </td>
             </tr>
 
@@ -393,8 +404,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="319"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:319</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="339"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:339</a></div>
                 </td>
             </tr>
 
@@ -502,8 +513,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="285"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:285</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="305"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:305</a></div>
                 </td>
             </tr>
 
@@ -611,8 +622,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="159"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:159</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="167"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:167</a></div>
                 </td>
             </tr>
 
@@ -680,8 +691,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="228"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:228</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="241"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:241</a></div>
                 </td>
             </tr>
 
@@ -761,8 +772,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="134"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:134</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="136"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:136</a></div>
                 </td>
             </tr>
 
@@ -774,6 +785,85 @@
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="organListOptions"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>organListOptions</b></span>
+                        <a href="#organListOptions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>organListOptions(organOptions?: string[])</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="401"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:401</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Provides list of organ objects given an array of organ ids</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>organOptions</td>
+                                    <td>
+                                            <code>string[]</code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                    <td>
+                                        <p>array of organ ids</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../miscellaneous/typealiases.html#Organ" target="_self" >OrganInfo[]</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>list of organ info</p>
 
                     </div>
                 </td>
@@ -800,8 +890,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="250"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:250</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="263"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:263</a></div>
                 </td>
             </tr>
 
@@ -885,8 +975,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="212"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:212</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="216"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:216</a></div>
                 </td>
             </tr>
 
@@ -945,6 +1035,134 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="setOrganSelection"></a>
+                    <span class="name">
+                        <span class="modifier"></span>
+                        <span ><b>setOrganSelection</b></span>
+                        <a href="#setOrganSelection"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>setOrganSelection(ids: string[])</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@DataAction()<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="237"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:237</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Sets organ options in the RUI</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Default value</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ids</td>
+                                    <td>
+                                            <code>string[]</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>[]</code>
+                                    </td>
+
+                                    <td>
+                                        <p>list of organ ids</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setToInitialRegistration"></a>
+                    <span class="name">
+                        <span ><b>setToInitialRegistration</b></span>
+                        <a href="#setToInitialRegistration"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setToInitialRegistration()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="294"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:294</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Sets the state back to the initial registration</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="setUseRegistrationCallback"></a>
                     <span class="name">
                         <span class="modifier"></span>
@@ -970,8 +1188,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="202"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:202</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="206"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:206</a></div>
                 </td>
             </tr>
 
@@ -1048,8 +1266,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="372"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:372</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="392"
+                            class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:392</a></div>
                 </td>
             </tr>
 
@@ -1130,7 +1348,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:52</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:54</a></div>
                         </td>
                     </tr>
 
@@ -1157,7 +1375,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="110" class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:110</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="112" class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:112</a></div>
                         </td>
                     </tr>
 
@@ -1190,7 +1408,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="107" class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:107</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="109" class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:109</a></div>
                         </td>
                     </tr>
 
@@ -1223,7 +1441,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="116" class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:116</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="118" class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:118</a></div>
                         </td>
                     </tr>
 
@@ -1256,7 +1474,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="113" class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:113</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="115" class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:115</a></div>
                         </td>
                     </tr>
 
@@ -1291,7 +1509,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:56</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:58</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -1324,7 +1542,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:64</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:66</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -1357,7 +1575,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:71</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:73</a></div>
                                 </td>
                             </tr>
 
@@ -1379,7 +1597,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:81</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:83</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -1412,7 +1630,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:96</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:98</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -1445,7 +1663,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="102" class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:102</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:104</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -1478,7 +1696,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="241" class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:241</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="254" class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:254</a></div>
                                 </td>
                             </tr>
 
@@ -1490,13 +1708,13 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Immutable } from &#x27;@angular-ru/common/typings&#x27;;
-import { Injectable, Injector } from &#x27;@angular/core&#x27;;
 import { Computed, DataAction, StateRepository } from &#x27;@angular-ru/ngxs/decorators&#x27;;
 import { NgxsImmutableDataRepository } from &#x27;@angular-ru/ngxs/repositories&#x27;;
+import { Injectable, Injector } from &#x27;@angular/core&#x27;;
 import { State } from &#x27;@ngxs/store&#x27;;
 import { insertItem, patch } from &#x27;@ngxs/store/operators&#x27;;
 import { SpatialEntityJsonLd } from &#x27;ccf-body-ui&#x27;;
-import { GlobalConfigState } from &#x27;ccf-shared&#x27;;
+import { GlobalConfigState, OrganInfo } from &#x27;ccf-shared&#x27;;
 import { filterNulls } from &#x27;ccf-shared/rxjs-ext/operators&#x27;;
 import { saveAs } from &#x27;file-saver&#x27;;
 import { combineLatest, Observable } from &#x27;rxjs&#x27;;
@@ -1507,7 +1725,7 @@ import { Tag } from &#x27;../../models/anatomical-structure-tag&#x27;;
 import { MetaData } from &#x27;../../models/meta-data&#x27;;
 import { GlobalConfig } from &#x27;../../services/config/config&#x27;;
 import { AnatomicalStructureTagState } from &#x27;../anatomical-structure-tags/anatomical-structure-tags.state&#x27;;
-import { ModelState, ModelStateModel, XYZTriplet } from &#x27;../model/model.state&#x27;;
+import { ModelState, ModelStateModel, RUI_ORGANS, XYZTriplet } from &#x27;../model/model.state&#x27;;
 import { PageState, PageStateModel } from &#x27;../page/page.state&#x27;;
 import { ReferenceDataState } from &#x27;../reference-data/reference-data.state&#x27;;
 
@@ -1522,6 +1740,8 @@ export interface RegistrationStateModel {
   displayErrors: boolean;
   /** Previous registrations */
   registrations: Record&lt;string, unknown&gt;[];
+  /** Registration provided by user */
+  initialRegistration?: SpatialEntityJsonLd;
 }
 
 
@@ -1634,14 +1854,20 @@ export class RegistrationState extends NgxsImmutableDataRepository&lt;Registrati
     this.refData.state$.subscribe(() &#x3D;&gt; {
       this.globalConfig.config$.pipe(
         take(1),
-        tap(({ useDownload, register }) &#x3D;&gt; this.ctx.patchState({
-          useRegistrationCallback: !!(!useDownload &amp;&amp; register)
-        }))
+        tap(({ useDownload, register, organOptions }) &#x3D;&gt; {
+          this.ctx.patchState({
+            useRegistrationCallback: !!(!useDownload &amp;&amp; register),
+          });
+          this.setOrganSelection(organOptions as string[]);
+        })
       ).subscribe();
 
       this.globalConfig.getOption(&#x27;editRegistration&#x27;).pipe(
         filterNulls(),
-        tap(reg &#x3D;&gt; this.editRegistration(reg as SpatialEntityJsonLd))
+        tap(reg &#x3D;&gt; {
+          this.ctx.patchState({ initialRegistration: reg as SpatialEntityJsonLd });
+          this.editRegistration(reg as SpatialEntityJsonLd);
+        })
       ).subscribe();
     });
   }
@@ -1667,10 +1893,6 @@ export class RegistrationState extends NgxsImmutableDataRepository&lt;Registrati
     this.model.setBlockSize({ x: reg.x_dimension, y: reg.y_dimension, z: reg.z_dimension });
     this.model.setRotation({ x: place.x_rotation, y: place.y_rotation, z: place.z_rotation });
     this.model.setSlicesConfig({ thickness: reg.slice_thickness || NaN, numSlices: reg.slice_count || NaN });
-
-    await new Promise(r &#x3D;&gt; {
-      setTimeout(r, 1000);
-    });
 
     this.model.setPosition({ x: place.x_translation, y: place.y_translation, z: place.z_translation });
     const iris &#x3D; new Set&lt;string&gt;(reg.ccf_annotations);
@@ -1713,6 +1935,15 @@ export class RegistrationState extends NgxsImmutableDataRepository&lt;Registrati
     this.ctx.setState(patch({
       registrations: insertItem(registration as Immutable&lt;Record&lt;string, unknown&gt;&gt;)
     }));
+  }
+
+  /**
+   * Sets organ options in the RUI
+   * @param ids list of organ ids
+   */
+  @DataAction()
+  setOrganSelection(ids: string[] &#x3D; []): void {
+    this.page.patchState({ organOptions: this.organListOptions(ids) });
   }
 
   isDataValid(page: Immutable&lt;PageStateModel&gt;, model: Immutable&lt;ModelStateModel&gt;): boolean {
@@ -1763,6 +1994,13 @@ export class RegistrationState extends NgxsImmutableDataRepository&lt;Registrati
     this.addRegistration(jsonObj);
     this.setDisplayErrors(false);
     this.page.clearHasChanges();
+  }
+
+  /**
+   * Sets the state back to the initial registration
+   */
+  setToInitialRegistration() {
+    this.editRegistration(this.getState().initialRegistration as SpatialEntityJsonLd);
   }
 
   /**
@@ -1861,6 +2099,25 @@ export class RegistrationState extends NgxsImmutableDataRepository&lt;Registrati
    */
   private xyzTripletToString(xyz: XYZTriplet): string {
     return &#x60;${Math.round(xyz.x)}, ${Math.round(xyz.y)}, ${Math.round(xyz.z)}&#x60;;
+  }
+
+  /**
+   * Provides list of organ objects given an array of organ ids
+   * @param organOptions array of organ ids
+   * @returns list of organ info
+   */
+  private organListOptions(organOptions?: string[]): OrganInfo[] {
+    if (organOptions &amp;&amp; organOptions.length &gt; 0) {
+      return RUI_ORGANS.filter(organ &#x3D;&gt; {
+        if (!organ.id) {
+          return false;
+        } else {
+          return organOptions.includes(organ.id);
+        }
+      });
+    } else {
+      return RUI_ORGANS;
+    }
   }
 }
 </code></pre>

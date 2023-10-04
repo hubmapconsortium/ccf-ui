@@ -50,14 +50,23 @@
           "translation_units": "millimeter"
         }
       };
-
       window.addEventListener('DOMContentLoaded', () => {
         const rui = document.querySelector('ccf-rui');
         rui.baseHref = 'https://cdn.jsdelivr.net/gh/hubmapconsortium/ccf-ui@staging/rui/';
         rui.useDownload = true;
-        rui.user = {firstName: 'Jane', lastName: 'Doe'};
-        rui.organ = { name: 'kidney', side: '', sex: 'female' };
+
+        // User: can be json or stringified json
+        // rui.user = {firstName: 'Jane', lastName: 'Doe'};
+        // rui.user = '{"firstName": "Jane", "lastName": "Doe"}';
+
+        // Organ: can be id, json, or stringified json
+        // rui.organ = 'http://purl.org/ccf/latest/ccf.owl#VHFLeftKidney';
+        // rui.organ = {name: "Kidney", side: "left", sex: "female"};
+        // rui.organ = '{"name": "Kidney", "side": "left", "sex": "female"}';
+
+        // Alternatively, user can preload a preexisting registration
         rui.editRegistration = sampleRegistration;
+
         rui.register = (data) => {
           prompt('Copy the JSON code to clipboard', data);
         };
@@ -67,6 +76,10 @@
         rui.cancelRegistration = () => {
           window.location.href = 'https://ingest.hubmapconsortium.org/'
         };
+        // rui.organOptions = [
+        //   'http://purl.obolibrary.org/obo/UBERON_0000948',
+        //   'http://purl.obolibrary.org/obo/UBERON_0004538'
+        // ]
       });
     }
   </script>

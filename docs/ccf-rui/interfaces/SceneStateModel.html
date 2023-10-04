@@ -151,15 +151,15 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, Injector } from &#x27;@angular/core&#x27;;
-import { Matrix4, toRadians } from &#x27;@math.gl/core&#x27;;
-import { Computed, StateRepository } from &#x27;@angular-ru/ngxs/decorators&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Computed, StateRepository } from &#x27;@angular-ru/ngxs/decorators&#x27;;
 import { NgxsImmutableDataRepository } from &#x27;@angular-ru/ngxs/repositories&#x27;;
+import { Injectable, Injector } from &#x27;@angular/core&#x27;;
+import { Matrix4, toRadians } from &#x27;@math.gl/core&#x27;;
 import { NgxsOnInit, State } from &#x27;@ngxs/store&#x27;;
 import { AABB, Vec3 } from &#x27;cannon-es&#x27;;
 import { SpatialEntityJsonLd, SpatialSceneNode } from &#x27;ccf-body-ui&#x27;;
 import { combineLatest, Observable, of } from &#x27;rxjs&#x27;;
-import { debounceTime, filter, map } from &#x27;rxjs/operators&#x27;;
+import { filter, map } from &#x27;rxjs/operators&#x27;;
 
 import { environment } from &#x27;../../../../environments/environment&#x27;;
 import { ModelState } from &#x27;../model/model.state&#x27;;
@@ -230,7 +230,6 @@ export class SceneState extends NgxsImmutableDataRepository&lt;SceneStateModel&g
   @Computed()
   get referenceOrganNodes$(): Observable&lt;SpatialSceneNode[]&gt; {
     return combineLatest([this.model.anatomicalStructures$, this.model.extractionSites$, this.model.organIri$]).pipe(
-      debounceTime(400),
       map(([anatomicalStructures, extractionSites, organIri]) &#x3D;&gt;
         this.createSceneNodes(organIri as string, [...anatomicalStructures, ...extractionSites] as VisibilityItem[])
       )
