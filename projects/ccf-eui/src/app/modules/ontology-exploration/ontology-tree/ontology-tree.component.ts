@@ -125,6 +125,8 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
 
   @Input() menuOptions: string[];
 
+  @Input() tooltips: string[];
+
   selectedtoggleOptions: string[];
 
   /**

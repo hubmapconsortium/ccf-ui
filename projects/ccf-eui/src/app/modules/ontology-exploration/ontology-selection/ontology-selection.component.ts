@@ -58,9 +58,11 @@ export class OntologySelectionComponent implements OnChanges {
 
   currentNodes: string[];
 
-  menuOptions;
+  biomarkerMenuOptions;
   rootNode: OntologyTreeNode;
+  tooltips: string[];
   rootNode$: Observable<OntologyTreeNode>;
+  biomarkerLabelMap = new Map([['gene','BG',],['protein','BP'],['lipids','BL'],['metabolites','BM'],['proteoforms','BF']]);
   /**
    * Creates an instance of ontology selection component.
    *
@@ -73,8 +75,9 @@ export class OntologySelectionComponent implements OnChanges {
     this.rootNode$ = ontologySearchService.rootNode$.pipe(tap(rootNode => {
       this.rootNode = { ...rootNode };
       if (this.rootNode.id==='biomarkers') {
-        this.menuOptions = [...rootNode.children];
-        this.filterNodes(rootNode.children);
+        this.tooltips = [...rootNode.children];
+        this.biomarkerMenuOptions = [...rootNode.children].map(option=>this.biomarkerLabelMap.get(option));
+        this.filterNodes(this.biomarkerMenuOptions);
       }
     }));
   }
@@ -97,7 +100,7 @@ export class OntologySelectionComponent implements OnChanges {
 
   filterNodes(selectedTypes: string[]): void {
     const nodes = Object.values(this.treeModel.nodes);
-    const filteredNodes = nodes.filter(node => selectedTypes.includes(node.parent ?? '')).sort((node1, node2)=>node1.label.trim().toLowerCase()>node2.label.trim().toLowerCase() ? 1 : -1);
+    const filteredNodes = nodes.filter(node => selectedTypes.includes(this.biomarkerLabelMap.get(node.parent) ?? '')).sort((node1, node2)=>node1.label.trim().toLowerCase()>node2.label.trim().toLowerCase() ? 1 : -1);
     const rootNode = { ...this.rootNode };
     rootNode.children = filteredNodes.map(node => node.id);
     this.rootNode = { ...rootNode };

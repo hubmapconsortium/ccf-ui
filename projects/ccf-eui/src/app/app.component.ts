@@ -78,6 +78,7 @@ export class AppComponent implements OnInit {
   readonly removeSpatialSearch = actionAsFn(RemoveSearch);
 
   menuOptions: string[] = ['AS', 'CT', 'B'];
+  tooltips: string[] = ['Anatomical Structures', 'Cell Types', 'Biomarkers'];
   /**
    * Used to keep track of the ontology label to be passed down to the
    * results-browser component.

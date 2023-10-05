@@ -65,7 +65,7 @@
         occurenceData[node.original.id] || 0 }}</div>
     </div>
     <div class="biomarkers-toggle" *ngIf="showtoggle && node.original.id==='biomarkers'">
-      <ccf-button-toggle [menuOptions]="menuOptions" [selectedItems]="selectedtoggleOptions ?? menuOptions"
+      <ccf-button-toggle [tooltips]="tooltips" [enableTooltip]="true" [menuOptions]="menuOptions" [selectedItems]="selectedtoggleOptions ?? menuOptions"
         (selectionChange)="toggleSelection($event)"></ccf-button-toggle>
     </div>
   </mat-tree-node>

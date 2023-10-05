@@ -5,10 +5,14 @@
   .hidden {
     visibility: hidden;
   }
-  mat-button-toggle {
+  mat-button-toggle ::ng-deep{
     text-align: center;
     width: inherit;
     line-height: 0px;
+    .tooltip-content-container {
+      display: flex;
+      align-items: center;
+    }
   }
   .mat-button-toggle-checked {
     background-color: rgb(255, 255, 255);

@@ -17,6 +17,9 @@ export class ButtonToggleComponent {
 
   @Input() selectedItems?: string[] = [];
 
+  @Input() enableTooltip = false;
+  @Input() tooltips = [];
+
   /**
    * Any time a button is clicked, event is emitted.
    */
