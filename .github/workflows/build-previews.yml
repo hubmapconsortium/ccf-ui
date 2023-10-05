@@ -54,12 +54,15 @@ jobs:
           mkdir -p dist/ccf-ui
           cp -r dist/ccf-body-ui-wc dist/ccf-ui/body-ui
 
-      - name: Deploy Preview
+      - uses: jsmrcaga/action-netlify-deploy@v1.8.0
         id: deploy
-        uses: jsmrcaga/action-netlify-deploy@v2.0.0
         with:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          use_nvm: false
+          build_command: echo
+          install_command: echo
+          build_directory: dist/ccf-ui
       - name: Create Deploy Comment
         uses: ./.github/deploy-comment
         with:
