@@ -25,7 +25,12 @@
     (nodeDrag)="handleNodeDrag($event)"
     camera="orthographic"
   ></ccf-body-ui>
-
+  <div class="sidebar" *ngIf="page.registrationStarted$| async">
+    <ccf-body-ui #minimap class="minimap-scene" [interactive]="false" [scene]="scene.nodes$ | async" [bounds]="bounds$ | async"
+     ></ccf-body-ui>
+    <ccf-spatial-search-keyboard-ui-behavior [delta]="1" [shiftDelta]="2" [position]="position$ | async"
+      (changePosition)="model.setPosition($event)"></ccf-spatial-search-keyboard-ui-behavior>
+  </div>
   <div class="gizmo-area">
     <div class="position-display">
       <div class="position">
