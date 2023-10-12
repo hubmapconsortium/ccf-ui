@@ -31,31 +31,6 @@
       margin: 1.5rem;
       display: flex;
       justify-content: center;
-
-      .ccf-spatial-search-keyboard-ui {
-        .green {
-          color: #1dcc65;
-        }
-
-        .blue {
-          color: #2979ff;
-        }
-
-        .red {
-          color: #d50000;
-        }
-
-        .key {
-          &:hover,
-          &.highlighted {
-            color: white;
-          }
-        }
-
-        .shift {
-          color: white;
-        }
-      }
     }
 
     ccf-xyz-position {

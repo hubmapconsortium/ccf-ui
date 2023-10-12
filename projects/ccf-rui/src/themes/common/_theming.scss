@@ -17,6 +17,7 @@
 @use '../../app/shared/components/visibility-menu/visibility-menu.component.theme' as visibilityMenu;
 @use '../../app/shared/components/extraction-set-dropdown/extraction-set-dropdown.component.theme' as extractionSets;
 @use '../../../../ccf-shared/src/lib/components/opacity-slider/opacity-slider.component.theme' as opacitySlider;
+@use '../../../../ccf-shared/src/lib/components/spatial-search-keyboard-ui/spatial-search-keyboard-ui.component.theme' as spatialKeyBoardUI;
 @use '../../app/shared/components/details-label/details-label.component.theme' as detailsLabel;
 @use '../../app/modules/content/content.component.theme.scss' as content;
 @use '../../app/modules/content/stage-nav/stage-nav.component.theme.scss' as stageNav;
@@ -58,7 +59,7 @@
   @include rotationSlider.theme($theme);
   @include tagList.theme($theme);
   @include tagSearch.theme($theme);
-
+  @include spatialKeyBoardUI.theme($theme);
   @include leftSidebar.theme($theme);
   @include nameInput.theme($theme);
   @include organSelector.theme($theme);
