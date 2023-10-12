@@ -91,7 +91,6 @@ export class ContentComponent implements OnInit, OnDestroy {
     });
   }
 
-
   /**
    * Detaches the resize sensor
    */
