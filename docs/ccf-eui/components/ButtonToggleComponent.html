@@ -159,10 +159,16 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <a href="#enableTooltip" >enableTooltip</a>
+                            </li>
+                            <li>
                                 <a href="#menuOptions" >menuOptions</a>
                             </li>
                             <li>
                                 <a href="#selectedItems" >selectedItems</a>
+                            </li>
+                            <li>
+                                <a href="#tooltips" >tooltips</a>
                             </li>
                         </ul>
                     </td>
@@ -192,6 +198,32 @@
 
     <section data-compodoc="block-inputs">
     <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="enableTooltip"></a>
+                        <b>enableTooltip</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">projects/ccf-eui/src/app/shared/components/button-toggle/button-toggle.component.ts:20</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
@@ -239,6 +271,32 @@
                         </tr>
             </tbody>
         </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="tooltips"></a>
+                        <b>tooltips</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>{}</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">projects/ccf-eui/src/app/shared/components/button-toggle/button-toggle.component.ts:21</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
 </section>
     <section data-compodoc="block-outputs">
     <h3 id="outputs">Outputs</h3>
@@ -258,7 +316,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">projects/ccf-eui/src/app/shared/components/button-toggle/button-toggle.component.ts:23</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">projects/ccf-eui/src/app/shared/components/button-toggle/button-toggle.component.ts:26</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -297,8 +355,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="25"
-                            class="link-to-prism">projects/ccf-eui/src/app/shared/components/button-toggle/button-toggle.component.ts:25</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="28"
+                            class="link-to-prism">projects/ccf-eui/src/app/shared/components/button-toggle/button-toggle.component.ts:28</a></div>
                 </td>
             </tr>
 
@@ -366,8 +424,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="29"
-                            class="link-to-prism">projects/ccf-eui/src/app/shared/components/button-toggle/button-toggle.component.ts:29</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="32"
+                            class="link-to-prism">projects/ccf-eui/src/app/shared/components/button-toggle/button-toggle.component.ts:32</a></div>
                 </td>
             </tr>
 
@@ -440,6 +498,9 @@ export class ButtonToggleComponent {
 
   @Input() selectedItems?: string[] &#x3D; [];
 
+  @Input() enableTooltip &#x3D; false;
+  @Input() tooltips &#x3D; [];
+
   /**
    * Any time a button is clicked, event is emitted.
    */
@@ -467,12 +528,15 @@ export class ButtonToggleComponent {
         <pre class="line-numbers"><code class="language-html">&lt;mat-button-toggle-group class&#x3D;&quot;toggleGroup&quot; name&#x3D;&quot;menuOptions&quot; aria-label&#x3D;&quot;menuOptions&quot; multiple&gt;
   &lt;mat-button-toggle
   [class.selected]&#x3D;&quot;isItemSelected(item)&quot;
-  *ngFor&#x3D;&quot;let item of menuOptions&quot;
+  *ngFor&#x3D;&quot;let item of menuOptions; let i&#x3D;index;&quot;
   [value]&#x3D;&quot;item&quot;
   (change)&#x3D;&quot;toggleSelection($event.value)&quot;
   &gt;
-    &lt;mat-icon [class.hidden]&#x3D;&quot;!isItemSelected(item)&quot;&gt;done&lt;/mat-icon&gt;
-    &lt;span&gt; {{item}}&lt;/span&gt;
+    &lt;div class&#x3D;&quot;tooltip-content-container&quot; [matTooltip]&#x3D;&quot;enableTooltip &amp;&amp; tooltips[i]&quot;&gt;
+
+      &lt;mat-icon [class.hidden]&#x3D;&quot;!isItemSelected(item)&quot;&gt;done&lt;/mat-icon&gt;
+      &lt;span&gt; {{item}}&lt;/span&gt;
+    &lt;/div&gt;
   &lt;/mat-button-toggle&gt;
 &lt;/mat-button-toggle-group&gt;
 </code></pre>
@@ -493,6 +557,11 @@ export class ButtonToggleComponent {
     text-align: center;
     width: inherit;
     line-height: 0px;
+    .tooltip-content-container {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
   }
   .mat-button-toggle-checked {
     background-color: rgb(255, 255, 255);
@@ -537,7 +606,7 @@ export class ButtonToggleComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><mat-button-toggle-group class="toggleGroup" name="menuOptions" aria-label="menuOptions" multiple>  <mat-button-toggle  [class.selected]="isItemSelected(item)"  *ngFor="let item of menuOptions"  [value]="item"  (change)="toggleSelection($event.value)"  >    <mat-icon [class.hidden]="!isItemSelected(item)">done</mat-icon>    <span> {{item}}</span>  </mat-button-toggle></mat-button-toggle-group></div>'
+        var COMPONENT_TEMPLATE = '<div><mat-button-toggle-group class="toggleGroup" name="menuOptions" aria-label="menuOptions" multiple>  <mat-button-toggle  [class.selected]="isItemSelected(item)"  *ngFor="let item of menuOptions; let i=index;"  [value]="item"  (change)="toggleSelection($event.value)"  >    <div class="tooltip-content-container" [matTooltip]="enableTooltip && tooltips[i]">      <mat-icon [class.hidden]="!isItemSelected(item)">done</mat-icon>      <span> {{item}}</span>    </div>  </mat-button-toggle></mat-button-toggle-group></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppWebComponent', 'selector': 'ccf-root-wc'},{'name': 'ButtonToggleComponent', 'selector': 'ccf-button-toggle'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DonorCardComponent', 'selector': 'ccf-donor-card'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'RunSpatialSearchComponent', 'selector': 'ccf-run-spatial-search'},{'name': 'SpatialSearchConfigBehaviorComponent', 'selector': 'ccf-spatial-search-config-behavior'},{'name': 'SpatialSearchConfigComponent', 'selector': 'ccf-spatial-search-config'},{'name': 'SpatialSearchKeyboardUIBehaviorComponent', 'selector': 'ccf-spatial-search-keyboard-ui-behavior'},{'name': 'SpatialSearchKeyboardUIComponent', 'selector': 'ccf-spatial-search-keyboard-ui'},{'name': 'SpatialSearchUiBehaviorComponent', 'selector': 'ccf-spatial-search-ui-behavior'},{'name': 'SpatialSearchUiComponent', 'selector': 'ccf-spatial-search-ui'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'TermOccurrenceListComponent', 'selector': 'ccf-term-occurrence-list'},{'name': 'ThumbnailCarouselComponent', 'selector': 'ccf-thumbnail-carousel'},{'name': 'TissueBlockListComponent', 'selector': 'ccf-tissue-block-list'},{'name': 'TissueSectionVisComponent', 'selector': 'ccf-tissue-section-vis'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ViewerComponent', 'selector': 'ccf-viewer'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ButtonToggleComponent'};

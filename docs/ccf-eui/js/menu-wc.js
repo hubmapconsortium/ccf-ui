@@ -89,13 +89,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/ButtonToggleModule.html" data-type="entity-link" >ButtonToggleModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
-                                            'data-bs-target="#components-links-module-ButtonToggleModule-fd327bed75f68a0e03bc62c41c3675e4a0f4b950529fc15d1ba149baa889013c049d264afc7a09ff1b3a7d1d6c5ed2accfe62e0e6965c5d69e914b3449d689ab"' : 'data-bs-target="#xs-components-links-module-ButtonToggleModule-fd327bed75f68a0e03bc62c41c3675e4a0f4b950529fc15d1ba149baa889013c049d264afc7a09ff1b3a7d1d6c5ed2accfe62e0e6965c5d69e914b3449d689ab"' }>
+                                            'data-bs-target="#components-links-module-ButtonToggleModule-826524a90928256fe177c17dc3ae3e140ae376b10e94542dfc37f3a481d5b9ca3596a4c8497bf7d044b11961a77e43b930d9d62d9dde901012a83c852a44895d"' : 'data-bs-target="#xs-components-links-module-ButtonToggleModule-826524a90928256fe177c17dc3ae3e140ae376b10e94542dfc37f3a481d5b9ca3596a4c8497bf7d044b11961a77e43b930d9d62d9dde901012a83c852a44895d"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-ButtonToggleModule-fd327bed75f68a0e03bc62c41c3675e4a0f4b950529fc15d1ba149baa889013c049d264afc7a09ff1b3a7d1d6c5ed2accfe62e0e6965c5d69e914b3449d689ab"' :
-                                            'id="xs-components-links-module-ButtonToggleModule-fd327bed75f68a0e03bc62c41c3675e4a0f4b950529fc15d1ba149baa889013c049d264afc7a09ff1b3a7d1d6c5ed2accfe62e0e6965c5d69e914b3449d689ab"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-ButtonToggleModule-826524a90928256fe177c17dc3ae3e140ae376b10e94542dfc37f3a481d5b9ca3596a4c8497bf7d044b11961a77e43b930d9d62d9dde901012a83c852a44895d"' :
+                                            'id="xs-components-links-module-ButtonToggleModule-826524a90928256fe177c17dc3ae3e140ae376b10e94542dfc37f3a481d5b9ca3596a4c8497bf7d044b11961a77e43b930d9d62d9dde901012a83c852a44895d"' }>
                                             <li class="link">
                                                 <a href="components/ButtonToggleComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >ButtonToggleComponent</a>
                                             </li>
