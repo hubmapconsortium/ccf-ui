@@ -28,19 +28,19 @@
 <title>cluster_InfoButtonModule_exports</title>
 <polygon fill="none" stroke="black" points="167,-208 167,-260 329,-260 329,-208 167,-208"/>
 </g>
-<g id="clust4" class="cluster">
-<title>cluster_InfoButtonModule_imports</title>
-<polygon fill="none" stroke="black" points="263,-78 263,-130 399,-130 399,-78 263,-78"/>
-</g>
 <g id="clust2" class="cluster">
 <title>cluster_InfoButtonModule_declarations</title>
-<polygon fill="none" stroke="black" points="97,-78 97,-130 255,-130 255,-78 97,-78"/>
+<polygon fill="none" stroke="black" points="241,-78 241,-130 399,-130 399,-78 241,-78"/>
+</g>
+<g id="clust4" class="cluster">
+<title>cluster_InfoButtonModule_imports</title>
+<polygon fill="none" stroke="black" points="97,-78 97,-130 233,-130 233,-78 97,-78"/>
 </g>
 <!-- InfoButtonComponent -->
 <g id="node1" class="node">
 <title>InfoButtonComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="247.27,-122 104.73,-122 104.73,-86 247.27,-86 247.27,-122"/>
-<text text-anchor="middle" x="176" y="-99.8" font-family="Times,serif" font-size="14.00">InfoButtonComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="391.27,-122 248.73,-122 248.73,-86 391.27,-86 391.27,-122"/>
+<text text-anchor="middle" x="320" y="-99.8" font-family="Times,serif" font-size="14.00">InfoButtonComponent</text>
 </g>
 <!-- InfoButtonModule -->
 <g id="node2" class="node">
@@ -51,8 +51,8 @@
 <!-- InfoButtonComponent&#45;&gt;InfoButtonModule -->
 <g id="edge1" class="edge">
 <title>InfoButtonComponent&#45;&gt;InfoButtonModule</title>
-<path fill="none" stroke="black" d="M217.45,-122.11C217.45,-122.11 217.45,-140.99 217.45,-140.99"/>
-<polygon fill="black" stroke="black" points="213.95,-140.99 217.45,-150.99 220.95,-140.99 213.95,-140.99"/>
+<path fill="none" stroke="black" d="M278.55,-122.11C278.55,-122.11 278.55,-140.99 278.55,-140.99"/>
+<polygon fill="black" stroke="black" points="275.05,-140.99 278.55,-150.99 282.05,-140.99 275.05,-140.99"/>
 </g>
 <!-- InfoButtonComponent  -->
 <g id="node4" class="node">
@@ -69,14 +69,14 @@
 <!-- InfoDialogModule -->
 <g id="node3" class="node">
 <title>InfoDialogModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="391.47,-122 388.47,-126 367.47,-126 364.47,-122 270.53,-122 270.53,-86 391.47,-86 391.47,-122"/>
-<text text-anchor="middle" x="331" y="-99.8" font-family="Times,serif" font-size="14.00">InfoDialogModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="225.47,-122 222.47,-126 201.47,-126 198.47,-122 104.53,-122 104.53,-86 225.47,-86 225.47,-122"/>
+<text text-anchor="middle" x="165" y="-99.8" font-family="Times,serif" font-size="14.00">InfoDialogModule</text>
 </g>
 <!-- InfoDialogModule&#45;&gt;InfoButtonModule -->
 <g id="edge2" class="edge">
 <title>InfoDialogModule&#45;&gt;InfoButtonModule</title>
-<path fill="none" stroke="black" d="M289.5,-122.11C289.5,-122.11 289.5,-140.99 289.5,-140.99"/>
-<polygon fill="black" stroke="black" points="286,-140.99 289.5,-150.99 293,-140.99 286,-140.99"/>
+<path fill="none" stroke="black" d="M206.5,-122.11C206.5,-122.11 206.5,-140.99 206.5,-140.99"/>
+<polygon fill="black" stroke="black" points="203,-140.99 206.5,-150.99 210,-140.99 203,-140.99"/>
 </g>
 </g>
 </svg>
