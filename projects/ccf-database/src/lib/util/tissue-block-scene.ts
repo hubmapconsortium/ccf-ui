@@ -1,6 +1,9 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Matrix4, toRadians } from '@math.gl/core';
-import { SpatialEntity, SpatialSceneNode, SpatialSearch } from 'ccf-database';
+import { SpatialSceneNode } from '../ccf-spatial-scene';
+import { SpatialSearch } from '../interfaces';
+import { SpatialEntity } from '../spatial-types';
+
 
 
 type Color = [number, number, number, number];

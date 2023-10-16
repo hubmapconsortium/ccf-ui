@@ -16,7 +16,7 @@ import { Position } from 'ccf-shared';
 import { environment } from '../../../../environments/environment';
 import { ModelState } from '../model/model.state';
 import { RegistrationState } from '../registration/registration.state';
-import { getTissueBlockScene } from '../tissue-block-scene';
+import { getTissueBlockScene } from 'ccf-database';
 import { VisibilityItem } from './../../models/visibility-item';
 import { ReferenceDataState } from './../reference-data/reference-data.state';
 
