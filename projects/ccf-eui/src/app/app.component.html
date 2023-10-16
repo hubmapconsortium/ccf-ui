@@ -32,6 +32,7 @@
         <div class="ontologies">
 
           <ccf-ontology-selection class="ontology-selection"
+                                  [class.firefox]="isFirefox"
                                   *ngIf="isItemSelected('AS')"
                                   [showtoggle]="false"
                                   [treeModel]="ontologyTreeModel$ | async"
@@ -42,6 +43,7 @@
                                   [header]="header$ | async">
           </ccf-ontology-selection>
           <ccf-ontology-selection class="cell-type-selection"
+                                  [class.firefox]="isFirefox"
                                   *ngIf="isItemSelected('CT')"
                                   [showtoggle]="false"
                                   [treeModel]="cellTypeTreeModel$ | async"
@@ -52,6 +54,7 @@
                                   [header]="header$ | async">
           </ccf-ontology-selection>
           <ccf-ontology-selection class="biomarker-selection"
+                                  [class.firefox]="isFirefox"
                                   *ngIf="isItemSelected('B')"
                                   [showtoggle]="true"
                                   [treeModel]="biomarkersTreeModel$ | async"

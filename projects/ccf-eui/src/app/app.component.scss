@@ -161,7 +161,7 @@
       .left-drawer-container {
         height: 100%;
         .ontologies {
-          height: 100%;
+          height: calc(100% - 9rem);
           display: flex;
           gap: 1.5rem;
           flex-direction: column;
@@ -172,6 +172,11 @@
             &::-webkit-scrollbar {
               width: 0.25rem;
             }
+
+            &.firefox {
+              padding-right: 0.5rem;
+            }
+
             &.biomarker-selection {
               flex-basis: 30%;
             }
