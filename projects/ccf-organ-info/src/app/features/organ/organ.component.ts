@@ -22,6 +22,7 @@ export class OrganComponent implements AfterViewChecked, OnChanges {
 
   @Output() readonly sexChange = new EventEmitter<'Male' | 'Female'>();
   @Output() readonly sideChange = new EventEmitter<'Left' | 'Right'>();
+  @Output() readonly nodeClick = new EventEmitter();
 
   @ViewChild('bodyUI', { static: true }) readonly bodyUI!: BodyUiComponent;
 
@@ -76,5 +77,6 @@ export class OrganComponent implements AfterViewChecked, OnChanges {
   nodeClicked(event: NodeClickEvent): void {
     this.ga.event('node_click', 'organ', event.node['@id']);
     this.highlightedNodeId = this.highlightedNodeId && this.highlightedNodeId === event.node['@id'] ? '' : event.node['@id'];
+    this.nodeClick.emit(event);
   }
 }
