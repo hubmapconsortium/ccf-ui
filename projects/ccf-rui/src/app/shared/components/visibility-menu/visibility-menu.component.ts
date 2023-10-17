@@ -94,7 +94,15 @@ export class VisibilityMenuComponent {
     const updatedSelection = { ...this.selection, opacity: value };
     this.selection = updatedSelection;
     this.items = this.items.map(item => item.id === updatedSelection.id ? updatedSelection : item);
-    this.ga.event('opacity_update', 'visibility_menu', '' + updatedSelection.id, updatedSelection.opacity);
+    if (updatedSelection.id === 'all') {
+      this.items = this.items.map(item => {
+        this.ga.event('opacity_update', 'visibility_menu', '' + item.id, updatedSelection.opacity);
+        const updatedItem = { ...item, opacity: updatedSelection.opacity };
+        return updatedItem;
+      });
+    } else {
+      this.ga.event('opacity_update', 'visibility_menu', '' + updatedSelection.id, updatedSelection.opacity);
+    }
     this.itemsChange.emit(this.items);
   }
 
