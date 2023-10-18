@@ -194,8 +194,12 @@ export class CCFDatabase {
       sources.map(async (source) => {
         if (typeof source === 'string') {
           if ((source.startsWith('http') || source.startsWith('assets/')) && source.includes('jsonld')) {
-            source = await fetch(source).then(r => r.text());
-            source = patchJsonLd(source as string);
+            const sourceUrl = source;
+            source = await fetch(sourceUrl).then(r => r.text()).catch((_err) => {
+              console.log(`Error fetching ${sourceUrl}`);
+              return '[]';
+            });
+            source = patchJsonLd(source);
             await addJsonLdToStore(source, store);
           } else if (source.endsWith('n3')) {
             await addN3ToStore(source, store);
