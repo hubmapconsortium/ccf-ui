@@ -87,7 +87,9 @@ export class AppComponent implements OnInit {
 
   cellTypeSelectionLabel = 'cell';
 
-  selectionLabel = 'body | cell';
+  biomarkerSelectionLabel = 'biomarker';
+
+  selectionLabel = 'body | cell | biomarker';
 
   selectedtoggleOptions: string[] = [];
 
@@ -255,19 +257,20 @@ export class AppComponent implements OnInit {
       if (type === 'anatomical-structures') {
         this.data.updateFilter({ ontologyTerms: ontologySelection.map(selection => selection.id) });
         this.ontologySelectionLabel = this.createSelectionLabel(ontologySelection);
-      } else {
+      } else if (type === 'cell-type') {
         this.data.updateFilter({ cellTypeTerms: ontologySelection.map(selection => selection.id) });
         this.cellTypeSelectionLabel = this.createSelectionLabel(ontologySelection);
-      }
-      if (this.ontologySelectionLabel && this.cellTypeSelectionLabel) {
-        this.selectionLabel = `${this.ontologySelectionLabel} | ${this.cellTypeSelectionLabel}`;
-      } else if (this.ontologySelectionLabel) {
-        this.selectionLabel = `${this.ontologySelectionLabel}`;
-      } else if (this.cellTypeSelectionLabel) {
-        this.selectionLabel = `${this.cellTypeSelectionLabel}`;
       } else {
-        this.selectionLabel = '';
+        this.data.updateFilter({ biomarkerTerms: ontologySelection.map(selection => selection.id) });
+        this.biomarkerSelectionLabel = this.createSelectionLabel(ontologySelection);
       }
+
+      this.selectionLabel = [
+        this.ontologySelectionLabel || 'body',
+        this.cellTypeSelectionLabel || 'cell',
+        this.biomarkerSelectionLabel || 'biomarker'
+      ].join(' | ');
+
       if (ontologySelection[0] && ontologySelection[0].label === 'body') {
         this.resetView();
       }
@@ -283,21 +286,21 @@ export class AppComponent implements OnInit {
    * Creates selection label for the results-browser to display based on an
    * array of selected ontology nodes.
    */
-  createSelectionLabel(ontolgySelection: OntologySelection[]): string {
-    if (ontolgySelection.length === 0) {
+  createSelectionLabel(ontologySelection: OntologySelection[]): string {
+    if (ontologySelection.length === 0) {
       return '';
     }
 
-    if (ontolgySelection.length === 1) {
-      return ontolgySelection[0].label;
+    if (ontologySelection.length === 1) {
+      return ontologySelection[0].label;
     }
 
     let selectionString = '';
-    ontolgySelection.forEach((selection, index) => {
+    ontologySelection.forEach((selection, index) => {
       selectionString += selection.label;
 
       // Don't add a comma if it's the last item in the array.
-      if (index < ontolgySelection.length - 1) {
+      if (index < ontologySelection.length - 1) {
         selectionString += ', ';
       }
     });

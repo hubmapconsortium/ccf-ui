@@ -137,6 +137,14 @@ export function findIds(store: Store, graph: CCFSpatialGraph, filter: Filter): S
       );
     }
   }
+  if (seen.size > 0 && filter.biomarkerTerms?.length > 0) {
+    const terms = filter.biomarkerTerms;
+    if (terms.indexOf('https://example.com/biomarkers') === -1) {
+      seen = filterWithSpatialEntity(store, seen, (entities) =>
+        filterByBiomarkerTerms(store, entities, terms)
+      );
+    }
+  }
   if (seen.size > 0 && filter.ageRange?.length === 2 &&
     isFinite(filter.ageRange[0]) && isFinite(filter.ageRange[1])) {
     const maxAge = Math.max(...filter.ageRange);
@@ -271,6 +279,27 @@ function filterByCellTypeTerms(store: Store, seen: Set<string>, terms: string[])
       asTerms.add(asTerm.id);
     }, term, ccf.asctb.located_in, null);
     if (term === rui.cell.id) {
+      asTerms.add(rui.body.id);
+    }
+  }
+  return filterByOntologyTerms(store, seen, [...asTerms]);
+}
+
+/**
+ * Filters ids by biomarker terms.
+ *
+ * @param store The triple store.
+ * @param seen All ids to choose from.
+ * @param terms Biomarker terms to filter on.
+ * @returns The subset of ids with the specified biomarker terms.
+ */
+function filterByBiomarkerTerms(store: Store, seen: Set<string>, terms: string[]): Set<string> {
+  const asTerms = new Set<string>();
+  for (const term of terms) {
+    store.forObjects((asTerm) => {
+      asTerms.add(asTerm.id);
+    }, term, ccf.asctb.bm_located_in, null);
+    if (term === 'https://example.com/biomarkers') {
       asTerms.add(rui.body.id);
     }
   }

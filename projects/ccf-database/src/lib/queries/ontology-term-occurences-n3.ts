@@ -62,13 +62,12 @@ export function getOntologyTermOccurences(ids: Set<string>, store: Store): Recor
  * @returns Ontology term counts.
  */
 export function getBiomarkerTermOccurences(ids: Set<string>, store: Store): Record<string, number> {
-  const bmLocatedIn = ccf.x('ccf_bm_located_in');
   const asTerm2entities = getAnatomicalStructureMapping(ids, store);
   const bmTerm2entities = new Map<string, Set<string>>();
 
   for (const asTerm of asTerm2entities.keys()) {
     const entities = asTerm2entities.get(asTerm)!;
-    for (const quad of readQuads(store, null, bmLocatedIn, asTerm, null)) {
+    for (const quad of readQuads(store, null, ccf.asctb.bm_located_in, asTerm, null)) {
       const biomarker = quad.subject.id;
       if (!bmTerm2entities.has(biomarker)) {
         bmTerm2entities.set(biomarker, new Set<string>(entities));
