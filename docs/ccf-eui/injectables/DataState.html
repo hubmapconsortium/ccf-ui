@@ -2777,7 +2777,7 @@ export class DataState extends NgxsDataRepository&lt;DataStateModel&gt; implemen
     }
     this.source.getOntologyTreeModel().pipe(take(1)).subscribe((model) &#x3D;&gt; this.updateAnatomicalStructuresTreeModel(model));
     this.source.getCellTypeTreeModel().pipe(take(1)).subscribe((model) &#x3D;&gt; this.updateCellTypesTreeModel(model));
-    this.source.getBiomarkersTreeModel().pipe(take(1)).subscribe((model) &#x3D;&gt; this.updateBiomarkersTreeModel(model));
+    this.source.getBiomarkerTreeModel().pipe(take(1)).subscribe((model) &#x3D;&gt; this.updateBiomarkersTreeModel(model));
     this.warmUpDatabase();
   }
 

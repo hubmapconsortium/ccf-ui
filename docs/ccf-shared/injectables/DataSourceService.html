@@ -90,11 +90,11 @@
                             </li>
                             <li>
                                     <span class="modifier">Abstract</span>
-                                <a href="#getBiomarkersTreeModel" >getBiomarkersTreeModel</a>
+                                <a href="#getBiomarkerTermOccurences" >getBiomarkerTermOccurences</a>
                             </li>
                             <li>
                                     <span class="modifier">Abstract</span>
-                                <a href="#getBiomarkerTermOccurences" >getBiomarkerTermOccurences</a>
+                                <a href="#getBiomarkerTreeModel" >getBiomarkerTreeModel</a>
                             </li>
                             <li>
                                     <span class="modifier">Abstract</span>
@@ -233,45 +233,6 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="getBiomarkersTreeModel"></a>
-                    <span class="name">
-                        <span class="modifier">Abstract</span>
-                        <span ><b>getBiomarkersTreeModel</b></span>
-                        <a href="#getBiomarkersTreeModel"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>getBiomarkersTreeModel()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="17"
-                            class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/data-source.service.ts:17</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Observable&lt;OntologyTreeModel&gt;</code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
                     <a name="getBiomarkerTermOccurences"></a>
                     <span class="name">
                         <span class="modifier">Abstract</span>
@@ -334,6 +295,45 @@
                     </div>
                     <div class="io-description">
                         
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getBiomarkerTreeModel"></a>
+                    <span class="name">
+                        <span class="modifier">Abstract</span>
+                        <span ><b>getBiomarkerTreeModel</b></span>
+                        <a href="#getBiomarkerTreeModel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getBiomarkerTreeModel()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="17"
+                            class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/data-source.service.ts:17</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;OntologyTreeModel&gt;</code>
+
                     </div>
                 </td>
             </tr>
@@ -962,7 +962,7 @@ export abstract class DataSourceService implements DataSource {
   abstract getDatasetTechnologyNames(): Observable&lt;string[]&gt;;
   abstract getOntologyTreeModel(): Observable&lt;OntologyTreeModel&gt;;
   abstract getCellTypeTreeModel(): Observable&lt;OntologyTreeModel&gt;;
-  abstract getBiomarkersTreeModel(): Observable&lt;OntologyTreeModel&gt;;
+  abstract getBiomarkerTreeModel(): Observable&lt;OntologyTreeModel&gt;;
   abstract getReferenceOrgans(): Observable&lt;SpatialEntity[]&gt;;
 
   abstract getTissueBlockResults(filter?: Filter): Observable&lt;TissueBlockResult[]&gt;;

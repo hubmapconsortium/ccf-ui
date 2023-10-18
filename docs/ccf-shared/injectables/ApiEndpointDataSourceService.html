@@ -102,11 +102,11 @@
                             </li>
                             <li>
                                     <span class="modifier"></span>
-                                <a href="#getBiomarkersTreeModel" >getBiomarkersTreeModel</a>
+                                <a href="#getBiomarkerTermOccurences" >getBiomarkerTermOccurences</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
-                                <a href="#getBiomarkerTermOccurences" >getBiomarkerTermOccurences</a>
+                                <a href="#getBiomarkerTreeModel" >getBiomarkerTreeModel</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
@@ -647,60 +647,6 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="getBiomarkersTreeModel"></a>
-                    <span class="name">
-                        <span class="modifier"></span>
-                        <span ><b>getBiomarkersTreeModel</b></span>
-                        <a href="#getBiomarkersTreeModel"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>getBiomarkersTreeModel()</code>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <b>Decorators : </b>
-                    <br />
-                    <code>@Cacheable(CACHE_CONFIG_NO_PARAMS)<br /></code>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="140"
-                            class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/api-endpoint.service.ts:140</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Get the biomarker type tree model.</p>
-</div>
-
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Observable&lt;OntologyTreeModel&gt;</code>
-
-                    </div>
-                    <div class="io-description">
-                        <p>An observable emitting the results.</p>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
                     <a name="getBiomarkerTermOccurences"></a>
                     <span class="name">
                         <span class="modifier"></span>
@@ -770,6 +716,60 @@
                     </div>
                     <div class="io-description">
                         
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getBiomarkerTreeModel"></a>
+                    <span class="name">
+                        <span class="modifier"></span>
+                        <span ><b>getBiomarkerTreeModel</b></span>
+                        <a href="#getBiomarkerTreeModel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getBiomarkerTreeModel()</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Cacheable(CACHE_CONFIG_NO_PARAMS)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="140"
+                            class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/api-endpoint.service.ts:140</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Get the biomarker type tree model.</p>
+</div>
+
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;OntologyTreeModel&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>An observable emitting the results.</p>
+
                     </div>
                 </td>
             </tr>
@@ -1589,7 +1589,7 @@ export class ApiEndpointDataSourceService implements DataSource {
    * @returns An observable emitting the results.
    */
   @Cacheable(CACHE_CONFIG_NO_PARAMS)
-  getBiomarkersTreeModel(): Observable&lt;OntologyTreeModel&gt; {
+  getBiomarkerTreeModel(): Observable&lt;OntologyTreeModel&gt; {
     return this.doRequest(
       params &#x3D;&gt; this.api.biomarkerTreeModel(params),
       undefined, {}, cast&lt;OntologyTreeModel&gt;()

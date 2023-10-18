@@ -328,7 +328,7 @@ export class ApiEndpointDataSourceService implements DataSource {
    * @returns An observable emitting the results.
    */
   @Cacheable(CACHE_CONFIG_NO_PARAMS)
-  getBiomarkersTreeModel(): Observable&lt;OntologyTreeModel&gt; {
+  getBiomarkerTreeModel(): Observable&lt;OntologyTreeModel&gt; {
     return this.doRequest(
       params &#x3D;&gt; this.api.biomarkerTreeModel(params),
       undefined, {}, cast&lt;OntologyTreeModel&gt;()

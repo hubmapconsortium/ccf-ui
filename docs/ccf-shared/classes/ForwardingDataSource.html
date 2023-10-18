@@ -104,10 +104,10 @@
                                 <a href="#getAggregateResults" >getAggregateResults</a>
                             </li>
                             <li>
-                                <a href="#getBiomarkersTreeModel" >getBiomarkersTreeModel</a>
+                                <a href="#getBiomarkerTermOccurences" >getBiomarkerTermOccurences</a>
                             </li>
                             <li>
-                                <a href="#getBiomarkerTermOccurences" >getBiomarkerTermOccurences</a>
+                                <a href="#getBiomarkerTreeModel" >getBiomarkerTreeModel</a>
                             </li>
                             <li>
                                 <a href="#getCellTypeTermOccurences" >getCellTypeTermOccurences</a>
@@ -326,43 +326,6 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="getBiomarkersTreeModel"></a>
-                    <span class="name">
-                        <span ><b>getBiomarkersTreeModel</b></span>
-                        <a href="#getBiomarkersTreeModel"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>getBiomarkersTreeModel()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="58"
-                            class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/data-source.ts:58</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Observable&lt;OntologyTreeModel&gt;</code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
                     <a name="getBiomarkerTermOccurences"></a>
                     <span class="name">
                         <span ><b>getBiomarkerTermOccurences</b></span>
@@ -423,6 +386,43 @@
                     </div>
                     <div class="io-description">
                         
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getBiomarkerTreeModel"></a>
+                    <span class="name">
+                        <span ><b>getBiomarkerTreeModel</b></span>
+                        <a href="#getBiomarkerTreeModel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getBiomarkerTreeModel()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="58"
+                            class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/data-source.ts:58</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;OntologyTreeModel&gt;</code>
+
                     </div>
                 </td>
             </tr>
@@ -1030,7 +1030,7 @@ export interface DataSource {
   getDatasetTechnologyNames(): Observable&lt;string[]&gt;;
   getOntologyTreeModel(): Observable&lt;OntologyTreeModel&gt;;
   getCellTypeTreeModel(): Observable&lt;OntologyTreeModel&gt;;
-  getBiomarkersTreeModel(): Observable&lt;OntologyTreeModel&gt;;
+  getBiomarkerTreeModel(): Observable&lt;OntologyTreeModel&gt;;
   getReferenceOrgans(): Observable&lt;SpatialEntity[]&gt;;
 
   getTissueBlockResults(filter?: Filter): Observable&lt;TissueBlockResult[]&gt;;
@@ -1074,8 +1074,8 @@ export abstract class ForwardingDataSource implements DataSource {
     return this.forwardCall(&#x27;getCellTypeTreeModel&#x27;);
   }
 
-  getBiomarkersTreeModel(): Observable&lt;OntologyTreeModel&gt; {
-    return this.forwardCall(&#x27;getBiomarkersTreeModel&#x27;);
+  getBiomarkerTreeModel(): Observable&lt;OntologyTreeModel&gt; {
+    return this.forwardCall(&#x27;getBiomarkerTreeModel&#x27;);
   }
 
   getReferenceOrgans(): Observable&lt;SpatialEntity[]&gt; {
