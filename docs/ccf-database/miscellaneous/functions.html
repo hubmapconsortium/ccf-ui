@@ -94,6 +94,9 @@
                             <a href="#filterByCellTypeTerms" title="projects/ccf-database/src/lib/queries/find-ids-n3.ts" ><b>filterByCellTypeTerms</b>&nbsp;&nbsp;&nbsp;(projects/.../find-ids-n3.ts)</a>
                         </li>
                         <li>
+                            <a href="#filterByConsortiumName" title="projects/ccf-database/src/lib/queries/find-ids-n3.ts" ><b>filterByConsortiumName</b>&nbsp;&nbsp;&nbsp;(projects/.../find-ids-n3.ts)</a>
+                        </li>
+                        <li>
                             <a href="#filterByGroupName" title="projects/ccf-database/src/lib/queries/find-ids-n3.ts" ><b>filterByGroupName</b>&nbsp;&nbsp;&nbsp;(projects/.../find-ids-n3.ts)</a>
                         </li>
                         <li>
@@ -1691,6 +1694,108 @@
                     </div>
                     <div class="io-description">
                         <p>The subset of ids with the specified cell type terms.</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filterByConsortiumName"></a>
+                    <span class="name">
+                        <span ><b>filterByConsortiumName</b></span>
+                        <a href="#filterByConsortiumName"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>filterByConsortiumName(store: Store, seen: Set, consortiums)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Filters ids by consortium names.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>store</td>
+                                    <td>
+                                            <code>Store</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>The triple store.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>seen</td>
+                                    <td>
+                                            <code>Set</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>All ids to choose from.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>consortiums</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Consortiums to filter on.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Set&lt;string&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>The subset of ids with the specified consortiums.</p>
 
                     </div>
                 </td>

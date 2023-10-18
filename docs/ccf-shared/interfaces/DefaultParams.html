@@ -186,6 +186,7 @@ interface FilterParams {
   bmiRange?: string;
   ontologyTerms?: string[];
   cellTypeTerms?: string[];
+  consortiums?: string[];
   providers?: string[];
   sex?: &#x27;both&#x27; | &#x27;female&#x27; | &#x27;male&#x27;;
   technologies?: string[];
@@ -228,6 +229,7 @@ function filterToParams(filter?: Filter): FilterParams {
     sex: filter?.sex?.toLowerCase?.() as FilterParams[&#x27;sex&#x27;],
     ontologyTerms: filter?.ontologyTerms,
     cellTypeTerms: filter?.cellTypeTerms,
+    consortiums: filter?.consortiums,
     providers: filter?.tmc,
     technologies: filter?.technologies,
     spatial: filter?.spatialSearches
