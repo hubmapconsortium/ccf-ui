@@ -139,7 +139,7 @@ export function findIds(store: Store, graph: CCFSpatialGraph, filter: Filter): S
   }
   if (seen.size > 0 && filter.biomarkerTerms?.length > 0) {
     const terms = filter.biomarkerTerms;
-    if (terms.indexOf('https://example.com/biomarkers') === -1) {
+    if (terms.indexOf('http://purl.org/ccf/biomarkers') === -1) {
       seen = filterWithSpatialEntity(store, seen, (entities) =>
         filterByBiomarkerTerms(store, entities, terms)
       );
@@ -299,7 +299,7 @@ function filterByBiomarkerTerms(store: Store, seen: Set<string>, terms: string[]
     store.forObjects((asTerm) => {
       asTerms.add(asTerm.id);
     }, term, ccf.asctb.bm_located_in, null);
-    if (term === 'https://example.com/biomarkers') {
+    if (term === 'http://purl.org/ccf/biomarkers') {
       asTerms.add(rui.body.id);
     }
   }

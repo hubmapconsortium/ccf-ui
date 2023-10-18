@@ -180,7 +180,7 @@ function formBiomarkerNode(
   children: string[]
 ): OntologyTreeNode {
   return {
-    ['@id']: `https://example.com/${id}`,
+    ['@id']: `http://purl.org/ccf/${id}`,
     id,
     label,
     parent: parent ?? '',
