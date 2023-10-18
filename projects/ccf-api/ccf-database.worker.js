@@ -1,5 +1,6 @@
 /* eslint-env es6 */
 import * as comunica from '@comunica/query-sparql-rdfjs';
+import 'ccf-api';
 import { CCFDatabase } from 'ccf-database';
 import { expose } from 'comlink';
 import nodeEndpoint from 'comlink/dist/umd/node-adapter';

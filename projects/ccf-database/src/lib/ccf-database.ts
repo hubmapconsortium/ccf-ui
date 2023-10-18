@@ -195,8 +195,8 @@ export class CCFDatabase {
         if (typeof source === 'string') {
           if ((source.startsWith('http') || source.startsWith('assets/')) && source.includes('jsonld')) {
             const sourceUrl = source;
-            source = await fetch(sourceUrl).then(r => r.text()).catch((_err) => {
-              console.log(`Error fetching ${sourceUrl}`);
+            source = await fetch(sourceUrl).then(r => r.text()).catch((err) => {
+              console.log(`Error fetching ${sourceUrl}`, err);
               return '[]';
             });
             source = patchJsonLd(source);
