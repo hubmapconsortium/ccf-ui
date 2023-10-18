@@ -24,10 +24,6 @@
 <title>cluster_RightSidebarModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="8,-70 8,-268 1084,-268 1084,-70 8,-70"/>
 </g>
-<g id="clust5" class="cluster">
-<title>cluster_RightSidebarModule_exports</title>
-<polygon fill="none" stroke="black" points="437,-208 437,-260 611,-260 611,-208 437,-208"/>
-</g>
 <g id="clust4" class="cluster">
 <title>cluster_RightSidebarModule_imports</title>
 <polygon fill="none" stroke="black" points="196,-78 196,-130 1076,-130 1076,-78 196,-78"/>
@@ -35,6 +31,10 @@
 <g id="clust2" class="cluster">
 <title>cluster_RightSidebarModule_declarations</title>
 <polygon fill="none" stroke="black" points="16,-78 16,-130 188,-130 188,-78 16,-78"/>
+</g>
+<g id="clust5" class="cluster">
+<title>cluster_RightSidebarModule_exports</title>
+<polygon fill="none" stroke="black" points="437,-208 437,-260 611,-260 611,-208 437,-208"/>
 </g>
 <!-- RightSidebarComponent -->
 <g id="node1" class="node">
