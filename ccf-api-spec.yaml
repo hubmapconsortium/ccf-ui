@@ -6,12 +6,12 @@ info:
     See the [HuBMAP HRA Portal](https://humanatlas.io/) for details.
   version: 1.0.0
 servers:
-  - description: HRA-API
-    url: ./v1
-  - description: Production Server (backup)
+  - description: Production
     url: https://apps.humanatlas.io/hra-api/v1
-  - description: Staging Server
+  - description: Staging
     url: https://apps.humanatlas.io/hra-api--staging/v1
+  - description: Local
+    url: /v1
 
 x-preprocessor:
   description: |
