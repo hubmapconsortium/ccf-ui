@@ -34,6 +34,7 @@ interface FilterParams {
   bmiRange?: string;
   ontologyTerms?: string[];
   cellTypeTerms?: string[];
+  consortiums?: string[];
   providers?: string[];
   sex?: 'both' | 'female' | 'male';
   technologies?: string[];
@@ -76,6 +77,7 @@ function filterToParams(filter?: Filter): FilterParams {
     sex: filter?.sex?.toLowerCase?.() as FilterParams['sex'],
     ontologyTerms: filter?.ontologyTerms,
     cellTypeTerms: filter?.cellTypeTerms,
+    consortiums: filter?.consortiums,
     providers: filter?.tmc,
     technologies: filter?.technologies,
     spatial: filter?.spatialSearches
@@ -137,7 +139,7 @@ export class ApiEndpointDataSourceService implements DataSource {
    * @returns An observable emitting the results.
    */
   @Cacheable(CACHE_CONFIG_NO_PARAMS)
-  getBiomarkersTreeModel(): Observable<OntologyTreeModel> {
+  getBiomarkerTreeModel(): Observable<OntologyTreeModel> {
     return this.doRequest(
       params => this.api.biomarkerTreeModel(params),
       undefined, {}, cast<OntologyTreeModel>()

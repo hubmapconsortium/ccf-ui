@@ -38,6 +38,7 @@ describe('AppComponent', () => {
     bmiRange: [30, 80],
     ontologyTerms: [],
     cellTypeTerms: [],
+    consortiums: [],
     tmc: [],
     spatialSearches: [],
     technologies: [],

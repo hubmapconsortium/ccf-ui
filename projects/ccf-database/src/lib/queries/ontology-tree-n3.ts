@@ -180,7 +180,7 @@ function formBiomarkerNode(
   children: string[]
 ): OntologyTreeNode {
   return {
-    ['@id']: `https://example.com${id}`,
+    ['@id']: `http://purl.org/ccf/${id}`,
     id,
     label,
     parent: parent ?? '',
@@ -190,7 +190,7 @@ function formBiomarkerNode(
   };
 }
 
-export function getBiomarkersTreeModel(store: Store): OntologyTreeModel {
+export function getBiomarkerTreeModel(store: Store): OntologyTreeModel {
   const bmType = ccf.x('ccf_biomarker_type');
 
   const nodes: Record<string, OntologyTreeNode> = {

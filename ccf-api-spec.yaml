@@ -1,17 +1,17 @@
 openapi: "3.0.3"
 info:
-  title: CCF-API
+  title: HRA-API
   description: |
     This API provides programmatic access to data registered to the Human Reference Atlas (HRA).
     See the [HuBMAP HRA Portal](https://humanatlas.io/) for details.
   version: 1.0.0
 servers:
-  - description: CCF-API
+  - description: Production
+    url: https://apps.humanatlas.io/hra-api/v1
+  - description: Staging
+    url: https://apps.humanatlas.io/hra-api--staging/v1
+  - description: Local
     url: /v1
-  - description: Production Server (backup)
-    url: https://ccf-api.hubmapconsortium.org/v1
-  - description: Staging Server
-    url: https://r5i95k35v5.us-east-2.awsapprunner.com/v1
 
 x-preprocessor:
   description: |
@@ -68,6 +68,7 @@ paths:
         - $ref: "#/components/parameters/Cache"
         - $ref: "#/components/parameters/OntologyTerms"
         - $ref: "#/components/parameters/CellTypeTerms"
+        - $ref: "#/components/parameters/Consortiums"
         - $ref: "#/components/parameters/Providers"
         - $ref: "#/components/parameters/Sex"
         - $ref: "#/components/parameters/SpatialSearches"
@@ -117,6 +118,7 @@ paths:
         - $ref: "#/components/parameters/Cache"
         - $ref: "#/components/parameters/OntologyTerms"
         - $ref: "#/components/parameters/CellTypeTerms"
+        - $ref: "#/components/parameters/Consortiums"
         - $ref: "#/components/parameters/Providers"
         - $ref: "#/components/parameters/Sex"
         - $ref: "#/components/parameters/SpatialSearches"
@@ -137,6 +139,7 @@ paths:
         - $ref: "#/components/parameters/Cache"
         - $ref: "#/components/parameters/OntologyTerms"
         - $ref: "#/components/parameters/CellTypeTerms"
+        - $ref: "#/components/parameters/Consortiums"
         - $ref: "#/components/parameters/Providers"
         - $ref: "#/components/parameters/Sex"
         - $ref: "#/components/parameters/SpatialSearches"
@@ -157,6 +160,7 @@ paths:
         - $ref: "#/components/parameters/Cache"
         - $ref: "#/components/parameters/OntologyTerms"
         - $ref: "#/components/parameters/CellTypeTerms"
+        - $ref: "#/components/parameters/Consortiums"
         - $ref: "#/components/parameters/Providers"
         - $ref: "#/components/parameters/Sex"
         - $ref: "#/components/parameters/SpatialSearches"
@@ -228,6 +232,7 @@ paths:
         - $ref: "#/components/parameters/OntologyTerms"
         - $ref: "#/components/parameters/CellTypeTerms"
         - $ref: "#/components/parameters/OrganIri"
+        - $ref: "#/components/parameters/Consortiums"
         - $ref: "#/components/parameters/Providers"
         - $ref: "#/components/parameters/Sex"
         - $ref: "#/components/parameters/SpatialSearches"
@@ -248,6 +253,7 @@ paths:
         - $ref: "#/components/parameters/Cache"
         - $ref: "#/components/parameters/OntologyTerms"
         - $ref: "#/components/parameters/CellTypeTerms"
+        - $ref: "#/components/parameters/Consortiums"
         - $ref: "#/components/parameters/Providers"
         - $ref: "#/components/parameters/Sex"
         - $ref: "#/components/parameters/SpatialSearches"
@@ -278,6 +284,7 @@ paths:
         - $ref: "#/components/parameters/Cache"
         - $ref: "#/components/parameters/OntologyTerms"
         - $ref: "#/components/parameters/CellTypeTerms"
+        - $ref: "#/components/parameters/Consortiums"
         - $ref: "#/components/parameters/Providers"
         - $ref: "#/components/parameters/Sex"
         - $ref: "#/components/parameters/SpatialSearches"
@@ -387,6 +394,17 @@ components:
       required: true
       schema:
         type: string
+
+    Consortiums:
+      name: consortiums
+      description: Filter result by consortiums.
+      in: query
+      required: false
+      schema:
+        title: Consortiums
+        type: array
+        items:
+          type: string
 
     Providers:
       name: providers
@@ -986,6 +1004,11 @@ components:
           description: Identifier for the organ the spatial object represents.
           type: string
           format: uri
+        sex:
+          title: Sex
+          type: string
+          enum: [Female, Male]
+          x-preprocessor-delete: enum
 
     SpatialEntityCreator:
       title: Spatial Entity Creator
