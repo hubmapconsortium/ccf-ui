@@ -18,6 +18,7 @@ export interface Person {
   firstName: string;
   middleName?: string;
   lastName: string;
+  orcidId?: string;
 }
 
 /** Page state model */
@@ -138,6 +139,13 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
   setUserName(name: Pick<Person, 'firstName' | 'middleName' | 'lastName'>): void {
     this.ctx.setState(patch({
       user: patch(name)
+    }));
+  }
+
+  @DataAction()
+  setOrcidId(orcidId: string): void {
+    this.ctx.setState(patch({
+      user: patch({ orcidId })
     }));
   }
 

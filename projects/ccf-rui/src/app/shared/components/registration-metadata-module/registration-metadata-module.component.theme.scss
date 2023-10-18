@@ -1,0 +1,29 @@
+@use '@angular/material' as mat;
+@use '@angular/material/theming' as *;
+
+@mixin theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  $primary: map-get($color-config, primary);
+  $background: map-get($color-config, background);
+  $foreground: map-get($color-config, foreground);
+  $accent: map-get($color-config, accent);
+
+  .orcid-input, .organ-selector {
+    .mat-mdc-text-field-wrapper,
+    .mat-mdc-form-field-focus-overlay {
+      background-color: transparent;
+    }
+  }
+
+  .upload-button {
+    background-color: mat.get-color-from-palette($foreground, button-background);
+    color: mat.get-color-from-palette($foreground, sidebar-dividers) !important;
+    border: 1px solid mat.get-color-from-palette($background, background);
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.04);
+      color: mat.get-color-from-palette($foreground, 'main') !important;
+      border: 1px solid mat.get-color-from-palette($foreground, active-icon);
+    }
+  }
+}

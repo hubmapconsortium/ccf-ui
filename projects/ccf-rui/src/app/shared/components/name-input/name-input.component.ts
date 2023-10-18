@@ -36,8 +36,6 @@ export class NameInputComponent {
    */
   @HostBinding('class') readonly clsName = 'ccf-name-input';
 
-  @Input() middleNameEnabled = false;
-
   /**
    * Used to validate the first name input field.
    */
@@ -93,7 +91,6 @@ export class NameInputComponent {
     const inputTarget = input.target as HTMLInputElement;
     this.name = { ...this.name, [key]: inputTarget.value };
     this.ga.event('name_updated', 'name_input', key);
-    console.warn(this.name);
     this.nameChange.emit(this.name);
   }
 }
