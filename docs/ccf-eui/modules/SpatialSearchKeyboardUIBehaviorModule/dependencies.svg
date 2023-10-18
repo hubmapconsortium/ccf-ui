@@ -24,13 +24,13 @@
 <title>cluster_SpatialSearchKeyboardUIBehaviorModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="8,-70 8,-268 550,-268 550,-70 8,-70"/>
 </g>
-<g id="clust4" class="cluster">
-<title>cluster_SpatialSearchKeyboardUIBehaviorModule_imports</title>
-<polygon fill="none" stroke="black" points="320,-78 320,-130 542,-130 542,-78 320,-78"/>
-</g>
 <g id="clust5" class="cluster">
 <title>cluster_SpatialSearchKeyboardUIBehaviorModule_exports</title>
 <polygon fill="none" stroke="black" points="129,-208 129,-260 429,-260 429,-208 129,-208"/>
+</g>
+<g id="clust4" class="cluster">
+<title>cluster_SpatialSearchKeyboardUIBehaviorModule_imports</title>
+<polygon fill="none" stroke="black" points="320,-78 320,-130 542,-130 542,-78 320,-78"/>
 </g>
 <g id="clust2" class="cluster">
 <title>cluster_SpatialSearchKeyboardUIBehaviorModule_declarations</title>

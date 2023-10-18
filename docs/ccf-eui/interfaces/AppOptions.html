@@ -470,7 +470,9 @@ export class AppComponent implements OnInit {
 
   cellTypeSelectionLabel &#x3D; &#x27;cell&#x27;;
 
-  selectionLabel &#x3D; &#x27;body | cell&#x27;;
+  biomarkerSelectionLabel &#x3D; &#x27;biomarker&#x27;;
+
+  selectionLabel &#x3D; &#x27;body | cell | biomarker&#x27;;
 
   selectedtoggleOptions: string[] &#x3D; [];
 
@@ -638,19 +640,20 @@ export class AppComponent implements OnInit {
       if (type &#x3D;&#x3D;&#x3D; &#x27;anatomical-structures&#x27;) {
         this.data.updateFilter({ ontologyTerms: ontologySelection.map(selection &#x3D;&gt; selection.id) });
         this.ontologySelectionLabel &#x3D; this.createSelectionLabel(ontologySelection);
-      } else {
+      } else if (type &#x3D;&#x3D;&#x3D; &#x27;cell-type&#x27;) {
         this.data.updateFilter({ cellTypeTerms: ontologySelection.map(selection &#x3D;&gt; selection.id) });
         this.cellTypeSelectionLabel &#x3D; this.createSelectionLabel(ontologySelection);
-      }
-      if (this.ontologySelectionLabel &amp;&amp; this.cellTypeSelectionLabel) {
-        this.selectionLabel &#x3D; &#x60;${this.ontologySelectionLabel} | ${this.cellTypeSelectionLabel}&#x60;;
-      } else if (this.ontologySelectionLabel) {
-        this.selectionLabel &#x3D; &#x60;${this.ontologySelectionLabel}&#x60;;
-      } else if (this.cellTypeSelectionLabel) {
-        this.selectionLabel &#x3D; &#x60;${this.cellTypeSelectionLabel}&#x60;;
       } else {
-        this.selectionLabel &#x3D; &#x27;&#x27;;
+        this.data.updateFilter({ biomarkerTerms: ontologySelection.map(selection &#x3D;&gt; selection.id) });
+        this.biomarkerSelectionLabel &#x3D; this.createSelectionLabel(ontologySelection);
       }
+
+      this.selectionLabel &#x3D; [
+        this.ontologySelectionLabel || &#x27;body&#x27;,
+        this.cellTypeSelectionLabel || &#x27;cell&#x27;,
+        this.biomarkerSelectionLabel || &#x27;biomarker&#x27;
+      ].join(&#x27; | &#x27;);
+
       if (ontologySelection[0] &amp;&amp; ontologySelection[0].label &#x3D;&#x3D;&#x3D; &#x27;body&#x27;) {
         this.resetView();
       }
@@ -666,21 +669,21 @@ export class AppComponent implements OnInit {
    * Creates selection label for the results-browser to display based on an
    * array of selected ontology nodes.
    */
-  createSelectionLabel(ontolgySelection: OntologySelection[]): string {
-    if (ontolgySelection.length &#x3D;&#x3D;&#x3D; 0) {
+  createSelectionLabel(ontologySelection: OntologySelection[]): string {
+    if (ontologySelection.length &#x3D;&#x3D;&#x3D; 0) {
       return &#x27;&#x27;;
     }
 
-    if (ontolgySelection.length &#x3D;&#x3D;&#x3D; 1) {
-      return ontolgySelection[0].label;
+    if (ontologySelection.length &#x3D;&#x3D;&#x3D; 1) {
+      return ontologySelection[0].label;
     }
 
     let selectionString &#x3D; &#x27;&#x27;;
-    ontolgySelection.forEach((selection, index) &#x3D;&gt; {
+    ontologySelection.forEach((selection, index) &#x3D;&gt; {
       selectionString +&#x3D; selection.label;
 
       // Don&#x27;t add a comma if it&#x27;s the last item in the array.
-      if (index &lt; ontolgySelection.length - 1) {
+      if (index &lt; ontologySelection.length - 1) {
         selectionString +&#x3D; &#x27;, &#x27;;
       }
     });
