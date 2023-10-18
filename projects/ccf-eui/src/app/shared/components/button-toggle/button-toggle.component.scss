@@ -1,0 +1,32 @@
+:host {
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 0.875rem;
+  .hidden {
+    visibility: hidden;
+  }
+  mat-button-toggle {
+    text-align: center;
+    width: inherit;
+    line-height: 0px;
+    .tooltip-content-container {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
+  }
+  .mat-button-toggle-checked {
+    background-color: rgb(255, 255, 255);
+  }
+  .selected {
+    background-color: #c2cae5;
+  }
+  .toggleGroup {
+    border-radius: 35px;
+    width: 100%;
+    overflow-x: auto;
+  }
+  ::ng-deep .mat-button-toggle-label-content {
+    line-height: 2rem !important;
+  }
+}

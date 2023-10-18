@@ -1,10 +1,13 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { GlobalConfigState } from 'ccf-shared';
 import { combineLatest } from 'rxjs';
-import { debounceTime, take, tap } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 
+import { GlobalConfig } from '../../../core/services/config/config';
 import { ModelState } from '../../../core/store/model/model.state';
 import { PageState } from '../../../core/store/page/page.state';
+import { ReferenceDataState } from '../../../core/store/reference-data/reference-data.state';
 import { RegistrationContentComponent } from '../registration-content/registration-content.component';
 
 
@@ -20,6 +23,8 @@ export class RegistrationModalComponent implements OnInit {
   /** HTML class name */
   @HostBinding('class') readonly clsName = 'ccf-registration-modal';
 
+  dialogOpen = false;
+
   /**
    * Creates an instance of registration modal component.
    *
@@ -28,21 +33,31 @@ export class RegistrationModalComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private readonly page: PageState,
-    private readonly model: ModelState
+    private readonly model: ModelState,
+    private readonly referenceData: ReferenceDataState,
+    private readonly globalConfig: GlobalConfigState<GlobalConfig>
+
   ) {}
 
   /**
    * Opens the dialog on startup (but not if cancel registration callback is set)
    */
   ngOnInit(): void {
-    combineLatest([this.page.user$, this.model.organ$]).pipe(
-      debounceTime(500),
-      take(1),
-      tap(([user, organ]) => {
-        if (user.firstName !== '' && user.lastName !== '' && organ.src !== '') {
+    combineLatest([this.page.state$, this.model.state$, this.referenceData.state$, this.globalConfig.state$]).pipe(
+      tap(([page, model, data, global]) => {
+        if (this.dialogOpen) {
           return;
         }
-
+        if (global.editRegistration) {
+          return;
+        }
+        if (Object.keys(data.organIRILookup).length === 0) {
+          return;
+        }
+        if (page.user.firstName !== '' && page.user.lastName !== '' && model.organ.src !== '') {
+          return;
+        }
+        this.dialogOpen = true;
         this.openDialog();
       })
     ).subscribe();
@@ -53,7 +68,7 @@ export class RegistrationModalComponent implements OnInit {
    */
   openDialog(): void {
     this.dialog.open(RegistrationContentComponent, {
-      autoFocus: false
+      autoFocus: false,
     });
   }
 }

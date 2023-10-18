@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { JsonLd, JsonLdObj } from 'jsonld/jsonld-spec';
-import { get, omit, set, toNumber } from 'lodash';
+import lodash from 'lodash';
 import { patchJsonLd } from '../util/patch-jsonld';
 
+const { get, omit, set, toNumber } = lodash;
 
 type JsonDict = Record<string, unknown>;
 const HBM_PREFIX = 'https://entity.api.hubmapconsortium.org/entities/';

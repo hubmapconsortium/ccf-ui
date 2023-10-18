@@ -1,7 +1,6 @@
 import { CCFDatabaseOptions } from 'ccf-database';
 import { RequestHandler } from 'express';
 import { readFileSync } from 'fs';
-import fetch from 'node-fetch';
 
 import { AutoPruneLRUCache } from '../../../utils/auto-prune-lru-cache';
 import { RequestCache } from '../../../utils/request-cache';

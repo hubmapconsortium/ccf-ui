@@ -1,0 +1,17 @@
+{
+  "extends": "./tsconfig.lib.json",
+  "compilerOptions": {
+    "baseUrl": "../..",
+    "module": "ESNext",
+    "moduleResolution": "NodeNext",
+    "paths": {
+      "triple-store-utils": [
+        "dist/triple-store-utils/triple-store-utils",
+        "dist/triple-store-utils"
+      ]
+    }
+  },
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
+  }
+}

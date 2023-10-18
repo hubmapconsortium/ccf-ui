@@ -6,12 +6,7 @@ import { ObservableInput } from 'rxjs';
 export interface GlobalConfig {
   baseHref?: string;
   editRegistration?: Record<string, unknown>;
-  organ?: {
-    name: 'large intestine' | 'heart' | 'kidney' | 'spleen';
-    ontologyId?: string;
-    sex?: 'male' | 'female';
-    side?: 'left' | 'right';
-  };
+  organ?: OrganConfig | string;
   user?: {
     firstName: string;
     lastName: string;
@@ -31,6 +26,14 @@ export interface GlobalConfig {
   header?: boolean;
   homeUrl?: string;
   logoTooltip?: string;
+  organOptions?: string[];
+}
+
+export interface OrganConfig {
+  name: 'large intestine' | 'heart' | 'kidney' | 'spleen';
+  ontologyId?: string;
+  sex?: 'male' | 'female';
+  side?: 'left' | 'right';
 }
 
 declare global {

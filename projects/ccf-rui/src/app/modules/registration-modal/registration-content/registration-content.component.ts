@@ -1,9 +1,10 @@
-import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostBinding } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { PageState, Person } from '../../../core/store/page/page.state';
-import { ModelState, RUI_ORGANS } from '../../../core/store/model/model.state';
-import { map } from 'rxjs/operators';
 import { OrganInfo } from 'ccf-shared';
+import { map } from 'rxjs/operators';
+
+import { ModelState, RUI_ORGANS } from '../../../core/store/model/model.state';
+import { PageState, Person } from '../../../core/store/page/page.state';
 
 
 /**
@@ -52,9 +53,26 @@ export class RegistrationContentComponent {
   constructor(
     readonly page: PageState,
     readonly model: ModelState,
-    public dialogRef: MatDialogRef<RegistrationContentComponent>
+    public dialogRef: MatDialogRef<RegistrationContentComponent>,
+    cdr: ChangeDetectorRef
   ) {
+    page.user$.subscribe(user => {
+      this.checkNameValid(user);
+      cdr.markForCheck();
+    });
+    model.organ$.subscribe(organ => {
+      this.organSelected = organ.src !== '';
+      cdr.markForCheck();
+    });
+    this.sexByLabel$.subscribe(sex => {
+      this.setSexFromLabel(sex);
+      cdr.markForCheck();
+    });
     dialogRef.disableClose = true;
+    this.page.organOptions$.subscribe((options: OrganInfo[]) => {
+      this.organList = options;
+      cdr.markForCheck();
+    });
   }
 
   /**

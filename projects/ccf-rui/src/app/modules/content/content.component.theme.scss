@@ -21,6 +21,10 @@
       }
     }
 
+    .gizmo-area {
+      background: mat.get-color-from-palette($primary, 'black');
+    }
+
     .position-display {
       color: mat.get-color-from-palette($foreground, contrast-text);
     }

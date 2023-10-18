@@ -1,15 +1,23 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { memoize } from 'lodash';
+import memoize from 'lodash/memoize';
 import { readQuads, Store } from 'triple-store-utils';
 import { OntologyTreeModel, OntologyTreeNode } from '../interfaces';
 import { getEntries } from '../util/n3-functions';
-import { ccf, rui } from '../util/prefixes';
+import { ccf, rdfs, rui } from '../util/prefixes';
 
-
-export function getOntologyTreeNode(store: Store, iri: string, relationshipIri: string): OntologyTreeNode {
+export function getOntologyTreeNode(
+  store: Store,
+  iri: string,
+  relationshipIri: string
+): OntologyTreeNode {
   const result: OntologyTreeNode = {
-    '@id': iri, '@type': 'OntologyTreeNode', id: iri, parent: '',
-    children: [] as string[], synonymLabels: [] as string[], label: ''
+    '@id': iri,
+    '@type': 'OntologyTreeNode',
+    id: iri,
+    parent: '',
+    children: [] as string[],
+    synonymLabels: [] as string[],
+    label: '',
   };
 
   const ontologyTreeNodeResult = {
@@ -25,12 +33,19 @@ export function getOntologyTreeNode(store: Store, iri: string, relationshipIri: 
       result[key] = value;
     }
   }
-  result.children = store.getSubjects(relationshipIri, iri, null).map(s => s.id);
+  result.children = store
+    .getSubjects(relationshipIri, iri, null)
+    .map((s) => s.id);
 
   return result;
 }
 
-export function getOntologyTreeModel(store: Store, rootIri: string, rootLabel: string, relationshipIri: string): OntologyTreeModel {
+export function getOntologyTreeModel(
+  store: Store,
+  rootIri: string,
+  rootLabel: string,
+  relationshipIri: string
+): OntologyTreeModel {
   const result: OntologyTreeModel = { root: rootIri, nodes: {} };
   const seen = new Set<string>();
   for (const quad of readQuads(store, null, relationshipIri, null, null)) {
@@ -49,12 +64,13 @@ export function getOntologyTreeModel(store: Store, rootIri: string, rootLabel: s
       id: rootIri,
       label: rootLabel,
       children: [],
-      synonymLabels: []
+      synonymLabels: [],
     } as unknown as OntologyTreeNode;
   }
 
   const rootChildren = store
-    .getSubjects(relationshipIri, rootIri, null).map(o => o.id)
+    .getSubjects(relationshipIri, rootIri, null)
+    .map((o) => o.id)
     .sort((a, b) => result.nodes[a].label.localeCompare(result.nodes[b].label));
   result.nodes[rootIri].children = rootChildren;
 
@@ -70,11 +86,15 @@ export function getOntologyTreeModel(store: Store, rootIri: string, rootLabel: s
  * @param nodeIri the tree node iri to modify. Starts at root in the base case
  * @param seen a set of IRIs that have been 'seen' so far to remove loops in the graph
  */
-function treeify(model: OntologyTreeModel, nodeIri: string | undefined = undefined, seen: Set<string> = new Set()) {
+function treeify(
+  model: OntologyTreeModel,
+  nodeIri: string | undefined = undefined,
+  seen: Set<string> = new Set()
+) {
   const node = model.nodes[nodeIri ?? model.root];
   if (node) {
-    node.children = node.children.filter(n => !seen.has(n));
-    node.children.forEach(n => seen.add(n));
+    node.children = node.children.filter((n) => !seen.has(n));
+    node.children.forEach((n) => seen.add(n));
     for (const childId of node.children) {
       treeify(model, childId, seen);
       if (model.nodes[childId]) {
@@ -84,8 +104,15 @@ function treeify(model: OntologyTreeModel, nodeIri: string | undefined = undefin
   }
 }
 
-export function getAnatomicalStructureTreeModelSlowly(store: Store): OntologyTreeModel {
-  const model = getOntologyTreeModel(store, rui.body.id, 'body', ccf.asctb.part_of.id);
+export function getAnatomicalStructureTreeModelSlowly(
+  store: Store
+): OntologyTreeModel {
+  const model = getOntologyTreeModel(
+    store,
+    rui.body.id,
+    'body',
+    ccf.asctb.part_of.id
+  );
   model.nodes[rui.body.id].children = [
     'http://purl.obolibrary.org/obo/UBERON_0000955', // Brain
     'http://purl.obolibrary.org/obo/UBERON_0000029', // Lymph Node
@@ -132,13 +159,79 @@ export function getAnatomicalStructureTreeModelSlowly(store: Store): OntologyTre
     // 'http://purl.obolibrary.org/obo/UBERON_0001222', // Ureter, R
     'http://purl.obolibrary.org/obo/UBERON_0001255', // Urinary Bladder
     'http://purl.obolibrary.org/obo/UBERON_0000995', // Uterus
-    'http://purl.obolibrary.org/obo/UBERON_0004537' // Blood Vasculature
-  ].filter(iri => iri in model.nodes);
+    'http://purl.obolibrary.org/obo/UBERON_0004537', // Blood Vasculature
+  ].filter((iri) => iri in model.nodes);
   return model;
 }
 
-export const getAnatomicalStructureTreeModel = memoize(getAnatomicalStructureTreeModelSlowly, () => '');
+export const getAnatomicalStructureTreeModel = memoize(
+  getAnatomicalStructureTreeModelSlowly,
+  () => ''
+);
 
 export function getCellTypeTreeModel(store: Store): OntologyTreeModel {
   return getOntologyTreeModel(store, rui.cell.id, 'cell', ccf.asctb.ct_is_a.id);
+}
+
+function formBiomarkerNode(
+  id: string,
+  label: string,
+  parent: string,
+  children: string[]
+): OntologyTreeNode {
+  return {
+    ['@id']: `https://example.com${id}`,
+    id,
+    label,
+    parent: parent ?? '',
+    children: children ?? [],
+    synonymLabels: [],
+    ['@type']: 'OntologyTreeNode',
+  };
+}
+
+export function getBiomarkersTreeModel(store: Store): OntologyTreeModel {
+  const bmType = ccf.x('ccf_biomarker_type');
+
+  const nodes: Record<string, OntologyTreeNode> = {
+    biomarkers: formBiomarkerNode('biomarkers', 'Biomarkers', '', []),
+  };
+  for (const quad of readQuads(store, null, bmType, null, null)) {
+    const bm = quad.object.value;
+    const iri = quad.subject.id;
+    if (!nodes[bm]) {
+      nodes[bm] = formBiomarkerNode(bm, bm[0].toUpperCase() + bm.slice(1), 'biomarkers', []);
+      nodes['biomarkers'].children.push(bm);
+    }
+    nodes[bm].children.push(iri);
+
+    const result = formBiomarkerNode(iri, '', bm, []);
+    const ontologyTreeNodeResult = {
+      [ccf.ontologyNode.label.id]: 'label',
+      [rdfs.label.id]: 'synonymLabels',
+    };
+
+    for (const [key, value] of getEntries(store, iri, ontologyTreeNodeResult)) {
+      if (key === 'synonymLabels') {
+        if (value && value !== result.label) {
+          result.synonymLabels.push(value as string);
+        }
+      } else {
+        result[key] = value;
+      }
+    }
+
+    for (const node of Object.values(nodes)) {
+      if (node.children.length > 1) {
+        node.children.sort((a, b) => nodes[a]?.label.localeCompare(nodes[b]?.label));
+      }
+    }
+
+    nodes[iri] = result;
+  }
+
+  return {
+    root: 'biomarkers',
+    nodes
+  };
 }

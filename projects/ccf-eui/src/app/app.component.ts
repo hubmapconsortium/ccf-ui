@@ -1,11 +1,19 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Injector, OnInit, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  Injector,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
 import { Select } from '@ngxs/store';
-import { CCFDatabaseOptions, OntologyTreeModel } from 'ccf-database';
-import { DataSourceService, GlobalConfigState, TrackingPopupComponent } from 'ccf-shared';
+import { CCFDatabaseOptions, Filter, OntologyTreeModel } from 'ccf-database';
+import { DataSourceService, GlobalConfigState, OrganInfo, TrackingPopupComponent } from 'ccf-shared';
 import { ConsentService } from 'ccf-shared/analytics';
-import { combineLatest, Observable, ReplaySubject } from 'rxjs';
+import { Observable, ReplaySubject, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { BodyUiComponent } from '../../../ccf-shared/src/lib/components/body-ui/body-ui.component';
@@ -18,18 +26,21 @@ import { DataStateSelectors } from './core/store/data/data.selectors';
 import { DataQueryState, DataState } from './core/store/data/data.state';
 import { ListResultsState } from './core/store/list-results/list-results.state';
 import { SceneState } from './core/store/scene/scene.state';
-import { RemoveSearch, SetSelectedSearches } from './core/store/spatial-search-filter/spatial-search-filter.actions';
+import {
+  RemoveSearch,
+  SetSelectedSearches,
+} from './core/store/spatial-search-filter/spatial-search-filter.actions';
 import { SpatialSearchFilterSelectors } from './core/store/spatial-search-filter/spatial-search-filter.selectors';
 import { SpatialSearchFilterItem } from './core/store/spatial-search-filter/spatial-search-filter.state';
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
-
 
 interface AppOptions extends CCFDatabaseOptions {
   theme?: string;
   header?: boolean;
   homeUrl?: string;
   logoTooltip?: string;
+  selectedOrgans?: string[];
   loginEnabled?: boolean;
 }
 
@@ -54,6 +65,9 @@ export class AppComponent implements OnInit {
   @Select(DataStateSelectors.anatomicalStructuresTreeModel)
   readonly ontologyTreeModel$: Observable<OntologyTreeModel>;
 
+  @Select(DataStateSelectors.biomarkersTreeModel)
+  readonly biomarkersTreeModel$: Observable<OntologyTreeModel>;
+
   @Select(SpatialSearchFilterSelectors.items)
   readonly selectableSearches$: Observable<SpatialSearchFilterItem>;
 
@@ -63,6 +77,8 @@ export class AppComponent implements OnInit {
   @Dispatch()
   readonly removeSpatialSearch = actionAsFn(RemoveSearch);
 
+  menuOptions: string[] = ['AS', 'CT', 'B'];
+  tooltips: string[] = ['Anatomical Structures', 'Cell Types', 'Biomarkers'];
   /**
    * Used to keep track of the ontology label to be passed down to the
    * results-browser component.
@@ -72,6 +88,8 @@ export class AppComponent implements OnInit {
   cellTypeSelectionLabel = 'cell';
 
   selectionLabel = 'body | cell';
+
+  selectedtoggleOptions: string[] = [];
 
   /**
    * Whether or not organ carousel is open
@@ -116,18 +134,26 @@ export class AppComponent implements OnInit {
   readonly homeUrl$ = this.globalConfig.getOption('homeUrl');
   readonly logoTooltip$ = this.globalConfig.getOption('logoTooltip');
   readonly loginDisabled$ = this.globalConfig.getOption('loginDisabled');
-
+  readonly filter$ = this.globalConfig.getOption('filter');
+  readonly selectedOrgans$ = this.globalConfig.getOption('selectedOrgans');
   /**
    * Creates an instance of app component.
    *
    * @param data The data state.
    */
   constructor(
-    el: ElementRef<HTMLElement>, injector: Injector,
-    readonly data: DataState, readonly theming: ThemingService,
-    readonly scene: SceneState, readonly listResultsState: ListResultsState,
-    readonly consentService: ConsentService, readonly snackbar: MatSnackBar, overlay: AppRootOverlayContainer,
-    readonly dataSource: DataSourceService, private readonly globalConfig: GlobalConfigState<AppOptions>, cdr: ChangeDetectorRef
+    el: ElementRef<HTMLElement>,
+    injector: Injector,
+    readonly data: DataState,
+    readonly theming: ThemingService,
+    readonly scene: SceneState,
+    readonly listResultsState: ListResultsState,
+    readonly consentService: ConsentService,
+    readonly snackbar: MatSnackBar,
+    overlay: AppRootOverlayContainer,
+    readonly dataSource: DataSourceService,
+    private readonly globalConfig: GlobalConfigState<AppOptions>,
+    cdr: ChangeDetectorRef
   ) {
     theming.initialize(el, injector);
     overlay.setRootElement(el);
@@ -135,19 +161,26 @@ export class AppComponent implements OnInit {
     data.aggregateData$.subscribe();
     data.ontologyTermOccurencesData$.subscribe();
     data.cellTypeTermOccurencesData$.subscribe();
+    data.biomarkerTermOccurencesData$.subscribe();
     data.sceneData$.subscribe();
     data.filter$.subscribe();
     data.technologyFilterData$.subscribe();
     data.providerFilterData$.subscribe();
     this.ontologyTerms$ = data.filter$.pipe(map(x => x?.ontologyTerms));
     this.cellTypeTerms$ = data.filter$.pipe(map(x => x?.cellTypeTerms));
+    this.filter$.subscribe((filter: Partial<Filter>)=> data.updateFilter(filter));
 
+    combineLatest([scene.referenceOrgans$, this.selectedOrgans$]).subscribe(
+      ([refOrgans, selected]: [OrganInfo[], string[]]) => {
+        scene.setSelectedReferenceOrgansWithDefaults(refOrgans, selected);
+      });
     combineLatest([this.theme$, this.themeMode$]).subscribe(
       ([theme, mode]) => {
         this.theming.setTheme(`${theme}-theme-${mode}`);
         cdr.markForCheck();
       }
     );
+    this.selectedtoggleOptions=this.menuOptions;
   }
 
   ngOnInit(): void {
@@ -217,7 +250,7 @@ export class AppComponent implements OnInit {
    *
    * @param ontologySelection the list of currently selected organ nodes
    */
-  ontologySelected(ontologySelection: OntologySelection[] | undefined, type: 'anatomical-structures' | 'cell-type'): void {
+  ontologySelected(ontologySelection: OntologySelection[] | undefined, type: 'anatomical-structures' | 'cell-type' | 'biomarkers'): void {
     if (ontologySelection) {
       if (type === 'anatomical-structures') {
         this.data.updateFilter({ ontologyTerms: ontologySelection.map(selection => selection.id) });
@@ -301,5 +334,13 @@ export class AppComponent implements OnInit {
   get loggedIn(): boolean {
     const token = this.globalConfig.snapshot.hubmapToken ?? '';
     return token.length > 0;
+  }
+
+  isItemSelected(item: string) {
+    return this.selectedtoggleOptions.includes(item);
+  }
+
+  toggleSelection(value) {
+    this.selectedtoggleOptions = value;
   }
 }

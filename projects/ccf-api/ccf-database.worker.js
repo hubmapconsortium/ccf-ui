@@ -1,12 +1,10 @@
 /* eslint-env es6 */
-const QueryEngine = require('@comunica/query-sparql-rdfjs').QueryEngine;
-const parentPort = require('worker_threads').parentPort;
-const workerData = require('worker_threads').workerData;
-const CCFDatabase = require('ccf-database').CCFDatabase;
-const expose = require('comlink').expose;
-const nodeEndpoint = require('comlink/dist/umd/node-adapter');
-const readFileSync = require('fs').readFileSync;
-
+import * as comunica from '@comunica/query-sparql-rdfjs';
+import { CCFDatabase } from 'ccf-database';
+import { expose } from 'comlink';
+import nodeEndpoint from 'comlink/dist/umd/node-adapter';
+import { readFileSync } from 'fs';
+import { parentPort, workerData } from 'worker_threads';
 
 function parseDbOwlUrl(source) {
   if (!source.startsWith('http')) {
@@ -31,7 +29,7 @@ if (options) {
 const database = new CCFDatabase(options);
 
 /** SPARQL Query Functionality */
-const sparqlEngine = new QueryEngine();
+const sparqlEngine = new comunica.QueryEngine();
 
 async function sparqlQuery(query, mimetype) {
   const result = await sparqlEngine.query(query, { sources: [database.store] });

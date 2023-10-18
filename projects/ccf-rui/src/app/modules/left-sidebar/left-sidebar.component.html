@@ -12,7 +12,7 @@
 
         <mat-divider></mat-divider>
 
-        <mat-expansion-panel class="anatomical-structures-menu" [expanded]="modalClosed">
+        <mat-expansion-panel class="anatomical-structures-menu" [expanded]="true">
           <mat-expansion-panel-header class="expansion-header">
               <mat-panel-title class="expansion-title" matTooltip="Use opacity icons to change visibility of anatomical structures">Anatomical Structures</mat-panel-title>
           </mat-expansion-panel-header>
@@ -26,7 +26,7 @@
 
         <mat-divider></mat-divider>
 
-        <mat-expansion-panel class="extraction-menu" [expanded]="modalClosed">
+        <mat-expansion-panel class="extraction-menu" [expanded]="true">
             <mat-expansion-panel-header class="expansion-header">
                 <mat-panel-title matTooltip="Some organs have predefined landmarks to guide manual tissue registration--you can turn these on/off."
                     class="expansion-title">Landmarks</mat-panel-title>
@@ -43,18 +43,11 @@
 
         <mat-divider></mat-divider>
 
-        <ccf-visibility-toggle toggleLabel="Previously Registered Blocks" [visible]="model.showPrevious$ | async"
-            [disabled]="disableSlider"
-            (visibilityChanged)="togglePreviousRegistrationBlocks($event)" matTooltip="If you previously registered tissue blocks, you can turn their positions on/off.">
-        </ccf-visibility-toggle>
-
         <div class="space"></div>
 
         <div class="extraction-site-tooltip mat-elevation-z8" *ngIf="extractionSiteTooltip.length > 0">
             {{ extractionSiteTooltip }}
         </div>
-
-        <div class="filler"></div>
 
         <ccf-json-file-reader (parsedJson)="updateRegistration($event)" label="UPLOAD PREVIOUS REGISTRATION DATA"></ccf-json-file-reader>
     </div>

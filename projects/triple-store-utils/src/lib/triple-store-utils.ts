@@ -1,5 +1,5 @@
 import { EventEmitter } from 'events';
-import { toRDF } from 'jsonld';
+import jsonld from 'jsonld';
 import { JsonLd, Url } from 'jsonld/jsonld-spec';
 import { DataFactory, Parser, Store, Quad } from 'n3';
 import * as RDF from 'rdf-js';
@@ -80,7 +80,7 @@ export async function addJsonLdToStore(
   }
 
   if (jsonLdData) {
-    const quads = (await toRDF(jsonLdData)) as unknown[];
+    const quads = (await jsonld.toRDF(jsonLdData)) as unknown[];
     store.import(arrayToStream(quads) as unknown as EventEmitter);
   }
   return store;

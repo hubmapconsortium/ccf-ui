@@ -1,3 +1,0 @@
-describe('LinkCardsComponent', () => {
-  // Add tests
-});

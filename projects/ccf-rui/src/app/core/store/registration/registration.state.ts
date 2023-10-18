@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Immutable } from '@angular-ru/common/typings';
-import { Injectable, Injector } from '@angular/core';
 import { Computed, DataAction, StateRepository } from '@angular-ru/ngxs/decorators';
 import { NgxsImmutableDataRepository } from '@angular-ru/ngxs/repositories';
+import { Injectable, Injector } from '@angular/core';
 import { State } from '@ngxs/store';
 import { insertItem, patch } from '@ngxs/store/operators';
 import { SpatialEntityJsonLd } from 'ccf-body-ui';
-import { GlobalConfigState } from 'ccf-shared';
+import { GlobalConfigState, OrganInfo } from 'ccf-shared';
 import { filterNulls } from 'ccf-shared/rxjs-ext/operators';
 import { saveAs } from 'file-saver';
 import { combineLatest, Observable } from 'rxjs';
@@ -17,7 +17,7 @@ import { Tag } from '../../models/anatomical-structure-tag';
 import { MetaData } from '../../models/meta-data';
 import { GlobalConfig } from '../../services/config/config';
 import { AnatomicalStructureTagState } from '../anatomical-structure-tags/anatomical-structure-tags.state';
-import { ModelState, ModelStateModel, XYZTriplet } from '../model/model.state';
+import { ModelState, ModelStateModel, RUI_ORGANS, XYZTriplet } from '../model/model.state';
 import { PageState, PageStateModel } from '../page/page.state';
 import { ReferenceDataState } from '../reference-data/reference-data.state';
 
@@ -32,6 +32,8 @@ export interface RegistrationStateModel {
   displayErrors: boolean;
   /** Previous registrations */
   registrations: Record<string, unknown>[];
+  /** Registration provided by user */
+  initialRegistration?: SpatialEntityJsonLd;
 }
 
 
@@ -144,14 +146,20 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
     this.refData.state$.subscribe(() => {
       this.globalConfig.config$.pipe(
         take(1),
-        tap(({ useDownload, register }) => this.ctx.patchState({
-          useRegistrationCallback: !!(!useDownload && register)
-        }))
+        tap(({ useDownload, register, organOptions }) => {
+          this.ctx.patchState({
+            useRegistrationCallback: !!(!useDownload && register),
+          });
+          this.setOrganSelection(organOptions as string[]);
+        })
       ).subscribe();
 
       this.globalConfig.getOption('editRegistration').pipe(
         filterNulls(),
-        tap(reg => this.editRegistration(reg as SpatialEntityJsonLd))
+        tap(reg => {
+          this.ctx.patchState({ initialRegistration: reg as SpatialEntityJsonLd });
+          this.editRegistration(reg as SpatialEntityJsonLd);
+        })
       ).subscribe();
     });
   }
@@ -177,10 +185,6 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
     this.model.setBlockSize({ x: reg.x_dimension, y: reg.y_dimension, z: reg.z_dimension });
     this.model.setRotation({ x: place.x_rotation, y: place.y_rotation, z: place.z_rotation });
     this.model.setSlicesConfig({ thickness: reg.slice_thickness || NaN, numSlices: reg.slice_count || NaN });
-
-    await new Promise(r => {
-      setTimeout(r, 1000);
-    });
 
     this.model.setPosition({ x: place.x_translation, y: place.y_translation, z: place.z_translation });
     const iris = new Set<string>(reg.ccf_annotations);
@@ -223,6 +227,15 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
     this.ctx.setState(patch({
       registrations: insertItem(registration as Immutable<Record<string, unknown>>)
     }));
+  }
+
+  /**
+   * Sets organ options in the RUI
+   * @param ids list of organ ids
+   */
+  @DataAction()
+  setOrganSelection(ids: string[] = []): void {
+    this.page.patchState({ organOptions: this.organListOptions(ids) });
   }
 
   isDataValid(page: Immutable<PageStateModel>, model: Immutable<ModelStateModel>): boolean {
@@ -273,6 +286,13 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
     this.addRegistration(jsonObj);
     this.setDisplayErrors(false);
     this.page.clearHasChanges();
+  }
+
+  /**
+   * Sets the state back to the initial registration
+   */
+  setToInitialRegistration() {
+    this.editRegistration(this.getState().initialRegistration as SpatialEntityJsonLd);
   }
 
   /**
@@ -371,5 +391,24 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
    */
   private xyzTripletToString(xyz: XYZTriplet): string {
     return `${Math.round(xyz.x)}, ${Math.round(xyz.y)}, ${Math.round(xyz.z)}`;
+  }
+
+  /**
+   * Provides list of organ objects given an array of organ ids
+   * @param organOptions array of organ ids
+   * @returns list of organ info
+   */
+  private organListOptions(organOptions?: string[]): OrganInfo[] {
+    if (organOptions && organOptions.length > 0) {
+      return RUI_ORGANS.filter(organ => {
+        if (!organ.id) {
+          return false;
+        } else {
+          return organOptions.includes(organ.id);
+        }
+      });
+    } else {
+      return RUI_ORGANS;
+    }
   }
 }

@@ -21,6 +21,10 @@ import { DualSliderModule } from './shared/components/dual-slider/dual-slider.mo
 import { RunSpatialSearchModule } from './shared/components/run-spatial-search/run-spatial-search.module';
 import { SpinnerOverlayModule } from './shared/components/spinner-overlay/spinner-overlay.module';
 import { ViewerModule } from './shared/components/viewer/viewer.module';
+import { ButtonToggleComponent } from './shared/components/button-toggle/button-toggle.component';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { ButtonToggleModule } from './shared/components/button-toggle/button-toggle.module';
+
 
 
 @NgModule({
@@ -43,7 +47,9 @@ import { ViewerModule } from './shared/components/viewer/viewer.module';
     TrackingPopupModule,
     MatSnackBarModule,
     RunSpatialSearchModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatButtonToggleModule,
+    ButtonToggleModule
   ],
   declarations: [AppComponent, AppWebComponent],
   providers: [

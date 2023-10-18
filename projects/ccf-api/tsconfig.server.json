@@ -2,7 +2,8 @@
   "extends": "./tsconfig.lib.json",
   "compilerOptions": {
     "baseUrl": "../..",
-    "module": "CommonJS",
+    "module": "ESNext",
+    "moduleResolution": "NodeNext",
     "paths": {
       "ccf-database": [
         "dist/ccf-database/ccf-database",

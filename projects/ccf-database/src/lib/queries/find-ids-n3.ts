@@ -1,4 +1,4 @@
-import { isFinite } from 'lodash';
+import isFinite from 'lodash/isFinite';
 import { fromRdf } from 'rdf-literal';
 import { DataFactory, Literal, readQuads, Store, Term } from 'triple-store-utils';
 

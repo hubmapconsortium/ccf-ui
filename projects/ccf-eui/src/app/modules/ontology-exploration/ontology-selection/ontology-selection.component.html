@@ -1,12 +1,16 @@
 <ccf-ontology-tree
-    *ngIf="ontologySearchService.rootNode$ | async as rootNode"
+    *ngIf="rootNode$ | async"
     class="tree"
+    [showtoggle]="showtoggle"
     [nodes]="[rootNode]"
     [rootNode]="rootNode.id"
     [getChildren]="ontologySearchService.getChildren"
     (nodeSelected)="ontologySelection.emit($event)"
     [occurenceData]="occurenceData"
+    (selectedBiomarkerOptions)="filterNodes($event)"
     [termData]="termData"
     [ontologyFilter]="ontologyFilter"
     [header]="header"
+    [tooltips]="tooltips"
+    [menuOptions]="biomarkerMenuOptions"
 ></ccf-ontology-tree>

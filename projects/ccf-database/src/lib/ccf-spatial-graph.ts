@@ -2,9 +2,9 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { Euler, Matrix4, toDegrees, toRadians } from '@math.gl/core';
-import { DirectedGraph } from 'graphology';
+import * as graphology from 'graphology';
 import shortestPath from 'graphology-shortest-path/unweighted';
-import { get } from 'lodash';
+import get from 'lodash/get';
 import { readQuads } from 'triple-store-utils';
 import { v4 as uuidV4 } from 'uuid';
 
@@ -13,6 +13,9 @@ import { getSpatialPlacement } from './queries/spatial-result-n3';
 import { FlatSpatialPlacement, SpatialEntity, SpatialPlacement } from './spatial-types';
 import { ccf, rdf } from './util/prefixes';
 
+// Ugly workaround to make ccf database work both on the browser and node.js 18+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const DirectedGraph = ((graphology.default || graphology) as any).DirectedGraph;
 
 export function applySpatialPlacement(tx: Matrix4, placement: SpatialPlacement): Matrix4 {
   const p = placement;
