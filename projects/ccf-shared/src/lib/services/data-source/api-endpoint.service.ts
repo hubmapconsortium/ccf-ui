@@ -34,6 +34,7 @@ interface FilterParams {
   bmiRange?: string;
   ontologyTerms?: string[];
   cellTypeTerms?: string[];
+  consortiums?: string[];
   providers?: string[];
   sex?: 'both' | 'female' | 'male';
   technologies?: string[];
@@ -76,6 +77,7 @@ function filterToParams(filter?: Filter): FilterParams {
     sex: filter?.sex?.toLowerCase?.() as FilterParams['sex'],
     ontologyTerms: filter?.ontologyTerms,
     cellTypeTerms: filter?.cellTypeTerms,
+    consortiums: filter?.consortiums,
     providers: filter?.tmc,
     technologies: filter?.technologies,
     spatial: filter?.spatialSearches

@@ -18,6 +18,7 @@ export const DEFAULT_FILTER: Filter = {
   sex: 'Both',
   ageRange: [1, 110],
   bmiRange: [13, 83],
+  consortiums: [],
   tmc: [],
   technologies: [],
   ontologyTerms: ['http://purl.obolibrary.org/obo/UBERON_0013702'],

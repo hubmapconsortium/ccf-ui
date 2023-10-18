@@ -106,6 +106,11 @@ export function findIds(store: Store, graph: CCFSpatialGraph, filter: Filter): S
       filterBySex(store, donors, sex)
     );
   }
+  if (seen.size > 0 && filter.consortiums?.length > 0) {
+    seen = filterWithDonor(store, seen, (donors) =>
+      filterByConsortiumName(store, donors, filter.consortiums)
+    );
+  }
   if (seen.size > 0 && filter.tmc?.length > 0) {
     seen = filterWithDonor(store, seen, (donors) =>
       filterByGroupName(store, donors, filter.tmc)
@@ -210,6 +215,23 @@ function differenceCallback(seen: Set<string>, newSeen: Set<string>): (term: Ter
 function filterBySex(store: Store, seen: Set<string>, sex: 'Male' | 'Female'): Set<string> {
   const newSeen = new Set<string>();
   store.forSubjects(differenceCallback(seen, newSeen), entity.sex, entity[sex], null);
+  return newSeen;
+}
+
+/**
+ * Filters ids by consortium names.
+ *
+ * @param store The triple store.
+ * @param seen All ids to choose from.
+ * @param consortiums Consortiums to filter on.
+ * @returns The subset of ids with the specified consortiums.
+ */
+function filterByConsortiumName(store: Store, seen: Set<string>, consortiums: string[]): Set<string> {
+  const newSeen = new Set<string>();
+  for (const consortium of consortiums) {
+    const literal = DataFactory.literal(consortium);
+    store.forSubjects(differenceCallback(seen, newSeen), entity.consortiumName, literal, null);
+  }
   return newSeen;
 }
 
