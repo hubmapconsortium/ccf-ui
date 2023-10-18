@@ -28,8 +28,8 @@ export const environment = {
     hubmapToken: localStorage.getItem('HUBMAP_TOKEN') ?? '',
 
     useRemoteApi: false,
-    remoteApiEndpoint: 'https://r5i95k35v5.us-east-2.awsapprunner.com/v1'
-    // remoteApiEndpoint: 'https://ccf-api.hubmapconsortium.org/v1'
+    remoteApiEndpoint: 'https://apps.humanatlas.io/hra-api--staging/v1'
+    // remoteApiEndpoint: 'https://apps.humanatlas.io/hra-api/v1'
     // remoteApiEndpoint: 'http://localhost:8080/v1'
   },
   customization: {

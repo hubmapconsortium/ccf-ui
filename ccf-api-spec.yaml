@@ -1,17 +1,17 @@
 openapi: "3.0.3"
 info:
-  title: CCF-API
+  title: HRA-API
   description: |
     This API provides programmatic access to data registered to the Human Reference Atlas (HRA).
     See the [HuBMAP HRA Portal](https://humanatlas.io/) for details.
   version: 1.0.0
 servers:
-  - description: CCF-API
-    url: /v1
+  - description: HRA-API
+    url: ./v1
   - description: Production Server (backup)
-    url: https://ccf-api.hubmapconsortium.org/v1
+    url: https://apps.humanatlas.io/hra-api/v1
   - description: Staging Server
-    url: https://r5i95k35v5.us-east-2.awsapprunner.com/v1
+    url: https://apps.humanatlas.io/hra-api--staging/v1
 
 x-preprocessor:
   description: |
