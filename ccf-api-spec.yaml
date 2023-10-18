@@ -1004,6 +1004,11 @@ components:
           description: Identifier for the organ the spatial object represents.
           type: string
           format: uri
+        sex:
+          title: Sex
+          type: string
+          enum: [Female, Male]
+          x-preprocessor-delete: enum
 
     SpatialEntityCreator:
       title: Spatial Entity Creator
