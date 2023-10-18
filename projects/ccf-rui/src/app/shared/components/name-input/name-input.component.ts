@@ -13,6 +13,8 @@ export interface UserName {
    */
   firstName: string;
 
+  middleName: string;
+
   /**
    * User's last name
    */
@@ -34,6 +36,8 @@ export class NameInputComponent {
    */
   @HostBinding('class') readonly clsName = 'ccf-name-input';
 
+  @Input() middleNameEnabled = false;
+
   /**
    * Used to validate the first name input field.
    */
@@ -42,6 +46,9 @@ export class NameInputComponent {
    * Used to validate the last name input field.
    */
   lastNameValidator = new UntypedFormControl('', [Validators.required]);
+
+  middleNameValidator = new UntypedFormControl('', [Validators.required]);
+
 
   /**
    * Current user name
@@ -55,10 +62,12 @@ export class NameInputComponent {
     this._name = value;
     this.firstNameValidator.setValue(value?.firstName || '');
     this.lastNameValidator.setValue(value?.lastName || '');
+    this.middleNameValidator.setValue(value?.middleName || '');
   }
 
   private _name: UserName = {
     firstName: '',
+    middleName: '',
     lastName: ''
   };
 
@@ -84,6 +93,7 @@ export class NameInputComponent {
     const inputTarget = input.target as HTMLInputElement;
     this.name = { ...this.name, [key]: inputTarget.value };
     this.ga.event('name_updated', 'name_input', key);
+    console.warn(this.name);
     this.nameChange.emit(this.name);
   }
 }
