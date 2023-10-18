@@ -719,8 +719,8 @@ export class CCFDatabase {
         if (typeof source &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
           if ((source.startsWith(&#x27;http&#x27;) || source.startsWith(&#x27;assets/&#x27;)) &amp;&amp; source.includes(&#x27;jsonld&#x27;)) {
             const sourceUrl &#x3D; source;
-            source &#x3D; await fetch(sourceUrl).then(r &#x3D;&gt; r.text()).catch((_err) &#x3D;&gt; {
-              console.log(&#x60;Error fetching ${sourceUrl}&#x60;);
+            source &#x3D; await fetch(sourceUrl).then(r &#x3D;&gt; r.text()).catch((err) &#x3D;&gt; {
+              console.log(&#x60;Error fetching ${sourceUrl}&#x60;, err);
               return &#x27;[]&#x27;;
             });
             source &#x3D; patchJsonLd(source);
