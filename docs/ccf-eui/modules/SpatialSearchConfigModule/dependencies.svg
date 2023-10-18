@@ -24,13 +24,13 @@
 <title>cluster_SpatialSearchConfigModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="132,-70 132,-268 364,-268 364,-70 132,-70"/>
 </g>
-<g id="clust5" class="cluster">
-<title>cluster_SpatialSearchConfigModule_exports</title>
-<polygon fill="none" stroke="black" points="140,-208 140,-260 356,-260 356,-208 140,-208"/>
-</g>
 <g id="clust2" class="cluster">
 <title>cluster_SpatialSearchConfigModule_declarations</title>
 <polygon fill="none" stroke="black" points="141,-78 141,-130 355,-130 355,-78 141,-78"/>
+</g>
+<g id="clust5" class="cluster">
+<title>cluster_SpatialSearchConfigModule_exports</title>
+<polygon fill="none" stroke="black" points="140,-208 140,-260 356,-260 356,-208 140,-208"/>
 </g>
 <!-- SpatialSearchConfigComponent -->
 <g id="node1" class="node">
