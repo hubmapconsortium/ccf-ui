@@ -34,7 +34,7 @@
       #gizmo
     ></ccf-body-ui>
     <ccf-spatial-search-keyboard-ui-behavior *ngIf="page.registrationStarted$| async" [delta]="1" [shiftDelta]="2" [position]="position$ | async"
-    (changePosition)="model.setPosition($event)"></ccf-spatial-search-keyboard-ui-behavior>
+    [disablePositionChange]="disablePositionChange"></ccf-spatial-search-keyboard-ui-behavior>
     <div class="position-display">
       <div class="position">
         <div class="x">X: {{ (position$ | async)?.x }}</div>
