@@ -6,6 +6,7 @@ const FILTER_DEFAULTS: Partial<Filter> = {
   sex: 'Both',
   ageRange: undefined,
   bmiRange: undefined,
+  consortiums: [],
   tmc: [],
   technologies: [],
   ontologyTerms: [],
@@ -152,6 +153,10 @@ function processParameter(result: Filter, key: string, value: unknown): void {
 
     case 'spatial':
       setIfDefined(result, 'spatialSearches', parseSpatial(value));
+      break;
+
+    case 'consortiums':
+      setIfDefined(result, 'consortiums', parseArray(value));
       break;
 
     case 'tmc':

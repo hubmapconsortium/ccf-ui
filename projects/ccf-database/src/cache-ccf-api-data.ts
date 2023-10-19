@@ -23,11 +23,14 @@ async function main(inputCCF: string, outputDir: string): Promise<void> {
 
   writeFileSync(resolve(outputDir, 'ccf.owl.n3store.json'), storeString);
 
+  const asModel = await db.getOntologyTreeModel();
+  writeFileSync(resolve(outputDir, 'ontology-tree-model.json'), JSON.stringify(asModel));
+
   const ctModel = await db.getCellTypeTreeModel();
   writeFileSync(resolve(outputDir, 'cell-type-tree-model.json'), JSON.stringify(ctModel));
 
-  const asModel = await db.getOntologyTreeModel();
-  writeFileSync(resolve(outputDir, 'ontology-tree-model.json'), JSON.stringify(asModel));
+  const bmModel = await db.getBiomarkerTreeModel();
+  writeFileSync(resolve(outputDir, 'biomarker-tree-model.json'), JSON.stringify(bmModel));
 
   const refOrgans = await db.getReferenceOrgans();
   writeFileSync(resolve(outputDir, 'reference-organs.json'), JSON.stringify(refOrgans));

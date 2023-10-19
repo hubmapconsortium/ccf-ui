@@ -25,16 +25,7 @@
     (nodeDrag)="handleNodeDrag($event)"
     camera="orthographic"
   ></ccf-body-ui>
-
   <div class="gizmo-area">
-    <div class="position-display">
-      <div class="position">
-        <div class="x">X: {{ (position$ | async)?.x }}</div>
-        <div class="y">Y: {{ (position$ | async)?.y }}</div>
-        <div class="z">Z: {{ (position$ | async)?.z }}</div>
-      </div>
-    </div>
-
     <ccf-body-ui class="gizmo"
       [scene]="scene.gizmo$ | async"
       [rotation]="scene.rotation$ | async"
@@ -42,6 +33,15 @@
       [zoom]="9.5"
       #gizmo
     ></ccf-body-ui>
+    <ccf-spatial-search-keyboard-ui-behavior *ngIf="page.registrationStarted$| async" [delta]="1" [shiftDelta]="2" [position]="position$ | async"
+    (changePosition)="model.setPosition($event)"></ccf-spatial-search-keyboard-ui-behavior>
+    <div class="position-display">
+      <div class="position">
+        <div class="x">X: {{ (position$ | async)?.x }}</div>
+        <div class="y">Y: {{ (position$ | async)?.y }}</div>
+        <div class="z">Z: {{ (position$ | async)?.z }}</div>
+      </div>
+    </div>
   </div>
 </div>
 

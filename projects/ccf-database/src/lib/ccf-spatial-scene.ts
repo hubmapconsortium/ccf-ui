@@ -19,6 +19,7 @@ export interface SpatialSceneNode {
   ccf_annotations?: string[];
   representation_of?: string;
   reference_organ?: string;
+  sex?: 'Male' | 'Female';
   unpickable?: boolean;
   geometry?: SpatialSceneGeometry;
   text?: string;
@@ -184,6 +185,7 @@ export class CCFSpatialScene {
         ccf_annotations: source.ccf_annotations,
         representation_of: source.representation_of,
         reference_organ: source.reference_organ,
+        sex: source.sex,
         scenegraph: has3dObject ? source.object?.file : undefined,
         scenegraphNode: has3dObject ? source.object?.file_subpath : undefined,
         transformMatrix: transform,

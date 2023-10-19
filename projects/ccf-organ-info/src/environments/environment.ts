@@ -11,7 +11,7 @@ export const environment = {
     'https://portal.test.hubmapconsortium.org'
   ],
   dbOptions: {
-    ccfOwlUrl: 'https://ccf-api.hubmapconsortium.org/v1/ccf.owl.n3store.json',
+    ccfOwlUrl: 'https://apps.humanatlas.io/hra-api/v1/ccf.owl.n3store.json',
     ccfContextUrl: 'https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld',
     dataSources: [
       'https://cdn.jsdelivr.net/gh/hubmapconsortium/ccf-ui@gh-pages/assets/kpmp/data/rui_locations.jsonld',
@@ -24,7 +24,7 @@ export const environment = {
     hubmapToken: localStorage.getItem('HUBMAP_TOKEN') ?? '',
 
     useRemoteApi: false,
-    remoteApiEndpoint: 'https://ccf-api.hubmapconsortium.org/v1'
+    remoteApiEndpoint: 'https://apps.humanatlas.io/hra-api/v1'
   },
   googleAnalyticsToken: 'G-B3DT7XPMRT'
 };

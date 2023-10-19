@@ -4,7 +4,7 @@ import { cacheResponses } from '../../middleware/response-cache';
 import { getDatabaseStatus } from './database-status';
 import { getSpatialPlacement } from './get-spatial-placement';
 import { routes as gtexRoutes } from './gtex';
-import { routes as hubmapRoutes } from './hubmap';
+import { routes as xConsortiaRoutes } from './xconsortia';
 import { getReferenceOrganSceneHandler } from './reference-organ-scene';
 import { sparql } from './sparql';
 import { forwardDatabaseQuery } from './utils/forward-database-query';
@@ -17,7 +17,7 @@ export const routes = Router()
   .use('/sparql', sparql())
   .use('/ccf.owl.n3store.json', useCachedResult('ccf.owl.n3store.json'))
   .use(cacheResponses())
-  .use('/hubmap', hubmapRoutes)
+  .use('/', xConsortiaRoutes)
   .use('/gtex', gtexRoutes)
   .get('/tissue-blocks', forwardDatabaseQuery('getTissueBlockResults'))
   .get('/technology-names', forwardDatabaseQuery('getDatasetTechnologyNames'))
@@ -25,7 +25,7 @@ export const routes = Router()
   .get('/aggregate-results', forwardDatabaseQuery('getAggregateResults'))
   .get('/ontology-term-occurences', forwardDatabaseQuery('getOntologyTermOccurences'))
   .get('/cell-type-term-occurences', forwardDatabaseQuery('getCellTypeTermOccurences'))
-  .get('/biomarker-tree-model', forwardDatabaseQuery('getBiomarkersTreeModel'))
+  .get('/biomarker-tree-model', forwardDatabaseQuery('getBiomarkerTreeModel'))
   .get('/biomarker-term-occurences', forwardDatabaseQuery('getBiomarkerTermOccurences'))
   .get('/ontology-tree-model', useCachedResult('ontology-tree-model.json'), forwardDatabaseQuery('getOntologyTreeModel'))
   .get('/cell-type-tree-model', useCachedResult('cell-type-tree-model.json'), forwardDatabaseQuery('getCellTypeTreeModel'))

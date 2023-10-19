@@ -45,7 +45,7 @@ Changelog for the Human Reference Atlas (HRA) User Interfaces
 ### Added in 3.3.0
 
 * Added support for the latest CCF Ontology v1.9.0 which adds Placenta, Spinal Cord, new Landmarks for reference organs, and a host of data updates.
-* Added a SPARQL route to the CCF-API for flexible querying of the Ontology and linked data. See the [/v1/sparql docs](https://ccf-api.hubmapconsortium.org/#/operations/sparql) for more information.
+* Added a SPARQL route to the CCF-API for flexible querying of the Ontology and linked data. See the [/v1/sparql docs](https://apps.humanatlas.io/hra-api/#/operations/sparql) for more information.
 * Clean up and bug fixes
 
 ## 3.2.0 - 2022-04-14
