@@ -25,6 +25,7 @@
 
         &.disabled {
           background-color: mat.get-color-from-palette($foreground, icons-disabled);
+          border: 1px solid mat.get-color-from-palette($foreground, icons-disabled);
         }
       }
     }
