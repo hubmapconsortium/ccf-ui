@@ -21,20 +21,18 @@
     min-height: inherit;
   }
 
+  ::ng-deep .mdc-text-field {
+    padding: 0;
+    padding-bottom: .3rem !important;
+  }
+
   .author-section {
     display: flex;
     flex-direction: column;
 
-    ccf-name-input {
-      padding-bottom: 0;
-    }
-
-    ::ng-deep .mdc-text-field {
-      padding: 0;
-    }
-
     .orcid-input {
       width: 100%;
+      font-size: 1rem;
     }
   }
 
@@ -59,6 +57,10 @@
 
     .organ-selector {
       padding-bottom: 1.5rem;
+
+      ::ng-deep .mat-mdc-select-value {
+        font-size: 1rem;
+      }
     }
 
     .upload-registration {
@@ -75,6 +77,11 @@
         }
       }
     }
+  }
+
+  ::ng-deep .mdc-line-ripple::before,
+  .mdc-line-ripple::after {
+    border-bottom-width: 0.125rem !important;
   }
 
 }
