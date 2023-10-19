@@ -13,6 +13,9 @@ export interface UserName {
    */
   firstName: string;
 
+  /**
+   * User's middle name
+   */
   middleName: string;
 
   /**
@@ -40,11 +43,15 @@ export class NameInputComponent {
    * Used to validate the first name input field.
    */
   firstNameValidator = new UntypedFormControl('', [Validators.required]);
+
   /**
    * Used to validate the last name input field.
    */
   lastNameValidator = new UntypedFormControl('', [Validators.required]);
 
+  /**
+   * Used to validate the middle name input field.
+   */
   middleNameValidator = new UntypedFormControl('', [Validators.required]);
 
 
