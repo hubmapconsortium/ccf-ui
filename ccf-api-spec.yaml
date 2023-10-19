@@ -90,8 +90,26 @@ paths:
   /hubmap/rui_locations.jsonld:
     get:
       summary: Get all hubmap rui locations (if enabled)
-      description: This option is only enabled if HUBMAP_ROUTES=true in the environment
+      description: This option is only enabled if XCONSORTIA_ROUTES=true in the environment
       operationId: hubmap-rui-locations
+      parameters:
+        - $ref: '#/components/parameters/Cache'
+        - $ref: '#/components/parameters/Token'
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+        "404":
+          description: Not found due to option being disabled
+
+  /sennet/rui_locations.jsonld:
+    get:
+      summary: Get all sennet rui locations (if enabled)
+      description: This option is only enabled if XCONSORTIA_ROUTES=true in the environment
+      operationId: sennet-rui-locations
       parameters:
         - $ref: '#/components/parameters/Cache'
         - $ref: '#/components/parameters/Token'
