@@ -1,9 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { JsonLd } from 'jsonld/jsonld-spec';
-import { addJsonLdToStore, Store } from 'triple-store-utils';
-
-import { hubmapResponseAsJsonLd } from './hubmap-data';
-
+import { xConsortiaResponseAsJsonLd } from './xconsortia-data';
 
 interface SearchResultJson {
   hits: {
@@ -14,25 +11,16 @@ interface SearchResultJson {
   };
 }
 
-
 // Reduce this value if including more data fields
 const PER_API_SEARCH_REQUEST_COUNT = 10000;
 
 const INCLUDED_DATA_FIELDS = [
   'uuid', 'entity_type',
+  'hubmap_id', 'sennet_id',
   'group_uuid', 'group_name',
   'last_modified_timestamp', 'created_by_user_displayname',
-  'ancestors.entity_type',
-  'ancestors.description',
-  'ancestors.metadata.organ_donor_data.preferred_term',
-  'ancestors.metadata.organ_donor_data.data_value',
-  'ancestors.metadata.living_donor_data.preferred_term',
-  'ancestors.metadata.living_donor_data.data_value',
-  'ancestors.last_modified_timestamp',
-  'ancestors.group_uuid',
-  'ancestors.group_name',
-  'ancestors.created_by_user_displayname',
-  'ancestors.uuid',
+  'donor',
+  'source',
   'descendants.entity_type',
   'descendants.ingest_metadata.metadata.tissue_id',
   'descendants.last_modified_timestamp',
@@ -40,6 +28,8 @@ const INCLUDED_DATA_FIELDS = [
   'descendants.group_name',
   'descendants.created_by_user_displayname',
   'descendants.uuid',
+  'descendants.hubmap_id',
+  'descendants.sennet_id',
   'descendants.data_types',
   'descendants.ingest_metadata.metadata.assay_type',
   'descendants.thumbnail_file',
@@ -142,19 +132,19 @@ async function doApiSearch(
 }
 
 /**
- * Search the HuBMAP Search API and return CCF-compatible JSON-LD data
+ * Search the X Atlas Consortium Search API and return HRA-compatible JSON-LD data
  *
  * @param dataUrl the search API url
  * @param serviceType 'static' if a statically saved response or 'search-api' if querying the search-api live
  * @param query the elastic search query to use
  * @param serviceToken the api key to the search-api
- * @param assetsApi the assets api endpoint
- * @param portalUrl the portal url to point to
+ * @param assetsApi the assets api endpoint (deprecated)
+ * @param portalUrl the portal url to point to (deprecated)
  * @returns CCF-compatible JSON-LD data or undefined on error
  */
-export async function searchHubmap(
+export async function searchXConsortia(
   dataUrl: string, serviceType: 'static' | 'search-api',
-  query?: unknown, serviceToken?: string, assetsApi = '', portalUrl = ''
+  query?: unknown, serviceToken?: string, _assetsApi = '', _portalUrl = ''
 ): Promise<JsonLd | undefined> {
   let hubmapData: SearchResultJson | undefined;
   if (serviceType === 'static') {
@@ -164,25 +154,9 @@ export async function searchHubmap(
   }
 
   if (hubmapData) {
-    return hubmapResponseAsJsonLd(hubmapData, assetsApi, portalUrl, serviceToken);
+    return xConsortiaResponseAsJsonLd(hubmapData, serviceToken);
   } else {
-    console.warn(`Unable to load ${dataUrl} as HuBMAP Data`);
+    console.warn(`Unable to load ${dataUrl}`);
     return undefined;
-  }
-}
-
-/**
- * Adds hubmap data from a url to the triple store.
- *
- * @param store The triple store.
- * @param dataUrl The data url.
- * @param serviceType The service type.
- */
-export async function addHubmapDataToStore(
-  store: Store, dataUrl: string, serviceType: 'static' | 'search-api', serviceToken?: string, assetsApi = '', portalUrl = ''
-): Promise<void> {
-  const hubmapData = await searchHubmap(dataUrl, serviceType, undefined, serviceToken, assetsApi, portalUrl);
-  if (hubmapData) {
-    await addJsonLdToStore(hubmapData, store);
   }
 }

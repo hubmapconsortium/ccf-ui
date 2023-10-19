@@ -8,7 +8,7 @@ import {
 
 import { CCFSpatialGraph } from './ccf-spatial-graph';
 import { CCFSpatialScene, SpatialSceneNode } from './ccf-spatial-scene';
-import { searchHubmap } from './hubmap/hubmap-data-import';
+import { searchXConsortia } from './xconsortia/xconsortia-data-import';
 import { AggregateResult, DatabaseStatus, Filter, OntologyTreeModel, TissueBlockResult } from './interfaces';
 import { getAggregateResults, getDatasetTechnologyNames, getProviderNames } from './queries/aggregate-results-n3';
 import { findIds } from './queries/find-ids-n3';
@@ -167,13 +167,11 @@ export class CCFDatabase {
       if (this.options.hubmapDataUrl.endsWith('jsonld')) {
         sources.push(this.options.hubmapDataUrl);
       } else {
-        ops.push(searchHubmap(
+        ops.push(searchXConsortia(
           this.options.hubmapDataUrl,
           this.options.hubmapDataService,
           this.options.hubmapQuery,
-          this.options.hubmapToken,
-          this.options.hubmapAssetsUrl,
-          this.options.hubmapPortalUrl
+          this.options.hubmapToken
         ).then((jsonld) => {
           if (jsonld) {
             return this.addDataSources([jsonld]);
