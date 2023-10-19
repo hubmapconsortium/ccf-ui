@@ -501,6 +501,10 @@ export class AppComponent implements OnInit {
     return this.theming.getTheme().endsWith(&#x27;light&#x27;);
   }
 
+  get isFirefox(): boolean {
+    return navigator.userAgent.indexOf(&#x27;Firefox&#x27;) !&#x3D; -1;
+  }
+
   /** Emits true whenever the overlay spinner should activate. */
   readonly spinnerActive$ &#x3D; this.data.queryStatus$.pipe(
     map(state &#x3D;&gt; state &#x3D;&#x3D;&#x3D; DataQueryState.Running)

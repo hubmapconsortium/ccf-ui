@@ -70,7 +70,7 @@
                             <a href="#checkRoutesEnabled" title="projects/ccf-api/src/lib/routes/v1/gtex/index.ts" ><b>checkRoutesEnabled</b>&nbsp;&nbsp;&nbsp;(projects/.../index.ts)</a>
                         </li>
                         <li>
-                            <a href="#checkRoutesEnabled" title="projects/ccf-api/src/lib/routes/v1/hubmap/index.ts" ><b>checkRoutesEnabled</b>&nbsp;&nbsp;&nbsp;(projects/.../index.ts)</a>
+                            <a href="#checkRoutesEnabled" title="projects/ccf-api/src/lib/routes/v1/xconsortia/index.ts" ><b>checkRoutesEnabled</b>&nbsp;&nbsp;&nbsp;(projects/.../index.ts)</a>
                         </li>
                         <li>
                             <a href="#DEFAULT_GTEX_RUI_LOCATIONS" title="projects/ccf-api/src/lib/routes/v1/gtex/rui-locations.ts" ><b>DEFAULT_GTEX_RUI_LOCATIONS</b>&nbsp;&nbsp;&nbsp;(projects/.../rui-locations.ts)</a>
@@ -97,7 +97,7 @@
                             <a href="#routes" title="projects/ccf-api/src/lib/routes/v1/gtex/index.ts" ><b>routes</b>&nbsp;&nbsp;&nbsp;(projects/.../index.ts)</a>
                         </li>
                         <li>
-                            <a href="#routes" title="projects/ccf-api/src/lib/routes/v1/hubmap/index.ts" ><b>routes</b>&nbsp;&nbsp;&nbsp;(projects/.../index.ts)</a>
+                            <a href="#routes" title="projects/ccf-api/src/lib/routes/v1/xconsortia/index.ts" ><b>routes</b>&nbsp;&nbsp;&nbsp;(projects/.../index.ts)</a>
                         </li>
                         <li>
                             <a href="#THROW_IF_NOT_FOUND" title="projects/ccf-api/src/lib/environment.ts" ><b>THROW_IF_NOT_FOUND</b>&nbsp;&nbsp;&nbsp;(projects/.../environment.ts)</a>
@@ -284,7 +284,7 @@
         </tbody>
     </table>
 </section>
-    <h3>projects/ccf-api/src/lib/routes/v1/hubmap/index.ts</h3>
+    <h3>projects/ccf-api/src/lib/routes/v1/xconsortia/index.ts</h3>
     <section data-compodoc="block-properties">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
@@ -306,7 +306,7 @@
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>(_req, _res, next) &#x3D;&gt; {
-  const enabled &#x3D; env.HUBMAP_ROUTES &#x3D;&#x3D;&#x3D; &#x27;true&#x27;;
+  const enabled &#x3D; env.XCONSORTIA_ROUTES &#x3D;&#x3D;&#x3D; &#x27;true&#x27;;
   enabled ? next() : next(&#x27;router&#x27;);
 }</code>
                     </td>
@@ -330,7 +330,8 @@
                     <td class="col-md-4">
                         <i>Default value : </i><code>Router()
   .use(checkRoutesEnabled)
-  .get(&#x27;/rui_locations.jsonld&#x27;, ruiLocations())</code>
+  .get(&#x27;/sennet/rui_locations.jsonld&#x27;, ruiLocations(&#x27;https://search.api.sennetconsortium.org/entities/search&#x27;))
+  .get(&#x27;/hubmap/rui_locations.jsonld&#x27;, ruiLocations(&#x27;https://search.api.hubmapconsortium.org/v3/entities/search&#x27;))</code>
                     </td>
                 </tr>
 
@@ -499,7 +500,7 @@
   .use(&#x27;/sparql&#x27;, sparql())
   .use(&#x27;/ccf.owl.n3store.json&#x27;, useCachedResult(&#x27;ccf.owl.n3store.json&#x27;))
   .use(cacheResponses())
-  .use(&#x27;/hubmap&#x27;, hubmapRoutes)
+  .use(&#x27;/&#x27;, xConsortiaRoutes)
   .use(&#x27;/gtex&#x27;, gtexRoutes)
   .get(&#x27;/tissue-blocks&#x27;, forwardDatabaseQuery(&#x27;getTissueBlockResults&#x27;))
   .get(&#x27;/technology-names&#x27;, forwardDatabaseQuery(&#x27;getDatasetTechnologyNames&#x27;))

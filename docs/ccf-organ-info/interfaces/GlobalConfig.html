@@ -286,7 +286,7 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Immutable } from &#x27;@angular-ru/common/typings&#x27;;
-import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, ViewChild } from &#x27;@angular/core&#x27;;
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Output, ViewChild } from &#x27;@angular/core&#x27;;
 import { SpatialSceneNode } from &#x27;ccf-body-ui&#x27;;
 import { AggregateResult, SpatialEntity, TissueBlockResult } from &#x27;ccf-database&#x27;;
 import { GlobalConfigState, OrganInfo } from &#x27;ccf-shared&#x27;;
@@ -319,6 +319,9 @@ export class AppComponent implements AfterViewInit {
   @ViewChild(&#x27;left&#x27;, { read: ElementRef, static: true }) left: ElementRef&lt;HTMLElement&gt;;
   @ViewChild(&#x27;right&#x27;, { read: ElementRef, static: true }) right: ElementRef&lt;HTMLElement&gt;;
 
+  @Output() readonly sexChange &#x3D; new EventEmitter&lt;&#x27;Male&#x27; | &#x27;Female&#x27;&gt;();
+  @Output() readonly sideChange &#x3D; new EventEmitter&lt;&#x27;Left&#x27; | &#x27;Right&#x27;&gt;();
+  @Output() nodeClicked &#x3D; new EventEmitter();
   readonly sex$ &#x3D; this.configState.getOption(&#x27;sex&#x27;);
   readonly side$ &#x3D; this.configState.getOption(&#x27;side&#x27;);
   readonly filter$ &#x3D; this.configState.getOption(&#x27;highlightProviders&#x27;)

@@ -112,7 +112,7 @@
                             <a href="#getLocations" title="projects/ccf-api/src/lib/routes/v1/gtex/rui-locations.ts" ><b>getLocations</b>&nbsp;&nbsp;&nbsp;(projects/.../rui-locations.ts)</a>
                         </li>
                         <li>
-                            <a href="#getLocations" title="projects/ccf-api/src/lib/routes/v1/hubmap/rui-locations.ts" ><b>getLocations</b>&nbsp;&nbsp;&nbsp;(projects/.../rui-locations.ts)</a>
+                            <a href="#getLocations" title="projects/ccf-api/src/lib/routes/v1/xconsortia/rui-locations.ts" ><b>getLocations</b>&nbsp;&nbsp;&nbsp;(projects/.../rui-locations.ts)</a>
                         </li>
                         <li>
                             <a href="#getNumber" title="projects/ccf-api/src/lib/environment.ts" ><b>getNumber</b>&nbsp;&nbsp;&nbsp;(projects/.../environment.ts)</a>
@@ -193,7 +193,7 @@
                             <a href="#ruiLocations" title="projects/ccf-api/src/lib/routes/v1/gtex/rui-locations.ts" ><b>ruiLocations</b>&nbsp;&nbsp;&nbsp;(projects/.../rui-locations.ts)</a>
                         </li>
                         <li>
-                            <a href="#ruiLocations" title="projects/ccf-api/src/lib/routes/v1/hubmap/rui-locations.ts" ><b>ruiLocations</b>&nbsp;&nbsp;&nbsp;(projects/.../rui-locations.ts)</a>
+                            <a href="#ruiLocations" title="projects/ccf-api/src/lib/routes/v1/xconsortia/rui-locations.ts" ><b>ruiLocations</b>&nbsp;&nbsp;&nbsp;(projects/.../rui-locations.ts)</a>
                         </li>
                         <li>
                             <a href="#selectToken" title="projects/ccf-api/src/lib/middleware/database-loader.ts" ><b>selectToken</b>&nbsp;&nbsp;&nbsp;(projects/.../database-loader.ts)</a>
@@ -2814,7 +2814,7 @@
             </tr>
         </tbody>
     </table>
-</section>    <h3>projects/ccf-api/src/lib/routes/v1/hubmap/rui-locations.ts</h3>
+</section>    <h3>projects/ccf-api/src/lib/routes/v1/xconsortia/rui-locations.ts</h3>
     <section data-compodoc="block-methods">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
@@ -2829,7 +2829,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getLocations(token: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, options: CCFDatabaseOptions)</code>
+<code>getLocations(_cacheKey: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, options)</code>
                 </td>
             </tr>
 
@@ -2852,7 +2852,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>token</td>
+                                                <td>_cacheKey</td>
                                             <td>
                                                             <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
@@ -2866,7 +2866,6 @@
                                         <tr>
                                                 <td>options</td>
                                             <td>
-                                                        <code>CCFDatabaseOptions</code>
                                             </td>
 
                                             <td>
@@ -2902,7 +2901,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>ruiLocations()</code>
+<code>ruiLocations(dataUrl: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -2912,10 +2911,40 @@
             <tr>
                 <td class="col-md-4">
 
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>dataUrl</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         <div class="io-description">
                             <b>Returns : </b>    <code>RequestHandler</code>
 
                         </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>

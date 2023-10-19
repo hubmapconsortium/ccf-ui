@@ -373,40 +373,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     </li>
                             </li>
                             <li class="link">
-                                <a href="modules/SpatialSearchKeyboardUIBehaviorModule.html" data-type="entity-link" >SpatialSearchKeyboardUIBehaviorModule</a>
-                                    <li class="chapter inner">
-                                        <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
-                                            'data-bs-target="#components-links-module-SpatialSearchKeyboardUIBehaviorModule-eaa1b03bb82006bd82d544abaa013efa1b33b511e1a5ec138d1bb9c7c83030acc45899963e94aaf8ab3603245882aa4544ea3d39dd989cf604a96a4b31b6d22b"' : 'data-bs-target="#xs-components-links-module-SpatialSearchKeyboardUIBehaviorModule-eaa1b03bb82006bd82d544abaa013efa1b33b511e1a5ec138d1bb9c7c83030acc45899963e94aaf8ab3603245882aa4544ea3d39dd989cf604a96a4b31b6d22b"' }>
-                                            <span class="icon ion-md-cog"></span>
-                                            <span>Components</span>
-                                            <span class="icon ion-ios-arrow-down"></span>
-                                        </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SpatialSearchKeyboardUIBehaviorModule-eaa1b03bb82006bd82d544abaa013efa1b33b511e1a5ec138d1bb9c7c83030acc45899963e94aaf8ab3603245882aa4544ea3d39dd989cf604a96a4b31b6d22b"' :
-                                            'id="xs-components-links-module-SpatialSearchKeyboardUIBehaviorModule-eaa1b03bb82006bd82d544abaa013efa1b33b511e1a5ec138d1bb9c7c83030acc45899963e94aaf8ab3603245882aa4544ea3d39dd989cf604a96a4b31b6d22b"' }>
-                                            <li class="link">
-                                                <a href="components/SpatialSearchKeyboardUIBehaviorComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >SpatialSearchKeyboardUIBehaviorComponent</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                            </li>
-                            <li class="link">
-                                <a href="modules/SpatialSearchKeyboardUIModule.html" data-type="entity-link" >SpatialSearchKeyboardUIModule</a>
-                                    <li class="chapter inner">
-                                        <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
-                                            'data-bs-target="#components-links-module-SpatialSearchKeyboardUIModule-527963cf0d41260b5849c2b0c91ca67df88a5e078d22bb04ae1d8f889fe1840bd856fcb5f837818ef2883ed1133c23df23b56bc30166201bb69c6fbb46fc3e30"' : 'data-bs-target="#xs-components-links-module-SpatialSearchKeyboardUIModule-527963cf0d41260b5849c2b0c91ca67df88a5e078d22bb04ae1d8f889fe1840bd856fcb5f837818ef2883ed1133c23df23b56bc30166201bb69c6fbb46fc3e30"' }>
-                                            <span class="icon ion-md-cog"></span>
-                                            <span>Components</span>
-                                            <span class="icon ion-ios-arrow-down"></span>
-                                        </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SpatialSearchKeyboardUIModule-527963cf0d41260b5849c2b0c91ca67df88a5e078d22bb04ae1d8f889fe1840bd856fcb5f837818ef2883ed1133c23df23b56bc30166201bb69c6fbb46fc3e30"' :
-                                            'id="xs-components-links-module-SpatialSearchKeyboardUIModule-527963cf0d41260b5849c2b0c91ca67df88a5e078d22bb04ae1d8f889fe1840bd856fcb5f837818ef2883ed1133c23df23b56bc30166201bb69c6fbb46fc3e30"' }>
-                                            <li class="link">
-                                                <a href="components/SpatialSearchKeyboardUIComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >SpatialSearchKeyboardUIComponent</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                            </li>
-                            <li class="link">
                                 <a href="modules/SpatialSearchUiBehaviorModule.html" data-type="entity-link" >SpatialSearchUiBehaviorModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
@@ -427,13 +393,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/SpatialSearchUiModule.html" data-type="entity-link" >SpatialSearchUiModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
-                                            'data-bs-target="#components-links-module-SpatialSearchUiModule-3b51b3a99c032c4c4ff595be0cf330a4c470fa3f72ae5af45d21781106c4ef563f0a12de2cf6370d35893cd4f8a198670fd187fcad200cbb81fb0ca762794554"' : 'data-bs-target="#xs-components-links-module-SpatialSearchUiModule-3b51b3a99c032c4c4ff595be0cf330a4c470fa3f72ae5af45d21781106c4ef563f0a12de2cf6370d35893cd4f8a198670fd187fcad200cbb81fb0ca762794554"' }>
+                                            'data-bs-target="#components-links-module-SpatialSearchUiModule-aad1c51310b6cb3d8b31dfcaed06edb740e3807f684d7177aca96c4922c2a48571a2aa4264bba497be9addea7548c7f8f5136c574c7cf3fdc725378ec1668810"' : 'data-bs-target="#xs-components-links-module-SpatialSearchUiModule-aad1c51310b6cb3d8b31dfcaed06edb740e3807f684d7177aca96c4922c2a48571a2aa4264bba497be9addea7548c7f8f5136c574c7cf3fdc725378ec1668810"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SpatialSearchUiModule-3b51b3a99c032c4c4ff595be0cf330a4c470fa3f72ae5af45d21781106c4ef563f0a12de2cf6370d35893cd4f8a198670fd187fcad200cbb81fb0ca762794554"' :
-                                            'id="xs-components-links-module-SpatialSearchUiModule-3b51b3a99c032c4c4ff595be0cf330a4c470fa3f72ae5af45d21781106c4ef563f0a12de2cf6370d35893cd4f8a198670fd187fcad200cbb81fb0ca762794554"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SpatialSearchUiModule-aad1c51310b6cb3d8b31dfcaed06edb740e3807f684d7177aca96c4922c2a48571a2aa4264bba497be9addea7548c7f8f5136c574c7cf3fdc725378ec1668810"' :
+                                            'id="xs-components-links-module-SpatialSearchUiModule-aad1c51310b6cb3d8b31dfcaed06edb740e3807f684d7177aca96c4922c2a48571a2aa4264bba497be9addea7548c7f8f5136c574c7cf3fdc725378ec1668810"' }>
                                             <li class="link">
                                                 <a href="components/SpatialSearchUiComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >SpatialSearchUiComponent</a>
                                             </li>

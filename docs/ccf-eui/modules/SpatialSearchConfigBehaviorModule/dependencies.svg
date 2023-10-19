@@ -24,23 +24,23 @@
 <title>cluster_SpatialSearchConfigBehaviorModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="8,-70 8,-268 488,-268 488,-70 8,-70"/>
 </g>
-<g id="clust2" class="cluster">
-<title>cluster_SpatialSearchConfigBehaviorModule_declarations</title>
-<polygon fill="none" stroke="black" points="216,-78 216,-130 480,-130 480,-78 216,-78"/>
-</g>
 <g id="clust4" class="cluster">
 <title>cluster_SpatialSearchConfigBehaviorModule_imports</title>
-<polygon fill="none" stroke="black" points="16,-78 16,-130 208,-130 208,-78 16,-78"/>
+<polygon fill="none" stroke="black" points="288,-78 288,-130 480,-130 480,-78 288,-78"/>
 </g>
 <g id="clust5" class="cluster">
 <title>cluster_SpatialSearchConfigBehaviorModule_exports</title>
 <polygon fill="none" stroke="black" points="114,-208 114,-260 382,-260 382,-208 114,-208"/>
 </g>
+<g id="clust2" class="cluster">
+<title>cluster_SpatialSearchConfigBehaviorModule_declarations</title>
+<polygon fill="none" stroke="black" points="16,-78 16,-130 280,-130 280,-78 16,-78"/>
+</g>
 <!-- SpatialSearchConfigBehaviorComponent -->
 <g id="node1" class="node">
 <title>SpatialSearchConfigBehaviorComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="472.01,-122 223.99,-122 223.99,-86 472.01,-86 472.01,-122"/>
-<text text-anchor="middle" x="348" y="-99.8" font-family="Times,serif" font-size="14.00">SpatialSearchConfigBehaviorComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="272.01,-122 23.99,-122 23.99,-86 272.01,-86 272.01,-122"/>
+<text text-anchor="middle" x="148" y="-99.8" font-family="Times,serif" font-size="14.00">SpatialSearchConfigBehaviorComponent</text>
 </g>
 <!-- SpatialSearchConfigBehaviorModule -->
 <g id="node2" class="node">
@@ -51,8 +51,8 @@
 <!-- SpatialSearchConfigBehaviorComponent&#45;&gt;SpatialSearchConfigBehaviorModule -->
 <g id="edge1" class="edge">
 <title>SpatialSearchConfigBehaviorComponent&#45;&gt;SpatialSearchConfigBehaviorModule</title>
-<path fill="none" stroke="black" d="M292.55,-122.11C292.55,-122.11 292.55,-140.99 292.55,-140.99"/>
-<polygon fill="black" stroke="black" points="289.05,-140.99 292.55,-150.99 296.05,-140.99 289.05,-140.99"/>
+<path fill="none" stroke="black" d="M203.45,-122.11C203.45,-122.11 203.45,-140.99 203.45,-140.99"/>
+<polygon fill="black" stroke="black" points="199.95,-140.99 203.45,-150.99 206.95,-140.99 199.95,-140.99"/>
 </g>
 <!-- SpatialSearchConfigBehaviorComponent  -->
 <g id="node4" class="node">
@@ -69,14 +69,14 @@
 <!-- SpatialSearchConfigModule -->
 <g id="node3" class="node">
 <title>SpatialSearchConfigModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="199.91,-122 196.91,-126 175.91,-126 172.91,-122 24.09,-122 24.09,-86 199.91,-86 199.91,-122"/>
-<text text-anchor="middle" x="112" y="-99.8" font-family="Times,serif" font-size="14.00">SpatialSearchConfigModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="471.91,-122 468.91,-126 447.91,-126 444.91,-122 296.09,-122 296.09,-86 471.91,-86 471.91,-122"/>
+<text text-anchor="middle" x="384" y="-99.8" font-family="Times,serif" font-size="14.00">SpatialSearchConfigModule</text>
 </g>
 <!-- SpatialSearchConfigModule&#45;&gt;SpatialSearchConfigBehaviorModule -->
 <g id="edge2" class="edge">
 <title>SpatialSearchConfigModule&#45;&gt;SpatialSearchConfigBehaviorModule</title>
-<path fill="none" stroke="black" d="M167.17,-122.11C167.17,-122.11 167.17,-140.99 167.17,-140.99"/>
-<polygon fill="black" stroke="black" points="163.67,-140.99 167.17,-150.99 170.67,-140.99 163.67,-140.99"/>
+<path fill="none" stroke="black" d="M328.83,-122.11C328.83,-122.11 328.83,-140.99 328.83,-140.99"/>
+<polygon fill="black" stroke="black" points="325.33,-140.99 328.83,-150.99 332.33,-140.99 325.33,-140.99"/>
 </g>
 </g>
 </svg>
