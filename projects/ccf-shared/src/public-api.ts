@@ -61,3 +61,9 @@ export * from './lib/components/spatial-search-list/spatial-search-list.module';
 
 export * from './lib/components/xyz-position/xyz-position.component';
 export * from './lib/components/xyz-position/xyz-position.module';
+
+export * from './lib/components/spatial-search-keyboard-ui-behavior/spatial-search-keyboard-ui-behavior.module';
+export * from './lib/components/spatial-search-keyboard-ui-behavior/spatial-search-keyboard-ui-behavior.component';
+
+export * from './lib/components/spatial-search-keyboard-ui/spatial-search-keyboard-ui.component';
+export * from './lib/components/spatial-search-keyboard-ui/spatial-search-keyboard-ui.module';

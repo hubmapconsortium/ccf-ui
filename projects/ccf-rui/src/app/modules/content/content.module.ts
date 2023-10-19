@@ -7,6 +7,7 @@ import { BodyUiModule, StoreDebugModule } from 'ccf-shared';
 import { ContentComponent } from '../content/content.component';
 import { StageNavModule } from './stage-nav/stage-nav.module';
 import { VideoModalLauncherModule } from './video-modal/video-modal-launcher/video-modal-launcher.module';
+import { SpatialSearchKeyboardUIBehaviorModule } from 'ccf-shared';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { VideoModalLauncherModule } from './video-modal/video-modal-launcher/vid
     StoreDebugModule,
     VideoModalLauncherModule,
     MatRippleModule,
+    SpatialSearchKeyboardUIBehaviorModule,
     BodyUiModule
   ],
   declarations: [ContentComponent],

@@ -8,4 +8,5 @@ export * from './lib/spatial-types';
 export * from './lib/xconsortia/xconsortia-data-import';
 export * from './lib/util/ccf-database-status-tracker';
 export * from './lib/util/probing-sphere-scene';
+export * from './lib/util/tissue-block-scene';
 export * from './lib/util/origin-scene';
