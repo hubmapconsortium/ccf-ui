@@ -1,6 +1,10 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, HostListener, Input, Output } from '@angular/core';
 
-import { Position } from '../../../core/store/spatial-search-ui/spatial-search-ui.state';
+export interface Position {
+  x: number;
+  y: number;
+  z: number;
+}
 
 
 /**

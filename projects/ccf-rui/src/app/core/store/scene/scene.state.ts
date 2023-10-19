@@ -8,12 +8,15 @@ import { Matrix4, toRadians } from '@math.gl/core';
 import { NgxsOnInit, State } from '@ngxs/store';
 import { AABB, Vec3 } from 'cannon-es';
 import { SpatialEntityJsonLd, SpatialSceneNode } from 'ccf-body-ui';
-import { combineLatest, Observable, of } from 'rxjs';
+import { Observable, combineLatest, of } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 
+import { SpatialEntity } from 'ccf-database';
+import { Position } from 'ccf-shared';
 import { environment } from '../../../../environments/environment';
 import { ModelState } from '../model/model.state';
 import { RegistrationState } from '../registration/registration.state';
+import { getTissueBlockScene } from 'ccf-database';
 import { VisibilityItem } from './../../models/visibility-item';
 import { ReferenceDataState } from './../reference-data/reference-data.state';
 
@@ -52,10 +55,10 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
   @Computed()
   get nodes$(): Observable<SpatialSceneNode[]> {
     return combineLatest([
-      this.placementCube$, this.referenceOrganNodes$, this.previousRegistrationNodes$, this.nodeCollisions$
+      this.placementCube$, this.referenceOrganNodes$, this.previousRegistrationNodes$, this.nodeCollisions$, this.spatialKeyBoardAxis$
     ]).pipe(
-      map(([placement, nodes, prevNodes, collisions]) => [
-        ...placement, ...prevNodes, ...nodes, ...(this.snapshot.showCollisions ? collisions : [])
+      map(([placement, nodes, prevNodes, collisions, axis]) => [
+        ...placement, ...prevNodes, ...nodes, ...axis, ...(this.snapshot.showCollisions ? collisions : [])
       ])
     );
   }
@@ -151,6 +154,18 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
         }).filter(e => !!e) : []
       )
     );
+  }
+
+  @Computed()
+  get spatialKeyBoardAxis$(): Observable<SpatialSceneNode[]>{
+    return combineLatest([this.model.organIri$.pipe(filter(organIri=>organIri!=='')), this.model.position$]).pipe(map(([organIri, position]: [string, Position]) => {
+      const organEntity = this.getOrganSpatialEntity(organIri);
+      const blockSize = this.model.snapshot.blockSize;
+      return organEntity ? getTissueBlockScene(organEntity, {
+        ...position, target: organEntity?.['@id'], radius: blockSize.x,
+      }): [];
+    }
+    ));
   }
 
   @Computed()
@@ -268,4 +283,11 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
       })
       .reduce((acc, nodes) => acc.concat(nodes), []);
   }
+
+  private getOrganSpatialEntity(organIri: string): SpatialEntity {
+    const db = this.referenceData.snapshot;
+    return db.organSpatialEntities[organIri] as SpatialEntity;
+  }
+
+
 }

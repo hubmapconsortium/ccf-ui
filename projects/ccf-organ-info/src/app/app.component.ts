@@ -1,5 +1,5 @@
 import { Immutable } from '@angular-ru/common/typings';
-import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
 import { SpatialSceneNode } from 'ccf-body-ui';
 import { AggregateResult, SpatialEntity, TissueBlockResult } from 'ccf-database';
 import { GlobalConfigState, OrganInfo } from 'ccf-shared';
@@ -32,6 +32,9 @@ export class AppComponent implements AfterViewInit {
   @ViewChild('left', { read: ElementRef, static: true }) left: ElementRef<HTMLElement>;
   @ViewChild('right', { read: ElementRef, static: true }) right: ElementRef<HTMLElement>;
 
+  @Output() readonly sexChange = new EventEmitter<'Male' | 'Female'>();
+  @Output() readonly sideChange = new EventEmitter<'Left' | 'Right'>();
+  @Output() nodeClicked = new EventEmitter();
   readonly sex$ = this.configState.getOption('sex');
   readonly side$ = this.configState.getOption('side');
   readonly filter$ = this.configState.getOption('highlightProviders')
