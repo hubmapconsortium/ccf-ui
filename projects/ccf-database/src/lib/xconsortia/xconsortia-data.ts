@@ -6,7 +6,31 @@ import { patchJsonLd } from '../util/patch-jsonld';
 const { get, omit, set, toNumber } = lodash;
 
 type JsonDict = Record<string, unknown>;
-const HBM_PREFIX = 'https://entity.api.hubmapconsortium.org/entities/';
+
+interface Portal {
+  idPrefix: string;
+  portal: string;
+  portalParams: string;
+  donorName: string;
+  assets: string;
+}
+
+const HUBMAP: Portal = {
+  idPrefix: 'https://entity.api.hubmapconsortium.org/entities/',
+  portal: 'https://portal.hubmapconsortium.org/browse/',
+  portalParams: '/',
+  donorName: 'donor',
+  assets: 'https://assets.hubmapconsortium.org'
+};
+
+const SENNET: Portal = {
+  idPrefix: 'https://entity.api.sennetconsortium.org/entities/',
+  portal: 'https://data.sennetconsortium.org/',
+  portalParams: '?uuid=',
+  donorName: 'source',
+  assets: 'https://assets.sennetconsortium.org'
+};
+
 
 // eslint-disable-next-line max-len
 export const DR1_VU_THUMBS = new Set(['VAN0003-LK-32-21-AF_preIMS_registered_thumbnail.jpg', 'VAN0003-LK-32-21-IMS_NegMode_multilayer_thumbnail.jpg', 'VAN0003-LK-32-21-IMS_PosMode_multilayer_thumbnail.jpg', 'VAN0003-LK-32-21-PAS_registered_thumbnail.jpg', 'VAN0003-LK-32-22-AF_preMxIF_registered_thumbnail.jpg', 'VAN0003-LK-32-22-MxIF_cyc1_registered_thumbnail.jpg', 'VAN0003-LK-32-22-MxIF_cyc2_registered_thumbnail.jpg', 'VAN0003-LK-32-22-MxIF_cyc3_registered_thumbnail.jpg', 'VAN0005-RK-1-1-AF_preIMS_registered_thumbnail.jpg', 'VAN0005-RK-1-1-IMS_NegMode_multilayer_thumbnail.jpg', 'VAN0005-RK-1-1-IMS_PosMode_multilayer_thumbnail.jpg', 'VAN0005-RK-1-1-PAS_registered_thumbnail.jpg', 'VAN0005-RK-4-172-AF_preIMS_registered_thumbnail.jpg', 'VAN0005-RK-4-172-IMS_NegMode_multilayer_thumbnail.jpg', 'VAN0005-RK-4-172-IMS_PosMode_multilayer_thumbnail.jpg', 'VAN0005-RK-4-172-PAS_registered_thumbnail.jpg', 'VAN0006-LK-2-85-AF_preIMS_registered_thumbnail.jpg', 'VAN0006-LK-2-85-IMS_NegMode_multilayer_thumbnail.jpg', 'VAN0006-LK-2-85-IMS_PosMode_multilayer_thumbnail.jpg', 'VAN0006-LK-2-85-PAS_registered_thumbnail.jpg', 'VAN0006-LK-2-86-AF_preMxIF_registered_thumbnail.jpg', 'VAN0006-LK-2-86-MxIF_cyc1_registered_thumbnail.jpg', 'VAN0006-LK-2-86-MxIF_cyc2_registered_thumbnail.jpg', 'VAN0006-LK-2-86-MxIF_cyc3_registered_thumbnail.jpg', 'VAN0007-LK-203-103-AF_preIMS_registered_thumbnail.jpg', 'VAN0007-LK-203-103-IMS_NegMode_multilayer_thumbnail.jpg', 'VAN0007-LK-203-103-IMS_PosMode_multilayer_thumbnail.jpg', 'VAN0007-LK-203-103-PAS_registered_thumbnail.jpg', 'VAN0008-RK-403-100-AF_preIMS_registered_thumbnail.jpg', 'VAN0008-RK-403-100-IMS_NegMode_multilayer_thumbnail.jpg', 'VAN0008-RK-403-100-IMS_PosMode_multilayer_thumbnail.jpg', 'VAN0008-RK-403-100-PAS_registered_thumbnail.jpg', 'VAN0008-RK-403-101-AF_preMxIF_registered_thumbnail.jpg', 'VAN0008-RK-403-101-MxIF_cyc1_registered_thumbnail.jpg', 'VAN0008-RK-403-101-MxIF_cyc2_registered_thumbnail.jpg', 'VAN0008-RK-403-101-MxIF_cyc3_registered_thumbnail.jpg', 'VAN0009-LK-102-7-AF_preIMS_registered_thumbnail.jpg', 'VAN0009-LK-102-7-IMS_NegMode_multilayer_thumbnail.jpg', 'VAN0009-LK-102-7-IMS_PosMode_multilayer_thumbnail.jpg', 'VAN0009-LK-102-7-PAS_registered_thumbnail.jpg', 'VAN0010-LK-155-40-AF_preIMS_registered_thumbnail.jpg', 'VAN0010-LK-155-40-IMS_NegMode_multilayer_thumbnail.jpg', 'VAN0010-LK-155-40-IMS_PosMode_multilayer_thumbnail.jpg', 'VAN0010-LK-155-40-PAS_registered_thumbnail.jpg', 'VAN0011-RK-3-10-AF_preIMS_registered_thumbnail.jpg', 'VAN0011-RK-3-10-IMS_NegMode_multilayer_thumbnail.jpg', 'VAN0011-RK-3-10-IMS_PosMode_multilayer_thumbnail.jpg', 'VAN0011-RK-3-10-PAS_registered_thumbnail.jpg', 'VAN0011-RK-3-11-AF_preMxIF_registered_thumbnail.jpg', 'VAN0011-RK-3-11-MxIF_cyc1_registered_thumbnail.jpg', 'VAN0011-RK-3-11-MxIF_cyc2_registered_thumbnail.jpg', 'VAN0011-RK-3-11-MxIF_cyc3_registered_thumbnail.jpg', 'VAN0012-RK-103-75-AF_preIMS_registered_thumbnail.jpg', 'VAN0012-RK-103-75-IMS_NegMode_multilayer_thumbnail.jpg', 'VAN0012-RK-103-75-IMS_PosMode_multilayer_thumbnail.jpg', 'VAN0012-RK-103-75-PAS_registered_thumbnail.jpg', 'VAN0012-RK-103-76-AF_preMxIF_registered_thumbnail.jpg', 'VAN0012-RK-103-76-MxIF_cyc1_registered_thumbnail.jpg', 'VAN0012-RK-103-76-MxIF_cyc2_registered_thumbnail.jpg', 'VAN0012-RK-103-76-MxIF_cyc3_registered_thumbnail.jpg', 'VAN0013-LK-202-96-AF_preIMS_registered_thumbnail.jpg', 'VAN0013-LK-202-96-IMS_NegMode_multilayer_thumbnail.jpg', 'VAN0013-LK-202-96-IMS_PosMode_multilayer_thumbnail.jpg', 'VAN0013-LK-202-96-PAS_registered_thumbnail.jpg', 'VAN0013-LK-202-97-AF_preMxIF_registered_thumbnail.jpg', 'VAN0013-LK-202-97-MxIF_cyc1_registered_thumbnail.jpg', 'VAN0013-LK-202-97-MxIF_cyc2_registered_thumbnail.jpg', 'VAN0013-LK-202-97-MxIF_cyc3_registered_thumbnail.jpg', 'VAN0014-LK-203-108-AF_preIMS_registered_thumbnail.jpg', 'VAN0014-LK-203-108-IMS_NegMode_multilayer_thumbnail.jpg', 'VAN0014-LK-203-108-IMS_PosMode_multilayer_thumbnail.jpg', 'VAN0014-LK-203-108-PAS_registered_thumbnail.jpg', 'VAN0016-LK-202-89-AF_preIMS_registered_thumbnail.jpg', 'VAN0016-LK-202-89-IMS_NegMode_multilayer_thumbnail.jpg', 'VAN0016-LK-202-89-IMS_PosMode_multilayer_thumbnail.jpg', 'VAN0016-LK-202-89-PAS_registered_thumbnail.jpg', 'VAN0003-LK-32-21-AF_preIMS_registered_thumbnail.jpg', 'VAN0003-LK-32-21-IMS_NegMode_multilayer_thumbnail.jpg', 'VAN0003-LK-32-21-IMS_PosMode_multilayer_thumbnail.jpg', 'VAN0003-LK-32-21-PAS_registered_thumbnail.jpg', 'VAN0003-LK-32-22-AF_preMxIF_registered_thumbnail.jpg', 'VAN0003-LK-32-22-MxIF_cyc1_registered_thumbnail.jpg', 'VAN0003-LK-32-22-MxIF_cyc2_registered_thumbnail.jpg', 'VAN0003-LK-32-22-MxIF_cyc3_registered_thumbnail.jpg', 'VAN0005-RK-1-1-AF_preIMS_registered_thumbnail.jpg', 'VAN0005-RK-1-1-IMS_NegMode_multilayer_thumbnail.jpg', 'VAN0005-RK-1-1-IMS_PosMode_multilayer_thumbnail.jpg', 'VAN0005-RK-1-1-PAS_registered_thumbnail.jpg', 'VAN0005-RK-4-172-AF_preIMS_registered_thumbnail.jpg', 'VAN0005-RK-4-172-IMS_NegMode_multilayer_thumbnail.jpg', 'VAN0005-RK-4-172-IMS_PosMode_multilayer_thumbnail.jpg', 'VAN0005-RK-4-172-PAS_registered_thumbnail.jpg', 'VAN0006-LK-2-85-AF_preIMS_registered_thumbnail.jpg', 'VAN0006-LK-2-85-IMS_NegMode_multilayer_thumbnail.jpg', 'VAN0006-LK-2-85-IMS_PosMode_multilayer_thumbnail.jpg', 'VAN0006-LK-2-85-PAS_registered_thumbnail.jpg', 'VAN0006-LK-2-86-AF_preMxIF_registered_thumbnail.jpg', 'VAN0006-LK-2-86-MxIF_cyc1_registered_thumbnail.jpg', 'VAN0006-LK-2-86-MxIF_cyc2_registered_thumbnail.jpg', 'VAN0006-LK-2-86-MxIF_cyc3_registered_thumbnail.jpg', 'VAN0007-LK-203-103-AF_preIMS_registered_thumbnail.jpg', 'VAN0007-LK-203-103-IMS_NegMode_multilayer_thumbnail.jpg', 'VAN0007-LK-203-103-IMS_PosMode_multilayer_thumbnail.jpg', 'VAN0007-LK-203-103-PAS_registered_thumbnail.jpg', 'VAN0008-RK-403-100-AF_preIMS_registered_thumbnail.jpg', 'VAN0008-RK-403-100-IMS_NegMode_multilayer_thumbnail.jpg', 'VAN0008-RK-403-100-IMS_PosMode_multilayer_thumbnail.jpg', 'VAN0008-RK-403-100-PAS_registered_thumbnail.jpg', 'VAN0008-RK-403-101-AF_preMxIF_registered_thumbnail.jpg', 'VAN0008-RK-403-101-MxIF_cyc1_registered_thumbnail.jpg', 'VAN0008-RK-403-101-MxIF_cyc2_registered_thumbnail.jpg', 'VAN0008-RK-403-101-MxIF_cyc3_registered_thumbnail.jpg', 'VAN0011-RK-3-10-AF_preIMS_registered_thumbnail.jpg', 'VAN0011-RK-3-10-IMS_NegMode_multilayer_thumbnail.jpg', 'VAN0011-RK-3-10-IMS_PosMode_multilayer_thumbnail.jpg', 'VAN0011-RK-3-10-PAS_registered_thumbnail.jpg', 'VAN0011-RK-3-11-AF_preMxIF_registered_thumbnail.jpg', 'VAN0011-RK-3-11-MxIF_cyc1_registered_thumbnail.jpg', 'VAN0011-RK-3-11-MxIF_cyc2_registered_thumbnail.jpg', 'VAN0011-RK-3-11-MxIF_cyc3_registered_thumbnail.jpg', 'VAN0012-RK-103-75-AF_preIMS_registered_thumbnail.jpg', 'VAN0012-RK-103-75-IMS_NegMode_multilayer_thumbnail.jpg', 'VAN0012-RK-103-75-IMS_PosMode_multilayer_thumbnail.jpg', 'VAN0012-RK-103-75-PAS_registered_thumbnail.jpg', 'VAN0012-RK-103-76-AF_preMxIF_registered_thumbnail.jpg', 'VAN0012-RK-103-76-MxIF_cyc1_registered_thumbnail.jpg', 'VAN0012-RK-103-76-MxIF_cyc2_registered_thumbnail.jpg', 'VAN0012-RK-103-76-MxIF_cyc3_registered_thumbnail.jpg']);
@@ -33,14 +57,14 @@ const ENTITY_CONTEXT = 'https://hubmapconsortium.github.io/ccf-ontology/ccf-cont
  * @param data The hubmap data.
  * @returns The converted data.
  */
-export function hubmapResponseAsJsonLd(data: unknown, assetsApi = '', portalUrl = '', serviceToken?: string, debug = false): JsonLd {
+export function xConsortiaResponseAsJsonLd(data: unknown, serviceToken?: string, debug = false): JsonLd {
   const entries = (get(data, 'hits.hits', []) as JsonDict[])
     .map(e => get(e, '_source', {}) as JsonDict)
     .sort((a, b) => (a['uuid'] as string).localeCompare(b['uuid'] as string));
 
   const donorLookup: Record<string, JsonLdObj> = {};
   const unflattened: JsonLdObj[] = entries.map(e =>
-    new HuBMAPTissueBlock(e, assetsApi, portalUrl, serviceToken).toJsonLd()
+    new HuBMAPTissueBlock(e, serviceToken).toJsonLd()
   );
   for (const donor of unflattened) {
     const donorId = donor['@id'] as string;
@@ -106,17 +130,26 @@ export class HuBMAPTissueBlock {
   sections: JsonLdObj[];
   datasets: JsonLdObj[];
 
-  constructor(public data: JsonDict, assetsApi = '', portalUrl = '', serviceToken?: string) {
+  portal: Portal;
+
+  constructor(public data: JsonDict, serviceToken?: string) {
     const entityType = this.data.entity_type;
     if (entityType !== 'Sample') {
       this.bad = true;
       return;
     }
-    const ancestors = (this.data.ancestors || []) as JsonDict[];
-    const descendants = (this.data.descendants || []) as JsonDict[];
+    if (data.sennet_id) {
+      this.portal = SENNET;
+    } else if (data.hubmap_id) {
+      this.portal = HUBMAP;
+    } else {
+      this.bad = true;
+      return;
+    }
 
-    const donor = ancestors.find(e => e.entity_type === 'Donor') as JsonDict;
-    this.donor = this.getDonor(donor, portalUrl);
+    const descendants = (this.data.descendants || []) as JsonDict[];
+    const donor = (this.data.donor ?? this.data.source) as JsonDict;
+    this.donor = this.getDonor(donor);
     const ruiLocation = this.getRuiLocation(data, this.donor);
     if (!ruiLocation) {
       this.bad = true;
@@ -132,9 +165,9 @@ export class HuBMAPTissueBlock {
     const groupName = GROUP_UUID_MAPPING[data.group_uuid as string] || data.group_name as string;
     const creator = data.created_by_user_displayname;
 
-    this['@id'] = HBM_PREFIX + data.uuid;
+    this['@id'] = this.portal.idPrefix + data.uuid;
     this.label = `Registered ${dateEntered}, ${creator}, ${groupName}`;
-    this.link = `${portalUrl}browse/sample/${data.uuid}`;
+    this.link = `${this.portal.portal}sample${this.portal.portalParams}${data.uuid}`;
 
     const sectionLookup: Record<string, JsonLdObj> = {};
     const sections: JsonLdObj[] = [];
@@ -143,7 +176,7 @@ export class HuBMAPTissueBlock {
     this.datasets = datasets;
 
     for (const descendant of descendants.filter(d => d.entity_type === 'Sample')) {
-      const section = this.getSection(descendant, data, portalUrl);
+      const section = this.getSection(descendant, data);
 
       const sectionId = descendant.submission_id as string;
       sectionLookup[sectionId] = section;
@@ -152,7 +185,7 @@ export class HuBMAPTissueBlock {
     }
     for (const descendant of descendants) {
       if (descendant.entity_type === 'Dataset') {
-        const dataset = this.getDataset(descendant, assetsApi, portalUrl, serviceToken);
+        const dataset = this.getDataset(descendant, serviceToken);
 
         const sectionId = get(descendant, ['ingest_metadata', 'metadata', 'tissue_id']) as string;
         if (sectionLookup[sectionId]) {
@@ -183,17 +216,17 @@ export class HuBMAPTissueBlock {
     });
   }
 
-  getSection(section: JsonDict, data: JsonDict, portalUrl: string): JsonLdObj {
+  getSection(section: JsonDict, data: JsonDict): JsonLdObj {
     const dateEntered = new Date(section.last_modified_timestamp as number).toLocaleDateString();
     const groupName = GROUP_UUID_MAPPING[section.group_uuid as string] || section.group_name as string;
     const creator = section.created_by_user_displayname;
 
     return {
-      '@id': HBM_PREFIX + section.uuid,
+      '@id': this.portal.idPrefix + section.uuid,
       '@type': 'Sample',
       label: `Registered ${dateEntered}, ${creator}, ${groupName}`,
       description: `${data.sample_category}`,
-      link: `${portalUrl}browse/sample/${section.uuid}`,
+      link: `${this.portal.portal}sample${this.portal.portalParams}${section.uuid}`,
 
       sample_type: 'Tissue Section',
       section_number: 1,
@@ -203,7 +236,7 @@ export class HuBMAPTissueBlock {
     };
   }
 
-  getDataset(dataset: JsonDict, assetsApi = '', portalUrl = '', serviceToken?: string): JsonLdObj {
+  getDataset(dataset: JsonDict, serviceToken?: string): JsonLdObj {
     const dateEntered = new Date(dataset.last_modified_timestamp as number).toLocaleDateString();
     const groupName = GROUP_UUID_MAPPING[dataset.group_uuid as string] || dataset.group_name as string;
     const creator = dataset.created_by_user_displayname;
@@ -238,23 +271,23 @@ export class HuBMAPTissueBlock {
     } else {
       technology = 'OTHER';
     }
-    thumbnail = this.getDatasetThumbnail(dataset, assetsApi, serviceToken) ?? thumbnail;
+    thumbnail = this.getDatasetThumbnail(dataset, serviceToken) ?? thumbnail;
 
     return {
-      '@id': HBM_PREFIX + dataset.uuid,
+      '@id': this.portal.idPrefix + dataset.uuid,
       '@type': 'Dataset',
       label: `Registered ${dateEntered}, ${creator}, ${groupName}`,
       description: `Data/Assay Types: ${types.join(', ')}`,
-      link: `${portalUrl}browse/dataset/${dataset.uuid}`,
+      link: `${this.portal.portal}dataset${this.portal.portalParams}${dataset.uuid}`,
       technology,
       thumbnail
     };
   }
 
-  getDatasetThumbnail(dataset: JsonDict, assetsApi: string, serviceToken?: string): string | undefined {
+  getDatasetThumbnail(dataset: JsonDict, serviceToken?: string): string | undefined {
     if (dataset.thumbnail_file) {
       const thumbnailFile = dataset.thumbnail_file as JsonDict;
-      return `${assetsApi}/${thumbnailFile.file_uuid}/${thumbnailFile.filename}` + (serviceToken ? `?token=${serviceToken}` : '');
+      return `${this.portal.assets}/${thumbnailFile.file_uuid}/${thumbnailFile.filename}` + (serviceToken ? `?token=${serviceToken}` : '');
     } else if (dataset.group_uuid === '73bb26e4-ed43-11e8-8f19-0a7c1eab007a') { // TMC-Vanderbilt
       const tiffs = (get(dataset, 'metadata.files', []) as { rel_path: string }[])
         .filter(f => /\.(ome\.tif|ome\.tiff)$/.test(f.rel_path))
@@ -262,7 +295,7 @@ export class HuBMAPTissueBlock {
         .filter(f => DR1_VU_THUMBS.has(
           f.rel_path.split('/').slice(-1)[0].split('?')[0].replace('.ome.tif', '_thumbnail.jpg')
         ))
-        .map(f => `${assetsApi}/${dataset.uuid}/${f.rel_path}` + (serviceToken ? `?token=${serviceToken}` : ''));
+        .map(f => `${this.portal.assets}/${dataset.uuid}/${f.rel_path}` + (serviceToken ? `?token=${serviceToken}` : ''));
 
       if (tiffs.length > 0) {
         const thumb = tiffs[0].split('/').slice(-1)[0].split('?')[0].replace('.ome.tif', '_thumbnail.jpg');
@@ -279,7 +312,7 @@ export class HuBMAPTissueBlock {
     return undefined;
   }
 
-  getDonor(donor: JsonDict, portalUrl: string): JsonLdObj {
+  getDonor(donor: JsonDict): JsonLdObj {
     const donorDescription = (donor.description as string || '').toLowerCase();
     let sex: 'Male' | 'Female' | undefined;
     if (donorDescription.includes('female')) {
@@ -287,12 +320,22 @@ export class HuBMAPTissueBlock {
     } else if (donorDescription.includes('male')) {
       sex = 'Male';
     }
-    const ageMatch = donorDescription.match(/age ([0-9]+)/);
+    const ageMatch = donorDescription.match(/age ([0-9]+)/) ?? donorDescription.match(/ ([0-9]+) years/);
     let age: number | undefined;
     if (ageMatch) {
       age = toNumber(ageMatch[1]);
     }
     let bmi: number | undefined;
+    const metadata = get(donor, 'mapped_metadata', get(donor, 'source_mapped_metadata', {})) as Record<string, unknown[]>;
+    if (!sex && metadata.sex?.length > 0) {
+      sex = metadata.sex[0] as 'Male' | 'Female' | undefined;
+    }
+    if (!age && metadata.age_value?.length > 0) {
+      age = metadata.age_value[0] as number | undefined;
+    }
+    if (!bmi && metadata.body_mass_index_value?.length > 0) {
+      bmi = metadata.body_mass_index_value[0] as number | undefined;
+    }
     for (const md of get(donor, 'metadata.organ_donor_data', get(donor, 'metadata.living_donor_data', [])) as JsonDict[]) {
       if (md.preferred_term === 'Feminine gender' || md.preferred_term === 'Female') {
         sex = 'Female';
@@ -310,6 +353,8 @@ export class HuBMAPTissueBlock {
       if (bmi) {
         label += `, BMI ${bmi.toFixed(1)}`;
       }
+    } else if (sex) {
+      label = sex;
     }
 
     const dateEntered = new Date(donor.last_modified_timestamp as number).toLocaleDateString();
@@ -317,17 +362,17 @@ export class HuBMAPTissueBlock {
     const creator = donor.created_by_user_displayname;
 
     return {
-      '@id': HBM_PREFIX + donor.uuid,
+      '@id': this.portal.idPrefix + donor.uuid,
       '@type': 'Donor',
       label,
       description: `Entered ${dateEntered}, ${creator}, ${groupName}`,
-      link: `${portalUrl}browse/donor/${donor.uuid}`,
+      link: `${this.portal.portal}${this.portal.donorName}${this.portal.portalParams}${donor.uuid}`,
 
       age,
       sex,
       bmi,
 
-      consortium_name: 'HuBMAP',
+      consortium_name: this.portal === HUBMAP ? 'HuBMAP' : 'SenNet',
       provider_name: groupName,
       provider_uuid: donor.group_uuid as string,
 
@@ -372,7 +417,7 @@ export class HuBMAPTissueBlock {
   }
 
   getTissueBlock(): JsonLdObj {
-    return omit({ ...this }, ['data', 'bad', 'donor']) as unknown as JsonLdObj;
+    return omit({ ...this }, ['data', 'bad', 'donor', 'portal']) as unknown as JsonLdObj;
   }
 
   toJsonLd(): JsonLdObj {
