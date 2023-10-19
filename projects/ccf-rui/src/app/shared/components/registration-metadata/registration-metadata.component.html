@@ -6,7 +6,7 @@
 
   <mat-form-field class="orcid-input" subscriptSizing="dynamic">
     <mat-label>ORCID identifier (optional)</mat-label>
-    <input matInput class="input" [value]="orcidId ?? ''" (input)="updateOrcid($event)"  matTooltip="Add ORCID id.">
+    <input matInput class="input" [value]="(page.user$ | async)?.orcidId ?? ''" (input)="page.setOrcidId($event.target.value)"  matTooltip="Add ORCID id.">
   </mat-form-field>
 </div>
 
@@ -15,7 +15,7 @@
 
   <div class="sex-toggle">
     <div class="label">Donor Sex: </div>
-    <mat-radio-group class="radio-group" [value]="currentSex" (change)="setSexFromLabel($event.value)">
+    <mat-radio-group class="radio-group" [value]="model.sex$ | async" (change)="setSexFromLabel($event.value)">
       <mat-radio-button class="radio" value="male">Male</mat-radio-button>
       <mat-radio-button class="radio" value="female">Female</mat-radio-button>
     </mat-radio-group>
@@ -27,7 +27,7 @@
       <div *ngIf="(model.organ$ | async) === undefined" class="label">Organs</div>
       <mat-select disableOptionCentering="true" panelClass="organ-select" [value]="model.organ$ | async"
         (selectionChange)="model.setOrgan($event.value)" hideSingleSelectionIndicator="true">
-        <mat-option class="organ-select-option" *ngFor="let organ of organList" [value]="organ">
+        <mat-option class="organ-select-option" *ngFor="let organ of (page.organOptions$ | async)" [value]="organ">
           {{organ.name}}
         </mat-option>
       </mat-select>
@@ -37,9 +37,9 @@
   <div class="upload-registration">
     <div class="label">Upload previous registration data (optional):</div>
 
-    <ccf-json-file-reader (parsedJson)="updateRegistration($event)" label="Upload" matTooltip="Upload a preexisting registration"></ccf-json-file-reader>
+    <ccf-json-file-reader (parsedJson)="registration.editRegistration($event)" label="Upload" matTooltip="Upload a preexisting registration"></ccf-json-file-reader>
 
-    <div>{{uploadedText}}</div>
+    <div>{{uploadText}}</div>
 
   </div>
 </div>

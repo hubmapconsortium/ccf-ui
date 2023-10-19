@@ -14,7 +14,7 @@ import { TagListModule } from '../../shared/components/tag-list/tag-list.module'
 import { TagSearchModule } from '../../shared/components/tag-search/tag-search.module';
 import { ReviewButtonModule } from '../review/review-button/review-button.module';
 import { RightSidebarComponent } from './right-sidebar.component';
-import { RegistrationMetadataModuleModule } from '../../shared/components/registration-metadata-module/registration-metadata-module.module';
+import { RegistrationMetadataModule } from '../../shared/components/registration-metadata/registration-metadata.module';
 
 
 @NgModule({
@@ -34,7 +34,7 @@ import { RegistrationMetadataModuleModule } from '../../shared/components/regist
     TagListModule,
     TagSearchModule,
     InfoButtonModule,
-    RegistrationMetadataModuleModule
+    RegistrationMetadataModule
   ],
   declarations: [RightSidebarComponent],
   exports: [RightSidebarComponent]

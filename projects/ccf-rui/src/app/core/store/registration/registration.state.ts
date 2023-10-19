@@ -157,7 +157,6 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
       this.globalConfig.getOption('editRegistration').pipe(
         filterNulls(),
         tap(reg => {
-          this.ctx.patchState({ initialRegistration: reg as SpatialEntityJsonLd });
           this.editRegistration(reg as SpatialEntityJsonLd);
         })
       ).subscribe();
@@ -165,6 +164,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
   }
 
   async editRegistration(reg: SpatialEntityJsonLd): Promise<void> {
+    this.ctx.patchState({ initialRegistration: reg });
     const place = this.refData.normalizePlacement(
       Array.isArray(reg.placement) ? reg.placement[0] : reg.placement
     );
