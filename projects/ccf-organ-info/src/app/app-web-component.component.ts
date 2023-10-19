@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
 import { GlobalConfigState } from 'ccf-shared';
 import { BaseWebComponent, BUILTIN_PARSERS, GenericGlobalConfig } from 'ccf-shared/web-components';
 
@@ -43,7 +43,7 @@ function parseStringArray(value: unknown): string[] {
 
 @Component({
   selector: 'ccf-root-wc',
-  template: '<ccf-root *ngIf="initialized"></ccf-root>',
+  template: '<ccf-root (sexChange)="sexChange.emit($event)" (nodeClick)="nodeClicked.emit($event)" (sideChange)="sideChange.emit($event)" *ngIf="initialized"></ccf-root>',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppWebComponent extends BaseWebComponent {
@@ -61,6 +61,10 @@ export class AppWebComponent extends BaseWebComponent {
 
   @Input() useRemoteApi: string | boolean;
   @Input() remoteApiEndpoint: string;
+
+  @Output() readonly sexChange = new EventEmitter<'Male' | 'Female'>();
+  @Output() readonly sideChange = new EventEmitter<'Left' | 'Right'>();
+  @Output() nodeClicked = new EventEmitter();
 
   initialized: boolean;
 
