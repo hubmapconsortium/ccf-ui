@@ -170,7 +170,11 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
     );
     const data = this.refData.getOrganData(place.target);
 
-    this.page.setUserName({ firstName: reg.creator_first_name, lastName: reg.creator_last_name });
+    this.page.setUserName({
+      firstName: reg.creator_first_name,
+      middleName: reg.creator_middle_name,
+      lastName: reg.creator_last_name
+    });
 
     if (data) {
       this.model.setOrgan(data.organ);
@@ -346,10 +350,11 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
       '@id': `http://purl.org/ccf/1.5/${this.currentIdentifier}`,
       '@type': 'SpatialEntity',
       label: model.label || undefined,
-      creator: `${page.user.firstName} ${page.user.lastName}`,
+      creator: `${page.user.firstName} ${page.user.middleName ? page.user.middleName + ' ' : ''}${ page.user.lastName}`,
       creator_first_name: page.user.firstName,
       creator_last_name: page.user.lastName,
-      // creator_orcid: data.alignment_operator_orcid,
+      creator_middle_name: page.user.middleName,
+      creator_orcid: page.user.orcidId,
       creation_date: this.currentDate,
       ccf_annotations: tags.map(tag => tag.id),
       slice_thickness: model.slicesConfig?.thickness || undefined,

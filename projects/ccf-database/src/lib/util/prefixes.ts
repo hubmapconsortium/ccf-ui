@@ -120,6 +120,7 @@ export const ccf = {
     creator: prefixer('dcterms')('creator'),
     creator_first_name: ccfx('creator_first_name'),
     creator_last_name: ccfx('creator_last_name'),
+    creator_middle_name: ccfx('creator_middle_name'),
     creator_orcid: ccfx('creator_orcid'),
     creation_date: prefixer('dcterms')('created'),
     updated_date: ccfx('updated_date'),

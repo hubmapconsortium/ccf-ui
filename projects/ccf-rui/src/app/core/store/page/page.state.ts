@@ -138,14 +138,18 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
   @DataAction()
   setUserName(name: Pick<Person, 'firstName' | 'middleName' | 'lastName'>): void {
     this.ctx.setState(patch({
-      user: patch(name)
+      user: patch({
+        firstName: name.firstName,
+        lastName: name.lastName,
+        middleName: name.middleName !== '' ? name.middleName : undefined
+      })
     }));
   }
 
   @DataAction()
   setOrcidId(orcidId: string): void {
     this.ctx.setState(patch({
-      user: patch({ orcidId })
+      user: patch({ orcidId: orcidId !== '' ? orcidId : undefined })
     }));
   }
 

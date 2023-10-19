@@ -25,6 +25,8 @@ export async function processSpatialEntities(parent: SpatialEntityJsonLd, gltfOv
       creator: parent.creator,
       creator_first_name: parent.creator_first_name,
       creator_last_name: parent.creator_last_name,
+      creator_middle_name: parent.creator_middle_name,
+      creator_orcid: parent.creator_orcid,
       creation_date: creationDate,
       x_dimension: node.size.x,
       y_dimension: node.size.y,

@@ -43,6 +43,8 @@ export interface SpatialEntity {
   creator_first_name?: string;
   /** Creator last name */
   creator_last_name?: string;
+  /** Creator middle name */
+  creator_middle_name?: string;
   /** Creator identifier */
   creator_orcid?: string;
   /** Creation date */
