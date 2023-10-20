@@ -15,13 +15,13 @@
   <mat-form-field class="field">
     <mat-label class="text label">Thickness</mat-label>
     <input matInput ccfNumbersOnly class="input" type="number" [value]="slicesConfig.thickness"
-           (input)="updateSlicesData($event, 'thickness')"  matTooltip="Enter thickness of tissue sections">
+           (keyup)="updateSlicesData($event, 'thickness')"  matTooltip="Enter thickness of tissue sections">
     <div matSuffix class="suffix" [class.show]="hasThicknessValue">μm</div>
   </mat-form-field>
 
   <mat-form-field class="field">
     <mat-label class="text label"># Sections</mat-label>
     <input matInput ccfNumbersOnly class="input" type="number" [value]="slicesConfig.numSlices"
-           (input)="updateSlicesData($event, 'numSlices')" matTooltip="Enter total number of sections">
+           (keyup)="updateSlicesData($event, 'numSlices')" matTooltip="Enter total number of sections">
   </mat-form-field>
 </div>

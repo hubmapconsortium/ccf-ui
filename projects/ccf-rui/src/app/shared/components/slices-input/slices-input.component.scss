@@ -1,4 +1,8 @@
 :host {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
   input[type=number] {
     -moz-appearance: textfield;
   }
@@ -7,9 +11,10 @@
     display: flex;
     align-items: center;
     height: 1.5rem;
+    padding: .5rem 0;
 
     .title {
-      font-weight: 600;
+      font-weight: 400;
     }
 
     .refresh {
@@ -25,9 +30,10 @@
 
   .slices-inputs {
     display: flex;
+    justify-content: center;
 
     .field {
-      width: 33.33%;
+      width: 9rem;
 
       &:not(:last-child) {
         padding-right: 0.75rem;

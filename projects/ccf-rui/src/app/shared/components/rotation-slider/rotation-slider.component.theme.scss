@@ -41,6 +41,14 @@
       }
     }
 
+    .mdc-text-field {
+      background: white;
+    }
+
+    .mat-mdc-form-field-focus-overlay {
+      background: transparent;
+    }
+
     @include slider-theme('.red', mat.get-color-from-palette($foreground, slider-red), mat.get-color-from-palette($foreground, slider-red-light));
     @include slider-theme('.green', mat.get-color-from-palette($foreground, slider-green), mat.get-color-from-palette($foreground, slider-green-light));
     @include slider-theme('.blue', mat.get-color-from-palette($foreground, slider-blue), mat.get-color-from-palette($foreground, slider-blue-light));
