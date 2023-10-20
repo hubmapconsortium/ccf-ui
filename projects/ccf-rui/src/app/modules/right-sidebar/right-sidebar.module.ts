@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { InfoButtonModule } from 'ccf-shared';
 
 import { BlockSizeInputModule } from '../../shared/components/block-size-input/block-size-input.module';
 import { RotationSliderModule } from '../../shared/components/rotation-slider/rotation-slider.module';
@@ -13,8 +14,7 @@ import { TagListModule } from '../../shared/components/tag-list/tag-list.module'
 import { TagSearchModule } from '../../shared/components/tag-search/tag-search.module';
 import { ReviewButtonModule } from '../review/review-button/review-button.module';
 import { RightSidebarComponent } from './right-sidebar.component';
-
-import { InfoButtonModule } from 'ccf-shared';
+import { RegistrationMetadataModule } from '../../shared/components/registration-metadata/registration-metadata.module';
 
 
 @NgModule({
@@ -33,7 +33,8 @@ import { InfoButtonModule } from 'ccf-shared';
     SlicesInputModule,
     TagListModule,
     TagSearchModule,
-    InfoButtonModule
+    InfoButtonModule,
+    RegistrationMetadataModule
   ],
   declarations: [RightSidebarComponent],
   exports: [RightSidebarComponent]

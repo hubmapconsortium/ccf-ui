@@ -16,7 +16,9 @@ import { GlobalConfig } from '../../services/config/config';
 /** A record with information about a single person */
 export interface Person {
   firstName: string;
+  middleName?: string;
   lastName: string;
+  orcidId?: string;
 }
 
 /** Page state model */
@@ -134,9 +136,20 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
    * @param name The first and last name
    */
   @DataAction()
-  setUserName(name: Pick<Person, 'firstName' | 'lastName'>): void {
+  setUserName(name: Pick<Person, 'firstName' | 'middleName' | 'lastName'>): void {
     this.ctx.setState(patch({
-      user: patch(name)
+      user: patch({
+        firstName: name.firstName,
+        lastName: name.lastName,
+        middleName: name.middleName !== '' ? name.middleName : undefined
+      })
+    }));
+  }
+
+  @DataAction()
+  setOrcidId(orcidId: string): void {
+    this.ctx.setState(patch({
+      user: patch({ orcidId: orcidId !== '' ? orcidId : undefined })
     }));
   }
 

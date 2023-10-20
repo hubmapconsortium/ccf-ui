@@ -4,6 +4,18 @@
     <div class='info-button-container'>
       <ccf-info-button videoID="gY3_-LIoKaU" infoTitle="CCF Registration User Interface" documentationUrl="assets/docs/README.md"></ccf-info-button>
     </div>
+
+    <mat-expansion-panel class="registration-metadata-panel" [expanded]="false">
+      <mat-expansion-panel-header class="header">
+        <mat-panel-title matTooltip="">Registration Metadata</mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <ccf-registration-metadata></ccf-registration-metadata>
+
+    </mat-expansion-panel>
+
+    <mat-divider></mat-divider>
+
     <ccf-block-size-input [blockSize]="model.blockSize$ | async" (blockSizeChange)="model.setBlockSize($event)">
     </ccf-block-size-input>
 
