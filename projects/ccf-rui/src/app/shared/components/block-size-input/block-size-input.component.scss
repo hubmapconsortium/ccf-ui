@@ -1,4 +1,7 @@
 :host {
+  display: flex;
+  flex-direction: column;
+
   input[type=number] {
     -moz-appearance: textfield;
   }
@@ -26,7 +29,9 @@
 
   .size-inputs {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    width: 20rem;
+    margin: 0 auto;
 
     .field {
       width: 4.5rem;

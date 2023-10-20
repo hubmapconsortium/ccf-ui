@@ -30,7 +30,9 @@
 
   .slices-inputs {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    width: 20rem;
+    margin: 0 auto;
 
     .field {
       width: 9rem;
