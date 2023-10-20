@@ -27,7 +27,6 @@ export class DetailsLabelComponent {
    * @returns the formatted string of items separated by a comma.
    */
   arrayToString(inputArray: string[]): string {
-    const updatedArray = inputArray.filter((item) => item !== '');
-    return updatedArray.join(', ');
+    return inputArray.filter(item => !!item).join(', ');
   }
 }
