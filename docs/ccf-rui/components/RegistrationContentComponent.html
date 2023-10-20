@@ -1166,25 +1166,9 @@ export class RegistrationContentComponent {
 
     <div class="tab-pane fade " id="templateData">
         <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;modal&quot;&gt;
-  &lt;div mat-dialog-content&gt;
-    &lt;ccf-name-input [name]&#x3D;&quot;page.user$ | async&quot; (nameChange)&#x3D;&quot;page.setUserName($event); checkNameValid($event)&quot;&gt;
-    &lt;/ccf-name-input&gt;
-
-    &lt;div class&#x3D;&quot;organ-sliders&quot; matTooltip&#x3D;&quot;Select sex to filter organs.&quot;&gt;
-      &lt;div class&#x3D;&quot;slider-label&quot;&gt;Donor Sex:&lt;/div&gt;
-      &lt;ccf-labeled-slide-toggle class&#x3D;&quot;toggle gender&quot; [labels]&#x3D;&quot;[&#x27;Male&#x27;, &#x27;Female&#x27;]&quot;
-          [value]&#x3D;&quot;sexByLabel$ | async&quot; (valueChange)&#x3D;&quot;setSexFromLabel($event)&quot;&gt;
-      &lt;/ccf-labeled-slide-toggle&gt;
-    &lt;/div&gt;
-
-    &lt;div class&#x3D;&quot;selector-label&quot;&gt;Select an organ&lt;/div&gt;
-
-    &lt;div class&#x3D;&quot;selector-container&quot;&gt;
-      &lt;ccf-organ-selector #organSelector [organList]&#x3D;&quot;organList&quot; (organsChanged)&#x3D;&quot;organSelect($event[0])&quot;
-      [selectedOrgans]&#x3D;&quot;[model.organ$ | async]&quot; [expanded]&#x3D;&quot;true&quot;&gt;&lt;/ccf-organ-selector&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-  &lt;button [class.disabled]&#x3D;&quot;!organSelected || !nameValid&quot; mat-button class&#x3D;&quot;registration-button&quot; (click)&#x3D;&quot;registerButtonClick($event)&quot; [matTooltip]&#x3D;&quot;!organSelected || !nameValid ? &#x27;Required: Enter first and last name, and select an organ&#x27; : &#x27;&#x27;&quot;&gt;START REGISTRATION&lt;/button&gt;
+  &lt;div class&#x3D;&quot;title&quot;&gt;Start Registration&lt;/div&gt;
+  &lt;ccf-registration-metadata&gt;&lt;/ccf-registration-metadata&gt;
+  &lt;button [class.disabled]&#x3D;&quot;!organSelected || !nameValid&quot; mat-button class&#x3D;&quot;registration-button&quot; (click)&#x3D;&quot;registerButtonClick($event)&quot; [matTooltip]&#x3D;&quot;!organSelected || !nameValid ? &#x27;Required: Enter first and last name, and select an organ&#x27; : &#x27;&#x27;&quot;&gt;Continue&lt;/button&gt;
 &lt;/div&gt;
 </code></pre>
     </div>
@@ -1194,9 +1178,17 @@ export class RegistrationContentComponent {
                     <code>./registration-content.component.scss</code>
                 </p>
                 <pre class="line-numbers"><code class="language-scss">.modal {
-  padding: 1rem;
-  border-radius: 4px;
+  padding: 2rem;
+  border-radius: 0.5rem;
   max-width: 47rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  .title {
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
 
   .organ-sliders {
     .slider-label {
@@ -1219,11 +1211,16 @@ export class RegistrationContentComponent {
   }
 
   .registration-button {
-    display: block;
-    margin: 0 auto;
-    margin-top: 2rem;
     transition: 0.6s;
-    padding: 0 1rem;
+    display: flex;
+    width: 10rem;
+    height: 2rem;
+    padding: 0.25rem 1rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.125rem;
+    box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.16);
+    cursor: pointer;
 
     &amp;.disabled {
       pointer-events: none;
@@ -1258,8 +1255,8 @@ export class RegistrationContentComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="modal">  <div mat-dialog-content>    <ccf-name-input [name]="page.user$ | async" (nameChange)="page.setUserName($event); checkNameValid($event)">    </ccf-name-input>    <div class="organ-sliders" matTooltip="Select sex to filter organs.">      <div class="slider-label">Donor Sex:</div>      <ccf-labeled-slide-toggle class="toggle gender" [labels]="[\'Male\', \'Female\']"          [value]="sexByLabel$ | async" (valueChange)="setSexFromLabel($event)">      </ccf-labeled-slide-toggle>    </div>    <div class="selector-label">Select an organ</div>    <div class="selector-container">      <ccf-organ-selector #organSelector [organList]="organList" (organsChanged)="organSelect($event[0])"      [selectedOrgans]="[model.organ$ | async]" [expanded]="true"></ccf-organ-selector>    </div>  </div>  <button [class.disabled]="!organSelected || !nameValid" mat-button class="registration-button" (click)="registerButtonClick($event)" [matTooltip]="!organSelected || !nameValid ? \'Required: Enter first and last name, and select an organ\' : \'\'">START REGISTRATION</button></div></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppWebComponent', 'selector': 'ccf-root-wc'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DetailsLabelComponent', 'selector': 'ccf-details-label'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'ExtractionSetDropdownComponent', 'selector': 'ccf-extraction-set-dropdown'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'JsonFileReaderComponent', 'selector': 'ccf-json-file-reader'},{'name': 'LabeledSlideToggleComponent', 'selector': 'ccf-labeled-slide-toggle'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'NameInputComponent', 'selector': 'ccf-name-input'},{'name': 'RegistrationContentComponent', 'selector': 'ccf-registration-content'},{'name': 'RegistrationModalComponent', 'selector': 'ccf-registration-modal'},{'name': 'ReviewButtonComponent', 'selector': 'ccf-review-button'},{'name': 'ReviewModalComponent', 'selector': 'ccf-review-modal'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'TagListComponent', 'selector': 'ccf-tag-list'},{'name': 'TagSearchComponent', 'selector': 'ccf-tag-search'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'VideoModalComponent', 'selector': 'ccf-video-modal'},{'name': 'VideoModalLauncherComponent', 'selector': 'ccf-video-modal-launcher'},{'name': 'VisibilityMenuComponent', 'selector': 'ccf-visibility-menu'},{'name': 'VisibilityToggleComponent', 'selector': 'ccf-visibility-toggle'}];
+        var COMPONENT_TEMPLATE = '<div><div class="modal">  <div class="title">Start Registration</div>  <ccf-registration-metadata></ccf-registration-metadata>  <button [class.disabled]="!organSelected || !nameValid" mat-button class="registration-button" (click)="registerButtonClick($event)" [matTooltip]="!organSelected || !nameValid ? \'Required: Enter first and last name, and select an organ\' : \'\'">Continue</button></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppWebComponent', 'selector': 'ccf-root-wc'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DetailsLabelComponent', 'selector': 'ccf-details-label'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'ExtractionSetDropdownComponent', 'selector': 'ccf-extraction-set-dropdown'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'JsonFileReaderComponent', 'selector': 'ccf-json-file-reader'},{'name': 'LabeledSlideToggleComponent', 'selector': 'ccf-labeled-slide-toggle'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'NameInputComponent', 'selector': 'ccf-name-input'},{'name': 'RegistrationContentComponent', 'selector': 'ccf-registration-content'},{'name': 'RegistrationMetadataComponent', 'selector': 'ccf-registration-metadata'},{'name': 'RegistrationModalComponent', 'selector': 'ccf-registration-modal'},{'name': 'ReviewButtonComponent', 'selector': 'ccf-review-button'},{'name': 'ReviewModalComponent', 'selector': 'ccf-review-modal'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'TagListComponent', 'selector': 'ccf-tag-list'},{'name': 'TagSearchComponent', 'selector': 'ccf-tag-search'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'VideoModalComponent', 'selector': 'ccf-video-modal'},{'name': 'VideoModalLauncherComponent', 'selector': 'ccf-video-modal-launcher'},{'name': 'VisibilityMenuComponent', 'selector': 'ccf-visibility-menu'},{'name': 'VisibilityToggleComponent', 'selector': 'ccf-visibility-toggle'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'RegistrationContentComponent'};
 </script>

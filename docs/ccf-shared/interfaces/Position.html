@@ -252,6 +252,8 @@ export class SpatialSearchKeyboardUIBehaviorComponent {
   /** Current position of spatial search */
   @Input() position: Position;
 
+  @Input() disablePositionChange &#x3D; false;
+
   /** Emits when position changes */
   @Output() readonly changePosition &#x3D; new EventEmitter&lt;Position&gt;();
 
@@ -306,6 +308,9 @@ export class SpatialSearchKeyboardUIBehaviorComponent {
    */
   @HostListener(&#x27;document:keydown&#x27;, [&#x27;$event&#x27;])
   handleKey(target: KeyboardEvent): void {
+    if (this.disablePositionChange) {
+      return;
+    }
     target.preventDefault();
     this.updatePosition(target.key);
   }

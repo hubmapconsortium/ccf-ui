@@ -421,7 +421,9 @@ import { GlobalConfig } from &#x27;../../services/config/config&#x27;;
 /** A record with information about a single person */
 export interface Person {
   firstName: string;
+  middleName?: string;
   lastName: string;
+  orcidId?: string;
 }
 
 /** Page state model */
@@ -539,9 +541,20 @@ export class PageState extends NgxsImmutableDataRepository&lt;PageStateModel&gt;
    * @param name The first and last name
    */
   @DataAction()
-  setUserName(name: Pick&lt;Person, &#x27;firstName&#x27; | &#x27;lastName&#x27;&gt;): void {
+  setUserName(name: Pick&lt;Person, &#x27;firstName&#x27; | &#x27;middleName&#x27; | &#x27;lastName&#x27;&gt;): void {
     this.ctx.setState(patch({
-      user: patch(name)
+      user: patch({
+        firstName: name.firstName,
+        lastName: name.lastName,
+        middleName: name.middleName !&#x3D;&#x3D; &#x27;&#x27; ? name.middleName : undefined
+      })
+    }));
+  }
+
+  @DataAction()
+  setOrcidId(orcidId: string): void {
+    this.ctx.setState(patch({
+      user: patch({ orcidId: orcidId !&#x3D;&#x3D; &#x27;&#x27; ? orcidId : undefined })
     }));
   }
 

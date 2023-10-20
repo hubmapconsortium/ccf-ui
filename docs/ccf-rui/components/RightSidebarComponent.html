@@ -435,10 +435,10 @@
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, Component, HostBinding, Input } from &#x27;@angular/core&#x27;;
 
-import { ModelState } from &#x27;../../core/store/model/model.state&#x27;;
-import { RegistrationState } from &#x27;../../core/store/registration/registration.state&#x27;;
-import { PageState } from &#x27;../../core/store/page/page.state&#x27;;
 import { AnatomicalStructureTagState } from &#x27;../../core/store/anatomical-structure-tags/anatomical-structure-tags.state&#x27;;
+import { ModelState } from &#x27;../../core/store/model/model.state&#x27;;
+import { PageState } from &#x27;../../core/store/page/page.state&#x27;;
+import { RegistrationState } from &#x27;../../core/store/registration/registration.state&#x27;;
 
 
 /**
@@ -470,7 +470,8 @@ export class RightSidebarComponent {
     readonly registration: RegistrationState,
     readonly page: PageState,
     readonly astags: AnatomicalStructureTagState
-  ) { }
+  ) {
+  }
 }
 </code></pre>
     </div>
@@ -482,6 +483,18 @@ export class RightSidebarComponent {
     &lt;div class&#x3D;&#x27;info-button-container&#x27;&gt;
       &lt;ccf-info-button videoID&#x3D;&quot;gY3_-LIoKaU&quot; infoTitle&#x3D;&quot;CCF Registration User Interface&quot; documentationUrl&#x3D;&quot;assets/docs/README.md&quot;&gt;&lt;/ccf-info-button&gt;
     &lt;/div&gt;
+
+    &lt;mat-expansion-panel class&#x3D;&quot;registration-metadata-panel&quot; [expanded]&#x3D;&quot;false&quot;&gt;
+      &lt;mat-expansion-panel-header class&#x3D;&quot;header&quot;&gt;
+        &lt;mat-panel-title matTooltip&#x3D;&quot;&quot;&gt;Registration Metadata&lt;/mat-panel-title&gt;
+      &lt;/mat-expansion-panel-header&gt;
+
+      &lt;ccf-registration-metadata&gt;&lt;/ccf-registration-metadata&gt;
+
+    &lt;/mat-expansion-panel&gt;
+
+    &lt;mat-divider&gt;&lt;/mat-divider&gt;
+
     &lt;ccf-block-size-input [blockSize]&#x3D;&quot;model.blockSize$ | async&quot; (blockSizeChange)&#x3D;&quot;model.setBlockSize($event)&quot;&gt;
     &lt;/ccf-block-size-input&gt;
 
@@ -539,16 +552,13 @@ export class RightSidebarComponent {
   margin-bottom: 1.5rem;
 
   .scroll-wrapper {
-    // overflow-y: scroll;
-    height: 100%;
-    margin-right: 0.375rem;
+    overflow-y: scroll;
+    height: calc(100% - 4rem);
 
     scrollbar-width: thin;
     &amp;::-webkit-scrollbar {
       width: 0.75rem;
     }
-
-
 
     .container {
       display: flex;
@@ -571,6 +581,13 @@ export class RightSidebarComponent {
         justify-content: flex-end;
       }
 
+      .registration-metadata-panel {
+        ::ng-deep .mat-expansion-panel-body {
+          padding-left: 0;
+          padding-right: 0;
+        }
+      }
+
       mat-divider {
         border-top-width: 3px;
       }
@@ -584,6 +601,7 @@ export class RightSidebarComponent {
           -webkit-user-select: none;
           -moz-user-select: none;
           font-size: 1rem;
+          height: 3rem;
         }
       }
 
@@ -690,8 +708,8 @@ export class RightSidebarComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="scroll-wrapper">  <div class="container">    <div class=\'info-button-container\'>      <ccf-info-button videoID="gY3_-LIoKaU" infoTitle="CCF Registration User Interface" documentationUrl="assets/docs/README.md"></ccf-info-button>    </div>    <ccf-block-size-input [blockSize]="model.blockSize$ | async" (blockSizeChange)="model.setBlockSize($event)">    </ccf-block-size-input>    <ccf-slices-input [slicesConfig]="model.slicesConfig$ | async" (slicesConfigChange)="model.setSlicesConfig($event)">    </ccf-slices-input>    <ccf-rotation-slider [rotation]="model.rotation$ | async" (rotationChange)="model.setRotation($event)">    </ccf-rotation-slider>    <mat-divider></mat-divider>    <mat-expansion-panel class="tags-container" [expanded]="true">      <mat-expansion-panel-header class="header">        <mat-panel-title matTooltip="Review tags generated via collision detection. Add or delete tags as needed.">Anatomical Structure Tags</mat-panel-title>      </mat-expansion-panel-header>      <ccf-tag-search [search]="astags.searchExternal" (added)="astags.addTags($event)">      </ccf-tag-search>      <ccf-tag-list *ngIf="(model.organ$ | async)?.name; else: tagListPlaceholder" class="tag-list" [tags]="astags.tags$ | async"                    (tagRemoved)="astags.removeTag($event)">      </ccf-tag-list>      <ng-template #tagListPlaceholder>      </ng-template>      <div class="legend">        <span class="dot assigned"></span>        <span class="text assigned">Assigned</span>        <span class="dot added"></span>        <span class="text added">Added</span>      </div>    </mat-expansion-panel>    <mat-divider></mat-divider>    <div class="filler"></div>    <ccf-review-button class="review-button" [registrationCallbackSet]="page.registrationCallbackSet$ | async" [displayErrors]="registration.displayErrors$ | async"                       [registrationIsValid]="registration.valid$ | async" [metaData]="(registration.metadata$ | async) ?? []"                       (registerData)="registration.register()"                       (enterErrorMode)="registration.setDisplayErrors(!registration.isValid)">    </ccf-review-button>  </div></div></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppWebComponent', 'selector': 'ccf-root-wc'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DetailsLabelComponent', 'selector': 'ccf-details-label'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'ExtractionSetDropdownComponent', 'selector': 'ccf-extraction-set-dropdown'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'JsonFileReaderComponent', 'selector': 'ccf-json-file-reader'},{'name': 'LabeledSlideToggleComponent', 'selector': 'ccf-labeled-slide-toggle'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'NameInputComponent', 'selector': 'ccf-name-input'},{'name': 'RegistrationContentComponent', 'selector': 'ccf-registration-content'},{'name': 'RegistrationModalComponent', 'selector': 'ccf-registration-modal'},{'name': 'ReviewButtonComponent', 'selector': 'ccf-review-button'},{'name': 'ReviewModalComponent', 'selector': 'ccf-review-modal'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'TagListComponent', 'selector': 'ccf-tag-list'},{'name': 'TagSearchComponent', 'selector': 'ccf-tag-search'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'VideoModalComponent', 'selector': 'ccf-video-modal'},{'name': 'VideoModalLauncherComponent', 'selector': 'ccf-video-modal-launcher'},{'name': 'VisibilityMenuComponent', 'selector': 'ccf-visibility-menu'},{'name': 'VisibilityToggleComponent', 'selector': 'ccf-visibility-toggle'}];
+        var COMPONENT_TEMPLATE = '<div><div class="scroll-wrapper">  <div class="container">    <div class=\'info-button-container\'>      <ccf-info-button videoID="gY3_-LIoKaU" infoTitle="CCF Registration User Interface" documentationUrl="assets/docs/README.md"></ccf-info-button>    </div>    <mat-expansion-panel class="registration-metadata-panel" [expanded]="false">      <mat-expansion-panel-header class="header">        <mat-panel-title matTooltip="">Registration Metadata</mat-panel-title>      </mat-expansion-panel-header>      <ccf-registration-metadata></ccf-registration-metadata>    </mat-expansion-panel>    <mat-divider></mat-divider>    <ccf-block-size-input [blockSize]="model.blockSize$ | async" (blockSizeChange)="model.setBlockSize($event)">    </ccf-block-size-input>    <ccf-slices-input [slicesConfig]="model.slicesConfig$ | async" (slicesConfigChange)="model.setSlicesConfig($event)">    </ccf-slices-input>    <ccf-rotation-slider [rotation]="model.rotation$ | async" (rotationChange)="model.setRotation($event)">    </ccf-rotation-slider>    <mat-divider></mat-divider>    <mat-expansion-panel class="tags-container" [expanded]="true">      <mat-expansion-panel-header class="header">        <mat-panel-title matTooltip="Review tags generated via collision detection. Add or delete tags as needed.">Anatomical Structure Tags</mat-panel-title>      </mat-expansion-panel-header>      <ccf-tag-search [search]="astags.searchExternal" (added)="astags.addTags($event)">      </ccf-tag-search>      <ccf-tag-list *ngIf="(model.organ$ | async)?.name; else: tagListPlaceholder" class="tag-list" [tags]="astags.tags$ | async"                    (tagRemoved)="astags.removeTag($event)">      </ccf-tag-list>      <ng-template #tagListPlaceholder>      </ng-template>      <div class="legend">        <span class="dot assigned"></span>        <span class="text assigned">Assigned</span>        <span class="dot added"></span>        <span class="text added">Added</span>      </div>    </mat-expansion-panel>    <mat-divider></mat-divider>    <div class="filler"></div>    <ccf-review-button class="review-button" [registrationCallbackSet]="page.registrationCallbackSet$ | async" [displayErrors]="registration.displayErrors$ | async"                       [registrationIsValid]="registration.valid$ | async" [metaData]="(registration.metadata$ | async) ?? []"                       (registerData)="registration.register()"                       (enterErrorMode)="registration.setDisplayErrors(!registration.isValid)">    </ccf-review-button>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppWebComponent', 'selector': 'ccf-root-wc'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DetailsLabelComponent', 'selector': 'ccf-details-label'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'ExtractionSetDropdownComponent', 'selector': 'ccf-extraction-set-dropdown'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'JsonFileReaderComponent', 'selector': 'ccf-json-file-reader'},{'name': 'LabeledSlideToggleComponent', 'selector': 'ccf-labeled-slide-toggle'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'NameInputComponent', 'selector': 'ccf-name-input'},{'name': 'RegistrationContentComponent', 'selector': 'ccf-registration-content'},{'name': 'RegistrationMetadataComponent', 'selector': 'ccf-registration-metadata'},{'name': 'RegistrationModalComponent', 'selector': 'ccf-registration-modal'},{'name': 'ReviewButtonComponent', 'selector': 'ccf-review-button'},{'name': 'ReviewModalComponent', 'selector': 'ccf-review-modal'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'TagListComponent', 'selector': 'ccf-tag-list'},{'name': 'TagSearchComponent', 'selector': 'ccf-tag-search'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'VideoModalComponent', 'selector': 'ccf-video-modal'},{'name': 'VideoModalLauncherComponent', 'selector': 'ccf-video-modal-launcher'},{'name': 'VisibilityMenuComponent', 'selector': 'ccf-visibility-menu'},{'name': 'VisibilityToggleComponent', 'selector': 'ccf-visibility-toggle'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'RightSidebarComponent'};
 </script>
