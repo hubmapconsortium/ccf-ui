@@ -93,14 +93,10 @@ export class VisibilityMenuComponent {
     }
     const updatedSelection = { ...this.selection, opacity: value };
     this.selection = updatedSelection;
-    this.items = this.items.map(item => item.id === updatedSelection.id ? updatedSelection : item);
     if (updatedSelection.id === 'all') {
-      this.items = this.items.map(item => {
-        this.ga.event('opacity_update', 'visibility_menu', '' + item.id, updatedSelection.opacity);
-        const updatedItem = { ...item, opacity: updatedSelection.opacity };
-        return updatedItem;
-      });
+      this.setAllOpacity(updatedSelection.opacity as number);
     } else {
+      this.items = this.items.map(item => item.id === updatedSelection.id ? updatedSelection : item);
       this.ga.event('opacity_update', 'visibility_menu', '' + updatedSelection.id, updatedSelection.opacity);
     }
     this.itemsChange.emit(this.items);
@@ -113,8 +109,12 @@ export class VisibilityMenuComponent {
     if (this.selection) {
       const updatedSelection = { ...this.selection, opacity: 20, visible: true };
       this.selection = updatedSelection;
-      this.items = this.items.map(item => item.id === updatedSelection.id ? updatedSelection : item);
-      this.ga.event('item_reset', 'visibility_menu', '' + updatedSelection.id);
+      if (this.selection.id === 'all') {
+        this.setAllOpacity(updatedSelection.opacity);
+      } else {
+        this.items = this.items.map(item => item.id === updatedSelection.id ? updatedSelection : item);
+        this.ga.event('item_reset', 'visibility_menu', '' + updatedSelection.id);
+      }
       this.itemsChange.emit(this.items);
     }
   }
