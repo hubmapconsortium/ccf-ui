@@ -8,12 +8,12 @@ import {
 
 import { CCFSpatialGraph } from './ccf-spatial-graph';
 import { CCFSpatialScene, SpatialSceneNode } from './ccf-spatial-scene';
-import { searchHubmap } from './hubmap/hubmap-data-import';
+import { searchXConsortia } from './xconsortia/xconsortia-data-import';
 import { AggregateResult, DatabaseStatus, Filter, OntologyTreeModel, TissueBlockResult } from './interfaces';
 import { getAggregateResults, getDatasetTechnologyNames, getProviderNames } from './queries/aggregate-results-n3';
 import { findIds } from './queries/find-ids-n3';
 import { getBiomarkerTermOccurences, getCellTypeTermOccurences, getOntologyTermOccurences } from './queries/ontology-term-occurences-n3';
-import { getAnatomicalStructureTreeModel, getBiomarkersTreeModel, getCellTypeTreeModel } from './queries/ontology-tree-n3';
+import { getAnatomicalStructureTreeModel, getBiomarkerTreeModel, getCellTypeTreeModel } from './queries/ontology-tree-n3';
 import { getSpatialEntityForEntity } from './queries/spatial-result-n3';
 import { getTissueBlockResult } from './queries/tissue-block-result-n3';
 import { FlatSpatialPlacement, SpatialEntity } from './spatial-types';
@@ -167,13 +167,11 @@ export class CCFDatabase {
       if (this.options.hubmapDataUrl.endsWith('jsonld')) {
         sources.push(this.options.hubmapDataUrl);
       } else {
-        ops.push(searchHubmap(
+        ops.push(searchXConsortia(
           this.options.hubmapDataUrl,
           this.options.hubmapDataService,
           this.options.hubmapQuery,
-          this.options.hubmapToken,
-          this.options.hubmapAssetsUrl,
-          this.options.hubmapPortalUrl
+          this.options.hubmapToken
         ).then((jsonld) => {
           if (jsonld) {
             return this.addDataSources([jsonld]);
@@ -194,8 +192,12 @@ export class CCFDatabase {
       sources.map(async (source) => {
         if (typeof source === 'string') {
           if ((source.startsWith('http') || source.startsWith('assets/')) && source.includes('jsonld')) {
-            source = await fetch(source).then(r => r.text());
-            source = patchJsonLd(source as string);
+            const sourceUrl = source;
+            source = await fetch(sourceUrl).then(r => r.text()).catch((err) => {
+              console.log(`Error fetching ${sourceUrl}`, err);
+              return '[]';
+            });
+            source = patchJsonLd(source);
             await addJsonLdToStore(source, store);
           } else if (source.endsWith('n3')) {
             await addN3ToStore(source, store);
@@ -381,8 +383,8 @@ export class CCFDatabase {
    *
    * @returns Ontology term counts.
    */
-  async getBiomarkersTreeModel(): Promise<OntologyTreeModel> {
-    return getBiomarkersTreeModel(this.store);
+  async getBiomarkerTreeModel(): Promise<OntologyTreeModel> {
+    return getBiomarkerTreeModel(this.store);
   }
 
   /**

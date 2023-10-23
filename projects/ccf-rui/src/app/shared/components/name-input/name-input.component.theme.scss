@@ -9,6 +9,9 @@
   $accent: map-get($color-config, accent);
 
   ccf-name-input {
+    .input {
+      color: mat.get-color-from-palette($foreground, main);
+    }
     .mat-mdc-text-field-wrapper,
     .mat-mdc-form-field-focus-overlay {
       background-color: transparent;

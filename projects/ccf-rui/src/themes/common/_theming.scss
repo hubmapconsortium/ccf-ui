@@ -17,6 +17,7 @@
 @use '../../app/shared/components/visibility-menu/visibility-menu.component.theme' as visibilityMenu;
 @use '../../app/shared/components/extraction-set-dropdown/extraction-set-dropdown.component.theme' as extractionSets;
 @use '../../../../ccf-shared/src/lib/components/opacity-slider/opacity-slider.component.theme' as opacitySlider;
+@use '../../../../ccf-shared/src/lib/components/spatial-search-keyboard-ui/spatial-search-keyboard-ui.component.theme' as spatialKeyBoardUI;
 @use '../../app/shared/components/details-label/details-label.component.theme' as detailsLabel;
 @use '../../app/modules/content/content.component.theme.scss' as content;
 @use '../../app/modules/content/stage-nav/stage-nav.component.theme.scss' as stageNav;
@@ -27,6 +28,7 @@
 @use '../../app/modules/content/video-modal/video-modal-launcher/video-modal-launcher.component.theme.scss' as videoModalLauncher;
 @use '../../app/shared/components/json-file-reader/json-file-reader.theme.scss' as jsonFileReader;
 @use '../../app/modules/registration-modal/registration-content/registration-content.component.theme.scss' as registrationContent;
+@use '../../app/shared/components/registration-metadata/registration-metadata.component.theme' as registrationMetadata;
 
 
 
@@ -58,7 +60,7 @@
   @include rotationSlider.theme($theme);
   @include tagList.theme($theme);
   @include tagSearch.theme($theme);
-
+  @include spatialKeyBoardUI.theme($theme);
   @include leftSidebar.theme($theme);
   @include nameInput.theme($theme);
   @include organSelector.theme($theme);
@@ -78,6 +80,7 @@
   @include videoModalLauncher.theme($theme);
   @include jsonFileReader.theme($theme);
   @include registrationContent.theme($theme);
+  @include registrationMetadata.theme($theme);
 
   // Overrides goes here!
 }

@@ -106,6 +106,11 @@ export function findIds(store: Store, graph: CCFSpatialGraph, filter: Filter): S
       filterBySex(store, donors, sex)
     );
   }
+  if (seen.size > 0 && filter.consortiums?.length > 0) {
+    seen = filterWithDonor(store, seen, (donors) =>
+      filterByConsortiumName(store, donors, filter.consortiums)
+    );
+  }
   if (seen.size > 0 && filter.tmc?.length > 0) {
     seen = filterWithDonor(store, seen, (donors) =>
       filterByGroupName(store, donors, filter.tmc)
@@ -134,6 +139,14 @@ export function findIds(store: Store, graph: CCFSpatialGraph, filter: Filter): S
     if (terms.indexOf(rui.cell.id) === -1) {
       seen = filterWithSpatialEntity(store, seen, (entities) =>
         filterByCellTypeTerms(store, entities, terms)
+      );
+    }
+  }
+  if (seen.size > 0 && filter.biomarkerTerms?.length > 0) {
+    const terms = filter.biomarkerTerms;
+    if (terms.indexOf('http://purl.org/ccf/biomarkers') === -1) {
+      seen = filterWithSpatialEntity(store, seen, (entities) =>
+        filterByBiomarkerTerms(store, entities, terms)
       );
     }
   }
@@ -206,6 +219,23 @@ function filterBySex(store: Store, seen: Set<string>, sex: 'Male' | 'Female'): S
 }
 
 /**
+ * Filters ids by consortium names.
+ *
+ * @param store The triple store.
+ * @param seen All ids to choose from.
+ * @param consortiums Consortiums to filter on.
+ * @returns The subset of ids with the specified consortiums.
+ */
+function filterByConsortiumName(store: Store, seen: Set<string>, consortiums: string[]): Set<string> {
+  const newSeen = new Set<string>();
+  for (const consortium of consortiums) {
+    const literal = DataFactory.literal(consortium);
+    store.forSubjects(differenceCallback(seen, newSeen), entity.consortiumName, literal, null);
+  }
+  return newSeen;
+}
+
+/**
  * Filters ids by group names.
  *
  * @param store The triple store.
@@ -271,6 +301,27 @@ function filterByCellTypeTerms(store: Store, seen: Set<string>, terms: string[])
       asTerms.add(asTerm.id);
     }, term, ccf.asctb.located_in, null);
     if (term === rui.cell.id) {
+      asTerms.add(rui.body.id);
+    }
+  }
+  return filterByOntologyTerms(store, seen, [...asTerms]);
+}
+
+/**
+ * Filters ids by biomarker terms.
+ *
+ * @param store The triple store.
+ * @param seen All ids to choose from.
+ * @param terms Biomarker terms to filter on.
+ * @returns The subset of ids with the specified biomarker terms.
+ */
+function filterByBiomarkerTerms(store: Store, seen: Set<string>, terms: string[]): Set<string> {
+  const asTerms = new Set<string>();
+  for (const term of terms) {
+    store.forObjects((asTerm) => {
+      asTerms.add(asTerm.id);
+    }, term, ccf.asctb.bm_located_in, null);
+    if (term === 'http://purl.org/ccf/biomarkers') {
       asTerms.add(rui.body.id);
     }
   }

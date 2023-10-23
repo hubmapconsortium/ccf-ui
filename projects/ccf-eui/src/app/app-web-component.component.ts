@@ -75,6 +75,7 @@ function parseFilter(value: unknown): string | Partial<Filter> {
     checkProp('sex', val => isString(val) && sexOptions.includes(val));
     checkProp('ageRange', val => isNumberArray(val) && val.length === 2);
     checkProp('bmiRange', val => isNumberArray(val) && val.length === 2);
+    checkProp('consortiums', isStringArray);
     checkProp('tmc', isStringArray);
     checkProp('technologies', val => isStringArray(val));
     checkProp('ontologyTerms', val => isStringArray(val));

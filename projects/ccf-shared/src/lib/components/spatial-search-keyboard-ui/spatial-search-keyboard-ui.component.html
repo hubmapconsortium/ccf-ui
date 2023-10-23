@@ -1,0 +1,23 @@
+<div class="direction-arrow">
+  <mat-icon *ngFor="let key of keyMap" class="arrow" [class.active]="currentKey === key.key">{{key.direction}}
+  </mat-icon>
+</div>
+<div class="keys">
+  <div class="keyrow">
+    <div class="key blue" (mousedown)="keyClicked.emit('q')" (mouseover)="keyHovered.emit('q')"
+      (mouseout)="keyHovered.emit()" [class.highlighted]="currentKey === 'q'">Q</div>
+    <div class="key green" (mousedown)="keyClicked.emit('w')" (mouseover)="keyHovered.emit('w')"
+      (mouseout)="keyHovered.emit()" [class.highlighted]="currentKey === 'w'">W</div>
+    <div class="key blue" (mousedown)="keyClicked.emit('e')" (mouseover)="keyHovered.emit('e')"
+      (mouseout)="keyHovered.emit()" [class.highlighted]="currentKey === 'e'">E</div>
+  </div>
+  <div class="keyrow">
+    <div class="key red" (mousedown)="keyClicked.emit('a')" (mouseover)="keyHovered.emit('a')"
+      (mouseout)="keyHovered.emit()" [class.highlighted]="currentKey === 'a'">A</div>
+    <div class="key green" (mousedown)="keyClicked.emit('s')" (mouseover)="keyHovered.emit('s')"
+      (mouseout)="keyHovered.emit()" [class.highlighted]="currentKey === 's'">S</div>
+    <div class="key red" (mousedown)="keyClicked.emit('d')" (mouseover)="keyHovered.emit('d')"
+      (mouseout)="keyHovered.emit()" [class.highlighted]="currentKey === 'd'">D</div>
+  </div>
+  <div *ngIf="shiftPressed" class="shift">SHIFT</div>
+</div>

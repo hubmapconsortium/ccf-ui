@@ -92,7 +92,8 @@ export const ccf = {
     part_of: ccfx('ccf_part_of'),
     ct_is_a: ccfx('ccf_ct_isa'),
     located_in: ccfx('ccf_located_in'),
-    characterizes: ccfx('ccf_characterizes')
+    characterizes: ccfx('ccf_characterizes'),
+    bm_located_in: ccfx('ccf_bm_located_in')
   },
   spatial: {
     Female: prefixer('base')('VHFemale'),
@@ -119,6 +120,7 @@ export const ccf = {
     creator: prefixer('dcterms')('creator'),
     creator_first_name: ccfx('creator_first_name'),
     creator_last_name: ccfx('creator_last_name'),
+    creator_middle_name: ccfx('creator_middle_name'),
     creator_orcid: ccfx('creator_orcid'),
     creation_date: prefixer('dcterms')('created'),
     updated_date: ccfx('updated_date'),

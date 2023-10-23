@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
 
-import { ModelState } from '../../core/store/model/model.state';
-import { RegistrationState } from '../../core/store/registration/registration.state';
-import { PageState } from '../../core/store/page/page.state';
 import { AnatomicalStructureTagState } from '../../core/store/anatomical-structure-tags/anatomical-structure-tags.state';
+import { ModelState } from '../../core/store/model/model.state';
+import { PageState } from '../../core/store/page/page.state';
+import { RegistrationState } from '../../core/store/registration/registration.state';
 
 
 /**
@@ -35,5 +35,6 @@ export class RightSidebarComponent {
     readonly registration: RegistrationState,
     readonly page: PageState,
     readonly astags: AnatomicalStructureTagState
-  ) { }
+  ) {
+  }
 }

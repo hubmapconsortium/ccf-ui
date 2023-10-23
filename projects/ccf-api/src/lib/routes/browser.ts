@@ -27,4 +27,5 @@ export const openApiRoute: RequestHandler = (_req, res, _next) => {
 
 export const routes = Router()
   .get('/', browserRoute)
+  .get('/index.html', browserRoute)
   .get('/ccf-api-spec.yaml', openApiRoute);

@@ -13,7 +13,29 @@
     .reset {
       transform: scaleX(-1);
       cursor: pointer;
-      transition: .6s;
+      transition: 0.6s;
+    }
+  }
+
+  .sidebar {
+    .minimap-scene {
+      margin: 1.5rem;
+      width: 12.75rem;
+      height: 11rem;
+      ::ng-deep .body-ui {
+        background-color: #232f3a;
+      }
+    }
+
+    ccf-spatial-search-keyboard-ui-behavior::ng-deep {
+      margin: 1.5rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    ccf-xyz-position {
+      margin: 1.5rem;
+      padding-left: 5rem;
     }
   }
 
@@ -27,13 +49,12 @@
     }
 
     .gizmo-area {
-      width: 4rem;
+      width: 7rem;
       margin-top: 1.5rem;
       margin-left: 1.5rem;
       z-index: 10;
-      position: absolute;
+      position: relative;
       right: 1.5rem;
-
 
       .position-display {
         display: flex;
@@ -55,7 +76,7 @@
   .ccf-store-debug {
     color: white;
     position: absolute;
-    top: .5rem;
+    top: 0.5rem;
     max-width: 55rem;
   }
 }

@@ -39,7 +39,9 @@ export interface SpatialEntityJsonLd extends JsonLdObj {
   comment: string;
   creator: string;
   creator_first_name: string;
+  creator_middle_name: string | undefined;
   creator_last_name: string;
+  creator_orcid: string | undefined;
   creation_date: string;
   updated_date: string;
   ccf_annotations: string[];

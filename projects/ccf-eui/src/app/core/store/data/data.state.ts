@@ -18,11 +18,12 @@ export const DEFAULT_FILTER: Filter = {
   sex: 'Both',
   ageRange: [1, 110],
   bmiRange: [13, 83],
+  consortiums: [],
   tmc: [],
   technologies: [],
   ontologyTerms: ['http://purl.obolibrary.org/obo/UBERON_0013702'],
   cellTypeTerms: ['http://purl.obolibrary.org/obo/CL_0000000'],
-  biomarkerTerms: ['biomarkers'],
+  biomarkerTerms: ['http://purl.org/ccf/biomarkers'],
   spatialSearches: []
 };
 
@@ -224,7 +225,7 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
     }
     this.source.getOntologyTreeModel().pipe(take(1)).subscribe((model) => this.updateAnatomicalStructuresTreeModel(model));
     this.source.getCellTypeTreeModel().pipe(take(1)).subscribe((model) => this.updateCellTypesTreeModel(model));
-    this.source.getBiomarkersTreeModel().pipe(take(1)).subscribe((model) => this.updateBiomarkersTreeModel(model));
+    this.source.getBiomarkerTreeModel().pipe(take(1)).subscribe((model) => this.updateBiomarkersTreeModel(model));
     this.warmUpDatabase();
   }
 

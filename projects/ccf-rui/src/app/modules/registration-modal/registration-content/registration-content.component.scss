@@ -1,7 +1,15 @@
 .modal {
-  padding: 1rem;
-  border-radius: 4px;
+  padding: 2rem;
+  border-radius: 0.5rem;
   max-width: 47rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  .title {
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
 
   .organ-sliders {
     .slider-label {
@@ -24,11 +32,16 @@
   }
 
   .registration-button {
-    display: block;
-    margin: 0 auto;
-    margin-top: 2rem;
     transition: 0.6s;
-    padding: 0 1rem;
+    display: flex;
+    width: 10rem;
+    height: 2rem;
+    padding: 0.25rem 1rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.125rem;
+    box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.16);
+    cursor: pointer;
 
     &.disabled {
       pointer-events: none;
