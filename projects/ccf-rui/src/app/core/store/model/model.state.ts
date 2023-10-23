@@ -406,11 +406,11 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
 
       const sets: ExtractionSet[] = (db.extractionSets[organIri] || []).map((set) => ({
         name: set.label,
-        sites: [{ id: 'all', name: 'all landmarks', visible: false, opacity: 0 }].concat(sortBy(set.extractionSites.map((entity) => ({
+        sites: [{ id: 'all', name: 'all landmarks', visible: true, opacity: 20 }].concat(sortBy(set.extractionSites.map((entity) => ({
           id: entity['@id'],
           name: entity.label!,
-          visible: false,
-          opacity: 0,
+          visible: true,
+          opacity: 20,
           tooltip: entity.comment
         })), 'name'))
       }));
