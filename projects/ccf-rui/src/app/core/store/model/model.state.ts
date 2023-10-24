@@ -57,7 +57,7 @@ export interface ModelStateModel {
   /** Sex if applicable */
   sex?: 'male' | 'female';
   /** Side if applicable */
-  side?: 'left' | 'right' | '';
+  side?: 'left' | 'right';
   /** Block size */
   blockSize: XYZTriplet;
   /** Model rotation */
@@ -99,7 +99,6 @@ export const RUI_ORGANS = ALL_ORGANS;
     organIri: '',
     organDimensions: { x: 90, y: 90, z: 90 },
     sex: 'male',
-    side: '',
     blockSize: { x: 10, y: 10, z: 10 },
     rotation: { x: 0, y: 0, z: 0 },
     position: { x: 0, y: 0, z: 0 },
@@ -290,6 +289,8 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
       this.ctx.patchState({ organ });
       if (organ.side) {
         this.ctx.patchState({ side: organ.side });
+      } else {
+        this.ctx.patchState({ side: undefined });
       }
       this.onOrganIriChange();
     }
