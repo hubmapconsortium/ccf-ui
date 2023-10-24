@@ -455,8 +455,7 @@ export class DetailsLabelComponent {
    * @returns the formatted string of items separated by a comma.
    */
   arrayToString(inputArray: string[]): string {
-    const updatedArray &#x3D; inputArray.filter((item) &#x3D;&gt; item !&#x3D;&#x3D; &#x27;&#x27;);
-    return updatedArray.join(&#x27;, &#x27;);
+    return inputArray.filter(item &#x3D;&gt; !!item).join(&#x27;, &#x27;);
   }
 }
 </code></pre>

@@ -743,7 +743,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>side:     <code>&quot;left&quot; | &quot;right&quot; | string</code>
+                                        <code>side:     <code>&quot;left&quot; | &quot;right&quot;</code>
 </code>
                                     </td>
                                 </tr>
@@ -751,7 +751,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>    <code>&quot;left&quot; | &quot;right&quot; | string</code>
+                                            <i>Type : </i>    <code>&quot;left&quot; | &quot;right&quot;</code>
 
                                         </td>
                                     </tr>
@@ -954,7 +954,7 @@ export interface ModelStateModel {
   /** Sex if applicable */
   sex?: &#x27;male&#x27; | &#x27;female&#x27;;
   /** Side if applicable */
-  side?: &#x27;left&#x27; | &#x27;right&#x27; | &#x27;&#x27;;
+  side?: &#x27;left&#x27; | &#x27;right&#x27;;
   /** Block size */
   blockSize: XYZTriplet;
   /** Model rotation */
@@ -996,7 +996,6 @@ export const RUI_ORGANS &#x3D; ALL_ORGANS;
     organIri: &#x27;&#x27;,
     organDimensions: { x: 90, y: 90, z: 90 },
     sex: &#x27;male&#x27;,
-    side: &#x27;&#x27;,
     blockSize: { x: 10, y: 10, z: 10 },
     rotation: { x: 0, y: 0, z: 0 },
     position: { x: 0, y: 0, z: 0 },
@@ -1187,6 +1186,8 @@ export class ModelState extends NgxsImmutableDataRepository&lt;ModelStateModel&g
       this.ctx.patchState({ organ });
       if (organ.side) {
         this.ctx.patchState({ side: organ.side });
+      } else {
+        this.ctx.patchState({ side: undefined });
       }
       this.onOrganIriChange();
     }
@@ -1299,17 +1300,17 @@ export class ModelState extends NgxsImmutableDataRepository&lt;ModelStateModel&g
           };
         }
       }
-      this.ctx.patchState({ anatomicalStructures: Object.values(asLookup) });
+      this.ctx.patchState({ anatomicalStructures: [{ id: &#x27;all&#x27;, name: &#x27;all anatomical structures&#x27;, opacity: 20, visible: true }, ...Object.values(asLookup)] });
 
       const sets: ExtractionSet[] &#x3D; (db.extractionSets[organIri] || []).map((set) &#x3D;&gt; ({
         name: set.label,
-        sites: sortBy(set.extractionSites.map((entity) &#x3D;&gt; ({
+        sites: [{ id: &#x27;all&#x27;, name: &#x27;all landmarks&#x27;, visible: true, opacity: 0 }].concat(sortBy(set.extractionSites.map((entity) &#x3D;&gt; ({
           id: entity[&#x27;@id&#x27;],
           name: entity.label!,
-          visible: false,
+          visible: true,
           opacity: 0,
           tooltip: entity.comment
-        })), &#x27;name&#x27;)
+        })), &#x27;name&#x27;))
       }));
       this.ctx.patchState({ extractionSets: sets });
       this.ctx.patchState({ extractionSites: sets.length &gt; 0 ? sets[0].sites : [] });

@@ -480,8 +480,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="132"
-                                    class="link-to-prism">projects/ccf-rui/src/app/shared/components/visibility-menu/visibility-menu.component.ts:132</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="140"
+                                    class="link-to-prism">projects/ccf-rui/src/app/shared/components/visibility-menu/visibility-menu.component.ts:140</a></div>
                         </td>
                     </tr>
 
@@ -682,8 +682,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="104"
-                                    class="link-to-prism">projects/ccf-rui/src/app/shared/components/visibility-menu/visibility-menu.component.ts:104</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="108"
+                                    class="link-to-prism">projects/ccf-rui/src/app/shared/components/visibility-menu/visibility-menu.component.ts:108</a></div>
                         </td>
                     </tr>
 
@@ -721,8 +721,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="119"
-                                    class="link-to-prism">projects/ccf-rui/src/app/shared/components/visibility-menu/visibility-menu.component.ts:119</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="127"
+                                    class="link-to-prism">projects/ccf-rui/src/app/shared/components/visibility-menu/visibility-menu.component.ts:127</a></div>
                         </td>
                     </tr>
 
@@ -1078,8 +1078,12 @@ export class VisibilityMenuComponent {
     }
     const updatedSelection &#x3D; { ...this.selection, opacity: value };
     this.selection &#x3D; updatedSelection;
-    this.items &#x3D; this.items.map(item &#x3D;&gt; item.id &#x3D;&#x3D;&#x3D; updatedSelection.id ? updatedSelection : item);
-    this.ga.event(&#x27;opacity_update&#x27;, &#x27;visibility_menu&#x27;, &#x27;&#x27; + updatedSelection.id, updatedSelection.opacity);
+    if (updatedSelection.id &#x3D;&#x3D;&#x3D; &#x27;all&#x27;) {
+      this.setAllOpacity(updatedSelection.opacity as number);
+    } else {
+      this.items &#x3D; this.items.map(item &#x3D;&gt; item.id &#x3D;&#x3D;&#x3D; updatedSelection.id ? updatedSelection : item);
+      this.ga.event(&#x27;opacity_update&#x27;, &#x27;visibility_menu&#x27;, &#x27;&#x27; + updatedSelection.id, updatedSelection.opacity);
+    }
     this.itemsChange.emit(this.items);
   }
 
@@ -1090,8 +1094,12 @@ export class VisibilityMenuComponent {
     if (this.selection) {
       const updatedSelection &#x3D; { ...this.selection, opacity: 20, visible: true };
       this.selection &#x3D; updatedSelection;
-      this.items &#x3D; this.items.map(item &#x3D;&gt; item.id &#x3D;&#x3D;&#x3D; updatedSelection.id ? updatedSelection : item);
-      this.ga.event(&#x27;item_reset&#x27;, &#x27;visibility_menu&#x27;, &#x27;&#x27; + updatedSelection.id);
+      if (this.selection.id &#x3D;&#x3D;&#x3D; &#x27;all&#x27;) {
+        this.setAllOpacity(updatedSelection.opacity);
+      } else {
+        this.items &#x3D; this.items.map(item &#x3D;&gt; item.id &#x3D;&#x3D;&#x3D; updatedSelection.id ? updatedSelection : item);
+        this.ga.event(&#x27;item_reset&#x27;, &#x27;visibility_menu&#x27;, &#x27;&#x27; + updatedSelection.id);
+      }
       this.itemsChange.emit(this.items);
     }
   }
