@@ -402,17 +402,17 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
           };
         }
       }
-      this.ctx.patchState({ anatomicalStructures: Object.values(asLookup) });
+      this.ctx.patchState({ anatomicalStructures: [{ id: 'all', name: 'all anatomical structures', opacity: 20, visible: true }, ...Object.values(asLookup)] });
 
       const sets: ExtractionSet[] = (db.extractionSets[organIri] || []).map((set) => ({
         name: set.label,
-        sites: sortBy(set.extractionSites.map((entity) => ({
+        sites: [{ id: 'all', name: 'all landmarks', visible: true, opacity: 0 }].concat(sortBy(set.extractionSites.map((entity) => ({
           id: entity['@id'],
           name: entity.label!,
-          visible: false,
+          visible: true,
           opacity: 0,
           tooltip: entity.comment
-        })), 'name')
+        })), 'name'))
       }));
       this.ctx.patchState({ extractionSets: sets });
       this.ctx.patchState({ extractionSites: sets.length > 0 ? sets[0].sites : [] });
