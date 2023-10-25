@@ -45,7 +45,8 @@ const testPage: Immutable<PageStateModel> = {
   useCancelRegistrationCallback: false,
   registrationCallbackSet: false,
   skipConfirmation: true,
-  hasChanges: false
+  hasChanges: false,
+  orcidValid: true
 };
 
 function nextValue<T>(obs: Observable<T>): Promise<T> {

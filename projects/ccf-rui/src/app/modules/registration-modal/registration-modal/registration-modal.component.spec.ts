@@ -51,7 +51,7 @@ const initialModelState = {
   extractionSets: []
 };
 
-const initialPageState = {
+const initialPageState: PageStateModel = {
   user: {
     firstName: '',
     lastName: ''
@@ -61,7 +61,8 @@ const initialPageState = {
   registrationCallbackSet: false,
   skipConfirmation: true,
   hasChanges: false,
-  organOptions: []
+  organOptions: [],
+  orcidValid: true
 };
 
 describe('RegistrationModalComponent', () => {

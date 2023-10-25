@@ -17,7 +17,7 @@ describe('RegistrationContentComponent', () => {
     );
 
     const mockPageState = jasmine.createSpyObj<PageState>(
-      'PageState', ['setUserName', 'registrationStarted']
+      'PageState', ['setUserName', 'registrationStarted', 'isOrcidValid']
     );
 
     const mockMatDialog = jasmine.createSpyObj<MatDialogRef<unknown, boolean>>(
