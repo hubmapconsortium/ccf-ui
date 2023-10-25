@@ -4,9 +4,10 @@
   <ccf-name-input [name]="page.user$ | async" (nameChange)="page.setUserName($event); checkNameValid($event)">
   </ccf-name-input>
 
-  <mat-form-field class="orcid-input" subscriptSizing="dynamic">
+  <mat-form-field class="orcid-input">
     <mat-label>ORCID identifier (optional)</mat-label>
-    <input matInput class="input" [value]="(page.user$ | async)?.orcidId ?? ''" (input)="page.setOrcidId($event.target.value)"  matTooltip="Add ORCID id.">
+    <input matInput class="input" [value]="orcId" [formControl]="orcidControl" (input)="updateOrcid($event.target.value)" matTooltip="Add ORCID id." maxlength="19">
+    <mat-error *ngIf="orcidControl.invalid">{{getErrorMessage()}}</mat-error>
   </mat-form-field>
 </div>
 

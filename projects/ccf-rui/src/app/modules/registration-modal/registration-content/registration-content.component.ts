@@ -42,6 +42,8 @@ export class RegistrationContentComponent {
 
   nameValid: boolean;
 
+  orcidValid: boolean;
+
   /**
    * Creates an instance of the registration dialog
    *
@@ -58,6 +60,11 @@ export class RegistrationContentComponent {
   ) {
     page.user$.subscribe(user => {
       this.checkNameValid(user);
+      if (page.isOrcidValid()) {
+        this.orcidValid = true;
+      } else {
+        this.orcidValid = false;
+      }
       cdr.markForCheck();
     });
     model.organ$.subscribe(organ => {

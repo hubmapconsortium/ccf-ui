@@ -1,8 +1,9 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
 
 import { ModelState } from '../../../core/store/model/model.state';
 import { PageState, Person } from '../../../core/store/page/page.state';
 import { RegistrationState } from '../../../core/store/registration/registration.state';
+import { FormControl, Validators } from '@angular/forms';
 
 /**
  * Right side registration menu
@@ -15,15 +16,21 @@ import { RegistrationState } from '../../../core/store/registration/registration
 
 })
 export class RegistrationMetadataComponent {
+  @Output() readonly orcidValid = new EventEmitter<boolean>();
+
   /**
    * Name valid of registration metadata component
    */
   nameValid: boolean;
 
+  orcId?: string;
+
   /**
    * Text to inform user if a registration file has been uploaded
    */
   uploadText: string;
+
+  orcidControl = new FormControl('', [Validators.pattern('^\\d{4}-\\d{4}-\\d{4}-\\d{4}$')]);
 
   /**
    * Creates an instance of registration metadata component.
@@ -38,10 +45,19 @@ export class RegistrationMetadataComponent {
   ) {
     page.user$.subscribe(user => {
       this.checkNameValid(user);
+      this.orcId = page.uriToOrcid();
     });
     registration.state$.subscribe(reg => {
       this.uploadText = reg.initialRegistration ? 'File(s) uploaded' : 'No file(s) uploaded';
     });
+  }
+
+  getErrorMessage() {
+    return this.orcidControl.hasError('pattern') ? 'Not a valid ORCID' : '';
+  }
+
+  updateOrcid(value: string): void {
+    this.page.setOrcidId(value);
   }
 
   /**

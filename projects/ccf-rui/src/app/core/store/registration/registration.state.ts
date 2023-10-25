@@ -176,6 +176,8 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
       lastName: reg.creator_last_name
     });
 
+    this.page.setOrcidId(reg.creator_orcid);
+
     if (data) {
       this.model.setOrgan(data.organ);
       if (data.sex) {
@@ -246,6 +248,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
     const requiredValues = [
       page.user.firstName,
       page.user.lastName,
+      page.orcidValid,
       model.organ.src,
       model.organ.name,
       model.organ.organ

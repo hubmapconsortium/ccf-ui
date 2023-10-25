@@ -44,8 +44,7 @@ import { DrawerModule } from './shared/components/drawer/drawer.module';
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: {
-        floatLabel: true,
-        hideRequiredMarker: true
+        floatLabel: true
       }
     }
   ]

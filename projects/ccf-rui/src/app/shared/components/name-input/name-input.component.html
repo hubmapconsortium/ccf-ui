@@ -1,6 +1,6 @@
 <mat-form-field class="field" subscriptSizing="dynamic">
   <mat-label class="text label">First Name </mat-label>
-  <input matInput class="input" [value]="firstNameValidator.value" (input)="updateName($event, 'firstName')"  matTooltip="Add your first name.">
+  <input matInput class="input" [value]="firstNameValidator.value" (input)="updateName($event, 'firstName')"  matTooltip="Add your first name." required>
 </mat-form-field>
 
 <mat-form-field class="field" subscriptSizing="dynamic">
@@ -10,5 +10,5 @@
 
 <mat-form-field class="field" subscriptSizing="dynamic">
   <mat-label class="text label">Last Name </mat-label>
-  <input matInput class="input" [value]="lastNameValidator.value" (input)="updateName($event, 'lastName')"  matTooltip="Add your last name.">
+  <input matInput class="input" [value]="lastNameValidator.value" (input)="updateName($event, 'lastName')"  matTooltip="Add your last name." required>
 </mat-form-field>

@@ -32,6 +32,7 @@ export interface PageStateModel {
   skipConfirmation: boolean;
   hasChanges: boolean;
   organOptions?: OrganInfo[];
+  orcidValid: boolean;
 }
 
 /**
@@ -50,7 +51,8 @@ export interface PageStateModel {
     registrationCallbackSet: false,
     skipConfirmation: true,
     hasChanges: false,
-    organOptions: []
+    organOptions: [],
+    orcidValid: false
   }
 })
 @Injectable()
@@ -62,6 +64,7 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
   readonly useCancelRegistrationCallback$ = this.state$.pipe(map(x => x?.useCancelRegistrationCallback));
   readonly registrationCallbackSet$ = this.state$.pipe(map(x => x?.registrationCallbackSet));
   readonly organOptions$ = this.state$.pipe(map(x => x?.organOptions));
+  readonly orcidValid$ = this.state$.pipe(map(x => x?.orcidValid));
 
   @Computed()
   get skipConfirmation$(): Observable<boolean> {
@@ -147,10 +150,15 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
   }
 
   @DataAction()
-  setOrcidId(orcidId: string): void {
+  setOrcidId(id?: string): void {
     this.ctx.setState(patch({
-      user: patch({ orcidId: orcidId !== '' ? orcidId : undefined })
+      user: patch({
+        orcidId: id ? this.convertOrcid(id) : undefined
+      })
     }));
+    this.ctx.patchState({
+      orcidValid: this.isOrcidValid()
+    });
   }
 
   /**
@@ -206,5 +214,19 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
         addEventListener('beforeunload', beforeUnloadListener);
       }
     });
+  }
+
+  isOrcidValid(): boolean {
+    const orcId = this.uriToOrcid();
+    return !!(!orcId || orcId.match('^\\d{4}-\\d{4}-\\d{4}-\\d{4}$'));
+  }
+
+  convertOrcid(id: string): string {
+    const idWithHyphens = id.replace(/-/g, '').replace(/(.{1,4})/g, '$1-').slice(0, -1);
+    return 'https://orcid.org/' + idWithHyphens;
+  }
+
+  uriToOrcid(): string {
+    return this.snapshot.user.orcidId ? this.snapshot.user.orcidId.split('/').slice(-1)[0] : '';
   }
 }
