@@ -176,7 +176,8 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
       lastName: reg.creator_last_name
     });
 
-    this.page.setOrcidId(reg.creator_orcid);
+    const orcid = this.page.uriToOrcid(reg.creator_orcid);
+    this.page.setOrcidId(orcid);
 
     if (data) {
       this.model.setOrgan(data.organ);
@@ -353,7 +354,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
       '@id': `http://purl.org/ccf/1.5/${this.currentIdentifier}`,
       '@type': 'SpatialEntity',
       label: model.label || undefined,
-      creator: `${page.user.firstName} ${page.user.middleName ? page.user.middleName + ' ' : ''}${ page.user.lastName}`,
+      creator: `${page.user.firstName} ${page.user.middleName ? page.user.middleName + ' ' : ''}${page.user.lastName}`,
       creator_first_name: page.user.firstName,
       creator_last_name: page.user.lastName,
       creator_middle_name: page.user.middleName,

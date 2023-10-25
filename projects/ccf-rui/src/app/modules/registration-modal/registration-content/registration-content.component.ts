@@ -44,6 +44,8 @@ export class RegistrationContentComponent {
 
   orcidValid: boolean;
 
+  registrationSelected: boolean;
+
   /**
    * Creates an instance of the registration dialog
    *
@@ -58,6 +60,7 @@ export class RegistrationContentComponent {
     public dialogRef: MatDialogRef<RegistrationContentComponent>,
     cdr: ChangeDetectorRef
   ) {
+    this.registrationSelected = false;
     page.user$.subscribe(user => {
       this.checkNameValid(user);
       if (page.isOrcidValid()) {
@@ -127,6 +130,10 @@ export class RegistrationContentComponent {
     this.closeDialog();
   }
 
+  handleRegistrationSelect() {
+    this.registrationSelected = true;
+  }
+
   /**
    * Closes the dialog and sets the correct sex and organ in the model state
    * Updates page state to signal registration has started
@@ -134,6 +141,9 @@ export class RegistrationContentComponent {
   closeDialog(): void {
     this.model.setSex(this.currentSex === 'Female' ? 'female' : 'male');
     this.model.setOrgan(this.currentOrgan);
+    if (!this.registrationSelected) {
+      this.model.setOrganDefaults();
+    }
     this.dialogRef.close(true);
     this.page.registrationStarted();
   }

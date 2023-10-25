@@ -27,7 +27,7 @@
     <mat-form-field class="form-field" appearance="fill" subscriptSizing="dynamic">
       <div *ngIf="(model.organ$ | async) === undefined" class="label">Organs</div>
       <mat-select disableOptionCentering="true" panelClass="organ-select" [value]="model.organ$ | async"
-        (selectionChange)="model.setOrgan($event.value)" hideSingleSelectionIndicator="true">
+        (selectionChange)="model.setOrgan($event.value); model.setOrganDefaults()" hideSingleSelectionIndicator="true">
         <mat-option class="organ-select-option" *ngFor="let organ of (page.organOptions$ | async)" [value]="organ">
           {{organ.name}}
         </mat-option>
@@ -38,7 +38,7 @@
   <div class="upload-registration">
     <div class="label">Upload previous registration data (optional):</div>
 
-    <ccf-json-file-reader (parsedJson)="registration.editRegistration($event)" label="Upload" matTooltip="Upload a preexisting registration"></ccf-json-file-reader>
+    <ccf-json-file-reader (parsedJson)="registrationSelected.emit(); registration.editRegistration($event)" label="Upload" matTooltip="Upload a preexisting registration"></ccf-json-file-reader>
 
     <div>{{uploadText}}</div>
 

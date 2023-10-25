@@ -296,6 +296,12 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
     }
   }
 
+  @DataAction()
+  setOrganDefaults(): void {
+    this.ctx.patchState({ position: this.defaultPosition });
+    this.ctx.patchState({ rotation: { x: 0, y: 0, z: 0 } });
+  }
+
   /**
    * Updates the sex
    *
@@ -425,7 +431,6 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
     }
 
     this.ctx.patchState({ organIri, organDimensions });
-    this.ctx.patchState({ position: this.defaultPosition });
   }
 
   private onReferenceDataChange(): void {
