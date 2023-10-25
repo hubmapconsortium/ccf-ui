@@ -217,7 +217,7 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
   }
 
   isOrcidValid(): boolean {
-    const orcId = this.uriToOrcid();
+    const orcId = this.uriToOrcid(this.snapshot.user.orcidId);
     return !!(!orcId || orcId.match('^\\d{4}-\\d{4}-\\d{4}-\\d{4}$'));
   }
 
@@ -226,7 +226,7 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
     return 'https://orcid.org/' + idWithHyphens;
   }
 
-  uriToOrcid(): string {
-    return this.snapshot.user.orcidId ? this.snapshot.user.orcidId.split('/').slice(-1)[0] : '';
+  uriToOrcid(id?: string): string {
+    return id ? id.split('/').slice(-1)[0] : '';
   }
 }

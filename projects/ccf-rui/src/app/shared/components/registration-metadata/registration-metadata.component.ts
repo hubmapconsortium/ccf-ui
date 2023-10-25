@@ -18,6 +18,8 @@ import { FormControl, Validators } from '@angular/forms';
 export class RegistrationMetadataComponent {
   @Output() readonly orcidValid = new EventEmitter<boolean>();
 
+  @Output() readonly registrationSelected = new EventEmitter<void>();
+
   /**
    * Name valid of registration metadata component
    */
@@ -45,7 +47,7 @@ export class RegistrationMetadataComponent {
   ) {
     page.user$.subscribe(user => {
       this.checkNameValid(user);
-      this.orcId = page.uriToOrcid();
+      this.orcId = page.uriToOrcid(user.orcidId);
     });
     registration.state$.subscribe(reg => {
       this.uploadText = reg.initialRegistration ? 'File(s) uploaded' : 'No file(s) uploaded';
