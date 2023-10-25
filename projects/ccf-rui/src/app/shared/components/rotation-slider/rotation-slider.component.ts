@@ -57,8 +57,9 @@ export class RotationSliderComponent {
    * @param axis which axis to update
    */
   changeRotation(newRotation: number | string, axis: string): void {
-    this.rotation = { ... this.rotation, [axis]: +newRotation };
-    this.ga.event('rotation_update', 'rotation_slider', axis, +newRotation);
+    const updatedNewRotation = +newRotation > 180 ? 180 : (+newRotation < -180 ? -180 : +newRotation);
+    this.rotation = { ... this.rotation, [axis]: +updatedNewRotation };
+    this.ga.event('rotation_update', 'rotation_slider', axis, +updatedNewRotation);
     this.rotationChange.emit(this.rotation);
   }
 
