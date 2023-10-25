@@ -57,7 +57,7 @@ export interface ModelStateModel {
   /** Sex if applicable */
   sex?: 'male' | 'female';
   /** Side if applicable */
-  side?: 'left' | 'right' | '';
+  side?: 'left' | 'right';
   /** Block size */
   blockSize: XYZTriplet;
   /** Model rotation */
@@ -99,7 +99,6 @@ export const RUI_ORGANS = ALL_ORGANS;
     organIri: '',
     organDimensions: { x: 90, y: 90, z: 90 },
     sex: 'male',
-    side: '',
     blockSize: { x: 10, y: 10, z: 10 },
     rotation: { x: 0, y: 0, z: 0 },
     position: { x: 0, y: 0, z: 0 },
@@ -290,6 +289,8 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
       this.ctx.patchState({ organ });
       if (organ.side) {
         this.ctx.patchState({ side: organ.side });
+      } else {
+        this.ctx.patchState({ side: undefined });
       }
       this.onOrganIriChange();
     }
@@ -402,17 +403,17 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
           };
         }
       }
-      this.ctx.patchState({ anatomicalStructures: Object.values(asLookup) });
+      this.ctx.patchState({ anatomicalStructures: [{ id: 'all', name: 'all anatomical structures', opacity: 20, visible: true }, ...Object.values(asLookup)] });
 
       const sets: ExtractionSet[] = (db.extractionSets[organIri] || []).map((set) => ({
         name: set.label,
-        sites: sortBy(set.extractionSites.map((entity) => ({
+        sites: [{ id: 'all', name: 'all landmarks', visible: true, opacity: 0 }].concat(sortBy(set.extractionSites.map((entity) => ({
           id: entity['@id'],
           name: entity.label!,
-          visible: false,
+          visible: true,
           opacity: 0,
           tooltip: entity.comment
-        })), 'name')
+        })), 'name'))
       }));
       this.ctx.patchState({ extractionSets: sets });
       this.ctx.patchState({ extractionSites: sets.length > 0 ? sets[0].sites : [] });
