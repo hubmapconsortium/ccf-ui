@@ -300,7 +300,17 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
    * Sets the state back to the initial registration
    */
   setToInitialRegistration() {
-    this.editRegistration(this.getState().initialRegistration as SpatialEntityJsonLd);
+    const { page } = this;
+
+    const initialWithChanges: SpatialEntityJsonLd | undefined = {
+      ...this.snapshot.initialRegistration as SpatialEntityJsonLd,
+      creator_first_name: page.snapshot.user.firstName,
+      creator_last_name: page.snapshot.user.lastName,
+      creator_middle_name: page.snapshot.user.middleName,
+      creator_orcid: page.snapshot.user.orcidId
+    };
+
+    this.editRegistration(initialWithChanges);
   }
 
   /**

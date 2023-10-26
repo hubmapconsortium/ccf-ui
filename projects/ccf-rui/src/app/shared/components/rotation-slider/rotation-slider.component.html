@@ -22,7 +22,7 @@
       [value]="rotation.x"></mat-slider>
   </div>
   <mat-form-field>
-    <input matInput class="input" type="number" [value]="rotation.x" [min]="-180" [max]="180" (keyup)="changeRotation($event.target.value, 'x')">
+    <input matInput class="input" type="number" [value]="rotation.x" [min]="-180" [max]="180" (change)="changeRotation($event.target.value, 'x')">
   </mat-form-field>
 </div>
 
@@ -43,7 +43,7 @@
       [value]="rotation.y"></mat-slider>
   </div>
   <mat-form-field>
-    <input matInput class="input" type="number" [value]="rotation.y" [min]="-180" [max]="180" (keyup)="changeRotation($event.target.value, 'y')">
+    <input matInput class="input" type="number" [value]="rotation.y" [min]="-180" [max]="180" (change)="changeRotation($event.target.value, 'y')">
   </mat-form-field>
 </div>
 
@@ -64,6 +64,6 @@
       [value]="rotation.z"></mat-slider>
   </div>
   <mat-form-field>
-    <input matInput class="input" type="number" [value]="rotation.z" [min]="-180" [max]="180" (keyup)="changeRotation($event.target.value, 'z')">
+    <input matInput class="input" type="number" [value]="rotation.z" [min]="-180" [max]="180" (change)="changeRotation($event.target.value, 'z')">
   </mat-form-field>
 </div>

@@ -13,7 +13,7 @@ describe('RegistrationContentComponent', () => {
 
   beforeEach(() => {
     const mockModelState = jasmine.createSpyObj<ModelState>(
-      'ModelState', ['setViewType', 'setViewSide', 'setSex', 'setOrgan']
+      'ModelState', ['setViewType', 'setViewSide', 'setSex', 'setOrgan', 'setOrganDefaults']
     );
 
     const mockPageState = jasmine.createSpyObj<PageState>(
