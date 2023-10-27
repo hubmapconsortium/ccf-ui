@@ -1,4 +1,4 @@
-import { Component, Input, HostBinding, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
 
 /**
  * Reusable component that takes an array of strings and renders

@@ -1,11 +1,11 @@
 <div class="header">
   <span class="text title" matTooltip="Use sliders below to rotate tissue block for registration">Tissue Block Rotation</span>
   <div class="filler"></div>
+  <div class="refresh-button-container">
+    <mat-icon matRipple [matRippleCentered]="true" [matRippleUnbounded]="true" class="icon reset" (click)="resetRotation('x'); resetRotation('y'); resetRotation('z')">refresh</mat-icon>
+  </div>
 </div>
 
-<div class="refresh-button-container">
-  <mat-icon matRipple [matRippleCentered]="true" [matRippleUnbounded]="true" class="icon reset" (click)="resetRotation('x')">refresh</mat-icon>
-</div>
 <div class="slider-box red">
   <span class="text label">X</span>
   <div class="slider-container">
@@ -19,12 +19,11 @@
       (input)="changeRotation($event.value, 'x')"
       [value]="rotation.x"></mat-slider>
   </div>
-  <span class="text value">{{ rotation.x }}</span>
+  <mat-form-field>
+    <input matInput class="input" type="number" [value]="rotation.x" [min]="-180" [max]="180" (change)="changeRotation($event.target.value, 'x')">
+  </mat-form-field>
 </div>
 
-<div class="refresh-button-container">
-  <mat-icon matRipple [matRippleCentered]="true" [matRippleUnbounded]="true" class="icon reset" (click)="resetRotation('y')">refresh</mat-icon>
-</div>
 <div class="slider-box green">
   <span class="text label">Y</span>
   <div class="slider-container">
@@ -38,12 +37,11 @@
       (input)="changeRotation($event.value, 'y')"
       [value]="rotation.y"></mat-slider>
   </div>
-  <span class="text value">{{ rotation.y }}</span>
+  <mat-form-field>
+    <input matInput class="input" type="number" [value]="rotation.y" [min]="-180" [max]="180" (change)="changeRotation($event.target.value, 'y')">
+  </mat-form-field>
 </div>
 
-<div class="refresh-button-container">
-  <mat-icon matRipple [matRippleCentered]="true" [matRippleUnbounded]="true" class="icon reset" (click)="resetRotation('z')">refresh</mat-icon>
-</div>
 <div class="slider-box blue">
   <span class="text label">Z</span>
   <div class="slider-container">
@@ -57,5 +55,7 @@
       (input)="changeRotation($event.value, 'z')"
       [value]="rotation.z"></mat-slider>
   </div>
-  <span class="text value">{{ rotation.z }}</span>
+  <mat-form-field>
+    <input matInput class="input" type="number" [value]="rotation.z" [min]="-180" [max]="180" (change)="changeRotation($event.target.value, 'z')">
+  </mat-form-field>
 </div>

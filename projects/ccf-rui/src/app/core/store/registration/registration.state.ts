@@ -150,6 +150,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
           this.ctx.patchState({
             useRegistrationCallback: !!(!useDownload && register),
           });
+          this.model.setOrganDefaults();
           this.setOrganSelection(organOptions as string[]);
         })
       ).subscribe();
@@ -175,6 +176,9 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
       middleName: reg.creator_middle_name,
       lastName: reg.creator_last_name
     });
+
+    const orcid = this.page.uriToOrcid(reg.creator_orcid);
+    this.page.setOrcidId(orcid);
 
     if (data) {
       this.model.setOrgan(data.organ);
@@ -246,6 +250,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
     const requiredValues = [
       page.user.firstName,
       page.user.lastName,
+      page.orcidValid,
       model.organ.src,
       model.organ.name,
       model.organ.organ
@@ -296,7 +301,17 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
    * Sets the state back to the initial registration
    */
   setToInitialRegistration() {
-    this.editRegistration(this.getState().initialRegistration as SpatialEntityJsonLd);
+    const { page } = this;
+
+    const initialWithChanges: SpatialEntityJsonLd | undefined = {
+      ...this.snapshot.initialRegistration as SpatialEntityJsonLd,
+      creator_first_name: page.snapshot.user.firstName,
+      creator_last_name: page.snapshot.user.lastName,
+      creator_middle_name: page.snapshot.user.middleName,
+      creator_orcid: page.snapshot.user.orcidId
+    };
+
+    this.editRegistration(initialWithChanges);
   }
 
   /**
@@ -350,7 +365,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
       '@id': `http://purl.org/ccf/1.5/${this.currentIdentifier}`,
       '@type': 'SpatialEntity',
       label: model.label || undefined,
-      creator: `${page.user.firstName} ${page.user.middleName ? page.user.middleName + ' ' : ''}${ page.user.lastName}`,
+      creator: `${page.user.firstName} ${page.user.middleName ? page.user.middleName + ' ' : ''}${page.user.lastName}`,
       creator_first_name: page.user.firstName,
       creator_last_name: page.user.lastName,
       creator_middle_name: page.user.middleName,

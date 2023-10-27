@@ -25,13 +25,13 @@ export class RegistrationContentComponent {
     map(sex => sex === 'female' ? 'Female' : 'Male')
   );
 
-  /** HTML class name */
+  /** List of selectable organs */
   organList = RUI_ORGANS;
 
-  /** HTML class name */
+  /** Whether sex has been selected */
   sexSelected: boolean;
 
-  /** Whether  an organ has been selected */
+  /** Whether an organ has been selected */
   organSelected: boolean;
 
   /** Current sex selected */
@@ -40,15 +40,22 @@ export class RegistrationContentComponent {
   /** Current organ selected */
   currentOrgan: OrganInfo;
 
+  /** Checks if the user has entered a first and last name */
   nameValid: boolean;
+
+  /** Checks if the entered orcid is valid */
+  orcidValid: boolean;
+
+  /** Checks if a preexisting registration was uploaded */
+  registrationSelected: boolean;
 
   /**
    * Creates an instance of the registration dialog
    *
    * @param page Page state
    * @param model Model state
-   * @param registration Registration state
    * @param dialogRef Registration dialog
+   * @param cdr Change detection
    */
   constructor(
     readonly page: PageState,
@@ -56,8 +63,10 @@ export class RegistrationContentComponent {
     public dialogRef: MatDialogRef<RegistrationContentComponent>,
     cdr: ChangeDetectorRef
   ) {
+    this.registrationSelected = false;
     page.user$.subscribe(user => {
       this.checkNameValid(user);
+      this.orcidValid = page.isOrcidValid();
       cdr.markForCheck();
     });
     model.organ$.subscribe(organ => {
@@ -121,12 +130,23 @@ export class RegistrationContentComponent {
   }
 
   /**
+   * Sets registrationSelected to true when a registration is uploaded
+   */
+  handleRegistrationSelect() {
+    this.registrationSelected = true;
+  }
+
+  /**
    * Closes the dialog and sets the correct sex and organ in the model state
+   * Sets block to default position and rotation if user didn't select a registration
    * Updates page state to signal registration has started
    */
   closeDialog(): void {
     this.model.setSex(this.currentSex === 'Female' ? 'female' : 'male');
     this.model.setOrgan(this.currentOrgan);
+    if (!this.registrationSelected) {
+      this.model.setOrganDefaults();
+    }
     this.dialogRef.close(true);
     this.page.registrationStarted();
   }

@@ -23,6 +23,7 @@ export class RegistrationModalComponent implements OnInit {
   /** HTML class name */
   @HostBinding('class') readonly clsName = 'ccf-registration-modal';
 
+  /** Checks if registration dialog has been opened */
   dialogOpen = false;
 
   /**
@@ -36,7 +37,6 @@ export class RegistrationModalComponent implements OnInit {
     private readonly model: ModelState,
     private readonly referenceData: ReferenceDataState,
     private readonly globalConfig: GlobalConfigState<GlobalConfig>
-
   ) {}
 
   /**

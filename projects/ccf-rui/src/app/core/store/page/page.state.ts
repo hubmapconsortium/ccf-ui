@@ -32,6 +32,7 @@ export interface PageStateModel {
   skipConfirmation: boolean;
   hasChanges: boolean;
   organOptions?: OrganInfo[];
+  orcidValid: boolean;
 }
 
 /**
@@ -50,18 +51,20 @@ export interface PageStateModel {
     registrationCallbackSet: false,
     skipConfirmation: true,
     hasChanges: false,
-    organOptions: []
+    organOptions: [],
+    orcidValid: false
   }
 })
 @Injectable()
 export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
   /** Active user observable */
   readonly user$ = this.state$.pipe(map(x => x?.user));
-  /** RegistrationStated observable */
+  /** registrationStarted observable */
   readonly registrationStarted$ = this.state$.pipe(pluckUnique('registrationStarted'));
   readonly useCancelRegistrationCallback$ = this.state$.pipe(map(x => x?.useCancelRegistrationCallback));
   readonly registrationCallbackSet$ = this.state$.pipe(map(x => x?.registrationCallbackSet));
   readonly organOptions$ = this.state$.pipe(map(x => x?.organOptions));
+  readonly orcidValid$ = this.state$.pipe(map(x => x?.orcidValid));
 
   @Computed()
   get skipConfirmation$(): Observable<boolean> {
@@ -146,11 +149,21 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
     }));
   }
 
+  /**
+   * Saves ORCID id as URI
+   * Sets orcidValid to true if blank, otherwise set to true if valid
+   * @param id ORCID id
+   */
   @DataAction()
-  setOrcidId(orcidId: string): void {
+  setOrcidId(id?: string): void {
     this.ctx.setState(patch({
-      user: patch({ orcidId: orcidId !== '' ? orcidId : undefined })
+      user: patch({
+        orcidId: id ? this.orcidToUri(id) : undefined
+      })
     }));
+    this.ctx.patchState({
+      orcidValid: id ? this.isOrcidValid() : true
+    });
   }
 
   /**
@@ -206,5 +219,33 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
         addEventListener('beforeunload', beforeUnloadListener);
       }
     });
+  }
+
+  /**
+   * Checks if current orcid value is in the valid format
+   * @returns true if orcid valid or blank
+   */
+  isOrcidValid(): boolean {
+    const orcId = this.uriToOrcid(this.snapshot.user.orcidId);
+    return !!(!orcId || orcId.match('^\\d{4}(-\\d{4}){3}$'));
+  }
+
+  /**
+   * Converts orcid URI to a regular orcid value
+   * @param uri orcid uri
+   * @returns orcid id
+   */
+  uriToOrcid(uri?: string): string {
+    return uri ? uri.split('/').slice(-1)[0] : '';
+  }
+
+  /**
+   * Converts orcid to URI
+   * @param id orcid id
+   * @returns orcid URI
+   */
+  private orcidToUri(id: string): string {
+    const idWithHyphens = id.replace(/-/g, '').replace(/(.{1,4})/g, '$1-').slice(0, -1);
+    return 'https://orcid.org/' + idWithHyphens;
   }
 }

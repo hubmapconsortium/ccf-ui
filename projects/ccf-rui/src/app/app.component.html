@@ -14,7 +14,7 @@
 
   <ccf-drawer-content>
     <div [class.closed]="!open" class="selector-drawer" [class.expanded]="organSelector.expanded">
-      <ccf-organ-selector #organSelector [organList]="organList" (organsChanged)="model.setOrgan($event[0])"
+      <ccf-organ-selector #organSelector [organList]="organList" (organsChanged)="model.setOrgan($event[0]); model.setOrganDefaults()"
                           [selectedOrgans]="[model.organ$ | async]" [class.closed]="!open"></ccf-organ-selector>
       <div class="close-button-wrapper" [class.closed]="!open" [class.selector-expanded]="organSelector.expanded">
         <div *ngIf="open" class="close-button" (click)="organSelector.expanded = !organSelector.expanded">

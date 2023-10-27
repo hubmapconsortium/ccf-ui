@@ -2,6 +2,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { OrganInfo } from 'ccf-shared';
 import { of } from 'rxjs';
 import { Shallow } from 'shallow-render';
+
 import { ModelState } from '../../../core/store/model/model.state';
 import { PageState } from '../../../core/store/page/page.state';
 import { RegistrationContentComponent } from './registration-content.component';
@@ -10,19 +11,17 @@ import { RegistrationContentModule } from './registration-content.module';
 
 describe('RegistrationContentComponent', () => {
   let shallow: Shallow<RegistrationContentComponent>;
+  const mockModelState = jasmine.createSpyObj<ModelState>(
+    'ModelState', ['setViewType', 'setViewSide', 'setSex', 'setOrgan', 'setOrganDefaults']
+  );
+  const mockPageState = jasmine.createSpyObj<PageState>(
+    'PageState', ['setUserName', 'registrationStarted', 'isOrcidValid']
+  );
+  const mockMatDialog = jasmine.createSpyObj<MatDialogRef<unknown, boolean>>(
+    'DialogRef', ['close']
+  );
 
   beforeEach(() => {
-    const mockModelState = jasmine.createSpyObj<ModelState>(
-      'ModelState', ['setViewType', 'setViewSide', 'setSex', 'setOrgan']
-    );
-
-    const mockPageState = jasmine.createSpyObj<PageState>(
-      'PageState', ['setUserName', 'registrationStarted']
-    );
-
-    const mockMatDialog = jasmine.createSpyObj<MatDialogRef<unknown, boolean>>(
-      'DialogRef', ['close']
-    );
 
     shallow = new Shallow(RegistrationContentComponent, RegistrationContentModule)
       .mock(ModelState, {
@@ -33,7 +32,8 @@ describe('RegistrationContentComponent', () => {
       .mock(PageState, {
         ...mockPageState,
         user$: of({ firstName: '', lastName: '' }),
-        organOptions$: of([])
+        organOptions$: of([]),
+        isOrcidValid: () => true
       })
       .mock(MatDialogRef, {
         ...mockMatDialog,
@@ -105,5 +105,19 @@ describe('RegistrationContentComponent', () => {
     const spy = spyOn(mockEvent, 'preventDefault');
     instance.registerButtonClick(mockEvent);
     expect(spy).toHaveBeenCalled();
+  });
+
+  it('sets orcidValid to false if orcid not valid', async () => {
+    const { instance } = await shallow.mock(PageState, {
+      ...mockPageState,
+      isOrcidValid: () => false
+    }).render();
+    expect(instance.orcidValid).toBeFalse();
+  });
+
+  it('handles registration select', async () => {
+    const { instance } = await shallow.render();
+    instance.handleRegistrationSelect();
+    expect(instance.registrationSelected).toBeTrue();
   });
 });

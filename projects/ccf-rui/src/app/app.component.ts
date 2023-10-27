@@ -175,13 +175,9 @@ export class AppComponent implements OnDestroy, OnInit {
    *
    * @param target The element clicked
    */
-  @HostListener('document:click', ['$event.target'])
+  @HostListener('document:mousedown', ['$event.target'])
   handleClick(target: HTMLElement): void {
-    if (target.nodeName === 'INPUT') {
-      this.disablePositionChange = true;
-    } else {
-      this.disablePositionChange = false;
-    }
+    this.disablePositionChange = target.nodeName !== 'CANVAS';
   }
 
   /**

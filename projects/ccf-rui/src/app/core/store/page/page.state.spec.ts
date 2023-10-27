@@ -69,6 +69,14 @@ describe('PageState', () => {
     expect(value).toEqual(jasmine.objectContaining(newName));
   });
 
+  it('sets orcid', async () => {
+    const newOrcid = '1111-1111-1111-1111';
+    state.setOrcidId(newOrcid);
+
+    const value = await nextValue(state.user$);
+    expect(value.orcidId).toEqual('https://orcid.org/' + newOrcid);
+  });
+
   it('updates registrationStarted', async () => {
     state.registrationStarted();
     const value = await nextValue(state.registrationStarted$);

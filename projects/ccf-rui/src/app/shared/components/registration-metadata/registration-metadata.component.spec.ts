@@ -1,37 +1,50 @@
-import { NgxsDataPluginModule } from '@angular-ru/ngxs';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { NgxsModule } from '@ngxs/store';
-import { GlobalConfigState } from 'ccf-shared';
+import { of } from 'rxjs';
+import { Shallow } from 'shallow-render';
 
 import { ModelState } from '../../../core/store/model/model.state';
 import { PageState } from '../../../core/store/page/page.state';
-import { RegistrationState } from '../../../core/store/registration/registration.state';
 import { RegistrationMetadataComponent } from './registration-metadata.component';
+import { RegistrationMetadataModule } from './registration-metadata.module';
+import { RegistrationState } from '../../../core/store/registration/registration.state';
+
 
 describe('RegistrationMetadataComponent', () => {
-  let component: RegistrationMetadataComponent;
-  let fixture: ComponentFixture<RegistrationMetadataComponent>;
+  let shallow: Shallow<RegistrationMetadataComponent>;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [RegistrationMetadataComponent],
-      imports: [
-        NgxsDataPluginModule.forRoot(),
-        NgxsModule.forRoot([ModelState, GlobalConfigState, RegistrationState, PageState])
-      ],
-      providers: [
-        ModelState,
-        GlobalConfigState,
-        RegistrationState,
-        PageState
-      ]
-    });
-    fixture = TestBed.createComponent(RegistrationMetadataComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    const mockModelState = jasmine.createSpyObj<ModelState>(
+      'ModelState', ['setViewType', 'setViewSide', 'setSex', 'setOrgan']
+    );
+
+    const mockRegistrationState = jasmine.createSpyObj<RegistrationState>(
+      'RegistrationState', ['editRegistration']
+    );
+
+    const mockPageState = jasmine.createSpyObj<PageState>(
+      'PageState', ['setUserName', 'registrationStarted', 'isOrcidValid']
+    );
+
+    shallow = new Shallow(RegistrationMetadataComponent, RegistrationMetadataModule)
+      .mock(ModelState, {
+        ...mockModelState,
+        sex$: of('male' as 'male' | 'female'),
+        organ$: of({ src: '' })
+      })
+      .mock(PageState, {
+        ...mockPageState,
+        user$: of({ firstName: '', lastName: '' }),
+        organOptions$: of([]),
+        uriToOrcid: () => '1234-1234-1234-1234'
+      })
+      .mock(RegistrationState, {
+        ...mockRegistrationState,
+        state$: of({})
+      });
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should exist', async () => {
+    const { instance } = await shallow.render();
+    expect(instance).toBeTruthy();
   });
 });
+

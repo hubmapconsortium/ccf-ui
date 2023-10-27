@@ -5,7 +5,7 @@
       <ccf-info-button videoID="gY3_-LIoKaU" infoTitle="CCF Registration User Interface" documentationUrl="assets/docs/README.md"></ccf-info-button>
     </div>
 
-    <mat-expansion-panel class="registration-metadata-panel" [expanded]="false">
+    <mat-expansion-panel class="registration-metadata-panel">
       <mat-expansion-panel-header class="header">
         <mat-panel-title matTooltip="">Registration Metadata</mat-panel-title>
       </mat-expansion-panel-header>
@@ -16,15 +16,21 @@
 
     <mat-divider></mat-divider>
 
-    <ccf-block-size-input [blockSize]="model.blockSize$ | async" (blockSizeChange)="model.setBlockSize($event)">
-    </ccf-block-size-input>
+    <mat-expansion-panel class="tissue-block-controls-panel" [expanded]="true">
+      <mat-expansion-panel-header class="header">
+        <mat-panel-title matTooltip="">Tissue Block Controls</mat-panel-title>
+      </mat-expansion-panel-header>
 
+      <ccf-block-size-input [blockSize]="model.blockSize$ | async" (blockSizeChange)="model.setBlockSize($event)">
+      </ccf-block-size-input>
 
-    <ccf-slices-input [slicesConfig]="model.slicesConfig$ | async" (slicesConfigChange)="model.setSlicesConfig($event)">
-    </ccf-slices-input>
+      <ccf-slices-input [slicesConfig]="model.slicesConfig$ | async" (slicesConfigChange)="model.setSlicesConfig($event)">
+      </ccf-slices-input>
 
-    <ccf-rotation-slider [rotation]="model.rotation$ | async" (rotationChange)="model.setRotation($event)">
-    </ccf-rotation-slider>
+      <ccf-rotation-slider [rotation]="model.rotation$ | async" (rotationChange)="model.setRotation($event)">
+      </ccf-rotation-slider>
+
+    </mat-expansion-panel>
 
     <mat-divider></mat-divider>
     <mat-expansion-panel class="tags-container" [expanded]="true">

@@ -117,7 +117,7 @@ export class ContentComponent implements OnInit, OnDestroy {
     if (this.registration.snapshot.initialRegistration) {
       this.registration.setToInitialRegistration();
     } else {
-      this.model.setPosition(this.model.defaultPosition);
+      this.model.setOrganDefaults();
     }
     this.model.setViewSide('anterior');
     this.model.setViewType('register');

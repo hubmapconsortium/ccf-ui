@@ -45,7 +45,8 @@ const testPage: Immutable<PageStateModel> = {
   useCancelRegistrationCallback: false,
   registrationCallbackSet: false,
   skipConfirmation: true,
-  hasChanges: false
+  hasChanges: false,
+  orcidValid: true
 };
 
 function nextValue<T>(obs: Observable<T>): Promise<T> {
@@ -65,7 +66,9 @@ describe('RegistrationState', () => {
   const initialPageState: Partial<PageStateModel> = {
     user: {
       firstName: 'foo',
-      lastName: 'bar'
+      lastName: 'bar',
+      middleName: 'middle',
+      orcidId: '1111-1111-1111-1111'
     }
   };
   const initialModelState: Partial<ModelStateModel> = {
@@ -128,7 +131,8 @@ describe('RegistrationState', () => {
         {
           provide: ModelState, useValue: {
             state$: modelStateSubject,
-            snapshot: initialModelState
+            snapshot: initialModelState,
+            setOrganDefaults: () => undefined
           }
         },
         {
@@ -307,4 +311,13 @@ describe('RegistrationState', () => {
       expect(callback).not.toHaveBeenCalled();
     });
   });
+
+  describe('setToInitialRegistration', () => {
+    it('reverts registration to initial state', async () => {
+      const spy = spyOn(state, 'editRegistration');
+      state.setToInitialRegistration();
+      expect(spy).toHaveBeenCalled();
+    });
+  });
+
 });
