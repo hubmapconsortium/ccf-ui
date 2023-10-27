@@ -221,12 +221,12 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
     return !!(!orcId || orcId.match('^\\d{4}-\\d{4}-\\d{4}-\\d{4}$'));
   }
 
-  convertOrcid(id: string): string {
-    const idWithHyphens = id.replace(/-/g, '').replace(/(.{1,4})/g, '$1-').slice(0, -1);
-    return 'https://orcid.org/' + idWithHyphens;
-  }
-
   uriToOrcid(id?: string): string {
     return id ? id.split('/').slice(-1)[0] : '';
+  }
+
+  private convertOrcid(id: string): string {
+    const idWithHyphens = id.replace(/-/g, '').replace(/(.{1,4})/g, '$1-').slice(0, -1);
+    return 'https://orcid.org/' + idWithHyphens;
   }
 }

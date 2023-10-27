@@ -66,7 +66,9 @@ describe('RegistrationState', () => {
   const initialPageState: Partial<PageStateModel> = {
     user: {
       firstName: 'foo',
-      lastName: 'bar'
+      lastName: 'bar',
+      middleName: 'middle',
+      orcidId: '1111-1111-1111-1111'
     }
   };
   const initialModelState: Partial<ModelStateModel> = {
@@ -308,4 +310,13 @@ describe('RegistrationState', () => {
       expect(callback).not.toHaveBeenCalled();
     });
   });
+
+  describe('setToInitialRegistration', () => {
+    it('reverts registration to initial state', async () => {
+      const spy = spyOn(state, 'editRegistration');
+      state.setToInitialRegistration();
+      expect(spy).toHaveBeenCalled();
+    });
+  });
+
 });
