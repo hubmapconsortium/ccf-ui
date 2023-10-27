@@ -38,7 +38,7 @@
   <div class="upload-registration">
     <div class="label">Upload previous registration data (optional):</div>
 
-    <ccf-json-file-reader (parsedJson)="registrationSelected.emit(); registration.editRegistration($event)" label="Upload" matTooltip="Upload a preexisting registration"></ccf-json-file-reader>
+    <ccf-json-file-reader (parsedJson)="handleRegistrationUpload($event)" label="Upload" matTooltip="Upload a preexisting registration"></ccf-json-file-reader>
 
     <div>{{uploadText}}</div>
 

@@ -11,6 +11,7 @@ import { GoogleAnalyticsService } from 'ngx-google-analytics';
 export class JsonFileReaderComponent {
   /** HTML class name */
   @HostBinding('class') readonly clsName = 'ccf-json-file-reader';
+
   /** File Input element, used to manually trigger the click event. */
   @ViewChild('fileInput') fileInput: ElementRef<HTMLElement>;
 

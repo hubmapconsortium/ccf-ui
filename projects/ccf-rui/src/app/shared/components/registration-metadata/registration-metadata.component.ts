@@ -4,6 +4,7 @@ import { ModelState } from '../../../core/store/model/model.state';
 import { PageState, Person } from '../../../core/store/page/page.state';
 import { RegistrationState } from '../../../core/store/registration/registration.state';
 import { FormControl, Validators } from '@angular/forms';
+import { SpatialEntityJsonLd } from 'ccf-body-ui';
 
 /**
  * Right side registration menu
@@ -16,23 +17,20 @@ import { FormControl, Validators } from '@angular/forms';
 
 })
 export class RegistrationMetadataComponent {
-  @Output() readonly orcidValid = new EventEmitter<boolean>();
-
+  /** Emits when user has uploaded registration */
   @Output() readonly registrationSelected = new EventEmitter<void>();
 
-  /**
-   * Name valid of registration metadata component
-   */
+  /** Checks if first and last name has been entered */
   nameValid: boolean;
 
+  /** Orcid URI converted to regular id */
   orcId?: string;
 
-  /**
-   * Text to inform user if a registration file has been uploaded
-   */
+  /** Text to inform user if a registration file has been uploaded */
   uploadText: string;
 
-  orcidControl = new FormControl('', [Validators.pattern('^\\d{4}-\\d{4}-\\d{4}-\\d{4}$')]);
+  /** Form control for validating orcid id */
+  orcidControl = new FormControl('', [Validators.pattern('^\\d{4}(-\\d{4}){3}$')]);
 
   /**
    * Creates an instance of registration metadata component.
@@ -54,17 +52,33 @@ export class RegistrationMetadataComponent {
     });
   }
 
-  getErrorMessage() {
+  /**
+   * Error message to inform user if orcid is invalid
+   * @returns Error message
+   */
+  getErrorMessage(): string {
     return this.orcidControl.hasError('pattern') ? 'Not a valid ORCID' : '';
   }
 
+  /**
+   * Updates orcid value
+   * @param value Orcid value entered
+   */
   updateOrcid(value: string): void {
     this.page.setOrcidId(value);
   }
 
   /**
+   * Emits registrationSelected and calls editRegistration in state
+   * @param event Registration uploaded
+   */
+  handleRegistrationUpload(reg: SpatialEntityJsonLd): void {
+    this.registrationSelected.emit();
+    this.registration.editRegistration(reg);
+  }
+
+  /**
    * Checks to see if a first and last name has been entered
-   *
    * @param event Name input event
    */
   checkNameValid(event: Pick<Person, 'firstName' | 'lastName'>): void {
@@ -73,7 +87,6 @@ export class RegistrationMetadataComponent {
 
   /**
    * Updates current sex selected
-   *
    * @param label Sex selected
    */
   setSexFromLabel(label: 'Female' | 'Male'): void {

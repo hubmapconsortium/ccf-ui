@@ -296,6 +296,9 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
     }
   }
 
+  /**
+   * Sets position and rotation to default
+   */
   @DataAction()
   setOrganDefaults(): void {
     this.ctx.patchState({
