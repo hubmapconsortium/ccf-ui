@@ -131,7 +131,8 @@ describe('RegistrationState', () => {
         {
           provide: ModelState, useValue: {
             state$: modelStateSubject,
-            snapshot: initialModelState
+            snapshot: initialModelState,
+            setOrganDefaults: () => undefined
           }
         },
         {
