@@ -26,123 +26,123 @@
 </g>
 <g id="clust5" class="cluster">
 <title>cluster_LeftSidebarModule_exports</title>
-<polygon fill="none" stroke="black" points="419,-208 419,-260 585,-260 585,-208 419,-208"/>
-</g>
-<g id="clust2" class="cluster">
-<title>cluster_LeftSidebarModule_declarations</title>
-<polygon fill="none" stroke="black" points="1050,-78 1050,-130 1214,-130 1214,-78 1050,-78"/>
+<polygon fill="none" stroke="black" points="432,-208 432,-260 598,-260 598,-208 432,-208"/>
 </g>
 <g id="clust4" class="cluster">
 <title>cluster_LeftSidebarModule_imports</title>
-<polygon fill="none" stroke="black" points="16,-78 16,-130 1042,-130 1042,-78 16,-78"/>
+<polygon fill="none" stroke="black" points="188,-78 188,-130 1214,-130 1214,-78 188,-78"/>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_LeftSidebarModule_declarations</title>
+<polygon fill="none" stroke="black" points="16,-78 16,-130 180,-130 180,-78 16,-78"/>
 </g>
 <!-- LeftSidebarComponent -->
 <g id="node1" class="node">
 <title>LeftSidebarComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="1205.91,-122 1058.09,-122 1058.09,-86 1205.91,-86 1205.91,-122"/>
-<text text-anchor="middle" x="1132" y="-99.8" font-family="Times,serif" font-size="14.00">LeftSidebarComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="171.91,-122 24.09,-122 24.09,-86 171.91,-86 171.91,-122"/>
+<text text-anchor="middle" x="98" y="-99.8" font-family="Times,serif" font-size="14.00">LeftSidebarComponent</text>
 </g>
 <!-- LeftSidebarModule -->
 <g id="node2" class="node">
 <title>LeftSidebarModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="564.63,-187 561.63,-191 540.63,-191 537.63,-187 439.37,-187 439.37,-151 564.63,-151 564.63,-187"/>
-<text text-anchor="middle" x="502" y="-164.8" font-family="Times,serif" font-size="14.00">LeftSidebarModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="577.63,-187 574.63,-191 553.63,-191 550.63,-187 452.37,-187 452.37,-151 577.63,-151 577.63,-187"/>
+<text text-anchor="middle" x="515" y="-164.8" font-family="Times,serif" font-size="14.00">LeftSidebarModule</text>
 </g>
 <!-- LeftSidebarComponent&#45;&gt;LeftSidebarModule -->
 <g id="edge1" class="edge">
 <title>LeftSidebarComponent&#45;&gt;LeftSidebarModule</title>
-<path fill="none" stroke="black" d="M1132,-122.29C1132,-144.21 1132,-178 1132,-178 1132,-178 574.71,-178 574.71,-178"/>
-<polygon fill="black" stroke="black" points="574.71,-174.5 564.71,-178 574.71,-181.5 574.71,-174.5"/>
+<path fill="none" stroke="black" d="M98,-122.29C98,-144.21 98,-178 98,-178 98,-178 442.12,-178 442.12,-178"/>
+<polygon fill="black" stroke="black" points="442.12,-181.5 452.12,-178 442.12,-174.5 442.12,-181.5"/>
 </g>
 <!-- LeftSidebarComponent  -->
 <g id="node9" class="node">
 <title>LeftSidebarComponent </title>
-<polygon fill="#fb8072" stroke="black" points="577.41,-252 426.59,-252 426.59,-216 577.41,-216 577.41,-252"/>
-<text text-anchor="middle" x="502" y="-229.8" font-family="Times,serif" font-size="14.00">LeftSidebarComponent </text>
+<polygon fill="#fb8072" stroke="black" points="590.41,-252 439.59,-252 439.59,-216 590.41,-216 590.41,-252"/>
+<text text-anchor="middle" x="515" y="-229.8" font-family="Times,serif" font-size="14.00">LeftSidebarComponent </text>
 </g>
 <!-- LeftSidebarModule&#45;&gt;LeftSidebarComponent  -->
 <g id="edge9" class="edge">
 <title>LeftSidebarModule&#45;&gt;LeftSidebarComponent </title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M502,-187.11C502,-187.11 502,-205.99 502,-205.99"/>
-<polygon fill="black" stroke="black" points="498.5,-205.99 502,-215.99 505.5,-205.99 498.5,-205.99"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M515,-187.11C515,-187.11 515,-205.99 515,-205.99"/>
+<polygon fill="black" stroke="black" points="511.5,-205.99 515,-215.99 518.5,-205.99 511.5,-205.99"/>
 </g>
 <!-- DetailsLabelModule -->
 <g id="node3" class="node">
 <title>DetailsLabelModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="1033.57,-122 1030.57,-126 1009.57,-126 1006.57,-122 902.43,-122 902.43,-86 1033.57,-86 1033.57,-122"/>
-<text text-anchor="middle" x="968" y="-99.8" font-family="Times,serif" font-size="14.00">DetailsLabelModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="1205.57,-122 1202.57,-126 1181.57,-126 1178.57,-122 1074.43,-122 1074.43,-86 1205.57,-86 1205.57,-122"/>
+<text text-anchor="middle" x="1140" y="-99.8" font-family="Times,serif" font-size="14.00">DetailsLabelModule</text>
 </g>
 <!-- DetailsLabelModule&#45;&gt;LeftSidebarModule -->
 <g id="edge2" class="edge">
 <title>DetailsLabelModule&#45;&gt;LeftSidebarModule</title>
-<path fill="none" stroke="black" d="M968,-122.11C968,-141.34 968,-169 968,-169 968,-169 574.85,-169 574.85,-169"/>
-<polygon fill="black" stroke="black" points="574.85,-165.5 564.85,-169 574.85,-172.5 574.85,-165.5"/>
+<path fill="none" stroke="black" d="M1140,-122.29C1140,-144.21 1140,-178 1140,-178 1140,-178 587.79,-178 587.79,-178"/>
+<polygon fill="black" stroke="black" points="587.79,-174.5 577.79,-178 587.79,-181.5 587.79,-174.5"/>
 </g>
 <!-- ExtractionSetDropdownModule -->
 <g id="node4" class="node">
 <title>ExtractionSetDropdownModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="884.63,-122 881.63,-126 860.63,-126 857.63,-122 689.37,-122 689.37,-86 884.63,-86 884.63,-122"/>
-<text text-anchor="middle" x="787" y="-99.8" font-family="Times,serif" font-size="14.00">ExtractionSetDropdownModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="1056.63,-122 1053.63,-126 1032.63,-126 1029.63,-122 861.37,-122 861.37,-86 1056.63,-86 1056.63,-122"/>
+<text text-anchor="middle" x="959" y="-99.8" font-family="Times,serif" font-size="14.00">ExtractionSetDropdownModule</text>
 </g>
 <!-- ExtractionSetDropdownModule&#45;&gt;LeftSidebarModule -->
 <g id="edge3" class="edge">
 <title>ExtractionSetDropdownModule&#45;&gt;LeftSidebarModule</title>
-<path fill="none" stroke="black" d="M787,-122.03C787,-138.4 787,-160 787,-160 787,-160 574.9,-160 574.9,-160"/>
-<polygon fill="black" stroke="black" points="574.9,-156.5 564.9,-160 574.9,-163.5 574.9,-156.5"/>
+<path fill="none" stroke="black" d="M959,-122.11C959,-141.34 959,-169 959,-169 959,-169 587.67,-169 587.67,-169"/>
+<polygon fill="black" stroke="black" points="587.67,-165.5 577.67,-169 587.67,-172.5 587.67,-165.5"/>
 </g>
 <!-- LabeledSlideToggleModule -->
 <g id="node5" class="node">
 <title>LabeledSlideToggleModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="671.57,-122 668.57,-126 647.57,-126 644.57,-122 498.43,-122 498.43,-86 671.57,-86 671.57,-122"/>
-<text text-anchor="middle" x="585" y="-99.8" font-family="Times,serif" font-size="14.00">LabeledSlideToggleModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="843.57,-122 840.57,-126 819.57,-126 816.57,-122 670.43,-122 670.43,-86 843.57,-86 843.57,-122"/>
+<text text-anchor="middle" x="757" y="-99.8" font-family="Times,serif" font-size="14.00">LabeledSlideToggleModule</text>
 </g>
 <!-- LabeledSlideToggleModule&#45;&gt;LeftSidebarModule -->
 <g id="edge4" class="edge">
 <title>LabeledSlideToggleModule&#45;&gt;LeftSidebarModule</title>
-<path fill="none" stroke="black" d="M531.64,-122.11C531.64,-122.11 531.64,-140.99 531.64,-140.99"/>
-<polygon fill="black" stroke="black" points="528.14,-140.99 531.64,-150.99 535.14,-140.99 528.14,-140.99"/>
+<path fill="none" stroke="black" d="M757,-122.03C757,-138.4 757,-160 757,-160 757,-160 587.64,-160 587.64,-160"/>
+<polygon fill="black" stroke="black" points="587.64,-156.5 577.64,-160 587.64,-163.5 587.64,-156.5"/>
 </g>
 <!-- NameInputModule -->
 <g id="node6" class="node">
 <title>NameInputModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="480.03,-122 477.03,-126 456.03,-126 453.03,-122 357.97,-122 357.97,-86 480.03,-86 480.03,-122"/>
-<text text-anchor="middle" x="419" y="-99.8" font-family="Times,serif" font-size="14.00">NameInputModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="652.03,-122 649.03,-126 628.03,-126 625.03,-122 529.97,-122 529.97,-86 652.03,-86 652.03,-122"/>
+<text text-anchor="middle" x="591" y="-99.8" font-family="Times,serif" font-size="14.00">NameInputModule</text>
 </g>
 <!-- NameInputModule&#45;&gt;LeftSidebarModule -->
 <g id="edge5" class="edge">
 <title>NameInputModule&#45;&gt;LeftSidebarModule</title>
-<path fill="none" stroke="black" d="M459.72,-122.11C459.72,-122.11 459.72,-140.99 459.72,-140.99"/>
-<polygon fill="black" stroke="black" points="456.22,-140.99 459.72,-150.99 463.22,-140.99 456.22,-140.99"/>
+<path fill="none" stroke="black" d="M553.78,-122.11C553.78,-122.11 553.78,-140.99 553.78,-140.99"/>
+<polygon fill="black" stroke="black" points="550.28,-140.99 553.78,-150.99 557.28,-140.99 550.28,-140.99"/>
 </g>
 <!-- VisibilityMenuModule -->
 <g id="node7" class="node">
 <title>VisibilityMenuModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="339.6,-122 336.6,-126 315.6,-126 312.6,-122 194.4,-122 194.4,-86 339.6,-86 339.6,-122"/>
-<text text-anchor="middle" x="267" y="-99.8" font-family="Times,serif" font-size="14.00">VisibilityMenuModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="511.6,-122 508.6,-126 487.6,-126 484.6,-122 366.4,-122 366.4,-86 511.6,-86 511.6,-122"/>
+<text text-anchor="middle" x="439" y="-99.8" font-family="Times,serif" font-size="14.00">VisibilityMenuModule</text>
 </g>
 <!-- VisibilityMenuModule&#45;&gt;LeftSidebarModule -->
 <g id="edge6" class="edge">
 <title>VisibilityMenuModule&#45;&gt;LeftSidebarModule</title>
-<path fill="none" stroke="black" d="M267,-122.03C267,-138.4 267,-160 267,-160 267,-160 429.33,-160 429.33,-160"/>
-<polygon fill="black" stroke="black" points="429.33,-163.5 439.33,-160 429.33,-156.5 429.33,-163.5"/>
+<path fill="none" stroke="black" d="M481.87,-122.11C481.87,-122.11 481.87,-140.99 481.87,-140.99"/>
+<polygon fill="black" stroke="black" points="478.37,-140.99 481.87,-150.99 485.37,-140.99 478.37,-140.99"/>
 </g>
 <!-- VisibilityToggleModule -->
 <g id="node8" class="node">
 <title>VisibilityToggleModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="176.1,-122 173.1,-126 152.1,-126 149.1,-122 23.9,-122 23.9,-86 176.1,-86 176.1,-122"/>
-<text text-anchor="middle" x="100" y="-99.8" font-family="Times,serif" font-size="14.00">VisibilityToggleModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="348.1,-122 345.1,-126 324.1,-126 321.1,-122 195.9,-122 195.9,-86 348.1,-86 348.1,-122"/>
+<text text-anchor="middle" x="272" y="-99.8" font-family="Times,serif" font-size="14.00">VisibilityToggleModule</text>
 </g>
 <!-- VisibilityToggleModule&#45;&gt;LeftSidebarModule -->
 <g id="edge7" class="edge">
 <title>VisibilityToggleModule&#45;&gt;LeftSidebarModule</title>
-<path fill="none" stroke="black" d="M74.65,-122.29C74.65,-144.21 74.65,-178 74.65,-178 74.65,-178 428.94,-178 428.94,-178"/>
-<polygon fill="black" stroke="black" points="428.94,-181.5 438.94,-178 428.94,-174.5 428.94,-181.5"/>
+<path fill="none" stroke="black" d="M246.65,-122.11C246.65,-141.34 246.65,-169 246.65,-169 246.65,-169 442.08,-169 442.08,-169"/>
+<polygon fill="black" stroke="black" points="442.08,-172.5 452.08,-169 442.08,-165.5 442.08,-172.5"/>
 </g>
 <!-- VisibilityToggleModule&#45;&gt;LeftSidebarModule -->
 <g id="edge8" class="edge">
 <title>VisibilityToggleModule&#45;&gt;LeftSidebarModule</title>
-<path fill="none" stroke="black" d="M125.35,-122.11C125.35,-141.34 125.35,-169 125.35,-169 125.35,-169 428.96,-169 428.96,-169"/>
-<polygon fill="black" stroke="black" points="428.96,-172.5 438.96,-169 428.96,-165.5 428.96,-172.5"/>
+<path fill="none" stroke="black" d="M297.35,-122.03C297.35,-138.4 297.35,-160 297.35,-160 297.35,-160 442.34,-160 442.34,-160"/>
+<polygon fill="black" stroke="black" points="442.34,-163.5 452.34,-160 442.34,-156.5 442.34,-163.5"/>
 </g>
 </g>
 </svg>

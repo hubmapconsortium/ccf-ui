@@ -244,10 +244,10 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#document:click" >document:click</a>
+                                <a href="#document:keydown" >document:keydown</a>
                             </li>
                             <li>
-                                <a href="#document:keydown" >document:keydown</a>
+                                <a href="#document:mousedown" >document:mousedown</a>
                             </li>
                         </ul>
                     </td>
@@ -424,74 +424,6 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="document:click"></a>
-                    <span class="name">
-                        <span ><b>document:click</b></span>
-                        <a href="#document:click"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <i>Arguments : </i><code>'$event.target' </code>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>document:click(target: HTMLElement)</code>
-                </td>
-            </tr>
-
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="179"
-                                    class="link-to-prism">projects/ccf-rui/src/app/app.component.ts:179</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                        <div class="io-description"><p>Disables block position change if an input element is clicked</p>
-</div>
-
-                            <div class="io-description">
-                                <b>Parameters :</b>
-                                
-                                <table class="params">
-                                    <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                            <td>Optional</td>
-                                                <td>Description</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                                <td>target</td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                            <td>
-                                                    <p>The element clicked</p>
-
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
                     <a name="document:keydown"></a>
                     <span class="name">
                         <span ><b>document:keydown</b></span>
@@ -556,6 +488,74 @@
             </tr>
         </tbody>
     </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="document:mousedown"></a>
+                    <span class="name">
+                        <span ><b>document:mousedown</b></span>
+                        <a href="#document:mousedown"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <i>Arguments : </i><code>'$event.target' </code>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>document:mousedown(target: HTMLElement)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="179"
+                                    class="link-to-prism">projects/ccf-rui/src/app/app.component.ts:179</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Disables block position change if an input element is clicked</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>target</td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>The element clicked</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </section>
     <section data-compodoc="block-methods">
     
@@ -585,7 +585,7 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@HostListener(&#x27;document:click&#x27;, [&#x27;$event.target&#x27;])<br /></code>
+                    <code>@HostListener(&#x27;document:mousedown&#x27;, [&#x27;$event.target&#x27;])<br /></code>
                 </td>
             </tr>
 
@@ -748,8 +748,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="190"
-                                    class="link-to-prism">projects/ccf-rui/src/app/app.component.ts:190</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="186"
+                                    class="link-to-prism">projects/ccf-rui/src/app/app.component.ts:186</a></div>
                         </td>
                     </tr>
 
@@ -1425,13 +1425,9 @@ export class AppComponent implements OnDestroy, OnInit {
    *
    * @param target The element clicked
    */
-  @HostListener(&#x27;document:click&#x27;, [&#x27;$event.target&#x27;])
+  @HostListener(&#x27;document:mousedown&#x27;, [&#x27;$event.target&#x27;])
   handleClick(target: HTMLElement): void {
-    if (target.nodeName &#x3D;&#x3D;&#x3D; &#x27;INPUT&#x27;) {
-      this.disablePositionChange &#x3D; true;
-    } else {
-      this.disablePositionChange &#x3D; false;
-    }
+    this.disablePositionChange &#x3D; target.nodeName !&#x3D;&#x3D; &#x27;CANVAS&#x27;;
   }
 
   /**
@@ -1461,7 +1457,7 @@ export class AppComponent implements OnDestroy, OnInit {
 
   &lt;ccf-drawer-content&gt;
     &lt;div [class.closed]&#x3D;&quot;!open&quot; class&#x3D;&quot;selector-drawer&quot; [class.expanded]&#x3D;&quot;organSelector.expanded&quot;&gt;
-      &lt;ccf-organ-selector #organSelector [organList]&#x3D;&quot;organList&quot; (organsChanged)&#x3D;&quot;model.setOrgan($event[0])&quot;
+      &lt;ccf-organ-selector #organSelector [organList]&#x3D;&quot;organList&quot; (organsChanged)&#x3D;&quot;model.setOrgan($event[0]); model.setOrganDefaults()&quot;
                           [selectedOrgans]&#x3D;&quot;[model.organ$ | async]&quot; [class.closed]&#x3D;&quot;!open&quot;&gt;&lt;/ccf-organ-selector&gt;
       &lt;div class&#x3D;&quot;close-button-wrapper&quot; [class.closed]&#x3D;&quot;!open&quot; [class.selector-expanded]&#x3D;&quot;organSelector.expanded&quot;&gt;
         &lt;div *ngIf&#x3D;&quot;open&quot; class&#x3D;&quot;close-button&quot; (click)&#x3D;&quot;organSelector.expanded &#x3D; !organSelector.expanded&quot;&gt;
@@ -1631,7 +1627,7 @@ export class AppComponent implements OnDestroy, OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ccf-registration-modal></ccf-registration-modal><ccf-header [class.header-hidden]="(header$ | async) === false" [logoTooltip]="logoTooltip$ | async" [homeUrl]="homeUrl$ | async"></ccf-header><ccf-drawer-container>  <ccf-drawer opened>    <ccf-left-sidebar [modalClosed]="registrationStarted" [disableSlider]="!organSelector.selectedOrgans[0]?.hasSex">    </ccf-left-sidebar>    <ccf-drawer-toggle-button></ccf-drawer-toggle-button>  </ccf-drawer>  <ccf-drawer position="end" opened>    <ccf-right-sidebar [modalClosed]="registrationStarted"></ccf-right-sidebar>    <ccf-drawer-toggle-button></ccf-drawer-toggle-button>  </ccf-drawer>  <ccf-drawer-content>    <div [class.closed]="!open" class="selector-drawer" [class.expanded]="organSelector.expanded">      <ccf-organ-selector #organSelector [organList]="organList" (organsChanged)="model.setOrgan($event[0])"                          [selectedOrgans]="[model.organ$ | async]" [class.closed]="!open"></ccf-organ-selector>      <div class="close-button-wrapper" [class.closed]="!open" [class.selector-expanded]="organSelector.expanded">        <div *ngIf="open" class="close-button" (click)="organSelector.expanded = !organSelector.expanded">          <mat-icon class="expand-collapse-icon" aria-hidden="false" aria-label="Expand carousel drawer">            {{ organSelector.expanded ? \'arrow_drop_up\': \'arrow_drop_down\' }}          </mat-icon>        </div>        <div *ngIf="!organSelector.expanded" class="close-button" (click)="open = !open">          <mat-icon class="expand-collapse-icon" aria-hidden="false" aria-label="Close carousel drawer">            {{ open ? \'arrow_drop_up\': \'arrow_drop_down\' }}          </mat-icon>        </div>      </div>    </div>    <ccf-content class="stage-content" [class.expanded-stage]="!open" [class.retracted-stage]="organSelector.expanded" [disablePositionChange]="disablePositionChange"></ccf-content>  </ccf-drawer-content></ccf-drawer-container></div>'
+        var COMPONENT_TEMPLATE = '<div><ccf-registration-modal></ccf-registration-modal><ccf-header [class.header-hidden]="(header$ | async) === false" [logoTooltip]="logoTooltip$ | async" [homeUrl]="homeUrl$ | async"></ccf-header><ccf-drawer-container>  <ccf-drawer opened>    <ccf-left-sidebar [modalClosed]="registrationStarted" [disableSlider]="!organSelector.selectedOrgans[0]?.hasSex">    </ccf-left-sidebar>    <ccf-drawer-toggle-button></ccf-drawer-toggle-button>  </ccf-drawer>  <ccf-drawer position="end" opened>    <ccf-right-sidebar [modalClosed]="registrationStarted"></ccf-right-sidebar>    <ccf-drawer-toggle-button></ccf-drawer-toggle-button>  </ccf-drawer>  <ccf-drawer-content>    <div [class.closed]="!open" class="selector-drawer" [class.expanded]="organSelector.expanded">      <ccf-organ-selector #organSelector [organList]="organList" (organsChanged)="model.setOrgan($event[0]); model.setOrganDefaults()"                          [selectedOrgans]="[model.organ$ | async]" [class.closed]="!open"></ccf-organ-selector>      <div class="close-button-wrapper" [class.closed]="!open" [class.selector-expanded]="organSelector.expanded">        <div *ngIf="open" class="close-button" (click)="organSelector.expanded = !organSelector.expanded">          <mat-icon class="expand-collapse-icon" aria-hidden="false" aria-label="Expand carousel drawer">            {{ organSelector.expanded ? \'arrow_drop_up\': \'arrow_drop_down\' }}          </mat-icon>        </div>        <div *ngIf="!organSelector.expanded" class="close-button" (click)="open = !open">          <mat-icon class="expand-collapse-icon" aria-hidden="false" aria-label="Close carousel drawer">            {{ open ? \'arrow_drop_up\': \'arrow_drop_down\' }}          </mat-icon>        </div>      </div>    </div>    <ccf-content class="stage-content" [class.expanded-stage]="!open" [class.retracted-stage]="organSelector.expanded" [disablePositionChange]="disablePositionChange"></ccf-content>  </ccf-drawer-content></ccf-drawer-container></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppWebComponent', 'selector': 'ccf-root-wc'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DetailsLabelComponent', 'selector': 'ccf-details-label'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'ExtractionSetDropdownComponent', 'selector': 'ccf-extraction-set-dropdown'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'JsonFileReaderComponent', 'selector': 'ccf-json-file-reader'},{'name': 'LabeledSlideToggleComponent', 'selector': 'ccf-labeled-slide-toggle'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'NameInputComponent', 'selector': 'ccf-name-input'},{'name': 'RegistrationContentComponent', 'selector': 'ccf-registration-content'},{'name': 'RegistrationMetadataComponent', 'selector': 'ccf-registration-metadata'},{'name': 'RegistrationModalComponent', 'selector': 'ccf-registration-modal'},{'name': 'ReviewButtonComponent', 'selector': 'ccf-review-button'},{'name': 'ReviewModalComponent', 'selector': 'ccf-review-modal'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'TagListComponent', 'selector': 'ccf-tag-list'},{'name': 'TagSearchComponent', 'selector': 'ccf-tag-search'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'VideoModalComponent', 'selector': 'ccf-video-modal'},{'name': 'VideoModalLauncherComponent', 'selector': 'ccf-video-modal-launcher'},{'name': 'VisibilityMenuComponent', 'selector': 'ccf-visibility-menu'},{'name': 'VisibilityToggleComponent', 'selector': 'ccf-visibility-toggle'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AppComponent'};

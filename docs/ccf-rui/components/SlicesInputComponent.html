@@ -730,14 +730,14 @@ export class SlicesInputComponent {
   &lt;mat-form-field class&#x3D;&quot;field&quot;&gt;
     &lt;mat-label class&#x3D;&quot;text label&quot;&gt;Thickness&lt;/mat-label&gt;
     &lt;input matInput ccfNumbersOnly class&#x3D;&quot;input&quot; type&#x3D;&quot;number&quot; [value]&#x3D;&quot;slicesConfig.thickness&quot;
-           (input)&#x3D;&quot;updateSlicesData($event, &#x27;thickness&#x27;)&quot;  matTooltip&#x3D;&quot;Enter thickness of tissue sections&quot;&gt;
+           (keyup)&#x3D;&quot;updateSlicesData($event, &#x27;thickness&#x27;)&quot;  matTooltip&#x3D;&quot;Enter thickness of tissue sections&quot;&gt;
     &lt;div matSuffix class&#x3D;&quot;suffix&quot; [class.show]&#x3D;&quot;hasThicknessValue&quot;&gt;μm&lt;/div&gt;
   &lt;/mat-form-field&gt;
 
   &lt;mat-form-field class&#x3D;&quot;field&quot;&gt;
     &lt;mat-label class&#x3D;&quot;text label&quot;&gt;# Sections&lt;/mat-label&gt;
     &lt;input matInput ccfNumbersOnly class&#x3D;&quot;input&quot; type&#x3D;&quot;number&quot; [value]&#x3D;&quot;slicesConfig.numSlices&quot;
-           (input)&#x3D;&quot;updateSlicesData($event, &#x27;numSlices&#x27;)&quot; matTooltip&#x3D;&quot;Enter total number of sections&quot;&gt;
+           (keyup)&#x3D;&quot;updateSlicesData($event, &#x27;numSlices&#x27;)&quot; matTooltip&#x3D;&quot;Enter total number of sections&quot;&gt;
   &lt;/mat-form-field&gt;
 &lt;/div&gt;
 </code></pre>
@@ -748,6 +748,10 @@ export class SlicesInputComponent {
                     <code>./slices-input.component.scss</code>
                 </p>
                 <pre class="line-numbers"><code class="language-scss">:host {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
   input[type&#x3D;number] {
     -moz-appearance: textfield;
   }
@@ -756,9 +760,10 @@ export class SlicesInputComponent {
     display: flex;
     align-items: center;
     height: 1.5rem;
+    padding: .5rem 0;
 
     .title {
-      font-weight: 600;
+      font-weight: 400;
     }
 
     .refresh {
@@ -774,9 +779,12 @@ export class SlicesInputComponent {
 
   .slices-inputs {
     display: flex;
+    justify-content: space-between;
+    width: 20rem;
+    margin: 0 auto;
 
     .field {
-      width: 33.33%;
+      width: 9rem;
 
       &amp;:not(:last-child) {
         padding-right: 0.75rem;
@@ -841,7 +849,7 @@ export class SlicesInputComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="header">  <span class="text title"  matTooltip="Add thickness of tissue sections and the total number of sections">Tissue Sections</span>  <div class="filler"></div>  <mat-icon    matRipple    [matRippleCentered]="true"    [matRippleUnbounded]="true"    class="icon refresh"    (click)="refreshSlices()">    refresh  </mat-icon></div><div class="slices-inputs">  <mat-form-field class="field">    <mat-label class="text label">Thickness</mat-label>    <input matInput ccfNumbersOnly class="input" type="number" [value]="slicesConfig.thickness"           (input)="updateSlicesData($event, \'thickness\')"  matTooltip="Enter thickness of tissue sections">    <div matSuffix class="suffix" [class.show]="hasThicknessValue">μm</div>  </mat-form-field>  <mat-form-field class="field">    <mat-label class="text label"># Sections</mat-label>    <input matInput ccfNumbersOnly class="input" type="number" [value]="slicesConfig.numSlices"           (input)="updateSlicesData($event, \'numSlices\')" matTooltip="Enter total number of sections">  </mat-form-field></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="header">  <span class="text title"  matTooltip="Add thickness of tissue sections and the total number of sections">Tissue Sections</span>  <div class="filler"></div>  <mat-icon    matRipple    [matRippleCentered]="true"    [matRippleUnbounded]="true"    class="icon refresh"    (click)="refreshSlices()">    refresh  </mat-icon></div><div class="slices-inputs">  <mat-form-field class="field">    <mat-label class="text label">Thickness</mat-label>    <input matInput ccfNumbersOnly class="input" type="number" [value]="slicesConfig.thickness"           (keyup)="updateSlicesData($event, \'thickness\')"  matTooltip="Enter thickness of tissue sections">    <div matSuffix class="suffix" [class.show]="hasThicknessValue">μm</div>  </mat-form-field>  <mat-form-field class="field">    <mat-label class="text label"># Sections</mat-label>    <input matInput ccfNumbersOnly class="input" type="number" [value]="slicesConfig.numSlices"           (keyup)="updateSlicesData($event, \'numSlices\')" matTooltip="Enter total number of sections">  </mat-form-field></div></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppWebComponent', 'selector': 'ccf-root-wc'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DetailsLabelComponent', 'selector': 'ccf-details-label'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'ExtractionSetDropdownComponent', 'selector': 'ccf-extraction-set-dropdown'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'JsonFileReaderComponent', 'selector': 'ccf-json-file-reader'},{'name': 'LabeledSlideToggleComponent', 'selector': 'ccf-labeled-slide-toggle'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'NameInputComponent', 'selector': 'ccf-name-input'},{'name': 'RegistrationContentComponent', 'selector': 'ccf-registration-content'},{'name': 'RegistrationMetadataComponent', 'selector': 'ccf-registration-metadata'},{'name': 'RegistrationModalComponent', 'selector': 'ccf-registration-modal'},{'name': 'ReviewButtonComponent', 'selector': 'ccf-review-button'},{'name': 'ReviewModalComponent', 'selector': 'ccf-review-modal'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'TagListComponent', 'selector': 'ccf-tag-list'},{'name': 'TagSearchComponent', 'selector': 'ccf-tag-search'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'VideoModalComponent', 'selector': 'ccf-video-modal'},{'name': 'VideoModalLauncherComponent', 'selector': 'ccf-video-modal-launcher'},{'name': 'VisibilityMenuComponent', 'selector': 'ccf-visibility-menu'},{'name': 'VisibilityToggleComponent', 'selector': 'ccf-visibility-toggle'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'SlicesInputComponent'};

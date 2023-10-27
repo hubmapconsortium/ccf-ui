@@ -207,7 +207,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">projects/ccf-rui/src/app/modules/registration-modal/registration-modal/registration-modal.component.ts:26</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">projects/ccf-rui/src/app/modules/registration-modal/registration-modal/registration-modal.component.ts:27</a></div>
                             </td>
                         </tr>
 
@@ -508,7 +508,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">projects/ccf-rui/src/app/modules/registration-modal/registration-modal/registration-modal.component.ts:34</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">projects/ccf-rui/src/app/modules/registration-modal/registration-modal/registration-modal.component.ts:35</a></div>
                         </td>
                     </tr>
 
@@ -538,10 +538,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">projects/ccf-rui/src/app/modules/registration-modal/registration-modal/registration-modal.component.ts:26</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">projects/ccf-rui/src/app/modules/registration-modal/registration-modal/registration-modal.component.ts:27</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Checks if registration dialog has been opened</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -576,6 +582,7 @@ export class RegistrationModalComponent implements OnInit {
   /** HTML class name */
   @HostBinding(&#x27;class&#x27;) readonly clsName &#x3D; &#x27;ccf-registration-modal&#x27;;
 
+  /** Checks if registration dialog has been opened */
   dialogOpen &#x3D; false;
 
   /**
@@ -589,7 +596,6 @@ export class RegistrationModalComponent implements OnInit {
     private readonly model: ModelState,
     private readonly referenceData: ReferenceDataState,
     private readonly globalConfig: GlobalConfigState&lt;GlobalConfig&gt;
-
   ) {}
 
   /**

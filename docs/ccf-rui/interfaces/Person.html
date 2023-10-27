@@ -314,6 +314,7 @@ export interface PageStateModel {
   skipConfirmation: boolean;
   hasChanges: boolean;
   organOptions?: OrganInfo[];
+  orcidValid: boolean;
 }
 
 /**
@@ -332,18 +333,20 @@ export interface PageStateModel {
     registrationCallbackSet: false,
     skipConfirmation: true,
     hasChanges: false,
-    organOptions: []
+    organOptions: [],
+    orcidValid: false
   }
 })
 @Injectable()
 export class PageState extends NgxsImmutableDataRepository&lt;PageStateModel&gt; {
   /** Active user observable */
   readonly user$ &#x3D; this.state$.pipe(map(x &#x3D;&gt; x?.user));
-  /** RegistrationStated observable */
+  /** registrationStarted observable */
   readonly registrationStarted$ &#x3D; this.state$.pipe(pluckUnique(&#x27;registrationStarted&#x27;));
   readonly useCancelRegistrationCallback$ &#x3D; this.state$.pipe(map(x &#x3D;&gt; x?.useCancelRegistrationCallback));
   readonly registrationCallbackSet$ &#x3D; this.state$.pipe(map(x &#x3D;&gt; x?.registrationCallbackSet));
   readonly organOptions$ &#x3D; this.state$.pipe(map(x &#x3D;&gt; x?.organOptions));
+  readonly orcidValid$ &#x3D; this.state$.pipe(map(x &#x3D;&gt; x?.orcidValid));
 
   @Computed()
   get skipConfirmation$(): Observable&lt;boolean&gt; {
@@ -428,11 +431,21 @@ export class PageState extends NgxsImmutableDataRepository&lt;PageStateModel&gt;
     }));
   }
 
+  /**
+   * Saves ORCID id as URI
+   * Sets orcidValid to true if blank, otherwise set to true if valid
+   * @param id ORCID id
+   */
   @DataAction()
-  setOrcidId(orcidId: string): void {
+  setOrcidId(id?: string): void {
     this.ctx.setState(patch({
-      user: patch({ orcidId: orcidId !&#x3D;&#x3D; &#x27;&#x27; ? orcidId : undefined })
+      user: patch({
+        orcidId: id ? this.orcidToUri(id) : undefined
+      })
     }));
+    this.ctx.patchState({
+      orcidValid: id ? this.isOrcidValid() : true
+    });
   }
 
   /**
@@ -488,6 +501,34 @@ export class PageState extends NgxsImmutableDataRepository&lt;PageStateModel&gt;
         addEventListener(&#x27;beforeunload&#x27;, beforeUnloadListener);
       }
     });
+  }
+
+  /**
+   * Checks if current orcid value is in the valid format
+   * @returns true if orcid valid or blank
+   */
+  isOrcidValid(): boolean {
+    const orcId &#x3D; this.uriToOrcid(this.snapshot.user.orcidId);
+    return !!(!orcId || orcId.match(&#x27;^\\d{4}(-\\d{4}){3}$&#x27;));
+  }
+
+  /**
+   * Converts orcid URI to a regular orcid value
+   * @param uri orcid uri
+   * @returns orcid id
+   */
+  uriToOrcid(uri?: string): string {
+    return uri ? uri.split(&#x27;/&#x27;).slice(-1)[0] : &#x27;&#x27;;
+  }
+
+  /**
+   * Converts orcid to URI
+   * @param id orcid id
+   * @returns orcid URI
+   */
+  private orcidToUri(id: string): string {
+    const idWithHyphens &#x3D; id.replace(/-/g, &#x27;&#x27;).replace(/(.{1,4})/g, &#x27;$1-&#x27;).slice(0, -1);
+    return &#x27;https://orcid.org/&#x27; + idWithHyphens;
   }
 }
 </code></pre>

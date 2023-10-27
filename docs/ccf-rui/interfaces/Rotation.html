@@ -282,32 +282,29 @@ export class RotationSliderComponent {
   /** HTML class name */
   @HostBinding(&#x27;class&#x27;) readonly clsName &#x3D; &#x27;ccf-rotation-slider&#x27;;
 
-  /**
-   * Input that allows the rotation to be changed from outside of the component
-   */
+  /** Input that allows the rotation to be changed from outside of the component */
   @Input() rotation &#x3D; DEFAULT_ROTATION;
 
-  /**
-   * Output that emits the new rotation whenever it is changed from within the component
-   */
+  /** Output that emits the new rotation whenever it is changed from within the component */
   @Output() readonly rotationChange &#x3D; new EventEmitter&lt;Rotation&gt;();
 
   /**
    * Creates an instance of rotation slider component.
-   *
    * @param ga Analytics service
    */
   constructor(private readonly ga: GoogleAnalyticsService) { }
 
   /**
    * Function that handles updating the rotation and emitting the new value
-   *
+   * If rotation value is &lt; -180 or &gt; 180, set to -180 or 180
    * @param newRotation the new value for one of the axis to be set to
    * @param axis which axis to update
    */
   changeRotation(newRotation: number | string, axis: string): void {
-    this.rotation &#x3D; { ... this.rotation, [axis]: +newRotation };
-    this.ga.event(&#x27;rotation_update&#x27;, &#x27;rotation_slider&#x27;, axis, +newRotation);
+    const updatedNewRotation &#x3D; +newRotation &gt; 180 ? 180 :
+      (+newRotation &lt; -180 ? -180 : +newRotation);
+    this.rotation &#x3D; { ... this.rotation, [axis]: +updatedNewRotation };
+    this.ga.event(&#x27;rotation_update&#x27;, &#x27;rotation_slider&#x27;, axis, +updatedNewRotation);
     this.rotationChange.emit(this.rotation);
   }
 

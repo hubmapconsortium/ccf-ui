@@ -449,6 +449,7 @@ export class RegistrationState extends NgxsImmutableDataRepository&lt;Registrati
           this.ctx.patchState({
             useRegistrationCallback: !!(!useDownload &amp;&amp; register),
           });
+          this.model.setOrganDefaults();
           this.setOrganSelection(organOptions as string[]);
         })
       ).subscribe();
@@ -474,6 +475,9 @@ export class RegistrationState extends NgxsImmutableDataRepository&lt;Registrati
       middleName: reg.creator_middle_name,
       lastName: reg.creator_last_name
     });
+
+    const orcid &#x3D; this.page.uriToOrcid(reg.creator_orcid);
+    this.page.setOrcidId(orcid);
 
     if (data) {
       this.model.setOrgan(data.organ);
@@ -545,6 +549,7 @@ export class RegistrationState extends NgxsImmutableDataRepository&lt;Registrati
     const requiredValues &#x3D; [
       page.user.firstName,
       page.user.lastName,
+      page.orcidValid,
       model.organ.src,
       model.organ.name,
       model.organ.organ
@@ -595,7 +600,17 @@ export class RegistrationState extends NgxsImmutableDataRepository&lt;Registrati
    * Sets the state back to the initial registration
    */
   setToInitialRegistration() {
-    this.editRegistration(this.getState().initialRegistration as SpatialEntityJsonLd);
+    const { page } &#x3D; this;
+
+    const initialWithChanges: SpatialEntityJsonLd | undefined &#x3D; {
+      ...this.snapshot.initialRegistration as SpatialEntityJsonLd,
+      creator_first_name: page.snapshot.user.firstName,
+      creator_last_name: page.snapshot.user.lastName,
+      creator_middle_name: page.snapshot.user.middleName,
+      creator_orcid: page.snapshot.user.orcidId
+    };
+
+    this.editRegistration(initialWithChanges);
   }
 
   /**
@@ -649,7 +664,7 @@ export class RegistrationState extends NgxsImmutableDataRepository&lt;Registrati
       &#x27;@id&#x27;: &#x60;http://purl.org/ccf/1.5/${this.currentIdentifier}&#x60;,
       &#x27;@type&#x27;: &#x27;SpatialEntity&#x27;,
       label: model.label || undefined,
-      creator: &#x60;${page.user.firstName} ${page.user.middleName ? page.user.middleName + &#x27; &#x27; : &#x27;&#x27;}${ page.user.lastName}&#x60;,
+      creator: &#x60;${page.user.firstName} ${page.user.middleName ? page.user.middleName + &#x27; &#x27; : &#x27;&#x27;}${page.user.lastName}&#x60;,
       creator_first_name: page.user.firstName,
       creator_last_name: page.user.lastName,
       creator_middle_name: page.user.middleName,
