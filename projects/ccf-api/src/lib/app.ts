@@ -28,7 +28,7 @@ export function createApp(options: AppOptions): Express {
     contentSecurityPolicy: {
       useDefaults: true,
       directives: {
-        'script-src': ['\'self\'', '\'unsafe-eval\'', 'cdn.jsdelivr.net'],
+        'script-src': ['\'self\'', '\'unsafe-eval\'', 'cdn.jsdelivr.net', 'unpkg.com'],
         'connect-src': ['*'],
       }
     }
