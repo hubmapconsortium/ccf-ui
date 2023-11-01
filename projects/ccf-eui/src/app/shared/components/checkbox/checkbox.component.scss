@@ -1,5 +1,6 @@
 .filter-label {
   margin-bottom: 0.5rem;
+  margin-left: 0.5rem;
   font-weight: bold;
 }
 
@@ -8,15 +9,23 @@
   flex-direction: row;
   flex-wrap: wrap;
 
+  .option {
+    display: flex;
+    height: 2rem;
+    align-items: center;
+  }
+
   &.three {
     .option {
       width: 33%;
+      flex-grow: 1;
     }
   }
 
   &.four {
     .option {
-      width: 25%;
+      width: 16.5%;
+      flex-grow: 0;
     }
   }
 }

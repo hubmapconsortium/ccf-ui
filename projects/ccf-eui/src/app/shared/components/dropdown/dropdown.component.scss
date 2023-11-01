@@ -65,7 +65,7 @@
 ::ng-deep .option-panel {
   animation: slideInHorizontalDropdown .3s;
   animation-fill-mode: forwards;
-  max-width: 9.5rem;
+  flex-grow: 1;
   padding: 0 !important;
 
   mat-option {

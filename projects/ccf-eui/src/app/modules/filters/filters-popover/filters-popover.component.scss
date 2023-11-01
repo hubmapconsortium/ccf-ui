@@ -21,13 +21,10 @@
   left: 1.48rem;
   box-shadow: 0.2rem 0.2rem 1rem 0rem #00000058;
 
-  .popup-body {
-    padding: 1.5rem;
-    position: relative;
-  }
-
   &.visible {
-    width: 35rem;
+    padding: 2rem;
+    padding-left: 1.5rem;
+    width: 49.5rem;
     transition: width 0.2s ease-in-out;
     border-width: 1px;
 
