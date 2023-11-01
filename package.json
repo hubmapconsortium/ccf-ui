@@ -162,7 +162,7 @@
     "@types/lodash": "^4.14.168",
     "@types/lru-cache": "^7.10.10",
     "@types/n3": "^1.10.4",
-    "@types/node": "^16.3.1",
+    "@types/node": "^20.8.10",
     "@types/node-fetch": "^2.5.8",
     "@types/object-hash": "^3.0.2",
     "@types/papaparse": "^5.3.7",
