@@ -16,8 +16,9 @@ export class AutoPruneLRUCache<K extends AnyObject, V extends AnyObject> extends
     // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     super({
       max: options?.max ?? 100000,
-      ttl: options?.maxAge,
-      noDisposeOnSet: true,
+      ttl: options?.maxAge ?? 0,
+      ttlAutopurge: (options?.maxAge ?? 0) > 0,
+      noDisposeOnSet: false,
       dispose: (value, key) => {
         options?.dispose?.(key, value);
         if (this.size === 0) {
