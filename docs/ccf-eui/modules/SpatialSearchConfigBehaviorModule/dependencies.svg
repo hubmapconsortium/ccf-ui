@@ -24,13 +24,13 @@
 <title>cluster_SpatialSearchConfigBehaviorModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="8,-70 8,-268 488,-268 488,-70 8,-70"/>
 </g>
-<g id="clust5" class="cluster">
-<title>cluster_SpatialSearchConfigBehaviorModule_exports</title>
-<polygon fill="none" stroke="black" points="114,-208 114,-260 382,-260 382,-208 114,-208"/>
-</g>
 <g id="clust2" class="cluster">
 <title>cluster_SpatialSearchConfigBehaviorModule_declarations</title>
 <polygon fill="none" stroke="black" points="216,-78 216,-130 480,-130 480,-78 216,-78"/>
+</g>
+<g id="clust5" class="cluster">
+<title>cluster_SpatialSearchConfigBehaviorModule_exports</title>
+<polygon fill="none" stroke="black" points="114,-208 114,-260 382,-260 382,-208 114,-208"/>
 </g>
 <g id="clust4" class="cluster">
 <title>cluster_SpatialSearchConfigBehaviorModule_imports</title>

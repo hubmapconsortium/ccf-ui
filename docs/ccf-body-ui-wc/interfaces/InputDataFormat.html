@@ -198,6 +198,9 @@ export interface InputDataFormat {
 
 
 function toJsonLd(data: InputDataFormat[]): JsonLdObj[] {
+  if (typeof data &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
+    data &#x3D; JSON.parse(data);
+  }
   return data.map(d &#x3D;&gt; ({
     &#x27;@id&#x27;: &#x60;http://purl.org/ccf/1.5/entity/${d.id}&#x60;,
     &#x27;@type&#x27;: &#x27;http://purl.org/ccf/latest/ccf-entity.owl#Sample&#x27;,

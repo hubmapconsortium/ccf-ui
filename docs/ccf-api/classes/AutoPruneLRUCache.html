@@ -241,8 +241,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="50"
-                                    class="link-to-prism">projects/ccf-api/src/lib/utils/auto-prune-lru-cache.ts:50</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="51"
+                                    class="link-to-prism">projects/ccf-api/src/lib/utils/auto-prune-lru-cache.ts:51</a></div>
                         </td>
                     </tr>
 
@@ -308,8 +308,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="30"
-                                    class="link-to-prism">projects/ccf-api/src/lib/utils/auto-prune-lru-cache.ts:30</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="31"
+                                    class="link-to-prism">projects/ccf-api/src/lib/utils/auto-prune-lru-cache.ts:31</a></div>
                         </td>
                     </tr>
 
@@ -392,8 +392,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="38"
-                                    class="link-to-prism">projects/ccf-api/src/lib/utils/auto-prune-lru-cache.ts:38</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="39"
+                                    class="link-to-prism">projects/ccf-api/src/lib/utils/auto-prune-lru-cache.ts:39</a></div>
                         </td>
                     </tr>
 
@@ -467,8 +467,9 @@ export class AutoPruneLRUCache&lt;K extends AnyObject, V extends AnyObject&gt; e
     // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     super({
       max: options?.max ?? 100000,
-      ttl: options?.maxAge,
-      noDisposeOnSet: true,
+      ttl: options?.maxAge ?? 0,
+      ttlAutopurge: (options?.maxAge ?? 0) &gt; 0,
+      noDisposeOnSet: false,
       dispose: (value, key) &#x3D;&gt; {
         options?.dispose?.(key, value);
         if (this.size &#x3D;&#x3D;&#x3D; 0) {
