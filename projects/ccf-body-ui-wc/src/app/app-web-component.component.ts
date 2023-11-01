@@ -15,6 +15,9 @@ export interface InputDataFormat {
 
 
 function toJsonLd(data: InputDataFormat[]): JsonLdObj[] {
+  if (typeof data === 'string') {
+    data = JSON.parse(data);
+  }
   return data.map(d => ({
     '@id': `http://purl.org/ccf/1.5/entity/${d.id}`,
     '@type': 'http://purl.org/ccf/latest/ccf-entity.owl#Sample',
