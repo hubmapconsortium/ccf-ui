@@ -167,7 +167,7 @@
     "@types/object-hash": "^3.0.2",
     "@types/papaparse": "^5.3.7",
     "@types/rdf-js": "^4.0.1",
-    "@types/readable-stream": "^2.3.9",
+    "@types/readable-stream": "^4.0.4",
     "@types/sax": "^1.2.1",
     "@types/uuid": "^8.3.0",
     "@typescript-eslint/eslint-plugin": "^6.4.0",
