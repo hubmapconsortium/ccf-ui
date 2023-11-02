@@ -27,7 +27,7 @@
       }
     }
 
-    ccf-spatial-search-keyboard-ui-behavior::ng-deep {
+    ccf-spatial-search-keyboard-ui-behavior {
       margin: 1.5rem;
       display: flex;
       justify-content: center;
@@ -53,7 +53,6 @@
       margin-top: 1.5rem;
       margin-left: 1.5rem;
       z-index: 10;
-      position: absolute;
       right: 1.5rem;
 
       .position-display {
