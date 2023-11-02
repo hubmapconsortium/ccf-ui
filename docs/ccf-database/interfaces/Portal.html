@@ -627,9 +627,13 @@ export class HuBMAPTissueBlock {
       age &#x3D; toNumber(ageMatch[1]);
     }
     let bmi: number | undefined;
+    let race: string | undefined;
     const metadata &#x3D; get(donor, &#x27;mapped_metadata&#x27;, get(donor, &#x27;source_mapped_metadata&#x27;, {})) as Record&lt;string, unknown[]&gt;;
     if (!sex &amp;&amp; metadata.sex?.length &gt; 0) {
       sex &#x3D; metadata.sex[0] as &#x27;Male&#x27; | &#x27;Female&#x27; | undefined;
+    }
+    if (!race &amp;&amp; metadata.race?.length &gt; 0) {
+      race &#x3D; metadata.race[0] as string;
     }
     if (!age &amp;&amp; metadata.age_value?.length &gt; 0) {
       age &#x3D; metadata.age_value[0] as number | undefined;
@@ -646,6 +650,8 @@ export class HuBMAPTissueBlock {
         age &#x3D; toNumber(md.data_value);
       } else if (md.preferred_term &#x3D;&#x3D;&#x3D; &#x27;Body mass index&#x27;) {
         bmi &#x3D; toNumber(md.data_value);
+      } else if (md.grouping_concept_preferred_term &#x3D;&#x3D;&#x3D; &#x27;Race&#x27;) {
+        race &#x3D; md.preferred_term as string;
       }
     }
     let label &#x3D; &#x27;&#x27;;
@@ -672,6 +678,7 @@ export class HuBMAPTissueBlock {
       age,
       sex,
       bmi,
+      race,
 
       consortium_name: this.portal &#x3D;&#x3D;&#x3D; HUBMAP ? &#x27;HuBMAP&#x27; : &#x27;SenNet&#x27;,
       provider_name: groupName,

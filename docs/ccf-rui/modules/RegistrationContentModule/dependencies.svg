@@ -28,19 +28,19 @@
 <title>cluster_RegistrationContentModule_exports</title>
 <polygon fill="none" stroke="black" points="141,-208 141,-260 355,-260 355,-208 141,-208"/>
 </g>
-<g id="clust4" class="cluster">
-<title>cluster_RegistrationContentModule_imports</title>
-<polygon fill="none" stroke="black" points="259,-78 259,-130 455,-130 455,-78 259,-78"/>
-</g>
 <g id="clust2" class="cluster">
 <title>cluster_RegistrationContentModule_declarations</title>
-<polygon fill="none" stroke="black" points="41,-78 41,-130 251,-130 251,-78 41,-78"/>
+<polygon fill="none" stroke="black" points="245,-78 245,-130 455,-130 455,-78 245,-78"/>
+</g>
+<g id="clust4" class="cluster">
+<title>cluster_RegistrationContentModule_imports</title>
+<polygon fill="none" stroke="black" points="41,-78 41,-130 237,-130 237,-78 41,-78"/>
 </g>
 <!-- RegistrationContentComponent -->
 <g id="node1" class="node">
 <title>RegistrationContentComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="243.1,-122 48.9,-122 48.9,-86 243.1,-86 243.1,-122"/>
-<text text-anchor="middle" x="146" y="-99.8" font-family="Times,serif" font-size="14.00">RegistrationContentComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="447.1,-122 252.9,-122 252.9,-86 447.1,-86 447.1,-122"/>
+<text text-anchor="middle" x="350" y="-99.8" font-family="Times,serif" font-size="14.00">RegistrationContentComponent</text>
 </g>
 <!-- RegistrationContentModule -->
 <g id="node2" class="node">
@@ -51,8 +51,8 @@
 <!-- RegistrationContentComponent&#45;&gt;RegistrationContentModule -->
 <g id="edge1" class="edge">
 <title>RegistrationContentComponent&#45;&gt;RegistrationContentModule</title>
-<path fill="none" stroke="black" d="M202.45,-122.11C202.45,-122.11 202.45,-140.99 202.45,-140.99"/>
-<polygon fill="black" stroke="black" points="198.95,-140.99 202.45,-150.99 205.95,-140.99 198.95,-140.99"/>
+<path fill="none" stroke="black" d="M293.55,-122.11C293.55,-122.11 293.55,-140.99 293.55,-140.99"/>
+<polygon fill="black" stroke="black" points="290.05,-140.99 293.55,-150.99 297.05,-140.99 290.05,-140.99"/>
 </g>
 <!-- RegistrationContentComponent  -->
 <g id="node4" class="node">
@@ -69,14 +69,14 @@
 <!-- RegistrationMetadataModule -->
 <g id="node3" class="node">
 <title>RegistrationMetadataModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="447.07,-122 444.07,-126 423.07,-126 420.07,-122 266.93,-122 266.93,-86 447.07,-86 447.07,-122"/>
-<text text-anchor="middle" x="357" y="-99.8" font-family="Times,serif" font-size="14.00">RegistrationMetadataModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="229.07,-122 226.07,-126 205.07,-126 202.07,-122 48.93,-122 48.93,-86 229.07,-86 229.07,-122"/>
+<text text-anchor="middle" x="139" y="-99.8" font-family="Times,serif" font-size="14.00">RegistrationMetadataModule</text>
 </g>
 <!-- RegistrationMetadataModule&#45;&gt;RegistrationContentModule -->
 <g id="edge2" class="edge">
 <title>RegistrationMetadataModule&#45;&gt;RegistrationContentModule</title>
-<path fill="none" stroke="black" d="M300.56,-122.11C300.56,-122.11 300.56,-140.99 300.56,-140.99"/>
-<polygon fill="black" stroke="black" points="297.06,-140.99 300.56,-150.99 304.06,-140.99 297.06,-140.99"/>
+<path fill="none" stroke="black" d="M195.44,-122.11C195.44,-122.11 195.44,-140.99 195.44,-140.99"/>
+<polygon fill="black" stroke="black" points="191.94,-140.99 195.44,-150.99 198.94,-140.99 191.94,-140.99"/>
 </g>
 </g>
 </svg>
