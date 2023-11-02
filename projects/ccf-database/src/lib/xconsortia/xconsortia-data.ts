@@ -326,9 +326,13 @@ export class HuBMAPTissueBlock {
       age = toNumber(ageMatch[1]);
     }
     let bmi: number | undefined;
+    let race: string | undefined;
     const metadata = get(donor, 'mapped_metadata', get(donor, 'source_mapped_metadata', {})) as Record<string, unknown[]>;
     if (!sex && metadata.sex?.length > 0) {
       sex = metadata.sex[0] as 'Male' | 'Female' | undefined;
+    }
+    if (!race && metadata.race?.length > 0) {
+      race = metadata.race[0] as string;
     }
     if (!age && metadata.age_value?.length > 0) {
       age = metadata.age_value[0] as number | undefined;
@@ -345,6 +349,8 @@ export class HuBMAPTissueBlock {
         age = toNumber(md.data_value);
       } else if (md.preferred_term === 'Body mass index') {
         bmi = toNumber(md.data_value);
+      } else if (md.grouping_concept_preferred_term === 'Race') {
+        race = md.preferred_term as string;
       }
     }
     let label = '';
@@ -371,6 +377,7 @@ export class HuBMAPTissueBlock {
       age,
       sex,
       bmi,
+      race,
 
       consortium_name: this.portal === HUBMAP ? 'HuBMAP' : 'SenNet',
       provider_name: groupName,
