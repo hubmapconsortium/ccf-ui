@@ -5,11 +5,12 @@ import { State } from '@ngxs/store';
 import { iif, patch } from '@ngxs/store/operators';
 import { GlobalConfigState, OrganInfo } from 'ccf-shared';
 import { pluckUnique } from 'ccf-shared/rxjs-ext/operators';
-import { Observable } from 'rxjs';
-import { distinctUntilChanged, filter, map, take, tap, withLatestFrom } from 'rxjs/operators';
+import { combineLatest, Observable } from 'rxjs';
+import { distinctUntilChanged, filter, map, tap, withLatestFrom } from 'rxjs/operators';
 
 import { environment } from '../../../../environments/environment';
 import { GlobalConfig } from '../../services/config/config';
+import { RegistrationState } from '../registration/registration.state';
 
 /* eslint-disable @typescript-eslint/member-ordering */
 
@@ -90,7 +91,8 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
    * @param globalConfig The global configuration
    */
   constructor(
-    private readonly globalConfig: GlobalConfigState<GlobalConfig>
+    private readonly globalConfig: GlobalConfigState<GlobalConfig>,
+    private readonly reg: RegistrationState
   ) {
     super();
   }
@@ -101,14 +103,15 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
   ngxsOnInit(): void {
     super.ngxsOnInit();
 
-    this.globalConfig.config$.pipe(
-      take(1),
-      tap(config => this.setState(patch({
-        registrationCallbackSet: !!config.register,
-        useCancelRegistrationCallback: !!config.cancelRegistration,
-        user: iif(!!config.user, config.user!),
-        registrationStarted: config.user ? true : undefined
-      })))
+    combineLatest([this.reg.state$, this.globalConfig.config$]).pipe(
+      tap(([reg, config]) => {
+        this.setState(patch({
+          registrationCallbackSet: reg.useRegistrationCallback ? !!config.register : false,
+          useCancelRegistrationCallback: !!config.cancelRegistration,
+          user: iif(!!config.user, config.user!),
+          registrationStarted: config.user ? true : undefined
+        }));
+      })
     ).subscribe();
 
     this.initSkipConfirmationListeners();

@@ -10,6 +10,7 @@ import { AnatomicalStructureTagState } from '../anatomical-structure-tags/anatom
 import { ReferenceDataState } from '../reference-data/reference-data.state';
 import { ModelState } from './../model/model.state';
 import { PageState } from './page.state';
+import { RegistrationState } from '../registration/registration.state';
 
 
 function nextValue<T>(obs: Observable<T>): Promise<T> {
@@ -35,7 +36,12 @@ describe('PageState', () => {
           }
         },
         GlobalConfigState,
-        { provide: GLOBAL_CONFIG, useValue: {} }
+        { provide: GLOBAL_CONFIG, useValue: {} },
+        {
+          provide: RegistrationState, useValue: {
+            state$: of([])
+          }
+        }
       ]
     });
 
