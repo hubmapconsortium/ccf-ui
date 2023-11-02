@@ -55,15 +55,15 @@ function createDatabase(token: string, options: CCFDatabaseOptions): Promise<CCF
 export function databaseLoader(options: DatabaseLoaderOptions): RequestHandler {
   const cache = new RequestCache<string, CCFDatabaseInstance>(
     new AutoPruneLRUCache({
-      max: 10,
-      maxAge: 60 * 60 * 1000,
-      dispose: (_key, instance) => instance.then((r) => r.dispose()),
-      ...options.cache
+      max: options.cache?.max ?? 10,
+      maxAge: options.cache?.maxAge ?? 60 * 60 * 1000,
+      dispose: (_key, instance) => instance.then((r) => r.dispose())
     }),
     token => createDatabase(token, options.database)
   );
 
   return (req, _res, next) => {
+    cache.cache.purgeStale();
     req['getDatabase'] = (token?: string) => cache.get(selectToken(token, req));
     next();
   };

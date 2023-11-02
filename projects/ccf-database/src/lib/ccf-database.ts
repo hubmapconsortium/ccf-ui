@@ -49,7 +49,7 @@ export interface CCFDatabaseOptions {
 
 /** Default initialization options. */
 export const DEFAULT_CCF_DB_OPTIONS: CCFDatabaseOptions = {
-  ccfOwlUrl: 'https://purl.org/ccf/latest/ccf.owl',
+  ccfOwlUrl: 'https://apps.humanatlas.io/hra-api/v1/ccf.owl.n3store.json',
   ccfContextUrl: 'https://purl.org/ccf/latest/ccf-context.jsonld',
   dataSources: [],
   hubmapDataService: 'static',
