@@ -449,6 +449,7 @@ export class RegistrationState extends NgxsImmutableDataRepository&lt;Registrati
           this.ctx.patchState({
             useRegistrationCallback: !!(!useDownload &amp;&amp; register),
           });
+          this.page.setOrcidId();
           this.model.setOrganDefaults();
           this.setOrganSelection(organOptions as string[]);
         })
