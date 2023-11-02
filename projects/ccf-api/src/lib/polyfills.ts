@@ -13,9 +13,7 @@ if (typeof globalThis.self !== 'object') {
 }
 
 // Patch `fetch`
-if (typeof globalThis.fetch !== 'function') {
-  patchGlobal('fetch', fetch);
-  patchGlobal('Headers', Headers);
-  patchGlobal('Request', Request);
-  patchGlobal('Response', Response);
-}
+patchGlobal('fetch', fetch);
+patchGlobal('Headers', Headers);
+patchGlobal('Request', Request);
+patchGlobal('Response', Response);

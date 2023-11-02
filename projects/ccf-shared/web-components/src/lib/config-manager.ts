@@ -67,7 +67,7 @@ export class ConfigManager {
         output[target] = parser(value);
       } catch (error) {
         // eslint-disable-next-line no-console
-        console.warn(`Failed to parse ${key} = ${value}`, (error as Error).message);
+        console.warn(`Failed to parse ${key} = ${value} (${typeof value})`, (error as Error).message);
       }
     }
   }

@@ -21,9 +21,8 @@ export function cacheResponses(options?: CacheOptions): RequestHandler {
   // eslint-disable-next-line @typescript-eslint/ban-types
   type AnyObject = {};
   const cache = new AutoPruneLRUCache<string, AnyObject>({
-    max: 100,
-    maxAge: 60 * 60 * 1000,
-    ...options
+    max: options?.max ?? 100,
+    maxAge: options?.maxAge ?? 60 * 60 * 1000
   });
 
   return (req, res, next) => {

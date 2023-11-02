@@ -36,11 +36,9 @@ export class ReviewButtonComponent implements OnChanges {
   @Input() displayErrors = true;
 
   /**
-   * Whether or not all the necessary data has been inputted from
-   * the user.  Decides whether or not to let the user open the
-   * registration / download modal
+   * Whether or not all the necessary data has been inputted from the user.
    */
-  @Input() registrationIsValid = false;
+  @Input() userValid = false;
 
   /**
    * Output that emits when the modal's register button was clicked
@@ -55,6 +53,11 @@ export class ReviewButtonComponent implements OnChanges {
   @Output() readonly enterErrorMode = new EventEmitter<void>();
 
   /**
+   * Decides whether or not to let the user open the registration / download modal
+   */
+  registrationIsValid = false;
+
+  /**
    * Creates an instance of review button component.
    *
    * @param dialog Reference to the dialog creation service.
@@ -67,9 +70,11 @@ export class ReviewButtonComponent implements OnChanges {
    * meta data.
    */
   ngOnChanges(): void {
-    this.registrationIsValid =
-      this.metaData.length >= 3 &&
-      this.metaData.slice(0, 3).every(entry => entry.value);
+    this.registrationIsValid = (
+      this.userValid && this.metaData.length >= 3 &&
+      this.metaData.slice(0, 3).every(entry => entry.value) &&
+      this.metaData[4]?.value !== ''
+    );
   }
 
   /**

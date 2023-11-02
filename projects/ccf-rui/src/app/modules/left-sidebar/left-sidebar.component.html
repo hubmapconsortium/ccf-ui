@@ -12,7 +12,7 @@
 
         <mat-divider></mat-divider>
 
-        <mat-expansion-panel class="anatomical-structures-menu" [expanded]="true">
+        <mat-expansion-panel class="anatomical-structures-menu" [expanded]="organSelected$ | async">
           <mat-expansion-panel-header class="expansion-header">
               <mat-panel-title class="expansion-title" matTooltip="Use opacity icons to change visibility of anatomical structures">Anatomical Structures</mat-panel-title>
           </mat-expansion-panel-header>
@@ -26,7 +26,7 @@
 
         <mat-divider></mat-divider>
 
-        <mat-expansion-panel class="extraction-menu" [expanded]="true">
+        <mat-expansion-panel class="extraction-menu" [expanded]="organSelected$ | async">
             <mat-expansion-panel-header class="expansion-header">
                 <mat-panel-title matTooltip="Some organs have predefined landmarks to guide manual tissue registration--you can turn these on/off."
                     class="expansion-title">Landmarks</mat-panel-title>
