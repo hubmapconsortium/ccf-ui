@@ -125,7 +125,8 @@ describe('RegistrationState', () => {
             state$: pageStateSubject,
             snapshot: initialPageState,
             clearHasChanges: () => undefined,
-            patchState: () => undefined
+            patchState: () => undefined,
+            setOrcidId: () => undefined
           }
         },
         {

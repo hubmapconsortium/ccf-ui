@@ -23,14 +23,14 @@ describe('ReviewButtonComponent', () => {
   });
 
   it('should launch the review dialog if the registration is valid', async () => {
-    const { find, instance } = await shallow.render({ bind: { registrationIsValid: true, metaData } });
+    const { find, instance } = await shallow.render({ bind: { userValid: true, metaData } });
     const spy = spyOn(instance, 'launchReviewModal');
     find('.review-button').triggerEventHandler('click', '');
     expect(spy).toHaveBeenCalled();
   });
 
   it('should not launch the review dialog if the registration is not valid', async () => {
-    const { find, instance } = await shallow.render({ bind: { registrationIsValid: false, metaData: emptyMetaData } });
+    const { find, instance } = await shallow.render({ bind: { userValid: false, metaData: emptyMetaData } });
     const spy = spyOn(instance, 'launchReviewModal');
     find('.review-button').triggerEventHandler('click', '');
     expect(spy).not.toHaveBeenCalled();
