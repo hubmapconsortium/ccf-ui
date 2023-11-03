@@ -1,4 +1,6 @@
 .filter {
+  margin-top: 1.5rem;
+
   &.hidden {
     opacity: 0;
     transition-duration: 0.2s;
@@ -10,14 +12,13 @@
       width: 25%
     }
   }
-
-  margin-top: 2rem;
 }
 
 .button-container {
   display: flex;
   justify-content: space-between;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
+  margin-left: 0.5rem;
 
   button {
     border-width: 1px;
@@ -58,8 +59,9 @@
 
 .patient-filters {
   display: flex;
-  width: 90%;
   padding-top: 1rem;
+  margin-left: 0.5rem;
+  gap: 2rem;
 
   &.hidden {
     opacity: 0;
@@ -68,10 +70,5 @@
 
   ccf-dual-slider {
     margin-left: .5rem;
-    width: 33%;
-  }
-
-  ccf-dropdown {
-    width: 33%;
   }
 }
