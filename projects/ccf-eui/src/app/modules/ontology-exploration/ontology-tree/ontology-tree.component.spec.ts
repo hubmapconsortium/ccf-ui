@@ -178,7 +178,7 @@ describe('OntologyTreeComponent', () => {
   it('should return number of children when getNumResults is called', async () => {
     const { instance } = await shallow.render();
     expect(instance.getCountLabel(flatNode1)).toEqual('');
-    expect(instance.getCountLabel(flatNode2)).toEqual('Total: ');
+    expect(instance.getCountLabel(flatNode2)).toEqual('Tissue Blocks: ');
   });
 
   it('should return label for node', async () => {
