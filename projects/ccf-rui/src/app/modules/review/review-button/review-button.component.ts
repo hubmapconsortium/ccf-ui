@@ -70,10 +70,13 @@ export class ReviewButtonComponent implements OnChanges {
    * meta data.
    */
   ngOnChanges(): void {
+    const organ = this.metaDataLookup('Reference Organ Name');
+    const dimensions = this.metaDataLookup('Tissue Block Dimensions (mm)');
+    const pos = this.metaDataLookup('Tissue Block Position (mm)');
+    const tags = this.metaDataLookup('Anatomical Structure Tags');
     this.registrationIsValid = (
-      this.userValid && this.metaData.length >= 3 &&
-      this.metaData.slice(0, 3).every(entry => entry.value) &&
-      this.metaData[4]?.value !== ''
+      this.userValid &&
+      [organ, dimensions, pos, tags].every(value => value !== '')
     );
   }
 
@@ -83,6 +86,15 @@ export class ReviewButtonComponent implements OnChanges {
    */
   get disabled(): boolean {
     return !this.registrationIsValid;
+  }
+
+  /**
+   * Gets value from metadata field
+   * @param field Name of field
+   * @returns Metadata value
+   */
+  private metaDataLookup(field: string): string | undefined {
+    return this.metaData.find(data => data.label === field)?.value;
   }
 
   /**
