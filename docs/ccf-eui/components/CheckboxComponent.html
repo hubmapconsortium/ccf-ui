@@ -599,6 +599,7 @@ export class CheckboxComponent {
                 </p>
                 <pre class="line-numbers"><code class="language-scss">.filter-label {
   margin-bottom: 0.5rem;
+  margin-left: 0.5rem;
   font-weight: bold;
 }
 
@@ -607,15 +608,23 @@ export class CheckboxComponent {
   flex-direction: row;
   flex-wrap: wrap;
 
+  .option {
+    display: flex;
+    height: 2rem;
+    align-items: center;
+  }
+
   &amp;.three {
     .option {
       width: 33%;
+      flex-grow: 1;
     }
   }
 
   &amp;.four {
     .option {
-      width: 25%;
+      width: 16.5%;
+      flex-grow: 0;
     }
   }
 }

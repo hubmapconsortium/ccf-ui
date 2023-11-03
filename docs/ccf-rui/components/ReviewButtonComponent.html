@@ -176,6 +176,10 @@
                                 <a href="#launchReviewModal" >launchReviewModal</a>
                             </li>
                             <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#metaDataLookup" >metaDataLookup</a>
+                            </li>
+                            <li>
                                 <a href="#ngOnChanges" >ngOnChanges</a>
                             </li>
                             <li>
@@ -590,8 +594,8 @@ do to be able to register / download.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="106"
-                                    class="link-to-prism">projects/ccf-rui/src/app/modules/review/review-button/review-button.component.ts:106</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="118"
+                                    class="link-to-prism">projects/ccf-rui/src/app/modules/review/review-button/review-button.component.ts:118</a></div>
                         </td>
                     </tr>
 
@@ -605,6 +609,83 @@ do to be able to register / download.</p>
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                         </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="metaDataLookup"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>metaDataLookup</b></span>
+                        <a href="#metaDataLookup"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>metaDataLookup(field: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="96"
+                                    class="link-to-prism">projects/ccf-rui/src/app/modules/review/review-button/review-button.component.ts:96</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Gets value from metadata field</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>field</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Name of field</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>string | undefined</code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Metadata value</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -669,8 +750,8 @@ meta data.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="91"
-                                    class="link-to-prism">projects/ccf-rui/src/app/modules/review/review-button/review-button.component.ts:91</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="103"
+                                    class="link-to-prism">projects/ccf-rui/src/app/modules/review/review-button/review-button.component.ts:103</a></div>
                         </td>
                     </tr>
 
@@ -818,7 +899,7 @@ meta data.</p>
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">projects/ccf-rui/src/app/modules/review/review-button/review-button.component.ts:84</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">projects/ccf-rui/src/app/modules/review/review-button/review-button.component.ts:87</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -913,10 +994,13 @@ export class ReviewButtonComponent implements OnChanges {
    * meta data.
    */
   ngOnChanges(): void {
+    const organ &#x3D; this.metaDataLookup(&#x27;Reference Organ Name&#x27;);
+    const dimensions &#x3D; this.metaDataLookup(&#x27;Tissue Block Dimensions (mm)&#x27;);
+    const pos &#x3D; this.metaDataLookup(&#x27;Tissue Block Position (mm)&#x27;);
+    const tags &#x3D; this.metaDataLookup(&#x27;Anatomical Structure Tags&#x27;);
     this.registrationIsValid &#x3D; (
-      this.userValid &amp;&amp; this.metaData.length &gt;&#x3D; 3 &amp;&amp;
-      this.metaData.slice(0, 3).every(entry &#x3D;&gt; entry.value) &amp;&amp;
-      this.metaData[4]?.value !&#x3D;&#x3D; &#x27;&#x27;
+      this.userValid &amp;&amp;
+      [organ, dimensions, pos, tags].every(value &#x3D;&gt; value !&#x3D;&#x3D; &#x27;&#x27;)
     );
   }
 
@@ -926,6 +1010,15 @@ export class ReviewButtonComponent implements OnChanges {
    */
   get disabled(): boolean {
     return !this.registrationIsValid;
+  }
+
+  /**
+   * Gets value from metadata field
+   * @param field Name of field
+   * @returns Metadata value
+   */
+  private metaDataLookup(field: string): string | undefined {
+    return this.metaData.find(data &#x3D;&gt; data.label &#x3D;&#x3D;&#x3D; field)?.value;
   }
 
   /**
