@@ -309,7 +309,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
    * @returns Label for the count
    */
   getCountLabel(node: FlatNode): string {
-    return !node.original.parent ? 'Total: ' : '';
+    return !node.original.parent ? 'Tissue Blocks: ' : '';
   }
 
   /**
