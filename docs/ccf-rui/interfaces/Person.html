@@ -287,11 +287,12 @@ import { State } from &#x27;@ngxs/store&#x27;;
 import { iif, patch } from &#x27;@ngxs/store/operators&#x27;;
 import { GlobalConfigState, OrganInfo } from &#x27;ccf-shared&#x27;;
 import { pluckUnique } from &#x27;ccf-shared/rxjs-ext/operators&#x27;;
-import { Observable } from &#x27;rxjs&#x27;;
-import { distinctUntilChanged, filter, map, take, tap, withLatestFrom } from &#x27;rxjs/operators&#x27;;
+import { combineLatest, Observable } from &#x27;rxjs&#x27;;
+import { distinctUntilChanged, filter, map, tap, withLatestFrom } from &#x27;rxjs/operators&#x27;;
 
 import { environment } from &#x27;../../../../environments/environment&#x27;;
 import { GlobalConfig } from &#x27;../../services/config/config&#x27;;
+import { RegistrationState } from &#x27;../registration/registration.state&#x27;;
 
 /* eslint-disable @typescript-eslint/member-ordering */
 
@@ -372,7 +373,8 @@ export class PageState extends NgxsImmutableDataRepository&lt;PageStateModel&gt;
    * @param globalConfig The global configuration
    */
   constructor(
-    private readonly globalConfig: GlobalConfigState&lt;GlobalConfig&gt;
+    private readonly globalConfig: GlobalConfigState&lt;GlobalConfig&gt;,
+    private readonly reg: RegistrationState
   ) {
     super();
   }
@@ -383,14 +385,15 @@ export class PageState extends NgxsImmutableDataRepository&lt;PageStateModel&gt;
   ngxsOnInit(): void {
     super.ngxsOnInit();
 
-    this.globalConfig.config$.pipe(
-      take(1),
-      tap(config &#x3D;&gt; this.setState(patch({
-        registrationCallbackSet: !!config.register,
-        useCancelRegistrationCallback: !!config.cancelRegistration,
-        user: iif(!!config.user, config.user!),
-        registrationStarted: config.user ? true : undefined
-      })))
+    combineLatest([this.reg.state$, this.globalConfig.config$]).pipe(
+      tap(([reg, config]) &#x3D;&gt; {
+        this.setState(patch({
+          registrationCallbackSet: reg.useRegistrationCallback ? !!config.register : false,
+          useCancelRegistrationCallback: !!config.cancelRegistration,
+          user: iif(!!config.user, config.user!),
+          registrationStarted: config.user ? true : undefined
+        }));
+      })
     ).subscribe();
 
     this.initSkipConfirmationListeners();
