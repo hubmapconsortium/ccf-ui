@@ -2882,8 +2882,7 @@ export class AppComponent implements OnInit {
     .left-drawer {
       padding-left: 1.5rem;
       padding-right: 1.5rem;
-      height: 100%;
-      z-index: 3;
+
       .left-drawer-container {
         height: 100%;
         .ontologies {
@@ -2942,7 +2941,7 @@ export class AppComponent implements OnInit {
       top: 0;
       bottom: 0;
       right: 425%;
-      height: 100%;
+      height: calc(100% + -1.5rem);
       transform: translateX(-425%);
       width: calc(100% - 28.5rem);
 

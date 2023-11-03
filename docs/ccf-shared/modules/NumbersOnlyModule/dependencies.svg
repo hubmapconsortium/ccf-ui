@@ -24,13 +24,13 @@
 <title>cluster_NumbersOnlyModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="171,-70 171,-268 325,-268 325,-70 171,-70"/>
 </g>
-<g id="clust5" class="cluster">
-<title>cluster_NumbersOnlyModule_exports</title>
-<polygon fill="none" stroke="black" points="181,-208 181,-260 315,-260 315,-208 181,-208"/>
-</g>
 <g id="clust2" class="cluster">
 <title>cluster_NumbersOnlyModule_declarations</title>
 <polygon fill="none" stroke="black" points="183,-78 183,-130 313,-130 313,-78 183,-78"/>
+</g>
+<g id="clust5" class="cluster">
+<title>cluster_NumbersOnlyModule_exports</title>
+<polygon fill="none" stroke="black" points="181,-208 181,-260 315,-260 315,-208 181,-208"/>
 </g>
 <!-- NumberDirective -->
 <g id="node1" class="node">

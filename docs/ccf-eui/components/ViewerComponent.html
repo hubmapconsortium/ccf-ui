@@ -678,6 +678,7 @@ export class ViewerComponent implements OnChanges {
                 </p>
                 <pre class="line-numbers"><code class="language-scss">:host {
   display: block;
+  z-index: 1;
 
   .toolbar {
     display: flex;
@@ -702,8 +703,13 @@ export class ViewerComponent implements OnChanges {
     .close {
       min-width: 0;
       padding: 0;
-      line-height: 1.5rem;
       border-radius: 0;
+      height: 100%;
+      width: 1.5rem;
+
+      .icon {
+        margin: 0;
+      }
     }
   }
 

@@ -24,13 +24,13 @@
 <title>cluster_XYZPositionModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="152,-70 152,-268 344,-268 344,-70 152,-70"/>
 </g>
-<g id="clust5" class="cluster">
-<title>cluster_XYZPositionModule_exports</title>
-<polygon fill="none" stroke="black" points="160,-208 160,-260 336,-260 336,-208 160,-208"/>
-</g>
 <g id="clust2" class="cluster">
 <title>cluster_XYZPositionModule_declarations</title>
 <polygon fill="none" stroke="black" points="162,-78 162,-130 334,-130 334,-78 162,-78"/>
+</g>
+<g id="clust5" class="cluster">
+<title>cluster_XYZPositionModule_exports</title>
+<polygon fill="none" stroke="black" points="160,-208 160,-260 336,-260 336,-208 160,-208"/>
 </g>
 <!-- XYZPositionComponent -->
 <g id="node1" class="node">

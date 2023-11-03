@@ -839,9 +839,10 @@ export class FiltersPopoverComponent {
   }
 
   &amp;.hidden {
+    padding: 0;
     width: 0;
     height: 0;
-    transition: all 0.2s ease-out;
+    transition: width 0.2s ease-in-out;
     transition-delay: 0.3s;
     pointer-events: none;
 
