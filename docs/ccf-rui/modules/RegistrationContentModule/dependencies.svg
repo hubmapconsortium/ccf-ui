@@ -28,13 +28,13 @@
 <title>cluster_RegistrationContentModule_declarations</title>
 <polygon fill="none" stroke="black" points="245,-78 245,-130 455,-130 455,-78 245,-78"/>
 </g>
-<g id="clust4" class="cluster">
-<title>cluster_RegistrationContentModule_imports</title>
-<polygon fill="none" stroke="black" points="41,-78 41,-130 237,-130 237,-78 41,-78"/>
-</g>
 <g id="clust5" class="cluster">
 <title>cluster_RegistrationContentModule_exports</title>
 <polygon fill="none" stroke="black" points="141,-208 141,-260 355,-260 355,-208 141,-208"/>
+</g>
+<g id="clust4" class="cluster">
+<title>cluster_RegistrationContentModule_imports</title>
+<polygon fill="none" stroke="black" points="41,-78 41,-130 237,-130 237,-78 41,-78"/>
 </g>
 <!-- RegistrationContentComponent -->
 <g id="node1" class="node">
