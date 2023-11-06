@@ -27,7 +27,6 @@ $default-light-foreground: map-merge($foreground, (
   icon: map-get($default-light-palette, 300), //#E0E0E0
   contrast-icon: map-get($default-light-palette, 600),
   button-text: map-get($primary, main),
-  contrast-button-text: map-get($primary, 'white'),
   headers: map-get($default-light-palette, 300), //#E0E0E0
   search-result-text: map-get($default-light-palette, 600), //#757575
   text: map-get($default-light-palette, 900), //#212121
