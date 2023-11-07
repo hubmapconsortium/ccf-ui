@@ -8,15 +8,13 @@ import { Matrix4, toRadians } from '@math.gl/core';
 import { NgxsOnInit, State } from '@ngxs/store';
 import { AABB, Vec3 } from 'cannon-es';
 import { SpatialEntityJsonLd, SpatialSceneNode } from 'ccf-body-ui';
+import { SpatialEntity, getOriginScene, getTissueBlockScene } from 'ccf-database';
+import { Position } from 'ccf-shared';
 import { Observable, combineLatest, of } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
-
-import { SpatialEntity } from 'ccf-database';
-import { Position } from 'ccf-shared';
 import { environment } from '../../../../environments/environment';
 import { ModelState } from '../model/model.state';
 import { RegistrationState } from '../registration/registration.state';
-import { getTissueBlockScene } from 'ccf-database';
 import { VisibilityItem } from './../../models/visibility-item';
 import { ReferenceDataState } from './../reference-data/reference-data.state';
 
@@ -83,9 +81,12 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
   @Computed()
   get referenceOrganNodes$(): Observable<SpatialSceneNode[]> {
     return combineLatest([this.model.anatomicalStructures$, this.model.extractionSites$, this.model.organIri$]).pipe(
-      map(([anatomicalStructures, extractionSites, organIri]) =>
-        this.createSceneNodes(organIri as string, [...anatomicalStructures, ...extractionSites] as VisibilityItem[])
-      )
+      map(([anatomicalStructures, extractionSites, organIri]) => {
+        const organ = this.getOrganSpatialEntity(organIri as string);
+        const originScene = organIri ? getOriginScene(organ, false, true) : [];
+        const organScene = this.createSceneNodes(organIri as string, [...anatomicalStructures, ...extractionSites] as VisibilityItem[]);
+        return [ ...originScene, ...organScene ];
+      })
     );
   }
 
