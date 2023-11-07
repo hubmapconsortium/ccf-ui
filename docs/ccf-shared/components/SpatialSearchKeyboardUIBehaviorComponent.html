@@ -1196,10 +1196,10 @@ export class SpatialSearchKeyboardUIBehaviorComponent {
       this.currentKey &#x3D; key.toLowerCase();
       switch (this.currentKey) {
         case &#x27;q&#x27;:
-          this.position &#x3D; { ...this.position, z: this.position.z - this.currentDelta };
+          this.position &#x3D; { ...this.position, z: this.position.z + this.currentDelta };
           break;
         case &#x27;e&#x27;:
-          this.position &#x3D; { ...this.position, z: this.position.z + this.currentDelta };
+          this.position &#x3D; { ...this.position, z: this.position.z - this.currentDelta };
           break;
         case &#x27;w&#x27;:
           this.position &#x3D; { ...this.position, y: this.position.y + this.currentDelta };

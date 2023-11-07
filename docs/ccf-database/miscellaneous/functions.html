@@ -5755,7 +5755,7 @@ for a given spatial search.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getTissueBlockScene(node: <a href="../interfaces/SpatialEntity.html" target="_self">SpatialEntity</a>, sphere?: <a href="../interfaces/SpatialSearch.html" target="_self">SpatialSearch</a>)</code>
+<code>getTissueBlockScene(node: <a href="../interfaces/SpatialEntity.html" target="_self">SpatialEntity</a>, placement: <a href="../interfaces/SpatialPlacement.html" target="_self">SpatialPlacement</a>)</code>
                 </td>
             </tr>
 
@@ -5764,8 +5764,7 @@ for a given spatial search.</p>
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Create a set of scene nodes for the body-ui to show the probing sphere and lines around it
-for a given spatial search.</p>
+                        <div class="io-description"><p>Create a set of scene nodes for the body-ui to show the lines around a cube</p>
 </div>
 
                             <div class="io-description">
@@ -5793,23 +5792,23 @@ for a given spatial search.</p>
 
 
                                             <td>
-                                                    <p>the Spatial Entity (usually a reference organ) that the sphere is probing into</p>
+                                                    <p>the Spatial Entity that the scene is drawn around</p>
 
                                             </td>
                                         </tr>
                                         <tr>
-                                                <td>sphere</td>
+                                                <td>placement</td>
                                             <td>
-                                                            <code><a href="../interfaces/SpatialSearch.html" target="_self" >SpatialSearch</a></code>
+                                                            <code><a href="../interfaces/SpatialPlacement.html" target="_self" >SpatialPlacement</a></code>
                                             </td>
 
                                             <td>
-                                                    Yes
+                                                    No
                                             </td>
 
 
                                             <td>
-                                                    <p>the Spatial Search that defines where and how big the probing sphere is</p>
+                                                    <p>the Spatial Placement where the cube is placed</p>
 
                                             </td>
                                         </tr>
