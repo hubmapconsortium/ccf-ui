@@ -154,5 +154,6 @@ export function getOriginScene(node: SpatialEntity, includeLetters = false): Spa
       transformMatrix: new Matrix4(Matrix4.IDENTITY).translate([0, 0, sceneDepth + originRadius * 2]).scale(originRadius),
       color: blue
     }
-  ].filter(n => (includeLetters && n.geometry === 'text' && n.text) ?? !n.text) as SpatialSceneNode[];
+  // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+  ].filter(n => (includeLetters && n.geometry === 'text' && n.text) || !n.text) as SpatialSceneNode[];
 }
