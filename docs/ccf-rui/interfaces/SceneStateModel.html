@@ -158,15 +158,13 @@ import { Matrix4, toRadians } from &#x27;@math.gl/core&#x27;;
 import { NgxsOnInit, State } from &#x27;@ngxs/store&#x27;;
 import { AABB, Vec3 } from &#x27;cannon-es&#x27;;
 import { SpatialEntityJsonLd, SpatialSceneNode } from &#x27;ccf-body-ui&#x27;;
+import { SpatialEntity, getOriginScene, getTissueBlockScene } from &#x27;ccf-database&#x27;;
+import { Position } from &#x27;ccf-shared&#x27;;
 import { Observable, combineLatest, of } from &#x27;rxjs&#x27;;
 import { filter, map } from &#x27;rxjs/operators&#x27;;
-
-import { SpatialEntity } from &#x27;ccf-database&#x27;;
-import { Position } from &#x27;ccf-shared&#x27;;
 import { environment } from &#x27;../../../../environments/environment&#x27;;
 import { ModelState } from &#x27;../model/model.state&#x27;;
 import { RegistrationState } from &#x27;../registration/registration.state&#x27;;
-import { getTissueBlockScene } from &#x27;ccf-database&#x27;;
 import { VisibilityItem } from &#x27;./../../models/visibility-item&#x27;;
 import { ReferenceDataState } from &#x27;./../reference-data/reference-data.state&#x27;;
 
@@ -233,9 +231,12 @@ export class SceneState extends NgxsImmutableDataRepository&lt;SceneStateModel&g
   @Computed()
   get referenceOrganNodes$(): Observable&lt;SpatialSceneNode[]&gt; {
     return combineLatest([this.model.anatomicalStructures$, this.model.extractionSites$, this.model.organIri$]).pipe(
-      map(([anatomicalStructures, extractionSites, organIri]) &#x3D;&gt;
-        this.createSceneNodes(organIri as string, [...anatomicalStructures, ...extractionSites] as VisibilityItem[])
-      )
+      map(([anatomicalStructures, extractionSites, organIri]) &#x3D;&gt; {
+        const organ &#x3D; this.getOrganSpatialEntity(organIri as string);
+        const originScene &#x3D; organIri ? getOriginScene(organ, false, true) : [];
+        const organScene &#x3D; this.createSceneNodes(organIri as string, [...anatomicalStructures, ...extractionSites] as VisibilityItem[]);
+        return [ ...originScene, ...organScene ];
+      })
     );
   }
 

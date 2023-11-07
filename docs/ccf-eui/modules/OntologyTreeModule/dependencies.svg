@@ -24,23 +24,23 @@
 <title>cluster_OntologyTreeModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="71,-70 71,-268 425,-268 425,-70 71,-70"/>
 </g>
-<g id="clust4" class="cluster">
-<title>cluster_OntologyTreeModule_imports</title>
-<polygon fill="none" stroke="black" points="263,-78 263,-130 417,-130 417,-78 263,-78"/>
-</g>
 <g id="clust2" class="cluster">
 <title>cluster_OntologyTreeModule_declarations</title>
-<polygon fill="none" stroke="black" points="79,-78 79,-130 255,-130 255,-78 79,-78"/>
+<polygon fill="none" stroke="black" points="241,-78 241,-130 417,-130 417,-78 241,-78"/>
 </g>
 <g id="clust5" class="cluster">
 <title>cluster_OntologyTreeModule_exports</title>
 <polygon fill="none" stroke="black" points="158,-208 158,-260 338,-260 338,-208 158,-208"/>
 </g>
+<g id="clust4" class="cluster">
+<title>cluster_OntologyTreeModule_imports</title>
+<polygon fill="none" stroke="black" points="79,-78 79,-130 233,-130 233,-78 79,-78"/>
+</g>
 <!-- OntologyTreeComponent -->
 <g id="node1" class="node">
 <title>OntologyTreeComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="246.86,-122 87.14,-122 87.14,-86 246.86,-86 246.86,-122"/>
-<text text-anchor="middle" x="167" y="-99.8" font-family="Times,serif" font-size="14.00">OntologyTreeComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="408.86,-122 249.14,-122 249.14,-86 408.86,-86 408.86,-122"/>
+<text text-anchor="middle" x="329" y="-99.8" font-family="Times,serif" font-size="14.00">OntologyTreeComponent</text>
 </g>
 <!-- OntologyTreeModule -->
 <g id="node2" class="node">
@@ -51,8 +51,8 @@
 <!-- OntologyTreeComponent&#45;&gt;OntologyTreeModule -->
 <g id="edge1" class="edge">
 <title>OntologyTreeComponent&#45;&gt;OntologyTreeModule</title>
-<path fill="none" stroke="black" d="M212.95,-122.11C212.95,-122.11 212.95,-140.99 212.95,-140.99"/>
-<polygon fill="black" stroke="black" points="209.45,-140.99 212.95,-150.99 216.45,-140.99 209.45,-140.99"/>
+<path fill="none" stroke="black" d="M283.05,-122.11C283.05,-122.11 283.05,-140.99 283.05,-140.99"/>
+<polygon fill="black" stroke="black" points="279.55,-140.99 283.05,-150.99 286.55,-140.99 279.55,-140.99"/>
 </g>
 <!-- OntologyTreeComponent  -->
 <g id="node4" class="node">
@@ -69,14 +69,14 @@
 <!-- ButtonToggleModule -->
 <g id="node3" class="node">
 <title>ButtonToggleModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="408.83,-122 405.83,-126 384.83,-126 381.83,-122 271.17,-122 271.17,-86 408.83,-86 408.83,-122"/>
-<text text-anchor="middle" x="340" y="-99.8" font-family="Times,serif" font-size="14.00">ButtonToggleModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="224.83,-122 221.83,-126 200.83,-126 197.83,-122 87.17,-122 87.17,-86 224.83,-86 224.83,-122"/>
+<text text-anchor="middle" x="156" y="-99.8" font-family="Times,serif" font-size="14.00">ButtonToggleModule</text>
 </g>
 <!-- ButtonToggleModule&#45;&gt;OntologyTreeModule -->
 <g id="edge2" class="edge">
 <title>ButtonToggleModule&#45;&gt;OntologyTreeModule</title>
-<path fill="none" stroke="black" d="M294.19,-122.11C294.19,-122.11 294.19,-140.99 294.19,-140.99"/>
-<polygon fill="black" stroke="black" points="290.69,-140.99 294.19,-150.99 297.69,-140.99 290.69,-140.99"/>
+<path fill="none" stroke="black" d="M201.81,-122.11C201.81,-122.11 201.81,-140.99 201.81,-140.99"/>
+<polygon fill="black" stroke="black" points="198.31,-140.99 201.81,-150.99 205.31,-140.99 198.31,-140.99"/>
 </g>
 </g>
 </svg>
