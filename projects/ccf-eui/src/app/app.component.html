@@ -66,6 +66,10 @@
                                   (ontologySelection)="ontologySelected($event, 'biomarkers')"
                                   [header]="header$ | async">
             </ccf-ontology-selection>
+
+            <div class="no-selection-notice" *ngIf="selectedtoggleOptions.length === 0">
+              No anatomical structures, cell types, or biomarkers selected. Use the above AS, CT, and B buttons to view the registered listings.
+            </div>
         </div>
         <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
       </div>

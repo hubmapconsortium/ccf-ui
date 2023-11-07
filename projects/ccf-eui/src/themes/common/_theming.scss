@@ -26,6 +26,7 @@
 @use '../../app/modules/results-browser/donor-card/donor-card.component.theme.scss' as donorCard;
 @use '../../app/modules/results-browser/tissue-section-vis/tissue-section-vis.theme.scss' as tissueVis;
 @use '../../app/app.component.theme.scss' as app;
+@use '../../app/shared/components/button-toggle/button-toggle.theme.scss' as buttonToggle;
 
 
 @mixin ccf-theme($theme) {
@@ -65,6 +66,7 @@
   @include donorCard.theme($theme);
   @include tissueVis.theme($theme);
   @include app.theme($theme);
+  @include buttonToggle.theme($theme);
 
   // Overrides goes here!
 }

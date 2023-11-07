@@ -1,6 +1,6 @@
-<mat-button-toggle-group class="toggleGroup" name="menuOptions" aria-label="menuOptions" multiple>
+<mat-button-toggle-group class="toggleGroup" name="menuOptions" aria-label="menuOptions" multiple appearance="standard">
   <mat-button-toggle
-  [class.selected]="isItemSelected(item)"
+  [class.button-selected]="isItemSelected(item)"
   *ngFor="let item of menuOptions; let i=index;"
   [value]="item"
   (change)="toggleSelection($event.value)"

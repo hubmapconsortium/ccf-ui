@@ -155,15 +155,17 @@
 
     .left-drawer {
       padding-left: 1.5rem;
-      padding-right: 1.5rem;
+      padding-right: 1rem;
 
       .left-drawer-container {
         height: 100%;
+
         .ontologies {
           height: calc(100% - 9rem);
           display: flex;
           gap: 1.5rem;
           flex-direction: column;
+
           ccf-ontology-selection {
             flex: 1 1;
             overflow: auto;
@@ -180,8 +182,14 @@
               flex-basis: 30%;
             }
           }
+
+          .no-selection-notice {
+            font-weight: 400;
+            line-height: normal;
+          }
         }
       }
+
       ::ng-deep .cff-drawer-inner-container {
         overflow: hidden;
       }

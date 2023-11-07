@@ -40,5 +40,7 @@ $foreground: map-merge(mat.$light-theme-foreground-palette, (
 $background: map-merge(mat.$light-theme-background-palette, (
   stage-background: map-get($primary-colors, 'black'),
   authentication: map-get($primary-colors, 'white'),
-  modal: map-get($primary-colors, 'white')
+  modal: map-get($primary-colors, 'white'),
+  button-toggle-background: map-get($primary-colors, 'white'),
+  button-toggle-selected: #C2CAE5
 ));

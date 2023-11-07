@@ -80,6 +80,8 @@ $background: map-merge(mat.$dark-theme-background-palette, (
   icon-background-hover2: map-get($primary-colors, 800),
   button-bg: map-get($primary-colors, 'white'),
   mat-selected-option: #636363,
+  button-toggle-background: map-get($primary-colors, 900),
+  button-toggle-selected: #4A4458
 ));
 
 $theme: (

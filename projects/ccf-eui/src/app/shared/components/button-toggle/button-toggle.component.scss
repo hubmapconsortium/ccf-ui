@@ -1,32 +1,40 @@
 :host {
-  font-family: Inter, Inter Variable, sans-serif;
   font-weight: 400;
   font-size: 0.875rem;
+
   .hidden {
-    visibility: hidden;
+    display: none;
   }
+
   mat-button-toggle {
     text-align: center;
     width: inherit;
     line-height: 0px;
+    border-right: 1px solid #757575;
+
     .tooltip-content-container {
       cursor: pointer;
       display: flex;
       align-items: center;
+      gap: 0.5rem;
     }
   }
-  .mat-button-toggle-checked {
-    background-color: rgb(255, 255, 255);
-  }
-  .selected {
-    background-color: #c2cae5;
-  }
+
   .toggleGroup {
     border-radius: 35px;
+    border: 1px solid #757575;
     width: 100%;
     overflow-x: auto;
+
+    mat-button-toggle:last-child {
+      border-right: 0;
+    }
   }
+
   ::ng-deep .mat-button-toggle-label-content {
-    line-height: 2rem !important;
+    display: flex;
+    height: 2rem;
+    justify-content: center;
+    padding: 0 !important;
   }
 }
