@@ -2767,7 +2767,7 @@ export class DataState extends NgxsDataRepository&lt;DataStateModel&gt; implemen
     this.databaseReady$.pipe(take(1), tap(() &#x3D;&gt; {
       this.updateStatus({
         status: &#x27;Ready&#x27;,
-        message: &#x27;Loading CCF Exploration User Interface (EUI)&#x27;
+        message: &#x27;Loading HRA Exploration User Interface (EUI)&#x27;
       });
     })).subscribe();
   }
