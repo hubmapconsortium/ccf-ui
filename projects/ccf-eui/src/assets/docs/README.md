@@ -7,7 +7,7 @@
 
 # About
 
-The CCF Exploration User Interface (EUI) represents data across multiple scales, supporting navigation by
+The HRA Exploration User Interface (EUI) represents data across multiple scales, supporting navigation by
 multiple coordinate systems, including spatial, physiologic, and organ-based browsing. The first
 proof-of-concept user interface for the CCF v1.0.0 became available in June 2020. The EUI continues to evolve
 as more data becomes available. The CCF EUI code is available
