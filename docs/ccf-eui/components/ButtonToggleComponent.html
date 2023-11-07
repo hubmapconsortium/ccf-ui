@@ -521,9 +521,9 @@ export class ButtonToggleComponent {
     </div>
 
     <div class="tab-pane fade " id="templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;mat-button-toggle-group class&#x3D;&quot;toggleGroup&quot; name&#x3D;&quot;menuOptions&quot; aria-label&#x3D;&quot;menuOptions&quot; multiple&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;mat-button-toggle-group class&#x3D;&quot;toggleGroup&quot; name&#x3D;&quot;menuOptions&quot; aria-label&#x3D;&quot;menuOptions&quot; multiple appearance&#x3D;&quot;standard&quot;&gt;
   &lt;mat-button-toggle
-  [class.selected]&#x3D;&quot;isItemSelected(item)&quot;
+  [class.button-selected]&#x3D;&quot;isItemSelected(item)&quot;
   *ngFor&#x3D;&quot;let item of menuOptions; let i&#x3D;index;&quot;
   [value]&#x3D;&quot;item&quot;
   (change)&#x3D;&quot;toggleSelection($event.value)&quot;
@@ -543,35 +543,43 @@ export class ButtonToggleComponent {
                     <code>./button-toggle.component.scss</code>
                 </p>
                 <pre class="line-numbers"><code class="language-scss">:host {
-  font-family: Inter, Inter Variable, sans-serif;
   font-weight: 400;
   font-size: 0.875rem;
+
   .hidden {
-    visibility: hidden;
+    display: none;
   }
+
   mat-button-toggle {
     text-align: center;
     width: inherit;
     line-height: 0px;
+    border-right: 1px solid #757575;
+
     .tooltip-content-container {
       cursor: pointer;
       display: flex;
       align-items: center;
+      gap: 0.5rem;
     }
   }
-  .mat-button-toggle-checked {
-    background-color: rgb(255, 255, 255);
-  }
-  .selected {
-    background-color: #c2cae5;
-  }
+
   .toggleGroup {
     border-radius: 35px;
+    border: 1px solid #757575;
     width: 100%;
     overflow-x: auto;
+
+    mat-button-toggle:last-child {
+      border-right: 0;
+    }
   }
+
   ::ng-deep .mat-button-toggle-label-content {
-    line-height: 2rem !important;
+    display: flex;
+    height: 2rem;
+    justify-content: center;
+    padding: 0 !important;
   }
 }
 </code></pre>
@@ -602,7 +610,7 @@ export class ButtonToggleComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><mat-button-toggle-group class="toggleGroup" name="menuOptions" aria-label="menuOptions" multiple>  <mat-button-toggle  [class.selected]="isItemSelected(item)"  *ngFor="let item of menuOptions; let i=index;"  [value]="item"  (change)="toggleSelection($event.value)"  >    <div class="tooltip-content-container" [matTooltip]="enableTooltip && tooltips[i]">      <mat-icon [class.hidden]="!isItemSelected(item)">done</mat-icon>      <span> {{item}}</span>    </div>  </mat-button-toggle></mat-button-toggle-group></div>'
+        var COMPONENT_TEMPLATE = '<div><mat-button-toggle-group class="toggleGroup" name="menuOptions" aria-label="menuOptions" multiple appearance="standard">  <mat-button-toggle  [class.button-selected]="isItemSelected(item)"  *ngFor="let item of menuOptions; let i=index;"  [value]="item"  (change)="toggleSelection($event.value)"  >    <div class="tooltip-content-container" [matTooltip]="enableTooltip && tooltips[i]">      <mat-icon [class.hidden]="!isItemSelected(item)">done</mat-icon>      <span> {{item}}</span>    </div>  </mat-button-toggle></mat-button-toggle-group></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppWebComponent', 'selector': 'ccf-root-wc'},{'name': 'ButtonToggleComponent', 'selector': 'ccf-button-toggle'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DonorCardComponent', 'selector': 'ccf-donor-card'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'RunSpatialSearchComponent', 'selector': 'ccf-run-spatial-search'},{'name': 'SpatialSearchConfigBehaviorComponent', 'selector': 'ccf-spatial-search-config-behavior'},{'name': 'SpatialSearchConfigComponent', 'selector': 'ccf-spatial-search-config'},{'name': 'SpatialSearchUiBehaviorComponent', 'selector': 'ccf-spatial-search-ui-behavior'},{'name': 'SpatialSearchUiComponent', 'selector': 'ccf-spatial-search-ui'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'TermOccurrenceListComponent', 'selector': 'ccf-term-occurrence-list'},{'name': 'ThumbnailCarouselComponent', 'selector': 'ccf-thumbnail-carousel'},{'name': 'TissueBlockListComponent', 'selector': 'ccf-tissue-block-list'},{'name': 'TissueSectionVisComponent', 'selector': 'ccf-tissue-section-vis'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ViewerComponent', 'selector': 'ccf-viewer'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ButtonToggleComponent'};
