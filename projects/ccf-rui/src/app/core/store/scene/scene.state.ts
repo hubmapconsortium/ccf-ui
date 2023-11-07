@@ -8,7 +8,7 @@ import { Matrix4, toRadians } from '@math.gl/core';
 import { NgxsOnInit, State } from '@ngxs/store';
 import { AABB, Vec3 } from 'cannon-es';
 import { SpatialEntityJsonLd, SpatialSceneNode } from 'ccf-body-ui';
-import { SpatialEntity, getOriginScene, getTissueBlockScene } from 'ccf-database';
+import { SpatialEntity, SpatialPlacement, getOriginScene, getTissueBlockScene } from 'ccf-database';
 import { Position } from 'ccf-shared';
 import { Observable, combineLatest, of } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
@@ -162,11 +162,23 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
     return combineLatest([this.model.organIri$.pipe(filter(organIri=>organIri!=='')), this.model.position$]).pipe(map(([organIri, position]: [string, Position]) => {
       const organEntity = this.getOrganSpatialEntity(organIri);
       const blockSize = this.model.snapshot.blockSize;
-      return organEntity ? getTissueBlockScene(organEntity, {
-        ...position, target: organEntity?.['@id'], radius: blockSize.x,
-      }): [];
-    }
-    ));
+      const rotation = this.model.snapshot.rotation;
+      return organEntity ? getTissueBlockScene({
+        x_dimension: blockSize.x,
+        y_dimension: blockSize.y,
+        z_dimension: blockSize.z
+      } as SpatialEntity, {
+        x_translation: position.x - organEntity.x_dimension / 2,
+        y_translation: position.y - organEntity.y_dimension / 2,
+        z_translation: position.z - organEntity.z_dimension / 2,
+
+        x_rotation: rotation.x,
+        y_rotation: rotation.y,
+        z_rotation: rotation.z,
+
+        x_scaling: 1, y_scaling: 1, z_scaling: 1,
+      } as SpatialPlacement): [];
+    }));
   }
 
   @Computed()
