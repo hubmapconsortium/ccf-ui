@@ -109,7 +109,7 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
           registrationCallbackSet: reg.useRegistrationCallback ? !!config.register : false,
           useCancelRegistrationCallback: !!config.cancelRegistration,
           user: iif(!!config.user, config.user!),
-          registrationStarted: config.user ? true : undefined
+          registrationStarted: config.user ?? reg.initialRegistration ? true : undefined
         }));
       })
     ).subscribe();
