@@ -1,12 +1,18 @@
 :host {
   display: block;
-  height: calc(100% - 3rem);
-  margin-top: 1.5rem;
+  height: calc(100% - 2.5rem);
+  margin-top: 1rem;
   margin-bottom: 1.5rem;
+
+  .info-button-container {
+    height: 3.75rem;
+    display: flex;
+    justify-content: flex-end;
+  }
 
   .scroll-wrapper {
     overflow-y: scroll;
-    height: calc(100% - 4rem);
+    height: calc(100% - 6rem);
 
     scrollbar-width: thin;
     &::-webkit-scrollbar {
@@ -17,21 +23,13 @@
       display: flex;
       flex-direction: column;
       min-height: 100%;
-      margin-left: 1.5rem;
-      margin-right: 0.375rem;
+      margin: 0 1.5rem;
 
       .review-button {
-        position: fixed;
-        bottom: 1.4rem;
-        right: 0.7rem;
-        width: 23rem;
+        position: absolute;
+        bottom: 1.5rem;
         z-index: 999;
-      }
-
-      .info-button-container {
-        height: 3.75rem;
-        display: flex;
-        justify-content: flex-end;
+        width: calc(100% - 3.5rem);
       }
 
       mat-divider {

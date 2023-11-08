@@ -3,12 +3,11 @@
   flex-direction: column;
   margin-right: 0;
   margin-left: 0;
-  max-height: 18rem;
+  max-height: 40vh;
   overflow-y: auto;
   scrollbar-width: thin;
 
   .icon {
-    padding: 0.25rem;
     border-radius: 0.25rem;
   }
 
@@ -18,7 +17,7 @@
     transition: .6s;
     position: absolute;
     top: 3rem;
-    
+
     &:hover {
       border-radius: 2px;
     }

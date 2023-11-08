@@ -1,8 +1,7 @@
 :host {
-
   display: block;
-  height: calc(100% - 3rem);
-  margin-top: 1.5rem;
+  height: calc(100% - 2.5rem);
+  margin-top: 1rem;
   margin-bottom: 1.5rem;
 
   .scroll-wrapper {
@@ -21,10 +20,6 @@
       margin-left: 1.5rem;
       margin-right: 0.375rem;
       min-height: 100%;
-
-      .space {
-        height: 3rem;
-      }
 
       mat-divider {
         border-top-width: 3px;
@@ -79,7 +74,8 @@
         .expansion-content {
           margin-bottom: 0.75rem;
           text-align: center;
-          margin-top: 2.25rem;
+          margin-top: 1.75rem;
+
           .expansion-placeholder {
             width: 100%;
             font-size: 0.9rem;
