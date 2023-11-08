@@ -1,16 +1,16 @@
 .filter {
   margin-top: 1.5rem;
 
-  &.hidden {
-    opacity: 0;
-    transition-duration: 0.2s;
-  }
-
   &.assays {
+    max-height: 6rem;
     .option {
       margin-right: 0 rem;
-      width: 25%
+      width: 25%;
     }
+  }
+
+  &.providers {
+    max-height: 16rem;
   }
 }
 
@@ -23,11 +23,6 @@
   button {
     border-width: 1px;
     border-style: solid;
-  }
-
-  &.hidden {
-    opacity: 0;
-    transition-duration: 0.2s;
   }
 
   .right-group {
@@ -63,12 +58,12 @@
   margin-left: 0.5rem;
   gap: 2rem;
 
-  &.hidden {
-    opacity: 0;
-    transition-duration: 0.2s;
-  }
-
   ccf-dual-slider {
     margin-left: .5rem;
   }
+}
+
+.hidden {
+  opacity: 0;
+  transition-duration: 0.2s;
 }
