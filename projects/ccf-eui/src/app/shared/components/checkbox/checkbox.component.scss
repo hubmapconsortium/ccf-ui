@@ -1,13 +1,11 @@
 .filter-label {
   margin-bottom: 0.5rem;
-  margin-left: 0.5rem;
   font-weight: bold;
   text-wrap: nowrap;
 }
 
 .options-container {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
 
   .option {
@@ -18,15 +16,13 @@
 
   &.three {
     .option {
-      width: 33%;
-      flex-grow: 0;
+      width: 14.375rem;
     }
   }
 
   &.six {
     .option {
       width: 16.5%;
-      flex-grow: 0;
     }
   }
 }
