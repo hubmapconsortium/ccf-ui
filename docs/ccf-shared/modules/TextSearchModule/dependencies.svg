@@ -24,10 +24,6 @@
 <title>cluster_TextSearchModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="63,-70 63,-268 433,-268 433,-70 63,-70"/>
 </g>
-<g id="clust5" class="cluster">
-<title>cluster_TextSearchModule_exports</title>
-<polygon fill="none" stroke="black" points="71,-208 71,-260 425,-260 425,-208 71,-208"/>
-</g>
 <g id="clust4" class="cluster">
 <title>cluster_TextSearchModule_imports</title>
 <polygon fill="none" stroke="black" points="254,-78 254,-130 412,-130 412,-78 254,-78"/>
@@ -35,6 +31,10 @@
 <g id="clust2" class="cluster">
 <title>cluster_TextSearchModule_declarations</title>
 <polygon fill="none" stroke="black" points="84,-78 84,-130 246,-130 246,-78 84,-78"/>
+</g>
+<g id="clust5" class="cluster">
+<title>cluster_TextSearchModule_exports</title>
+<polygon fill="none" stroke="black" points="71,-208 71,-260 425,-260 425,-208 71,-208"/>
 </g>
 <!-- TextSearchComponent -->
 <g id="node1" class="node">

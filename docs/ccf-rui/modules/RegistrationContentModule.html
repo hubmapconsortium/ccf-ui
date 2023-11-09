@@ -204,15 +204,16 @@
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CommonModule } from &#x27;@angular/common&#x27;;
 import { NgModule } from &#x27;@angular/core&#x27;;
+import { MatButtonModule } from &#x27;@angular/material/button&#x27;;
+import { MatTooltipModule } from &#x27;@angular/material/tooltip&#x27;;
 
 import { RegistrationMetadataModule } from &#x27;../../../shared/components/registration-metadata/registration-metadata.module&#x27;;
 import { RegistrationContentComponent } from &#x27;./registration-content.component&#x27;;
-import { MatTooltipModule } from &#x27;@angular/material/tooltip&#x27;;
 
 
 @NgModule({
   declarations: [RegistrationContentComponent],
-  imports: [CommonModule, MatTooltipModule, RegistrationMetadataModule],
+  imports: [CommonModule, MatTooltipModule, RegistrationMetadataModule, MatButtonModule],
   exports: [RegistrationContentComponent]
 })
 export class RegistrationContentModule { }

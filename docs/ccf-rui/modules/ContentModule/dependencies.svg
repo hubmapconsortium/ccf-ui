@@ -24,71 +24,71 @@
 <title>cluster_ContentModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="8,-70 8,-268 506,-268 506,-70 8,-70"/>
 </g>
-<g id="clust5" class="cluster">
-<title>cluster_ContentModule_exports</title>
-<polygon fill="none" stroke="black" points="193,-208 193,-260 339,-260 339,-208 193,-208"/>
+<g id="clust2" class="cluster">
+<title>cluster_ContentModule_declarations</title>
+<polygon fill="none" stroke="black" points="356,-78 356,-130 498,-130 498,-78 356,-78"/>
 </g>
 <g id="clust4" class="cluster">
 <title>cluster_ContentModule_imports</title>
-<polygon fill="none" stroke="black" points="166,-78 166,-130 498,-130 498,-78 166,-78"/>
+<polygon fill="none" stroke="black" points="16,-78 16,-130 348,-130 348,-78 16,-78"/>
 </g>
-<g id="clust2" class="cluster">
-<title>cluster_ContentModule_declarations</title>
-<polygon fill="none" stroke="black" points="16,-78 16,-130 158,-130 158,-78 16,-78"/>
+<g id="clust5" class="cluster">
+<title>cluster_ContentModule_exports</title>
+<polygon fill="none" stroke="black" points="210,-208 210,-260 356,-260 356,-208 210,-208"/>
 </g>
 <!-- ContentComponent -->
 <g id="node1" class="node">
 <title>ContentComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="149.67,-122 24.33,-122 24.33,-86 149.67,-86 149.67,-122"/>
-<text text-anchor="middle" x="87" y="-99.8" font-family="Times,serif" font-size="14.00">ContentComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="489.67,-122 364.33,-122 364.33,-86 489.67,-86 489.67,-122"/>
+<text text-anchor="middle" x="427" y="-99.8" font-family="Times,serif" font-size="14.00">ContentComponent</text>
 </g>
 <!-- ContentModule -->
 <g id="node2" class="node">
 <title>ContentModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="317.88,-187 314.88,-191 293.88,-191 290.88,-187 214.12,-187 214.12,-151 317.88,-151 317.88,-187"/>
-<text text-anchor="middle" x="266" y="-164.8" font-family="Times,serif" font-size="14.00">ContentModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="334.88,-187 331.88,-191 310.88,-191 307.88,-187 231.12,-187 231.12,-151 334.88,-151 334.88,-187"/>
+<text text-anchor="middle" x="283" y="-164.8" font-family="Times,serif" font-size="14.00">ContentModule</text>
 </g>
 <!-- ContentComponent&#45;&gt;ContentModule -->
 <g id="edge1" class="edge">
 <title>ContentComponent&#45;&gt;ContentModule</title>
-<path fill="none" stroke="black" d="M87,-122.11C87,-141.34 87,-169 87,-169 87,-169 203.74,-169 203.74,-169"/>
-<polygon fill="black" stroke="black" points="203.74,-172.5 213.74,-169 203.74,-165.5 203.74,-172.5"/>
+<path fill="none" stroke="black" d="M427,-122.11C427,-141.34 427,-169 427,-169 427,-169 344.99,-169 344.99,-169"/>
+<polygon fill="black" stroke="black" points="344.99,-165.5 334.99,-169 344.99,-172.5 344.99,-165.5"/>
 </g>
 <!-- ContentComponent  -->
 <g id="node5" class="node">
 <title>ContentComponent </title>
-<polygon fill="#fb8072" stroke="black" points="330.66,-252 201.34,-252 201.34,-216 330.66,-216 330.66,-252"/>
-<text text-anchor="middle" x="266" y="-229.8" font-family="Times,serif" font-size="14.00">ContentComponent </text>
+<polygon fill="#fb8072" stroke="black" points="347.66,-252 218.34,-252 218.34,-216 347.66,-216 347.66,-252"/>
+<text text-anchor="middle" x="283" y="-229.8" font-family="Times,serif" font-size="14.00">ContentComponent </text>
 </g>
 <!-- ContentModule&#45;&gt;ContentComponent  -->
 <g id="edge4" class="edge">
 <title>ContentModule&#45;&gt;ContentComponent </title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M266,-187.11C266,-187.11 266,-205.99 266,-205.99"/>
-<polygon fill="black" stroke="black" points="262.5,-205.99 266,-215.99 269.5,-205.99 262.5,-205.99"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M283,-187.11C283,-187.11 283,-205.99 283,-205.99"/>
+<polygon fill="black" stroke="black" points="279.5,-205.99 283,-215.99 286.5,-205.99 279.5,-205.99"/>
 </g>
 <!-- StageNavModule -->
 <g id="node3" class="node">
 <title>StageNavModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="489.97,-122 486.97,-126 465.97,-126 462.97,-122 376.03,-122 376.03,-86 489.97,-86 489.97,-122"/>
-<text text-anchor="middle" x="433" y="-99.8" font-family="Times,serif" font-size="14.00">StageNavModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="339.97,-122 336.97,-126 315.97,-126 312.97,-122 226.03,-122 226.03,-86 339.97,-86 339.97,-122"/>
+<text text-anchor="middle" x="283" y="-99.8" font-family="Times,serif" font-size="14.00">StageNavModule</text>
 </g>
 <!-- StageNavModule&#45;&gt;ContentModule -->
 <g id="edge2" class="edge">
 <title>StageNavModule&#45;&gt;ContentModule</title>
-<path fill="none" stroke="black" d="M433,-122.11C433,-141.34 433,-169 433,-169 433,-169 327.92,-169 327.92,-169"/>
-<polygon fill="black" stroke="black" points="327.92,-165.5 317.92,-169 327.92,-172.5 327.92,-165.5"/>
+<path fill="none" stroke="black" d="M283,-122.11C283,-122.11 283,-140.99 283,-140.99"/>
+<polygon fill="black" stroke="black" points="279.5,-140.99 283,-150.99 286.5,-140.99 279.5,-140.99"/>
 </g>
 <!-- VideoModalLauncherModule -->
 <g id="node4" class="node">
 <title>VideoModalLauncherModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="357.67,-122 354.67,-126 333.67,-126 330.67,-122 174.33,-122 174.33,-86 357.67,-86 357.67,-122"/>
-<text text-anchor="middle" x="266" y="-99.8" font-family="Times,serif" font-size="14.00">VideoModalLauncherModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="207.67,-122 204.67,-126 183.67,-126 180.67,-122 24.33,-122 24.33,-86 207.67,-86 207.67,-122"/>
+<text text-anchor="middle" x="116" y="-99.8" font-family="Times,serif" font-size="14.00">VideoModalLauncherModule</text>
 </g>
 <!-- VideoModalLauncherModule&#45;&gt;ContentModule -->
 <g id="edge3" class="edge">
 <title>VideoModalLauncherModule&#45;&gt;ContentModule</title>
-<path fill="none" stroke="black" d="M266,-122.11C266,-122.11 266,-140.99 266,-140.99"/>
-<polygon fill="black" stroke="black" points="262.5,-140.99 266,-150.99 269.5,-140.99 262.5,-140.99"/>
+<path fill="none" stroke="black" d="M116,-122.11C116,-141.34 116,-169 116,-169 116,-169 221.08,-169 221.08,-169"/>
+<polygon fill="black" stroke="black" points="221.08,-172.5 231.08,-169 221.08,-165.5 221.08,-172.5"/>
 </g>
 </g>
 </svg>

@@ -302,7 +302,7 @@
   OnInit,
 } from &#x27;@angular/core&#x27;;
 import { MatSnackBar } from &#x27;@angular/material/snack-bar&#x27;;
-import { GlobalConfigState, OrganInfo, TrackingPopupComponent } from &#x27;ccf-shared&#x27;;
+import { GlobalConfigState, TrackingPopupComponent } from &#x27;ccf-shared&#x27;;
 import { ConsentService } from &#x27;ccf-shared/analytics&#x27;;
 import { combineLatest, ReplaySubject, Subscription } from &#x27;rxjs&#x27;;
 
@@ -333,12 +333,6 @@ interface AppOptions extends GlobalConfig {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnDestroy, OnInit {
-  /** Organs to be displayed in the organ selector */
-  organList: OrganInfo[];
-
-  /** True if the organ selector drawer is open */
-  open &#x3D; true;
-
   /** False until the initial registration modal is closed */
   registrationStarted &#x3D; false;
 
@@ -372,11 +366,6 @@ export class AppComponent implements OnDestroy, OnInit {
   ) {
     theming.initialize(el, injector);
     this.subscriptions.add(
-      page.registrationCallbackSet$.subscribe((callbackSet) &#x3D;&gt; {
-        this.open &#x3D; !callbackSet;
-      })
-    );
-    this.subscriptions.add(
       page.registrationStarted$.subscribe((registrationStarted) &#x3D;&gt; {
         this.registrationStarted &#x3D; registrationStarted;
       })
@@ -389,9 +378,6 @@ export class AppComponent implements OnDestroy, OnInit {
     });
     this.globalConfig.getOption(&#x27;logoTooltip&#x27;).subscribe((tooltip: string) &#x3D;&gt; {
       this.logoTooltip &#x3D; tooltip;
-    });
-    this.page.organOptions$.subscribe((options: OrganInfo[]) &#x3D;&gt; {
-      this.organList &#x3D; options;
     });
 
     combineLatest([this.theme$, this.themeMode$]).subscribe(
