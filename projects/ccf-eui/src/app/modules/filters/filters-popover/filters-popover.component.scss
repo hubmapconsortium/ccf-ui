@@ -23,25 +23,23 @@
   transition: all 0.3s ease-in-out;
 
   .popup-body {
-    transition-delay: 0.2s;
     transition-duration: 0.2s;
   }
 
   &.visible {
-    padding: 2rem 2rem 2rem 1.5rem;
-    width: 52rem;
-    height: 36.75rem;
+    padding: 2rem;
+    width: 47.5rem;
     border-width: 1px;
 
     .popup-body {
       opacity: 1;
+      transition-delay: 0.4s;
     }
   }
 
   &.hidden {
     padding: 0;
     width: 0;
-    height: 0;
     transition-delay: 0.2s;
     pointer-events: none;
 
@@ -61,8 +59,4 @@
   padding: 0.5rem;
   border-radius: 0.25rem;
   transition: 0.6s;
-
-  .funnel {
-    // margin-top: 0.25rem;
-  }
 }

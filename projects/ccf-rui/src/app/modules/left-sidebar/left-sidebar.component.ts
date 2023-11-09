@@ -23,28 +23,11 @@ export class LeftSidebarComponent {
   /** HTML class name */
   @HostBinding('class') readonly clsName = 'ccf-left-sidebar';
 
-  @Input() disableSlider = false;
-
   /** Whether or not the initial registration modal has been closed */
   @Input() modalClosed = false;
 
-  readonly sexByLabel$ = this.model.sex$.pipe(
-    map(sex => sex === 'female' ? 'Female' : 'Male')
-  );
-
-  readonly sideByLabel$ = this.model.side$.pipe(
-    map(side => side === 'left' ? 'L' : 'R')
-  );
-
   readonly organSelected$ = this.model.organ$.pipe(
     map(organ => organ === undefined ? false : true)
-  );
-
-  readonly detailsLabels$: Observable<string[]> = combineLatest(
-    [this.model.organ$, this.model.side$, this.model.sex$]).pipe(
-    map(([organ, side, sex]) => [
-      this.capitalizeFirstLetter(organ?.organ), this.capitalizeFirstLetter(side as string), this.capitalizeFirstLetter(sex as string)
-    ])
   );
 
   /**
@@ -53,31 +36,11 @@ export class LeftSidebarComponent {
    */
   extractionSiteTooltip = '';
 
-  /**
-   * Keeps track of the previousVisibility items so we can set the opacity
-   * back to what it was before we changed them to 20%
-   */
-  previousVisibilityItems = [...this.model.snapshot.anatomicalStructures] as VisibilityItem[];
-
-  organList = RUI_ORGANS;
-
   constructor(
     readonly page: PageState,
     readonly model: ModelState,
     readonly registration: RegistrationState
   ) { }
-
-  /**
-   * Takes the input string and capitalizes the first letter.
-   * @param inputString The string we want to capitalize it's first letter.
-   * @returns string with first letter capitalized.
-   */
-  capitalizeFirstLetter(inputString: string): string {
-    if (inputString) {
-      return inputString.charAt(0).toUpperCase() + inputString.slice(1);
-    }
-    return inputString;
-  }
 
   /**
    * Updates extraction site tooltip to either the VisibilityItem passed in's
@@ -92,48 +55,5 @@ export class LeftSidebarComponent {
     } else {
       this.extractionSiteTooltip = '';
     }
-  }
-
-  /**
-   * Sets sex from sex toggle slider
-   *
-   * @param label Selected sex
-   */
-  setSexFromLabel(label: 'Female' | 'Male'): void {
-    this.model.setSex(label === 'Female' ? 'female' : 'male');
-  }
-
-  /**
-   * Sets side from side toggle slider
-   *
-   * @param label Selected side
-   */
-  setSideFromLabel(label: 'L' | 'R'): void {
-    this.model.setSide(label === 'L' ? 'left' : 'right');
-  }
-
-  /**
-   * Handles toggling previous registration blocks visibility.
-   * When making them visible, it updates current structures to 20%
-   * opacity; when making not visible it sets them back to their
-   * previous opacity.
-   *
-   * @param visible the state to set the visibility to.
-   */
-  togglePreviousRegistrationBlocks(visible: boolean): void {
-    if (visible) {
-      this.previousVisibilityItems = [...this.model.snapshot.anatomicalStructures];
-    }
-    this.model.toggleRegistrationBlocksVisibility(visible, this.previousVisibilityItems);
-  }
-
-  /**
-   * Event handler for capturing uploaded json and passing it along to
-   * the relevant registration state method.
-   *
-   * @param event the new registration state json
-   */
-  updateRegistration(event: SpatialEntityJsonLd): void {
-    this.registration.editRegistration(event);
   }
 }

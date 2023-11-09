@@ -1,3 +1,4 @@
+import { OrganInfo } from 'ccf-shared';
 import { of } from 'rxjs';
 import { Shallow } from 'shallow-render';
 
@@ -5,10 +6,8 @@ import { VisibilityItem } from '../../core/models/visibility-item';
 import { ModelState } from '../../core/store/model/model.state';
 import { PageState } from '../../core/store/page/page.state';
 import { RegistrationState } from '../../core/store/registration/registration.state';
-import { OrganInfo } from 'ccf-shared';
 import { LeftSidebarComponent } from './left-sidebar.component';
 import { LeftSidebarModule } from './left-sidebar.module';
-import { SpatialEntityJsonLd } from 'ccf-body-ui';
 
 const testVisibilityItems = [{ id: 1, name: 'test', opacity: 90 }] as VisibilityItem[];
 
@@ -46,13 +45,6 @@ describe('LeftSidebarComponent', () => {
       });
   });
 
-  it('should capitalize the first letter of the string', async () => {
-    const { instance } = await shallow.render();
-    const testString: string = 'testString';
-
-    const newString = instance.capitalizeFirstLetter(testString);
-    expect(newString).toEqual('TestString');
-  });
 
   it('should successfully set the extractionSiteTooltip to the VisibilityItem tooltip passed in', async () => {
     const { instance } = await shallow.render();
@@ -71,37 +63,5 @@ describe('LeftSidebarComponent', () => {
     const { instance } = await shallow.render();
     instance.updateExtractionSiteTooltip(undefined);
     expect(instance.extractionSiteTooltip).toEqual('');
-  });
-
-  it('should call model.toggleRegistrationBlocksVisibility whenever togglePreviousRegistrationBlocks is called', async () => {
-    const { instance } = await shallow.render();
-    instance.togglePreviousRegistrationBlocks(true);
-    instance.togglePreviousRegistrationBlocks(false);
-    expect(instance.model.toggleRegistrationBlocksVisibility).toHaveBeenCalledTimes(2);
-  });
-
-  it('should update the previousVisibilityItems variable if registrationBlocks are toggled to visible', async () => {
-    const { instance } = await shallow.render();
-    instance.togglePreviousRegistrationBlocks(true);
-    expect(instance.previousVisibilityItems).toEqual(testVisibilityItems);
-  });
-
-  it('should set the sex from label', async () => {
-    const { instance } = await shallow.render();
-    instance.setSexFromLabel('Female');
-    expect(instance.model.setSex).toHaveBeenCalledWith('female');
-  });
-
-  it('should set the side from label', async () => {
-    const { instance } = await shallow.render();
-    instance.setSideFromLabel('R');
-    expect(instance.model.setSide).toHaveBeenCalledWith('right');
-  });
-
-  it('should call the registration state method whenever update registration is called', async () => {
-    const { instance, inject } = await shallow.render();
-    const spy = inject(RegistrationState).editRegistration;
-    instance.updateRegistration({} as SpatialEntityJsonLd);
-    expect(spy).toHaveBeenCalled();
   });
 });
