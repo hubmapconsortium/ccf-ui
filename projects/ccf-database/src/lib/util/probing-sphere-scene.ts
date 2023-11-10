@@ -187,9 +187,9 @@ export function getProbingSphereScene(node: SpatialEntity, sphere?: SpatialSearc
         .scale(sphereConeRadius),
       color: green
     },
-    // Probing Sphere Positive Z Axis (E)
+    // Probing Sphere Positive Z Axis (Q)
     {
-      '@id': 'http://purl.org/ccf/latest/ccf.owl#ProbingsphereZE',
+      '@id': 'http://purl.org/ccf/latest/ccf.owl#ProbingsphereZQ',
       '@type': 'SpatialSceneNode',
       unpickable: true,
       geometry: 'cylinder',
@@ -200,7 +200,7 @@ export function getProbingSphereScene(node: SpatialEntity, sphere?: SpatialSearc
       color: blue
     },
     {
-      '@id': 'http://purl.org/ccf/latest/ccf.owl#ProbingsphereZECone',
+      '@id': 'http://purl.org/ccf/latest/ccf.owl#ProbingsphereZQCone',
       '@type': 'SpatialSceneNode',
       unpickable: true,
       geometry: 'cone',
@@ -211,19 +211,19 @@ export function getProbingSphereScene(node: SpatialEntity, sphere?: SpatialSearc
       color: blue
     },
     {
-      '@id': 'http://purl.org/ccf/latest/ccf.owl#ProbingsphereZELabel',
+      '@id': 'http://purl.org/ccf/latest/ccf.owl#ProbingsphereZQLabel',
       '@type': 'SpatialSceneNode',
       unpickable: true,
       geometry: 'text',
-      text: 'E',
+      text: 'Q',
       transformMatrix: new Matrix4(Matrix4.IDENTITY)
         .translate([sphere.x, sphere.y, sphere.z + sphere.radius + sphereLineLength + sphereConeRadius * 3])
         .scale(sphereConeRadius),
       color: blue
     },
-    // Probing Sphere Negative Z Axis (Q)
+    // Probing Sphere Negative Z Axis (E)
     {
-      '@id': 'http://purl.org/ccf/latest/ccf.owl#ProbingsphereZQ',
+      '@id': 'http://purl.org/ccf/latest/ccf.owl#ProbingsphereZE',
       '@type': 'SpatialSceneNode',
       unpickable: true,
       geometry: 'cylinder',
@@ -234,7 +234,7 @@ export function getProbingSphereScene(node: SpatialEntity, sphere?: SpatialSearc
       color: blue
     },
     {
-      '@id': 'http://purl.org/ccf/latest/ccf.owl#ProbingsphereZQCone',
+      '@id': 'http://purl.org/ccf/latest/ccf.owl#ProbingsphereZECone',
       '@type': 'SpatialSceneNode',
       unpickable: true,
       geometry: 'cone',
@@ -245,11 +245,11 @@ export function getProbingSphereScene(node: SpatialEntity, sphere?: SpatialSearc
       color: blue
     },
     {
-      '@id': 'http://purl.org/ccf/latest/ccf.owl#ProbingsphereZQLabel',
+      '@id': 'http://purl.org/ccf/latest/ccf.owl#ProbingsphereZELabel',
       '@type': 'SpatialSceneNode',
       unpickable: true,
       geometry: 'text',
-      text: 'Q',
+      text: 'E',
       transformMatrix: new Matrix4(Matrix4.IDENTITY)
         .translate([sphere.x, sphere.y, sphere.z - sphere.radius - sphereLineLength - sphereConeRadius * 3.5])
         .scale(sphereConeRadius),

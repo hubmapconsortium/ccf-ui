@@ -235,9 +235,9 @@ export function getTissueBlockScene(node: SpatialEntity, placement: SpatialPlace
         .scale(sphereConeRadius),
       color: green
     },
-    // Cube Positive Z Axis (E)
+    // Cube Positive Z Axis (Q)
     {
-      '@id': 'http://purl.org/ccf/latest/ccf.owl#CubeZE',
+      '@id': 'http://purl.org/ccf/latest/ccf.owl#CubeZQ',
       '@type': 'SpatialSceneNode',
       unpickable: true,
       geometry: 'cylinder',
@@ -248,7 +248,7 @@ export function getTissueBlockScene(node: SpatialEntity, placement: SpatialPlace
       color: blue
     },
     {
-      '@id': 'http://purl.org/ccf/latest/ccf.owl#CubeZECone',
+      '@id': 'http://purl.org/ccf/latest/ccf.owl#CubeZQCone',
       '@type': 'SpatialSceneNode',
       unpickable: true,
       geometry: 'cone',
@@ -259,19 +259,19 @@ export function getTissueBlockScene(node: SpatialEntity, placement: SpatialPlace
       color: blue
     },
     {
-      '@id': 'http://purl.org/ccf/latest/ccf.owl#CubeZELabel',
+      '@id': 'http://purl.org/ccf/latest/ccf.owl#CubeZQLabel',
       '@type': 'SpatialSceneNode',
       unpickable: true,
       geometry: 'text',
-      text: 'E',
+      text: 'Q',
       transformMatrix: new Matrix4(Matrix4.IDENTITY)
         .translate([cube.x, cube.y, cube.z + cube.radius + sphereLineLength + sphereConeRadius * 3])
         .scale(sphereConeRadius),
       color: blue
     },
-    // Cube Negative Z Axis (Q)
+    // Cube Negative Z Axis (E)
     {
-      '@id': 'http://purl.org/ccf/latest/ccf.owl#CubeZQ',
+      '@id': 'http://purl.org/ccf/latest/ccf.owl#CubeZE',
       '@type': 'SpatialSceneNode',
       unpickable: true,
       geometry: 'cylinder',
@@ -282,7 +282,7 @@ export function getTissueBlockScene(node: SpatialEntity, placement: SpatialPlace
       color: blue
     },
     {
-      '@id': 'http://purl.org/ccf/latest/ccf.owl#CubeZQCone',
+      '@id': 'http://purl.org/ccf/latest/ccf.owl#CubeZECone',
       '@type': 'SpatialSceneNode',
       unpickable: true,
       geometry: 'cone',
@@ -293,11 +293,11 @@ export function getTissueBlockScene(node: SpatialEntity, placement: SpatialPlace
       color: blue
     },
     {
-      '@id': 'http://purl.org/ccf/latest/ccf.owl#CubeZQLabel',
+      '@id': 'http://purl.org/ccf/latest/ccf.owl#CubeZELabel',
       '@type': 'SpatialSceneNode',
       unpickable: true,
       geometry: 'text',
-      text: 'Q',
+      text: 'E',
       transformMatrix: new Matrix4(Matrix4.IDENTITY)
         .translate([cube.x, cube.y, cube.z - cube.radius - sphereLineLength - sphereConeRadius * 3.5])
         .scale(sphereConeRadius),
