@@ -308,62 +308,60 @@ that array as a string, separated by commas, in the icon color.</p>
             </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="29"
-                            class="link-to-prism">projects/ccf-rui/src/app/shared/components/details-label/details-label.component.ts:29</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="29"
+                                    class="link-to-prism">projects/ccf-rui/src/app/shared/components/details-label/details-label.component.ts:29</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Function that handles converting the array given
+                        <div class="io-description"><p>Function that handles converting the array given
 into a formatted string for display.</p>
 </div>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                    <td>Description</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>inputArray</td>
-                                    <td>
-                                            <code>string[]</code>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>inputArray</td>
+                                            <td>
+                                                        <code>string[]</code>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                    <td>
-                                        <p>an array of strings to join.</p>
+                                            <td>
+                                                    <p>an array of strings to join.</p>
 
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 
-                    </div>
-                    <div class="io-description">
-                        <p>the formatted string of items separated by a comma.</p>
+                        </div>
+                            <div class="io-description">
+                                <p>the formatted string of items separated by a comma.</p>
 
-                    </div>
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -428,7 +426,7 @@ into a formatted string for display.</p>
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input, HostBinding, ChangeDetectionStrategy } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, Component, HostBinding, Input } from &#x27;@angular/core&#x27;;
 
 /**
  * Reusable component that takes an array of strings and renders
@@ -457,7 +455,7 @@ export class DetailsLabelComponent {
    * @returns the formatted string of items separated by a comma.
    */
   arrayToString(inputArray: string[]): string {
-    return inputArray.join(&#x27;, &#x27;);
+    return inputArray.filter(item &#x3D;&gt; !!item).join(&#x27;, &#x27;);
   }
 }
 </code></pre>
@@ -503,7 +501,7 @@ export class DetailsLabelComponent {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div>{{ arrayToString(details) }}</div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppWebComponent', 'selector': 'ccf-root-wc'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DetailsLabelComponent', 'selector': 'ccf-details-label'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'ExtractionSetDropdownComponent', 'selector': 'ccf-extraction-set-dropdown'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'JsonFileReaderComponent', 'selector': 'ccf-json-file-reader'},{'name': 'LabeledSlideToggleComponent', 'selector': 'ccf-labeled-slide-toggle'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'NameInputComponent', 'selector': 'ccf-name-input'},{'name': 'RegistrationContentComponent', 'selector': 'ccf-registration-content'},{'name': 'RegistrationModalComponent', 'selector': 'ccf-registration-modal'},{'name': 'ReviewButtonComponent', 'selector': 'ccf-review-button'},{'name': 'ReviewModalComponent', 'selector': 'ccf-review-modal'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'TagListComponent', 'selector': 'ccf-tag-list'},{'name': 'TagSearchComponent', 'selector': 'ccf-tag-search'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'VideoModalComponent', 'selector': 'ccf-video-modal'},{'name': 'VideoModalLauncherComponent', 'selector': 'ccf-video-modal-launcher'},{'name': 'VisibilityMenuComponent', 'selector': 'ccf-visibility-menu'},{'name': 'VisibilityToggleComponent', 'selector': 'ccf-visibility-toggle'}];
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppWebComponent', 'selector': 'ccf-root-wc'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DetailsLabelComponent', 'selector': 'ccf-details-label'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'ExtractionSetDropdownComponent', 'selector': 'ccf-extraction-set-dropdown'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'JsonFileReaderComponent', 'selector': 'ccf-json-file-reader'},{'name': 'LabeledSlideToggleComponent', 'selector': 'ccf-labeled-slide-toggle'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'NameInputComponent', 'selector': 'ccf-name-input'},{'name': 'RegistrationContentComponent', 'selector': 'ccf-registration-content'},{'name': 'RegistrationMetadataComponent', 'selector': 'ccf-registration-metadata'},{'name': 'RegistrationModalComponent', 'selector': 'ccf-registration-modal'},{'name': 'ReviewButtonComponent', 'selector': 'ccf-review-button'},{'name': 'ReviewModalComponent', 'selector': 'ccf-review-modal'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'TagListComponent', 'selector': 'ccf-tag-list'},{'name': 'TagSearchComponent', 'selector': 'ccf-tag-search'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'VideoModalComponent', 'selector': 'ccf-video-modal'},{'name': 'VideoModalLauncherComponent', 'selector': 'ccf-video-modal-launcher'},{'name': 'VisibilityMenuComponent', 'selector': 'ccf-visibility-menu'},{'name': 'VisibilityToggleComponent', 'selector': 'ccf-visibility-toggle'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'DetailsLabelComponent'};
 </script>

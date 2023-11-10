@@ -87,7 +87,7 @@
                 <h3>Extends</h3>
             </p>
             <p class="comment">
-                        <code><a href="../interfaces/ListResultItem.html" target="_self" >ListResultItem</a></code>
+                            <code><a href="../interfaces/ListResultItem.html" target="_self" >ListResultItem</a></code>
             </p>
 
         <section data-compodoc="block-index">
@@ -641,7 +641,9 @@ export interface Filter {
   ageRange: [number, number];
   /** BMI range */
   bmiRange: [number, number];
-  /** TMC */
+  /** Consortiums */
+  consortiums: string[];
+  /** Tissue Providers */
   tmc: string[];
   /** Technologies */
   technologies: string[];
@@ -649,6 +651,8 @@ export interface Filter {
   ontologyTerms: string[];
   /** CellType terms */
   cellTypeTerms: string[];
+  /** Biomarker terms */
+  biomarkerTerms: string[];
   /** spatial search */
   spatialSearches: SpatialSearch[];
   /** Include optional debugging information */

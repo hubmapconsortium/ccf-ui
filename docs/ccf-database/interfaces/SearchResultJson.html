@@ -71,7 +71,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>projects/ccf-database/src/lib/hubmap/hubmap-data-import.ts</code>
+            <code>projects/ccf-database/src/lib/xconsortia/xconsortia-data-import.ts</code>
         </p>
 
 
@@ -145,10 +145,7 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { JsonLd } from &#x27;jsonld/jsonld-spec&#x27;;
-import { addJsonLdToStore, Store } from &#x27;triple-store-utils&#x27;;
-
-import { hubmapResponseAsJsonLd } from &#x27;./hubmap-data&#x27;;
-
+import { xConsortiaResponseAsJsonLd } from &#x27;./xconsortia-data&#x27;;
 
 interface SearchResultJson {
   hits: {
@@ -159,25 +156,16 @@ interface SearchResultJson {
   };
 }
 
-
 // Reduce this value if including more data fields
 const PER_API_SEARCH_REQUEST_COUNT &#x3D; 10000;
 
 const INCLUDED_DATA_FIELDS &#x3D; [
   &#x27;uuid&#x27;, &#x27;entity_type&#x27;,
+  &#x27;hubmap_id&#x27;, &#x27;sennet_id&#x27;,
   &#x27;group_uuid&#x27;, &#x27;group_name&#x27;,
   &#x27;last_modified_timestamp&#x27;, &#x27;created_by_user_displayname&#x27;,
-  &#x27;ancestors.entity_type&#x27;,
-  &#x27;ancestors.description&#x27;,
-  &#x27;ancestors.metadata.organ_donor_data.preferred_term&#x27;,
-  &#x27;ancestors.metadata.organ_donor_data.data_value&#x27;,
-  &#x27;ancestors.metadata.living_donor_data.preferred_term&#x27;,
-  &#x27;ancestors.metadata.living_donor_data.data_value&#x27;,
-  &#x27;ancestors.last_modified_timestamp&#x27;,
-  &#x27;ancestors.group_uuid&#x27;,
-  &#x27;ancestors.group_name&#x27;,
-  &#x27;ancestors.created_by_user_displayname&#x27;,
-  &#x27;ancestors.uuid&#x27;,
+  &#x27;donor&#x27;,
+  &#x27;source&#x27;,
   &#x27;descendants.entity_type&#x27;,
   &#x27;descendants.ingest_metadata.metadata.tissue_id&#x27;,
   &#x27;descendants.last_modified_timestamp&#x27;,
@@ -185,6 +173,8 @@ const INCLUDED_DATA_FIELDS &#x3D; [
   &#x27;descendants.group_name&#x27;,
   &#x27;descendants.created_by_user_displayname&#x27;,
   &#x27;descendants.uuid&#x27;,
+  &#x27;descendants.hubmap_id&#x27;,
+  &#x27;descendants.sennet_id&#x27;,
   &#x27;descendants.data_types&#x27;,
   &#x27;descendants.ingest_metadata.metadata.assay_type&#x27;,
   &#x27;descendants.thumbnail_file&#x27;,
@@ -287,19 +277,19 @@ async function doApiSearch(
 }
 
 /**
- * Search the HuBMAP Search API and return CCF-compatible JSON-LD data
+ * Search the X Atlas Consortium Search API and return HRA-compatible JSON-LD data
  *
  * @param dataUrl the search API url
  * @param serviceType &#x27;static&#x27; if a statically saved response or &#x27;search-api&#x27; if querying the search-api live
  * @param query the elastic search query to use
  * @param serviceToken the api key to the search-api
- * @param assetsApi the assets api endpoint
- * @param portalUrl the portal url to point to
+ * @param assetsApi the assets api endpoint (deprecated)
+ * @param portalUrl the portal url to point to (deprecated)
  * @returns CCF-compatible JSON-LD data or undefined on error
  */
-export async function searchHubmap(
+export async function searchXConsortia(
   dataUrl: string, serviceType: &#x27;static&#x27; | &#x27;search-api&#x27;,
-  query?: unknown, serviceToken?: string, assetsApi &#x3D; &#x27;&#x27;, portalUrl &#x3D; &#x27;&#x27;
+  query?: unknown, serviceToken?: string, _assetsApi &#x3D; &#x27;&#x27;, _portalUrl &#x3D; &#x27;&#x27;
 ): Promise&lt;JsonLd | undefined&gt; {
   let hubmapData: SearchResultJson | undefined;
   if (serviceType &#x3D;&#x3D;&#x3D; &#x27;static&#x27;) {
@@ -309,26 +299,10 @@ export async function searchHubmap(
   }
 
   if (hubmapData) {
-    return hubmapResponseAsJsonLd(hubmapData, assetsApi, portalUrl, serviceToken);
+    return xConsortiaResponseAsJsonLd(hubmapData, serviceToken);
   } else {
-    console.warn(&#x60;Unable to load ${dataUrl} as HuBMAP Data&#x60;);
+    console.warn(&#x60;Unable to load ${dataUrl}&#x60;);
     return undefined;
-  }
-}
-
-/**
- * Adds hubmap data from a url to the triple store.
- *
- * @param store The triple store.
- * @param dataUrl The data url.
- * @param serviceType The service type.
- */
-export async function addHubmapDataToStore(
-  store: Store, dataUrl: string, serviceType: &#x27;static&#x27; | &#x27;search-api&#x27;, serviceToken?: string, assetsApi &#x3D; &#x27;&#x27;, portalUrl &#x3D; &#x27;&#x27;
-): Promise&lt;void&gt; {
-  const hubmapData &#x3D; await searchHubmap(dataUrl, serviceType, undefined, serviceToken, assetsApi, portalUrl);
-  if (hubmapData) {
-    await addJsonLdToStore(hubmapData, store);
   }
 }
 </code></pre>

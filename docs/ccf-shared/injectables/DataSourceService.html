@@ -90,6 +90,14 @@
                             </li>
                             <li>
                                     <span class="modifier">Abstract</span>
+                                <a href="#getBiomarkerTermOccurences" >getBiomarkerTermOccurences</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Abstract</span>
+                                <a href="#getBiomarkerTreeModel" >getBiomarkerTreeModel</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Abstract</span>
                                 <a href="#getCellTypeTermOccurences" >getCellTypeTermOccurences</a>
                             </li>
                             <li>
@@ -156,7 +164,7 @@
                 <td class="col-md-4">
                     <a name="getAggregateResults"></a>
                     <span class="name">
-                        <span class="modifier">Abstract</span>
+                            <span class="modifier">Abstract</span>
                         <span ><b>getAggregateResults</b></span>
                         <a href="#getAggregateResults"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -164,59 +172,165 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
+                        <span class="modifier-icon icon ion-ios-reset"></span>
                     <code>getAggregateResults(filter?: Filter)</code>
                 </td>
             </tr>
 
 
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="21"
+                                    class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/data-source.service.ts:21</a></div>
+                        </td>
+                    </tr>
+
+
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="20"
-                            class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/data-source.service.ts:20</a></div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>filter</td>
+                                            <td>
+                                                        <code>Filter</code>
+                                            </td>
+
+                                            <td>
+                                                    Yes
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Observable&lt;AggregateResult[]&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getBiomarkerTermOccurences"></a>
+                    <span class="name">
+                            <span class="modifier">Abstract</span>
+                        <span ><b>getBiomarkerTermOccurences</b></span>
+                        <a href="#getBiomarkerTermOccurences"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getBiomarkerTermOccurences(filter?: Filter)</code>
                 </td>
             </tr>
 
 
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="24"
+                                    class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/data-source.service.ts:24</a></div>
+                        </td>
+                    </tr>
+
+
             <tr>
                 <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>filter</td>
-                                    <td>
-                                            <code>Filter</code>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>filter</td>
+                                            <td>
+                                                        <code>Filter</code>
+                                            </td>
 
-                                    <td>
-                                        Yes
-                                    </td>
+                                            <td>
+                                                    Yes
+                                            </td>
 
 
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Observable&lt;AggregateResult[]&gt;</code>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Observable&lt;Record&lt;string, number&gt;&gt;</code>
 
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getBiomarkerTreeModel"></a>
+                    <span class="name">
+                            <span class="modifier">Abstract</span>
+                        <span ><b>getBiomarkerTreeModel</b></span>
+                        <a href="#getBiomarkerTreeModel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getBiomarkerTreeModel()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="17"
+                                    class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/data-source.service.ts:17</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Observable&lt;OntologyTreeModel&gt;</code>
+
+                        </div>
                 </td>
             </tr>
         </tbody>
@@ -227,7 +341,7 @@
                 <td class="col-md-4">
                     <a name="getCellTypeTermOccurences"></a>
                     <span class="name">
-                        <span class="modifier">Abstract</span>
+                            <span class="modifier">Abstract</span>
                         <span ><b>getCellTypeTermOccurences</b></span>
                         <a href="#getCellTypeTermOccurences"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -235,59 +349,57 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
+                        <span class="modifier-icon icon ion-ios-reset"></span>
                     <code>getCellTypeTermOccurences(filter?: Filter)</code>
                 </td>
             </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="22"
-                            class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/data-source.service.ts:22</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="23"
+                                    class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/data-source.service.ts:23</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>filter</td>
-                                    <td>
-                                            <code>Filter</code>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>filter</td>
+                                            <td>
+                                                        <code>Filter</code>
+                                            </td>
 
-                                    <td>
-                                        Yes
-                                    </td>
+                                            <td>
+                                                    Yes
+                                            </td>
 
 
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Observable&lt;Record&lt;string, number&gt;&gt;</code>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Observable&lt;Record&lt;string, number&gt;&gt;</code>
 
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -298,7 +410,7 @@
                 <td class="col-md-4">
                     <a name="getCellTypeTreeModel"></a>
                     <span class="name">
-                        <span class="modifier">Abstract</span>
+                            <span class="modifier">Abstract</span>
                         <span ><b>getCellTypeTreeModel</b></span>
                         <a href="#getCellTypeTreeModel"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -306,27 +418,27 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
+                        <span class="modifier-icon icon ion-ios-reset"></span>
                     <code>getCellTypeTreeModel()</code>
                 </td>
             </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="16"
-                            class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/data-source.service.ts:16</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="16"
+                                    class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/data-source.service.ts:16</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Observable&lt;OntologyTreeModel&gt;</code>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Observable&lt;OntologyTreeModel&gt;</code>
 
-                    </div>
+                        </div>
                 </td>
             </tr>
         </tbody>
@@ -337,7 +449,7 @@
                 <td class="col-md-4">
                     <a name="getDatabaseStatus"></a>
                     <span class="name">
-                        <span class="modifier">Abstract</span>
+                            <span class="modifier">Abstract</span>
                         <span ><b>getDatabaseStatus</b></span>
                         <a href="#getDatabaseStatus"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -345,27 +457,27 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
+                        <span class="modifier-icon icon ion-ios-reset"></span>
                     <code>getDatabaseStatus()</code>
                 </td>
             </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="12"
-                            class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/data-source.service.ts:12</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="12"
+                                    class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/data-source.service.ts:12</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Observable&lt;DatabaseStatus&gt;</code>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Observable&lt;DatabaseStatus&gt;</code>
 
-                    </div>
+                        </div>
                 </td>
             </tr>
         </tbody>
@@ -376,7 +488,7 @@
                 <td class="col-md-4">
                     <a name="getDatasetTechnologyNames"></a>
                     <span class="name">
-                        <span class="modifier">Abstract</span>
+                            <span class="modifier">Abstract</span>
                         <span ><b>getDatasetTechnologyNames</b></span>
                         <a href="#getDatasetTechnologyNames"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -384,27 +496,27 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
+                        <span class="modifier-icon icon ion-ios-reset"></span>
                     <code>getDatasetTechnologyNames()</code>
                 </td>
             </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="14"
-                            class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/data-source.service.ts:14</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="14"
+                                    class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/data-source.service.ts:14</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Observable&lt;string[]&gt;</code>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Observable&lt;string[]&gt;</code>
 
-                    </div>
+                        </div>
                 </td>
             </tr>
         </tbody>
@@ -415,7 +527,7 @@
                 <td class="col-md-4">
                     <a name="getOntologyTermOccurences"></a>
                     <span class="name">
-                        <span class="modifier">Abstract</span>
+                            <span class="modifier">Abstract</span>
                         <span ><b>getOntologyTermOccurences</b></span>
                         <a href="#getOntologyTermOccurences"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -423,59 +535,57 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
+                        <span class="modifier-icon icon ion-ios-reset"></span>
                     <code>getOntologyTermOccurences(filter?: Filter)</code>
                 </td>
             </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="21"
-                            class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/data-source.service.ts:21</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="22"
+                                    class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/data-source.service.ts:22</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>filter</td>
-                                    <td>
-                                            <code>Filter</code>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>filter</td>
+                                            <td>
+                                                        <code>Filter</code>
+                                            </td>
 
-                                    <td>
-                                        Yes
-                                    </td>
+                                            <td>
+                                                    Yes
+                                            </td>
 
 
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Observable&lt;Record&lt;string, number&gt;&gt;</code>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Observable&lt;Record&lt;string, number&gt;&gt;</code>
 
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -486,7 +596,7 @@
                 <td class="col-md-4">
                     <a name="getOntologyTreeModel"></a>
                     <span class="name">
-                        <span class="modifier">Abstract</span>
+                            <span class="modifier">Abstract</span>
                         <span ><b>getOntologyTreeModel</b></span>
                         <a href="#getOntologyTreeModel"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -494,27 +604,27 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
+                        <span class="modifier-icon icon ion-ios-reset"></span>
                     <code>getOntologyTreeModel()</code>
                 </td>
             </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="15"
-                            class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/data-source.service.ts:15</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="15"
+                                    class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/data-source.service.ts:15</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Observable&lt;OntologyTreeModel&gt;</code>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Observable&lt;OntologyTreeModel&gt;</code>
 
-                    </div>
+                        </div>
                 </td>
             </tr>
         </tbody>
@@ -525,7 +635,7 @@
                 <td class="col-md-4">
                     <a name="getProviderNames"></a>
                     <span class="name">
-                        <span class="modifier">Abstract</span>
+                            <span class="modifier">Abstract</span>
                         <span ><b>getProviderNames</b></span>
                         <a href="#getProviderNames"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -533,27 +643,27 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
+                        <span class="modifier-icon icon ion-ios-reset"></span>
                     <code>getProviderNames()</code>
                 </td>
             </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="13"
-                            class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/data-source.service.ts:13</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="13"
+                                    class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/data-source.service.ts:13</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Observable&lt;string[]&gt;</code>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Observable&lt;string[]&gt;</code>
 
-                    </div>
+                        </div>
                 </td>
             </tr>
         </tbody>
@@ -564,7 +674,7 @@
                 <td class="col-md-4">
                     <a name="getReferenceOrgans"></a>
                     <span class="name">
-                        <span class="modifier">Abstract</span>
+                            <span class="modifier">Abstract</span>
                         <span ><b>getReferenceOrgans</b></span>
                         <a href="#getReferenceOrgans"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -572,27 +682,27 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
+                        <span class="modifier-icon icon ion-ios-reset"></span>
                     <code>getReferenceOrgans()</code>
                 </td>
             </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="17"
-                            class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/data-source.service.ts:17</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="18"
+                                    class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/data-source.service.ts:18</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Observable&lt;SpatialEntity[]&gt;</code>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Observable&lt;SpatialEntity[]&gt;</code>
 
-                    </div>
+                        </div>
                 </td>
             </tr>
         </tbody>
@@ -603,7 +713,7 @@
                 <td class="col-md-4">
                     <a name="getReferenceOrganScene"></a>
                     <span class="name">
-                        <span class="modifier">Abstract</span>
+                            <span class="modifier">Abstract</span>
                         <span ><b>getReferenceOrganScene</b></span>
                         <a href="#getReferenceOrganScene"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -611,71 +721,69 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
+                        <span class="modifier-icon icon ion-ios-reset"></span>
                     <code>getReferenceOrganScene(organIri: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, filter?: Filter)</code>
                 </td>
             </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="24"
-                            class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/data-source.service.ts:24</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="26"
+                                    class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/data-source.service.ts:26</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>organIri</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>organIri</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                                <tr>
-                                    <td>filter</td>
-                                    <td>
-                                            <code>Filter</code>
-                                    </td>
-
-                                    <td>
-                                        Yes
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Observable&lt;SpatialSceneNode[]&gt;</code>
+                                        </tr>
+                                        <tr>
+                                                <td>filter</td>
+                                            <td>
+                                                        <code>Filter</code>
+                                            </td>
 
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
+                                            <td>
+                                                    Yes
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Observable&lt;SpatialSceneNode[]&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -686,7 +794,7 @@
                 <td class="col-md-4">
                     <a name="getScene"></a>
                     <span class="name">
-                        <span class="modifier">Abstract</span>
+                            <span class="modifier">Abstract</span>
                         <span ><b>getScene</b></span>
                         <a href="#getScene"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -694,59 +802,57 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
+                        <span class="modifier-icon icon ion-ios-reset"></span>
                     <code>getScene(filter?: Filter)</code>
                 </td>
             </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="23"
-                            class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/data-source.service.ts:23</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="25"
+                                    class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/data-source.service.ts:25</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>filter</td>
-                                    <td>
-                                            <code>Filter</code>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>filter</td>
+                                            <td>
+                                                        <code>Filter</code>
+                                            </td>
 
-                                    <td>
-                                        Yes
-                                    </td>
+                                            <td>
+                                                    Yes
+                                            </td>
 
 
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Observable&lt;SpatialSceneNode[]&gt;</code>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Observable&lt;SpatialSceneNode[]&gt;</code>
 
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -757,7 +863,7 @@
                 <td class="col-md-4">
                     <a name="getTissueBlockResults"></a>
                     <span class="name">
-                        <span class="modifier">Abstract</span>
+                            <span class="modifier">Abstract</span>
                         <span ><b>getTissueBlockResults</b></span>
                         <a href="#getTissueBlockResults"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -765,59 +871,57 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
+                        <span class="modifier-icon icon ion-ios-reset"></span>
                     <code>getTissueBlockResults(filter?: Filter)</code>
                 </td>
             </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="19"
-                            class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/data-source.service.ts:19</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="20"
+                                    class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/data-source.service.ts:20</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>filter</td>
-                                    <td>
-                                            <code>Filter</code>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>filter</td>
+                                            <td>
+                                                        <code>Filter</code>
+                                            </td>
 
-                                    <td>
-                                        Yes
-                                    </td>
+                                            <td>
+                                                    Yes
+                                            </td>
 
 
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Observable&lt;TissueBlockResult[]&gt;</code>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Observable&lt;TissueBlockResult[]&gt;</code>
 
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -844,12 +948,14 @@ export abstract class DataSourceService implements DataSource {
   abstract getDatasetTechnologyNames(): Observable&lt;string[]&gt;;
   abstract getOntologyTreeModel(): Observable&lt;OntologyTreeModel&gt;;
   abstract getCellTypeTreeModel(): Observable&lt;OntologyTreeModel&gt;;
+  abstract getBiomarkerTreeModel(): Observable&lt;OntologyTreeModel&gt;;
   abstract getReferenceOrgans(): Observable&lt;SpatialEntity[]&gt;;
 
   abstract getTissueBlockResults(filter?: Filter): Observable&lt;TissueBlockResult[]&gt;;
   abstract getAggregateResults(filter?: Filter): Observable&lt;AggregateResult[]&gt;;
   abstract getOntologyTermOccurences(filter?: Filter): Observable&lt;Record&lt;string, number&gt;&gt;;
   abstract getCellTypeTermOccurences(filter?: Filter): Observable&lt;Record&lt;string, number&gt;&gt;;
+  abstract getBiomarkerTermOccurences(filter?: Filter): Observable&lt;Record&lt;string, number&gt;&gt;;
   abstract getScene(filter?: Filter): Observable&lt;SpatialSceneNode[]&gt;;
   abstract getReferenceOrganScene(organIri: string, filter?: Filter): Observable&lt;SpatialSceneNode[]&gt;;
 }

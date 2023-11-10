@@ -115,61 +115,59 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Adds data from json ld to the store.
+                        <div class="io-description"><p>Adds data from json ld to the store.
 Accepts either a json object or a uri to load data from.</p>
 </div>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Optional</td>
-                                    <td>Description</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>uri</td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>uri</td>
 
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                    <td>
-                                        <p>A data uri or a json object.</p>
-
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>store</td>
-
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                    <td>
-                                        <p>The store to add data to.</p>
+                                            <td>
+                                                    <p>A data uri or a json object.</p>
 
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Promise&lt;RDF.Sink&lt;EventEmitter, EventEmitter&gt;&gt;</code>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>store</td>
 
-                    </div>
-                    <div class="io-description">
-                        <p>A promise that resolves when the data has been added.</p>
+                                            <td>
+                                                    No
+                                            </td>
 
-                    </div>
+
+                                            <td>
+                                                    <p>The store to add data to.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;RDF.Sink&lt;EventEmitter, EventEmitter&gt;&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>A promise that resolves when the data has been added.</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -196,61 +194,59 @@ Accepts either a json object or a uri to load data from.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Adds data from an n3 file to the store.
+                        <div class="io-description"><p>Adds data from an n3 file to the store.
 Accepts either a n3-formatted string or a uri to load data from.</p>
 </div>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Optional</td>
-                                    <td>Description</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>uri</td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>uri</td>
 
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                    <td>
-                                        <p>A data uri or an n3-formatted string.</p>
-
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>store</td>
-
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                    <td>
-                                        <p>The store to add data to.</p>
+                                            <td>
+                                                    <p>A data uri or an n3-formatted string.</p>
 
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Promise&lt;RDF.Sink&lt;EventEmitter, EventEmitter&gt;&gt;</code>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>store</td>
 
-                    </div>
-                    <div class="io-description">
-                        <p>A promise that resolves when the data has been added.</p>
+                                            <td>
+                                                    No
+                                            </td>
 
-                    </div>
+
+                                            <td>
+                                                    <p>The store to add data to.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;RDF.Sink&lt;EventEmitter, EventEmitter&gt;&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>A promise that resolves when the data has been added.</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -277,67 +273,65 @@ Accepts either a n3-formatted string or a uri to load data from.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Adds data from rdf xml to the store.
+                        <div class="io-description"><p>Adds data from rdf xml to the store.
 Accepts either a xml-formatted string or a uri to load data from.</p>
 </div>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                    <td>Description</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>uri</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>uri</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                    <td>
-                                        <p>A data uri or an xml-formatted string to load data from.</p>
-
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>store</td>
-                                    <td>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                    <td>
-                                        <p>The store to add data to</p>
+                                            <td>
+                                                    <p>A data uri or an xml-formatted string to load data from.</p>
 
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Promise&lt;RDF.Sink&lt;EventEmitter, EventEmitter&gt;&gt;</code>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>store</td>
+                                            <td>
+                                            </td>
 
-                    </div>
-                    <div class="io-description">
-                        <p>A promise that resolves when the data has been added.</p>
+                                            <td>
+                                                    No
+                                            </td>
 
-                    </div>
+
+                                            <td>
+                                                    <p>The store to add data to</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;RDF.Sink&lt;EventEmitter, EventEmitter&gt;&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>A promise that resolves when the data has been added.</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -364,47 +358,45 @@ Accepts either a xml-formatted string or a uri to load data from.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Turns an array into a readable stream.</p>
+                        <div class="io-description"><p>Turns an array into a readable stream.</p>
 </div>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Optional</td>
-                                    <td>Description</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>arr</td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>arr</td>
 
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                    <td>
-                                        <p>The values.</p>
+                                            <td>
+                                                    <p>The values.</p>
 
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Readable</code>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Readable</code>
 
-                    </div>
-                    <div class="io-description">
-                        <p>A new readable stream emitting the values from the array.</p>
+                        </div>
+                            <div class="io-description">
+                                <p>A new readable stream emitting the values from the array.</p>
 
-                    </div>
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -432,53 +424,51 @@ Accepts either a xml-formatted string or a uri to load data from.</p>
             <tr>
                 <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>serializedStore</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>serializedStore</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                                <tr>
-                                    <td>factory</td>
-                                    <td>
-                                    </td>
-
-                                    <td>
-                                        Yes
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Store</code>
+                                        </tr>
+                                        <tr>
+                                                <td>factory</td>
+                                            <td>
+                                            </td>
 
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
+                                            <td>
+                                                    Yes
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Store</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -506,90 +496,88 @@ Accepts either a xml-formatted string or a uri to load data from.</p>
             <tr>
                 <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>store</td>
-                                    <td>
-                                            <code>Store</code>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>store</td>
+                                            <td>
+                                                        <code>Store</code>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                                <tr>
-                                    <td>subject</td>
-                                    <td>
-                                                <code><a href="../miscellaneous/typealiases.html#OTerm" target="_self" >OTerm</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                </tr>
-                                <tr>
-                                    <td>predicate</td>
-                                    <td>
-                                                <code><a href="../miscellaneous/typealiases.html#OTerm" target="_self" >OTerm</a></code>
-                                    </td>
+                                        </tr>
+                                        <tr>
+                                                <td>subject</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#OTerm" target="_self" >OTerm</a></code>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                                <tr>
-                                    <td>object</td>
-                                    <td>
-                                                <code><a href="../miscellaneous/typealiases.html#OTerm" target="_self" >OTerm</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                </tr>
-                                <tr>
-                                    <td>graph</td>
-                                    <td>
-                                                <code><a href="../miscellaneous/typealiases.html#OTerm" target="_self" >OTerm</a></code>
-                                    </td>
+                                        </tr>
+                                        <tr>
+                                                <td>predicate</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#OTerm" target="_self" >OTerm</a></code>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Generator&lt;Quad&gt;</code>
+                                        </tr>
+                                        <tr>
+                                                <td>object</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#OTerm" target="_self" >OTerm</a></code>
+                                            </td>
 
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>graph</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#OTerm" target="_self" >OTerm</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Generator&lt;Quad&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -617,42 +605,40 @@ Accepts either a xml-formatted string or a uri to load data from.</p>
             <tr>
                 <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>store</td>
-                                    <td>
-                                            <code>Store</code>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>store</td>
+                                            <td>
+                                                        <code>Store</code>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -679,51 +665,49 @@ Accepts either a xml-formatted string or a uri to load data from.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Turns a stream of values into an array.</p>
+                        <div class="io-description"><p>Turns a stream of values into an array.</p>
 </div>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                    <td>Description</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>readStream</td>
-                                    <td>
-                                            <code>EventEmitter</code>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>readStream</td>
+                                            <td>
+                                                        <code>EventEmitter</code>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                    <td>
-                                        <p>The input stream.</p>
+                                            <td>
+                                                    <p>The input stream.</p>
 
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Promise&lt;T[]&gt;</code>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;T[]&gt;</code>
 
-                    </div>
-                    <div class="io-description">
-                        <p>A promise that resolves to an array of values when the stream completes.</p>
+                        </div>
+                            <div class="io-description">
+                                <p>A promise that resolves to an array of values when the stream completes.</p>
 
-                    </div>
+                            </div>
                 </td>
             </tr>
         </tbody>

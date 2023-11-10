@@ -536,7 +536,9 @@ export interface Filter {
   ageRange: [number, number];
   /** BMI range */
   bmiRange: [number, number];
-  /** TMC */
+  /** Consortiums */
+  consortiums: string[];
+  /** Tissue Providers */
   tmc: string[];
   /** Technologies */
   technologies: string[];
@@ -544,6 +546,8 @@ export interface Filter {
   ontologyTerms: string[];
   /** CellType terms */
   cellTypeTerms: string[];
+  /** Biomarker terms */
+  biomarkerTerms: string[];
   /** spatial search */
   spatialSearches: SpatialSearch[];
   /** Include optional debugging information */

@@ -80,7 +80,7 @@
                 <h3>Extends</h3>
             </p>
             <p class="comment">
-                    <code>NgxsDataRepository</code>
+                        <code>NgxsDataRepository</code>
             </p>
 
 
@@ -100,6 +100,11 @@
                                     <span class="modifier">Private</span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#_aggregateDataQueryStatus$" >_aggregateDataQueryStatus$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#_biomarkerTermOccurencesDataQueryStatus$" >_biomarkerTermOccurencesDataQueryStatus$</a>
                             </li>
                             <li>
                                     <span class="modifier">Private</span>
@@ -138,6 +143,18 @@
                             <li>
                                     <span class="modifier">Readonly</span>
                                 <a href="#aggregateDataQueryStatus$" >aggregateDataQueryStatus$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#biomarkerTermOccurencesData$" >biomarkerTermOccurencesData$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#biomarkerTermOccurencesDataQueryStatus$" >biomarkerTermOccurencesDataQueryStatus$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#biomarkerTermsFullData$" >biomarkerTermsFullData$</a>
                             </li>
                             <li>
                                     <span class="modifier">Readonly</span>
@@ -227,6 +244,11 @@
                             <li>
                                     <span class="modifier"></span>
                                     <span class="modifier">Private</span>
+                                <a href="#biomarkerTermOccurencesData" >biomarkerTermOccurencesData</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Private</span>
                                 <a href="#cellTypeTermOccurencesData" >cellTypeTermOccurencesData</a>
                             </li>
                             <li>
@@ -260,6 +282,10 @@
                             <li>
                                     <span class="modifier"></span>
                                 <a href="#updateAnatomicalStructuresTreeModel" >updateAnatomicalStructuresTreeModel</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#updateBiomarkersTreeModel" >updateBiomarkersTreeModel</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
@@ -304,7 +330,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="181" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:181</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="193" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:193</a></div>
                             </td>
                         </tr>
 
@@ -360,8 +386,8 @@
                 <td class="col-md-4">
                     <a name="aggregateData"></a>
                     <span class="name">
-                        <span class="modifier"></span>
-                        <span class="modifier">Private</span>
+                            <span class="modifier"></span>
+                            <span class="modifier">Private</span>
                         <span ><b>aggregateData</b></span>
                         <a href="#aggregateData"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -369,7 +395,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
+                        <span class="modifier-icon icon ion-ios-reset"></span>
                     <code>aggregateData(filter: Filter)</code>
                 </td>
             </tr>
@@ -382,61 +408,136 @@
                 </td>
             </tr>
 
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="316"
+                                    class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:316</a></div>
+                        </td>
+                    </tr>
+
+
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="292"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:292</a></div>
+                        <div class="io-description"><p>Queries for aggregate data.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>filter</td>
+                                            <td>
+                                                        <code>Filter</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>The filter used during query.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>ObservableInput&lt;AggregateResult[]&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>The result of the query.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="biomarkerTermOccurencesData"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier">Private</span>
+                        <span ><b>biomarkerTermOccurencesData</b></span>
+                        <a href="#biomarkerTermOccurencesData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>biomarkerTermOccurencesData(filter: Filter)</code>
                 </td>
             </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@bind()<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="345"
+                                    class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:345</a></div>
+                        </td>
+                    </tr>
+
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Queries for aggregate data.</p>
-</div>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                    <td>Description</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>filter</td>
-                                    <td>
-                                            <code>Filter</code>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>filter</td>
+                                            <td>
+                                                        <code>Filter</code>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                    <td>
-                                        <p>The filter used during query.</p>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>ObservableInput&lt;Record&lt;string, number&gt;&gt;</code>
 
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>ObservableInput&lt;AggregateResult[]&gt;</code>
-
-                    </div>
-                    <div class="io-description">
-                        <p>The result of the query.</p>
-
-                    </div>
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -447,8 +548,8 @@
                 <td class="col-md-4">
                     <a name="cellTypeTermOccurencesData"></a>
                     <span class="name">
-                        <span class="modifier"></span>
-                        <span class="modifier">Private</span>
+                            <span class="modifier"></span>
+                            <span class="modifier">Private</span>
                         <span ><b>cellTypeTermOccurencesData</b></span>
                         <a href="#cellTypeTermOccurencesData"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -456,7 +557,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
+                        <span class="modifier-icon icon ion-ios-reset"></span>
                     <code>cellTypeTermOccurencesData(filter: Filter)</code>
                 </td>
             </tr>
@@ -469,61 +570,59 @@
                 </td>
             </tr>
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="316"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:316</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="340"
+                                    class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:340</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Queries for cell type term occurences data.</p>
+                        <div class="io-description"><p>Queries for cell type term occurences data.</p>
 </div>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                    <td>Description</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>filter</td>
-                                    <td>
-                                            <code>Filter</code>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>filter</td>
+                                            <td>
+                                                        <code>Filter</code>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                    <td>
-                                        <p>The filter used during query.</p>
+                                            <td>
+                                                    <p>The filter used during query.</p>
 
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>ObservableInput&lt;Record&lt;string, number&gt;&gt;</code>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>ObservableInput&lt;Record&lt;string, number&gt;&gt;</code>
 
-                    </div>
-                    <div class="io-description">
-                        <p>The result of the query.</p>
+                        </div>
+                            <div class="io-description">
+                                <p>The result of the query.</p>
 
-                    </div>
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -546,21 +645,21 @@
             </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="200"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:200</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="212"
+                                    class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:212</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
-                    </div>
+                        </div>
                 </td>
             </tr>
         </tbody>
@@ -571,8 +670,8 @@
                 <td class="col-md-4">
                     <a name="ontologyTermOccurencesData"></a>
                     <span class="name">
-                        <span class="modifier"></span>
-                        <span class="modifier">Private</span>
+                            <span class="modifier"></span>
+                            <span class="modifier">Private</span>
                         <span ><b>ontologyTermOccurencesData</b></span>
                         <a href="#ontologyTermOccurencesData"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -580,7 +679,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
+                        <span class="modifier-icon icon ion-ios-reset"></span>
                     <code>ontologyTermOccurencesData(filter: Filter)</code>
                 </td>
             </tr>
@@ -593,61 +692,59 @@
                 </td>
             </tr>
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="304"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:304</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="328"
+                                    class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:328</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Queries for ontology term occurences data.</p>
+                        <div class="io-description"><p>Queries for ontology term occurences data.</p>
 </div>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                    <td>Description</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>filter</td>
-                                    <td>
-                                            <code>Filter</code>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>filter</td>
+                                            <td>
+                                                        <code>Filter</code>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                    <td>
-                                        <p>The filter used during query.</p>
+                                            <td>
+                                                    <p>The filter used during query.</p>
 
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>ObservableInput&lt;Record&lt;string, number&gt;&gt;</code>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>ObservableInput&lt;Record&lt;string, number&gt;&gt;</code>
 
-                    </div>
-                    <div class="io-description">
-                        <p>The result of the query.</p>
+                        </div>
+                            <div class="io-description">
+                                <p>The result of the query.</p>
 
-                    </div>
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -658,8 +755,8 @@
                 <td class="col-md-4">
                     <a name="providerFilterData"></a>
                     <span class="name">
-                        <span class="modifier"></span>
-                        <span class="modifier">Private</span>
+                            <span class="modifier"></span>
+                            <span class="modifier">Private</span>
                         <span ><b>providerFilterData</b></span>
                         <a href="#providerFilterData"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -667,7 +764,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
+                        <span class="modifier-icon icon ion-ios-reset"></span>
                     <code>providerFilterData()</code>
                 </td>
             </tr>
@@ -680,29 +777,27 @@
                 </td>
             </tr>
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="350"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:350</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="379"
+                                    class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:379</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Queries for provider filter data.</p>
+                        <div class="io-description"><p>Queries for provider filter data.</p>
 </div>
 
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>ObservableInput&lt;string[]&gt;</code>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>ObservableInput&lt;string[]&gt;</code>
 
-                    </div>
-                    <div class="io-description">
-                        <p>The result of the query.</p>
+                        </div>
+                            <div class="io-description">
+                                <p>The result of the query.</p>
 
-                    </div>
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -713,8 +808,8 @@
                 <td class="col-md-4">
                     <a name="sceneData"></a>
                     <span class="name">
-                        <span class="modifier"></span>
-                        <span class="modifier">Private</span>
+                            <span class="modifier"></span>
+                            <span class="modifier">Private</span>
                         <span ><b>sceneData</b></span>
                         <a href="#sceneData"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -722,7 +817,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
+                        <span class="modifier-icon icon ion-ios-reset"></span>
                     <code>sceneData(filter: Filter)</code>
                 </td>
             </tr>
@@ -735,61 +830,59 @@
                 </td>
             </tr>
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="328"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:328</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="357"
+                                    class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:357</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Queries for scene data.</p>
+                        <div class="io-description"><p>Queries for scene data.</p>
 </div>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                    <td>Description</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>filter</td>
-                                    <td>
-                                            <code>Filter</code>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>filter</td>
+                                            <td>
+                                                        <code>Filter</code>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                    <td>
-                                        <p>The filter used during query.</p>
+                                            <td>
+                                                    <p>The filter used during query.</p>
 
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>ObservableInput&lt;SpatialSceneNode[]&gt;</code>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>ObservableInput&lt;SpatialSceneNode[]&gt;</code>
 
-                    </div>
-                    <div class="io-description">
-                        <p>The result of the query.</p>
+                        </div>
+                            <div class="io-description">
+                                <p>The result of the query.</p>
 
-                    </div>
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -800,8 +893,8 @@
                 <td class="col-md-4">
                     <a name="technologyFilterData"></a>
                     <span class="name">
-                        <span class="modifier"></span>
-                        <span class="modifier">Private</span>
+                            <span class="modifier"></span>
+                            <span class="modifier">Private</span>
                         <span ><b>technologyFilterData</b></span>
                         <a href="#technologyFilterData"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -809,7 +902,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
+                        <span class="modifier-icon icon ion-ios-reset"></span>
                     <code>technologyFilterData()</code>
                 </td>
             </tr>
@@ -822,29 +915,27 @@
                 </td>
             </tr>
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="339"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:339</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="368"
+                                    class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:368</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Queries for technology filter data.</p>
+                        <div class="io-description"><p>Queries for technology filter data.</p>
 </div>
 
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>ObservableInput&lt;string[]&gt;</code>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>ObservableInput&lt;string[]&gt;</code>
 
-                    </div>
-                    <div class="io-description">
-                        <p>The result of the query.</p>
+                        </div>
+                            <div class="io-description">
+                                <p>The result of the query.</p>
 
-                    </div>
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -855,8 +946,8 @@
                 <td class="col-md-4">
                     <a name="tissueBlockData"></a>
                     <span class="name">
-                        <span class="modifier"></span>
-                        <span class="modifier">Private</span>
+                            <span class="modifier"></span>
+                            <span class="modifier">Private</span>
                         <span ><b>tissueBlockData</b></span>
                         <a href="#tissueBlockData"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -864,7 +955,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
+                        <span class="modifier-icon icon ion-ios-reset"></span>
                     <code>tissueBlockData(filter: Filter)</code>
                 </td>
             </tr>
@@ -877,61 +968,59 @@
                 </td>
             </tr>
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="280"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:280</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="304"
+                                    class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:304</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Queries for tissue block data.</p>
+                        <div class="io-description"><p>Queries for tissue block data.</p>
 </div>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                    <td>Description</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>filter</td>
-                                    <td>
-                                            <code>Filter</code>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>filter</td>
+                                            <td>
+                                                        <code>Filter</code>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                    <td>
-                                        <p>The filter used during query.</p>
+                                            <td>
+                                                    <p>The filter used during query.</p>
 
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>ObservableInput&lt;TissueBlockResult[]&gt;</code>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>ObservableInput&lt;TissueBlockResult[]&gt;</code>
 
-                    </div>
-                    <div class="io-description">
-                        <p>The result of the query.</p>
+                        </div>
+                            <div class="io-description">
+                                <p>The result of the query.</p>
 
-                    </div>
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -942,7 +1031,7 @@
                 <td class="col-md-4">
                     <a name="updateAnatomicalStructuresTreeModel"></a>
                     <span class="name">
-                        <span class="modifier"></span>
+                            <span class="modifier"></span>
                         <span ><b>updateAnatomicalStructuresTreeModel</b></span>
                         <a href="#updateAnatomicalStructuresTreeModel"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -950,7 +1039,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
+                        <span class="modifier-icon icon ion-ios-reset"></span>
                     <code>updateAnatomicalStructuresTreeModel(model: OntologyTreeModel)</code>
                 </td>
             </tr>
@@ -963,53 +1052,127 @@
                 </td>
             </tr>
 
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="251"
+                                    class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:251</a></div>
+                        </td>
+                    </tr>
+
+
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="234"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:234</a></div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>model</td>
+                                            <td>
+                                                        <code>OntologyTreeModel</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateBiomarkersTreeModel"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>updateBiomarkersTreeModel</b></span>
+                        <a href="#updateBiomarkersTreeModel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updateBiomarkersTreeModel(model: OntologyTreeModel)</code>
                 </td>
             </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@DataAction()<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="265"
+                                    class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:265</a></div>
+                        </td>
+                    </tr>
+
 
             <tr>
                 <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>model</td>
-                                    <td>
-                                            <code>OntologyTreeModel</code>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>model</td>
+                                            <td>
+                                                        <code>OntologyTreeModel</code>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -1020,7 +1183,7 @@
                 <td class="col-md-4">
                     <a name="updateCellTypesTreeModel"></a>
                     <span class="name">
-                        <span class="modifier"></span>
+                            <span class="modifier"></span>
                         <span ><b>updateCellTypesTreeModel</b></span>
                         <a href="#updateCellTypesTreeModel"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -1028,7 +1191,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
+                        <span class="modifier-icon icon ion-ios-reset"></span>
                     <code>updateCellTypesTreeModel(model: OntologyTreeModel)</code>
                 </td>
             </tr>
@@ -1041,53 +1204,51 @@
                 </td>
             </tr>
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="241"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:241</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="258"
+                                    class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:258</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>model</td>
-                                    <td>
-                                            <code>OntologyTreeModel</code>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>model</td>
+                                            <td>
+                                                        <code>OntologyTreeModel</code>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -1098,7 +1259,7 @@
                 <td class="col-md-4">
                     <a name="updateFilter"></a>
                     <span class="name">
-                        <span class="modifier"></span>
+                            <span class="modifier"></span>
                         <span ><b>updateFilter</b></span>
                         <a href="#updateFilter"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -1106,7 +1267,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
+                        <span class="modifier-icon icon ion-ios-reset"></span>
                     <code>updateFilter(filter: Partial<Filter>)</code>
                 </td>
             </tr>
@@ -1119,60 +1280,58 @@
                 </td>
             </tr>
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="261"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:261</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="285"
+                                    class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:285</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Updates the current filter.</p>
+                        <div class="io-description"><p>Updates the current filter.</p>
 </div>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                    <td>Description</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>filter</td>
-                                    <td>
-                                            <code>Partial&lt;Filter&gt;</code>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>filter</td>
+                                            <td>
+                                                        <code>Partial&lt;Filter&gt;</code>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                    <td>
-                                        <p>Changes to be made to the current filter.</p>
+                                            <td>
+                                                    <p>Changes to be made to the current filter.</p>
 
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -1183,7 +1342,7 @@
                 <td class="col-md-4">
                     <a name="updateFilterHandler"></a>
                     <span class="name">
-                        <span class="modifier"></span>
+                            <span class="modifier"></span>
                         <span ><b>updateFilterHandler</b></span>
                         <a href="#updateFilterHandler"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -1191,7 +1350,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
+                        <span class="modifier-icon icon ion-ios-reset"></span>
                     <code>updateFilterHandler(_ctx, undefined: <a href="../classes/UpdateFilter.html" target="_self">UpdateFilter</a>)</code>
                 </td>
             </tr>
@@ -1204,63 +1363,61 @@
                 </td>
             </tr>
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="269"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:269</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="293"
+                                    class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:293</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>_ctx</td>
-                                    <td>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>_ctx</td>
+                                            <td>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                                <tr>
-                                    <td>
-                                                <code><a href="../classes/UpdateFilter.html" target="_self" >UpdateFilter</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                            <code><a href="../classes/UpdateFilter.html" target="_self" >UpdateFilter</a></code>
+                                            </td>
 
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -1271,7 +1428,7 @@
                 <td class="col-md-4">
                     <a name="updateStatus"></a>
                     <span class="name">
-                        <span class="modifier"></span>
+                            <span class="modifier"></span>
                         <span ><b>updateStatus</b></span>
                         <a href="#updateStatus"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -1279,7 +1436,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
+                        <span class="modifier-icon icon ion-ios-reset"></span>
                     <code>updateStatus(status: DatabaseStatus)</code>
                 </td>
             </tr>
@@ -1292,53 +1449,51 @@
                 </td>
             </tr>
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="248"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:248</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="272"
+                                    class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:272</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>status</td>
-                                    <td>
-                                            <code>DatabaseStatus</code>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>status</td>
+                                            <td>
+                                                        <code>DatabaseStatus</code>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -1349,7 +1504,7 @@
                 <td class="col-md-4">
                     <a name="warmUpDatabase"></a>
                     <span class="name">
-                        <span class="modifier">Private</span>
+                            <span class="modifier">Private</span>
                         <span ><b>warmUpDatabase</b></span>
                         <a href="#warmUpDatabase"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -1357,27 +1512,27 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
+                        <span class="modifier-icon icon ion-ios-reset"></span>
                     <code>warmUpDatabase()</code>
                 </td>
             </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="215"
-                            class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:215</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="232"
+                                    class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:232</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
-                    </div>
+                        </div>
                 </td>
             </tr>
         </tbody>
@@ -1408,7 +1563,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="107" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:107</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="110" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:110</a></div>
                         </td>
                     </tr>
 
@@ -1418,6 +1573,33 @@
 </div>
                 </td>
             </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_biomarkerTermOccurencesDataQueryStatus$"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>_biomarkerTermOccurencesDataQueryStatus$</b></span>
+                        <a href="#_biomarkerTermOccurencesDataQueryStatus$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new ReplaySubject&lt;DataQueryState&gt;(1)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="115" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:115</a></div>
+                        </td>
+                    </tr>
+
 
         </tbody>
     </table>
@@ -1441,7 +1623,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="111" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:111</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:114</a></div>
                         </td>
                     </tr>
 
@@ -1474,7 +1656,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="109" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:109</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="112" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:112</a></div>
                         </td>
                     </tr>
 
@@ -1507,7 +1689,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="117" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:117</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="122" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:122</a></div>
                         </td>
                     </tr>
 
@@ -1540,7 +1722,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="113" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:113</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="118" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:118</a></div>
                         </td>
                     </tr>
 
@@ -1573,7 +1755,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="115" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:115</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="120" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:120</a></div>
                         </td>
                     </tr>
 
@@ -1606,7 +1788,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:105</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="108" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:108</a></div>
                         </td>
                     </tr>
 
@@ -1640,7 +1822,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="130" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:130</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="136" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:136</a></div>
                         </td>
                     </tr>
 
@@ -1672,7 +1854,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="157" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:157</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="167" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:167</a></div>
                         </td>
                     </tr>
 
@@ -1682,6 +1864,92 @@
 </div>
                 </td>
             </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="biomarkerTermOccurencesData$"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>biomarkerTermOccurencesData$</b></span>
+                        <a href="#biomarkerTermOccurencesData$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.filter$.pipe(queryData(
+    this.biomarkerTermOccurencesData, sendCompletedTo(this._biomarkerTermOccurencesDataQueryStatus$)
+  ))</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="144" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:144</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Latest ontology term occurences query data.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="biomarkerTermOccurencesDataQueryStatus$"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>biomarkerTermOccurencesDataQueryStatus$</b></span>
+                        <a href="#biomarkerTermOccurencesDataQueryStatus$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this._biomarkerTermOccurencesDataQueryStatus$.pipe(distinct())</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="173" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:173</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="biomarkerTermsFullData$"></a>
+                    <span class="name">
+                            <span class="modifier">Readonly</span>
+                        <span ><b>biomarkerTermsFullData$</b></span>
+                        <a href="#biomarkerTermsFullData$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new ReplaySubject&lt;Record&lt;string, number&gt;&gt;(1)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="127" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:127</a></div>
+                        </td>
+                    </tr>
+
 
         </tbody>
     </table>
@@ -1706,7 +1974,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="138" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:138</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="148" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:148</a></div>
                         </td>
                     </tr>
 
@@ -1738,7 +2006,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="161" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:161</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="171" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:171</a></div>
                         </td>
                     </tr>
 
@@ -1770,7 +2038,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="121" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:121</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="126" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:126</a></div>
                         </td>
                     </tr>
 
@@ -1802,7 +2070,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="102" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:102</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:105</a></div>
                         </td>
                     </tr>
 
@@ -1834,7 +2102,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="124" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:124</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="130" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:130</a></div>
                         </td>
                     </tr>
 
@@ -1868,7 +2136,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="134" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:134</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="140" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:140</a></div>
                         </td>
                     </tr>
 
@@ -1900,7 +2168,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="159" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:159</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="169" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:169</a></div>
                         </td>
                     </tr>
 
@@ -1932,7 +2200,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:119</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="124" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:124</a></div>
                         </td>
                     </tr>
 
@@ -1966,7 +2234,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="150" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:150</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="160" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:160</a></div>
                         </td>
                     </tr>
 
@@ -1998,7 +2266,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="167" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:167</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="179" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:179</a></div>
                         </td>
                     </tr>
 
@@ -2041,7 +2309,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="170" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:170</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="182" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:182</a></div>
                         </td>
                     </tr>
 
@@ -2075,7 +2343,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="142" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:142</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="152" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:152</a></div>
                         </td>
                     </tr>
 
@@ -2107,7 +2375,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="163" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:163</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="175" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:175</a></div>
                         </td>
                     </tr>
 
@@ -2141,7 +2409,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="146" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:146</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="156" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:156</a></div>
                         </td>
                     </tr>
 
@@ -2173,7 +2441,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="165" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:165</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="177" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:177</a></div>
                         </td>
                     </tr>
 
@@ -2207,7 +2475,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="126" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:126</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="132" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:132</a></div>
                         </td>
                     </tr>
 
@@ -2239,7 +2507,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="155" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:155</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="165" class="link-to-prism">projects/ccf-eui/src/app/core/store/data/data.state.ts:165</a></div>
                         </td>
                     </tr>
 
@@ -2275,10 +2543,12 @@ export const DEFAULT_FILTER: Filter &#x3D; {
   sex: &#x27;Both&#x27;,
   ageRange: [1, 110],
   bmiRange: [13, 83],
+  consortiums: [],
   tmc: [],
   technologies: [],
   ontologyTerms: [&#x27;http://purl.obolibrary.org/obo/UBERON_0013702&#x27;],
   cellTypeTerms: [&#x27;http://purl.obolibrary.org/obo/CL_0000000&#x27;],
+  biomarkerTerms: [&#x27;http://purl.org/ccf/biomarkers&#x27;],
   spatialSearches: []
 };
 
@@ -2339,6 +2609,7 @@ export interface DataStateModel {
   statusMessage: string;
   anatomicalStructuresTreeModel?: OntologyTreeModel;
   cellTypesTreeModel?: OntologyTreeModel;
+  biomarkersTreeModel?: OntologyTreeModel;
 }
 
 /**
@@ -2366,6 +2637,8 @@ export class DataState extends NgxsDataRepository&lt;DataStateModel&gt; implemen
   private readonly _ontologyTermOccurencesDataQueryStatus$ &#x3D; new ReplaySubject&lt;DataQueryState&gt;(1);
   /** Implementation subject for cellTypeTermOccurencesDataQueryStatus$. */
   private readonly _cellTypeTermOccurencesDataQueryStatus$ &#x3D; new ReplaySubject&lt;DataQueryState&gt;(1);
+  private readonly _biomarkerTermOccurencesDataQueryStatus$ &#x3D; new ReplaySubject&lt;DataQueryState&gt;(1);
+
   /** Implementation subject for sceneDataQueryStatus$. */
   private readonly _sceneDataQueryStatus$ &#x3D; new ReplaySubject&lt;DataQueryState&gt;(1);
   /** Implementation subject for technologyFilterQueryStatus$. */
@@ -2376,6 +2649,7 @@ export class DataState extends NgxsDataRepository&lt;DataStateModel&gt; implemen
   readonly ontologyTermsFullData$ &#x3D; new ReplaySubject&lt;Record&lt;string, number&gt;&gt;(1);
   /** Keeping track of all cell type terms there is data for. */
   readonly cellTypeTermsFullData$ &#x3D; new ReplaySubject&lt;Record&lt;string, number&gt;&gt;(1);
+  readonly biomarkerTermsFullData$ &#x3D; new ReplaySubject&lt;Record&lt;string, number&gt;&gt;(1);
 
   /** Current filter. */
   readonly filter$ &#x3D; this.state$.pipe(map(x &#x3D;&gt; x?.filter));
@@ -2390,6 +2664,10 @@ export class DataState extends NgxsDataRepository&lt;DataStateModel&gt; implemen
   /** Latest ontology term occurences query data. */
   readonly ontologyTermOccurencesData$ &#x3D; this.filter$.pipe(queryData(
     this.ontologyTermOccurencesData, sendCompletedTo(this._ontologyTermOccurencesDataQueryStatus$)
+  ));
+  /** Latest ontology term occurences query data. */
+  readonly biomarkerTermOccurencesData$ &#x3D; this.filter$.pipe(queryData(
+    this.biomarkerTermOccurencesData, sendCompletedTo(this._biomarkerTermOccurencesDataQueryStatus$)
   ));
   /** Latest cell type term occurences query data. */
   readonly cellTypeTermOccurencesData$ &#x3D; this.filter$.pipe(queryData(
@@ -2416,6 +2694,8 @@ export class DataState extends NgxsDataRepository&lt;DataStateModel&gt; implemen
   readonly ontologyTermOccurencesDataQueryStatus$ &#x3D; this._ontologyTermOccurencesDataQueryStatus$.pipe(distinct());
   /** Current status of queries in the cellTypeTermOccurrences$ observable. */
   readonly cellTypeTermOccurencesDataQueryStatus$ &#x3D; this._cellTypeTermOccurencesDataQueryStatus$.pipe(distinct());
+
+  readonly biomarkerTermOccurencesDataQueryStatus$ &#x3D; this._biomarkerTermOccurencesDataQueryStatus$.pipe(distinct());
   /** Current status of queries in the sceneData$ observable. */
   readonly sceneDataQueryStatus$ &#x3D; this._sceneDataQueryStatus$.pipe(distinct());
   /** Current status of queries in the technologyFilter$ observable. */
@@ -2455,17 +2735,22 @@ export class DataState extends NgxsDataRepository&lt;DataStateModel&gt; implemen
   }
 
   ngxsOnInit(): void {
-    const { ontologyTermsFullData$, ontologyTermOccurencesData$, cellTypeTermsFullData$, cellTypeTermOccurencesData$, source, snapshot: { filter } } &#x3D; this;
+    const { ontologyTermsFullData$, ontologyTermOccurencesData$, cellTypeTermsFullData$, cellTypeTermOccurencesData$, source, snapshot: { filter } , biomarkerTermsFullData$, biomarkerTermOccurencesData$ } &#x3D; this;
     if (filter &#x3D;&#x3D;&#x3D; DEFAULT_FILTER) {
       // Common case - Reuse the result of the regular query
       ontologyTermOccurencesData$.pipe(take(1)).subscribe(ontologyTermsFullData$);
       cellTypeTermOccurencesData$.pipe(take(1)).subscribe(cellTypeTermsFullData$);
+      biomarkerTermOccurencesData$.pipe(take(1)).subscribe(biomarkerTermsFullData$);
+
     } else {
       source.getOntologyTermOccurences().pipe(take(1)).subscribe(ontologyTermsFullData$);
       source.getCellTypeTermOccurences().pipe(take(1)).subscribe(cellTypeTermsFullData$);
+      source.getBiomarkerTermOccurences().pipe(take(1)).subscribe(biomarkerTermsFullData$);
+
     }
     this.source.getOntologyTreeModel().pipe(take(1)).subscribe((model) &#x3D;&gt; this.updateAnatomicalStructuresTreeModel(model));
     this.source.getCellTypeTreeModel().pipe(take(1)).subscribe((model) &#x3D;&gt; this.updateCellTypesTreeModel(model));
+    this.source.getBiomarkerTreeModel().pipe(take(1)).subscribe((model) &#x3D;&gt; this.updateBiomarkersTreeModel(model));
     this.warmUpDatabase();
   }
 
@@ -2482,7 +2767,7 @@ export class DataState extends NgxsDataRepository&lt;DataStateModel&gt; implemen
     this.databaseReady$.pipe(take(1), tap(() &#x3D;&gt; {
       this.updateStatus({
         status: &#x27;Ready&#x27;,
-        message: &#x27;Loading CCF Exploration User Interface (EUI)&#x27;
+        message: &#x27;Loading HRA Exploration User Interface (EUI)&#x27;
       });
     })).subscribe();
   }
@@ -2498,6 +2783,13 @@ export class DataState extends NgxsDataRepository&lt;DataStateModel&gt; implemen
   updateCellTypesTreeModel(@Payload(&#x27;treeModel&#x27;) model: OntologyTreeModel): void {
     this.ctx.patchState({
       cellTypesTreeModel: model
+    });
+  }
+
+  @DataAction()
+  updateBiomarkersTreeModel(@Payload(&#x27;treeModel&#x27;) model: OntologyTreeModel): void {
+    this.ctx.patchState({
+      biomarkersTreeModel: model
     });
   }
 
@@ -2573,6 +2865,11 @@ export class DataState extends NgxsDataRepository&lt;DataStateModel&gt; implemen
   private cellTypeTermOccurencesData(filter: Filter): ObservableInput&lt;Record&lt;string, number&gt;&gt; {
     this._cellTypeTermOccurencesDataQueryStatus$.next(DataQueryState.Running);
     return this.databaseReady$.pipe(switchMap(() &#x3D;&gt; this.source.getCellTypeTermOccurences(filter)));
+  }
+  @bind
+  private biomarkerTermOccurencesData(filter: Filter): ObservableInput&lt;Record&lt;string, number&gt;&gt; {
+    this._biomarkerTermOccurencesDataQueryStatus$.next(DataQueryState.Running);
+    return this.databaseReady$.pipe(switchMap(() &#x3D;&gt; this.source.getBiomarkerTermOccurences(filter)));
   }
 
   /**

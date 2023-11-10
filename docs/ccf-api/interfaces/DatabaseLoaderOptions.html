@@ -246,15 +246,15 @@ function createDatabase(token: string, options: CCFDatabaseOptions): Promise&lt;
 export function databaseLoader(options: DatabaseLoaderOptions): RequestHandler {
   const cache &#x3D; new RequestCache&lt;string, CCFDatabaseInstance&gt;(
     new AutoPruneLRUCache({
-      max: 10,
-      maxAge: 60 * 60 * 1000,
-      dispose: (_key, instance) &#x3D;&gt; instance.then((r) &#x3D;&gt; r.dispose()),
-      ...options.cache
+      max: options.cache?.max ?? 10,
+      maxAge: options.cache?.maxAge ?? 60 * 60 * 1000,
+      dispose: (_key, instance) &#x3D;&gt; instance.then((r) &#x3D;&gt; r.dispose())
     }),
     token &#x3D;&gt; createDatabase(token, options.database)
   );
 
   return (req, _res, next) &#x3D;&gt; {
+    cache.cache.purgeStale();
     req[&#x27;getDatabase&#x27;] &#x3D; (token?: string) &#x3D;&gt; cache.get(selectToken(token, req));
     next();
   };

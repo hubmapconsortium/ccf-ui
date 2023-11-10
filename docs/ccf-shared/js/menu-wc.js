@@ -245,6 +245,40 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     </li>
                             </li>
                             <li class="link">
+                                <a href="modules/SpatialSearchKeyboardUIBehaviorModule.html" data-type="entity-link" >SpatialSearchKeyboardUIBehaviorModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
+                                            'data-bs-target="#components-links-module-SpatialSearchKeyboardUIBehaviorModule-eaa1b03bb82006bd82d544abaa013efa1b33b511e1a5ec138d1bb9c7c83030acc45899963e94aaf8ab3603245882aa4544ea3d39dd989cf604a96a4b31b6d22b"' : 'data-bs-target="#xs-components-links-module-SpatialSearchKeyboardUIBehaviorModule-eaa1b03bb82006bd82d544abaa013efa1b33b511e1a5ec138d1bb9c7c83030acc45899963e94aaf8ab3603245882aa4544ea3d39dd989cf604a96a4b31b6d22b"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SpatialSearchKeyboardUIBehaviorModule-eaa1b03bb82006bd82d544abaa013efa1b33b511e1a5ec138d1bb9c7c83030acc45899963e94aaf8ab3603245882aa4544ea3d39dd989cf604a96a4b31b6d22b"' :
+                                            'id="xs-components-links-module-SpatialSearchKeyboardUIBehaviorModule-eaa1b03bb82006bd82d544abaa013efa1b33b511e1a5ec138d1bb9c7c83030acc45899963e94aaf8ab3603245882aa4544ea3d39dd989cf604a96a4b31b6d22b"' }>
+                                            <li class="link">
+                                                <a href="components/SpatialSearchKeyboardUIBehaviorComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >SpatialSearchKeyboardUIBehaviorComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
+                            <li class="link">
+                                <a href="modules/SpatialSearchKeyboardUIModule.html" data-type="entity-link" >SpatialSearchKeyboardUIModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
+                                            'data-bs-target="#components-links-module-SpatialSearchKeyboardUIModule-527963cf0d41260b5849c2b0c91ca67df88a5e078d22bb04ae1d8f889fe1840bd856fcb5f837818ef2883ed1133c23df23b56bc30166201bb69c6fbb46fc3e30"' : 'data-bs-target="#xs-components-links-module-SpatialSearchKeyboardUIModule-527963cf0d41260b5849c2b0c91ca67df88a5e078d22bb04ae1d8f889fe1840bd856fcb5f837818ef2883ed1133c23df23b56bc30166201bb69c6fbb46fc3e30"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SpatialSearchKeyboardUIModule-527963cf0d41260b5849c2b0c91ca67df88a5e078d22bb04ae1d8f889fe1840bd856fcb5f837818ef2883ed1133c23df23b56bc30166201bb69c6fbb46fc3e30"' :
+                                            'id="xs-components-links-module-SpatialSearchKeyboardUIModule-527963cf0d41260b5849c2b0c91ca67df88a5e078d22bb04ae1d8f889fe1840bd856fcb5f837818ef2883ed1133c23df23b56bc30166201bb69c6fbb46fc3e30"' }>
+                                            <li class="link">
+                                                <a href="components/SpatialSearchKeyboardUIComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >SpatialSearchKeyboardUIComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
+                            <li class="link">
                                 <a href="modules/SpatialSearchListModule.html" data-type="entity-link" >SpatialSearchListModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
@@ -463,6 +497,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="interfaces/PluckUniqueOptions.html" data-type="entity-link" >PluckUniqueOptions</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/Position.html" data-type="entity-link" >Position</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/Segment.html" data-type="entity-link" >Segment</a>

@@ -70,7 +70,7 @@
         <h3>Extends</h3>
     </p>
     <p class="comment">
-            <code>BaseWebComponent</code>
+                <code>BaseWebComponent</code>
     </p>
 
 
@@ -200,7 +200,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">projects/ccf-body-ui-wc/src/app/app-web-component.component.ts:39</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">projects/ccf-body-ui-wc/src/app/app-web-component.component.ts:42</a></div>
                             </td>
                         </tr>
 
@@ -268,7 +268,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">projects/ccf-body-ui-wc/src/app/app-web-component.component.ts:31</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">projects/ccf-body-ui-wc/src/app/app-web-component.component.ts:34</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -289,7 +289,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">projects/ccf-body-ui-wc/src/app/app-web-component.component.ts:32</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">projects/ccf-body-ui-wc/src/app/app-web-component.component.ts:35</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -310,7 +310,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">projects/ccf-body-ui-wc/src/app/app-web-component.component.ts:33</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">projects/ccf-body-ui-wc/src/app/app-web-component.component.ts:36</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -334,7 +334,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">projects/ccf-body-ui-wc/src/app/app-web-component.component.ts:37</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">projects/ccf-body-ui-wc/src/app/app-web-component.component.ts:40</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -355,7 +355,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">projects/ccf-body-ui-wc/src/app/app-web-component.component.ts:35</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">projects/ccf-body-ui-wc/src/app/app-web-component.component.ts:38</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -376,7 +376,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">projects/ccf-body-ui-wc/src/app/app-web-component.component.ts:36</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">projects/ccf-body-ui-wc/src/app/app-web-component.component.ts:39</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -409,7 +409,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">projects/ccf-body-ui-wc/src/app/app-web-component.component.ts:39</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">projects/ccf-body-ui-wc/src/app/app-web-component.component.ts:42</a></div>
                         </td>
                     </tr>
 
@@ -437,6 +437,9 @@ export interface InputDataFormat {
 
 
 function toJsonLd(data: InputDataFormat[]): JsonLdObj[] {
+  if (typeof data &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
+    data &#x3D; JSON.parse(data);
+  }
   return data.map(d &#x3D;&gt; ({
     &#x27;@id&#x27;: &#x60;http://purl.org/ccf/1.5/entity/${d.id}&#x60;,
     &#x27;@type&#x27;: &#x27;http://purl.org/ccf/latest/ccf-entity.owl#Sample&#x27;,
