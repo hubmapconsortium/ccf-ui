@@ -6,19 +6,19 @@
 
 <div class="size-inputs">
   <mat-form-field class="field">
-    <mat-label class="text label">Width (X)</mat-label>
+    <mat-label class="text form-input-label">Width (X)</mat-label>
     <input matInput class="input" type="number" placeholder="" [value]="blockSize.x"
            (keyup)="updateBlockSizes($event, 'x')" matTooltip="Enter tissue block width.">
   </mat-form-field>
 
   <mat-form-field class="field">
-    <mat-label class="text label">Height (Y)</mat-label>
+    <mat-label class="text form-input-label">Height (Y)</mat-label>
     <input matInput class="input" type="number" placeholder="" [value]="blockSize.y"
            (keyup)="updateBlockSizes($event, 'y')" matTooltip="Enter tissue block height.">
   </mat-form-field>
 
   <mat-form-field class="field">
-    <mat-label class="text label">Depth (Z)</mat-label>
+    <mat-label class="text form-input-label">Depth (Z)</mat-label>
     <input matInput class="input" type="number" placeholder="" [value]="blockSize.z"
            (keyup)="updateBlockSizes($event, 'z')" matTooltip="Enter tissue block depth.">
   </mat-form-field>

@@ -3,7 +3,7 @@
 </div>
 <div class="scroll-wrapper">
   <div class="container">
-    <mat-expansion-panel class="registration-metadata-panel">
+    <mat-expansion-panel class="registration-metadata-panel" (opened)="registrationExpanded.emit(true)" (closed)="registrationExpanded.emit(false)">
       <mat-expansion-panel-header class="header">
         <mat-panel-title matTooltip="">Registration Metadata</mat-panel-title>
       </mat-expansion-panel-header>
