@@ -4,12 +4,16 @@ import { Shallow } from 'shallow-render';
 
 import { ReviewButtonComponent } from './review-button.component';
 import { ReviewButtonModule } from './review-button.module';
+import { PageState } from '../../../core/store/page/page.state';
 
 describe('ReviewButtonComponent', () => {
   let shallow: Shallow<ReviewButtonComponent>;
   let afterClosedObservable: Subject<boolean>;
   const emptyMetaData = [{ value: '' }, { value: '' }, { value: '' }];
   const metaData = [{ value: 'First Name' }, { value: 'Last Name' }, { value: 'Organ' }];
+  const mockPageState = jasmine.createSpyObj<PageState>(
+    'PageState', ['patchState', 'registrationStarted']
+  );
 
   beforeEach(() => {
     const mockDialog = jasmine.createSpyObj<MatDialogRef<unknown, boolean>>('DialogRef', ['afterClosed']);
@@ -19,7 +23,8 @@ describe('ReviewButtonComponent', () => {
     shallow = new Shallow(ReviewButtonComponent, ReviewButtonModule)
       .mock(MatDialog, { open(): MatDialogRef<unknown, boolean> {
         return mockDialog;
-      } });
+      } })
+      .mock(PageState, mockPageState);
   });
 
   it('should launch the review dialog if the registration is valid', async () => {

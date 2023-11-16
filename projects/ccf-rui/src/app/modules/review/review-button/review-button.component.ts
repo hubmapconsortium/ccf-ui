@@ -4,6 +4,7 @@ import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 import { MetaData } from '../../../core/models/meta-data';
 import { ReviewModalComponent } from '../review-modal/review-modal.component';
+import { PageState } from '../../../core/store/page/page.state';
 
 
 /**
@@ -63,7 +64,7 @@ export class ReviewButtonComponent implements OnChanges {
    * @param dialog Reference to the dialog creation service.
    * @param ga Analytics service
    */
-  constructor(private readonly dialog: MatDialog, private readonly ga: GoogleAnalyticsService) { }
+  constructor(private readonly dialog: MatDialog, private readonly ga: GoogleAnalyticsService, readonly page: PageState) { }
 
   /**
    * Updates the value of registrationIsValid based on the
@@ -116,6 +117,7 @@ export class ReviewButtonComponent implements OnChanges {
    * Opens the info dialogue with the project details
    */
   launchReviewModal(): void {
+    this.page.patchState({ registrationStarted: false });
     const dialogRef = this.dialog.open(ReviewModalComponent, {
       panelClass: 'modal-animated',
       width: '60rem',
@@ -127,6 +129,7 @@ export class ReviewButtonComponent implements OnChanges {
 
     dialogRef.afterClosed().subscribe(
       data => {
+        this.page.registrationStarted();
         if (data) {
           this.ga.event('register', 'review_button');
           this.registerData.emit();
