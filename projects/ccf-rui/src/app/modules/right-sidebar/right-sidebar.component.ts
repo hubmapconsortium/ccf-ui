@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
 
 import { AnatomicalStructureTagState } from '../../core/store/anatomical-structure-tags/anatomical-structure-tags.state';
 import { ModelState } from '../../core/store/model/model.state';
@@ -21,6 +21,8 @@ export class RightSidebarComponent {
 
   /** Whether or not the initial registration modal has been closed */
   @Input() modalClosed = false;
+
+  @Output() registrationExpanded = new EventEmitter<boolean>();
 
   /**
    * Creates an instance of right sidebar component.

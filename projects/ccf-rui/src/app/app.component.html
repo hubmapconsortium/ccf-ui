@@ -8,7 +8,7 @@
     <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
   </ccf-drawer>
   <ccf-drawer position="end" opened>
-    <ccf-right-sidebar [modalClosed]="registrationStarted"></ccf-right-sidebar>
+    <ccf-right-sidebar [modalClosed]="registrationStarted" (registrationExpanded)="registrationToggle($event)"></ccf-right-sidebar>
     <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
   </ccf-drawer>
 
