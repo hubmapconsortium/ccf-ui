@@ -2,6 +2,12 @@
 
 Changelog for the Human Reference Atlas (HRA) User Interfaces
 
+## 3.8.1 - 2023-11-16
+
+## Added in 3.8.1
+
+- Improved keyboard controls in the RUI
+
 ## 3.8.0 - 2023-11-16
 
 ## Added in 3.8.0
