@@ -339,6 +339,8 @@ export class AppComponent implements OnDestroy, OnInit {
   /** Disables changes in block position */
   disablePositionChange &#x3D; false;
 
+  registrationExpanded &#x3D; false;
+
   get isLightTheme(): boolean {
     return this.theming.getTheme().endsWith(&#x27;light&#x27;);
   }
@@ -410,6 +412,13 @@ export class AppComponent implements OnDestroy, OnInit {
     this.themeMode$.next(this.isLightTheme ? &#x27;dark&#x27; : &#x27;light&#x27;);
   }
 
+  registrationToggle(event: boolean): void {
+    this.registrationExpanded &#x3D; event;
+    if (!this.registrationExpanded) {
+      this.disablePositionChange &#x3D; false;
+    }
+  }
+
   /**
    * Shifts block position when certain keys are pressed
    *
@@ -456,7 +465,14 @@ export class AppComponent implements OnDestroy, OnInit {
    */
   @HostListener(&#x27;document:mousedown&#x27;, [&#x27;$event.target&#x27;])
   handleClick(target: HTMLElement): void {
-    this.disablePositionChange &#x3D; target.nodeName !&#x3D;&#x3D; &#x27;CANVAS&#x27;;
+    const disableWhenClicked &#x3D; [&#x27;mat-mdc-input-element&#x27;, &#x27;form-input-label&#x27;];
+    for (const className of disableWhenClicked) {
+      if (target.className.includes(className)) {
+        this.disablePositionChange &#x3D; true;
+        return;
+      }
+    }
+    this.disablePositionChange &#x3D; false;
   }
 
   /**

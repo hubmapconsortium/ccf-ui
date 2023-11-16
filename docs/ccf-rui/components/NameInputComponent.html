@@ -879,17 +879,17 @@ export class NameInputComponent {
 
     <div class="tab-pane fade " id="templateData">
         <pre class="line-numbers"><code class="language-html">&lt;mat-form-field class&#x3D;&quot;field&quot; subscriptSizing&#x3D;&quot;dynamic&quot;&gt;
-  &lt;mat-label class&#x3D;&quot;text label&quot;&gt;First Name &lt;/mat-label&gt;
+  &lt;mat-label class&#x3D;&quot;text form-input-label&quot;&gt;First Name &lt;/mat-label&gt;
   &lt;input matInput class&#x3D;&quot;input&quot; [value]&#x3D;&quot;firstNameValidator.value&quot; (input)&#x3D;&quot;updateName($event, &#x27;firstName&#x27;)&quot; matTooltip&#x3D;&quot;Add your first name.&quot; required title&#x3D;&quot;&quot;&gt;
 &lt;/mat-form-field&gt;
 
 &lt;mat-form-field class&#x3D;&quot;field&quot; subscriptSizing&#x3D;&quot;dynamic&quot;&gt;
-  &lt;mat-label class&#x3D;&quot;text label&quot;&gt;Middle Name &lt;/mat-label&gt;
+  &lt;mat-label class&#x3D;&quot;text form-input-label&quot;&gt;Middle Name &lt;/mat-label&gt;
   &lt;input matInput class&#x3D;&quot;input&quot; [value]&#x3D;&quot;middleNameValidator.value&quot; (input)&#x3D;&quot;updateName($event, &#x27;middleName&#x27;)&quot; matTooltip&#x3D;&quot;Add your middle name.&quot;&gt;
 &lt;/mat-form-field&gt;
 
 &lt;mat-form-field class&#x3D;&quot;field&quot; subscriptSizing&#x3D;&quot;dynamic&quot;&gt;
-  &lt;mat-label class&#x3D;&quot;text label&quot;&gt;Last Name &lt;/mat-label&gt;
+  &lt;mat-label class&#x3D;&quot;text form-input-label&quot;&gt;Last Name &lt;/mat-label&gt;
   &lt;input matInput class&#x3D;&quot;input&quot; [value]&#x3D;&quot;lastNameValidator.value&quot; (input)&#x3D;&quot;updateName($event, &#x27;lastName&#x27;)&quot; matTooltip&#x3D;&quot;Add your last name.&quot; required title&#x3D;&quot;&quot;&gt;
 &lt;/mat-form-field&gt;
 </code></pre>
@@ -946,7 +946,7 @@ export class NameInputComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><mat-form-field class="field" subscriptSizing="dynamic">  <mat-label class="text label">First Name </mat-label>  <input matInput class="input" [value]="firstNameValidator.value" (input)="updateName($event, \'firstName\')" matTooltip="Add your first name." required title=""></mat-form-field><mat-form-field class="field" subscriptSizing="dynamic">  <mat-label class="text label">Middle Name </mat-label>  <input matInput class="input" [value]="middleNameValidator.value" (input)="updateName($event, \'middleName\')" matTooltip="Add your middle name."></mat-form-field><mat-form-field class="field" subscriptSizing="dynamic">  <mat-label class="text label">Last Name </mat-label>  <input matInput class="input" [value]="lastNameValidator.value" (input)="updateName($event, \'lastName\')" matTooltip="Add your last name." required title=""></mat-form-field></div>'
+        var COMPONENT_TEMPLATE = '<div><mat-form-field class="field" subscriptSizing="dynamic">  <mat-label class="text form-input-label">First Name </mat-label>  <input matInput class="input" [value]="firstNameValidator.value" (input)="updateName($event, \'firstName\')" matTooltip="Add your first name." required title=""></mat-form-field><mat-form-field class="field" subscriptSizing="dynamic">  <mat-label class="text form-input-label">Middle Name </mat-label>  <input matInput class="input" [value]="middleNameValidator.value" (input)="updateName($event, \'middleName\')" matTooltip="Add your middle name."></mat-form-field><mat-form-field class="field" subscriptSizing="dynamic">  <mat-label class="text form-input-label">Last Name </mat-label>  <input matInput class="input" [value]="lastNameValidator.value" (input)="updateName($event, \'lastName\')" matTooltip="Add your last name." required title=""></mat-form-field></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppWebComponent', 'selector': 'ccf-root-wc'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DetailsLabelComponent', 'selector': 'ccf-details-label'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'ExtractionSetDropdownComponent', 'selector': 'ccf-extraction-set-dropdown'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'JsonFileReaderComponent', 'selector': 'ccf-json-file-reader'},{'name': 'LabeledSlideToggleComponent', 'selector': 'ccf-labeled-slide-toggle'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'NameInputComponent', 'selector': 'ccf-name-input'},{'name': 'RegistrationContentComponent', 'selector': 'ccf-registration-content'},{'name': 'RegistrationMetadataComponent', 'selector': 'ccf-registration-metadata'},{'name': 'RegistrationModalComponent', 'selector': 'ccf-registration-modal'},{'name': 'ReviewButtonComponent', 'selector': 'ccf-review-button'},{'name': 'ReviewModalComponent', 'selector': 'ccf-review-modal'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'TagListComponent', 'selector': 'ccf-tag-list'},{'name': 'TagSearchComponent', 'selector': 'ccf-tag-search'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'VideoModalComponent', 'selector': 'ccf-video-modal'},{'name': 'VideoModalLauncherComponent', 'selector': 'ccf-video-modal-launcher'},{'name': 'VisibilityMenuComponent', 'selector': 'ccf-visibility-menu'},{'name': 'VisibilityToggleComponent', 'selector': 'ccf-visibility-toggle'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'NameInputComponent'};

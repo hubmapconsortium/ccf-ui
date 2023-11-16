@@ -171,6 +171,20 @@
                     </td>
                 </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#registrationExpanded" >registrationExpanded</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
                 <tr>
                     <td class="col-md-4">
@@ -203,7 +217,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">projects/ccf-rui/src/app/modules/right-sidebar/right-sidebar.component.ts:23</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">projects/ccf-rui/src/app/modules/right-sidebar/right-sidebar.component.ts:25</a></div>
                             </td>
                         </tr>
 
@@ -331,7 +345,30 @@
             </tbody>
         </table>
 </section>
+    <section data-compodoc="block-outputs">
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="registrationExpanded"></a>
+                        <b>registrationExpanded</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>EventEmitter</code>
 
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">projects/ccf-rui/src/app/modules/right-sidebar/right-sidebar.component.ts:25</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
     <section data-compodoc="block-properties">
     <h3>HostBindings</h3>    <table class="table table-sm table-bordered">
         <tbody>
@@ -433,7 +470,7 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, Component, HostBinding, Input } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output } from &#x27;@angular/core&#x27;;
 
 import { AnatomicalStructureTagState } from &#x27;../../core/store/anatomical-structure-tags/anatomical-structure-tags.state&#x27;;
 import { ModelState } from &#x27;../../core/store/model/model.state&#x27;;
@@ -456,6 +493,8 @@ export class RightSidebarComponent {
 
   /** Whether or not the initial registration modal has been closed */
   @Input() modalClosed &#x3D; false;
+
+  @Output() registrationExpanded &#x3D; new EventEmitter&lt;boolean&gt;();
 
   /**
    * Creates an instance of right sidebar component.
@@ -482,7 +521,7 @@ export class RightSidebarComponent {
 &lt;/div&gt;
 &lt;div class&#x3D;&quot;scroll-wrapper&quot;&gt;
   &lt;div class&#x3D;&quot;container&quot;&gt;
-    &lt;mat-expansion-panel class&#x3D;&quot;registration-metadata-panel&quot;&gt;
+    &lt;mat-expansion-panel class&#x3D;&quot;registration-metadata-panel&quot; (opened)&#x3D;&quot;registrationExpanded.emit(true)&quot; (closed)&#x3D;&quot;registrationExpanded.emit(false)&quot;&gt;
       &lt;mat-expansion-panel-header class&#x3D;&quot;header&quot;&gt;
         &lt;mat-panel-title matTooltip&#x3D;&quot;&quot;&gt;Registration Metadata&lt;/mat-panel-title&gt;
       &lt;/mat-expansion-panel-header&gt;
@@ -708,7 +747,7 @@ export class RightSidebarComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class=\'info-button-container\'>  <ccf-info-button videoID="gY3_-LIoKaU" infoTitle="CCF Registration User Interface" documentationUrl="assets/docs/README.md"></ccf-info-button></div><div class="scroll-wrapper">  <div class="container">    <mat-expansion-panel class="registration-metadata-panel">      <mat-expansion-panel-header class="header">        <mat-panel-title matTooltip="">Registration Metadata</mat-panel-title>      </mat-expansion-panel-header>      <ccf-registration-metadata></ccf-registration-metadata>    </mat-expansion-panel>    <mat-divider></mat-divider>    <mat-expansion-panel class="tissue-block-controls-panel" [expanded]="true">      <mat-expansion-panel-header class="header">        <mat-panel-title matTooltip="">Tissue Block Controls</mat-panel-title>      </mat-expansion-panel-header>      <ccf-block-size-input [blockSize]="model.blockSize$ | async" (blockSizeChange)="model.setBlockSize($event)">      </ccf-block-size-input>      <ccf-slices-input [slicesConfig]="model.slicesConfig$ | async" (slicesConfigChange)="model.setSlicesConfig($event)">      </ccf-slices-input>      <ccf-rotation-slider [rotation]="model.rotation$ | async" (rotationChange)="model.setRotation($event)">      </ccf-rotation-slider>    </mat-expansion-panel>    <mat-divider></mat-divider>    <mat-expansion-panel class="tags-container" [expanded]="true">      <mat-expansion-panel-header class="header">        <mat-panel-title matTooltip="Review tags generated via collision detection. Add or delete tags as needed.">Anatomical Structure Tags</mat-panel-title>      </mat-expansion-panel-header>      <ccf-tag-search [search]="astags.searchExternal" (added)="astags.addTags($event)">      </ccf-tag-search>      <ccf-tag-list *ngIf="(model.organ$ | async)?.name; else: tagListPlaceholder" class="tag-list" [tags]="astags.tags$ | async"                    (tagRemoved)="astags.removeTag($event)">      </ccf-tag-list>      <ng-template #tagListPlaceholder>      </ng-template>      <div class="legend">        <span class="dot assigned"></span>        <span class="text assigned">Assigned</span>        <span class="dot added"></span>        <span class="text added">Added</span>      </div>    </mat-expansion-panel>    <mat-divider></mat-divider>    <div class="filler"></div>    <ccf-review-button class="review-button" [registrationCallbackSet]="page.registrationCallbackSet$ | async" [displayErrors]="registration.displayErrors$ | async"                       [userValid]="registration.valid$ | async" [metaData]="(registration.metadata$ | async) ?? []"                       (registerData)="registration.register()"                       (enterErrorMode)="registration.setDisplayErrors(!registration.isValid)">    </ccf-review-button>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class=\'info-button-container\'>  <ccf-info-button videoID="gY3_-LIoKaU" infoTitle="CCF Registration User Interface" documentationUrl="assets/docs/README.md"></ccf-info-button></div><div class="scroll-wrapper">  <div class="container">    <mat-expansion-panel class="registration-metadata-panel" (opened)="registrationExpanded.emit(true)" (closed)="registrationExpanded.emit(false)">      <mat-expansion-panel-header class="header">        <mat-panel-title matTooltip="">Registration Metadata</mat-panel-title>      </mat-expansion-panel-header>      <ccf-registration-metadata></ccf-registration-metadata>    </mat-expansion-panel>    <mat-divider></mat-divider>    <mat-expansion-panel class="tissue-block-controls-panel" [expanded]="true">      <mat-expansion-panel-header class="header">        <mat-panel-title matTooltip="">Tissue Block Controls</mat-panel-title>      </mat-expansion-panel-header>      <ccf-block-size-input [blockSize]="model.blockSize$ | async" (blockSizeChange)="model.setBlockSize($event)">      </ccf-block-size-input>      <ccf-slices-input [slicesConfig]="model.slicesConfig$ | async" (slicesConfigChange)="model.setSlicesConfig($event)">      </ccf-slices-input>      <ccf-rotation-slider [rotation]="model.rotation$ | async" (rotationChange)="model.setRotation($event)">      </ccf-rotation-slider>    </mat-expansion-panel>    <mat-divider></mat-divider>    <mat-expansion-panel class="tags-container" [expanded]="true">      <mat-expansion-panel-header class="header">        <mat-panel-title matTooltip="Review tags generated via collision detection. Add or delete tags as needed.">Anatomical Structure Tags</mat-panel-title>      </mat-expansion-panel-header>      <ccf-tag-search [search]="astags.searchExternal" (added)="astags.addTags($event)">      </ccf-tag-search>      <ccf-tag-list *ngIf="(model.organ$ | async)?.name; else: tagListPlaceholder" class="tag-list" [tags]="astags.tags$ | async"                    (tagRemoved)="astags.removeTag($event)">      </ccf-tag-list>      <ng-template #tagListPlaceholder>      </ng-template>      <div class="legend">        <span class="dot assigned"></span>        <span class="text assigned">Assigned</span>        <span class="dot added"></span>        <span class="text added">Added</span>      </div>    </mat-expansion-panel>    <mat-divider></mat-divider>    <div class="filler"></div>    <ccf-review-button class="review-button" [registrationCallbackSet]="page.registrationCallbackSet$ | async" [displayErrors]="registration.displayErrors$ | async"                       [userValid]="registration.valid$ | async" [metaData]="(registration.metadata$ | async) ?? []"                       (registerData)="registration.register()"                       (enterErrorMode)="registration.setDisplayErrors(!registration.isValid)">    </ccf-review-button>  </div></div></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppWebComponent', 'selector': 'ccf-root-wc'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DetailsLabelComponent', 'selector': 'ccf-details-label'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'ExtractionSetDropdownComponent', 'selector': 'ccf-extraction-set-dropdown'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'JsonFileReaderComponent', 'selector': 'ccf-json-file-reader'},{'name': 'LabeledSlideToggleComponent', 'selector': 'ccf-labeled-slide-toggle'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'NameInputComponent', 'selector': 'ccf-name-input'},{'name': 'RegistrationContentComponent', 'selector': 'ccf-registration-content'},{'name': 'RegistrationMetadataComponent', 'selector': 'ccf-registration-metadata'},{'name': 'RegistrationModalComponent', 'selector': 'ccf-registration-modal'},{'name': 'ReviewButtonComponent', 'selector': 'ccf-review-button'},{'name': 'ReviewModalComponent', 'selector': 'ccf-review-modal'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'TagListComponent', 'selector': 'ccf-tag-list'},{'name': 'TagSearchComponent', 'selector': 'ccf-tag-search'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'VideoModalComponent', 'selector': 'ccf-video-modal'},{'name': 'VideoModalLauncherComponent', 'selector': 'ccf-video-modal-launcher'},{'name': 'VisibilityMenuComponent', 'selector': 'ccf-visibility-menu'},{'name': 'VisibilityToggleComponent', 'selector': 'ccf-visibility-toggle'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'RightSidebarComponent'};
