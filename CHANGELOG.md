@@ -2,6 +2,15 @@
 
 Changelog for the Human Reference Atlas (HRA) User Interfaces
 
+## 3.8.0 - 2023-11-16
+
+## Added in 3.8.0
+
+* EUI Quality of Life Improvements. See [milestone 6](https://github.com/hubmapconsortium/ccf-ui/milestone/6?closed=1)
+* RUI Quality of Life Improvements. See [milestone 5](https://github.com/hubmapconsortium/ccf-ui/milestone/5?closed=1)
+* A lot of minor UI and bug fixes in preparation for HRA 2.0
+* Updated dependencies including, update to Angular 16
+
 ## 3.7.2 - 2023-07-12
 
 ## Added in 3.7.2
