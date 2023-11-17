@@ -756,7 +756,7 @@
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>new FormControl(&#x27;&#x27;, [Validators.pattern(&#x27;^\\d{4}(-\\d{4}){3}$&#x27;)])</code>
+                        <i>Default value : </i><code>new FormControl(&#x27;&#x27;, [Validators.pattern(&#x27;^[a-zA-Z0-9]{4}(-[a-zA-Z0-9]{4}){3}$&#x27;)])</code>
                     </td>
                 </tr>
                     <tr>
@@ -844,7 +844,7 @@ export class RegistrationMetadataComponent {
   uploadText: string;
 
   /** Form control for validating orcid id */
-  orcidControl &#x3D; new FormControl(&#x27;&#x27;, [Validators.pattern(&#x27;^\\d{4}(-\\d{4}){3}$&#x27;)]);
+  orcidControl &#x3D; new FormControl(&#x27;&#x27;, [Validators.pattern(&#x27;^[a-zA-Z0-9]{4}(-[a-zA-Z0-9]{4}){3}$&#x27;)]);
 
   /**
    * Creates an instance of registration metadata component.
