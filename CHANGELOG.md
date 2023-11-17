@@ -2,7 +2,7 @@
 
 Changelog for the Human Reference Atlas (HRA) User Interfaces
 
-## 3.8.1 - 2023-11-16
+## 3.8.1 - 2023-11-17
 
 ## Added in 3.8.1
 
