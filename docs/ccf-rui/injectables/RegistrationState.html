@@ -402,8 +402,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="359"
-                                    class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:359</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="362"
+                                    class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:362</a></div>
                         </td>
                     </tr>
 
@@ -509,8 +509,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="325"
-                                    class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:325</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="328"
+                                    class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:328</a></div>
                         </td>
                     </tr>
 
@@ -683,8 +683,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="250"
-                                    class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:250</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="251"
+                                    class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:251</a></div>
                         </td>
                     </tr>
 
@@ -803,8 +803,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="422"
-                                    class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:422</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="425"
+                                    class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:425</a></div>
                         </td>
                     </tr>
 
@@ -878,8 +878,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="273"
-                                    class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:273</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="274"
+                                    class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:274</a></div>
                         </td>
                     </tr>
 
@@ -1044,8 +1044,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="246"
-                                    class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:246</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="247"
+                                    class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:247</a></div>
                         </td>
                     </tr>
 
@@ -1122,8 +1122,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="304"
-                                    class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:304</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="307"
+                                    class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:307</a></div>
                         </td>
                     </tr>
 
@@ -1246,8 +1246,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="413"
-                                    class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:413</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="416"
+                                    class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:416</a></div>
                         </td>
                     </tr>
 
@@ -1674,7 +1674,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="264" class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:264</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="265" class="link-to-prism">projects/ccf-rui/src/app/core/store/registration/registration.state.ts:265</a></div>
                                 </td>
                             </tr>
 
@@ -1922,6 +1922,7 @@ export class RegistrationState extends NgxsImmutableDataRepository&lt;Registrati
     this.ctx.setState(patch({
       registrations: insertItem(registration as Immutable&lt;Record&lt;string, unknown&gt;&gt;)
     }));
+    this.page.registrationStarted();
   }
 
   /**
@@ -1957,6 +1958,7 @@ export class RegistrationState extends NgxsImmutableDataRepository&lt;Registrati
    * @param [useCallback] Explicit override selecting the register/download action
    */
   register(useCallback?: boolean): void {
+    this.page.registrationStarted();
     if (!this.isValid) {
       return;
     }
@@ -1970,6 +1972,7 @@ export class RegistrationState extends NgxsImmutableDataRepository&lt;Registrati
 
     if (useCallback ?? (useCallback &#x3D;&#x3D;&#x3D; undefined &amp;&amp; snapshot.useRegistrationCallback)) {
       registrationCallback?.(json);
+
     } else {
       const data &#x3D; new Blob([json], {
         type: &#x27;application/json&#x27;,
@@ -1979,9 +1982,9 @@ export class RegistrationState extends NgxsImmutableDataRepository&lt;Registrati
       saveAs(data, &#x27;registration-data.json&#x27;);
     }
 
-    this.addRegistration(jsonObj);
     this.setDisplayErrors(false);
     this.page.clearHasChanges();
+    this.addRegistration(jsonObj);
   }
 
   /**

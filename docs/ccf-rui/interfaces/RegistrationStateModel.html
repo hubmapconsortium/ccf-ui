@@ -535,6 +535,7 @@ export class RegistrationState extends NgxsImmutableDataRepository&lt;Registrati
     this.ctx.setState(patch({
       registrations: insertItem(registration as Immutable&lt;Record&lt;string, unknown&gt;&gt;)
     }));
+    this.page.registrationStarted();
   }
 
   /**
@@ -570,6 +571,7 @@ export class RegistrationState extends NgxsImmutableDataRepository&lt;Registrati
    * @param [useCallback] Explicit override selecting the register/download action
    */
   register(useCallback?: boolean): void {
+    this.page.registrationStarted();
     if (!this.isValid) {
       return;
     }
@@ -583,6 +585,7 @@ export class RegistrationState extends NgxsImmutableDataRepository&lt;Registrati
 
     if (useCallback ?? (useCallback &#x3D;&#x3D;&#x3D; undefined &amp;&amp; snapshot.useRegistrationCallback)) {
       registrationCallback?.(json);
+
     } else {
       const data &#x3D; new Blob([json], {
         type: &#x27;application/json&#x27;,
@@ -592,9 +595,9 @@ export class RegistrationState extends NgxsImmutableDataRepository&lt;Registrati
       saveAs(data, &#x27;registration-data.json&#x27;);
     }
 
-    this.addRegistration(jsonObj);
     this.setDisplayErrors(false);
     this.page.clearHasChanges();
+    this.addRegistration(jsonObj);
   }
 
   /**
