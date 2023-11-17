@@ -30,7 +30,7 @@ export class RegistrationMetadataComponent {
   uploadText: string;
 
   /** Form control for validating orcid id */
-  orcidControl = new FormControl('', [Validators.pattern('^\\d{4}(-\\d{4}){3}$')]);
+  orcidControl = new FormControl('', [Validators.pattern('^[a-zA-Z0-9]{4}(-[a-zA-Z0-9]{4}){3}$')]);
 
   /**
    * Creates an instance of registration metadata component.

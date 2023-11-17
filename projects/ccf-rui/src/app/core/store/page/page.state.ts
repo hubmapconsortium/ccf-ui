@@ -230,7 +230,7 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
    */
   isOrcidValid(): boolean {
     const orcId = this.uriToOrcid(this.snapshot.user.orcidId);
-    return !!(!orcId || orcId.match('^\\d{4}(-\\d{4}){3}$'));
+    return !!(!orcId || orcId.match('^[a-zA-Z0-9]{4}(-[a-zA-Z0-9]{4}){3}$'));
   }
 
   /**
