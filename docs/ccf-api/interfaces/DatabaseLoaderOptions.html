@@ -232,16 +232,33 @@ function selectToken(token: string | undefined, req: Request): string {
 
 function createDatabase(token: string, options: CCFDatabaseOptions): Promise&lt;CCFDatabaseInstance&gt; {
   // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
-  const xConsortiaToken &#x3D; token || options.hubmapToken || undefined;
+  const xConsortiaTokens &#x3D; (token || options.hubmapToken || &#x27;&#x27;).split(/|/).filter(s &#x3D;&gt; !!s);
+
+  let applyToken &#x3D; (url: string) &#x3D;&gt; url;
+
+  if (xConsortiaTokens.length &gt; 0) {
+    const hubmapToken &#x3D; xConsortiaTokens.find((t) &#x3D;&gt; t.startsWith(&#x27;HBM-&#x27;) || !t.startsWith(&#x27;SNT-&#x27;))?.replace(/^HBM-/, &#x27;&#x27;);
+    const sennetToken &#x3D; xConsortiaTokens.find((t) &#x3D;&gt; t.startsWith(&#x27;SNT-&#x27;))?.replace(/^SNT-/, &#x27;&#x27;);
+
+    applyToken &#x3D; (url: string) &#x3D;&gt; {
+      if (typeof url &#x3D;&#x3D;&#x3D; &#x27;string&#x27; &amp;&amp; url) {
+        const isHuBMAP &#x3D; url.endsWith(&#x27;hubmap/rui_locations.jsonld&#x27;);
+        const isSenNet &#x3D; url.endsWith(&#x27;sennet/rui_locations.jsonld&#x27;);
+
+        if (isHuBMAP &amp;&amp; hubmapToken) {
+          url &#x3D; &#x60;${url}?token&#x3D;${hubmapToken}&#x60;;
+        } else if (isSenNet &amp;&amp; sennetToken) {
+          url &#x3D; &#x60;${url}?token&#x3D;${sennetToken}&#x60;;
+        }
+      }
+      return url;
+    };
+  }
 
   return createCCFDatabaseWorker({
     ...options,
     hubmapDataUrl: &#x27;&#x27;, // Do not use deprecated internal hubmap data loading
-    dataSources: options.dataSources.map(s &#x3D;&gt;
-      xConsortiaToken &amp;&amp; typeof s &#x3D;&#x3D;&#x3D; &#x27;string&#x27; &amp;&amp; (
-        (!xConsortiaToken.startsWith(&#x27;SNT-&#x27;) &amp;&amp; s.endsWith(&#x27;hubmap/rui_locations.jsonld&#x27;))
-        || (xConsortiaToken.startsWith(&#x27;SNT-&#x27;) &amp;&amp; s.endsWith(&#x27;sennet/rui_locations.jsonld&#x27;))
-      ) ? &#x60;${s}?token&#x3D;${xConsortiaToken}&#x60; : s)
+    dataSources: options.dataSources.map(applyToken)
   });
 }
 
