@@ -41,14 +41,16 @@ function selectToken(token: string | undefined, req: Request): string {
 
 function createDatabase(token: string, options: CCFDatabaseOptions): Promise<CCFDatabaseInstance> {
   // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
-  const hubmapToken = token || options.hubmapToken || undefined;
+  const xConsortiaToken = token || options.hubmapToken || undefined;
 
   return createCCFDatabaseWorker({
     ...options,
     hubmapDataUrl: '', // Do not use deprecated internal hubmap data loading
     dataSources: options.dataSources.map(s =>
-      hubmapToken && typeof s === 'string' && s.endsWith('hubmap/rui_locations.jsonld') ? `${s}?token=${hubmapToken}` : s
-    )
+      xConsortiaToken && typeof s === 'string' && (
+           (!xConsortiaToken.startsWith('SNT-') && s.endsWith('hubmap/rui_locations.jsonld'))
+        || (xConsortiaToken.startsWith('SNT-') && s.endsWith('sennet/rui_locations.jsonld'))
+      ) ? `${s}?token=${xConsortiaToken}` : s)
   });
 }
 
