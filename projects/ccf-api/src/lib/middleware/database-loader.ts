@@ -46,8 +46,8 @@ function createDatabase(token: string, options: CCFDatabaseOptions): Promise<CCF
   let applyToken = (url: string) => url;
 
   if (xConsortiaTokens.length > 0) {
-    const hubmapToken = xConsortiaTokens.find((t) => t.startsWith('HBM-') && !t.startsWith('SNT-'))?.replace(/^HBM\-/, '');
-    const sennetToken = xConsortiaTokens.find((t) => t.startsWith('SNT-'))?.replace(/^SNT\-/, '');
+    const hubmapToken = xConsortiaTokens.find((t) => t.startsWith('HBM-') && !t.startsWith('SNT-'))?.replace(/^HBM-/, '');
+    const sennetToken = xConsortiaTokens.find((t) => t.startsWith('SNT-'))?.replace(/^SNT-/, '');
 
     applyToken = (url: string) => {
       if (typeof url === 'string' && url) {
@@ -61,7 +61,7 @@ function createDatabase(token: string, options: CCFDatabaseOptions): Promise<CCF
         }
       }
       return url;
-    }
+    };
   }
 
   return createCCFDatabaseWorker({
