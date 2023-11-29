@@ -41,7 +41,7 @@ function selectToken(token: string | undefined, req: Request): string {
 
 function createDatabase(token: string, options: CCFDatabaseOptions): Promise<CCFDatabaseInstance> {
   // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
-  const xConsortiaTokens = (token || options.hubmapToken || '').split(/|/).filter(s => !!s);
+  const xConsortiaTokens = (token || options.hubmapToken || '').split('|').filter(s => !!s);
 
   let applyToken = (url: string) => url;
 
