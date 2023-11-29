@@ -232,14 +232,16 @@ function selectToken(token: string | undefined, req: Request): string {
 
 function createDatabase(token: string, options: CCFDatabaseOptions): Promise&lt;CCFDatabaseInstance&gt; {
   // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
-  const hubmapToken &#x3D; token || options.hubmapToken || undefined;
+  const xConsortiaToken &#x3D; token || options.hubmapToken || undefined;
 
   return createCCFDatabaseWorker({
     ...options,
     hubmapDataUrl: &#x27;&#x27;, // Do not use deprecated internal hubmap data loading
     dataSources: options.dataSources.map(s &#x3D;&gt;
-      hubmapToken &amp;&amp; typeof s &#x3D;&#x3D;&#x3D; &#x27;string&#x27; &amp;&amp; s.endsWith(&#x27;hubmap/rui_locations.jsonld&#x27;) ? &#x60;${s}?token&#x3D;${hubmapToken}&#x60; : s
-    )
+      xConsortiaToken &amp;&amp; typeof s &#x3D;&#x3D;&#x3D; &#x27;string&#x27; &amp;&amp; (
+        (!xConsortiaToken.startsWith(&#x27;SNT-&#x27;) &amp;&amp; s.endsWith(&#x27;hubmap/rui_locations.jsonld&#x27;))
+        || (xConsortiaToken.startsWith(&#x27;SNT-&#x27;) &amp;&amp; s.endsWith(&#x27;sennet/rui_locations.jsonld&#x27;))
+      ) ? &#x60;${s}?token&#x3D;${xConsortiaToken}&#x60; : s)
   });
 }
 
