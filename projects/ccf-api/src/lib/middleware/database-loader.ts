@@ -48,7 +48,7 @@ function createDatabase(token: string, options: CCFDatabaseOptions): Promise<CCF
     hubmapDataUrl: '', // Do not use deprecated internal hubmap data loading
     dataSources: options.dataSources.map(s =>
       xConsortiaToken && typeof s === 'string' && (
-           (!xConsortiaToken.startsWith('SNT-') && s.endsWith('hubmap/rui_locations.jsonld'))
+        (!xConsortiaToken.startsWith('SNT-') && s.endsWith('hubmap/rui_locations.jsonld'))
         || (xConsortiaToken.startsWith('SNT-') && s.endsWith('sennet/rui_locations.jsonld'))
       ) ? `${s}?token=${xConsortiaToken}` : s)
   });
