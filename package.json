@@ -67,7 +67,7 @@
     "node": "18.x"
   },
   "dependencies": {
-    "@angular-ru/cdk": "14.10.1",
+    "@angular-ru/cdk": "14.11.2",
     "@angular-ru/common": "15.313.0",
     "@angular-ru/ngxs": "14.1.4",
     "@angular-slider/ngx-slider": "^2.0.4",
