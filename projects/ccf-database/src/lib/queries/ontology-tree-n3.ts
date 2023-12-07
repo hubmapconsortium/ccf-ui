@@ -153,6 +153,7 @@ export function getAnatomicalStructureTreeModelSlowly(
     'http://purl.obolibrary.org/obo/UBERON_0000059', // Large Intestine
     'http://purl.obolibrary.org/obo/UBERON_0002106', // Spleen
     'http://purl.obolibrary.org/obo/UBERON_0002370', // Thymus
+    'http://purl.obolibrary.org/obo/UBERON_0002372', // Tonsil
     'http://purl.obolibrary.org/obo/UBERON_0003126', // Trachea
     'http://purl.obolibrary.org/obo/UBERON_0000056', // Ureter
     // 'http://purl.obolibrary.org/obo/UBERON_0001223', // Ureter, L
@@ -160,6 +161,7 @@ export function getAnatomicalStructureTreeModelSlowly(
     'http://purl.obolibrary.org/obo/UBERON_0001255', // Urinary Bladder
     'http://purl.obolibrary.org/obo/UBERON_0000995', // Uterus
     'http://purl.obolibrary.org/obo/UBERON_0004537', // Blood Vasculature
+    // 'http://purl.obolibrary.org/obo/UBERON_0000467', // Anatomical System
   ].filter((iri) => iri in model.nodes);
   return model;
 }
