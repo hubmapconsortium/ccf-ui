@@ -153,7 +153,6 @@ export function getAnatomicalStructureTreeModelSlowly(
     'http://purl.obolibrary.org/obo/UBERON_0000059', // Large Intestine
     'http://purl.obolibrary.org/obo/UBERON_0002106', // Spleen
     'http://purl.obolibrary.org/obo/UBERON_0002370', // Thymus
-    'http://purl.obolibrary.org/obo/UBERON_0002372', // Tonsil
     'http://purl.obolibrary.org/obo/UBERON_0003126', // Trachea
     'http://purl.obolibrary.org/obo/UBERON_0000056', // Ureter
     // 'http://purl.obolibrary.org/obo/UBERON_0001223', // Ureter, L
