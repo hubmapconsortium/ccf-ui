@@ -515,6 +515,7 @@ export class AppComponent implements OnInit {
 
   readonly ontologyTerms$: Observable&lt;readonly string[]&gt;;
   readonly cellTypeTerms$: Observable&lt;readonly string[]&gt;;
+  readonly biomarkerTerms$: Observable&lt;readonly string[]&gt;;
 
   readonly theme$ &#x3D; this.globalConfig.getOption(&#x27;theme&#x27;);
   readonly themeMode$ &#x3D; new ReplaySubject&lt;&#x27;light&#x27; | &#x27;dark&#x27;&gt;(1);
@@ -557,6 +558,7 @@ export class AppComponent implements OnInit {
     data.providerFilterData$.subscribe();
     this.ontologyTerms$ &#x3D; data.filter$.pipe(map(x &#x3D;&gt; x?.ontologyTerms));
     this.cellTypeTerms$ &#x3D; data.filter$.pipe(map(x &#x3D;&gt; x?.cellTypeTerms));
+    this.biomarkerTerms$ &#x3D; data.filter$.pipe(map(x &#x3D;&gt; x?.biomarkerTerms));
     this.filter$.subscribe((filter: Partial&lt;Filter&gt;)&#x3D;&gt; data.updateFilter(filter));
 
     combineLatest([scene.referenceOrgans$, this.selectedOrgans$]).subscribe(
@@ -647,7 +649,7 @@ export class AppComponent implements OnInit {
       } else if (type &#x3D;&#x3D;&#x3D; &#x27;cell-type&#x27;) {
         this.data.updateFilter({ cellTypeTerms: ontologySelection.map(selection &#x3D;&gt; selection.id) });
         this.cellTypeSelectionLabel &#x3D; this.createSelectionLabel(ontologySelection);
-      } else {
+      } else if (type &#x3D;&#x3D;&#x3D; &#x27;biomarkers&#x27;) {
         this.data.updateFilter({ biomarkerTerms: ontologySelection.map(selection &#x3D;&gt; selection.id) });
         this.biomarkerSelectionLabel &#x3D; this.createSelectionLabel(ontologySelection);
       }
@@ -664,7 +666,7 @@ export class AppComponent implements OnInit {
       return;
     }
 
-    this.data.updateFilter({ ontologyTerms: [], cellTypeTerms: [] });
+    this.data.updateFilter({ ontologyTerms: [], cellTypeTerms: [], biomarkerTerms: [] });
     this.ontologySelectionLabel &#x3D; &#x27;&#x27;;
     this.cellTypeSelectionLabel &#x3D; &#x27;&#x27;;
   }

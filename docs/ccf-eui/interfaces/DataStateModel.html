@@ -579,7 +579,7 @@ export class DataState extends NgxsDataRepository&lt;DataStateModel&gt; implemen
   }
 
   ngxsOnInit(): void {
-    const { ontologyTermsFullData$, ontologyTermOccurencesData$, cellTypeTermsFullData$, cellTypeTermOccurencesData$, source, snapshot: { filter } , biomarkerTermsFullData$, biomarkerTermOccurencesData$ } &#x3D; this;
+    const { ontologyTermsFullData$, ontologyTermOccurencesData$, cellTypeTermsFullData$, biomarkerTermsFullData$, cellTypeTermOccurencesData$, biomarkerTermOccurencesData$, source, snapshot: { filter } } &#x3D; this;
     if (filter &#x3D;&#x3D;&#x3D; DEFAULT_FILTER) {
       // Common case - Reuse the result of the regular query
       ontologyTermOccurencesData$.pipe(take(1)).subscribe(ontologyTermsFullData$);
