@@ -100,6 +100,8 @@ export interface SearchableItem {
   ontologyTerms?: Set<string>;
   /** CellType terms */
   cellTypeTerms?: Set<string>;
+  /** Biomarker terms */
+  biomarkerTerms?: Set<string>;
 }
 
 /** Specification for a Spatial Search via Probing Sphere */

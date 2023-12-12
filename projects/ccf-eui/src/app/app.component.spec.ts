@@ -38,11 +38,11 @@ describe('AppComponent', () => {
     bmiRange: [30, 80],
     ontologyTerms: [],
     cellTypeTerms: [],
+    biomarkerTerms: [],
     consortiums: [],
     tmc: [],
     spatialSearches: [],
-    technologies: [],
-    biomarkerTerms: []
+    technologies: []
   };
   const testTreeStr: OntologyTreeModel = {
     root: 'a',

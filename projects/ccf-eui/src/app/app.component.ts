@@ -132,6 +132,7 @@ export class AppComponent implements OnInit {
 
   readonly ontologyTerms$: Observable<readonly string[]>;
   readonly cellTypeTerms$: Observable<readonly string[]>;
+  readonly biomarkerTerms$: Observable<readonly string[]>;
 
   readonly theme$ = this.globalConfig.getOption('theme');
   readonly themeMode$ = new ReplaySubject<'light' | 'dark'>(1);
@@ -174,6 +175,7 @@ export class AppComponent implements OnInit {
     data.providerFilterData$.subscribe();
     this.ontologyTerms$ = data.filter$.pipe(map(x => x?.ontologyTerms));
     this.cellTypeTerms$ = data.filter$.pipe(map(x => x?.cellTypeTerms));
+    this.biomarkerTerms$ = data.filter$.pipe(map(x => x?.biomarkerTerms));
     this.filter$.subscribe((filter: Partial<Filter>)=> data.updateFilter(filter));
 
     combineLatest([scene.referenceOrgans$, this.selectedOrgans$]).subscribe(
@@ -264,7 +266,7 @@ export class AppComponent implements OnInit {
       } else if (type === 'cell-type') {
         this.data.updateFilter({ cellTypeTerms: ontologySelection.map(selection => selection.id) });
         this.cellTypeSelectionLabel = this.createSelectionLabel(ontologySelection);
-      } else {
+      } else if (type === 'biomarkers') {
         this.data.updateFilter({ biomarkerTerms: ontologySelection.map(selection => selection.id) });
         this.biomarkerSelectionLabel = this.createSelectionLabel(ontologySelection);
       }
@@ -281,7 +283,7 @@ export class AppComponent implements OnInit {
       return;
     }
 
-    this.data.updateFilter({ ontologyTerms: [], cellTypeTerms: [] });
+    this.data.updateFilter({ ontologyTerms: [], cellTypeTerms: [], biomarkerTerms: [] });
     this.ontologySelectionLabel = '';
     this.cellTypeSelectionLabel = '';
   }
