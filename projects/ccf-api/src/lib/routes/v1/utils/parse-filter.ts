@@ -177,6 +177,11 @@ function processParameter(result: Filter, key: string, value: unknown): void {
     case 'cell-type-terms':
       setIfDefined(result, 'cellTypeTerms', parseArray(value));
       break;
+
+    case 'biomarkerterms':
+    case 'biomarker-terms':
+      setIfDefined(result, 'biomarkerTerms', parseArray(value));
+      break;
   }
 }
 

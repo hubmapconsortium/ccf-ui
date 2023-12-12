@@ -80,6 +80,7 @@ function parseFilter(value: unknown): string | Partial<Filter> {
     checkProp('technologies', val => isStringArray(val));
     checkProp('ontologyTerms', val => isStringArray(val));
     checkProp('cellTypeTerms', val => isStringArray(val));
+    checkProp('biomarkerTerms', val => isStringArray(val));
     checkProp('spatialSearches', val => isStringArray(val));
     return value as Filter;
   }
