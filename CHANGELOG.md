@@ -2,6 +2,15 @@
 
 Changelog for the Human Reference Atlas (HRA) User Interfaces
 
+## 3.8.5 - 2023-12-15
+
+## Added in 3.8.5
+
+- Updated to the latest CCF.OWL as part of HRA v2.0!
+- Finalized Biomarker support in the EUI and API analagous to Cell Type support
+- EUI Quality of Life Improvements. See [milestone 6](https://github.com/hubmapconsortium/ccf-ui/milestone/6?closed=1)
+- RUI Quality of Life Improvements. See [milestone 5](https://github.com/hubmapconsortium/ccf-ui/milestone/5?closed=1)
+
 ## 3.8.1 - 2023-11-17
 
 ## Added in 3.8.1

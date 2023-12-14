@@ -4,7 +4,7 @@ info:
   description: |
     This API provides programmatic access to data registered to the Human Reference Atlas (HRA).
     See the [HuBMAP HRA Portal](https://humanatlas.io/) for details.
-  version: 1.0.0
+  version: 1.2.0
 servers:
   - description: Production
     url: https://apps.humanatlas.io/hra-api/v1
