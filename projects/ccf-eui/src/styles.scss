@@ -129,7 +129,7 @@ body {
 body {
   margin: 0;
   padding: 0;
-  font-family: Inter, Inter Variable, sans-serif;
+  font-family: var(--ccf-ui-font, ""), Inter, Inter Variable, sans-serif;
   background-color: white;
 }
 
@@ -138,7 +138,7 @@ mat-icon {
 }
 
 button {
-  font-family: Inter, Inter Variable, sans-serif;
+  font-family: var(--ccf-ui-font, ""), Inter, Inter Variable, sans-serif;
   font-size: 14px;
   font-weight: 500;
 }
