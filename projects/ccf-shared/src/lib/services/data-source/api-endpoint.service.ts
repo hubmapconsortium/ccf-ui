@@ -34,6 +34,7 @@ interface FilterParams {
   bmiRange?: string;
   ontologyTerms?: string[];
   cellTypeTerms?: string[];
+  biomarkerTerms?: string[];
   consortiums?: string[];
   providers?: string[];
   sex?: 'both' | 'female' | 'male';
@@ -77,6 +78,7 @@ function filterToParams(filter?: Filter): FilterParams {
     sex: filter?.sex?.toLowerCase?.() as FilterParams['sex'],
     ontologyTerms: filter?.ontologyTerms,
     cellTypeTerms: filter?.cellTypeTerms,
+    biomarkerTerms: filter?.biomarkerTerms,
     consortiums: filter?.consortiums,
     providers: filter?.tmc,
     technologies: filter?.technologies,

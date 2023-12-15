@@ -72,6 +72,7 @@ export const entity = {
   spatialEntity: ccfx('has_registration_location'),
   ontologyTerms: ccfx('has_ontology_term'),
   cellTypeTerms: ccfx('has_cell_type_term'),
+  biomarkerTerms: ccfx('has_biomarker_term'),
 
   technology: ccfx('technology'),
   thumbnail: ccfx('thumbnail')

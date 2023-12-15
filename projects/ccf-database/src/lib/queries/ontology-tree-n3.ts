@@ -160,6 +160,7 @@ export function getAnatomicalStructureTreeModelSlowly(
     'http://purl.obolibrary.org/obo/UBERON_0001255', // Urinary Bladder
     'http://purl.obolibrary.org/obo/UBERON_0000995', // Uterus
     'http://purl.obolibrary.org/obo/UBERON_0004537', // Blood Vasculature
+    // 'http://purl.obolibrary.org/obo/UBERON_0000467', // Anatomical System
   ].filter((iri) => iri in model.nodes);
   return model;
 }
