@@ -103,6 +103,13 @@
                                         </a>
                                 </li>
                                 <li>
+                                            <span class="modifier">Optional</span>
+                                        <a href="#initialRegistration" 
+>
+                                            initialRegistration
+                                        </a>
+                                </li>
+                                <li>
                                         <a href="#registrations" 
 >
                                             registrations
@@ -159,6 +166,50 @@
                             <tr>
                                 <td class="col-md-4">
                                     <div class="io-description"><p>Whether or not to display user registration errors</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="initialRegistration"></a>
+                                        <span class="name "><b>initialRegistration</b>
+                                            <a href="#initialRegistration">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>initialRegistration:     <code>SpatialEntityJsonLd</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>SpatialEntityJsonLd</code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Registration provided by user</p>
 </div>
                                 </td>
                             </tr>
@@ -248,13 +299,13 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Immutable } from &#x27;@angular-ru/common/typings&#x27;;
-import { Injectable, Injector } from &#x27;@angular/core&#x27;;
 import { Computed, DataAction, StateRepository } from &#x27;@angular-ru/ngxs/decorators&#x27;;
 import { NgxsImmutableDataRepository } from &#x27;@angular-ru/ngxs/repositories&#x27;;
+import { Injectable, Injector } from &#x27;@angular/core&#x27;;
 import { State } from &#x27;@ngxs/store&#x27;;
 import { insertItem, patch } from &#x27;@ngxs/store/operators&#x27;;
 import { SpatialEntityJsonLd } from &#x27;ccf-body-ui&#x27;;
-import { GlobalConfigState } from &#x27;ccf-shared&#x27;;
+import { GlobalConfigState, OrganInfo } from &#x27;ccf-shared&#x27;;
 import { filterNulls } from &#x27;ccf-shared/rxjs-ext/operators&#x27;;
 import { saveAs } from &#x27;file-saver&#x27;;
 import { combineLatest, Observable } from &#x27;rxjs&#x27;;
@@ -265,7 +316,7 @@ import { Tag } from &#x27;../../models/anatomical-structure-tag&#x27;;
 import { MetaData } from &#x27;../../models/meta-data&#x27;;
 import { GlobalConfig } from &#x27;../../services/config/config&#x27;;
 import { AnatomicalStructureTagState } from &#x27;../anatomical-structure-tags/anatomical-structure-tags.state&#x27;;
-import { ModelState, ModelStateModel, XYZTriplet } from &#x27;../model/model.state&#x27;;
+import { ModelState, ModelStateModel, RUI_ORGANS, XYZTriplet } from &#x27;../model/model.state&#x27;;
 import { PageState, PageStateModel } from &#x27;../page/page.state&#x27;;
 import { ReferenceDataState } from &#x27;../reference-data/reference-data.state&#x27;;
 
@@ -280,6 +331,8 @@ export interface RegistrationStateModel {
   displayErrors: boolean;
   /** Previous registrations */
   registrations: Record&lt;string, unknown&gt;[];
+  /** Registration provided by user */
+  initialRegistration?: SpatialEntityJsonLd;
 }
 
 
@@ -392,25 +445,40 @@ export class RegistrationState extends NgxsImmutableDataRepository&lt;Registrati
     this.refData.state$.subscribe(() &#x3D;&gt; {
       this.globalConfig.config$.pipe(
         take(1),
-        tap(({ useDownload, register }) &#x3D;&gt; this.ctx.patchState({
-          useRegistrationCallback: !!(!useDownload &amp;&amp; register)
-        }))
+        tap(({ useDownload, register, organOptions }) &#x3D;&gt; {
+          this.ctx.patchState({
+            useRegistrationCallback: !!(!useDownload &amp;&amp; register),
+          });
+          this.page.setOrcidId();
+          this.model.setOrganDefaults();
+          this.setOrganSelection(organOptions as string[]);
+        })
       ).subscribe();
 
       this.globalConfig.getOption(&#x27;editRegistration&#x27;).pipe(
         filterNulls(),
-        tap(reg &#x3D;&gt; this.editRegistration(reg as SpatialEntityJsonLd))
+        tap(reg &#x3D;&gt; {
+          this.editRegistration(reg as SpatialEntityJsonLd);
+        })
       ).subscribe();
     });
   }
 
   async editRegistration(reg: SpatialEntityJsonLd): Promise&lt;void&gt; {
+    this.ctx.patchState({ initialRegistration: reg });
     const place &#x3D; this.refData.normalizePlacement(
       Array.isArray(reg.placement) ? reg.placement[0] : reg.placement
     );
     const data &#x3D; this.refData.getOrganData(place.target);
 
-    this.page.setUserName({ firstName: reg.creator_first_name, lastName: reg.creator_last_name });
+    this.page.setUserName({
+      firstName: reg.creator_first_name,
+      middleName: reg.creator_middle_name,
+      lastName: reg.creator_last_name
+    });
+
+    const orcid &#x3D; this.page.uriToOrcid(reg.creator_orcid);
+    this.page.setOrcidId(orcid);
 
     if (data) {
       this.model.setOrgan(data.organ);
@@ -425,10 +493,6 @@ export class RegistrationState extends NgxsImmutableDataRepository&lt;Registrati
     this.model.setBlockSize({ x: reg.x_dimension, y: reg.y_dimension, z: reg.z_dimension });
     this.model.setRotation({ x: place.x_rotation, y: place.y_rotation, z: place.z_rotation });
     this.model.setSlicesConfig({ thickness: reg.slice_thickness || NaN, numSlices: reg.slice_count || NaN });
-
-    await new Promise(r &#x3D;&gt; {
-      setTimeout(r, 1000);
-    });
 
     this.model.setPosition({ x: place.x_translation, y: place.y_translation, z: place.z_translation });
     const iris &#x3D; new Set&lt;string&gt;(reg.ccf_annotations);
@@ -471,12 +535,23 @@ export class RegistrationState extends NgxsImmutableDataRepository&lt;Registrati
     this.ctx.setState(patch({
       registrations: insertItem(registration as Immutable&lt;Record&lt;string, unknown&gt;&gt;)
     }));
+    this.page.registrationStarted();
+  }
+
+  /**
+   * Sets organ options in the RUI
+   * @param ids list of organ ids
+   */
+  @DataAction()
+  setOrganSelection(ids: string[] &#x3D; []): void {
+    this.page.patchState({ organOptions: this.organListOptions(ids) });
   }
 
   isDataValid(page: Immutable&lt;PageStateModel&gt;, model: Immutable&lt;ModelStateModel&gt;): boolean {
     const requiredValues &#x3D; [
       page.user.firstName,
       page.user.lastName,
+      page.orcidValid,
       model.organ.src,
       model.organ.name,
       model.organ.organ
@@ -496,6 +571,7 @@ export class RegistrationState extends NgxsImmutableDataRepository&lt;Registrati
    * @param [useCallback] Explicit override selecting the register/download action
    */
   register(useCallback?: boolean): void {
+    this.page.registrationStarted();
     if (!this.isValid) {
       return;
     }
@@ -509,6 +585,7 @@ export class RegistrationState extends NgxsImmutableDataRepository&lt;Registrati
 
     if (useCallback ?? (useCallback &#x3D;&#x3D;&#x3D; undefined &amp;&amp; snapshot.useRegistrationCallback)) {
       registrationCallback?.(json);
+
     } else {
       const data &#x3D; new Blob([json], {
         type: &#x27;application/json&#x27;,
@@ -518,9 +595,26 @@ export class RegistrationState extends NgxsImmutableDataRepository&lt;Registrati
       saveAs(data, &#x27;registration-data.json&#x27;);
     }
 
-    this.addRegistration(jsonObj);
     this.setDisplayErrors(false);
     this.page.clearHasChanges();
+    this.addRegistration(jsonObj);
+  }
+
+  /**
+   * Sets the state back to the initial registration
+   */
+  setToInitialRegistration() {
+    const { page } &#x3D; this;
+
+    const initialWithChanges: SpatialEntityJsonLd | undefined &#x3D; {
+      ...this.snapshot.initialRegistration as SpatialEntityJsonLd,
+      creator_first_name: page.snapshot.user.firstName,
+      creator_last_name: page.snapshot.user.lastName,
+      creator_middle_name: page.snapshot.user.middleName,
+      creator_orcid: page.snapshot.user.orcidId
+    };
+
+    this.editRegistration(initialWithChanges);
   }
 
   /**
@@ -574,10 +668,11 @@ export class RegistrationState extends NgxsImmutableDataRepository&lt;Registrati
       &#x27;@id&#x27;: &#x60;http://purl.org/ccf/1.5/${this.currentIdentifier}&#x60;,
       &#x27;@type&#x27;: &#x27;SpatialEntity&#x27;,
       label: model.label || undefined,
-      creator: &#x60;${page.user.firstName} ${page.user.lastName}&#x60;,
+      creator: &#x60;${page.user.firstName} ${page.user.middleName ? page.user.middleName + &#x27; &#x27; : &#x27;&#x27;}${page.user.lastName}&#x60;,
       creator_first_name: page.user.firstName,
       creator_last_name: page.user.lastName,
-      // creator_orcid: data.alignment_operator_orcid,
+      creator_middle_name: page.user.middleName,
+      creator_orcid: page.user.orcidId,
       creation_date: this.currentDate,
       ccf_annotations: tags.map(tag &#x3D;&gt; tag.id),
       slice_thickness: model.slicesConfig?.thickness || undefined,
@@ -619,6 +714,25 @@ export class RegistrationState extends NgxsImmutableDataRepository&lt;Registrati
    */
   private xyzTripletToString(xyz: XYZTriplet): string {
     return &#x60;${Math.round(xyz.x)}, ${Math.round(xyz.y)}, ${Math.round(xyz.z)}&#x60;;
+  }
+
+  /**
+   * Provides list of organ objects given an array of organ ids
+   * @param organOptions array of organ ids
+   * @returns list of organ info
+   */
+  private organListOptions(organOptions?: string[]): OrganInfo[] {
+    if (organOptions &amp;&amp; organOptions.length &gt; 0) {
+      return RUI_ORGANS.filter(organ &#x3D;&gt; {
+        if (!organ.id) {
+          return false;
+        } else {
+          return organOptions.includes(organ.id);
+        }
+      });
+    } else {
+      return RUI_ORGANS;
+    }
   }
 }
 </code></pre>

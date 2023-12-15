@@ -80,7 +80,7 @@
                 <h3>Extends</h3>
             </p>
             <p class="comment">
-                    <code>CCFDatabaseOptions</code>
+                        <code>CCFDatabaseOptions</code>
             </p>
 
         <section data-compodoc="block-index">
@@ -121,6 +121,13 @@
                                         <a href="#logoTooltip" 
 >
                                             logoTooltip
+                                        </a>
+                                </li>
+                                <li>
+                                            <span class="modifier">Optional</span>
+                                        <a href="#selectedOrgans" 
+>
+                                            selectedOrgans
                                         </a>
                                 </li>
                                 <li>
@@ -297,6 +304,44 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
+                                        <a name="selectedOrgans"></a>
+                                        <span class="name "><b>selectedOrgans</b>
+                                            <a href="#selectedOrgans">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>selectedOrgans:     <code>string[]</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>string[]</code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
                                         <a name="theme"></a>
                                         <span class="name "><b>theme</b>
                                             <a href="#theme">
@@ -336,14 +381,22 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Injector, OnInit, ViewChild } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  Injector,
+  OnInit,
+  ViewChild,
+} from &#x27;@angular/core&#x27;;
 import { MatSnackBar } from &#x27;@angular/material/snack-bar&#x27;;
 import { Dispatch } from &#x27;@ngxs-labs/dispatch-decorator&#x27;;
 import { Select } from &#x27;@ngxs/store&#x27;;
-import { CCFDatabaseOptions, OntologyTreeModel } from &#x27;ccf-database&#x27;;
-import { DataSourceService, GlobalConfigState, TrackingPopupComponent } from &#x27;ccf-shared&#x27;;
+import { CCFDatabaseOptions, Filter, OntologyTreeModel } from &#x27;ccf-database&#x27;;
+import { DataSourceService, GlobalConfigState, OrganInfo, TrackingPopupComponent } from &#x27;ccf-shared&#x27;;
 import { ConsentService } from &#x27;ccf-shared/analytics&#x27;;
-import { combineLatest, Observable, ReplaySubject } from &#x27;rxjs&#x27;;
+import { Observable, ReplaySubject, combineLatest } from &#x27;rxjs&#x27;;
 import { map } from &#x27;rxjs/operators&#x27;;
 
 import { BodyUiComponent } from &#x27;../../../ccf-shared/src/lib/components/body-ui/body-ui.component&#x27;;
@@ -356,18 +409,21 @@ import { DataStateSelectors } from &#x27;./core/store/data/data.selectors&#x27;;
 import { DataQueryState, DataState } from &#x27;./core/store/data/data.state&#x27;;
 import { ListResultsState } from &#x27;./core/store/list-results/list-results.state&#x27;;
 import { SceneState } from &#x27;./core/store/scene/scene.state&#x27;;
-import { RemoveSearch, SetSelectedSearches } from &#x27;./core/store/spatial-search-filter/spatial-search-filter.actions&#x27;;
+import {
+  RemoveSearch,
+  SetSelectedSearches,
+} from &#x27;./core/store/spatial-search-filter/spatial-search-filter.actions&#x27;;
 import { SpatialSearchFilterSelectors } from &#x27;./core/store/spatial-search-filter/spatial-search-filter.selectors&#x27;;
 import { SpatialSearchFilterItem } from &#x27;./core/store/spatial-search-filter/spatial-search-filter.state&#x27;;
 import { FiltersPopoverComponent } from &#x27;./modules/filters/filters-popover/filters-popover.component&#x27;;
 import { DrawerComponent } from &#x27;./shared/components/drawer/drawer/drawer.component&#x27;;
-
 
 interface AppOptions extends CCFDatabaseOptions {
   theme?: string;
   header?: boolean;
   homeUrl?: string;
   logoTooltip?: string;
+  selectedOrgans?: string[];
   loginEnabled?: boolean;
 }
 
@@ -392,6 +448,9 @@ export class AppComponent implements OnInit {
   @Select(DataStateSelectors.anatomicalStructuresTreeModel)
   readonly ontologyTreeModel$: Observable&lt;OntologyTreeModel&gt;;
 
+  @Select(DataStateSelectors.biomarkersTreeModel)
+  readonly biomarkersTreeModel$: Observable&lt;OntologyTreeModel&gt;;
+
   @Select(SpatialSearchFilterSelectors.items)
   readonly selectableSearches$: Observable&lt;SpatialSearchFilterItem&gt;;
 
@@ -401,6 +460,8 @@ export class AppComponent implements OnInit {
   @Dispatch()
   readonly removeSpatialSearch &#x3D; actionAsFn(RemoveSearch);
 
+  menuOptions: string[] &#x3D; [&#x27;AS&#x27;, &#x27;CT&#x27;, &#x27;B&#x27;];
+  tooltips: string[] &#x3D; [&#x27;Anatomical Structures&#x27;, &#x27;Cell Types&#x27;, &#x27;Biomarkers&#x27;];
   /**
    * Used to keep track of the ontology label to be passed down to the
    * results-browser component.
@@ -409,7 +470,11 @@ export class AppComponent implements OnInit {
 
   cellTypeSelectionLabel &#x3D; &#x27;cell&#x27;;
 
-  selectionLabel &#x3D; &#x27;body | cell&#x27;;
+  biomarkerSelectionLabel &#x3D; &#x27;biomarker&#x27;;
+
+  selectionLabel &#x3D; &#x27;body | cell | biomarker&#x27;;
+
+  selectedtoggleOptions: string[] &#x3D; [];
 
   /**
    * Whether or not organ carousel is open
@@ -436,6 +501,10 @@ export class AppComponent implements OnInit {
     return this.theming.getTheme().endsWith(&#x27;light&#x27;);
   }
 
+  get isFirefox(): boolean {
+    return navigator.userAgent.indexOf(&#x27;Firefox&#x27;) !&#x3D; -1;
+  }
+
   /** Emits true whenever the overlay spinner should activate. */
   readonly spinnerActive$ &#x3D; this.data.queryStatus$.pipe(
     map(state &#x3D;&gt; state &#x3D;&#x3D;&#x3D; DataQueryState.Running)
@@ -446,6 +515,7 @@ export class AppComponent implements OnInit {
 
   readonly ontologyTerms$: Observable&lt;readonly string[]&gt;;
   readonly cellTypeTerms$: Observable&lt;readonly string[]&gt;;
+  readonly biomarkerTerms$: Observable&lt;readonly string[]&gt;;
 
   readonly theme$ &#x3D; this.globalConfig.getOption(&#x27;theme&#x27;);
   readonly themeMode$ &#x3D; new ReplaySubject&lt;&#x27;light&#x27; | &#x27;dark&#x27;&gt;(1);
@@ -454,18 +524,26 @@ export class AppComponent implements OnInit {
   readonly homeUrl$ &#x3D; this.globalConfig.getOption(&#x27;homeUrl&#x27;);
   readonly logoTooltip$ &#x3D; this.globalConfig.getOption(&#x27;logoTooltip&#x27;);
   readonly loginDisabled$ &#x3D; this.globalConfig.getOption(&#x27;loginDisabled&#x27;);
-
+  readonly filter$ &#x3D; this.globalConfig.getOption(&#x27;filter&#x27;);
+  readonly selectedOrgans$ &#x3D; this.globalConfig.getOption(&#x27;selectedOrgans&#x27;);
   /**
    * Creates an instance of app component.
    *
    * @param data The data state.
    */
   constructor(
-    el: ElementRef&lt;HTMLElement&gt;, injector: Injector,
-    readonly data: DataState, readonly theming: ThemingService,
-    readonly scene: SceneState, readonly listResultsState: ListResultsState,
-    readonly consentService: ConsentService, readonly snackbar: MatSnackBar, overlay: AppRootOverlayContainer,
-    readonly dataSource: DataSourceService, private readonly globalConfig: GlobalConfigState&lt;AppOptions&gt;, cdr: ChangeDetectorRef
+    el: ElementRef&lt;HTMLElement&gt;,
+    injector: Injector,
+    readonly data: DataState,
+    readonly theming: ThemingService,
+    readonly scene: SceneState,
+    readonly listResultsState: ListResultsState,
+    readonly consentService: ConsentService,
+    readonly snackbar: MatSnackBar,
+    overlay: AppRootOverlayContainer,
+    readonly dataSource: DataSourceService,
+    private readonly globalConfig: GlobalConfigState&lt;AppOptions&gt;,
+    cdr: ChangeDetectorRef
   ) {
     theming.initialize(el, injector);
     overlay.setRootElement(el);
@@ -473,19 +551,27 @@ export class AppComponent implements OnInit {
     data.aggregateData$.subscribe();
     data.ontologyTermOccurencesData$.subscribe();
     data.cellTypeTermOccurencesData$.subscribe();
+    data.biomarkerTermOccurencesData$.subscribe();
     data.sceneData$.subscribe();
     data.filter$.subscribe();
     data.technologyFilterData$.subscribe();
     data.providerFilterData$.subscribe();
     this.ontologyTerms$ &#x3D; data.filter$.pipe(map(x &#x3D;&gt; x?.ontologyTerms));
     this.cellTypeTerms$ &#x3D; data.filter$.pipe(map(x &#x3D;&gt; x?.cellTypeTerms));
+    this.biomarkerTerms$ &#x3D; data.filter$.pipe(map(x &#x3D;&gt; x?.biomarkerTerms));
+    this.filter$.subscribe((filter: Partial&lt;Filter&gt;)&#x3D;&gt; data.updateFilter(filter));
 
+    combineLatest([scene.referenceOrgans$, this.selectedOrgans$]).subscribe(
+      ([refOrgans, selected]: [OrganInfo[], string[]]) &#x3D;&gt; {
+        scene.setSelectedReferenceOrgansWithDefaults(refOrgans, selected);
+      });
     combineLatest([this.theme$, this.themeMode$]).subscribe(
       ([theme, mode]) &#x3D;&gt; {
         this.theming.setTheme(&#x60;${theme}-theme-${mode}&#x60;);
         cdr.markForCheck();
       }
     );
+    this.selectedtoggleOptions&#x3D;this.menuOptions;
   }
 
   ngOnInit(): void {
@@ -555,31 +641,32 @@ export class AppComponent implements OnInit {
    *
    * @param ontologySelection the list of currently selected organ nodes
    */
-  ontologySelected(ontologySelection: OntologySelection[] | undefined, type: &#x27;anatomical-structures&#x27; | &#x27;cell-type&#x27;): void {
+  ontologySelected(ontologySelection: OntologySelection[] | undefined, type: &#x27;anatomical-structures&#x27; | &#x27;cell-type&#x27; | &#x27;biomarkers&#x27;): void {
     if (ontologySelection) {
       if (type &#x3D;&#x3D;&#x3D; &#x27;anatomical-structures&#x27;) {
         this.data.updateFilter({ ontologyTerms: ontologySelection.map(selection &#x3D;&gt; selection.id) });
         this.ontologySelectionLabel &#x3D; this.createSelectionLabel(ontologySelection);
-      } else {
+      } else if (type &#x3D;&#x3D;&#x3D; &#x27;cell-type&#x27;) {
         this.data.updateFilter({ cellTypeTerms: ontologySelection.map(selection &#x3D;&gt; selection.id) });
         this.cellTypeSelectionLabel &#x3D; this.createSelectionLabel(ontologySelection);
+      } else if (type &#x3D;&#x3D;&#x3D; &#x27;biomarkers&#x27;) {
+        this.data.updateFilter({ biomarkerTerms: ontologySelection.map(selection &#x3D;&gt; selection.id) });
+        this.biomarkerSelectionLabel &#x3D; this.createSelectionLabel(ontologySelection);
       }
-      if (this.ontologySelectionLabel &amp;&amp; this.cellTypeSelectionLabel) {
-        this.selectionLabel &#x3D; &#x60;${this.ontologySelectionLabel} | ${this.cellTypeSelectionLabel}&#x60;;
-      } else if (this.ontologySelectionLabel) {
-        this.selectionLabel &#x3D; &#x60;${this.ontologySelectionLabel}&#x60;;
-      } else if (this.cellTypeSelectionLabel) {
-        this.selectionLabel &#x3D; &#x60;${this.cellTypeSelectionLabel}&#x60;;
-      } else {
-        this.selectionLabel &#x3D; &#x27;&#x27;;
-      }
+
+      this.selectionLabel &#x3D; [
+        this.ontologySelectionLabel || &#x27;body&#x27;,
+        this.cellTypeSelectionLabel || &#x27;cell&#x27;,
+        this.biomarkerSelectionLabel || &#x27;biomarker&#x27;
+      ].join(&#x27; | &#x27;);
+
       if (ontologySelection[0] &amp;&amp; ontologySelection[0].label &#x3D;&#x3D;&#x3D; &#x27;body&#x27;) {
         this.resetView();
       }
       return;
     }
 
-    this.data.updateFilter({ ontologyTerms: [], cellTypeTerms: [] });
+    this.data.updateFilter({ ontologyTerms: [], cellTypeTerms: [], biomarkerTerms: [] });
     this.ontologySelectionLabel &#x3D; &#x27;&#x27;;
     this.cellTypeSelectionLabel &#x3D; &#x27;&#x27;;
   }
@@ -588,21 +675,21 @@ export class AppComponent implements OnInit {
    * Creates selection label for the results-browser to display based on an
    * array of selected ontology nodes.
    */
-  createSelectionLabel(ontolgySelection: OntologySelection[]): string {
-    if (ontolgySelection.length &#x3D;&#x3D;&#x3D; 0) {
+  createSelectionLabel(ontologySelection: OntologySelection[]): string {
+    if (ontologySelection.length &#x3D;&#x3D;&#x3D; 0) {
       return &#x27;&#x27;;
     }
 
-    if (ontolgySelection.length &#x3D;&#x3D;&#x3D; 1) {
-      return ontolgySelection[0].label;
+    if (ontologySelection.length &#x3D;&#x3D;&#x3D; 1) {
+      return ontologySelection[0].label;
     }
 
     let selectionString &#x3D; &#x27;&#x27;;
-    ontolgySelection.forEach((selection, index) &#x3D;&gt; {
+    ontologySelection.forEach((selection, index) &#x3D;&gt; {
       selectionString +&#x3D; selection.label;
 
       // Don&#x27;t add a comma if it&#x27;s the last item in the array.
-      if (index &lt; ontolgySelection.length - 1) {
+      if (index &lt; ontologySelection.length - 1) {
         selectionString +&#x3D; &#x27;, &#x27;;
       }
     });
@@ -639,6 +726,14 @@ export class AppComponent implements OnInit {
   get loggedIn(): boolean {
     const token &#x3D; this.globalConfig.snapshot.hubmapToken ?? &#x27;&#x27;;
     return token.length &gt; 0;
+  }
+
+  isItemSelected(item: string) {
+    return this.selectedtoggleOptions.includes(item);
+  }
+
+  toggleSelection(value) {
+    this.selectedtoggleOptions &#x3D; value;
   }
 }
 </code></pre>

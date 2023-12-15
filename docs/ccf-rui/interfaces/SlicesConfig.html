@@ -202,24 +202,22 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, Injector } from &#x27;@angular/core&#x27;;
-import { Computed, DataAction, StateRepository } from &#x27;@angular-ru/ngxs/decorators&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Computed, DataAction, StateRepository } from &#x27;@angular-ru/ngxs/decorators&#x27;;
 import { NgxsImmutableDataRepository } from &#x27;@angular-ru/ngxs/repositories&#x27;;
+import { Injectable, Injector } from &#x27;@angular/core&#x27;;
 import { State } from &#x27;@ngxs/store&#x27;;
 import { ALL_ORGANS, GlobalConfigState, OrganInfo } from &#x27;ccf-shared&#x27;;
 import { filterNulls } from &#x27;ccf-shared/rxjs-ext/operators&#x27;;
 import { sortBy } from &#x27;lodash&#x27;;
+import { GoogleAnalyticsService } from &#x27;ngx-google-analytics&#x27;;
 import { EMPTY, Observable } from &#x27;rxjs&#x27;;
-import {
-  debounceTime, delay, distinctUntilChanged, filter, map, skipUntil, switchMap, take, tap, throttleTime,
-} from &#x27;rxjs/operators&#x27;;
+import { delay, distinctUntilChanged, filter, map, skipUntil, switchMap, tap, throttleTime } from &#x27;rxjs/operators&#x27;;
 
 import { ExtractionSet } from &#x27;../../models/extraction-set&#x27;;
 import { VisibilityItem } from &#x27;../../models/visibility-item&#x27;;
-import { GlobalConfig } from &#x27;../../services/config/config&#x27;;
+import { GlobalConfig, OrganConfig } from &#x27;../../services/config/config&#x27;;
 import { PageState } from &#x27;../page/page.state&#x27;;
 import { ReferenceDataState } from &#x27;../reference-data/reference-data.state&#x27;;
-import { GoogleAnalyticsService } from &#x27;ngx-google-analytics&#x27;;
 
 
 /* eslint-disable @typescript-eslint/member-ordering */
@@ -305,7 +303,6 @@ export const RUI_ORGANS &#x3D; ALL_ORGANS;
     organIri: &#x27;&#x27;,
     organDimensions: { x: 90, y: 90, z: 90 },
     sex: &#x27;male&#x27;,
-    side: &#x27;left&#x27;,
     blockSize: { x: 10, y: 10, z: 10 },
     rotation: { x: 0, y: 0, z: 0 },
     position: { x: 0, y: 0, z: 0 },
@@ -401,41 +398,7 @@ export class ModelState extends NgxsImmutableDataRepository&lt;ModelStateModel&g
     this.referenceData &#x3D; this.injector.get(ReferenceDataState);
     this.page &#x3D; this.injector.get(PageState);
 
-    this.globalConfig.getOption(&#x27;organ&#x27;).pipe(
-      filterNulls(),
-      switchMap(organConfig &#x3D;&gt; {
-        const organName &#x3D; organConfig.name.toLowerCase();
-        const organSide &#x3D; organConfig.side;
-        const ontologyId &#x3D; organConfig.ontologyId;
-        // check for an id match
-        let organInfo &#x3D; this.idMatches(ontologyId, organSide);
-        // if no id matches, check for a name match
-        if (!organInfo) {
-          organInfo &#x3D; this.nameMatches(organName, organSide);
-        }
-        if (organInfo) {
-          this.ctx.patchState({
-            organ: organInfo,
-            sex: organConfig.sex?.toLowerCase() as &#x27;male&#x27; | &#x27;female&#x27;,
-            side: organInfo?.side?.toLowerCase() as &#x27;left&#x27; | &#x27;right&#x27;
-          });
-          return this.referenceData.state$.pipe(
-            debounceTime(100),
-            take(1),
-            delay(200),
-            tap(() &#x3D;&gt; this.onOrganIriChange())
-          );
-        }
-        return EMPTY;
-      })
-    ).subscribe();
-
-    this.modelChanged$.pipe(
-      skipUntil(this.page.registrationStarted$.pipe(
-        filter(started &#x3D;&gt; started),
-        delay(5)
-      ))
-    ).subscribe(() &#x3D;&gt; this.page.setHasChanges());
+    this.referenceData.state$.subscribe(() &#x3D;&gt; this.onReferenceDataChange());
   }
 
   idMatches(ontologyId?: string, organSide?: string): OrganInfo | undefined {
@@ -525,12 +488,27 @@ export class ModelState extends NgxsImmutableDataRepository&lt;ModelStateModel&g
    */
   @DataAction()
   setOrgan(organ: OrganInfo): void {
-    this.ga.event(&#x27;organ_select&#x27;, &#x27;organ&#x27;, organ.name);
-    this.ctx.patchState({ organ });
-    if (organ.side) {
-      this.ctx.patchState({ side: organ.side });
+    if (organ) {
+      this.ga.event(&#x27;organ_select&#x27;, &#x27;organ&#x27;, organ.name);
+      this.ctx.patchState({ organ });
+      if (organ.side) {
+        this.ctx.patchState({ side: organ.side });
+      } else {
+        this.ctx.patchState({ side: undefined });
+      }
+      this.onOrganIriChange();
     }
-    this.onOrganIriChange();
+  }
+
+  /**
+   * Sets position and rotation to default
+   */
+  @DataAction()
+  setOrganDefaults(): void {
+    this.ctx.patchState({
+      position: this.defaultPosition,
+      rotation: { x: 0, y: 0, z: 0 }
+    });
   }
 
   /**
@@ -640,17 +618,17 @@ export class ModelState extends NgxsImmutableDataRepository&lt;ModelStateModel&g
           };
         }
       }
-      this.ctx.patchState({ anatomicalStructures: Object.values(asLookup) });
+      this.ctx.patchState({ anatomicalStructures: [{ id: &#x27;all&#x27;, name: &#x27;all anatomical structures&#x27;, opacity: 20, visible: true }, ...Object.values(asLookup)] });
 
       const sets: ExtractionSet[] &#x3D; (db.extractionSets[organIri] || []).map((set) &#x3D;&gt; ({
         name: set.label,
-        sites: sortBy(set.extractionSites.map((entity) &#x3D;&gt; ({
+        sites: [{ id: &#x27;all&#x27;, name: &#x27;all landmarks&#x27;, visible: true, opacity: 0 }].concat(sortBy(set.extractionSites.map((entity) &#x3D;&gt; ({
           id: entity[&#x27;@id&#x27;],
           name: entity.label!,
-          visible: false,
+          visible: true,
           opacity: 0,
           tooltip: entity.comment
-        })), &#x27;name&#x27;)
+        })), &#x27;name&#x27;))
       }));
       this.ctx.patchState({ extractionSets: sets });
       this.ctx.patchState({ extractionSites: sets.length &gt; 0 ? sets[0].sites : [] });
@@ -662,7 +640,54 @@ export class ModelState extends NgxsImmutableDataRepository&lt;ModelStateModel&g
     }
 
     this.ctx.patchState({ organIri, organDimensions });
-    this.ctx.patchState({ position: this.defaultPosition });
+  }
+
+  private onReferenceDataChange(): void {
+    this.globalConfig.getOption(&#x27;organ&#x27;).pipe(
+      filterNulls(),
+      delay(0),
+      switchMap(organ &#x3D;&gt; this.onOrganChange(organ))
+    ).subscribe();
+
+    this.modelChanged$.pipe(
+      skipUntil(this.page.registrationStarted$.pipe(
+        filter(started &#x3D;&gt; started),
+      ))
+    ).subscribe(() &#x3D;&gt; this.page.setHasChanges());
+  }
+
+  private onOrganChange(organ: string | OrganConfig): Observable&lt;unknown&gt; {
+    let organInfo: OrganInfo | undefined;
+    let organSex: &#x27;male&#x27; | &#x27;female&#x27;;
+    if (typeof organ &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
+      const organData &#x3D; this.referenceData.getOrganData(organ);
+      organSex &#x3D; organData?.sex?.toLowerCase() as &#x27;male&#x27; | &#x27;female&#x27;;
+      organInfo &#x3D; organData?.organ;
+    } else {
+      const organName &#x3D; organ.name.toLowerCase();
+      const organSide &#x3D; organ.side;
+      const ontologyId &#x3D; organ.ontologyId;
+      organSex &#x3D; organ.sex?.toLowerCase() as &#x27;male&#x27; | &#x27;female&#x27;;
+      // check for an id match
+      organInfo &#x3D; this.idMatches(ontologyId, organSide);
+      // if no id matches, check for a name match
+      if (!organInfo) {
+        organInfo &#x3D; this.nameMatches(organName, organSide);
+      }
+    }
+
+    if (organInfo) {
+      this.ctx.patchState({
+        organ: organInfo,
+        sex: organSex,
+        side: organInfo?.side?.toLowerCase() as &#x27;left&#x27; | &#x27;right&#x27;
+      });
+      return this.referenceData.state$.pipe(
+        tap(() &#x3D;&gt; this.onOrganIriChange())
+      );
+    }
+
+    return EMPTY;
   }
 }
 </code></pre>

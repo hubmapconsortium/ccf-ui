@@ -80,7 +80,7 @@
                 <h3>Extends</h3>
             </p>
             <p class="comment">
-                        <code><a href="../interfaces/DatabaseLoaderOptions.html" target="_self" >DatabaseLoaderOptions</a></code>
+                            <code><a href="../interfaces/DatabaseLoaderOptions.html" target="_self" >DatabaseLoaderOptions</a></code>
             </p>
 
         <section data-compodoc="block-index">
@@ -156,7 +156,7 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { json, urlencoded } from &#x27;body-parser&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import bodyParser from &#x27;body-parser&#x27;;
 import cors from &#x27;cors&#x27;;
 import express, { Express } from &#x27;express&#x27;;
 import helmet from &#x27;helmet&#x27;;
@@ -165,7 +165,6 @@ import qs, { ParsedQs } from &#x27;qs&#x27;;
 import { databaseLoader, DatabaseLoaderOptions } from &#x27;./middleware/database-loader&#x27;;
 import { routes as browserRoutes } from &#x27;./routes/browser&#x27;;
 import { routes as v1Routes } from &#x27;./routes/v1&#x27;;
-
 
 export interface AppOptions extends DatabaseLoaderOptions {
   placeholder?: never;
@@ -186,15 +185,15 @@ export function createApp(options: AppOptions): Express {
     contentSecurityPolicy: {
       useDefaults: true,
       directives: {
-        &#x27;script-src&#x27;: [&#x27;\&#x27;self\&#x27;&#x27;, &#x27;\&#x27;unsafe-eval\&#x27;&#x27;, &#x27;cdn.jsdelivr.net&#x27;],
+        &#x27;script-src&#x27;: [&#x27;\&#x27;self\&#x27;&#x27;, &#x27;\&#x27;unsafe-eval\&#x27;&#x27;, &#x27;cdn.jsdelivr.net&#x27;, &#x27;unpkg.com&#x27;],
         &#x27;connect-src&#x27;: [&#x27;*&#x27;],
       }
     }
   }));
   app.use(cors());
 
-  app.use(urlencoded());
-  app.use(json());
+  app.use(bodyParser.urlencoded({ extended: true }));
+  app.use(bodyParser.json());
 
   app.use(databaseLoader(options));
 

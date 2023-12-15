@@ -80,7 +80,7 @@
                 <h3>Extends</h3>
             </p>
             <p class="comment">
-                    <code>NgxsImmutableDataRepository</code>
+                        <code>NgxsImmutableDataRepository</code>
             </p>
 
 
@@ -97,6 +97,10 @@
                 <tr>
                     <td class="col-md-4">
                         <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#getLatestIri" >getLatestIri</a>
+                            </li>
                             <li>
                                 <a href="#getOrganData" >getOrganData</a>
                             </li>
@@ -195,6 +199,75 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="getLatestIri"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>getLatestIri</b></span>
+                        <a href="#getLatestIri"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getLatestIri(organ?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="176"
+                                    class="link-to-prism">projects/ccf-rui/src/app/core/store/reference-data/reference-data.state.ts:176</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>organ</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Yes
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="getOrganData"></a>
                     <span class="name">
                         <span ><b>getOrganData</b></span>
@@ -209,61 +282,59 @@
             </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="155"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/store/reference-data/reference-data.state.ts:155</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="155"
+                                    class="link-to-prism">projects/ccf-rui/src/app/core/store/reference-data/reference-data.state.ts:155</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Looks up organ information from an IRI</p>
+                        <div class="io-description"><p>Looks up organ information from an IRI</p>
 </div>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                    <td>Description</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>iri</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>iri</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                    <td>
-                                        <p>The IRI</p>
+                                            <td>
+                                                    <p>The IRI</p>
 
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../interfaces/OrganData.html" target="_self" >OrganData | undefined</a></code>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../interfaces/OrganData.html" target="_self" >OrganData | undefined</a></code>
 
-                    </div>
-                    <div class="io-description">
-                        <p>A populated organ data if the IRI is valid, otherwise undefined</p>
+                        </div>
+                            <div class="io-description">
+                                <p>A populated organ data if the IRI is valid, otherwise undefined</p>
 
-                    </div>
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -286,107 +357,105 @@
             </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="135"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/store/reference-data/reference-data.state.ts:135</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="135"
+                                    class="link-to-prism">projects/ccf-rui/src/app/core/store/reference-data/reference-data.state.ts:135</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Looks up an IRI for a potential reference organ.</p>
+                        <div class="io-description"><p>Looks up an IRI for a potential reference organ.</p>
 </div>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                    <td>Description</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>organ</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>organ</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                    <td>
-                                        <p>the organ</p>
-
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>sex</td>
-                                    <td>
-                                            <code>&quot;Male&quot; | &quot;Female&quot; | string</code>
-                                    </td>
-
-                                    <td>
-                                        Yes
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                    <td>
-                                        <p>the sex: male, female, or undefined</p>
+                                            <td>
+                                                    <p>the organ</p>
 
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>side</td>
-                                    <td>
-                                            <code>&quot;Left&quot; | &quot;Right&quot; | string</code>
-                                    </td>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>sex</td>
+                                            <td>
+                                                        <code>&quot;Male&quot; | &quot;Female&quot; | string</code>
+                                            </td>
 
-                                    <td>
-                                        Yes
-                                    </td>
-
-
-                                    <td>
-                                        <p>the side: left, right, or undefined</p>
-
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>organInfo</td>
-                                    <td>
-                                                <code><a href="../miscellaneous/typealiases.html#Organ" target="_self" >OrganInfo</a></code>
-                                    </td>
-
-                                    <td>
-                                        Yes
-                                    </td>
+                                            <td>
+                                                    Yes
+                                            </td>
 
 
-                                    <td>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>string | undefined</code>
+                                            <td>
+                                                    <p>the sex: male, female, or undefined</p>
 
-                    </div>
-                    <div class="io-description">
-                        <p>An IRI if there is a reference organ for this state, otherwise undefined</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>side</td>
+                                            <td>
+                                                        <code>&quot;Left&quot; | &quot;Right&quot; | string</code>
+                                            </td>
 
-                    </div>
+                                            <td>
+                                                    Yes
+                                            </td>
+
+
+                                            <td>
+                                                    <p>the side: left, right, or undefined</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>organInfo</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#Organ" target="_self" >OrganInfo</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Yes
+                                            </td>
+
+
+                                            <td>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>string | undefined</code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>An IRI if there is a reference organ for this state, otherwise undefined</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -397,7 +466,7 @@
                 <td class="col-md-4">
                     <a name="getSourceDB"></a>
                     <span class="name">
-                        <span class="modifier">Private</span>
+                            <span class="modifier">Private</span>
                         <span ><b>getSourceDB</b></span>
                         <a href="#getSourceDB"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -405,27 +474,27 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
+                        <span class="modifier-icon icon ion-ios-reset"></span>
                     <code>getSourceDB()</code>
                 </td>
             </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="100"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/store/reference-data/reference-data.state.ts:100</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="100"
+                                    class="link-to-prism">projects/ccf-rui/src/app/core/store/reference-data/reference-data.state.ts:100</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../injectables/ReferenceDataState.html" target="_self" >Observable&lt;ReferenceDataStateModel&gt;</a></code>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../injectables/ReferenceDataState.html" target="_self" >Observable&lt;ReferenceDataStateModel&gt;</a></code>
 
-                    </div>
+                        </div>
                 </td>
             </tr>
         </tbody>
@@ -448,23 +517,23 @@
             </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="87"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/store/reference-data/reference-data.state.ts:87</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="87"
+                                    class="link-to-prism">projects/ccf-rui/src/app/core/store/reference-data/reference-data.state.ts:87</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Initializes this state service.</p>
+                        <div class="io-description"><p>Initializes this state service.</p>
 </div>
 
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
-                    </div>
+                        </div>
                 </td>
             </tr>
         </tbody>
@@ -487,53 +556,51 @@
             </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="110"
-                            class="link-to-prism">projects/ccf-rui/src/app/core/store/reference-data/reference-data.state.ts:110</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="110"
+                                    class="link-to-prism">projects/ccf-rui/src/app/core/store/reference-data/reference-data.state.ts:110</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>place</td>
-                                    <td>
-                                            <code>SpatialPlacementJsonLd</code>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>place</td>
+                                            <td>
+                                                        <code>SpatialPlacementJsonLd</code>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>SpatialPlacementJsonLd</code>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>SpatialPlacementJsonLd</code>
 
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -689,7 +756,7 @@ export class ReferenceDataState extends NgxsImmutableDataRepository&lt;Reference
     // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
     const lookup &#x3D; [organ, sex, side || organInfo?.side].join(&#x27;|&#x27;).toUpperCase();
     const key &#x3D; Object.keys(db.organIRILookup).find((code) &#x3D;&gt; code.toUpperCase().endsWith(lookup));
-    return key ? db.organIRILookup[key] : undefined;
+    return this.getLatestIri(key ? db.organIRILookup[key] : undefined);
   }
 
   /**
@@ -699,8 +766,9 @@ export class ReferenceDataState extends NgxsImmutableDataRepository&lt;Reference
    * @returns A populated organ data if the IRI is valid, otherwise undefined
    */
   getOrganData(iri: string): OrganData | undefined {
+    const updatedIri &#x3D; this.getLatestIri(iri);
     const state &#x3D; this.snapshot;
-    const entity &#x3D; state.organSpatialEntities[iri];
+    const entity &#x3D; state.organSpatialEntities[updatedIri];
     if (!entity) {
       return undefined;
     }
@@ -716,6 +784,14 @@ export class ReferenceDataState extends NgxsImmutableDataRepository&lt;Reference
       sex: entity.sex?.toLowerCase() as &#x27;male&#x27; | &#x27;female&#x27;,
       side: entity.side?.toLowerCase() as &#x27;left&#x27; | &#x27;right&#x27;
     };
+  }
+
+  private getLatestIri(organ?: string): string {
+    if (!organ) {
+      return &#x27;&#x27;;
+    }
+    const organEntry &#x3D; this.snapshot.placementPatches[organ];
+    return organEntry ? this.getLatestIri(organEntry.target) : organ;
   }
 }
 </code></pre>

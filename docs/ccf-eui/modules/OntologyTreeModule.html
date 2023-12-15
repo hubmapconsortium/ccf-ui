@@ -64,7 +64,11 @@
 <text text-anchor="start" x="429.73" y="-15.4" font-family="Times-12" font-size="14.00"> &#160;Exports</text>
 <g id="clust1" class="cluster">
 <title>cluster_OntologyTreeModule</title>
-<polygon fill="none" stroke="black" stroke-dasharray="1,5" points="150,-70 150,-268 346,-268 346,-70 150,-70"/>
+<polygon fill="none" stroke="black" stroke-dasharray="1,5" points="71,-70 71,-268 425,-268 425,-70 71,-70"/>
+</g>
+<g id="clust4" class="cluster">
+<title>cluster_OntologyTreeModule_imports</title>
+<polygon fill="none" stroke="black" points="263,-78 263,-130 417,-130 417,-78 263,-78"/>
 </g>
 <g id="clust5" class="cluster">
 <title>cluster_OntologyTreeModule_exports</title>
@@ -72,13 +76,13 @@
 </g>
 <g id="clust2" class="cluster">
 <title>cluster_OntologyTreeModule_declarations</title>
-<polygon fill="none" stroke="black" points="160,-78 160,-130 336,-130 336,-78 160,-78"/>
+<polygon fill="none" stroke="black" points="79,-78 79,-130 255,-130 255,-78 79,-78"/>
 </g>
 <!-- OntologyTreeComponent -->
 <g id="node1" class="node">
 <title>OntologyTreeComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="327.86,-122 168.14,-122 168.14,-86 327.86,-86 327.86,-122"/>
-<text text-anchor="middle" x="248" y="-99.8" font-family="Times,serif" font-size="14.00">OntologyTreeComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="246.86,-122 87.14,-122 87.14,-86 246.86,-86 246.86,-122"/>
+<text text-anchor="middle" x="167" y="-99.8" font-family="Times,serif" font-size="14.00">OntologyTreeComponent</text>
 </g>
 <!-- OntologyTreeModule -->
 <g id="node2" class="node">
@@ -89,20 +93,32 @@
 <!-- OntologyTreeComponent&#45;&gt;OntologyTreeModule -->
 <g id="edge1" class="edge">
 <title>OntologyTreeComponent&#45;&gt;OntologyTreeModule</title>
-<path fill="none" stroke="black" d="M248,-122.11C248,-122.11 248,-140.99 248,-140.99"/>
-<polygon fill="black" stroke="black" points="244.5,-140.99 248,-150.99 251.5,-140.99 244.5,-140.99"/>
+<path fill="none" stroke="black" d="M212.95,-122.11C212.95,-122.11 212.95,-140.99 212.95,-140.99"/>
+<polygon fill="black" stroke="black" points="209.45,-140.99 212.95,-150.99 216.45,-140.99 209.45,-140.99"/>
 </g>
 <!-- OntologyTreeComponent  -->
-<g id="node3" class="node">
+<g id="node4" class="node">
 <title>OntologyTreeComponent </title>
 <polygon fill="#fb8072" stroke="black" points="329.86,-252 166.14,-252 166.14,-216 329.86,-216 329.86,-252"/>
 <text text-anchor="middle" x="248" y="-229.8" font-family="Times,serif" font-size="14.00">OntologyTreeComponent </text>
 </g>
 <!-- OntologyTreeModule&#45;&gt;OntologyTreeComponent  -->
-<g id="edge2" class="edge">
+<g id="edge3" class="edge">
 <title>OntologyTreeModule&#45;&gt;OntologyTreeComponent </title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M248,-187.11C248,-187.11 248,-205.99 248,-205.99"/>
 <polygon fill="black" stroke="black" points="244.5,-205.99 248,-215.99 251.5,-205.99 244.5,-205.99"/>
+</g>
+<!-- ButtonToggleModule -->
+<g id="node3" class="node">
+<title>ButtonToggleModule</title>
+<polygon fill="#8dd3c7" stroke="black" points="408.83,-122 405.83,-126 384.83,-126 381.83,-122 271.17,-122 271.17,-86 408.83,-86 408.83,-122"/>
+<text text-anchor="middle" x="340" y="-99.8" font-family="Times,serif" font-size="14.00">ButtonToggleModule</text>
+</g>
+<!-- ButtonToggleModule&#45;&gt;OntologyTreeModule -->
+<g id="edge2" class="edge">
+<title>ButtonToggleModule&#45;&gt;OntologyTreeModule</title>
+<path fill="none" stroke="black" d="M294.19,-122.11C294.19,-122.11 294.19,-140.99 294.19,-140.99"/>
+<polygon fill="black" stroke="black" points="290.69,-140.99 294.19,-150.99 297.69,-140.99 290.69,-140.99"/>
 </g>
 </g>
 </svg>
@@ -159,6 +175,16 @@
                     </ul>
                 </div>
                 <div class="col-sm-3">
+                    <h3>Imports<a href="https://angular.io/api/core/NgModule#imports" target="_blank" rel="noopener noreferrer"
+                            title="Official documentation about module imports"><span
+                                class="icon ion-ios-information-circle-outline"></a></h3>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <a href="../modules/ButtonToggleModule.html">ButtonToggleModule</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
                     <h3>Exports<a href="https://angular.io/api/core/NgModule#exports" target="_blank" rel="noopener noreferrer"
                             title="Official documentation about module exports"><span
                                 class="icon ion-ios-information-circle-outline"></a></h3>
@@ -185,6 +211,7 @@ import { MatTreeModule } from &#x27;@angular/material/tree&#x27;;
 
 import { OntologyTreeComponent } from &#x27;./ontology-tree.component&#x27;;
 import { OpacitySliderModule } from &#x27;ccf-shared&#x27;;
+import { ButtonToggleModule } from &#x27;../../../shared/components/button-toggle/button-toggle.module&#x27;;
 
 @NgModule({
   imports: [
@@ -193,7 +220,8 @@ import { OpacitySliderModule } from &#x27;ccf-shared&#x27;;
     MatIconModule,
     MatTooltipModule,
     MatTreeModule,
-    OpacitySliderModule
+    OpacitySliderModule,
+    ButtonToggleModule
   ],
   declarations: [OntologyTreeComponent],
   exports: [OntologyTreeComponent],

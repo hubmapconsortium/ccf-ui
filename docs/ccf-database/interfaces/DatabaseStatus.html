@@ -461,6 +461,8 @@ export interface SearchableItem {
   ontologyTerms?: Set&lt;string&gt;;
   /** CellType terms */
   cellTypeTerms?: Set&lt;string&gt;;
+  /** Biomarker terms */
+  biomarkerTerms?: Set&lt;string&gt;;
 }
 
 /** Specification for a Spatial Search via Probing Sphere */
@@ -485,7 +487,9 @@ export interface Filter {
   ageRange: [number, number];
   /** BMI range */
   bmiRange: [number, number];
-  /** TMC */
+  /** Consortiums */
+  consortiums: string[];
+  /** Tissue Providers */
   tmc: string[];
   /** Technologies */
   technologies: string[];
@@ -493,6 +497,8 @@ export interface Filter {
   ontologyTerms: string[];
   /** CellType terms */
   cellTypeTerms: string[];
+  /** Biomarker terms */
+  biomarkerTerms: string[];
   /** spatial search */
   spatialSearches: SpatialSearch[];
   /** Include optional debugging information */

@@ -125,89 +125,87 @@
             </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="14"
-                            class="link-to-prism">projects/triple-store-utils/src/lib/triple-store-utils.ts:14</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="14"
+                                    class="link-to-prism">projects/triple-store-utils/src/lib/triple-store-utils.ts:14</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>subject</td>
-                                    <td>
-                                                <code><a href="../miscellaneous/typealiases.html#OTerm" target="_self" >OTerm</a></code>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>subject</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#OTerm" target="_self" >OTerm</a></code>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                                <tr>
-                                    <td>predicate</td>
-                                    <td>
-                                                <code><a href="../miscellaneous/typealiases.html#OTerm" target="_self" >OTerm</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                </tr>
-                                <tr>
-                                    <td>object</td>
-                                    <td>
-                                                <code><a href="../miscellaneous/typealiases.html#OTerm" target="_self" >OTerm</a></code>
-                                    </td>
+                                        </tr>
+                                        <tr>
+                                                <td>predicate</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#OTerm" target="_self" >OTerm</a></code>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                                <tr>
-                                    <td>graph</td>
-                                    <td>
-                                                <code><a href="../miscellaneous/typealiases.html#OTerm" target="_self" >OTerm</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Generator&lt;Quad&gt;</code>
+                                        </tr>
+                                        <tr>
+                                                <td>object</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#OTerm" target="_self" >OTerm</a></code>
+                                            </td>
 
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>graph</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#OTerm" target="_self" >OTerm</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Generator&lt;Quad&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -219,7 +217,7 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { EventEmitter } from &#x27;events&#x27;;
-import { toRDF } from &#x27;jsonld&#x27;;
+import jsonld from &#x27;jsonld&#x27;;
 import { JsonLd, Url } from &#x27;jsonld/jsonld-spec&#x27;;
 import { DataFactory, Parser, Store, Quad } from &#x27;n3&#x27;;
 import * as RDF from &#x27;rdf-js&#x27;;
@@ -300,7 +298,7 @@ export async function addJsonLdToStore(
   }
 
   if (jsonLdData) {
-    const quads &#x3D; (await toRDF(jsonLdData)) as unknown[];
+    const quads &#x3D; (await jsonld.toRDF(jsonLdData)) as unknown[];
     store.import(arrayToStream(quads) as unknown as EventEmitter);
   }
   return store;

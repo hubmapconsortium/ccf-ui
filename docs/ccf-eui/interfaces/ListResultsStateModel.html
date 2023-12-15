@@ -189,15 +189,14 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, Injector } from &#x27;@angular/core&#x27;;
-import { DataAction, Payload, StateRepository } from &#x27;@angular-ru/ngxs/decorators&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { DataAction, Payload, StateRepository } from &#x27;@angular-ru/ngxs/decorators&#x27;;
 import { NgxsImmutableDataRepository } from &#x27;@angular-ru/ngxs/repositories&#x27;;
+import { Injectable, Injector } from &#x27;@angular/core&#x27;;
 import { NgxsOnInit, State } from &#x27;@ngxs/store&#x27;;
 import { DataSourceService } from &#x27;ccf-shared&#x27;;
-import { sortBy } from &#x27;lodash&#x27;;
+import sortBy from &#x27;lodash/sortBy&#x27;;
 import { combineLatest } from &#x27;rxjs&#x27;;
 import { distinctUntilChanged, map, tap } from &#x27;rxjs/operators&#x27;;
-
 import { ListResult } from &#x27;../../models/list-result&#x27;;
 import { ColorAssignmentState } from &#x27;../color-assignment/color-assignment.state&#x27;;
 import { DataState } from &#x27;../data/data.state&#x27;;

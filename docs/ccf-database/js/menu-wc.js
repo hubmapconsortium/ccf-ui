@@ -122,6 +122,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="interfaces/OntologyTreeNode.html" data-type="entity-link" >OntologyTreeNode</a>
                             </li>
                             <li class="link">
+                                <a href="interfaces/Portal.html" data-type="entity-link" >Portal</a>
+                            </li>
+                            <li class="link">
                                 <a href="interfaces/SearchableItem.html" data-type="entity-link" >SearchableItem</a>
                             </li>
                             <li class="link">

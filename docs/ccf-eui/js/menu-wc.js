@@ -69,18 +69,35 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/AppModule.html" data-type="entity-link" >AppModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
-                                            'data-bs-target="#components-links-module-AppModule-cf4d9c888f18ebfac0335e7711825fb1ea2b9354f3d7a86aca3552a6fe19eb9835e7831a308559992e11943149bb00769f749b453dca3f2c2a3d3acdcba18714"' : 'data-bs-target="#xs-components-links-module-AppModule-cf4d9c888f18ebfac0335e7711825fb1ea2b9354f3d7a86aca3552a6fe19eb9835e7831a308559992e11943149bb00769f749b453dca3f2c2a3d3acdcba18714"' }>
+                                            'data-bs-target="#components-links-module-AppModule-60d2e3b127b01fc7e8d4bff63b3f17b2924191007a996b5ce0de2223c2e590666f1ca5c695b248b27fc4b7dd59ce7ed3594578353ee7ef3a5022ab312166d738"' : 'data-bs-target="#xs-components-links-module-AppModule-60d2e3b127b01fc7e8d4bff63b3f17b2924191007a996b5ce0de2223c2e590666f1ca5c695b248b27fc4b7dd59ce7ed3594578353ee7ef3a5022ab312166d738"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AppModule-cf4d9c888f18ebfac0335e7711825fb1ea2b9354f3d7a86aca3552a6fe19eb9835e7831a308559992e11943149bb00769f749b453dca3f2c2a3d3acdcba18714"' :
-                                            'id="xs-components-links-module-AppModule-cf4d9c888f18ebfac0335e7711825fb1ea2b9354f3d7a86aca3552a6fe19eb9835e7831a308559992e11943149bb00769f749b453dca3f2c2a3d3acdcba18714"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AppModule-60d2e3b127b01fc7e8d4bff63b3f17b2924191007a996b5ce0de2223c2e590666f1ca5c695b248b27fc4b7dd59ce7ed3594578353ee7ef3a5022ab312166d738"' :
+                                            'id="xs-components-links-module-AppModule-60d2e3b127b01fc7e8d4bff63b3f17b2924191007a996b5ce0de2223c2e590666f1ca5c695b248b27fc4b7dd59ce7ed3594578353ee7ef3a5022ab312166d738"' }>
                                             <li class="link">
                                                 <a href="components/AppComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AppComponent</a>
                                             </li>
                                             <li class="link">
                                                 <a href="components/AppWebComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AppWebComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
+                            <li class="link">
+                                <a href="modules/ButtonToggleModule.html" data-type="entity-link" >ButtonToggleModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
+                                            'data-bs-target="#components-links-module-ButtonToggleModule-826524a90928256fe177c17dc3ae3e140ae376b10e94542dfc37f3a481d5b9ca3596a4c8497bf7d044b11961a77e43b930d9d62d9dde901012a83c852a44895d"' : 'data-bs-target="#xs-components-links-module-ButtonToggleModule-826524a90928256fe177c17dc3ae3e140ae376b10e94542dfc37f3a481d5b9ca3596a4c8497bf7d044b11961a77e43b930d9d62d9dde901012a83c852a44895d"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-ButtonToggleModule-826524a90928256fe177c17dc3ae3e140ae376b10e94542dfc37f3a481d5b9ca3596a4c8497bf7d044b11961a77e43b930d9d62d9dde901012a83c852a44895d"' :
+                                            'id="xs-components-links-module-ButtonToggleModule-826524a90928256fe177c17dc3ae3e140ae376b10e94542dfc37f3a481d5b9ca3596a4c8497bf7d044b11961a77e43b930d9d62d9dde901012a83c852a44895d"' }>
+                                            <li class="link">
+                                                <a href="components/ButtonToggleComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >ButtonToggleComponent</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -274,13 +291,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/OntologyTreeModule.html" data-type="entity-link" >OntologyTreeModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
-                                            'data-bs-target="#components-links-module-OntologyTreeModule-84e69dbc65cebf06013339c5051aa934502f7c1c155b649bb0713792c7e85358601909fabd5138e8500582afedcc2b6ae0d621917db9286bb1adca2744720c3b"' : 'data-bs-target="#xs-components-links-module-OntologyTreeModule-84e69dbc65cebf06013339c5051aa934502f7c1c155b649bb0713792c7e85358601909fabd5138e8500582afedcc2b6ae0d621917db9286bb1adca2744720c3b"' }>
+                                            'data-bs-target="#components-links-module-OntologyTreeModule-23f4a82ac5452f7b41a8f2b1351c17caa4be7e5873b10cc02ab3961e22cb51352b34697a103bc2f7a281f3cb9ba63f2c427d78dbb3d218a2b971959eee8e0a01"' : 'data-bs-target="#xs-components-links-module-OntologyTreeModule-23f4a82ac5452f7b41a8f2b1351c17caa4be7e5873b10cc02ab3961e22cb51352b34697a103bc2f7a281f3cb9ba63f2c427d78dbb3d218a2b971959eee8e0a01"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-OntologyTreeModule-84e69dbc65cebf06013339c5051aa934502f7c1c155b649bb0713792c7e85358601909fabd5138e8500582afedcc2b6ae0d621917db9286bb1adca2744720c3b"' :
-                                            'id="xs-components-links-module-OntologyTreeModule-84e69dbc65cebf06013339c5051aa934502f7c1c155b649bb0713792c7e85358601909fabd5138e8500582afedcc2b6ae0d621917db9286bb1adca2744720c3b"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-OntologyTreeModule-23f4a82ac5452f7b41a8f2b1351c17caa4be7e5873b10cc02ab3961e22cb51352b34697a103bc2f7a281f3cb9ba63f2c427d78dbb3d218a2b971959eee8e0a01"' :
+                                            'id="xs-components-links-module-OntologyTreeModule-23f4a82ac5452f7b41a8f2b1351c17caa4be7e5873b10cc02ab3961e22cb51352b34697a103bc2f7a281f3cb9ba63f2c427d78dbb3d218a2b971959eee8e0a01"' }>
                                             <li class="link">
                                                 <a href="components/OntologyTreeComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >OntologyTreeComponent</a>
                                             </li>
@@ -356,40 +373,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     </li>
                             </li>
                             <li class="link">
-                                <a href="modules/SpatialSearchKeyboardUIBehaviorModule.html" data-type="entity-link" >SpatialSearchKeyboardUIBehaviorModule</a>
-                                    <li class="chapter inner">
-                                        <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
-                                            'data-bs-target="#components-links-module-SpatialSearchKeyboardUIBehaviorModule-eaa1b03bb82006bd82d544abaa013efa1b33b511e1a5ec138d1bb9c7c83030acc45899963e94aaf8ab3603245882aa4544ea3d39dd989cf604a96a4b31b6d22b"' : 'data-bs-target="#xs-components-links-module-SpatialSearchKeyboardUIBehaviorModule-eaa1b03bb82006bd82d544abaa013efa1b33b511e1a5ec138d1bb9c7c83030acc45899963e94aaf8ab3603245882aa4544ea3d39dd989cf604a96a4b31b6d22b"' }>
-                                            <span class="icon ion-md-cog"></span>
-                                            <span>Components</span>
-                                            <span class="icon ion-ios-arrow-down"></span>
-                                        </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SpatialSearchKeyboardUIBehaviorModule-eaa1b03bb82006bd82d544abaa013efa1b33b511e1a5ec138d1bb9c7c83030acc45899963e94aaf8ab3603245882aa4544ea3d39dd989cf604a96a4b31b6d22b"' :
-                                            'id="xs-components-links-module-SpatialSearchKeyboardUIBehaviorModule-eaa1b03bb82006bd82d544abaa013efa1b33b511e1a5ec138d1bb9c7c83030acc45899963e94aaf8ab3603245882aa4544ea3d39dd989cf604a96a4b31b6d22b"' }>
-                                            <li class="link">
-                                                <a href="components/SpatialSearchKeyboardUIBehaviorComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >SpatialSearchKeyboardUIBehaviorComponent</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                            </li>
-                            <li class="link">
-                                <a href="modules/SpatialSearchKeyboardUIModule.html" data-type="entity-link" >SpatialSearchKeyboardUIModule</a>
-                                    <li class="chapter inner">
-                                        <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
-                                            'data-bs-target="#components-links-module-SpatialSearchKeyboardUIModule-527963cf0d41260b5849c2b0c91ca67df88a5e078d22bb04ae1d8f889fe1840bd856fcb5f837818ef2883ed1133c23df23b56bc30166201bb69c6fbb46fc3e30"' : 'data-bs-target="#xs-components-links-module-SpatialSearchKeyboardUIModule-527963cf0d41260b5849c2b0c91ca67df88a5e078d22bb04ae1d8f889fe1840bd856fcb5f837818ef2883ed1133c23df23b56bc30166201bb69c6fbb46fc3e30"' }>
-                                            <span class="icon ion-md-cog"></span>
-                                            <span>Components</span>
-                                            <span class="icon ion-ios-arrow-down"></span>
-                                        </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SpatialSearchKeyboardUIModule-527963cf0d41260b5849c2b0c91ca67df88a5e078d22bb04ae1d8f889fe1840bd856fcb5f837818ef2883ed1133c23df23b56bc30166201bb69c6fbb46fc3e30"' :
-                                            'id="xs-components-links-module-SpatialSearchKeyboardUIModule-527963cf0d41260b5849c2b0c91ca67df88a5e078d22bb04ae1d8f889fe1840bd856fcb5f837818ef2883ed1133c23df23b56bc30166201bb69c6fbb46fc3e30"' }>
-                                            <li class="link">
-                                                <a href="components/SpatialSearchKeyboardUIComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >SpatialSearchKeyboardUIComponent</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                            </li>
-                            <li class="link">
                                 <a href="modules/SpatialSearchUiBehaviorModule.html" data-type="entity-link" >SpatialSearchUiBehaviorModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
@@ -410,13 +393,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/SpatialSearchUiModule.html" data-type="entity-link" >SpatialSearchUiModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
-                                            'data-bs-target="#components-links-module-SpatialSearchUiModule-3b51b3a99c032c4c4ff595be0cf330a4c470fa3f72ae5af45d21781106c4ef563f0a12de2cf6370d35893cd4f8a198670fd187fcad200cbb81fb0ca762794554"' : 'data-bs-target="#xs-components-links-module-SpatialSearchUiModule-3b51b3a99c032c4c4ff595be0cf330a4c470fa3f72ae5af45d21781106c4ef563f0a12de2cf6370d35893cd4f8a198670fd187fcad200cbb81fb0ca762794554"' }>
+                                            'data-bs-target="#components-links-module-SpatialSearchUiModule-aad1c51310b6cb3d8b31dfcaed06edb740e3807f684d7177aca96c4922c2a48571a2aa4264bba497be9addea7548c7f8f5136c574c7cf3fdc725378ec1668810"' : 'data-bs-target="#xs-components-links-module-SpatialSearchUiModule-aad1c51310b6cb3d8b31dfcaed06edb740e3807f684d7177aca96c4922c2a48571a2aa4264bba497be9addea7548c7f8f5136c574c7cf3fdc725378ec1668810"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SpatialSearchUiModule-3b51b3a99c032c4c4ff595be0cf330a4c470fa3f72ae5af45d21781106c4ef563f0a12de2cf6370d35893cd4f8a198670fd187fcad200cbb81fb0ca762794554"' :
-                                            'id="xs-components-links-module-SpatialSearchUiModule-3b51b3a99c032c4c4ff595be0cf330a4c470fa3f72ae5af45d21781106c4ef563f0a12de2cf6370d35893cd4f8a198670fd187fcad200cbb81fb0ca762794554"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SpatialSearchUiModule-aad1c51310b6cb3d8b31dfcaed06edb740e3807f684d7177aca96c4922c2a48571a2aa4264bba497be9addea7548c7f8f5136c574c7cf3fdc725378ec1668810"' :
+                                            'id="xs-components-links-module-SpatialSearchUiModule-aad1c51310b6cb3d8b31dfcaed06edb740e3807f684d7177aca96c4922c2a48571a2aa4264bba497be9addea7548c7f8f5136c574c7cf3fdc725378ec1668810"' }>
                                             <li class="link">
                                                 <a href="components/SpatialSearchUiComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >SpatialSearchUiComponent</a>
                                             </li>

@@ -70,7 +70,7 @@
                             <a href="#checkRoutesEnabled" title="projects/ccf-api/src/lib/routes/v1/gtex/index.ts" ><b>checkRoutesEnabled</b>&nbsp;&nbsp;&nbsp;(projects/.../index.ts)</a>
                         </li>
                         <li>
-                            <a href="#checkRoutesEnabled" title="projects/ccf-api/src/lib/routes/v1/hubmap/index.ts" ><b>checkRoutesEnabled</b>&nbsp;&nbsp;&nbsp;(projects/.../index.ts)</a>
+                            <a href="#checkRoutesEnabled" title="projects/ccf-api/src/lib/routes/v1/xconsortia/index.ts" ><b>checkRoutesEnabled</b>&nbsp;&nbsp;&nbsp;(projects/.../index.ts)</a>
                         </li>
                         <li>
                             <a href="#DEFAULT_GTEX_RUI_LOCATIONS" title="projects/ccf-api/src/lib/routes/v1/gtex/rui-locations.ts" ><b>DEFAULT_GTEX_RUI_LOCATIONS</b>&nbsp;&nbsp;&nbsp;(projects/.../rui-locations.ts)</a>
@@ -97,7 +97,7 @@
                             <a href="#routes" title="projects/ccf-api/src/lib/routes/v1/gtex/index.ts" ><b>routes</b>&nbsp;&nbsp;&nbsp;(projects/.../index.ts)</a>
                         </li>
                         <li>
-                            <a href="#routes" title="projects/ccf-api/src/lib/routes/v1/hubmap/index.ts" ><b>routes</b>&nbsp;&nbsp;&nbsp;(projects/.../index.ts)</a>
+                            <a href="#routes" title="projects/ccf-api/src/lib/routes/v1/xconsortia/index.ts" ><b>routes</b>&nbsp;&nbsp;&nbsp;(projects/.../index.ts)</a>
                         </li>
                         <li>
                             <a href="#THROW_IF_NOT_FOUND" title="projects/ccf-api/src/lib/environment.ts" ><b>THROW_IF_NOT_FOUND</b>&nbsp;&nbsp;&nbsp;(projects/.../environment.ts)</a>
@@ -133,20 +133,23 @@
                         <i>Default value : </i><code>(_req, res, _next) &#x3D;&gt; {
 
   res.send(&#x60;&lt;!doctype html&gt;
-&lt;html lang&#x3D;&quot;en&quot;&gt;
-  &lt;head&gt;
-    &lt;meta charset&#x3D;&quot;utf-8&quot;&gt;
-    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1, shrink-to-fit&#x3D;no&quot;&gt;
-    &lt;title&gt;CCF-API Browser&lt;/title&gt;
-
-    &lt;script src&#x3D;&quot;https://cdn.jsdelivr.net/npm/@stoplight/elements/web-components.min.js&quot;&gt;&lt;/script&gt;
-    &lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;https://cdn.jsdelivr.net/npm/@stoplight/elements/styles.min.css&quot;&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;elements-api apiDescriptionUrl&#x3D;&quot;ccf-api-spec.yaml&quot; router&#x3D;&quot;hash&quot; /&gt;
-  &lt;/body&gt;
-&lt;/html&gt;&#x60;);
-
+  &lt;html&gt;
+    &lt;head&gt;
+      &lt;meta charset&#x3D;&quot;utf-8&quot;&gt;
+      &lt;script type&#x3D;&quot;module&quot; src&#x3D;&quot;https://unpkg.com/rapidoc/dist/rapidoc-min.js&quot;&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;rapi-doc
+        spec-url&#x3D;&quot;ccf-api-spec.yaml&quot;
+        fill-request-fields-with-example&#x3D;&quot;false&quot;
+        theme&#x3D;&quot;light&quot;
+        show-header&#x3D;&quot;false&quot;
+        render-style&#x3D;&quot;view&quot;
+        layout&#x3D;&quot;column&quot;
+        allow-authentication&#x3D;&quot;false&quot;
+      &gt;&lt;/rapi-doc&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;&#x60;);
 }</code>
                     </td>
                 </tr>
@@ -198,6 +201,7 @@
                     <td class="col-md-4">
                         <i>Default value : </i><code>Router()
   .get(&#x27;/&#x27;, browserRoute)
+  .get(&#x27;/index.html&#x27;, browserRoute)
   .get(&#x27;/ccf-api-spec.yaml&#x27;, openApiRoute)</code>
                     </td>
                 </tr>
@@ -283,7 +287,7 @@
         </tbody>
     </table>
 </section>
-    <h3>projects/ccf-api/src/lib/routes/v1/hubmap/index.ts</h3>
+    <h3>projects/ccf-api/src/lib/routes/v1/xconsortia/index.ts</h3>
     <section data-compodoc="block-properties">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
@@ -305,7 +309,7 @@
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>(_req, _res, next) &#x3D;&gt; {
-  const enabled &#x3D; env.HUBMAP_ROUTES &#x3D;&#x3D;&#x3D; &#x27;true&#x27;;
+  const enabled &#x3D; env.XCONSORTIA_ROUTES &#x3D;&#x3D;&#x3D; &#x27;true&#x27;;
   enabled ? next() : next(&#x27;router&#x27;);
 }</code>
                     </td>
@@ -329,7 +333,8 @@
                     <td class="col-md-4">
                         <i>Default value : </i><code>Router()
   .use(checkRoutesEnabled)
-  .get(&#x27;/rui_locations.jsonld&#x27;, ruiLocations())</code>
+  .get(&#x27;/sennet/rui_locations.jsonld&#x27;, ruiLocations(&#x27;https://search.api.sennetconsortium.org/entities/search&#x27;))
+  .get(&#x27;/hubmap/rui_locations.jsonld&#x27;, ruiLocations(&#x27;https://search.api.hubmapconsortium.org/v3/entities/search&#x27;))</code>
                     </td>
                 </tr>
 
@@ -463,6 +468,7 @@
   sex: &#x27;Both&#x27;,
   ageRange: undefined,
   bmiRange: undefined,
+  consortiums: [],
   tmc: [],
   technologies: [],
   ontologyTerms: [],
@@ -497,7 +503,7 @@
   .use(&#x27;/sparql&#x27;, sparql())
   .use(&#x27;/ccf.owl.n3store.json&#x27;, useCachedResult(&#x27;ccf.owl.n3store.json&#x27;))
   .use(cacheResponses())
-  .use(&#x27;/hubmap&#x27;, hubmapRoutes)
+  .use(&#x27;/&#x27;, xConsortiaRoutes)
   .use(&#x27;/gtex&#x27;, gtexRoutes)
   .get(&#x27;/tissue-blocks&#x27;, forwardDatabaseQuery(&#x27;getTissueBlockResults&#x27;))
   .get(&#x27;/technology-names&#x27;, forwardDatabaseQuery(&#x27;getDatasetTechnologyNames&#x27;))
@@ -505,6 +511,8 @@
   .get(&#x27;/aggregate-results&#x27;, forwardDatabaseQuery(&#x27;getAggregateResults&#x27;))
   .get(&#x27;/ontology-term-occurences&#x27;, forwardDatabaseQuery(&#x27;getOntologyTermOccurences&#x27;))
   .get(&#x27;/cell-type-term-occurences&#x27;, forwardDatabaseQuery(&#x27;getCellTypeTermOccurences&#x27;))
+  .get(&#x27;/biomarker-tree-model&#x27;, forwardDatabaseQuery(&#x27;getBiomarkerTreeModel&#x27;))
+  .get(&#x27;/biomarker-term-occurences&#x27;, forwardDatabaseQuery(&#x27;getBiomarkerTermOccurences&#x27;))
   .get(&#x27;/ontology-tree-model&#x27;, useCachedResult(&#x27;ontology-tree-model.json&#x27;), forwardDatabaseQuery(&#x27;getOntologyTreeModel&#x27;))
   .get(&#x27;/cell-type-tree-model&#x27;, useCachedResult(&#x27;cell-type-tree-model.json&#x27;), forwardDatabaseQuery(&#x27;getCellTypeTreeModel&#x27;))
   .get(&#x27;/reference-organs&#x27;, useCachedResult(&#x27;reference-organs.json&#x27;), forwardDatabaseQuery(&#x27;getReferenceOrgans&#x27;))

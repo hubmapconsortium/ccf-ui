@@ -153,10 +153,10 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
 import { Matrix4 } from &#x27;@math.gl/core&#x27;;
 import {
-  AggregateResult, Filter, OntologyTreeModel, SpatialEntity, SpatialSceneNode, TissueBlockResult,
+  AggregateResult, Filter, OntologyTreeModel, OntologyTreeNode, SpatialEntity, SpatialSceneNode, TissueBlockResult,
 } from &#x27;ccf-database&#x27;;
 import { DatabaseStatus, DefaultService, MinMax, SpatialSearch, SpatialSceneNode as RawSpatialSceneNode } from &#x27;ccf-openapi/angular-client&#x27;;
-import { combineLatest, Observable, Subject } from &#x27;rxjs&#x27;;
+import { combineLatest, Observable, of, Subject } from &#x27;rxjs&#x27;;
 import { map, switchMap, take, tap } from &#x27;rxjs/operators&#x27;;
 import { Cacheable } from &#x27;ts-cacheable&#x27;;
 
@@ -186,6 +186,8 @@ interface FilterParams {
   bmiRange?: string;
   ontologyTerms?: string[];
   cellTypeTerms?: string[];
+  biomarkerTerms?: string[];
+  consortiums?: string[];
   providers?: string[];
   sex?: &#x27;both&#x27; | &#x27;female&#x27; | &#x27;male&#x27;;
   technologies?: string[];
@@ -228,6 +230,8 @@ function filterToParams(filter?: Filter): FilterParams {
     sex: filter?.sex?.toLowerCase?.() as FilterParams[&#x27;sex&#x27;],
     ontologyTerms: filter?.ontologyTerms,
     cellTypeTerms: filter?.cellTypeTerms,
+    biomarkerTerms: filter?.biomarkerTerms,
+    consortiums: filter?.consortiums,
     providers: filter?.tmc,
     technologies: filter?.technologies,
     spatial: filter?.spatialSearches
@@ -283,6 +287,19 @@ export class ApiEndpointDataSourceService implements DataSource {
     );
   }
 
+  /**
+   * Get the biomarker type tree model.
+   *
+   * @returns An observable emitting the results.
+   */
+  @Cacheable(CACHE_CONFIG_NO_PARAMS)
+  getBiomarkerTreeModel(): Observable&lt;OntologyTreeModel&gt; {
+    return this.doRequest(
+      params &#x3D;&gt; this.api.biomarkerTreeModel(params),
+      undefined, {}, cast&lt;OntologyTreeModel&gt;()
+    );
+  }
+
   @Cacheable(CACHE_CONFIG_NO_PARAMS)
   getReferenceOrgans(): Observable&lt;SpatialEntity[]&gt; {
     return this.doRequest(
@@ -319,6 +336,14 @@ export class ApiEndpointDataSourceService implements DataSource {
   getCellTypeTermOccurences(filter?: Filter): Observable&lt;Record&lt;string, number&gt;&gt; {
     return this.doRequest(
       params &#x3D;&gt; this.api.cellTypeTermOccurences(params),
+      filter
+    );
+  }
+
+  @Cacheable(CACHE_CONFIG_PARAMS)
+  getBiomarkerTermOccurences(filter?: Filter): Observable&lt;Record&lt;string, number&gt;&gt; {
+    return this.doRequest(
+      params &#x3D;&gt; this.api.biomarkerTermOccurences(params),
       filter
     );
   }

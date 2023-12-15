@@ -80,7 +80,7 @@
                 <h3>Extends</h3>
             </p>
             <p class="comment">
-                        <code><a href="../interfaces/GlobalConfig.html" target="_self" >GlobalConfig</a></code>
+                            <code><a href="../interfaces/GlobalConfig.html" target="_self" >GlobalConfig</a></code>
             </p>
 
         <section data-compodoc="block-index">
@@ -291,15 +291,24 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Injector, OnDestroy, OnInit, HostListener } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  HostListener,
+  Injector,
+  OnDestroy,
+  OnInit,
+} from &#x27;@angular/core&#x27;;
 import { MatSnackBar } from &#x27;@angular/material/snack-bar&#x27;;
 import { GlobalConfigState, TrackingPopupComponent } from &#x27;ccf-shared&#x27;;
 import { ConsentService } from &#x27;ccf-shared/analytics&#x27;;
-import { combineLatest, Subscription, ReplaySubject } from &#x27;rxjs&#x27;;
+import { combineLatest, ReplaySubject, Subscription } from &#x27;rxjs&#x27;;
 
 import { GlobalConfig } from &#x27;./core/services/config/config&#x27;;
 import { ThemingService } from &#x27;./core/services/theming/theming.service&#x27;;
-import { ModelState, RUI_ORGANS } from &#x27;./core/store/model/model.state&#x27;;
+import { ModelState } from &#x27;./core/store/model/model.state&#x27;;
 import { PageState } from &#x27;./core/store/page/page.state&#x27;;
 
 export interface User {
@@ -324,17 +333,13 @@ interface AppOptions extends GlobalConfig {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnDestroy, OnInit {
-  /** Organs to be displayed in the organ selector */
-  organList &#x3D; RUI_ORGANS;
-
-  /** True if the organ selector drawer is open */
-  open &#x3D; true;
-
   /** False until the initial registration modal is closed */
   registrationStarted &#x3D; false;
 
   /** Disables changes in block position */
   disablePositionChange &#x3D; false;
+
+  registrationExpanded &#x3D; false;
 
   get isLightTheme(): boolean {
     return this.theming.getTheme().endsWith(&#x27;light&#x27;);
@@ -362,11 +367,6 @@ export class AppComponent implements OnDestroy, OnInit {
     el: ElementRef&lt;unknown&gt;, injector: Injector, private readonly globalConfig: GlobalConfigState&lt;AppOptions&gt;, cdr: ChangeDetectorRef
   ) {
     theming.initialize(el, injector);
-    this.subscriptions.add(
-      page.registrationCallbackSet$.subscribe((callbackSet) &#x3D;&gt; {
-        this.open &#x3D; !callbackSet;
-      })
-    );
     this.subscriptions.add(
       page.registrationStarted$.subscribe((registrationStarted) &#x3D;&gt; {
         this.registrationStarted &#x3D; registrationStarted;
@@ -410,6 +410,13 @@ export class AppComponent implements OnDestroy, OnInit {
    */
   toggleScheme(): void {
     this.themeMode$.next(this.isLightTheme ? &#x27;dark&#x27; : &#x27;light&#x27;);
+  }
+
+  registrationToggle(event: boolean): void {
+    this.registrationExpanded &#x3D; event;
+    if (!this.registrationExpanded) {
+      this.disablePositionChange &#x3D; false;
+    }
   }
 
   /**
@@ -456,13 +463,16 @@ export class AppComponent implements OnDestroy, OnInit {
    *
    * @param target The element clicked
    */
-  @HostListener(&#x27;document:click&#x27;, [&#x27;$event.target&#x27;])
+  @HostListener(&#x27;document:mousedown&#x27;, [&#x27;$event.target&#x27;])
   handleClick(target: HTMLElement): void {
-    if (target.nodeName &#x3D;&#x3D;&#x3D; &#x27;INPUT&#x27;) {
-      this.disablePositionChange &#x3D; true;
-    } else {
-      this.disablePositionChange &#x3D; false;
+    const disableWhenClicked &#x3D; [&#x27;mat-mdc-input-element&#x27;, &#x27;form-input-label&#x27;];
+    for (const className of disableWhenClicked) {
+      if (target.className.includes(className)) {
+        this.disablePositionChange &#x3D; true;
+        return;
+      }
     }
+    this.disablePositionChange &#x3D; false;
   }
 
   /**

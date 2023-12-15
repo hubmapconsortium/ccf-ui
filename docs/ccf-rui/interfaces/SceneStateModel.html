@@ -151,16 +151,17 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, Injector } from &#x27;@angular/core&#x27;;
-import { Matrix4, toRadians } from &#x27;@math.gl/core&#x27;;
-import { Computed, StateRepository } from &#x27;@angular-ru/ngxs/decorators&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Computed, StateRepository } from &#x27;@angular-ru/ngxs/decorators&#x27;;
 import { NgxsImmutableDataRepository } from &#x27;@angular-ru/ngxs/repositories&#x27;;
+import { Injectable, Injector } from &#x27;@angular/core&#x27;;
+import { Matrix4, toRadians } from &#x27;@math.gl/core&#x27;;
 import { NgxsOnInit, State } from &#x27;@ngxs/store&#x27;;
 import { AABB, Vec3 } from &#x27;cannon-es&#x27;;
 import { SpatialEntityJsonLd, SpatialSceneNode } from &#x27;ccf-body-ui&#x27;;
-import { combineLatest, Observable, of } from &#x27;rxjs&#x27;;
-import { debounceTime, filter, map } from &#x27;rxjs/operators&#x27;;
-
+import { SpatialEntity, SpatialPlacement, getOriginScene, getTissueBlockScene } from &#x27;ccf-database&#x27;;
+import { Position } from &#x27;ccf-shared&#x27;;
+import { Observable, combineLatest, of } from &#x27;rxjs&#x27;;
+import { filter, map } from &#x27;rxjs/operators&#x27;;
 import { environment } from &#x27;../../../../environments/environment&#x27;;
 import { ModelState } from &#x27;../model/model.state&#x27;;
 import { RegistrationState } from &#x27;../registration/registration.state&#x27;;
@@ -202,10 +203,10 @@ export class SceneState extends NgxsImmutableDataRepository&lt;SceneStateModel&g
   @Computed()
   get nodes$(): Observable&lt;SpatialSceneNode[]&gt; {
     return combineLatest([
-      this.placementCube$, this.referenceOrganNodes$, this.previousRegistrationNodes$, this.nodeCollisions$
+      this.placementCube$, this.referenceOrganNodes$, this.previousRegistrationNodes$, this.nodeCollisions$, this.spatialKeyBoardAxis$
     ]).pipe(
-      map(([placement, nodes, prevNodes, collisions]) &#x3D;&gt; [
-        ...placement, ...prevNodes, ...nodes, ...(this.snapshot.showCollisions ? collisions : [])
+      map(([placement, nodes, prevNodes, collisions, axis]) &#x3D;&gt; [
+        ...placement, ...prevNodes, ...nodes, ...axis, ...(this.snapshot.showCollisions ? collisions : [])
       ])
     );
   }
@@ -230,10 +231,12 @@ export class SceneState extends NgxsImmutableDataRepository&lt;SceneStateModel&g
   @Computed()
   get referenceOrganNodes$(): Observable&lt;SpatialSceneNode[]&gt; {
     return combineLatest([this.model.anatomicalStructures$, this.model.extractionSites$, this.model.organIri$]).pipe(
-      debounceTime(400),
-      map(([anatomicalStructures, extractionSites, organIri]) &#x3D;&gt;
-        this.createSceneNodes(organIri as string, [...anatomicalStructures, ...extractionSites] as VisibilityItem[])
-      )
+      map(([anatomicalStructures, extractionSites, organIri]) &#x3D;&gt; {
+        const organ &#x3D; this.getOrganSpatialEntity(organIri as string);
+        const originScene &#x3D; organIri ? getOriginScene(organ, false, true) : [];
+        const organScene &#x3D; this.createSceneNodes(organIri as string, [...anatomicalStructures, ...extractionSites] as VisibilityItem[]);
+        return [ ...originScene, ...organScene ];
+      })
     );
   }
 
@@ -302,6 +305,30 @@ export class SceneState extends NgxsImmutableDataRepository&lt;SceneStateModel&g
         }).filter(e &#x3D;&gt; !!e) : []
       )
     );
+  }
+
+  @Computed()
+  get spatialKeyBoardAxis$(): Observable&lt;SpatialSceneNode[]&gt;{
+    return combineLatest([this.model.organIri$.pipe(filter(organIri&#x3D;&gt;organIri!&#x3D;&#x3D;&#x27;&#x27;)), this.model.position$]).pipe(map(([organIri, position]: [string, Position]) &#x3D;&gt; {
+      const organEntity &#x3D; this.getOrganSpatialEntity(organIri);
+      const blockSize &#x3D; this.model.snapshot.blockSize;
+      const rotation &#x3D; this.model.snapshot.rotation;
+      return organEntity ? getTissueBlockScene({
+        x_dimension: blockSize.x,
+        y_dimension: blockSize.y,
+        z_dimension: blockSize.z
+      } as SpatialEntity, {
+        x_translation: position.x - organEntity.x_dimension / 2,
+        y_translation: position.y - organEntity.y_dimension / 2,
+        z_translation: position.z - organEntity.z_dimension / 2,
+
+        x_rotation: rotation.x,
+        y_rotation: rotation.y,
+        z_rotation: rotation.z,
+
+        x_scaling: 1, y_scaling: 1, z_scaling: 1,
+      } as SpatialPlacement): [];
+    }));
   }
 
   @Computed()
@@ -419,6 +446,13 @@ export class SceneState extends NgxsImmutableDataRepository&lt;SceneStateModel&g
       })
       .reduce((acc, nodes) &#x3D;&gt; acc.concat(nodes), []);
   }
+
+  private getOrganSpatialEntity(organIri: string): SpatialEntity {
+    const db &#x3D; this.referenceData.snapshot;
+    return db.organSpatialEntities[organIri] as SpatialEntity;
+  }
+
+
 }
 </code></pre>
     </div>

@@ -1,0 +1,1163 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Application ccf-rui documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">Application ccf-rui documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  RegistrationMetadataComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>projects/ccf-rui/src/app/shared/components/registration-metadata/registration-metadata.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Right side registration menu</p>
+
+    </p>
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>ccf-registration-metadata</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./registration-metadata.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./registration-metadata.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#nameValid" >nameValid</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Optional</span>
+                                <a href="#orcId" >orcId</a>
+                            </li>
+                            <li>
+                                <a href="#orcidControl" >orcidControl</a>
+                            </li>
+                            <li>
+                                <a href="#uploadText" >uploadText</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#checkNameValid" >checkNameValid</a>
+                            </li>
+                            <li>
+                                <a href="#getErrorMessage" >getErrorMessage</a>
+                            </li>
+                            <li>
+                                <a href="#handleRegistrationUpload" >handleRegistrationUpload</a>
+                            </li>
+                            <li>
+                                <a href="#setSexFromLabel" >setSexFromLabel</a>
+                            </li>
+                            <li>
+                                <a href="#updateOrcid" >updateOrcid</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#registrationSelected" >registrationSelected</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(model: <a href="../injectables/ModelState.html" target="_self">ModelState</a>, registration: <a href="../injectables/RegistrationState.html" target="_self">RegistrationState</a>, page: <a href="../injectables/PageState.html" target="_self">PageState</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">projects/ccf-rui/src/app/shared/components/registration-metadata/registration-metadata.component.ts:33</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Creates an instance of registration metadata component.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>model</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ModelState.html" target="_self" >ModelState</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Model state</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>registration</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/RegistrationState.html" target="_self" >RegistrationState</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Registration state</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>page</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/PageState.html" target="_self" >PageState</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Page state</p>
+
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section data-compodoc="block-outputs">
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="registrationSelected"></a>
+                        <b>registrationSelected</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>EventEmitter</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">projects/ccf-rui/src/app/shared/components/registration-metadata/registration-metadata.component.ts:21</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Emits when user has uploaded registration</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="checkNameValid"></a>
+                    <span class="name">
+                        <span ><b>checkNameValid</b></span>
+                        <a href="#checkNameValid"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>checkNameValid(event: <a href="../interfaces/Person.html" target="_self">Pick&lt;Person | &quot;firstName&quot; | &quot;lastName&quot;&gt;</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="84"
+                                    class="link-to-prism">projects/ccf-rui/src/app/shared/components/registration-metadata/registration-metadata.component.ts:84</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Checks to see if a first and last name has been entered</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Person.html" target="_self" >Pick&lt;Person | &quot;firstName&quot; | &quot;lastName&quot;&gt;</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Name input event</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getErrorMessage"></a>
+                    <span class="name">
+                        <span ><b>getErrorMessage</b></span>
+                        <a href="#getErrorMessage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getErrorMessage()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="59"
+                                    class="link-to-prism">projects/ccf-rui/src/app/shared/components/registration-metadata/registration-metadata.component.ts:59</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Error message to inform user if orcid is invalid</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Error message</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleRegistrationUpload"></a>
+                    <span class="name">
+                        <span ><b>handleRegistrationUpload</b></span>
+                        <a href="#handleRegistrationUpload"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleRegistrationUpload(reg: SpatialEntityJsonLd)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="75"
+                                    class="link-to-prism">projects/ccf-rui/src/app/shared/components/registration-metadata/registration-metadata.component.ts:75</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Emits registrationSelected and calls editRegistration in state</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>reg</td>
+                                            <td>
+                                                        <code>SpatialEntityJsonLd</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setSexFromLabel"></a>
+                    <span class="name">
+                        <span ><b>setSexFromLabel</b></span>
+                        <a href="#setSexFromLabel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setSexFromLabel(label: "Female" | "Male")</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="92"
+                                    class="link-to-prism">projects/ccf-rui/src/app/shared/components/registration-metadata/registration-metadata.component.ts:92</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Updates current sex selected</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>label</td>
+                                            <td>
+                                                        <code>&quot;Female&quot; | &quot;Male&quot;</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Sex selected</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateOrcid"></a>
+                    <span class="name">
+                        <span ><b>updateOrcid</b></span>
+                        <a href="#updateOrcid"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateOrcid(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="67"
+                                    class="link-to-prism">projects/ccf-rui/src/app/shared/components/registration-metadata/registration-metadata.component.ts:67</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Updates orcid value</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>value</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Orcid value entered</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="nameValid"></a>
+                    <span class="name">
+                        <span ><b>nameValid</b></span>
+                        <a href="#nameValid"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">projects/ccf-rui/src/app/shared/components/registration-metadata/registration-metadata.component.ts:24</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Checks if first and last name has been entered</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="orcId"></a>
+                    <span class="name">
+                            <span class="modifier">Optional</span>
+                        <span ><b>orcId</b></span>
+                        <a href="#orcId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">projects/ccf-rui/src/app/shared/components/registration-metadata/registration-metadata.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Orcid URI converted to regular id</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="orcidControl"></a>
+                    <span class="name">
+                        <span ><b>orcidControl</b></span>
+                        <a href="#orcidControl"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new FormControl(&#x27;&#x27;, [Validators.pattern(&#x27;^[a-zA-Z0-9]{4}(-[a-zA-Z0-9]{4}){3}$&#x27;)])</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">projects/ccf-rui/src/app/shared/components/registration-metadata/registration-metadata.component.ts:33</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Form control for validating orcid id</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="uploadText"></a>
+                    <span class="name">
+                        <span ><b>uploadText</b></span>
+                        <a href="#uploadText"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">projects/ccf-rui/src/app/shared/components/registration-metadata/registration-metadata.component.ts:30</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Text to inform user if a registration file has been uploaded</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, Component, EventEmitter, Output } from &#x27;@angular/core&#x27;;
+
+import { ModelState } from &#x27;../../../core/store/model/model.state&#x27;;
+import { PageState, Person } from &#x27;../../../core/store/page/page.state&#x27;;
+import { RegistrationState } from &#x27;../../../core/store/registration/registration.state&#x27;;
+import { FormControl, Validators } from &#x27;@angular/forms&#x27;;
+import { SpatialEntityJsonLd } from &#x27;ccf-body-ui&#x27;;
+
+/**
+ * Right side registration menu
+ */
+@Component({
+  selector: &#x27;ccf-registration-metadata&#x27;,
+  templateUrl: &#x27;./registration-metadata.component.html&#x27;,
+  styleUrls: [&#x27;./registration-metadata.component.scss&#x27;],
+  changeDetection: ChangeDetectionStrategy.OnPush
+
+})
+export class RegistrationMetadataComponent {
+  /** Emits when user has uploaded registration */
+  @Output() readonly registrationSelected &#x3D; new EventEmitter&lt;void&gt;();
+
+  /** Checks if first and last name has been entered */
+  nameValid: boolean;
+
+  /** Orcid URI converted to regular id */
+  orcId?: string;
+
+  /** Text to inform user if a registration file has been uploaded */
+  uploadText: string;
+
+  /** Form control for validating orcid id */
+  orcidControl &#x3D; new FormControl(&#x27;&#x27;, [Validators.pattern(&#x27;^[a-zA-Z0-9]{4}(-[a-zA-Z0-9]{4}){3}$&#x27;)]);
+
+  /**
+   * Creates an instance of registration metadata component.
+   * @param model Model state
+   * @param registration Registration state
+   * @param page Page state
+   */
+  constructor(
+    readonly model: ModelState,
+    readonly registration: RegistrationState,
+    readonly page: PageState,
+  ) {
+    page.user$.subscribe(user &#x3D;&gt; {
+      this.checkNameValid(user);
+      this.orcId &#x3D; page.uriToOrcid(user.orcidId);
+    });
+    registration.state$.subscribe(reg &#x3D;&gt; {
+      this.uploadText &#x3D; reg.initialRegistration ? &#x27;File(s) uploaded&#x27; : &#x27;No file(s) uploaded&#x27;;
+    });
+  }
+
+  /**
+   * Error message to inform user if orcid is invalid
+   * @returns Error message
+   */
+  getErrorMessage(): string {
+    return this.orcidControl.hasError(&#x27;pattern&#x27;) ? &#x27;Not a valid ORCID&#x27; : &#x27;&#x27;;
+  }
+
+  /**
+   * Updates orcid value
+   * @param value Orcid value entered
+   */
+  updateOrcid(value: string): void {
+    this.page.setOrcidId(value);
+  }
+
+  /**
+   * Emits registrationSelected and calls editRegistration in state
+   * @param event Registration uploaded
+   */
+  handleRegistrationUpload(reg: SpatialEntityJsonLd): void {
+    this.registrationSelected.emit();
+    this.registration.editRegistration(reg);
+  }
+
+  /**
+   * Checks to see if a first and last name has been entered
+   * @param event Name input event
+   */
+  checkNameValid(event: Pick&lt;Person, &#x27;firstName&#x27; | &#x27;lastName&#x27;&gt;): void {
+    this.nameValid &#x3D; event.firstName.length &gt; 0 &amp;&amp; event.lastName.length &gt; 0;
+  }
+
+  /**
+   * Updates current sex selected
+   * @param label Sex selected
+   */
+  setSexFromLabel(label: &#x27;Female&#x27; | &#x27;Male&#x27;): void {
+    this.model.setSex(label.toLowerCase() as &#x27;male&#x27; | &#x27;female&#x27;);
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;author-section&quot;&gt;
+  &lt;h2 class&#x3D;&quot;section-title&quot;&gt;Author Data&lt;/h2&gt;
+
+  &lt;ccf-name-input [name]&#x3D;&quot;page.user$ | async&quot; (nameChange)&#x3D;&quot;page.setUserName($event); checkNameValid($event)&quot;&gt;
+  &lt;/ccf-name-input&gt;
+
+  &lt;mat-form-field class&#x3D;&quot;orcid-input&quot;&gt;
+    &lt;mat-label&gt;ORCID identifier (optional)&lt;/mat-label&gt;
+    &lt;input matInput class&#x3D;&quot;input&quot; [value]&#x3D;&quot;orcId&quot; [formControl]&#x3D;&quot;orcidControl&quot; (input)&#x3D;&quot;updateOrcid($event.target.value)&quot; matTooltip&#x3D;&quot;Add ORCID id.&quot; maxlength&#x3D;&quot;19&quot;&gt;
+    &lt;mat-error *ngIf&#x3D;&quot;orcidControl.invalid&quot;&gt;{{getErrorMessage()}}&lt;/mat-error&gt;
+  &lt;/mat-form-field&gt;
+&lt;/div&gt;
+
+&lt;div class&#x3D;&quot;donor-section&quot;&gt;
+  &lt;h2 class&#x3D;&quot;section-title&quot;&gt;Donor Data&lt;/h2&gt;
+
+  &lt;div class&#x3D;&quot;sex-toggle&quot;&gt;
+    &lt;div class&#x3D;&quot;label&quot;&gt;Donor Sex: &lt;/div&gt;
+    &lt;mat-radio-group class&#x3D;&quot;radio-group&quot; [value]&#x3D;&quot;model.sex$ | async&quot; (change)&#x3D;&quot;setSexFromLabel($event.value)&quot;&gt;
+      &lt;mat-radio-button class&#x3D;&quot;radio&quot; value&#x3D;&quot;male&quot;&gt;Male&lt;/mat-radio-button&gt;
+      &lt;mat-radio-button class&#x3D;&quot;radio&quot; value&#x3D;&quot;female&quot;&gt;Female&lt;/mat-radio-button&gt;
+    &lt;/mat-radio-group&gt;
+  &lt;/div&gt;
+
+  &lt;div class&#x3D;&quot;organ-selector&quot;&gt;
+    &lt;div class&#x3D;&quot;label&quot;&gt;Select an organ: &lt;/div&gt;
+    &lt;mat-form-field class&#x3D;&quot;form-field&quot; appearance&#x3D;&quot;fill&quot; subscriptSizing&#x3D;&quot;dynamic&quot;&gt;
+      &lt;div *ngIf&#x3D;&quot;(model.organ$ | async) &#x3D;&#x3D;&#x3D; undefined&quot; class&#x3D;&quot;label&quot;&gt;Organs&lt;/div&gt;
+      &lt;mat-select disableOptionCentering&#x3D;&quot;true&quot; panelClass&#x3D;&quot;organ-select&quot; [value]&#x3D;&quot;model.organ$ | async&quot;
+        (selectionChange)&#x3D;&quot;model.setOrgan($event.value); model.setOrganDefaults()&quot; hideSingleSelectionIndicator&#x3D;&quot;true&quot;&gt;
+        &lt;mat-option class&#x3D;&quot;organ-select-option&quot; *ngFor&#x3D;&quot;let organ of (page.organOptions$ | async)&quot; [value]&#x3D;&quot;organ&quot;&gt;
+          {{organ.name}}
+        &lt;/mat-option&gt;
+      &lt;/mat-select&gt;
+    &lt;/mat-form-field&gt;
+  &lt;/div&gt;
+
+  &lt;div class&#x3D;&quot;upload-registration&quot;&gt;
+    &lt;div class&#x3D;&quot;label&quot;&gt;Upload previous registration data (optional):&lt;/div&gt;
+
+    &lt;ccf-json-file-reader (parsedJson)&#x3D;&quot;handleRegistrationUpload($event)&quot; label&#x3D;&quot;Upload&quot; matTooltip&#x3D;&quot;Upload a preexisting registration&quot;&gt;&lt;/ccf-json-file-reader&gt;
+
+    &lt;div&gt;{{uploadText}}&lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./registration-metadata.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">:host {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  .section-title {
+    font-weight: 400;
+    line-height: 1.5rem;
+    margin: 0;
+    padding-bottom: 1.5rem;
+  }
+
+  .label {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.5rem;
+  }
+
+  ::ng-deep .mat-mdc-form-field-infix {
+    padding-bottom: 0 !important;
+    min-height: inherit;
+  }
+
+  ::ng-deep .mdc-text-field {
+    padding: 0;
+    padding-bottom: .3rem !important;
+  }
+
+  .author-section {
+    display: flex;
+    flex-direction: column;
+
+    .orcid-input {
+      width: 100%;
+      font-size: 1rem;
+    }
+  }
+
+  .donor-section {
+    display: flex;
+    flex-direction: column;
+
+    .sex-toggle {
+      display: flex;
+      align-items: center;
+      padding-bottom: 1.5rem;
+
+      .label {
+        padding-right: 1rem;
+      }
+
+      mat-radio-group {
+        display: flex;
+        gap: 3rem;
+      }
+    }
+
+    .organ-selector {
+      padding-bottom: 1.5rem;
+
+      ::ng-deep .mat-mdc-select-value {
+        font-size: 1rem;
+      }
+    }
+
+    .upload-registration {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      ccf-json-file-reader {
+        ::ng-deep button {
+          width: 10rem;
+          height: 2rem;
+          padding: 0.25rem 1rem;
+          border-radius: 0.125rem;
+        }
+      }
+    }
+  }
+
+  ::ng-deep .mdc-line-ripple::before,
+  .mdc-line-ripple::after {
+    border-bottom-width: 0.125rem !important;
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="author-section">  <h2 class="section-title">Author Data</h2>  <ccf-name-input [name]="page.user$ | async" (nameChange)="page.setUserName($event); checkNameValid($event)">  </ccf-name-input>  <mat-form-field class="orcid-input">    <mat-label>ORCID identifier (optional)</mat-label>    <input matInput class="input" [value]="orcId" [formControl]="orcidControl" (input)="updateOrcid($event.target.value)" matTooltip="Add ORCID id." maxlength="19">    <mat-error *ngIf="orcidControl.invalid">{{getErrorMessage()}}</mat-error>  </mat-form-field></div><div class="donor-section">  <h2 class="section-title">Donor Data</h2>  <div class="sex-toggle">    <div class="label">Donor Sex: </div>    <mat-radio-group class="radio-group" [value]="model.sex$ | async" (change)="setSexFromLabel($event.value)">      <mat-radio-button class="radio" value="male">Male</mat-radio-button>      <mat-radio-button class="radio" value="female">Female</mat-radio-button>    </mat-radio-group>  </div>  <div class="organ-selector">    <div class="label">Select an organ: </div>    <mat-form-field class="form-field" appearance="fill" subscriptSizing="dynamic">      <div *ngIf="(model.organ$ | async) === undefined" class="label">Organs</div>      <mat-select disableOptionCentering="true" panelClass="organ-select" [value]="model.organ$ | async"        (selectionChange)="model.setOrgan($event.value); model.setOrganDefaults()" hideSingleSelectionIndicator="true">        <mat-option class="organ-select-option" *ngFor="let organ of (page.organOptions$ | async)" [value]="organ">          {{organ.name}}        </mat-option>      </mat-select>    </mat-form-field>  </div>  <div class="upload-registration">    <div class="label">Upload previous registration data (optional):</div>    <ccf-json-file-reader (parsedJson)="handleRegistrationUpload($event)" label="Upload" matTooltip="Upload a preexisting registration"></ccf-json-file-reader>    <div>{{uploadText}}</div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppWebComponent', 'selector': 'ccf-root-wc'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DetailsLabelComponent', 'selector': 'ccf-details-label'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'ExtractionSetDropdownComponent', 'selector': 'ccf-extraction-set-dropdown'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'JsonFileReaderComponent', 'selector': 'ccf-json-file-reader'},{'name': 'LabeledSlideToggleComponent', 'selector': 'ccf-labeled-slide-toggle'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'NameInputComponent', 'selector': 'ccf-name-input'},{'name': 'RegistrationContentComponent', 'selector': 'ccf-registration-content'},{'name': 'RegistrationMetadataComponent', 'selector': 'ccf-registration-metadata'},{'name': 'RegistrationModalComponent', 'selector': 'ccf-registration-modal'},{'name': 'ReviewButtonComponent', 'selector': 'ccf-review-button'},{'name': 'ReviewModalComponent', 'selector': 'ccf-review-modal'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'TagListComponent', 'selector': 'ccf-tag-list'},{'name': 'TagSearchComponent', 'selector': 'ccf-tag-search'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'VideoModalComponent', 'selector': 'ccf-video-modal'},{'name': 'VideoModalLauncherComponent', 'selector': 'ccf-video-modal-launcher'},{'name': 'VisibilityMenuComponent', 'selector': 'ccf-visibility-menu'},{'name': 'VisibilityToggleComponent', 'selector': 'ccf-visibility-toggle'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'RegistrationMetadataComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'RegistrationMetadataComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

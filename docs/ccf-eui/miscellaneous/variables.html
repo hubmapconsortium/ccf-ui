@@ -88,6 +88,9 @@
                             <a href="#isExpandable" title="projects/ccf-eui/src/app/modules/ontology-exploration/ontology-tree/ontology-tree.component.ts" ><b>isExpandable</b>&nbsp;&nbsp;&nbsp;(projects/.../ontology-tree.component.ts)</a>
                         </li>
                         <li>
+                            <a href="#labelMap" title="projects/ccf-eui/src/app/modules/ontology-exploration/ontology-tree/ontology-tree.component.ts" ><b>labelMap</b>&nbsp;&nbsp;&nbsp;(projects/.../ontology-tree.component.ts)</a>
+                        </li>
+                        <li>
                             <a href="#MESSAGE_SERVICE_CONFIG" title="projects/ccf-eui/src/app/shared/services/message/message.service.ts" ><b>MESSAGE_SERVICE_CONFIG</b>&nbsp;&nbsp;&nbsp;(projects/.../message.service.ts)</a>
                         </li>
                         <li>
@@ -207,10 +210,12 @@
   sex: &#x27;Both&#x27;,
   ageRange: [1, 110],
   bmiRange: [13, 83],
+  consortiums: [],
   tmc: [],
   technologies: [],
   ontologyTerms: [&#x27;http://purl.obolibrary.org/obo/UBERON_0013702&#x27;],
   cellTypeTerms: [&#x27;http://purl.obolibrary.org/obo/CL_0000000&#x27;],
+  biomarkerTerms: [&#x27;http://purl.org/ccf/biomarkers&#x27;],
   spatialSearches: []
 }</code>
                     </td>
@@ -327,7 +332,13 @@
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>new Set([&#x27;Skin&#x27;, &#x27;Heart&#x27;, &#x27;Kidney&#x27;, &#x27;Spleen&#x27;])</code>
+                        <i>Default value : </i><code>new Set([
+  &#x27;http://purl.obolibrary.org/obo/UBERON_0002097&#x27;,
+  &#x27;http://purl.obolibrary.org/obo/UBERON_0004538&#x27;,
+  &#x27;http://purl.obolibrary.org/obo/UBERON_0004539&#x27;,
+  &#x27;http://purl.obolibrary.org/obo/UBERON_0000948&#x27;,
+  &#x27;http://purl.obolibrary.org/obo/UBERON_0002113&#x27;,
+  &#x27;http://purl.obolibrary.org/obo/UBERON_0002106&#x27;])</code>
                     </td>
                 </tr>
 
@@ -456,6 +467,30 @@
 </div>
                 </td>
             </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="labelMap"></a>
+                    <span class="name">
+                        <span ><b>labelMap</b></span>
+                        <a href="#labelMap"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Map([
+  [&#x27;colon&#x27;, &#x27;large intestine&#x27;],
+  [&#x27;body&#x27;, &#x27;Anatomical Structures (AS)&#x27;],
+  [&#x27;cell&#x27;, &#x27;Cell Types (CT)&#x27;]
+])</code>
+                    </td>
+                </tr>
+
 
         </tbody>
     </table>
