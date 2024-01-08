@@ -30,8 +30,7 @@ const INCLUDED_DATA_FIELDS = [
   'descendants.uuid',
   'descendants.hubmap_id',
   'descendants.sennet_id',
-  'descendants.data_types',
-  'descendants.ingest_metadata.metadata.assay_type',
+  'descendants.dataset_type',
   'descendants.thumbnail_file',
   'descendants.metadata.files.rel_path',
   'rui_location', 'sample_category'

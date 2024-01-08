@@ -241,24 +241,21 @@ export class HuBMAPTissueBlock {
     const groupName = GROUP_UUID_MAPPING[dataset.group_uuid as string] || dataset.group_name as string;
     const creator = dataset.created_by_user_displayname;
 
-    const types = [
-      ...dataset.data_types as string[],
-      get(dataset, ['ingest_metadata', 'metadata', 'assay_type'], '')
-    ];
-    const typesSearch = types.join('|').toLowerCase();
+    const types = (dataset.dataset_type ?? '') as string;
+    const typesSearch = types.toLowerCase();
 
     let technology: string;
     let thumbnail = 'assets/icons/ico-unknown.svg';
     if (typesSearch.indexOf('10x') !== -1) {
       technology = '10x';
       thumbnail = 'assets/icons/ico-bulk-10x.svg';
-    } else if (typesSearch.indexOf('af') !== -1) {
+    } else if (typesSearch.indexOf('af') !== -1 || typesSearch.indexOf('auto-fluorescence') !== -1) {
       technology = 'AF';
       thumbnail = 'assets/icons/ico-spatial-af.svg';
     } else if (typesSearch.indexOf('codex') !== -1) {
       technology = 'CODEX';
       thumbnail = 'assets/icons/ico-spatial-codex.svg';
-    } else if (typesSearch.indexOf('imc') !== -1) {
+    } else if (typesSearch.indexOf('imc') !== -1 || typesSearch.indexOf('imaging mass cytometry') !== -1) {
       technology = 'IMC';
       thumbnail = 'assets/icons/ico-spatial-imc.svg';
     } else if ((typesSearch.indexOf('lc') !== -1) && (typesSearch.indexOf('af') === -1)) {
@@ -269,7 +266,7 @@ export class HuBMAPTissueBlock {
     } else if (typesSearch.indexOf('pas') !== -1) {
       technology = 'PAS';
     } else {
-      technology = 'OTHER';
+      technology = types.split(/ \[/)[0];
     }
     thumbnail = this.getDatasetThumbnail(dataset, serviceToken) ?? thumbnail;
 
@@ -277,7 +274,7 @@ export class HuBMAPTissueBlock {
       '@id': this.portal.idPrefix + dataset.uuid,
       '@type': 'Dataset',
       label: `Registered ${dateEntered}, ${creator}, ${groupName}`,
-      description: `Data/Assay Types: ${types.join(', ')}`,
+      description: `Dataset Type: ${types}`,
       link: `${this.portal.portal}dataset${this.portal.portalParams}${dataset.uuid}`,
       technology,
       thumbnail
