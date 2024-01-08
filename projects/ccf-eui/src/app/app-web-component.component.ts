@@ -94,6 +94,7 @@ function parseFilter(value: unknown): string | Partial<Filter> {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppWebComponent extends BaseWebComponent {
+  @Input() baseHref: string;
   @Input() dataSources: string | string[];
   @Input() selectedOrgans: string[];
 

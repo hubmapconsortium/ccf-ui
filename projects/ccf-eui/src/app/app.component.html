@@ -1,7 +1,7 @@
 <div class="ccf-app mat-app-background">
   <ccf-spinner-overlay [text]="loadingMessage$ | async" [active]="spinnerActive$ | async">
   </ccf-spinner-overlay>
-  <ccf-header [class.hide]="(header$ | async) === false" [logoTooltip]="logoTooltip$ | async" [homeUrl]="homeUrl$ | async" [loggedIn]="loggedIn" [loginDisabled]="(loginDisabled$ | async)" *ngIf="(spinnerActive$ | async) === false">
+  <ccf-header [class.hide]="(header$ | async) === false" [logoTooltip]="logoTooltip$ | async" [homeUrl]="homeUrl$ | async" [loggedIn]="loggedIn" [loginDisabled]="(loginDisabled$ | async)" [baseRef]="baseHref$ | async" *ngIf="(spinnerActive$ | async) === false">
   </ccf-header>
 
   <ccf-drawer-container class="main-drawers" [class.header-hidden]="(header$ | async) === false">
@@ -94,7 +94,7 @@
             </mat-icon>
           </button>
         </div>
-        <ccf-info-button videoID="YAHJqvD3Q_8" infoTitle="HRA Exploration User Interface" documentationUrl="assets/docs/README.md" matTooltip="Open Info">
+        <ccf-info-button videoID="YAHJqvD3Q_8" infoTitle="HRA Exploration User Interface" [documentationUrl]="(baseHref$ | async) + 'assets/docs/README.md'" matTooltip="Open Info">
         </ccf-info-button>
       </div>
       <ccf-results-browser
