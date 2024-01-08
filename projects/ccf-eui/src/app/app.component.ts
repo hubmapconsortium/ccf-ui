@@ -180,6 +180,7 @@ export class AppComponent implements OnInit {
     this.cellTypeTerms$ = data.filter$.pipe(map(x => x?.cellTypeTerms));
     this.biomarkerTerms$ = data.filter$.pipe(map(x => x?.biomarkerTerms));
     this.filter$.subscribe((filter: Partial<Filter>)=> data.updateFilter(filter));
+    this.baseHref$.subscribe(ref => this.globalConfig.patchState({ baseHref: ref ?? '' }));
 
     combineLatest([scene.referenceOrgans$, this.selectedOrgans$]).subscribe(
       ([refOrgans, selected]: [OrganInfo[], string[]]) => {
