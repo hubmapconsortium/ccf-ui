@@ -542,24 +542,21 @@ export class HuBMAPTissueBlock {
     const groupName &#x3D; GROUP_UUID_MAPPING[dataset.group_uuid as string] || dataset.group_name as string;
     const creator &#x3D; dataset.created_by_user_displayname;
 
-    const types &#x3D; [
-      ...dataset.data_types as string[],
-      get(dataset, [&#x27;ingest_metadata&#x27;, &#x27;metadata&#x27;, &#x27;assay_type&#x27;], &#x27;&#x27;)
-    ];
-    const typesSearch &#x3D; types.join(&#x27;|&#x27;).toLowerCase();
+    const types &#x3D; (dataset.dataset_type ?? &#x27;&#x27;) as string;
+    const typesSearch &#x3D; types.toLowerCase();
 
     let technology: string;
     let thumbnail &#x3D; &#x27;assets/icons/ico-unknown.svg&#x27;;
     if (typesSearch.indexOf(&#x27;10x&#x27;) !&#x3D;&#x3D; -1) {
       technology &#x3D; &#x27;10x&#x27;;
       thumbnail &#x3D; &#x27;assets/icons/ico-bulk-10x.svg&#x27;;
-    } else if (typesSearch.indexOf(&#x27;af&#x27;) !&#x3D;&#x3D; -1) {
+    } else if (typesSearch.indexOf(&#x27;af&#x27;) !&#x3D;&#x3D; -1 || typesSearch.indexOf(&#x27;auto-fluorescence&#x27;) !&#x3D;&#x3D; -1) {
       technology &#x3D; &#x27;AF&#x27;;
       thumbnail &#x3D; &#x27;assets/icons/ico-spatial-af.svg&#x27;;
     } else if (typesSearch.indexOf(&#x27;codex&#x27;) !&#x3D;&#x3D; -1) {
       technology &#x3D; &#x27;CODEX&#x27;;
       thumbnail &#x3D; &#x27;assets/icons/ico-spatial-codex.svg&#x27;;
-    } else if (typesSearch.indexOf(&#x27;imc&#x27;) !&#x3D;&#x3D; -1) {
+    } else if (typesSearch.indexOf(&#x27;imc&#x27;) !&#x3D;&#x3D; -1 || typesSearch.indexOf(&#x27;imaging mass cytometry&#x27;) !&#x3D;&#x3D; -1) {
       technology &#x3D; &#x27;IMC&#x27;;
       thumbnail &#x3D; &#x27;assets/icons/ico-spatial-imc.svg&#x27;;
     } else if ((typesSearch.indexOf(&#x27;lc&#x27;) !&#x3D;&#x3D; -1) &amp;&amp; (typesSearch.indexOf(&#x27;af&#x27;) &#x3D;&#x3D;&#x3D; -1)) {
@@ -570,7 +567,7 @@ export class HuBMAPTissueBlock {
     } else if (typesSearch.indexOf(&#x27;pas&#x27;) !&#x3D;&#x3D; -1) {
       technology &#x3D; &#x27;PAS&#x27;;
     } else {
-      technology &#x3D; &#x27;OTHER&#x27;;
+      technology &#x3D; types.split(/ \[/)[0];
     }
     thumbnail &#x3D; this.getDatasetThumbnail(dataset, serviceToken) ?? thumbnail;
 
@@ -578,7 +575,7 @@ export class HuBMAPTissueBlock {
       &#x27;@id&#x27;: this.portal.idPrefix + dataset.uuid,
       &#x27;@type&#x27;: &#x27;Dataset&#x27;,
       label: &#x60;Registered ${dateEntered}, ${creator}, ${groupName}&#x60;,
-      description: &#x60;Data/Assay Types: ${types.join(&#x27;, &#x27;)}&#x60;,
+      description: &#x60;Dataset Type: ${types}&#x60;,
       link: &#x60;${this.portal.portal}dataset${this.portal.portalParams}${dataset.uuid}&#x60;,
       technology,
       thumbnail

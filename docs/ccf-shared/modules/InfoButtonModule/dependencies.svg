@@ -24,6 +24,10 @@
 <title>cluster_InfoButtonModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="89,-70 89,-268 407,-268 407,-70 89,-70"/>
 </g>
+<g id="clust5" class="cluster">
+<title>cluster_InfoButtonModule_exports</title>
+<polygon fill="none" stroke="black" points="167,-208 167,-260 329,-260 329,-208 167,-208"/>
+</g>
 <g id="clust2" class="cluster">
 <title>cluster_InfoButtonModule_declarations</title>
 <polygon fill="none" stroke="black" points="241,-78 241,-130 399,-130 399,-78 241,-78"/>
@@ -31,10 +35,6 @@
 <g id="clust4" class="cluster">
 <title>cluster_InfoButtonModule_imports</title>
 <polygon fill="none" stroke="black" points="97,-78 97,-130 233,-130 233,-78 97,-78"/>
-</g>
-<g id="clust5" class="cluster">
-<title>cluster_InfoButtonModule_exports</title>
-<polygon fill="none" stroke="black" points="167,-208 167,-260 329,-260 329,-208 167,-208"/>
 </g>
 <!-- InfoButtonComponent -->
 <g id="node1" class="node">
