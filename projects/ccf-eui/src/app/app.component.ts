@@ -42,6 +42,7 @@ interface AppOptions extends CCFDatabaseOptions {
   logoTooltip?: string;
   selectedOrgans?: string[];
   loginEnabled?: boolean;
+  baseHref?: string;
 }
 
 
@@ -143,6 +144,8 @@ export class AppComponent implements OnInit {
   readonly loginDisabled$ = this.globalConfig.getOption('loginDisabled');
   readonly filter$ = this.globalConfig.getOption('filter');
   readonly selectedOrgans$ = this.globalConfig.getOption('selectedOrgans');
+  readonly baseHref$ = this.globalConfig.getOption('baseHref');
+
   /**
    * Creates an instance of app component.
    *
@@ -177,6 +180,7 @@ export class AppComponent implements OnInit {
     this.cellTypeTerms$ = data.filter$.pipe(map(x => x?.cellTypeTerms));
     this.biomarkerTerms$ = data.filter$.pipe(map(x => x?.biomarkerTerms));
     this.filter$.subscribe((filter: Partial<Filter>)=> data.updateFilter(filter));
+    this.baseHref$.subscribe(ref => this.globalConfig.patchState({ baseHref: ref ?? '' }));
 
     combineLatest([scene.referenceOrgans$, this.selectedOrgans$]).subscribe(
       ([refOrgans, selected]: [OrganInfo[], string[]]) => {

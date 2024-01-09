@@ -129,6 +129,7 @@ describe('AppComponent', () => {
         config$: new Observable<Immutable<unknown>>(),
         patchConfig: () => undefined,
         getOption: () => of(undefined),
+        patchState: () => undefined
       });
   });
 

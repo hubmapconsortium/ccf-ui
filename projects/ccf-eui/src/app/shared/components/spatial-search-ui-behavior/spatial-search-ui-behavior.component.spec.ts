@@ -5,6 +5,8 @@ import { Shallow } from 'shallow-render';
 
 import { SpatialSearchUiBehaviorComponent } from './spatial-search-ui-behavior.component';
 import { SpatialSearchUiBehaviorModule } from './spatial-search-ui-behavior.module';
+import { of } from 'rxjs/internal/observable/of';
+import { GlobalConfigState } from 'ccf-shared';
 
 function wait(duration: number): Promise<void> {
   return new Promise(resolve => {
@@ -21,7 +23,8 @@ describe('SpatialSearchUiBehaviorComponent', () => {
     });
 
     shallow = new Shallow(SpatialSearchUiBehaviorComponent, SpatialSearchUiBehaviorModule)
-      .mock(MatDialogRef, { close(): void { /* Empty */ } });
+      .mock(MatDialogRef, { close(): void { /* Empty */ } })
+      .mock(GlobalConfigState, { getOption: () => of(undefined) });
   });
 
   it('should close the dialog when the close() method is called', async () => {

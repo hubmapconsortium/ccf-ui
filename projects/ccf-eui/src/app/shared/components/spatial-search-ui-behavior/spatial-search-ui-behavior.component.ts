@@ -3,7 +3,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
 import { Select } from '@ngxs/store';
 import { SpatialSceneNode, TissueBlockResult } from 'ccf-database';
-import { InfoButtonService, InfoDialogComponent, OrganInfo, PanelData } from 'ccf-shared';
+import { GlobalConfigState, InfoButtonService, InfoDialogComponent, OrganInfo, PanelData } from 'ccf-shared';
 import { Observable, Subscription } from 'rxjs';
 
 import { actionAsFn } from '../../../core/store/action-as-fn';
@@ -22,6 +22,7 @@ import {
 } from '../spatial-search-config-behavior/spatial-search-config-behavior.component';
 import { Sex } from '../spatial-search-config/spatial-search-config.component';
 import { SpatialSearchUiComponent } from '../spatial-search-ui/spatial-search-ui.component';
+import { AppOptions } from 'ccf-api';
 
 
 /**
@@ -88,14 +89,21 @@ export class SpatialSearchUiBehaviorComponent {
   /** Data to be displayed in the info panel */
   panelData: PanelData;
 
+  baseHref = '';
+
   /** Subscriptions for the info panel data */
   private readonly subscriptions = new Subscription();
 
   constructor(
     private readonly dialogRef: MatDialogRef<SpatialSearchUiComponent>,
     public dialog: MatDialog,
-    private readonly infoService: InfoButtonService
-  ) { }
+    private readonly infoService: InfoButtonService,
+    private readonly globalConfig: GlobalConfigState<AppOptions>
+  ) {
+    this.globalConfig.getOption('baseHref').subscribe((ref: string) => {
+      this.baseHref = ref;
+    });
+  }
 
   /**
    * Launchs info dialog with the input data
@@ -119,7 +127,7 @@ export class SpatialSearchUiBehaviorComponent {
    * Updates dialog with spatial search information
    */
   onDialogButtonClick(): void {
-    this.infoService.updateData('assets/docs/SPATIAL_SEARCH_README.md', 'UfxMpzatowE', 'Spatial Search');
+    this.infoService.updateData(this.baseHref + 'assets/docs/SPATIAL_SEARCH_README.md', 'UfxMpzatowE', 'Spatial Search');
     const panelContent$ = this.infoService.panelContent.asObservable();
     this.subscriptions.add(panelContent$.subscribe(data => {
       if (data.content.length) {

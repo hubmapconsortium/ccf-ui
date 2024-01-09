@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 /**
  * Header which is always displayed on the site; contains current filter info,
@@ -10,7 +10,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
   styleUrls: ['./header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
 
   /**
    * URL to Portal site
@@ -31,6 +31,8 @@ export class HeaderComponent {
    */
   @Input() filters: Record<string, unknown[] | unknown>;
 
+  @Input() baseRef = '';
+
   /**
    * Emitted when refresh button is clicked
    */
@@ -40,4 +42,18 @@ export class HeaderComponent {
    * Emitted when download button is clicked
    */
   @Output() readonly downloadClicked = new EventEmitter<void>();
+
+  ngOnInit() {
+    const theme = document.getElementsByTagName('ccf-root')[0].classList[0];
+    const logo = document.getElementsByClassName('logo')[0] as HTMLElement;
+    if (['hubmap-theme-dark', 'hubmap-theme-light'].includes(theme)) {
+      logo.style.backgroundImage = `url(${this.baseRef}assets/icons/app/hubmap-logo.svg)`;
+    } else if (['sennet-theme-dark', 'sennet-theme-light'].includes(theme)) {
+      logo.style.backgroundImage = `url(${this.baseRef}assets/icons/app/sennet-logo.svg)`;
+    } else if (['gtex-theme-dark', 'gtex-theme-light'].includes(theme)) {
+      logo.style.backgroundImage = `url(${this.baseRef}assets/icons/app/gtex-logo.png)`;
+    } else {
+      logo.style.backgroundImage = `url(${this.baseRef}assets/icons/app/default-logo.svg)`;
+    }
+  }
 }

@@ -8,7 +8,7 @@
   <ng-container *ngFor="let item of data; trackBy: itemId">
     <ng-template swiperSlide>
       <div class="slide">
-        <div class="thumbnail" [style.background-image]="'url(' + item.thumbnail + ')'">
+        <div class="thumbnail" [style.background-image]="thumbnailUrl(item)">
           {{ item.technology }}
         </div>
         <a class="link" (click)="linkClicked.emit(item)">

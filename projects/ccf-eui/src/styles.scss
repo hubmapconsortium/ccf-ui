@@ -11,8 +11,6 @@
 @use 'themes/gtex_dark';
 
 @import 'swiper/swiper.min.css';
-// @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-// @import 'swiper/components/navigation/navigation';
 
 @include mat.core();
 @include mat.all-component-typographies(typography.$config);
@@ -35,19 +33,12 @@
   }
 
   .logo {
-    background-image: url('./assets/icons/app/default-logo.svg');
     background-size: cover !important;
   }
 }
 
 .hubmap-theme-dark {
   @include theming.ccf-theme(hubmap_dark.$theme);
-}
-
-.hubmap-theme-light, .hubmap-theme-dark {
-  .logo {
-    background-image: url('./assets/icons/app/hubmap-logo.svg')
-  }
 }
 
 .sennet-theme-light {
@@ -64,7 +55,6 @@
   }
 
   .logo {
-    background-image: url('./assets/icons/app/sennet-logo.svg');
     height: 100% !important;
   }
 }
@@ -84,7 +74,6 @@
 
   .logo {
     height: 100%;
-    background-image: url('./assets/icons/app/gtex-logo.png')
   }
 
   .ccf-header {

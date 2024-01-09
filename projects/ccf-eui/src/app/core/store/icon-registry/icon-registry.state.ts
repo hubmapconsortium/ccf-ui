@@ -6,6 +6,8 @@ import { NgxsDataRepository } from '@angular-ru/ngxs/repositories';
 import { State } from '@ngxs/store';
 
 import { DEFAULT_ICONS } from './default-icons';
+import { AppOptions } from 'ccf-api';
+import { GlobalConfigState } from 'ccf-shared';
 
 
 /**
@@ -49,19 +51,21 @@ export class IconRegistryState extends NgxsDataRepository<void> {
    */
   constructor(
     @Optional() private readonly registry: MatIconRegistry | null,
-    sanitizer: DomSanitizer
+    sanitizer: DomSanitizer,
+    private readonly globalConfig: GlobalConfigState<AppOptions>
   ) {
     super();
+    this.globalConfig.getOption('baseHref').subscribe((ref: string) => {
+      for (const { name, namespace, url, html } of DEFAULT_ICONS) {
+        const safeDef: IconDefinition = {
+          name, namespace,
+          url: ref + url && sanitizer.bypassSecurityTrustResourceUrl(ref + url),
+          html: html && sanitizer.bypassSecurityTrustHtml(html)
+        };
 
-    for (const { name, namespace, url, html } of DEFAULT_ICONS) {
-      const safeDef: IconDefinition = {
-        name, namespace,
-        url: url && sanitizer.bypassSecurityTrustResourceUrl(url),
-        html: html && sanitizer.bypassSecurityTrustHtml(html)
-      };
-
-      this.registerIconImpl(safeDef);
-    }
+        this.registerIconImpl(safeDef);
+      }
+    });
   }
 
   /**

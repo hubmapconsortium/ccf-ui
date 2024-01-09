@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
 import { Select } from '@ngxs/store';
-import { InfoButtonService, InfoDialogComponent, OrganInfo, PanelData } from 'ccf-shared';
+import { GlobalConfigState, InfoButtonService, InfoDialogComponent, OrganInfo, PanelData } from 'ccf-shared';
 import { Observable, Subscription } from 'rxjs';
 
 import { actionAsFn } from '../../../core/store/action-as-fn';
@@ -10,6 +10,7 @@ import { SetOrgan, SetSex } from '../../../core/store/spatial-search-ui/spatial-
 import { SpatialSearchUiSelectors } from '../../../core/store/spatial-search-ui/spatial-search-ui.selectors';
 import { Sex, SpatialSearchConfigComponent } from '../spatial-search-config/spatial-search-config.component';
 import { SpatialSearchUiBehaviorComponent } from '../spatial-search-ui-behavior/spatial-search-ui-behavior.component';
+import { AppOptions } from 'ccf-api';
 
 
 @Component({
@@ -35,6 +36,8 @@ export class SpatialSearchConfigBehaviorComponent implements OnDestroy {
 
   panelData: PanelData;
 
+  baseHref = '';
+
   private readonly subscriptions = new Subscription();
 
   private readonly dialogSubs = new Subscription();
@@ -43,8 +46,13 @@ export class SpatialSearchConfigBehaviorComponent implements OnDestroy {
     public dialog: MatDialog,
     private readonly dialogRef: MatDialogRef<SpatialSearchConfigComponent>,
     private readonly spatialSearchDialog: MatDialog,
-    private readonly infoService: InfoButtonService
-  ) { }
+    private readonly infoService: InfoButtonService,
+    private readonly globalConfig: GlobalConfigState<AppOptions>
+  ) {
+    this.globalConfig.getOption('baseHref').subscribe((ref: string) => {
+      this.baseHref = ref;
+    });
+  }
 
   buttonClicked(): void {
     this.spatialSearchDialog.open(SpatialSearchUiBehaviorComponent);
@@ -70,7 +78,7 @@ export class SpatialSearchConfigBehaviorComponent implements OnDestroy {
   }
 
   onDialogButtonClick(): void {
-    this.infoService.updateData('assets/docs/SPATIAL_SEARCH_README.md', 'UfxMpzatowE', 'Spatial Search');
+    this.infoService.updateData(this.baseHref + 'assets/docs/SPATIAL_SEARCH_README.md', 'UfxMpzatowE', 'Spatial Search');
     const panelContent$ = this.infoService.panelContent.asObservable();
     this.dialogSubs.add(panelContent$.subscribe(data => {
       if (data.content.length) {
