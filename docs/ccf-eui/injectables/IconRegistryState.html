@@ -131,12 +131,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(registry: MatIconRegistry | null, sanitizer: DomSanitizer)</code>
+<code>constructor(registry: MatIconRegistry | null, sanitizer: DomSanitizer, globalConfig: <a href="../interfaces/AppOptions.html" target="_self">GlobalConfigState&lt;AppOptions&gt;</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">projects/ccf-eui/src/app/core/store/icon-registry/icon-registry.state.ts:43</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">projects/ccf-eui/src/app/core/store/icon-registry/icon-registry.state.ts:45</a></div>
                             </td>
                         </tr>
 
@@ -188,6 +188,20 @@
 
                                                         </td>
                                                 </tr>
+                                                <tr>
+                                                        <td>globalConfig</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../interfaces/AppOptions.html" target="_self" >GlobalConfigState&lt;AppOptions&gt;</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+                                                </tr>
                                         </tbody>
                                     </table>
                             </div>
@@ -224,8 +238,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="134"
-                                    class="link-to-prism">projects/ccf-eui/src/app/core/store/icon-registry/icon-registry.state.ts:134</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="138"
+                                    class="link-to-prism">projects/ccf-eui/src/app/core/store/icon-registry/icon-registry.state.ts:138</a></div>
                         </td>
                     </tr>
 
@@ -295,8 +309,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="114"
-                                    class="link-to-prism">projects/ccf-eui/src/app/core/store/icon-registry/icon-registry.state.ts:114</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="118"
+                                    class="link-to-prism">projects/ccf-eui/src/app/core/store/icon-registry/icon-registry.state.ts:118</a></div>
                         </td>
                     </tr>
 
@@ -373,8 +387,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="74"
-                                    class="link-to-prism">projects/ccf-eui/src/app/core/store/icon-registry/icon-registry.state.ts:74</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="78"
+                                    class="link-to-prism">projects/ccf-eui/src/app/core/store/icon-registry/icon-registry.state.ts:78</a></div>
                         </td>
                     </tr>
 
@@ -450,8 +464,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="84"
-                                    class="link-to-prism">projects/ccf-eui/src/app/core/store/icon-registry/icon-registry.state.ts:84</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="88"
+                                    class="link-to-prism">projects/ccf-eui/src/app/core/store/icon-registry/icon-registry.state.ts:88</a></div>
                         </td>
                     </tr>
 
@@ -519,6 +533,8 @@ import { NgxsDataRepository } from &#x27;@angular-ru/ngxs/repositories&#x27;;
 import { State } from &#x27;@ngxs/store&#x27;;
 
 import { DEFAULT_ICONS } from &#x27;./default-icons&#x27;;
+import { AppOptions } from &#x27;ccf-api&#x27;;
+import { GlobalConfigState } from &#x27;ccf-shared&#x27;;
 
 
 /**
@@ -562,19 +578,21 @@ export class IconRegistryState extends NgxsDataRepository&lt;void&gt; {
    */
   constructor(
     @Optional() private readonly registry: MatIconRegistry | null,
-    sanitizer: DomSanitizer
+    sanitizer: DomSanitizer,
+    private readonly globalConfig: GlobalConfigState&lt;AppOptions&gt;
   ) {
     super();
+    this.globalConfig.getOption(&#x27;baseHref&#x27;).subscribe((ref: string) &#x3D;&gt; {
+      for (const { name, namespace, url, html } of DEFAULT_ICONS) {
+        const safeDef: IconDefinition &#x3D; {
+          name, namespace,
+          url: ref + url &amp;&amp; sanitizer.bypassSecurityTrustResourceUrl(ref + url),
+          html: html &amp;&amp; sanitizer.bypassSecurityTrustHtml(html)
+        };
 
-    for (const { name, namespace, url, html } of DEFAULT_ICONS) {
-      const safeDef: IconDefinition &#x3D; {
-        name, namespace,
-        url: url &amp;&amp; sanitizer.bypassSecurityTrustResourceUrl(url),
-        html: html &amp;&amp; sanitizer.bypassSecurityTrustHtml(html)
-      };
-
-      this.registerIconImpl(safeDef);
-    }
+        this.registerIconImpl(safeDef);
+      }
+    });
   }
 
   /**

@@ -24,10 +24,6 @@
 <title>cluster_ResultsBrowserModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="74,-70 74,-268 422,-268 422,-70 74,-70"/>
 </g>
-<g id="clust5" class="cluster">
-<title>cluster_ResultsBrowserModule_exports</title>
-<polygon fill="none" stroke="black" points="153,-208 153,-260 343,-260 343,-208 153,-208"/>
-</g>
 <g id="clust2" class="cluster">
 <title>cluster_ResultsBrowserModule_declarations</title>
 <polygon fill="none" stroke="black" points="228,-78 228,-130 414,-130 414,-78 228,-78"/>
@@ -35,6 +31,10 @@
 <g id="clust4" class="cluster">
 <title>cluster_ResultsBrowserModule_imports</title>
 <polygon fill="none" stroke="black" points="82,-78 82,-130 220,-130 220,-78 82,-78"/>
+</g>
+<g id="clust5" class="cluster">
+<title>cluster_ResultsBrowserModule_exports</title>
+<polygon fill="none" stroke="black" points="153,-208 153,-260 343,-260 343,-208 153,-208"/>
 </g>
 <!-- ResultsBrowserComponent -->
 <g id="node1" class="node">

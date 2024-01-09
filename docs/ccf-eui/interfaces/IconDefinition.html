@@ -324,6 +324,8 @@ import { NgxsDataRepository } from &#x27;@angular-ru/ngxs/repositories&#x27;;
 import { State } from &#x27;@ngxs/store&#x27;;
 
 import { DEFAULT_ICONS } from &#x27;./default-icons&#x27;;
+import { AppOptions } from &#x27;ccf-api&#x27;;
+import { GlobalConfigState } from &#x27;ccf-shared&#x27;;
 
 
 /**
@@ -367,19 +369,21 @@ export class IconRegistryState extends NgxsDataRepository&lt;void&gt; {
    */
   constructor(
     @Optional() private readonly registry: MatIconRegistry | null,
-    sanitizer: DomSanitizer
+    sanitizer: DomSanitizer,
+    private readonly globalConfig: GlobalConfigState&lt;AppOptions&gt;
   ) {
     super();
+    this.globalConfig.getOption(&#x27;baseHref&#x27;).subscribe((ref: string) &#x3D;&gt; {
+      for (const { name, namespace, url, html } of DEFAULT_ICONS) {
+        const safeDef: IconDefinition &#x3D; {
+          name, namespace,
+          url: ref + url &amp;&amp; sanitizer.bypassSecurityTrustResourceUrl(ref + url),
+          html: html &amp;&amp; sanitizer.bypassSecurityTrustHtml(html)
+        };
 
-    for (const { name, namespace, url, html } of DEFAULT_ICONS) {
-      const safeDef: IconDefinition &#x3D; {
-        name, namespace,
-        url: url &amp;&amp; sanitizer.bypassSecurityTrustResourceUrl(url),
-        html: html &amp;&amp; sanitizer.bypassSecurityTrustHtml(html)
-      };
-
-      this.registerIconImpl(safeDef);
-    }
+        this.registerIconImpl(safeDef);
+      }
+    });
   }
 
   /**
