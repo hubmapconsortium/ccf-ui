@@ -8,6 +8,7 @@ import { SceneState } from '../../../core/store/scene/scene.state';
 
 import { SpatialSearchConfigBehaviorComponent } from './spatial-search-config-behavior.component';
 import { SpatialSearchConfigBehaviorModule } from './spatial-search-config-behavior.module';
+import { GlobalConfigState } from 'ccf-shared';
 
 function wait(duration: number): Promise<void> {
   return new Promise(resolve => {
@@ -27,7 +28,8 @@ describe('SpatialSearchConfigBehaviorComponent', () => {
     shallow = new Shallow(SpatialSearchConfigBehaviorComponent, SpatialSearchConfigBehaviorModule)
       .mock(MatDialogRef, { close(): void { /* Empty */ } })
       .mock(SceneState, { referenceOrgans$: of([]) })
-      .mock(HttpClient, http);
+      .mock(HttpClient, http)
+      .mock(GlobalConfigState, { getOption: () => of(undefined) });
   });
 
   it('should close the dialog when the close() method is called', async () => {
