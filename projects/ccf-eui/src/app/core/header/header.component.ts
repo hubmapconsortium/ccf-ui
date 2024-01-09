@@ -51,7 +51,7 @@ export class HeaderComponent implements OnInit {
     } else if (['sennet-theme-dark', 'sennet-theme-light'].includes(theme)) {
       logo.style.backgroundImage = `url(${this.baseRef}assets/icons/app/sennet-logo.svg)`;
     } else if (['gtex-theme-dark', 'gtex-theme-light'].includes(theme)) {
-      logo.style.backgroundImage = `url(${this.baseRef}assets/icons/app/gtex-logo.svg)`;
+      logo.style.backgroundImage = `url(${this.baseRef}assets/icons/app/gtex-logo.png)`;
     } else {
       logo.style.backgroundImage = `url(${this.baseRef}assets/icons/app/default-logo.svg)`;
     }
