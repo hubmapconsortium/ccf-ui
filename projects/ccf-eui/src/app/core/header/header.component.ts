@@ -43,11 +43,16 @@ export class HeaderComponent implements OnInit {
    */
   @Output() readonly downloadClicked = new EventEmitter<void>();
 
+  isHubmap = false;
+
   ngOnInit() {
     const theme = document.getElementsByTagName('ccf-root')[0].classList[0];
     const logo = document.getElementsByClassName('logo')[0] as HTMLElement;
+    const hraLogo = document.getElementsByClassName('hra-logo')[0] as HTMLElement;
     if (['hubmap-theme-dark', 'hubmap-theme-light'].includes(theme)) {
+      this.isHubmap = true;
       logo.style.backgroundImage = `url(${this.baseRef}assets/icons/app/hubmap-logo.svg)`;
+      hraLogo.style.backgroundImage = `url(${this.baseRef}assets/icons/app/hra-logo.svg)`;
     } else if (['sennet-theme-dark', 'sennet-theme-light'].includes(theme)) {
       logo.style.backgroundImage = `url(${this.baseRef}assets/icons/app/sennet-logo.svg)`;
     } else if (['gtex-theme-dark', 'gtex-theme-light'].includes(theme)) {
