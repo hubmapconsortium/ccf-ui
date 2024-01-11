@@ -52,7 +52,7 @@ export class HeaderComponent implements OnInit {
     if (['hubmap-theme-dark', 'hubmap-theme-light'].includes(theme)) {
       this.isHubmap = true;
       logo.style.backgroundImage = `url(${this.baseRef}assets/icons/app/hubmap-logo.svg)`;
-      hraLogo.style.backgroundImage = `url(${this.baseRef}assets/icons/app/hra-logo.svg)`;
+      hraLogo.style.backgroundImage = `url(${this.baseRef}assets/icons/app/hra-logo.png)`;
     } else if (['sennet-theme-dark', 'sennet-theme-light'].includes(theme)) {
       logo.style.backgroundImage = `url(${this.baseRef}assets/icons/app/sennet-logo.svg)`;
     } else if (['gtex-theme-dark', 'gtex-theme-light'].includes(theme)) {
