@@ -49,6 +49,7 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
+svgo.config.js
 
 # System Files
 .DS_Store
