@@ -26,7 +26,7 @@
       <div class="title">Probing Sphere Radius</div>
       <div class="slider-container">
         <mat-slider class="slider" [max]="radiusSettings.max" [min]="radiusSettings.min" [step]="1"
-          (input)="radiusChange.emit($event.value)" [value]="radius"></mat-slider>
+          (input)="radiusChange.emit($event.value)" value="radius"></mat-slider>
         <span class="text value">{{ radius }} mm</span>
       </div>
       <div class="reset-buttons">
