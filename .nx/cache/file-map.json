@@ -973,7 +973,7 @@
       },
       {
         "file": "projects/ccf-eui/src/app/app.component.theme.scss",
-        "hash": "16172854566711738868"
+        "hash": "10191639230869954357"
       },
       {
         "file": "projects/ccf-eui/src/app/app.component.ts",
@@ -997,7 +997,7 @@
       },
       {
         "file": "projects/ccf-eui/src/app/core/header/header.component.theme.scss",
-        "hash": "3884572744971572190"
+        "hash": "4742290338630596051"
       },
       {
         "file": "projects/ccf-eui/src/app/core/header/header.component.ts",
@@ -1161,7 +1161,7 @@
       },
       {
         "file": "projects/ccf-eui/src/app/modules/filters/filters.theme.scss",
-        "hash": "13124930212910305738"
+        "hash": "11893317804704996649"
       },
       {
         "file": "projects/ccf-eui/src/app/modules/ontology-exploration/ontology-exploration.module.ts",
@@ -1169,7 +1169,7 @@
       },
       {
         "file": "projects/ccf-eui/src/app/modules/ontology-exploration/ontology-exploration.theme.scss",
-        "hash": "2895993109245889200"
+        "hash": "17185047282007525286"
       },
       {
         "file": "projects/ccf-eui/src/app/modules/ontology-exploration/ontology-search/ontology-search.component.html",
@@ -1185,7 +1185,7 @@
       },
       {
         "file": "projects/ccf-eui/src/app/modules/ontology-exploration/ontology-search/ontology-search.component.theme.scss",
-        "hash": "4845169950891745187"
+        "hash": "4247368670737456896"
       },
       {
         "file": "projects/ccf-eui/src/app/modules/ontology-exploration/ontology-search/ontology-search.component.ts",
@@ -1197,7 +1197,7 @@
       },
       {
         "file": "projects/ccf-eui/src/app/modules/ontology-exploration/ontology-selection/ontology-selection.component.html",
-        "hash": "16886561652602497337"
+        "hash": "3625206839245703649"
       },
       {
         "file": "projects/ccf-eui/src/app/modules/ontology-exploration/ontology-selection/ontology-selection.component.scss",
@@ -1229,7 +1229,7 @@
       },
       {
         "file": "projects/ccf-eui/src/app/modules/ontology-exploration/ontology-tree/ontology-tree.component.theme.scss",
-        "hash": "16937511853332724988"
+        "hash": "14366821279192765253"
       },
       {
         "file": "projects/ccf-eui/src/app/modules/ontology-exploration/ontology-tree/ontology-tree.component.ts",
@@ -1253,7 +1253,7 @@
       },
       {
         "file": "projects/ccf-eui/src/app/modules/results-browser/donor-card/donor-card.component.theme.scss",
-        "hash": "4390006505257163510"
+        "hash": "6583433844822534070"
       },
       {
         "file": "projects/ccf-eui/src/app/modules/results-browser/donor-card/donor-card.component.ts",
@@ -1277,7 +1277,7 @@
       },
       {
         "file": "projects/ccf-eui/src/app/modules/results-browser/results-browser/results-browser.component.theme.scss",
-        "hash": "8056422549964040470"
+        "hash": "6225630827138067553"
       },
       {
         "file": "projects/ccf-eui/src/app/modules/results-browser/results-browser/results-browser.component.ts",
@@ -1309,7 +1309,7 @@
       },
       {
         "file": "projects/ccf-eui/src/app/modules/results-browser/tissue-section-vis/tissue-section-vis.theme.scss",
-        "hash": "9847412214350376898"
+        "hash": "12075395189717761213"
       },
       {
         "file": "projects/ccf-eui/src/app/shared/components/button-toggle/button-toggle.component.html",
@@ -1333,7 +1333,7 @@
       },
       {
         "file": "projects/ccf-eui/src/app/shared/components/button-toggle/button-toggle.theme.scss",
-        "hash": "12901659526863516607"
+        "hash": "9481554740436728164"
       },
       {
         "file": "projects/ccf-eui/src/app/shared/components/checkbox/checkbox.component.html",
@@ -1349,7 +1349,7 @@
       },
       {
         "file": "projects/ccf-eui/src/app/shared/components/checkbox/checkbox.component.theme.scss",
-        "hash": "7861619312562370611"
+        "hash": "5821192556022445241"
       },
       {
         "file": "projects/ccf-eui/src/app/shared/components/checkbox/checkbox.component.ts",
@@ -1385,7 +1385,7 @@
       },
       {
         "file": "projects/ccf-eui/src/app/shared/components/drawer/drawer.theme.scss",
-        "hash": "7579540743468083054"
+        "hash": "5014870366548227278"
       },
       {
         "file": "projects/ccf-eui/src/app/shared/components/drawer/drawer/drawer.component.html",
@@ -1429,7 +1429,7 @@
       },
       {
         "file": "projects/ccf-eui/src/app/shared/components/dropdown/dropdown.component.theme.scss",
-        "hash": "6174395468157764818"
+        "hash": "5625167766631981476"
       },
       {
         "file": "projects/ccf-eui/src/app/shared/components/dropdown/dropdown.component.ts",
@@ -1453,7 +1453,7 @@
       },
       {
         "file": "projects/ccf-eui/src/app/shared/components/dual-slider/dual-slider.component.theme.scss",
-        "hash": "17041472522753894515"
+        "hash": "1985642590152437164"
       },
       {
         "file": "projects/ccf-eui/src/app/shared/components/dual-slider/dual-slider.component.ts",
@@ -1513,7 +1513,7 @@
       },
       {
         "file": "projects/ccf-eui/src/app/shared/components/spatial-search-config/spatial-search-config.component.theme.scss",
-        "hash": "16630619663021963786"
+        "hash": "14161899959824935364"
       },
       {
         "file": "projects/ccf-eui/src/app/shared/components/spatial-search-config/spatial-search-config.component.ts",
@@ -1553,7 +1553,7 @@
       },
       {
         "file": "projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.theme.scss",
-        "hash": "18238180115420506369"
+        "hash": "149430786469681586"
       },
       {
         "file": "projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts",
@@ -1585,7 +1585,7 @@
       },
       {
         "file": "projects/ccf-eui/src/app/shared/components/spinner-overlay/spinner-overlay.theme.scss",
-        "hash": "10511816912543219141"
+        "hash": "13140206102983272569"
       },
       {
         "file": "projects/ccf-eui/src/app/shared/components/term-occurence-list/term-occurrence.component.html",
@@ -1601,7 +1601,7 @@
       },
       {
         "file": "projects/ccf-eui/src/app/shared/components/term-occurence-list/term-occurrence.component.theme.scss",
-        "hash": "11480285531351632825"
+        "hash": "17822156073308150013"
       },
       {
         "file": "projects/ccf-eui/src/app/shared/components/term-occurence-list/term-occurrence.component.ts",
@@ -1633,7 +1633,7 @@
       },
       {
         "file": "projects/ccf-eui/src/app/shared/components/thumbnail-carousel/thumbnail-carousel.theme.scss",
-        "hash": "16050203352780591240"
+        "hash": "17284925057463567510"
       },
       {
         "file": "projects/ccf-eui/src/app/shared/components/tissue-block-list/tissue-block-list.component.html",
@@ -1649,7 +1649,7 @@
       },
       {
         "file": "projects/ccf-eui/src/app/shared/components/tissue-block-list/tissue-block-list.component.theme.scss",
-        "hash": "13997561825568513604"
+        "hash": "2545014782458127844"
       },
       {
         "file": "projects/ccf-eui/src/app/shared/components/tissue-block-list/tissue-block-list.component.ts",
@@ -1673,7 +1673,7 @@
       },
       {
         "file": "projects/ccf-eui/src/app/shared/components/viewer/viewer.component.theme.scss",
-        "hash": "1996614064091952237"
+        "hash": "13535239380892784000"
       },
       {
         "file": "projects/ccf-eui/src/app/shared/components/viewer/viewer.component.ts",
@@ -2673,7 +2673,7 @@
       },
       {
         "file": "projects/ccf-eui/src/styles.scss",
-        "hash": "7494354822676495241"
+        "hash": "199428532484624156"
       },
       {
         "file": "projects/ccf-eui/src/test.ts",
@@ -2681,7 +2681,7 @@
       },
       {
         "file": "projects/ccf-eui/src/themes/_dark.scss",
-        "hash": "2263679610716250472"
+        "hash": "13037707824227441738"
       },
       {
         "file": "projects/ccf-eui/src/themes/_default_dark.scss",
@@ -2689,7 +2689,7 @@
       },
       {
         "file": "projects/ccf-eui/src/themes/_default_light.scss",
-        "hash": "17906660502920030839"
+        "hash": "7238432634076322711"
       },
       {
         "file": "projects/ccf-eui/src/themes/_gtex_dark.scss",
@@ -2697,7 +2697,7 @@
       },
       {
         "file": "projects/ccf-eui/src/themes/_gtex_light.scss",
-        "hash": "6970634862132031961"
+        "hash": "368227689920384470"
       },
       {
         "file": "projects/ccf-eui/src/themes/_hubmap_dark.scss",
@@ -2705,11 +2705,11 @@
       },
       {
         "file": "projects/ccf-eui/src/themes/_hubmap_light.scss",
-        "hash": "13554508292924927183"
+        "hash": "7958959516357468301"
       },
       {
         "file": "projects/ccf-eui/src/themes/_light.scss",
-        "hash": "11771181367699807637"
+        "hash": "8728129653349570819"
       },
       {
         "file": "projects/ccf-eui/src/themes/_sennet_dark.scss",
@@ -2717,15 +2717,15 @@
       },
       {
         "file": "projects/ccf-eui/src/themes/_sennet_light.scss",
-        "hash": "10930925001534580058"
+        "hash": "13892281027580091661"
       },
       {
         "file": "projects/ccf-eui/src/themes/common/_theming.scss",
-        "hash": "11665492286541059368"
+        "hash": "18236236683943430811"
       },
       {
         "file": "projects/ccf-eui/src/themes/common/_typography.scss",
-        "hash": "13580967094236662325"
+        "hash": "8274995628401727694"
       },
       {
         "file": "projects/ccf-eui/src/themes/common/_utility.scss",
@@ -3129,7 +3129,7 @@
       },
       {
         "file": "projects/ccf-rui/src/app/modules/content/content.component.theme.scss",
-        "hash": "11008634140664085295"
+        "hash": "6200036509318253616"
       },
       {
         "file": "projects/ccf-rui/src/app/modules/content/content.component.ts",
@@ -3153,7 +3153,7 @@
       },
       {
         "file": "projects/ccf-rui/src/app/modules/content/stage-nav/stage-nav.component.theme.scss",
-        "hash": "15022162426955281382"
+        "hash": "4059841033752123033"
       },
       {
         "file": "projects/ccf-rui/src/app/modules/content/stage-nav/stage-nav.component.ts",
@@ -3177,7 +3177,7 @@
       },
       {
         "file": "projects/ccf-rui/src/app/modules/content/video-modal/video-modal-launcher/video-modal-launcher.component.theme.scss",
-        "hash": "9254617127287435358"
+        "hash": "16019540910187950216"
       },
       {
         "file": "projects/ccf-rui/src/app/modules/content/video-modal/video-modal-launcher/video-modal-launcher.component.ts",
@@ -3201,7 +3201,7 @@
       },
       {
         "file": "projects/ccf-rui/src/app/modules/content/video-modal/video-modal/video-modal.component.theme.scss",
-        "hash": "10805114176569386479"
+        "hash": "204687599753479853"
       },
       {
         "file": "projects/ccf-rui/src/app/modules/content/video-modal/video-modal/video-modal.component.ts",
@@ -3221,7 +3221,7 @@
       },
       {
         "file": "projects/ccf-rui/src/app/modules/header/header.component.theme.scss",
-        "hash": "12236007403780378794"
+        "hash": "17923929692867235564"
       },
       {
         "file": "projects/ccf-rui/src/app/modules/header/header.component.ts",
@@ -3245,7 +3245,7 @@
       },
       {
         "file": "projects/ccf-rui/src/app/modules/left-sidebar/left-sidebar.component.theme.scss",
-        "hash": "12180192069184525627"
+        "hash": "16878911974064932007"
       },
       {
         "file": "projects/ccf-rui/src/app/modules/left-sidebar/left-sidebar.component.ts",
@@ -3269,7 +3269,7 @@
       },
       {
         "file": "projects/ccf-rui/src/app/modules/registration-modal/registration-content/registration-content.component.theme.scss",
-        "hash": "13927677555739312165"
+        "hash": "3315939335657994735"
       },
       {
         "file": "projects/ccf-rui/src/app/modules/registration-modal/registration-content/registration-content.component.ts",
@@ -3309,7 +3309,7 @@
       },
       {
         "file": "projects/ccf-rui/src/app/modules/review/review-button/review-button.component.theme.scss",
-        "hash": "9320641408208166979"
+        "hash": "4313587250691059443"
       },
       {
         "file": "projects/ccf-rui/src/app/modules/review/review-button/review-button.component.ts",
@@ -3333,7 +3333,7 @@
       },
       {
         "file": "projects/ccf-rui/src/app/modules/review/review-modal/review-modal.component.theme.scss",
-        "hash": "17965247968343001533"
+        "hash": "12986512127555182893"
       },
       {
         "file": "projects/ccf-rui/src/app/modules/review/review-modal/review-modal.component.ts",
@@ -3353,7 +3353,7 @@
       },
       {
         "file": "projects/ccf-rui/src/app/modules/right-sidebar/right-sidebar.component.theme.scss",
-        "hash": "14670367473063832151"
+        "hash": "14058579383276637339"
       },
       {
         "file": "projects/ccf-rui/src/app/modules/right-sidebar/right-sidebar.component.ts",
@@ -3377,7 +3377,7 @@
       },
       {
         "file": "projects/ccf-rui/src/app/shared/components/block-size-input/block-size-input.component.theme.scss",
-        "hash": "6587834732085699656"
+        "hash": "11690477511763571496"
       },
       {
         "file": "projects/ccf-rui/src/app/shared/components/block-size-input/block-size-input.component.ts",
@@ -3401,7 +3401,7 @@
       },
       {
         "file": "projects/ccf-rui/src/app/shared/components/details-label/details-label.component.theme.scss",
-        "hash": "8990831186510348350"
+        "hash": "10167771045643791343"
       },
       {
         "file": "projects/ccf-rui/src/app/shared/components/details-label/details-label.component.ts",
@@ -3437,7 +3437,7 @@
       },
       {
         "file": "projects/ccf-rui/src/app/shared/components/drawer/drawer.theme.scss",
-        "hash": "11585290207376002475"
+        "hash": "3595590058175091952"
       },
       {
         "file": "projects/ccf-rui/src/app/shared/components/drawer/drawer/drawer.component.html",
@@ -3481,7 +3481,7 @@
       },
       {
         "file": "projects/ccf-rui/src/app/shared/components/extraction-set-dropdown/extraction-set-dropdown.component.theme.scss",
-        "hash": "14566378128574581117"
+        "hash": "15865134265903885872"
       },
       {
         "file": "projects/ccf-rui/src/app/shared/components/extraction-set-dropdown/extraction-set-dropdown.component.ts",
@@ -3513,7 +3513,7 @@
       },
       {
         "file": "projects/ccf-rui/src/app/shared/components/json-file-reader/json-file-reader.theme.scss",
-        "hash": "7341774501690560207"
+        "hash": "6938454761768574737"
       },
       {
         "file": "projects/ccf-rui/src/app/shared/components/labeled-slide-toggle/labeled-slide-toggle.component.html",
@@ -3529,7 +3529,7 @@
       },
       {
         "file": "projects/ccf-rui/src/app/shared/components/labeled-slide-toggle/labeled-slide-toggle.component.theme.scss",
-        "hash": "15756438513711137405"
+        "hash": "15099836559844297611"
       },
       {
         "file": "projects/ccf-rui/src/app/shared/components/labeled-slide-toggle/labeled-slide-toggle.component.ts",
@@ -3553,7 +3553,7 @@
       },
       {
         "file": "projects/ccf-rui/src/app/shared/components/name-input/name-input.component.theme.scss",
-        "hash": "16219892811189565159"
+        "hash": "17317817192635681130"
       },
       {
         "file": "projects/ccf-rui/src/app/shared/components/name-input/name-input.component.ts",
@@ -3577,7 +3577,7 @@
       },
       {
         "file": "projects/ccf-rui/src/app/shared/components/registration-metadata/registration-metadata.component.theme.scss",
-        "hash": "8412433653374884455"
+        "hash": "9328632860783824900"
       },
       {
         "file": "projects/ccf-rui/src/app/shared/components/registration-metadata/registration-metadata.component.ts",
@@ -3589,7 +3589,7 @@
       },
       {
         "file": "projects/ccf-rui/src/app/shared/components/rotation-slider/rotation-slider.component.html",
-        "hash": "6778056274141417177"
+        "hash": "15890207731512445705"
       },
       {
         "file": "projects/ccf-rui/src/app/shared/components/rotation-slider/rotation-slider.component.scss",
@@ -3601,7 +3601,7 @@
       },
       {
         "file": "projects/ccf-rui/src/app/shared/components/rotation-slider/rotation-slider.component.theme.scss",
-        "hash": "5742272198345680096"
+        "hash": "1880641190553414253"
       },
       {
         "file": "projects/ccf-rui/src/app/shared/components/rotation-slider/rotation-slider.component.ts",
@@ -3625,7 +3625,7 @@
       },
       {
         "file": "projects/ccf-rui/src/app/shared/components/slices-input/slices-input.component.theme.scss",
-        "hash": "11450678236687212134"
+        "hash": "12170219113953779704"
       },
       {
         "file": "projects/ccf-rui/src/app/shared/components/slices-input/slices-input.component.ts",
@@ -3657,7 +3657,7 @@
       },
       {
         "file": "projects/ccf-rui/src/app/shared/components/tag-list/tag-list.theme.scss",
-        "hash": "2923944369213921058"
+        "hash": "1269740893364260936"
       },
       {
         "file": "projects/ccf-rui/src/app/shared/components/tag-search/tag-search.component.html",
@@ -3673,7 +3673,7 @@
       },
       {
         "file": "projects/ccf-rui/src/app/shared/components/tag-search/tag-search.component.theme.scss",
-        "hash": "15100755343784540639"
+        "hash": "4316184479896702170"
       },
       {
         "file": "projects/ccf-rui/src/app/shared/components/tag-search/tag-search.component.ts",
@@ -3697,7 +3697,7 @@
       },
       {
         "file": "projects/ccf-rui/src/app/shared/components/visibility-menu/visibility-menu.component.theme.scss",
-        "hash": "9805573250215708594"
+        "hash": "15272005207813602888"
       },
       {
         "file": "projects/ccf-rui/src/app/shared/components/visibility-menu/visibility-menu.component.ts",
@@ -3721,7 +3721,7 @@
       },
       {
         "file": "projects/ccf-rui/src/app/shared/components/visibility-toggle/visibility-toggle.component.theme.scss",
-        "hash": "12720396332362676274"
+        "hash": "10714380469726340669"
       },
       {
         "file": "projects/ccf-rui/src/app/shared/components/visibility-toggle/visibility-toggle.component.ts",
@@ -4161,7 +4161,7 @@
       },
       {
         "file": "projects/ccf-rui/src/themes/_dark.scss",
-        "hash": "3697103427499085695"
+        "hash": "1455512789137916510"
       },
       {
         "file": "projects/ccf-rui/src/themes/_default_dark.scss",
@@ -4177,7 +4177,7 @@
       },
       {
         "file": "projects/ccf-rui/src/themes/_gtex_light.scss",
-        "hash": "15162518654413465257"
+        "hash": "293130064593433962"
       },
       {
         "file": "projects/ccf-rui/src/themes/_hubmap_dark.scss",
@@ -4189,7 +4189,7 @@
       },
       {
         "file": "projects/ccf-rui/src/themes/_light.scss",
-        "hash": "5707099650721109311"
+        "hash": "15877609009527433166"
       },
       {
         "file": "projects/ccf-rui/src/themes/_sennet_dark.scss",
@@ -4197,15 +4197,15 @@
       },
       {
         "file": "projects/ccf-rui/src/themes/_sennet_light.scss",
-        "hash": "16454251082109399134"
+        "hash": "6691092002218737270"
       },
       {
         "file": "projects/ccf-rui/src/themes/common/_theming.scss",
-        "hash": "14599802700987998634"
+        "hash": "14798762204080265081"
       },
       {
         "file": "projects/ccf-rui/src/themes/common/_typography.scss",
-        "hash": "7324374361556369677"
+        "hash": "71673631954453556"
       },
       {
         "file": "projects/ccf-rui/src/themes/common/_utility.scss",
@@ -4437,7 +4437,7 @@
       },
       {
         "file": "projects/ccf-shared/src/lib/components/info/info-button/info-button.component.theme.scss",
-        "hash": "576809213345752395"
+        "hash": "1168565309882028092"
       },
       {
         "file": "projects/ccf-shared/src/lib/components/info/info-button/info-button.component.ts",
@@ -4469,7 +4469,7 @@
       },
       {
         "file": "projects/ccf-shared/src/lib/components/info/info-dialog/info-dialog.component.theme.scss",
-        "hash": "5567489082506647805"
+        "hash": "10469335532357844521"
       },
       {
         "file": "projects/ccf-shared/src/lib/components/info/info-dialog/info-dialog.component.ts",
@@ -4493,7 +4493,7 @@
       },
       {
         "file": "projects/ccf-shared/src/lib/components/opacity-slider/opacity-slider.component.theme.scss",
-        "hash": "8511439627196078211"
+        "hash": "9997324054850950207"
       },
       {
         "file": "projects/ccf-shared/src/lib/components/opacity-slider/opacity-slider.component.ts",
@@ -4517,7 +4517,7 @@
       },
       {
         "file": "projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.theme.scss",
-        "hash": "15291978470572069925"
+        "hash": "7760162208792232008"
       },
       {
         "file": "projects/ccf-shared/src/lib/components/organ-selector/organ-selector.component.ts",
@@ -4557,7 +4557,7 @@
       },
       {
         "file": "projects/ccf-shared/src/lib/components/spatial-search-keyboard-ui/spatial-search-keyboard-ui.component.theme.scss",
-        "hash": "9457249926242750377"
+        "hash": "3140279018777630355"
       },
       {
         "file": "projects/ccf-shared/src/lib/components/spatial-search-keyboard-ui/spatial-search-keyboard-ui.component.ts",
@@ -4581,7 +4581,7 @@
       },
       {
         "file": "projects/ccf-shared/src/lib/components/spatial-search-list/spatial-search-list.component.theme.scss",
-        "hash": "5128257775603801492"
+        "hash": "7812852879668540546"
       },
       {
         "file": "projects/ccf-shared/src/lib/components/spatial-search-list/spatial-search-list.component.ts",
@@ -4665,7 +4665,7 @@
       },
       {
         "file": "projects/ccf-shared/src/lib/components/xyz-position/xyz-position.component.theme.scss",
-        "hash": "278865665968550018"
+        "hash": "1806450382256666503"
       },
       {
         "file": "projects/ccf-shared/src/lib/components/xyz-position/xyz-position.component.ts",
