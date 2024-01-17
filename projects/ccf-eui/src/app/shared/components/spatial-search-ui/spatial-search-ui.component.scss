@@ -44,6 +44,10 @@
     width: 100%;
     height: calc(100% - 3.5rem);
 
+    mat-divider {
+      border-top-width: 1px;
+    }
+
     .button {
       border-width: 1px;
       border-style: solid;
@@ -111,6 +115,10 @@
             display: flex;
             align-items: center;
             font-size: 1rem;
+          }
+
+          ::ng-deep .mdc-slider__track--active {
+            height: var(--mdc-slider-active-track-height, 2px);
           }
 
           ::ng-deep .mdc-slider__thumb {
