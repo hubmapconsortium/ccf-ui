@@ -23,6 +23,21 @@
     .mat-slider.mat-slider-horizontal .mat-slider-thumb-label {
       background-color: $color;
     }
+
+    .mdc-slider__track--inactive,
+    .mdc-slider__track--active {
+      border-top-color: $lightColor;
+      background-color: $lightColor;
+    }
+
+    .mdc-slider__track--active_fill {
+      border-color: $lightColor;
+    }
+
+    .mdc-slider__thumb-knob {
+      background-color: $color !important;
+      border-color: $color !important;
+    }
   }
 }
 
