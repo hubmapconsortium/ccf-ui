@@ -13,11 +13,9 @@
       class="slider"
       [max]="180"
       [min]="-180"
-      [step]="1"
-      [thumbLabel]="true"
-      [tickInterval]="180"
-      (input)="changeRotation($event.value, 'x')"
-      [value]="rotation.x"></mat-slider>
+      discrete>
+      <input class="slider-x" matSliderThumb [value]="rotation.x">
+    </mat-slider>
   </div>
   <mat-form-field>
     <input matInput class="input" type="number" [value]="rotation.x" [min]="-180" [max]="180" (change)="changeRotation($event.target.value, 'x')">
@@ -31,11 +29,9 @@
       class="slider"
       [max]="180"
       [min]="-180"
-      [step]="1"
-      [thumbLabel]="true"
-      [tickInterval]="180"
-      (input)="changeRotation($event.value, 'y')"
-      [value]="rotation.y"></mat-slider>
+      discrete>
+      <input class="slider-y" matSliderThumb [value]="rotation.y">
+    </mat-slider>
   </div>
   <mat-form-field>
     <input matInput class="input" type="number" [value]="rotation.y" [min]="-180" [max]="180" (change)="changeRotation($event.target.value, 'y')">
@@ -49,11 +45,9 @@
       class="slider"
       [max]="180"
       [min]="-180"
-      [step]="1"
-      [thumbLabel]="true"
-      [tickInterval]="180"
-      (input)="changeRotation($event.value, 'z')"
-      [value]="rotation.z"></mat-slider>
+      discrete>
+      <input class="slider-z" matSliderThumb [value]="rotation.z">
+    </mat-slider>
   </div>
   <mat-form-field>
     <input matInput class="input" type="number" [value]="rotation.z" [min]="-180" [max]="180" (change)="changeRotation($event.target.value, 'z')">

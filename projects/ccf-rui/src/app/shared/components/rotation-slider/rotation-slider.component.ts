@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, OnInit, Output } from '@angular/core';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 
@@ -29,7 +29,7 @@ const DEFAULT_ROTATION: Rotation = {
   styleUrls: ['./rotation-slider.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class RotationSliderComponent {
+export class RotationSliderComponent implements OnInit {
   /** HTML class name */
   @HostBinding('class') readonly clsName = 'ccf-rotation-slider';
 
@@ -44,6 +44,27 @@ export class RotationSliderComponent {
    * @param ga Analytics service
    */
   constructor(private readonly ga: GoogleAnalyticsService) { }
+
+  ngOnInit() {
+    const inputX = document.querySelector('.slider-x');
+    const inputY = document.querySelector('.slider-y');
+    const inputZ = document.querySelector('.slider-z');
+
+    if (inputX && inputY && inputZ) {
+      inputX.addEventListener('input', (event: InputEvent) => {
+        const target = event.target as HTMLInputElement;
+        this.changeRotation(target.value, 'x');
+      });
+      inputY.addEventListener('input', (event: InputEvent) => {
+        const target = event.target as HTMLInputElement;
+        this.changeRotation(target.value, 'y');
+      });
+      inputZ.addEventListener('input', (event: InputEvent) => {
+        const target = event.target as HTMLInputElement;
+        this.changeRotation(target.value, 'z');
+      });
+    }
+  }
 
   /**
    * Function that handles updating the rotation and emitting the new value
