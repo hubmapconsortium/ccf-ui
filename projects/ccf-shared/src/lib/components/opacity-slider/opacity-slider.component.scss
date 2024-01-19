@@ -31,6 +31,18 @@
         }
       }
 
+      mat-slider {
+        width: 100%;
+
+        ::ng-deep mat-slider-visual-thumb {
+          transition: none;
+        }
+
+        ::ng-deep .mat-ripple {
+          display: none;
+        }
+      }
+
       .opacity-value {
         width: 1.5rem;
         margin-left: 0.5rem;

@@ -49,6 +49,16 @@ export class OpacitySliderComponent implements OnInit {
     } else {
       this.prevOpacity = 20;
     }
+
+    document.addEventListener('mousedown', () => {
+      const input = document.querySelector('.visible .opacity-slider');
+      if (input) {
+        input.addEventListener('input', (event: InputEvent) => {
+          const target = event.target as HTMLInputElement;
+          this.changeOpacity(target.value);
+        });
+      }
+    });
   }
 
   reset(): void {
