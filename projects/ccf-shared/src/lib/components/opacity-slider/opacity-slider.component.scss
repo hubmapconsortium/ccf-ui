@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: space-between;
   border-radius: 0.1875rem;
-  
+
 
   .slider-box {
     display: flex;
@@ -20,13 +20,11 @@
       height: 100%;
 
       .slider {
+        display: flex;
         width: 100%;
         height: 100%;
+        align-items: center;
 
-        ::ng-deep .mat-slider-wrapper {
-          top: 1.125rem;
-        }
-        
         &.disabled {
           pointer-events: none;
           cursor: not-allowed;
@@ -50,13 +48,13 @@
         transition: .6s;
         border-radius: 0.25rem;
       }
-    
+
       .visibility {
         transition: .6s;
         cursor: pointer;
         padding: 0.25rem;
         border-radius: 0.25rem;
-    
+
         &.hidden {
           display: none;
         }
