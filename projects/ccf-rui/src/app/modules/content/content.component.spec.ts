@@ -1,4 +1,4 @@
-import * as ResizeSensorModule from 'css-element-queries';
+import * as resizeSensorModule from 'css-element-queries';
 import { from, of } from 'rxjs';
 import { Shallow } from 'shallow-render';
 
@@ -77,9 +77,9 @@ describe('ContentComponent', () => {
 
     beforeEach(() => {
       // Constructors can't be arrow functions
-      spyOn(ResizeSensorModule, 'ResizeSensor').and.callFake(function (_el, callback) {
+      spyOn(resizeSensorModule, 'ResizeSensor').and.callFake(function (_el, callback) {
         sensorCallback = callback;
-        return jasmine.createSpyObj<ResizeSensorModule.ResizeSensor>(
+        return jasmine.createSpyObj<resizeSensorModule.ResizeSensor>(
           'ResizeSensor', ['detach']
         );
       });
