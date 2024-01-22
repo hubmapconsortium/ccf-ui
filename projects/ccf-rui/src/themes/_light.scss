@@ -12,8 +12,8 @@ $primary-colors: utility.add-colors(mat.$gray-palette, (
   contrast: (
     "white": black,
     "black": white,
-    // light-header: $dark-primary-text,
-    // light-disabled: $dark-primary-text,
+    light-header: mat.$private-dark-primary-text,
+    light-disabled: mat.$private-dark-primary-text,
   ),
 
 ));

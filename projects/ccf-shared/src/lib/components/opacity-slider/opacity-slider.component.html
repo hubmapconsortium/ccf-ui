@@ -3,7 +3,7 @@
     <mat-slider [class.disabled]="!visible" [step]="1" [min]="0" [max]="100" [disableRipple]="true">
       <input #slider class="opacity-slider" matSliderThumb [value]="opacity">
     </mat-slider>
-    <span class="opacity-value">{{slider.value}}%</span>
+    <span class="opacity-value">{{opacity}}%</span>
   </div>
   <div class="icons">
     <mat-icon matRipple [matRippleCentered]="true" [matRippleUnbounded]="true" class="visibility icon invisible" (click)="toggleVisibility()" [class.hidden]="opacity > 0" svgIcon="app:visibility_off"></mat-icon>

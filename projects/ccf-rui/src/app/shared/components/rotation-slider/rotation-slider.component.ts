@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, HostBinding, Input, Output } from '@angular/core';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 
@@ -29,7 +29,7 @@ const DEFAULT_ROTATION: Rotation = {
   styleUrls: ['./rotation-slider.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class RotationSliderComponent implements OnInit {
+export class RotationSliderComponent {
   /** HTML class name */
   @HostBinding('class') readonly clsName = 'ccf-rotation-slider';
 
@@ -41,29 +41,31 @@ export class RotationSliderComponent implements OnInit {
 
   /**
    * Creates an instance of rotation slider component.
+   *
+   * @param el document element
    * @param ga Analytics service
    */
-  constructor(private readonly ga: GoogleAnalyticsService) { }
+  constructor(el: ElementRef<Element>, private readonly ga: GoogleAnalyticsService) {
+    el.nativeElement.addEventListener('mousedown', () => {
+      const inputX = el.nativeElement.querySelector('.slider-x');
+      const inputY = el.nativeElement.querySelector('.slider-y');
+      const inputZ = el.nativeElement.querySelector('.slider-z');
 
-  ngOnInit() {
-    const inputX = document.querySelector('.slider-x');
-    const inputY = document.querySelector('.slider-y');
-    const inputZ = document.querySelector('.slider-z');
-
-    if (inputX && inputY && inputZ) {
-      inputX.addEventListener('input', (event: InputEvent) => {
-        const target = event.target as HTMLInputElement;
-        this.changeRotation(target.value, 'x');
-      });
-      inputY.addEventListener('input', (event: InputEvent) => {
-        const target = event.target as HTMLInputElement;
-        this.changeRotation(target.value, 'y');
-      });
-      inputZ.addEventListener('input', (event: InputEvent) => {
-        const target = event.target as HTMLInputElement;
-        this.changeRotation(target.value, 'z');
-      });
-    }
+      if (inputX && inputY && inputZ) {
+        inputX.addEventListener('input', (event: InputEvent) => {
+          const target = event.target as HTMLInputElement;
+          this.changeRotation(target.value, 'x');
+        });
+        inputY.addEventListener('input', (event: InputEvent) => {
+          const target = event.target as HTMLInputElement;
+          this.changeRotation(target.value, 'y');
+        });
+        inputZ.addEventListener('input', (event: InputEvent) => {
+          const target = event.target as HTMLInputElement;
+          this.changeRotation(target.value, 'z');
+        });
+      }
+    });
   }
 
   /**

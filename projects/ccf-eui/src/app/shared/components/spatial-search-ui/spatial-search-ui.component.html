@@ -25,10 +25,10 @@
     <div class="radius-slider">
       <div class="title">Probing Sphere Radius</div>
       <div class="slider-container">
-        <mat-slider class="slider" [max]="radiusSettings.max" [min]="radiusSettings.min" [step]="1">
-          <input #radiusInput [value]="radius" (dragEnd)="radiusChange.emit($event.value)" matSliderThumb>
+        <mat-slider #slider class="slider" [max]="radiusSettings.max" [min]="radiusSettings.min" [step]="1">
+          <input [value]="radius" matSliderThumb>
         </mat-slider>
-        <span class="text value">{{ radiusInput.value }} mm</span>
+        <span class="text value">{{ radius }} mm</span>
       </div>
       <div class="reset-buttons">
         <button class="reset-sphere button"

@@ -1,4 +1,14 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  EventEmitter,
+  HostBinding,
+  Input,
+  Output,
+  ViewChild,
+} from '@angular/core';
+import { MatSlider } from '@angular/material/slider';
 import { SpatialSceneNode } from 'ccf-body-ui';
 import { TissueBlockResult } from 'ccf-database';
 import { OrganInfo } from 'ccf-shared';
@@ -81,4 +91,25 @@ export class SpatialSearchUiComponent {
 
   /** Emits when a node in the scene is clicked */
   @Output() readonly nodeClicked = new EventEmitter<SpatialSceneNode>();
+
+  /** Slider component */
+  @ViewChild('slider', { static: false }) slider: MatSlider;
+
+  /**
+   * Creates an instance of visibility menu component.
+   *
+   * @param el document element
+   * @param ga Analytics service
+   */
+  constructor(el: ElementRef<Element>) {
+    el.nativeElement.addEventListener('mousedown', () => {
+      const input = el.nativeElement.querySelector('.slider');
+      if (input) {
+        input.addEventListener('input', (event: InputEvent) => {
+          const target = event.target as HTMLInputElement;
+          this.radiusChange.emit(parseInt(target.value));
+        });
+      }
+    });
+  }
 }
