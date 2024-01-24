@@ -12,6 +12,64 @@
         <link rel="stylesheet" href="../styles/dark.css">
     </head>
     <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
 
         <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">Library triple-store-utils documentation</a>
@@ -220,14 +278,14 @@
 import jsonld from &#x27;jsonld&#x27;;
 import { JsonLd, Url } from &#x27;jsonld/jsonld-spec&#x27;;
 import { DataFactory, Parser, Store, Quad } from &#x27;n3&#x27;;
-import * as RDF from &#x27;rdf-js&#x27;;
+import * as rdf from &#x27;rdf-js&#x27;;
 import { RdfXmlParser } from &#x27;rdfxml-streaming-parser&#x27;;
 import { Readable } from &#x27;readable-stream&#x27;;
 
 export * from &#x27;n3&#x27;;
 
 // Temporary solution for using the new readQuads function on Store until the @types are updated
-type OTerm &#x3D; RDF.Term | string | null;
+type OTerm &#x3D; rdf.Term | string | null;
 interface QuadReader {
   readQuads(subject: OTerm, predicate: OTerm, object: OTerm, graph: OTerm): Generator&lt;Quad&gt;;
 }
@@ -285,8 +343,8 @@ export function arrayToStream&lt;T&gt;(arr: T[]): Readable {
  * @returns A promise that resolves when the data has been added.
  */
 export async function addJsonLdToStore(
-  uri: JsonLd | Url, store: RDF.Sink&lt;EventEmitter, EventEmitter&gt;
-): Promise&lt;RDF.Sink&lt;EventEmitter, EventEmitter&gt;&gt; {
+  uri: JsonLd | Url, store: rdf.Sink&lt;EventEmitter, EventEmitter&gt;
+): Promise&lt;rdf.Sink&lt;EventEmitter, EventEmitter&gt;&gt; {
   let jsonLdData: JsonLd | undefined;
   if (typeof uri &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
     const response &#x3D; await fetch(uri, { redirect: &#x27;follow&#x27; });
@@ -313,8 +371,8 @@ export async function addJsonLdToStore(
  * @returns A promise that resolves when the data has been added.
  */
 export async function addRdfXmlToStore(
-  uri: string, store: RDF.Sink&lt;EventEmitter, EventEmitter&gt;
-): Promise&lt;RDF.Sink&lt;EventEmitter, EventEmitter&gt;&gt; {
+  uri: string, store: rdf.Sink&lt;EventEmitter, EventEmitter&gt;
+): Promise&lt;rdf.Sink&lt;EventEmitter, EventEmitter&gt;&gt; {
   let xmlData: string | undefined;
   if (typeof uri &#x3D;&#x3D;&#x3D; &#x27;string&#x27; &amp;&amp; uri?.startsWith(&#x27;http&#x27;)) {
     const response &#x3D; await fetch(uri, { redirect: &#x27;follow&#x27; });
@@ -327,7 +385,7 @@ export async function addRdfXmlToStore(
 
   if (xmlData) {
     const xmlParser &#x3D; new RdfXmlParser({ dataFactory: DataFactory, strict: true });
-    const result &#x3D; new Promise&lt;RDF.Sink&lt;EventEmitter, EventEmitter&gt;&gt;(resolve &#x3D;&gt; {
+    const result &#x3D; new Promise&lt;rdf.Sink&lt;EventEmitter, EventEmitter&gt;&gt;(resolve &#x3D;&gt; {
       xmlParser.once(&#x27;end&#x27;, () &#x3D;&gt; resolve(store));
     });
 
@@ -349,8 +407,8 @@ export async function addRdfXmlToStore(
  * @returns A promise that resolves when the data has been added.
  */
 export async function addN3ToStore(
-  uri: string | Url, store: RDF.Sink&lt;EventEmitter, EventEmitter&gt;
-): Promise&lt;RDF.Sink&lt;EventEmitter, EventEmitter&gt;&gt; {
+  uri: string | Url, store: rdf.Sink&lt;EventEmitter, EventEmitter&gt;
+): Promise&lt;rdf.Sink&lt;EventEmitter, EventEmitter&gt;&gt; {
   let data: string | undefined;
   if (typeof uri &#x3D;&#x3D;&#x3D; &#x27;string&#x27; &amp;&amp; uri?.startsWith(&#x27;http&#x27;)) {
     const response &#x3D; await fetch(uri, { redirect: &#x27;follow&#x27; });
@@ -376,7 +434,7 @@ export function serializeN3Store(store: Store): string {
   return JSON.stringify(storeData);
 }
 
-export function deserializeN3Store(serializedStore: string, factory?: RDF.DataFactory): Store {
+export function deserializeN3Store(serializedStore: string, factory?: rdf.DataFactory): Store {
   const storeData &#x3D; JSON.parse(serializedStore);
   const store &#x3D; new Store();
   // eslint-disable-next-line @typescript-eslint/naming-convention

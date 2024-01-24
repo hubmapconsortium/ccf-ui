@@ -24,13 +24,13 @@
 <title>cluster_SpinnerOverlayModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="145,-70 145,-268 351,-268 351,-70 145,-70"/>
 </g>
-<g id="clust5" class="cluster">
-<title>cluster_SpinnerOverlayModule_exports</title>
-<polygon fill="none" stroke="black" points="153,-208 153,-260 343,-260 343,-208 153,-208"/>
-</g>
 <g id="clust2" class="cluster">
 <title>cluster_SpinnerOverlayModule_declarations</title>
 <polygon fill="none" stroke="black" points="155,-78 155,-130 341,-130 341,-78 155,-78"/>
+</g>
+<g id="clust5" class="cluster">
+<title>cluster_SpinnerOverlayModule_exports</title>
+<polygon fill="none" stroke="black" points="153,-208 153,-260 343,-260 343,-208 153,-208"/>
 </g>
 <!-- SpinnerOverlayComponent -->
 <g id="node1" class="node">

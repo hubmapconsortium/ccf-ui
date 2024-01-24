@@ -12,6 +12,64 @@
         <link rel="stylesheet" href="../styles/dark.css">
     </head>
     <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
 
         <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">Library ccf-shared documentation</a>
@@ -66,23 +124,23 @@
 <title>cluster_TextSearchModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="63,-70 63,-268 433,-268 433,-70 63,-70"/>
 </g>
-<g id="clust2" class="cluster">
-<title>cluster_TextSearchModule_declarations</title>
-<polygon fill="none" stroke="black" points="250,-78 250,-130 412,-130 412,-78 250,-78"/>
-</g>
-<g id="clust4" class="cluster">
-<title>cluster_TextSearchModule_imports</title>
-<polygon fill="none" stroke="black" points="84,-78 84,-130 242,-130 242,-78 84,-78"/>
-</g>
 <g id="clust5" class="cluster">
 <title>cluster_TextSearchModule_exports</title>
 <polygon fill="none" stroke="black" points="71,-208 71,-260 425,-260 425,-208 71,-208"/>
 </g>
+<g id="clust4" class="cluster">
+<title>cluster_TextSearchModule_imports</title>
+<polygon fill="none" stroke="black" points="254,-78 254,-130 412,-130 412,-78 254,-78"/>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_TextSearchModule_declarations</title>
+<polygon fill="none" stroke="black" points="84,-78 84,-130 246,-130 246,-78 84,-78"/>
+</g>
 <!-- TextSearchComponent -->
 <g id="node1" class="node">
 <title>TextSearchComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="403.58,-122 258.42,-122 258.42,-86 403.58,-86 403.58,-122"/>
-<text text-anchor="middle" x="331" y="-99.8" font-family="Times,serif" font-size="14.00">TextSearchComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="237.58,-122 92.42,-122 92.42,-86 237.58,-86 237.58,-122"/>
+<text text-anchor="middle" x="165" y="-99.8" font-family="Times,serif" font-size="14.00">TextSearchComponent</text>
 </g>
 <!-- TextSearchModule -->
 <g id="node2" class="node">
@@ -93,8 +151,8 @@
 <!-- TextSearchComponent&#45;&gt;TextSearchModule -->
 <g id="edge1" class="edge">
 <title>TextSearchComponent&#45;&gt;TextSearchModule</title>
-<path fill="none" stroke="black" d="M302.05,-122.11C302.05,-122.11 302.05,-140.99 302.05,-140.99"/>
-<polygon fill="black" stroke="black" points="298.55,-140.99 302.05,-150.99 305.55,-140.99 298.55,-140.99"/>
+<path fill="none" stroke="black" d="M229.95,-122.11C229.95,-122.11 229.95,-140.99 229.95,-140.99"/>
+<polygon fill="black" stroke="black" points="226.45,-140.99 229.95,-150.99 233.45,-140.99 226.45,-140.99"/>
 </g>
 <!-- MatPrefix  -->
 <g id="node4" class="node">
@@ -135,14 +193,14 @@
 <!-- DecoratedTextModule -->
 <g id="node3" class="node">
 <title>DecoratedTextModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="234.22,-122 231.22,-126 210.22,-126 207.22,-122 91.78,-122 91.78,-86 234.22,-86 234.22,-122"/>
-<text text-anchor="middle" x="163" y="-99.8" font-family="Times,serif" font-size="14.00">DecoratedTextModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="404.22,-122 401.22,-126 380.22,-126 377.22,-122 261.78,-122 261.78,-86 404.22,-86 404.22,-122"/>
+<text text-anchor="middle" x="333" y="-99.8" font-family="Times,serif" font-size="14.00">DecoratedTextModule</text>
 </g>
 <!-- DecoratedTextModule&#45;&gt;TextSearchModule -->
 <g id="edge2" class="edge">
 <title>DecoratedTextModule&#45;&gt;TextSearchModule</title>
-<path fill="none" stroke="black" d="M228.36,-122.11C228.36,-122.11 228.36,-140.99 228.36,-140.99"/>
-<polygon fill="black" stroke="black" points="224.86,-140.99 228.36,-150.99 231.86,-140.99 224.86,-140.99"/>
+<path fill="none" stroke="black" d="M303.64,-122.11C303.64,-122.11 303.64,-140.99 303.64,-140.99"/>
+<polygon fill="black" stroke="black" points="300.14,-140.99 303.64,-150.99 307.14,-140.99 300.14,-140.99"/>
 </g>
 </g>
 </svg>

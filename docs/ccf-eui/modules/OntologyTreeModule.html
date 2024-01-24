@@ -12,6 +12,64 @@
         <link rel="stylesheet" href="../styles/dark.css">
     </head>
     <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
 
         <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">Application ccf-eui documentation</a>
@@ -70,13 +128,13 @@
 <title>cluster_OntologyTreeModule_imports</title>
 <polygon fill="none" stroke="black" points="263,-78 263,-130 417,-130 417,-78 263,-78"/>
 </g>
-<g id="clust2" class="cluster">
-<title>cluster_OntologyTreeModule_declarations</title>
-<polygon fill="none" stroke="black" points="79,-78 79,-130 255,-130 255,-78 79,-78"/>
-</g>
 <g id="clust5" class="cluster">
 <title>cluster_OntologyTreeModule_exports</title>
 <polygon fill="none" stroke="black" points="158,-208 158,-260 338,-260 338,-208 158,-208"/>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_OntologyTreeModule_declarations</title>
+<polygon fill="none" stroke="black" points="79,-78 79,-130 255,-130 255,-78 79,-78"/>
 </g>
 <!-- OntologyTreeComponent -->
 <g id="node1" class="node">

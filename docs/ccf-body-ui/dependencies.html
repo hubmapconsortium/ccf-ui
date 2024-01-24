@@ -12,6 +12,64 @@
         <link rel="stylesheet" href="./styles/dark.css">
     </head>
     <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
 
         <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="./" class="navbar-brand">Library ccf-body-ui documentation</a>
@@ -50,37 +108,37 @@
     </ol>
     <ul class="dependencies-list">
         <li>
-            <b>@angular-ru/cdk</b> : 14.10.1</li>
+            <b>@angular-ru/cdk</b> : ^14.10.1</li>
         <li>
-            <b>@angular-ru/common</b> : 15.313.0</li>
+            <b>@angular-ru/common</b> : ^15.313.0</li>
         <li>
-            <b>@angular-ru/ngxs</b> : 14.1.4</li>
+            <b>@angular-ru/ngxs</b> : ^14.1.4</li>
         <li>
             <b>@angular-slider/ngx-slider</b> : ^2.0.4</li>
         <li>
-            <b>@angular/animations</b> : ^16.1.5</li>
+            <b>@angular/animations</b> : ^17.0.9</li>
         <li>
-            <b>@angular/cdk</b> : ^16.1.5</li>
+            <b>@angular/cdk</b> : ^17.0.5</li>
         <li>
-            <b>@angular/common</b> : ^16.1.5</li>
+            <b>@angular/common</b> : ^17.0.9</li>
         <li>
-            <b>@angular/compiler</b> : ^16.1.5</li>
+            <b>@angular/compiler</b> : ^17.0.9</li>
         <li>
-            <b>@angular/core</b> : ^16.1.6</li>
+            <b>@angular/core</b> : ^17.0.9</li>
         <li>
-            <b>@angular/elements</b> : ^16.1.6</li>
+            <b>@angular/elements</b> : ^17.0.9</li>
         <li>
-            <b>@angular/forms</b> : ^16.1.5</li>
+            <b>@angular/forms</b> : ^17.0.9</li>
         <li>
-            <b>@angular/material</b> : ^16.1.5</li>
+            <b>@angular/material</b> : ^17.0.5</li>
         <li>
-            <b>@angular/platform-browser</b> : ^16.1.5</li>
+            <b>@angular/platform-browser</b> : ^17.0.9</li>
         <li>
-            <b>@angular/platform-browser-dynamic</b> : ^16.1.5</li>
+            <b>@angular/platform-browser-dynamic</b> : ^17.0.9</li>
         <li>
-            <b>@angular/router</b> : ^16.1.5</li>
+            <b>@angular/router</b> : ^17.0.9</li>
         <li>
-            <b>@angular/youtube-player</b> : ^16.1.5</li>
+            <b>@angular/youtube-player</b> : 17.0</li>
         <li>
             <b>@comunica/query-sparql-rdfjs</b> : ^2.8.1</li>
         <li>
@@ -106,11 +164,11 @@
         <li>
             <b>@ngxs-labs/dispatch-decorator</b> : ^5.0.0</li>
         <li>
-            <b>@ngxs/logger-plugin</b> : ^3.8.1</li>
+            <b>@ngxs/logger-plugin</b> : ^3.8.2</li>
         <li>
-            <b>@ngxs/storage-plugin</b> : ^3.8.1</li>
+            <b>@ngxs/storage-plugin</b> : ^3.8.2</li>
         <li>
-            <b>@ngxs/store</b> : ^3.8.1</li>
+            <b>@ngxs/store</b> : ^3.8.2</li>
         <li>
             <b>@rdfjs/data-model</b> : ^2.0.1</li>
         <li>
@@ -160,9 +218,9 @@
         <li>
             <b>ngx-google-analytics</b> : ^14.0.1</li>
         <li>
-            <b>ngx-markdown</b> : ^16.0.0</li>
+            <b>ngx-markdown</b> : ^17.1.1</li>
         <li>
-            <b>ngx-slider-v2</b> : ^16.0.2</li>
+            <b>ngx-slider-v2</b> : ^17.0.0</li>
         <li>
             <b>node-fetch</b> : ^3.3.2</li>
         <li>
@@ -184,11 +242,11 @@
         <li>
             <b>ts-cacheable</b> : ^1.0.9</li>
         <li>
-            <b>tslib</b> : ^2.6.1</li>
+            <b>tslib</b> : ^2.6.2</li>
         <li>
             <b>uuid</b> : ^9.0.0</li>
         <li>
-            <b>zone.js</b> : ~0.13.1</li>
+            <b>zone.js</b> : ^0.14.3</li>
     </ul>
 
 

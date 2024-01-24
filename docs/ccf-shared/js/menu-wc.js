@@ -214,13 +214,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/OpacitySliderModule.html" data-type="entity-link" >OpacitySliderModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
-                                            'data-bs-target="#components-links-module-OpacitySliderModule-e1f589558407278ac6e04f74a4e1c427b8bc28175090d5e6765a9d58692da884326a9729b349a119f3512510bcfd251f8fb04c6f2101632610eaebaabeb4e1f0"' : 'data-bs-target="#xs-components-links-module-OpacitySliderModule-e1f589558407278ac6e04f74a4e1c427b8bc28175090d5e6765a9d58692da884326a9729b349a119f3512510bcfd251f8fb04c6f2101632610eaebaabeb4e1f0"' }>
+                                            'data-bs-target="#components-links-module-OpacitySliderModule-8403770fec961e95708fc0c66bbc720f3f6fd959958481862050c6d53ac2c0f956f577a909683da2dfc5d2e83d236c6da296721b5eb235d5e3a386a960137f5d"' : 'data-bs-target="#xs-components-links-module-OpacitySliderModule-8403770fec961e95708fc0c66bbc720f3f6fd959958481862050c6d53ac2c0f956f577a909683da2dfc5d2e83d236c6da296721b5eb235d5e3a386a960137f5d"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-OpacitySliderModule-e1f589558407278ac6e04f74a4e1c427b8bc28175090d5e6765a9d58692da884326a9729b349a119f3512510bcfd251f8fb04c6f2101632610eaebaabeb4e1f0"' :
-                                            'id="xs-components-links-module-OpacitySliderModule-e1f589558407278ac6e04f74a4e1c427b8bc28175090d5e6765a9d58692da884326a9729b349a119f3512510bcfd251f8fb04c6f2101632610eaebaabeb4e1f0"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-OpacitySliderModule-8403770fec961e95708fc0c66bbc720f3f6fd959958481862050c6d53ac2c0f956f577a909683da2dfc5d2e83d236c6da296721b5eb235d5e3a386a960137f5d"' :
+                                            'id="xs-components-links-module-OpacitySliderModule-8403770fec961e95708fc0c66bbc720f3f6fd959958481862050c6d53ac2c0f956f577a909683da2dfc5d2e83d236c6da296721b5eb235d5e3a386a960137f5d"' }>
                                             <li class="link">
                                                 <a href="components/OpacitySliderComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >OpacitySliderComponent</a>
                                             </li>

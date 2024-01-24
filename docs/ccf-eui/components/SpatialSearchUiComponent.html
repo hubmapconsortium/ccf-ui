@@ -12,6 +12,64 @@
         <link rel="stylesheet" href="../styles/dark.css">
     </head>
     <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
 
         <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">Application ccf-eui documentation</a>
@@ -282,7 +340,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:53</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:60</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -309,7 +367,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:56</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:63</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -336,7 +394,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:44</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:51</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -363,7 +421,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:47</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:54</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -390,7 +448,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:38</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:45</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -417,7 +475,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:41</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:48</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -444,7 +502,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:35</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:42</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -471,7 +529,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:23</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:30</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -498,7 +556,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:26</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:33</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -525,7 +583,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:29</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:36</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -552,7 +610,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:32</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:39</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -579,7 +637,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:50</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:57</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -609,7 +667,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:59</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:66</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -636,7 +694,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:68</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:75</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -663,7 +721,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:77</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:84</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -690,7 +748,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:80</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:87</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -717,7 +775,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:83</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="90" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:90</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -744,7 +802,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:74</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:81</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -771,7 +829,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:71</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:78</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -798,7 +856,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:62</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:69</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -825,7 +883,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:65</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:72</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -862,7 +920,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:27</a></div>
                         </td>
                     </tr>
 
@@ -919,7 +977,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">projects/ccf-eui/src/app/shared/components/spatial-search-ui/spatial-search-ui.component.ts:27</a></div>
                         </td>
                     </tr>
 
@@ -938,7 +996,14 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  HostBinding,
+  Input,
+  Output
+} from &#x27;@angular/core&#x27;;
 import { SpatialSceneNode } from &#x27;ccf-body-ui&#x27;;
 import { TissueBlockResult } from &#x27;ccf-database&#x27;;
 import { OrganInfo } from &#x27;ccf-shared&#x27;;
@@ -1053,8 +1118,9 @@ export class SpatialSearchUiComponent {
     &lt;div class&#x3D;&quot;radius-slider&quot;&gt;
       &lt;div class&#x3D;&quot;title&quot;&gt;Probing Sphere Radius&lt;/div&gt;
       &lt;div class&#x3D;&quot;slider-container&quot;&gt;
-        &lt;mat-slider class&#x3D;&quot;slider&quot; [max]&#x3D;&quot;radiusSettings.max&quot; [min]&#x3D;&quot;radiusSettings.min&quot; [step]&#x3D;&quot;1&quot;
-          (input)&#x3D;&quot;radiusChange.emit($event.value)&quot; [value]&#x3D;&quot;radius&quot;&gt;&lt;/mat-slider&gt;
+        &lt;mat-slider class&#x3D;&quot;slider&quot; [max]&#x3D;&quot;radiusSettings.max&quot; [min]&#x3D;&quot;radiusSettings.min&quot; [step]&#x3D;&quot;1&quot;&gt;
+          &lt;input matSliderThumb [value]&#x3D;&quot;radius&quot; (input)&#x3D;&quot;radiusChange.emit(+slider.value)&quot; #slider&gt;
+        &lt;/mat-slider&gt;
         &lt;span class&#x3D;&quot;text value&quot;&gt;{{ radius }} mm&lt;/span&gt;
       &lt;/div&gt;
       &lt;div class&#x3D;&quot;reset-buttons&quot;&gt;
@@ -1148,6 +1214,10 @@ export class SpatialSearchUiComponent {
     display: flex;
     width: 100%;
     height: calc(100% - 3.5rem);
+
+    mat-divider {
+      border-top-width: 1px;
+    }
 
     .button {
       border-width: 1px;
@@ -1319,7 +1389,7 @@ export class SpatialSearchUiComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="header">  <div class="title">Configure Spatial Search</div>  <button class="info" mat-icon-button (click)="infoClicked.emit()">    <mat-icon>info</mat-icon>  </button>  <button class="close" mat-icon-button (click)="closeSpatialSearch.emit()">    <mat-icon>close</mat-icon>  </button></div><div class="content">  <div class="info-panel">    <div class="organ-sex-selection">      <div class="sex">        <div class="label">Donor Sex: </div>        <div class="current-sex">{{sex.charAt(0).toUpperCase() + sex.slice(1)}}</div>      </div>      <div class="organ">        <div class="label">Organ: </div>        <div class="current-organ">{{referenceOrgan.name}}</div>      </div>      <div class="edit" (click)="editReferenceOrganClicked.emit()">Edit</div>    </div>    <mat-divider></mat-divider>    <div class="radius-slider">      <div class="title">Probing Sphere Radius</div>      <div class="slider-container">        <mat-slider class="slider" [max]="radiusSettings.max" [min]="radiusSettings.min" [step]="1"          (input)="radiusChange.emit($event.value)" [value]="radius"></mat-slider>        <span class="text value">{{ radius }} mm</span>      </div>      <div class="reset-buttons">        <button class="reset-sphere button"          [class.disabled]="radius === radiusSettings.defaultValue && position === defaultPosition" mat-button          (click)="resetSphere.emit(); resetPosition.emit();">Reset Probing Sphere</button>        <button class="reset-camera button" mat-button          (click)="primary.rotation = primary.rotationX = minimap.rotation = minimap.rotationX = 0; primary.target = minimap.target = sceneTarget; primary.bounds = minimap.bounds = sceneBounds;">Reset          Camera View</button>      </div>    </div>    <mat-divider></mat-divider>    <div class="results">      <ccf-tissue-block-list class="tissue-block list" [tissueBlocks]="tissueBlocks"></ccf-tissue-block-list>      <ccf-term-occurrence-list class="anatomical-structures list" [termList]="anatomicalStructures"        title="Anatomical Structures"        toolTipText="Total quantity of predicted anatomical structures detected by the Probing Sphere">      </ccf-term-occurrence-list>      <ccf-term-occurrence-list class="cell-type list" [termList]="cellTypes"        title="Predicted Cell Types from ASCT+B Tables"        toolTipText="Total quantity of predicted cell types detected by the Probing Sphere"></ccf-term-occurrence-list>    </div>    <button class="run-spatial-search button" [class.disabled]="tissueBlocks?.length === 0" mat-button      (click)="addSpatialSearch.emit()">Run Spatial Search</button>  </div>  <div class="spatial-search-scene">    <div class="primary-scene-wrapper">      <div class="body-ui-hint">Use the keyboard or click a Tissue Block to move the Probing Sphere</div>      <ccf-body-ui #primary class="primary-scene" [scene]="scene" [bounds]="sceneBounds" [target]="sceneTarget"        (nodeClick)="nodeClicked.emit($event?.node)"        (rotationChange)="minimap.rotation = $event[0]; minimap.rotationX = $event[1]"></ccf-body-ui>    </div>    <div class="sidebar">      <ccf-body-ui #minimap class="minimap-scene" [interactive]="false" [scene]="scene" [bounds]="sceneBounds"        [target]="sceneTarget" (nodeClick)="nodeClicked.emit($event?.node)"></ccf-body-ui>      <ccf-spatial-search-keyboard-ui-behavior [delta]="1" [shiftDelta]="2" [position]="position"        (changePosition)="positionChange.emit($event)"></ccf-spatial-search-keyboard-ui-behavior>      <ccf-xyz-position [x]="position.x" [y]="position.y" [z]="position.z"></ccf-xyz-position>    </div>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="header">  <div class="title">Configure Spatial Search</div>  <button class="info" mat-icon-button (click)="infoClicked.emit()">    <mat-icon>info</mat-icon>  </button>  <button class="close" mat-icon-button (click)="closeSpatialSearch.emit()">    <mat-icon>close</mat-icon>  </button></div><div class="content">  <div class="info-panel">    <div class="organ-sex-selection">      <div class="sex">        <div class="label">Donor Sex: </div>        <div class="current-sex">{{sex.charAt(0).toUpperCase() + sex.slice(1)}}</div>      </div>      <div class="organ">        <div class="label">Organ: </div>        <div class="current-organ">{{referenceOrgan.name}}</div>      </div>      <div class="edit" (click)="editReferenceOrganClicked.emit()">Edit</div>    </div>    <mat-divider></mat-divider>    <div class="radius-slider">      <div class="title">Probing Sphere Radius</div>      <div class="slider-container">        <mat-slider class="slider" [max]="radiusSettings.max" [min]="radiusSettings.min" [step]="1">          <input matSliderThumb [value]="radius" (input)="radiusChange.emit(+slider.value)" #slider>        </mat-slider>        <span class="text value">{{ radius }} mm</span>      </div>      <div class="reset-buttons">        <button class="reset-sphere button"          [class.disabled]="radius === radiusSettings.defaultValue && position === defaultPosition" mat-button          (click)="resetSphere.emit(); resetPosition.emit();">Reset Probing Sphere</button>        <button class="reset-camera button" mat-button          (click)="primary.rotation = primary.rotationX = minimap.rotation = minimap.rotationX = 0; primary.target = minimap.target = sceneTarget; primary.bounds = minimap.bounds = sceneBounds;">Reset          Camera View</button>      </div>    </div>    <mat-divider></mat-divider>    <div class="results">      <ccf-tissue-block-list class="tissue-block list" [tissueBlocks]="tissueBlocks"></ccf-tissue-block-list>      <ccf-term-occurrence-list class="anatomical-structures list" [termList]="anatomicalStructures"        title="Anatomical Structures"        toolTipText="Total quantity of predicted anatomical structures detected by the Probing Sphere">      </ccf-term-occurrence-list>      <ccf-term-occurrence-list class="cell-type list" [termList]="cellTypes"        title="Predicted Cell Types from ASCT+B Tables"        toolTipText="Total quantity of predicted cell types detected by the Probing Sphere"></ccf-term-occurrence-list>    </div>    <button class="run-spatial-search button" [class.disabled]="tissueBlocks?.length === 0" mat-button      (click)="addSpatialSearch.emit()">Run Spatial Search</button>  </div>  <div class="spatial-search-scene">    <div class="primary-scene-wrapper">      <div class="body-ui-hint">Use the keyboard or click a Tissue Block to move the Probing Sphere</div>      <ccf-body-ui #primary class="primary-scene" [scene]="scene" [bounds]="sceneBounds" [target]="sceneTarget"        (nodeClick)="nodeClicked.emit($event?.node)"        (rotationChange)="minimap.rotation = $event[0]; minimap.rotationX = $event[1]"></ccf-body-ui>    </div>    <div class="sidebar">      <ccf-body-ui #minimap class="minimap-scene" [interactive]="false" [scene]="scene" [bounds]="sceneBounds"        [target]="sceneTarget" (nodeClick)="nodeClicked.emit($event?.node)"></ccf-body-ui>      <ccf-spatial-search-keyboard-ui-behavior [delta]="1" [shiftDelta]="2" [position]="position"        (changePosition)="positionChange.emit($event)"></ccf-spatial-search-keyboard-ui-behavior>      <ccf-xyz-position [x]="position.x" [y]="position.y" [z]="position.z"></ccf-xyz-position>    </div>  </div></div></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppWebComponent', 'selector': 'ccf-root-wc'},{'name': 'ButtonToggleComponent', 'selector': 'ccf-button-toggle'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DonorCardComponent', 'selector': 'ccf-donor-card'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'RunSpatialSearchComponent', 'selector': 'ccf-run-spatial-search'},{'name': 'SpatialSearchConfigBehaviorComponent', 'selector': 'ccf-spatial-search-config-behavior'},{'name': 'SpatialSearchConfigComponent', 'selector': 'ccf-spatial-search-config'},{'name': 'SpatialSearchUiBehaviorComponent', 'selector': 'ccf-spatial-search-ui-behavior'},{'name': 'SpatialSearchUiComponent', 'selector': 'ccf-spatial-search-ui'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'TermOccurrenceListComponent', 'selector': 'ccf-term-occurrence-list'},{'name': 'ThumbnailCarouselComponent', 'selector': 'ccf-thumbnail-carousel'},{'name': 'TissueBlockListComponent', 'selector': 'ccf-tissue-block-list'},{'name': 'TissueSectionVisComponent', 'selector': 'ccf-tissue-section-vis'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ViewerComponent', 'selector': 'ccf-viewer'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'SpatialSearchUiComponent'};

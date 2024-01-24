@@ -376,13 +376,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/RotationSliderModule.html" data-type="entity-link" >RotationSliderModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
-                                            'data-bs-target="#components-links-module-RotationSliderModule-93d190bffee5c9f4bd6d2845470a0345f46dae09dee23aa4ac2f640947c0d2b9ced784c38de5175b4103df72b7fcad4a8391dad250ad355f76f4d28fe9209aa8"' : 'data-bs-target="#xs-components-links-module-RotationSliderModule-93d190bffee5c9f4bd6d2845470a0345f46dae09dee23aa4ac2f640947c0d2b9ced784c38de5175b4103df72b7fcad4a8391dad250ad355f76f4d28fe9209aa8"' }>
+                                            'data-bs-target="#components-links-module-RotationSliderModule-9ea4608b9aa6d0d1682b620d58b07f0570c0e9d8055980125018d3c634a19929f076ee666b0c48fac5673283665ef153fc6b338f3a74f337ffba6d423efb1978"' : 'data-bs-target="#xs-components-links-module-RotationSliderModule-9ea4608b9aa6d0d1682b620d58b07f0570c0e9d8055980125018d3c634a19929f076ee666b0c48fac5673283665ef153fc6b338f3a74f337ffba6d423efb1978"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-RotationSliderModule-93d190bffee5c9f4bd6d2845470a0345f46dae09dee23aa4ac2f640947c0d2b9ced784c38de5175b4103df72b7fcad4a8391dad250ad355f76f4d28fe9209aa8"' :
-                                            'id="xs-components-links-module-RotationSliderModule-93d190bffee5c9f4bd6d2845470a0345f46dae09dee23aa4ac2f640947c0d2b9ced784c38de5175b4103df72b7fcad4a8391dad250ad355f76f4d28fe9209aa8"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-RotationSliderModule-9ea4608b9aa6d0d1682b620d58b07f0570c0e9d8055980125018d3c634a19929f076ee666b0c48fac5673283665ef153fc6b338f3a74f337ffba6d423efb1978"' :
+                                            'id="xs-components-links-module-RotationSliderModule-9ea4608b9aa6d0d1682b620d58b07f0570c0e9d8055980125018d3c634a19929f076ee666b0c48fac5673283665ef153fc6b338f3a74f337ffba6d423efb1978"' }>
                                             <li class="link">
                                                 <a href="components/RotationSliderComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >RotationSliderComponent</a>
                                             </li>

@@ -12,6 +12,64 @@
         <link rel="stylesheet" href="../styles/dark.css">
     </head>
     <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
 
         <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">Application ccf-eui documentation</a>
@@ -582,7 +640,7 @@ export class CheckboxComponent {
         <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;filter-container&quot;&gt;
   &lt;div class&#x3D;&quot;filter-label&quot;&gt;{{ label }}&lt;/div&gt;
 
-  &lt;div class&#x3D;&quot;options-container&quot; [class.three]&#x3D;&quot;columns &#x3D;&#x3D;&#x3D; 3&quot; [class.six]&#x3D;&quot;columns &#x3D;&#x3D;&#x3D; 6&quot;&gt;
+  &lt;div class&#x3D;&quot;options-container&quot; [class.three]&#x3D;&quot;columns &#x3D;&#x3D;&#x3D; 3&quot; [class.five]&#x3D;&quot;columns &#x3D;&#x3D;&#x3D; 5&quot;&gt;
     &lt;div *ngFor&#x3D;&quot;let option of options&quot; class&#x3D;&quot;option&quot;&gt;
       &lt;mat-checkbox [checked]&#x3D;&quot;selection?.includes(option)&quot; (change)&#x3D;&quot;filterOnChange($event, option)&quot;&gt;
         {{ option }}
@@ -619,9 +677,9 @@ export class CheckboxComponent {
     }
   }
 
-  &amp;.six {
+  &amp;.five {
     .option {
-      width: 16.5%;
+      width: 20%;
     }
   }
 }
@@ -653,7 +711,7 @@ export class CheckboxComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="filter-container">  <div class="filter-label">{{ label }}</div>  <div class="options-container" [class.three]="columns === 3" [class.six]="columns === 6">    <div *ngFor="let option of options" class="option">      <mat-checkbox [checked]="selection?.includes(option)" (change)="filterOnChange($event, option)">        {{ option }}      </mat-checkbox>    </div>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="filter-container">  <div class="filter-label">{{ label }}</div>  <div class="options-container" [class.three]="columns === 3" [class.five]="columns === 5">    <div *ngFor="let option of options" class="option">      <mat-checkbox [checked]="selection?.includes(option)" (change)="filterOnChange($event, option)">        {{ option }}      </mat-checkbox>    </div>  </div></div></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppWebComponent', 'selector': 'ccf-root-wc'},{'name': 'ButtonToggleComponent', 'selector': 'ccf-button-toggle'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DonorCardComponent', 'selector': 'ccf-donor-card'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'RunSpatialSearchComponent', 'selector': 'ccf-run-spatial-search'},{'name': 'SpatialSearchConfigBehaviorComponent', 'selector': 'ccf-spatial-search-config-behavior'},{'name': 'SpatialSearchConfigComponent', 'selector': 'ccf-spatial-search-config'},{'name': 'SpatialSearchUiBehaviorComponent', 'selector': 'ccf-spatial-search-ui-behavior'},{'name': 'SpatialSearchUiComponent', 'selector': 'ccf-spatial-search-ui'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'TermOccurrenceListComponent', 'selector': 'ccf-term-occurrence-list'},{'name': 'ThumbnailCarouselComponent', 'selector': 'ccf-thumbnail-carousel'},{'name': 'TissueBlockListComponent', 'selector': 'ccf-tissue-block-list'},{'name': 'TissueSectionVisComponent', 'selector': 'ccf-tissue-section-vis'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ViewerComponent', 'selector': 'ccf-viewer'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'CheckboxComponent'};

@@ -393,13 +393,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/SpatialSearchUiModule.html" data-type="entity-link" >SpatialSearchUiModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
-                                            'data-bs-target="#components-links-module-SpatialSearchUiModule-aad1c51310b6cb3d8b31dfcaed06edb740e3807f684d7177aca96c4922c2a48571a2aa4264bba497be9addea7548c7f8f5136c574c7cf3fdc725378ec1668810"' : 'data-bs-target="#xs-components-links-module-SpatialSearchUiModule-aad1c51310b6cb3d8b31dfcaed06edb740e3807f684d7177aca96c4922c2a48571a2aa4264bba497be9addea7548c7f8f5136c574c7cf3fdc725378ec1668810"' }>
+                                            'data-bs-target="#components-links-module-SpatialSearchUiModule-bf8071259eeb884528c6536f19dcc7ae4b33e4d1820b07331d7d41a5cf130a01e833e9cbca100312a2c432f249d196b6fee806a8ecf8014875e29821e0180d0a"' : 'data-bs-target="#xs-components-links-module-SpatialSearchUiModule-bf8071259eeb884528c6536f19dcc7ae4b33e4d1820b07331d7d41a5cf130a01e833e9cbca100312a2c432f249d196b6fee806a8ecf8014875e29821e0180d0a"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SpatialSearchUiModule-aad1c51310b6cb3d8b31dfcaed06edb740e3807f684d7177aca96c4922c2a48571a2aa4264bba497be9addea7548c7f8f5136c574c7cf3fdc725378ec1668810"' :
-                                            'id="xs-components-links-module-SpatialSearchUiModule-aad1c51310b6cb3d8b31dfcaed06edb740e3807f684d7177aca96c4922c2a48571a2aa4264bba497be9addea7548c7f8f5136c574c7cf3fdc725378ec1668810"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SpatialSearchUiModule-bf8071259eeb884528c6536f19dcc7ae4b33e4d1820b07331d7d41a5cf130a01e833e9cbca100312a2c432f249d196b6fee806a8ecf8014875e29821e0180d0a"' :
+                                            'id="xs-components-links-module-SpatialSearchUiModule-bf8071259eeb884528c6536f19dcc7ae4b33e4d1820b07331d7d41a5cf130a01e833e9cbca100312a2c432f249d196b6fee806a8ecf8014875e29821e0180d0a"' }>
                                             <li class="link">
                                                 <a href="components/SpatialSearchUiComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >SpatialSearchUiComponent</a>
                                             </li>

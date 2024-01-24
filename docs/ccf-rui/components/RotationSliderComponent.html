@@ -12,6 +12,64 @@
         <link rel="stylesheet" href="../styles/dark.css">
     </head>
     <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
 
         <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">Application ccf-rui documentation</a>
@@ -411,8 +469,8 @@ or through an Input method.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="54"
-                                    class="link-to-prism">projects/ccf-rui/src/app/shared/components/rotation-slider/rotation-slider.component.ts:54</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="55"
+                                    class="link-to-prism">projects/ccf-rui/src/app/shared/components/rotation-slider/rotation-slider.component.ts:55</a></div>
                         </td>
                     </tr>
 
@@ -502,8 +560,8 @@ If rotation value is &lt; -180 or &gt; 180, set to -180 or 180</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="65"
-                                    class="link-to-prism">projects/ccf-rui/src/app/shared/components/rotation-slider/rotation-slider.component.ts:65</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="66"
+                                    class="link-to-prism">projects/ccf-rui/src/app/shared/components/rotation-slider/rotation-slider.component.ts:66</a></div>
                         </td>
                     </tr>
 
@@ -654,9 +712,10 @@ export class RotationSliderComponent {
 
   /**
    * Creates an instance of rotation slider component.
+   *
    * @param ga Analytics service
    */
-  constructor(private readonly ga: GoogleAnalyticsService) { }
+  constructor( private readonly ga: GoogleAnalyticsService) { }
 
   /**
    * Function that handles updating the rotation and emitting the new value
@@ -700,11 +759,10 @@ export class RotationSliderComponent {
       class&#x3D;&quot;slider&quot;
       [max]&#x3D;&quot;180&quot;
       [min]&#x3D;&quot;-180&quot;
-      [step]&#x3D;&quot;1&quot;
-      [thumbLabel]&#x3D;&quot;true&quot;
-      [tickInterval]&#x3D;&quot;180&quot;
-      (input)&#x3D;&quot;changeRotation($event.value, &#x27;x&#x27;)&quot;
-      [value]&#x3D;&quot;rotation.x&quot;&gt;&lt;/mat-slider&gt;
+      disableRipple
+      discrete&gt;
+      &lt;input class&#x3D;&quot;slider-x&quot; matSliderThumb [value]&#x3D;&quot;rotation.x&quot; (input)&#x3D;&quot;changeRotation(sliderX.value, &#x27;x&#x27;)&quot; #sliderX&gt;
+    &lt;/mat-slider&gt;
   &lt;/div&gt;
   &lt;mat-form-field&gt;
     &lt;input matInput class&#x3D;&quot;input&quot; type&#x3D;&quot;number&quot; [value]&#x3D;&quot;rotation.x&quot; [min]&#x3D;&quot;-180&quot; [max]&#x3D;&quot;180&quot; (change)&#x3D;&quot;changeRotation($event.target.value, &#x27;x&#x27;)&quot;&gt;
@@ -718,11 +776,10 @@ export class RotationSliderComponent {
       class&#x3D;&quot;slider&quot;
       [max]&#x3D;&quot;180&quot;
       [min]&#x3D;&quot;-180&quot;
-      [step]&#x3D;&quot;1&quot;
-      [thumbLabel]&#x3D;&quot;true&quot;
-      [tickInterval]&#x3D;&quot;180&quot;
-      (input)&#x3D;&quot;changeRotation($event.value, &#x27;y&#x27;)&quot;
-      [value]&#x3D;&quot;rotation.y&quot;&gt;&lt;/mat-slider&gt;
+      disableRipple
+      discrete&gt;
+      &lt;input class&#x3D;&quot;slider-y&quot; matSliderThumb [value]&#x3D;&quot;rotation.y&quot; (input)&#x3D;&quot;changeRotation(sliderY.value, &#x27;y&#x27;)&quot; #sliderY&gt;
+    &lt;/mat-slider&gt;
   &lt;/div&gt;
   &lt;mat-form-field&gt;
     &lt;input matInput class&#x3D;&quot;input&quot; type&#x3D;&quot;number&quot; [value]&#x3D;&quot;rotation.y&quot; [min]&#x3D;&quot;-180&quot; [max]&#x3D;&quot;180&quot; (change)&#x3D;&quot;changeRotation($event.target.value, &#x27;y&#x27;)&quot;&gt;
@@ -736,11 +793,10 @@ export class RotationSliderComponent {
       class&#x3D;&quot;slider&quot;
       [max]&#x3D;&quot;180&quot;
       [min]&#x3D;&quot;-180&quot;
-      [step]&#x3D;&quot;1&quot;
-      [thumbLabel]&#x3D;&quot;true&quot;
-      [tickInterval]&#x3D;&quot;180&quot;
-      (input)&#x3D;&quot;changeRotation($event.value, &#x27;z&#x27;)&quot;
-      [value]&#x3D;&quot;rotation.z&quot;&gt;&lt;/mat-slider&gt;
+      disableRipple
+      discrete&gt;
+      &lt;input class&#x3D;&quot;slider-z&quot; matSliderThumb [value]&#x3D;&quot;rotation.z&quot; (input)&#x3D;&quot;changeRotation(sliderZ.value, &#x27;z&#x27;)&quot; #sliderZ&gt;
+    &lt;/mat-slider&gt;
   &lt;/div&gt;
   &lt;mat-form-field&gt;
     &lt;input matInput class&#x3D;&quot;input&quot; type&#x3D;&quot;number&quot; [value]&#x3D;&quot;rotation.z&quot; [min]&#x3D;&quot;-180&quot; [max]&#x3D;&quot;180&quot; (change)&#x3D;&quot;changeRotation($event.target.value, &#x27;z&#x27;)&quot;&gt;
@@ -806,41 +862,14 @@ export class RotationSliderComponent {
     .slider-container {
       width: 100%;
       padding-left: 0.5rem;
-      padding-right: 1.5rem;
+      padding-right: 2rem;
 
       .slider {
         width: 100%;
-
-        &amp;:not(.cdk-focused) {
-          ::ng-deep .mat-slider-thumb {
-            width: 1.25rem;
-            height: 1.25rem;
-            transform: none;
-          }
-        }
       }
 
-      ::ng-deep .mat-slider-horizontal {
-        .mat-slider-wrapper {
-          right: 0.625rem;
-          &amp;:after {
-            margin-top: -0.25rem;
-            height: 0.625rem !important;
-          }
-        }
-
-        .mat-slider-thumb-label-text {
-          font-size: 12px;
-        }
-
-        .mat-slider-ticks-container {
-          margin-top: -0.25rem;
-          height: 0.625rem;
-
-          .mat-slider-ticks {
-            height: 0.625rem;
-          }
-        }
+      ::ng-deep mat-slider-visual-thumb {
+        transition: none;
       }
     }
 
@@ -877,7 +906,7 @@ export class RotationSliderComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="header">  <span class="text title" matTooltip="Use sliders below to rotate tissue block for registration">Tissue Block Rotation</span>  <div class="filler"></div>  <div class="refresh-button-container">    <mat-icon matRipple [matRippleCentered]="true" [matRippleUnbounded]="true" class="icon reset" (click)="resetRotation(\'x\'); resetRotation(\'y\'); resetRotation(\'z\')">refresh</mat-icon>  </div></div><div class="slider-box red">  <span class="text label">X</span>  <div class="slider-container">    <mat-slider      class="slider"      [max]="180"      [min]="-180"      [step]="1"      [thumbLabel]="true"      [tickInterval]="180"      (input)="changeRotation($event.value, \'x\')"      [value]="rotation.x"></mat-slider>  </div>  <mat-form-field>    <input matInput class="input" type="number" [value]="rotation.x" [min]="-180" [max]="180" (change)="changeRotation($event.target.value, \'x\')">  </mat-form-field></div><div class="slider-box green">  <span class="text label">Y</span>  <div class="slider-container">    <mat-slider      class="slider"      [max]="180"      [min]="-180"      [step]="1"      [thumbLabel]="true"      [tickInterval]="180"      (input)="changeRotation($event.value, \'y\')"      [value]="rotation.y"></mat-slider>  </div>  <mat-form-field>    <input matInput class="input" type="number" [value]="rotation.y" [min]="-180" [max]="180" (change)="changeRotation($event.target.value, \'y\')">  </mat-form-field></div><div class="slider-box blue">  <span class="text label">Z</span>  <div class="slider-container">    <mat-slider      class="slider"      [max]="180"      [min]="-180"      [step]="1"      [thumbLabel]="true"      [tickInterval]="180"      (input)="changeRotation($event.value, \'z\')"      [value]="rotation.z"></mat-slider>  </div>  <mat-form-field>    <input matInput class="input" type="number" [value]="rotation.z" [min]="-180" [max]="180" (change)="changeRotation($event.target.value, \'z\')">  </mat-form-field></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="header">  <span class="text title" matTooltip="Use sliders below to rotate tissue block for registration">Tissue Block Rotation</span>  <div class="filler"></div>  <div class="refresh-button-container">    <mat-icon matRipple [matRippleCentered]="true" [matRippleUnbounded]="true" class="icon reset" (click)="resetRotation(\'x\'); resetRotation(\'y\'); resetRotation(\'z\')">refresh</mat-icon>  </div></div><div class="slider-box red">  <span class="text label">X</span>  <div class="slider-container">    <mat-slider      class="slider"      [max]="180"      [min]="-180"      disableRipple      discrete>      <input class="slider-x" matSliderThumb [value]="rotation.x" (input)="changeRotation(sliderX.value, \'x\')" #sliderX>    </mat-slider>  </div>  <mat-form-field>    <input matInput class="input" type="number" [value]="rotation.x" [min]="-180" [max]="180" (change)="changeRotation($event.target.value, \'x\')">  </mat-form-field></div><div class="slider-box green">  <span class="text label">Y</span>  <div class="slider-container">    <mat-slider      class="slider"      [max]="180"      [min]="-180"      disableRipple      discrete>      <input class="slider-y" matSliderThumb [value]="rotation.y" (input)="changeRotation(sliderY.value, \'y\')" #sliderY>    </mat-slider>  </div>  <mat-form-field>    <input matInput class="input" type="number" [value]="rotation.y" [min]="-180" [max]="180" (change)="changeRotation($event.target.value, \'y\')">  </mat-form-field></div><div class="slider-box blue">  <span class="text label">Z</span>  <div class="slider-container">    <mat-slider      class="slider"      [max]="180"      [min]="-180"      disableRipple      discrete>      <input class="slider-z" matSliderThumb [value]="rotation.z" (input)="changeRotation(sliderZ.value, \'z\')" #sliderZ>    </mat-slider>  </div>  <mat-form-field>    <input matInput class="input" type="number" [value]="rotation.z" [min]="-180" [max]="180" (change)="changeRotation($event.target.value, \'z\')">  </mat-form-field></div></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppWebComponent', 'selector': 'ccf-root-wc'},{'name': 'BlockSizeInputComponent', 'selector': 'ccf-block-size-input'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-content'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DetailsLabelComponent', 'selector': 'ccf-details-label'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'ExtractionSetDropdownComponent', 'selector': 'ccf-extraction-set-dropdown'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'JsonFileReaderComponent', 'selector': 'ccf-json-file-reader'},{'name': 'LabeledSlideToggleComponent', 'selector': 'ccf-labeled-slide-toggle'},{'name': 'LeftSidebarComponent', 'selector': 'ccf-left-sidebar'},{'name': 'NameInputComponent', 'selector': 'ccf-name-input'},{'name': 'RegistrationContentComponent', 'selector': 'ccf-registration-content'},{'name': 'RegistrationMetadataComponent', 'selector': 'ccf-registration-metadata'},{'name': 'RegistrationModalComponent', 'selector': 'ccf-registration-modal'},{'name': 'ReviewButtonComponent', 'selector': 'ccf-review-button'},{'name': 'ReviewModalComponent', 'selector': 'ccf-review-modal'},{'name': 'RightSidebarComponent', 'selector': 'ccf-right-sidebar'},{'name': 'RotationSliderComponent', 'selector': 'ccf-rotation-slider'},{'name': 'SlicesInputComponent', 'selector': 'ccf-slices-input'},{'name': 'StageNavComponent', 'selector': 'ccf-stage-nav'},{'name': 'TagListComponent', 'selector': 'ccf-tag-list'},{'name': 'TagSearchComponent', 'selector': 'ccf-tag-search'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'VideoModalComponent', 'selector': 'ccf-video-modal'},{'name': 'VideoModalLauncherComponent', 'selector': 'ccf-video-modal-launcher'},{'name': 'VisibilityMenuComponent', 'selector': 'ccf-visibility-menu'},{'name': 'VisibilityToggleComponent', 'selector': 'ccf-visibility-toggle'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'RotationSliderComponent'};

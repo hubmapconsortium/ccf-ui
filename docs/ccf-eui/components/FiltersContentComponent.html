@@ -12,6 +12,64 @@
         <link rel="stylesheet" href="../styles/dark.css">
     </head>
     <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
 
         <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">Application ccf-eui documentation</a>
@@ -1085,7 +1143,7 @@ export class FiltersContentComponent implements OnChanges {
 &lt;/div&gt;
 
 &lt;div class&#x3D;&quot;filter assays&quot; [class.hidden]&#x3D;&quot;hidden&quot;&gt;
-  &lt;ccf-checkbox label&#x3D;&quot;Assay Types&quot; [columns]&#x3D;&quot;6&quot; [options]&#x3D;&quot;technologyFilters&quot; [selection]&#x3D;&quot;filters?.technologies&quot;
+  &lt;ccf-checkbox label&#x3D;&quot;Assay Types&quot; [columns]&#x3D;&quot;5&quot; [options]&#x3D;&quot;technologyFilters&quot; [selection]&#x3D;&quot;filters?.technologies&quot;
     (selectionChange)&#x3D;&quot;updateFilter($event, &#x27;technologies&#x27;)&quot;&gt;&lt;/ccf-checkbox&gt;
 &lt;/div&gt;
 
@@ -1121,15 +1179,10 @@ export class FiltersContentComponent implements OnChanges {
   margin-top: 1.5rem;
 
   &amp;.assays {
-    max-height: 6rem;
     .option {
       margin-right: 0 rem;
       width: 25%;
     }
-  }
-
-  &amp;.providers {
-    max-height: 16rem;
   }
 
   ::ng-deep ccf-checkbox {
@@ -1247,7 +1300,7 @@ ccf-dropdown, ccf-dual-slider {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="patient-filters" [class.hidden]="hidden">  <ccf-dropdown label="Sex" [options]="[\'Both\', \'Male\', \'Female\']" [selection]="filters?.sex"    (selectionChange)="updateFilter($event, \'sex\')"></ccf-dropdown>  <ccf-dual-slider label="Age" [valueRange]="[1, 110]" [selection]="filters?.ageRange"    (selectionChange)="updateFilter($event, \'ageRange\')"></ccf-dual-slider>  <ccf-dual-slider label="BMI" [valueRange]="[13, 83]" [selection]="filters?.bmiRange"    (selectionChange)="updateFilter($event, \'bmiRange\')"></ccf-dual-slider></div><div class="filter assays" [class.hidden]="hidden">  <ccf-checkbox label="Assay Types" [columns]="6" [options]="technologyFilters" [selection]="filters?.technologies"    (selectionChange)="updateFilter($event, \'technologies\')"></ccf-checkbox></div><div class="filter providers" [class.hidden]="hidden">  <ccf-checkbox label="Tissue Providers" [columns]="3" [options]="providerFilters" [selection]="filters?.tmc"    (selectionChange)="updateFilter($event, \'tmc\')"></ccf-checkbox></div><div *ngIf="spatialSearchFilters.length > 0" class="filter spatial-locations" [class.hidden]="hidden">  <ccf-spatial-search-list label="Spatial Locations" [items]="spatialSearchFilters"    (selectionChanged)="updateSearchSelection($event)"    (itemRemoved)="spatialSearchRemoved.emit($event.id)">  </ccf-spatial-search-list></div><div class="button-container" [class.hidden]="hidden">  <ccf-run-spatial-search></ccf-run-spatial-search>  <div class="right-group">    <button class="outline-button" mat-button (click)="applyButtonClick()">Apply Filters</button>    <div class="refresh-icon">      <mat-icon class="icon refresh" (click)="refreshFilters()">refresh</mat-icon>    </div>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="patient-filters" [class.hidden]="hidden">  <ccf-dropdown label="Sex" [options]="[\'Both\', \'Male\', \'Female\']" [selection]="filters?.sex"    (selectionChange)="updateFilter($event, \'sex\')"></ccf-dropdown>  <ccf-dual-slider label="Age" [valueRange]="[1, 110]" [selection]="filters?.ageRange"    (selectionChange)="updateFilter($event, \'ageRange\')"></ccf-dual-slider>  <ccf-dual-slider label="BMI" [valueRange]="[13, 83]" [selection]="filters?.bmiRange"    (selectionChange)="updateFilter($event, \'bmiRange\')"></ccf-dual-slider></div><div class="filter assays" [class.hidden]="hidden">  <ccf-checkbox label="Assay Types" [columns]="5" [options]="technologyFilters" [selection]="filters?.technologies"    (selectionChange)="updateFilter($event, \'technologies\')"></ccf-checkbox></div><div class="filter providers" [class.hidden]="hidden">  <ccf-checkbox label="Tissue Providers" [columns]="3" [options]="providerFilters" [selection]="filters?.tmc"    (selectionChange)="updateFilter($event, \'tmc\')"></ccf-checkbox></div><div *ngIf="spatialSearchFilters.length > 0" class="filter spatial-locations" [class.hidden]="hidden">  <ccf-spatial-search-list label="Spatial Locations" [items]="spatialSearchFilters"    (selectionChanged)="updateSearchSelection($event)"    (itemRemoved)="spatialSearchRemoved.emit($event.id)">  </ccf-spatial-search-list></div><div class="button-container" [class.hidden]="hidden">  <ccf-run-spatial-search></ccf-run-spatial-search>  <div class="right-group">    <button class="outline-button" mat-button (click)="applyButtonClick()">Apply Filters</button>    <div class="refresh-icon">      <mat-icon class="icon refresh" (click)="refreshFilters()">refresh</mat-icon>    </div>  </div></div></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'ccf-root'},{'name': 'AppWebComponent', 'selector': 'ccf-root-wc'},{'name': 'ButtonToggleComponent', 'selector': 'ccf-button-toggle'},{'name': 'CheckboxComponent', 'selector': 'ccf-checkbox'},{'name': 'ContainerComponent', 'selector': 'ccf-drawer-container'},{'name': 'ContentComponent', 'selector': 'ccf-drawer-content'},{'name': 'DonorCardComponent', 'selector': 'ccf-donor-card'},{'name': 'DrawerComponent', 'selector': 'ccf-drawer'},{'name': 'DropdownComponent', 'selector': 'ccf-dropdown'},{'name': 'DualSliderComponent', 'selector': 'ccf-dual-slider'},{'name': 'FiltersContentComponent', 'selector': 'ccf-filters-content'},{'name': 'FiltersPopoverComponent', 'selector': 'ccf-filters-popover'},{'name': 'HeaderComponent', 'selector': 'ccf-header'},{'name': 'OntologySearchComponent', 'selector': 'ccf-ontology-search'},{'name': 'OntologySelectionComponent', 'selector': 'ccf-ontology-selection'},{'name': 'OntologyTreeComponent', 'selector': 'ccf-ontology-tree'},{'name': 'ResultsBrowserComponent', 'selector': 'ccf-results-browser'},{'name': 'RunSpatialSearchComponent', 'selector': 'ccf-run-spatial-search'},{'name': 'SpatialSearchConfigBehaviorComponent', 'selector': 'ccf-spatial-search-config-behavior'},{'name': 'SpatialSearchConfigComponent', 'selector': 'ccf-spatial-search-config'},{'name': 'SpatialSearchUiBehaviorComponent', 'selector': 'ccf-spatial-search-ui-behavior'},{'name': 'SpatialSearchUiComponent', 'selector': 'ccf-spatial-search-ui'},{'name': 'SpinnerOverlayComponent', 'selector': 'ccf-spinner-overlay'},{'name': 'TermOccurrenceListComponent', 'selector': 'ccf-term-occurrence-list'},{'name': 'ThumbnailCarouselComponent', 'selector': 'ccf-thumbnail-carousel'},{'name': 'TissueBlockListComponent', 'selector': 'ccf-tissue-block-list'},{'name': 'TissueSectionVisComponent', 'selector': 'ccf-tissue-section-vis'},{'name': 'ToggleButtonComponent', 'selector': 'ccf-drawer-toggle-button'},{'name': 'ViewerComponent', 'selector': 'ccf-viewer'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'FiltersContentComponent'};
