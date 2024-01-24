@@ -10,7 +10,6 @@ $primary-colors: utility.add-colors(mat.$gray-palette, (
   contrast: (
     "white": black,
     "black": white,
-    // 850: $light-primary-text
   )
 ));
 

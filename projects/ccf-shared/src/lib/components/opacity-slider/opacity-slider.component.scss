@@ -19,20 +19,13 @@
       align-items: center;
       height: 100%;
 
-      .slider {
-        display: flex;
+      mat-slider {
         width: 100%;
-        height: 100%;
-        align-items: center;
 
         &.disabled {
           pointer-events: none;
           cursor: not-allowed;
         }
-      }
-
-      mat-slider {
-        width: 100%;
 
         ::ng-deep mat-slider-visual-thumb {
           transition: none;

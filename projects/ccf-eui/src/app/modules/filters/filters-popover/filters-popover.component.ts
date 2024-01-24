@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnChanges, Output, Renderer2, SimpleChanges, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { Dispatch } from '@ngxs-labs/dispatch-decorator';
 
 import { SpatialSearchFilterItem } from '../../../core/store/spatial-search-filter/spatial-search-filter.state';
@@ -14,9 +14,7 @@ import { SetExecuteSearchOnGenerate } from '../../../core/store/spatial-search-u
   styleUrls: ['./filters-popover.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FiltersPopoverComponent implements OnChanges {
-  @ViewChild('container', { static: false }) container: ElementRef<HTMLElement>;
-
+export class FiltersPopoverComponent {
   /**
    * Allows the filters to be set from outside the component, and still render / function normally
    */
@@ -63,12 +61,14 @@ export class FiltersPopoverComponent implements OnChanges {
    */
   filtersVisible = false;
 
-  constructor(private renderer: Renderer2) {}
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if ('spatialSearchFilters' in changes) {
-      const popupHeight = this.spatialSearchFilters.length > 0 ? 43 + this.spatialSearchFilters.length * 3 : 40;
-      this.renderer.setStyle(this.container.nativeElement, 'height', `${popupHeight}rem`);
+  /**
+   * Calculate the popup height based on length of spatial search list
+   */
+  get popupHeight(): string {
+    if (!this.filtersVisible) {
+      return '0rem';
+    } else {
+      return `${this.spatialSearchFilters.length > 0 ? 43 + this.spatialSearchFilters.length * 3 : 40}rem`;
     }
   }
 

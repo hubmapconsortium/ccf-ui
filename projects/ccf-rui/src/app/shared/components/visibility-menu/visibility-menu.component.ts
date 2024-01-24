@@ -1,14 +1,11 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
   EventEmitter,
   HostBinding,
   Input,
-  Output,
-  ViewChild,
+  Output
 } from '@angular/core';
-import { OpacitySliderComponent } from 'ccf-shared';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 import { VisibilityItem } from '../../../core/models/visibility-item';
@@ -51,27 +48,11 @@ export class VisibilityMenuComponent {
   @Output() readonly itemsChange = new EventEmitter<VisibilityItem[]>();
 
   /**
-   * slider component
-   */
-  @ViewChild('slider', { static: false }) slider: OpacitySliderComponent;
-
-  /**
    * Creates an instance of visibility menu component.
    *
-   * @param el document element
    * @param ga Analytics service
    */
-  constructor(el: ElementRef<Element>, private readonly ga: GoogleAnalyticsService) {
-    el.nativeElement.addEventListener('mousedown', () => {
-      const input = el.nativeElement.querySelector('.visible .opacity-slider');
-      if (input) {
-        input.addEventListener('input', (event: InputEvent) => {
-          const target = event.target as HTMLInputElement;
-          this.slider.changeOpacity(target.value);
-        });
-      }
-    });
-  }
+  constructor(private readonly ga: GoogleAnalyticsService) { }
 
   /**
    * Toggles visibility of an item; opacity is reverted to the previous value if visibility toggled back on

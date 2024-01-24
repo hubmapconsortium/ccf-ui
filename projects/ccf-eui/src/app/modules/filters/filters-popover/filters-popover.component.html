@@ -7,7 +7,7 @@
       <mat-icon svgIcon="filter" class="icon funnel"></mat-icon>
     </ng-template>
   </button>
-  <div #container class="popup-container" [class.visible]="filtersVisible" [class.hidden]="!filtersVisible">
+  <div class="popup-container" [class.visible]="filtersVisible" [class.hidden]="!filtersVisible" [style.height]="popupHeight">
       <ccf-filters-content class="popup-body" [technologyFilters]="technologyFilters" [providerFilters]="providerFilters"
         [spatialSearchFilters]="spatialSearchFilters" [hidden]="!filtersVisible" [filters]="filters"
         (applyFilters)="applyFilters($event)" (spatialSearchSelected)="spatialSearchSelected.emit($event)"

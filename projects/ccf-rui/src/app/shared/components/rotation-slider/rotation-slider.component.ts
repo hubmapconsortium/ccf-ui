@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, HostBinding, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, HostBinding, Input, Output, inject } from '@angular/core';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 
@@ -39,32 +39,25 @@ export class RotationSliderComponent {
   /** Output that emits the new rotation whenever it is changed from within the component */
   @Output() readonly rotationChange = new EventEmitter<Rotation>();
 
+  /** Element reference */
+  private readonly el: Element = inject(ElementRef).nativeElement;
+
   /**
    * Creates an instance of rotation slider component.
    *
-   * @param el document element
    * @param ga Analytics service
    */
-  constructor(el: ElementRef<Element>, private readonly ga: GoogleAnalyticsService) {
-    el.nativeElement.addEventListener('mousedown', () => {
-      const inputX = el.nativeElement.querySelector('.slider-x');
-      const inputY = el.nativeElement.querySelector('.slider-y');
-      const inputZ = el.nativeElement.querySelector('.slider-z');
+  constructor( private readonly ga: GoogleAnalyticsService) { }
 
-      if (inputX && inputY && inputZ) {
-        inputX.addEventListener('input', (event: InputEvent) => {
-          const target = event.target as HTMLInputElement;
-          this.changeRotation(target.value, 'x');
-        });
-        inputY.addEventListener('input', (event: InputEvent) => {
-          const target = event.target as HTMLInputElement;
-          this.changeRotation(target.value, 'y');
-        });
-        inputZ.addEventListener('input', (event: InputEvent) => {
-          const target = event.target as HTMLInputElement;
-          this.changeRotation(target.value, 'z');
-        });
-      }
+  /**
+   * Handles rotation slider change
+   * @param dim rotation dimension
+   */
+  sliderChange(dim: string): void {
+    const input = this.el.querySelector(`.slider-${dim}`);
+    input?.addEventListener('input', (event: InputEvent) => {
+      const target = event.target as HTMLInputElement;
+      this.changeRotation(target.value, dim);
     });
   }
 

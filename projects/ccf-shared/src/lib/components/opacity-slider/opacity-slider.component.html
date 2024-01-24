@@ -1,7 +1,7 @@
 <div class="slider-box">
   <div class="slider-and-label">
-    <mat-slider [class.disabled]="!visible" [step]="1" [min]="0" [max]="100" [disableRipple]="true">
-      <input #slider class="opacity-slider" matSliderThumb [value]="opacity">
+    <mat-slider class="slider" [class.disabled]="!visible" [step]="1" [min]="0" [max]="100" [disableRipple]="true">
+      <input matSliderThumb class="opacity-slider" [value]="opacity" (dragStart)="sliderChange()">
     </mat-slider>
     <span class="opacity-value">{{opacity}}%</span>
   </div>

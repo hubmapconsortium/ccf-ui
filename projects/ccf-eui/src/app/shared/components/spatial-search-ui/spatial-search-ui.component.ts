@@ -6,9 +6,8 @@ import {
   HostBinding,
   Input,
   Output,
-  ViewChild,
+  inject
 } from '@angular/core';
-import { MatSlider } from '@angular/material/slider';
 import { SpatialSceneNode } from 'ccf-body-ui';
 import { TissueBlockResult } from 'ccf-database';
 import { OrganInfo } from 'ccf-shared';
@@ -92,24 +91,17 @@ export class SpatialSearchUiComponent {
   /** Emits when a node in the scene is clicked */
   @Output() readonly nodeClicked = new EventEmitter<SpatialSceneNode>();
 
-  /** Slider component */
-  @ViewChild('slider', { static: false }) slider: MatSlider;
+  /** Element reference */
+  private readonly el: Element = inject(ElementRef).nativeElement;
 
   /**
-   * Creates an instance of visibility menu component.
-   *
-   * @param el document element
-   * @param ga Analytics service
+   * Handles radius slider change
    */
-  constructor(el: ElementRef<Element>) {
-    el.nativeElement.addEventListener('mousedown', () => {
-      const input = el.nativeElement.querySelector('.slider');
-      if (input) {
-        input.addEventListener('input', (event: InputEvent) => {
-          const target = event.target as HTMLInputElement;
-          this.radiusChange.emit(parseInt(target.value));
-        });
-      }
+  sliderChange(): void {
+    const input = this.el.querySelector('.slider');
+    input?.addEventListener('input', (event: InputEvent) => {
+      const target = event.target as HTMLInputElement;
+      this.radiusChange.emit(parseInt(target.value));
     });
   }
 }
