@@ -15,7 +15,7 @@
       [min]="-180"
       disableRipple
       discrete>
-      <input class="slider-x" matSliderThumb [value]="rotation.x" (dragStart)="sliderChange('x')">
+      <input class="slider-x" matSliderThumb [value]="rotation.x" (input)="changeRotation(sliderX.value, 'x')" #sliderX>
     </mat-slider>
   </div>
   <mat-form-field>
@@ -32,7 +32,7 @@
       [min]="-180"
       disableRipple
       discrete>
-      <input class="slider-y" matSliderThumb [value]="rotation.y" (dragStart)="sliderChange('y')">
+      <input class="slider-y" matSliderThumb [value]="rotation.y" (input)="changeRotation(sliderY.value, 'y')" #sliderY>
     </mat-slider>
   </div>
   <mat-form-field>
@@ -49,7 +49,7 @@
       [min]="-180"
       disableRipple
       discrete>
-      <input class="slider-z" matSliderThumb [value]="rotation.z" (dragStart)="sliderChange('z')">
+      <input class="slider-z" matSliderThumb [value]="rotation.z" (input)="changeRotation(sliderZ.value, 'z')" #sliderZ>
     </mat-slider>
   </div>
   <mat-form-field>

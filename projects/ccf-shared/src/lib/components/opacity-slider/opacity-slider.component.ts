@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, HostBinding, Input, OnInit, Output, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, OnInit, Output } from '@angular/core';
 
 /**
  * Slider for setting opacity on an anatomical structure
@@ -48,8 +48,6 @@ export class OpacitySliderComponent implements OnInit {
 
   prevOpacity: number;
 
-  private readonly el: Element = inject(ElementRef).nativeElement;
-
   ngOnInit(): void {
     if (this.visible) {
       this.prevOpacity = 0;
@@ -58,29 +56,8 @@ export class OpacitySliderComponent implements OnInit {
     }
   }
 
-  /**
-   * Changes opacity on slider move
-   */
-  sliderChange(): void {
-    const input = this.el.querySelector('.visible .opacity-slider');
-    input?.addEventListener('input', (event: InputEvent) => {
-      const target = event.target as HTMLInputElement;
-      this.changeOpacity(target.value);
-    });
-  }
-
   reset(): void {
     this.prevOpacity = 20;
-  }
-
-  /**
-   * Emits opacityChange with the new opacity value
-   *
-   * @param newOpacity The updated opacity value
-   */
-  changeOpacity(newOpacity: string): void {
-    this.opacity = parseInt(newOpacity, 10);
-    this.opacityChange.emit(this.opacity);
   }
 
   /**

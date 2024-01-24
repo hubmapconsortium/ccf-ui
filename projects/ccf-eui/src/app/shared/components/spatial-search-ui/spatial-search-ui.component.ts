@@ -1,12 +1,10 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
   EventEmitter,
   HostBinding,
   Input,
-  Output,
-  inject
+  Output
 } from '@angular/core';
 import { SpatialSceneNode } from 'ccf-body-ui';
 import { TissueBlockResult } from 'ccf-database';
@@ -90,18 +88,4 @@ export class SpatialSearchUiComponent {
 
   /** Emits when a node in the scene is clicked */
   @Output() readonly nodeClicked = new EventEmitter<SpatialSceneNode>();
-
-  /** Element reference */
-  private readonly el: Element = inject(ElementRef).nativeElement;
-
-  /**
-   * Handles radius slider change
-   */
-  sliderChange(): void {
-    const input = this.el.querySelector('.slider');
-    input?.addEventListener('input', (event: InputEvent) => {
-      const target = event.target as HTMLInputElement;
-      this.radiusChange.emit(parseInt(target.value));
-    });
-  }
 }

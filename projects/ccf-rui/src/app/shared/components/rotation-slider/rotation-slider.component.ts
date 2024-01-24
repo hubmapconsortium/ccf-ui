@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, HostBinding, Input, Output, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 
@@ -39,27 +39,12 @@ export class RotationSliderComponent {
   /** Output that emits the new rotation whenever it is changed from within the component */
   @Output() readonly rotationChange = new EventEmitter<Rotation>();
 
-  /** Element reference */
-  private readonly el: Element = inject(ElementRef).nativeElement;
-
   /**
    * Creates an instance of rotation slider component.
    *
    * @param ga Analytics service
    */
   constructor( private readonly ga: GoogleAnalyticsService) { }
-
-  /**
-   * Handles rotation slider change
-   * @param dim rotation dimension
-   */
-  sliderChange(dim: string): void {
-    const input = this.el.querySelector(`.slider-${dim}`);
-    input?.addEventListener('input', (event: InputEvent) => {
-      const target = event.target as HTMLInputElement;
-      this.changeRotation(target.value, dim);
-    });
-  }
 
   /**
    * Function that handles updating the rotation and emitting the new value
