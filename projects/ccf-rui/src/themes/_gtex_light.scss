@@ -1,5 +1,5 @@
 @use '@angular/material' as mat;
-@use '@angular/material/theming' as *;
+
 @use 'common/utility';
 @import 'light';
 
@@ -7,8 +7,8 @@ $gtex-light-palette: utility.add-colors($primary-colors, (
   main: #46a4ad,
   light-disabled: #E0E0E0,
   contrast: (
-    main: $dark-primary-text,
-    light-disabled: $dark-primary-text,
+    main: mat.$private-dark-primary-text,
+    light-disabled: mat.$private-dark-primary-text,
   )
 ));
 

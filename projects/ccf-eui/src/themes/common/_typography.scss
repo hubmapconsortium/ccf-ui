@@ -1,5 +1,5 @@
 @use '@angular/material' as mat;
-@use '@angular/material/theming' as *;
+
 
 $config: mat.define-legacy-typography-config(
   $body-1: mat.define-typography-level(1rem, 1.5rem, 500),

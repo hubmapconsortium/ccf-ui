@@ -51,41 +51,14 @@
     .slider-container {
       width: 100%;
       padding-left: 0.5rem;
-      padding-right: 1.5rem;
+      padding-right: 2rem;
 
       .slider {
         width: 100%;
-
-        &:not(.cdk-focused) {
-          ::ng-deep .mat-slider-thumb {
-            width: 1.25rem;
-            height: 1.25rem;
-            transform: none;
-          }
-        }
       }
 
-      ::ng-deep .mat-slider-horizontal {
-        .mat-slider-wrapper {
-          right: 0.625rem;
-          &:after {
-            margin-top: -0.25rem;
-            height: 0.625rem !important;
-          }
-        }
-
-        .mat-slider-thumb-label-text {
-          font-size: 12px;
-        }
-
-        .mat-slider-ticks-container {
-          margin-top: -0.25rem;
-          height: 0.625rem;
-
-          .mat-slider-ticks {
-            height: 0.625rem;
-          }
-        }
+      ::ng-deep mat-slider-visual-thumb {
+        transition: none;
       }
     }
 

@@ -2,14 +2,14 @@ import { EventEmitter } from 'events';
 import jsonld from 'jsonld';
 import { JsonLd, Url } from 'jsonld/jsonld-spec';
 import { DataFactory, Parser, Store, Quad } from 'n3';
-import * as RDF from 'rdf-js';
+import * as rdf from 'rdf-js';
 import { RdfXmlParser } from 'rdfxml-streaming-parser';
 import { Readable } from 'readable-stream';
 
 export * from 'n3';
 
 // Temporary solution for using the new readQuads function on Store until the @types are updated
-type OTerm = RDF.Term | string | null;
+type OTerm = rdf.Term | string | null;
 interface QuadReader {
   readQuads(subject: OTerm, predicate: OTerm, object: OTerm, graph: OTerm): Generator<Quad>;
 }
@@ -67,8 +67,8 @@ export function arrayToStream<T>(arr: T[]): Readable {
  * @returns A promise that resolves when the data has been added.
  */
 export async function addJsonLdToStore(
-  uri: JsonLd | Url, store: RDF.Sink<EventEmitter, EventEmitter>
-): Promise<RDF.Sink<EventEmitter, EventEmitter>> {
+  uri: JsonLd | Url, store: rdf.Sink<EventEmitter, EventEmitter>
+): Promise<rdf.Sink<EventEmitter, EventEmitter>> {
   let jsonLdData: JsonLd | undefined;
   if (typeof uri === 'string') {
     const response = await fetch(uri, { redirect: 'follow' });
@@ -95,8 +95,8 @@ export async function addJsonLdToStore(
  * @returns A promise that resolves when the data has been added.
  */
 export async function addRdfXmlToStore(
-  uri: string, store: RDF.Sink<EventEmitter, EventEmitter>
-): Promise<RDF.Sink<EventEmitter, EventEmitter>> {
+  uri: string, store: rdf.Sink<EventEmitter, EventEmitter>
+): Promise<rdf.Sink<EventEmitter, EventEmitter>> {
   let xmlData: string | undefined;
   if (typeof uri === 'string' && uri?.startsWith('http')) {
     const response = await fetch(uri, { redirect: 'follow' });
@@ -109,7 +109,7 @@ export async function addRdfXmlToStore(
 
   if (xmlData) {
     const xmlParser = new RdfXmlParser({ dataFactory: DataFactory, strict: true });
-    const result = new Promise<RDF.Sink<EventEmitter, EventEmitter>>(resolve => {
+    const result = new Promise<rdf.Sink<EventEmitter, EventEmitter>>(resolve => {
       xmlParser.once('end', () => resolve(store));
     });
 
@@ -131,8 +131,8 @@ export async function addRdfXmlToStore(
  * @returns A promise that resolves when the data has been added.
  */
 export async function addN3ToStore(
-  uri: string | Url, store: RDF.Sink<EventEmitter, EventEmitter>
-): Promise<RDF.Sink<EventEmitter, EventEmitter>> {
+  uri: string | Url, store: rdf.Sink<EventEmitter, EventEmitter>
+): Promise<rdf.Sink<EventEmitter, EventEmitter>> {
   let data: string | undefined;
   if (typeof uri === 'string' && uri?.startsWith('http')) {
     const response = await fetch(uri, { redirect: 'follow' });
@@ -158,7 +158,7 @@ export function serializeN3Store(store: Store): string {
   return JSON.stringify(storeData);
 }
 
-export function deserializeN3Store(serializedStore: string, factory?: RDF.DataFactory): Store {
+export function deserializeN3Store(serializedStore: string, factory?: rdf.DataFactory): Store {
   const storeData = JSON.parse(serializedStore);
   const store = new Store();
   // eslint-disable-next-line @typescript-eslint/naming-convention

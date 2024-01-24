@@ -62,6 +62,17 @@ export class FiltersPopoverComponent {
   filtersVisible = false;
 
   /**
+   * Calculate the popup height based on length of spatial search list
+   */
+  get popupHeight(): string {
+    if (!this.filtersVisible) {
+      return '0rem';
+    } else {
+      return `${this.spatialSearchFilters.length > 0 ? 43 + this.spatialSearchFilters.length * 3 : 40}rem`;
+    }
+  }
+
+  /**
    * Toggles filter visible
    */
   @Dispatch()

@@ -2,15 +2,10 @@
   margin-top: 1.5rem;
 
   &.assays {
-    max-height: 6rem;
     .option {
       margin-right: 0 rem;
       width: 25%;
     }
-  }
-
-  &.providers {
-    max-height: 16rem;
   }
 
   ::ng-deep ccf-checkbox {

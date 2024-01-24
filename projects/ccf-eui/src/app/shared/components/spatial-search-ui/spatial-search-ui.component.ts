@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  HostBinding,
+  Input,
+  Output
+} from '@angular/core';
 import { SpatialSceneNode } from 'ccf-body-ui';
 import { TissueBlockResult } from 'ccf-database';
 import { OrganInfo } from 'ccf-shared';

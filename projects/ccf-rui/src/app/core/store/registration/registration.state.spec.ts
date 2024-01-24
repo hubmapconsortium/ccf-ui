@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { NgxsDataPluginModule } from '@angular-ru/ngxs';
 import { NgxsModule, Store } from '@ngxs/store';
 import { GlobalConfigState, OrganInfo } from 'ccf-shared';
-import * as FileSaver from 'file-saver';
+import * as fileSaver from 'file-saver';
 import { lastValueFrom, Observable, of, ReplaySubject } from 'rxjs';
 import { skip, take } from 'rxjs/operators';
 
@@ -273,7 +273,7 @@ describe('RegistrationState', () => {
 
     beforeEach(() => {
       callback = jasmine.createSpy();
-      download = spyOn(FileSaver, 'saveAs');
+      download = spyOn(fileSaver, 'saveAs');
       patchStore('globalConfig', { register: callback });
       spyOn(state, 'isDataValid').and.returnValue(true);
     });

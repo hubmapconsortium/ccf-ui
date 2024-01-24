@@ -41,9 +41,10 @@ export class RotationSliderComponent {
 
   /**
    * Creates an instance of rotation slider component.
+   *
    * @param ga Analytics service
    */
-  constructor(private readonly ga: GoogleAnalyticsService) { }
+  constructor( private readonly ga: GoogleAnalyticsService) { }
 
   /**
    * Function that handles updating the rotation and emitting the new value

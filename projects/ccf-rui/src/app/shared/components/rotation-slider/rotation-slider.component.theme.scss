@@ -1,26 +1,23 @@
 @use '@angular/material' as mat;
-@use '@angular/material/theming' as *;
+
 @mixin slider-theme($cls, $color, $lightColor) {
   .slider-box#{$cls} {
     .label {
       color: $color;
     }
 
-    .mat-slider.mat-slider-horizontal .mat-slider-wrapper {
+    .mdc-slider__track--active {
+      border-top-color: $lightColor;
       background-color: $lightColor;
     }
-    .mat-slider.mat-slider-horizontal .mat-slider-track-background,
-    .mat-slider.mat-slider-horizontal .mat-slider-track-fill {
-      background-color: $lightColor;
+
+    .mdc-slider__track--active_fill {
+      border-color: $lightColor;
     }
-    .mat-accent .mat-slider-thumb {
-      background-color: $color;
-    }
-    .mat-slider-min-value:not(.mat-slider-thumb-label-showing) .mat-slider-thumb {
-      background-color: $color;
-    }
-    .mat-slider.mat-slider-horizontal .mat-slider-thumb-label {
-      background-color: $color;
+
+    .mdc-slider__thumb-knob {
+      background-color: $color !important;
+      border-color: $color !important;
     }
   }
 }

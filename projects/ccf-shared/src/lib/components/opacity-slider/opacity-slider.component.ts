@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostBinding, Input, Output, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, OnInit, Output } from '@angular/core';
 
 /**
  * Slider for setting opacity on an anatomical structure
@@ -41,6 +41,11 @@ export class OpacitySliderComponent implements OnInit {
    */
   @Output() readonly opacityReset = new EventEmitter();
 
+  /**
+   * Emitted when slider thumb is moved
+   */
+  @Output() readonly sliderChanged = new EventEmitter<string>();
+
   prevOpacity: number;
 
   ngOnInit(): void {
@@ -53,16 +58,6 @@ export class OpacitySliderComponent implements OnInit {
 
   reset(): void {
     this.prevOpacity = 20;
-  }
-
-  /**
-   * Emits opacityChange with the new opacity value
-   *
-   * @param newOpacity The updated opacity value
-   */
-  changeOpacity(newOpacity: string): void {
-    this.opacity = parseInt(newOpacity, 10);
-    this.opacityChange.emit(this.opacity);
   }
 
   /**

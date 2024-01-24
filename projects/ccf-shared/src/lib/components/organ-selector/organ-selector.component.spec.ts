@@ -1,4 +1,4 @@
-import * as ResizeModule from 'css-element-queries';
+import * as resizeModule from 'css-element-queries';
 import { Shallow } from 'shallow-render';
 
 import { ALL_ORGANS, OrganInfo, OrganSelectorComponent } from './organ-selector.component';
@@ -19,12 +19,12 @@ describe('OrganSelectorComponent', () => {
 
   beforeEach(() => {
     shallow = new Shallow(OrganSelectorComponent, OrganSelectorModule);
-    spyOn(ResizeModule, 'ResizeSensor').and.callFake(function (_element, callback): ResizeModule.ResizeSensor {
+    spyOn(resizeModule, 'ResizeSensor').and.callFake(function (_element, callback): resizeModule.ResizeSensor {
       (async () => {
         await wait(100);
         callback({ width: 0, height: 0 });
       })();
-      return jasmine.createSpyObj<ResizeModule.ResizeSensor>('', ['detach']);
+      return jasmine.createSpyObj<resizeModule.ResizeSensor>('', ['detach']);
     });
   });
 

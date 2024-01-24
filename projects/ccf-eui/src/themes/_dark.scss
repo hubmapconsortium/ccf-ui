@@ -1,5 +1,4 @@
 @use '@angular/material' as mat;
-@use '@angular/material/theming' as *;
 @use 'common/utility';
 
 
@@ -11,7 +10,6 @@ $primary-colors: utility.add-colors(mat.$gray-palette, (
   contrast: (
     "white": black,
     "black": white,
-    850: $light-primary-text
   )
 ));
 

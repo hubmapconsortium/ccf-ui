@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: space-between;
   border-radius: 0.1875rem;
-  
+
 
   .slider-box {
     display: flex;
@@ -19,17 +19,20 @@
       align-items: center;
       height: 100%;
 
-      .slider {
+      mat-slider {
         width: 100%;
-        height: 100%;
 
-        ::ng-deep .mat-slider-wrapper {
-          top: 1.125rem;
-        }
-        
         &.disabled {
           pointer-events: none;
           cursor: not-allowed;
+        }
+
+        ::ng-deep mat-slider-visual-thumb {
+          transition: none;
+        }
+
+        ::ng-deep .mat-ripple {
+          display: none;
         }
       }
 
@@ -50,13 +53,13 @@
         transition: .6s;
         border-radius: 0.25rem;
       }
-    
+
       .visibility {
         transition: .6s;
         cursor: pointer;
         padding: 0.25rem;
         border-radius: 0.25rem;
-    
+
         &.hidden {
           display: none;
         }

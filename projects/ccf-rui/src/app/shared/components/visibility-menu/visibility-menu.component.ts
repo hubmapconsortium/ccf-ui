@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  HostBinding,
+  Input,
+  Output
+} from '@angular/core';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 import { VisibilityItem } from '../../../core/models/visibility-item';

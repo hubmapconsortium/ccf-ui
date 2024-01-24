@@ -44,6 +44,10 @@
     width: 100%;
     height: calc(100% - 3.5rem);
 
+    mat-divider {
+      border-top-width: 1px;
+    }
+
     .button {
       border-width: 1px;
       border-style: solid;

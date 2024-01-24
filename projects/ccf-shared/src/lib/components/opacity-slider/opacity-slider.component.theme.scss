@@ -1,5 +1,5 @@
 @use '@angular/material' as mat;
-@use '@angular/material/theming' as *;
+
 
 @mixin theme($theme) {
   $color-config: mat.get-color-config($theme);
@@ -10,16 +10,18 @@
 
   .ccf-opacity-slider {
     mat-slider {
-      .mat-slider-thumb {
-        background-color: mat.get-color-from-palette($foreground, main) !important;
-      }
-
-      .mat-slider-track-background {
+      .mdc-slider__track--active {
+        border-top-color: mat.get-color-from-palette($foreground, main) !important;
         background-color: mat.get-color-from-palette($foreground, icons-disabled);
       }
 
-      .mat-slider-track-fill {
+      .mdc-slider__track--active_fill {
         background-color: mat.get-color-from-palette($foreground, main);
+      }
+
+      .mdc-slider__thumb-knob {
+        background-color: mat.get-color-from-palette($foreground, main) !important;
+        border-color: mat.get-color-from-palette($foreground, main) !important;
       }
     }
 
