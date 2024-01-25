@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 
-
 /** Type of keys allowed in the global object */
 export type GlobalKey = string | symbol;
 
@@ -13,7 +12,7 @@ declare let global: GlobalThis;
  * Provide functionality for interacting with the global object.
  */
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class GlobalsService {
   /**
@@ -26,8 +25,8 @@ export class GlobalsService {
       obj: {
         configurable: false,
         writable: false,
-        value: obj
-      }
+        value: obj,
+      },
     });
 
     return obj;
@@ -56,13 +55,16 @@ export class GlobalsService {
    * @returns The value if it exists otherwise the default value
    */
   get<K extends keyof GlobalThis>(key: K): GlobalThis[K];
-  get<K extends keyof GlobalThis, D>(key: K, def: D): NonNullable<GlobalThis[K]> | D;
+  get<K extends keyof GlobalThis, D>(
+    key: K,
+    def: D
+  ): NonNullable<GlobalThis[K]> | D;
   get<T = unknown>(key: GlobalKey): T | null | undefined;
   get<T = unknown, D = T>(key: GlobalKey, def: D): T | D;
 
   get(key: GlobalKey, def?: unknown): unknown {
     const { obj } = this;
-    return (obj && obj[key] as unknown) ?? def;
+    return (obj && (obj[key] as unknown)) ?? def;
   }
 
   /**
@@ -114,19 +116,24 @@ export class GlobalsService {
     }
 
     // Check the common places for a global object
-    if (typeof global !== 'undefined') { // Node.js environment
+    if (typeof global !== 'undefined') {
+      // Node.js environment
       return global;
-    } else if (typeof window !== 'undefined') { // Browser environment
+    } else if (typeof window !== 'undefined') {
+      // Browser environment
       return window;
-    } else if (typeof self !== 'undefined') { // Web worker environment
+    } else if (typeof self !== 'undefined') {
+      // Web worker environment
       return self;
     }
 
     try {
       // One last try - may fail depending on content security policy (CSP) settings
       // eslint-disable-next-line no-new-func, @typescript-eslint/no-implied-eval
-      return (new Function('return this;'))() as GlobalThis | undefined;
-    } catch (_ignored) { /* Ignore errors */ }
+      return new Function('return this;')() as GlobalThis | undefined;
+    } catch (_ignored) {
+      /* Ignore errors */
+    }
 
     return undefined;
   }

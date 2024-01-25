@@ -1,13 +1,25 @@
 import {
-  ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Inject, InjectionToken, Input, Output,
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  HostBinding,
+  Inject,
+  InjectionToken,
+  Input,
+  Output,
 } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
 import { bind as Bind } from 'bind-decorator';
-import { lastValueFrom, from, Observable, ObservableInput } from 'rxjs';
-import { distinctUntilChanged, map, startWith, switchMap, take } from 'rxjs/operators';
+import { Observable, ObservableInput, from, lastValueFrom } from 'rxjs';
+import {
+  distinctUntilChanged,
+  map,
+  startWith,
+  switchMap,
+  take,
+} from 'rxjs/operators';
 
 import { DecoratedRange } from '../decorated-text/decorated-range';
-
 
 /** A single suggestion to show in autocomplete  */
 export interface AutoCompleteOption {
@@ -29,10 +41,9 @@ export const DEFAULT_MAX_OPTIONS = new InjectionToken(
     providedIn: 'root',
     factory(): number {
       return 10;
-    }
+    },
   }
 );
-
 
 /**
  * A text search bar with optional autocompletion functionality.
@@ -41,7 +52,7 @@ export const DEFAULT_MAX_OPTIONS = new InjectionToken(
   selector: 'ccf-text-search',
   templateUrl: './text-search.component.html',
   styleUrls: ['./text-search.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TextSearchComponent {
   /** HTML class name */
@@ -73,7 +84,10 @@ export class TextSearchComponent {
    * Function providing the autocomplete suggestions.
    * Receives the latest search bar text and the maximum of suggestions to provide.
    */
-  @Input() autoCompleter?: (search: string, max: number) => ObservableInput<AutoCompleteOption[]>;
+  @Input() autoCompleter?: (
+    search: string,
+    max: number
+  ) => ObservableInput<AutoCompleteOption[]>;
 
   /**
    * Emits when the search bar text changes
@@ -124,10 +138,14 @@ export class TextSearchComponent {
     }
 
     const options = autoCompleter(search, maxOptions);
-    return lastValueFrom(from(options).pipe(
-      take(1),
-      map(array => array.length <= maxOptions ? array : array.slice(0, maxOptions))
-    ));
+    return lastValueFrom(
+      from(options).pipe(
+        take(1),
+        map((array) =>
+          array.length <= maxOptions ? array : array.slice(0, maxOptions)
+        )
+      )
+    );
   }
 
   /**

@@ -1,16 +1,26 @@
 import { Injectable } from '@angular/core';
+import {
+  DatabaseStatus,
+  DefaultService,
+  MinMax,
+  SpatialSceneNode as RawSpatialSceneNode,
+  SpatialSearch,
+} from '@ccf-openapi/ng-client';
 import { Matrix4 } from '@math.gl/core';
 import {
-  AggregateResult, Filter, OntologyTreeModel, OntologyTreeNode, SpatialEntity, SpatialSceneNode, TissueBlockResult,
+  AggregateResult,
+  Filter,
+  OntologyTreeModel,
+  SpatialEntity,
+  SpatialSceneNode,
+  TissueBlockResult,
 } from 'ccf-database';
-import { DatabaseStatus, DefaultService, MinMax, SpatialSearch, SpatialSceneNode as RawSpatialSceneNode } from 'ccf-openapi/angular-client';
-import { combineLatest, Observable, of, Subject } from 'rxjs';
+import { Observable, Subject, combineLatest } from 'rxjs';
 import { map, switchMap, take, tap } from 'rxjs/operators';
 import { Cacheable } from 'ts-cacheable';
 
 import { GlobalConfigState } from '../../config/global-config.state';
 import { DataSource } from './data-source';
-
 
 export interface ApiEndpointDataSourceOptions {
   remoteApiEndpoint: string;
@@ -42,33 +52,31 @@ interface FilterParams {
   spatial?: SpatialSearch[];
 }
 
-
 // Cache config
 const buster$ = new Subject<unknown>();
 
 const CACHE_CONFIG_NO_PARAMS: IObservableCacheConfig = {
-  cacheBusterObserver: buster$
+  cacheBusterObserver: buster$,
 };
 
 const CACHE_CONFIG_PARAMS: IObservableCacheConfig = {
   cacheBusterObserver: buster$,
-  maxCacheCount: 4
+  maxCacheCount: 4,
 };
-
 
 // Utility
 function cast<T>(): (data: unknown) => T {
-  return data => data as T;
+  return (data) => data as T;
 }
 
 function rangeToMinMax(
   range: [number, number] | undefined,
-  low: number, high: number
+  low: number,
+  high: number
 ): MinMax | undefined {
-  return range ? {
-    min: range[0] > low ? range[0] : undefined,
-    max: range[1] < high ? range[1] : undefined
-  } : undefined;
+  return range
+    ? { min: range[0] > low ? range[0] : undefined, max: range[1] < high ? range[1] : undefined, }
+    : undefined;
 }
 
 function filterToParams(filter?: Filter): FilterParams {
@@ -82,20 +90,21 @@ function filterToParams(filter?: Filter): FilterParams {
     consortiums: filter?.consortiums,
     providers: filter?.tmc,
     technologies: filter?.technologies,
-    spatial: filter?.spatialSearches
+    spatial: filter?.spatialSearches,
   };
 }
 
-function spatialSceneNodeReviver(nodes: RawSpatialSceneNode[]): SpatialSceneNode[] {
-  return nodes.map(node => ({
+function spatialSceneNodeReviver(
+  nodes: RawSpatialSceneNode[]
+): SpatialSceneNode[] {
+  return nodes.map((node) => ({
     ...(node as SpatialSceneNode),
-    transformMatrix: new Matrix4(node.transformMatrix ?? [])
+    transformMatrix: new Matrix4(node.transformMatrix ?? []),
   }));
 }
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApiEndpointDataSourceService implements DataSource {
   constructor(
@@ -106,32 +115,36 @@ export class ApiEndpointDataSourceService implements DataSource {
   }
 
   getDatabaseStatus(): Observable<DatabaseStatus> {
-    return this.doRequest(params => this.api.dbStatus(params));
+    return this.doRequest((params) => this.api.dbStatus(params));
   }
 
   @Cacheable(CACHE_CONFIG_NO_PARAMS)
   getProviderNames(): Observable<string[]> {
-    return this.doRequest(params => this.api.providerNames(params));
+    return this.doRequest((params) => this.api.providerNames(params));
   }
 
   @Cacheable(CACHE_CONFIG_NO_PARAMS)
   getDatasetTechnologyNames(): Observable<string[]> {
-    return this.doRequest(params => this.api.technologyNames(params));
+    return this.doRequest((params) => this.api.technologyNames(params));
   }
 
   @Cacheable(CACHE_CONFIG_NO_PARAMS)
   getOntologyTreeModel(): Observable<OntologyTreeModel> {
     return this.doRequest(
-      params => this.api.ontologyTreeModel(params),
-      undefined, {}, cast<OntologyTreeModel>()
+      (params) => this.api.ontologyTreeModel(params),
+      undefined,
+      {},
+      cast<OntologyTreeModel>()
     );
   }
 
   @Cacheable(CACHE_CONFIG_NO_PARAMS)
   getCellTypeTreeModel(): Observable<OntologyTreeModel> {
     return this.doRequest(
-      params => this.api.cellTypeTreeModel(params),
-      undefined, {}, cast<OntologyTreeModel>()
+      (params) => this.api.cellTypeTreeModel(params),
+      undefined,
+      {},
+      cast<OntologyTreeModel>()
     );
   }
 
@@ -143,55 +156,67 @@ export class ApiEndpointDataSourceService implements DataSource {
   @Cacheable(CACHE_CONFIG_NO_PARAMS)
   getBiomarkerTreeModel(): Observable<OntologyTreeModel> {
     return this.doRequest(
-      params => this.api.biomarkerTreeModel(params),
-      undefined, {}, cast<OntologyTreeModel>()
+      (params) => this.api.biomarkerTreeModel(params),
+      undefined,
+      {},
+      cast<OntologyTreeModel>()
     );
   }
 
   @Cacheable(CACHE_CONFIG_NO_PARAMS)
   getReferenceOrgans(): Observable<SpatialEntity[]> {
     return this.doRequest(
-      params => this.api.referenceOrgans(params),
-      undefined, {}, cast<SpatialEntity[]>()
+      (params) => this.api.referenceOrgans(params),
+      undefined,
+      {},
+      cast<SpatialEntity[]>()
     );
   }
 
   @Cacheable(CACHE_CONFIG_PARAMS)
   getTissueBlockResults(filter?: Filter): Observable<TissueBlockResult[]> {
     return this.doRequest(
-      params => this.api.tissueBlocks(params),
-      filter, {}, cast<TissueBlockResult[]>()
+      (params) => this.api.tissueBlocks(params),
+      filter,
+      {},
+      cast<TissueBlockResult[]>()
     );
   }
 
   @Cacheable(CACHE_CONFIG_PARAMS)
   getAggregateResults(filter?: Filter): Observable<AggregateResult[]> {
     return this.doRequest(
-      params => this.api.aggregateResults(params),
+      (params) => this.api.aggregateResults(params),
       filter
     );
   }
 
   @Cacheable(CACHE_CONFIG_PARAMS)
-  getOntologyTermOccurences(filter?: Filter): Observable<Record<string, number>> {
+  getOntologyTermOccurences(
+    filter?: Filter
+  ): Observable<Record<string, number>> {
     return this.doRequest(
-      params => this.api.ontologyTermOccurences(params),
+      (params) => this.api.ontologyTermOccurences(params),
       filter
     );
   }
 
   @Cacheable(CACHE_CONFIG_PARAMS)
-  getCellTypeTermOccurences(filter?: Filter): Observable<Record<string, number>> {
+  getCellTypeTermOccurences(
+    filter?: Filter
+  ): Observable<Record<string, number>> {
     return this.doRequest(
-      params => this.api.cellTypeTermOccurences(params),
+      (params) => this.api.cellTypeTermOccurences(params),
       filter
     );
   }
 
   @Cacheable(CACHE_CONFIG_PARAMS)
-  getBiomarkerTermOccurences(filter?: Filter): Observable<Record<string, number>> {
+  getBiomarkerTermOccurences(
+    filter?: Filter
+  ): Observable<Record<string, number>> {
     return this.doRequest(
-      params => this.api.biomarkerTermOccurences(params),
+      (params) => this.api.biomarkerTermOccurences(params),
       filter
     );
   }
@@ -199,16 +224,23 @@ export class ApiEndpointDataSourceService implements DataSource {
   @Cacheable(CACHE_CONFIG_PARAMS)
   getScene(filter?: Filter): Observable<SpatialSceneNode[]> {
     return this.doRequest(
-      params => this.api.scene(params),
-      filter, {}, spatialSceneNodeReviver
+      (params) => this.api.scene(params),
+      filter,
+      {},
+      spatialSceneNodeReviver
     );
   }
 
   @Cacheable(CACHE_CONFIG_PARAMS)
-  getReferenceOrganScene(organIri: string, filter?: Filter): Observable<SpatialSceneNode[]> {
+  getReferenceOrganScene(
+    organIri: string,
+    filter?: Filter
+  ): Observable<SpatialSceneNode[]> {
     return this.doRequest(
-      params => this.api.referenceOrganScene(params),
-      filter, { organIri }, spatialSceneNodeReviver
+      (params) => this.api.referenceOrganScene(params),
+      filter,
+      { organIri },
+      spatialSceneNodeReviver
     );
   }
 
@@ -234,7 +266,7 @@ export class ApiEndpointDataSourceService implements DataSource {
 
     return combineLatest([
       globalConfig.getOption('remoteApiEndpoint'),
-      globalConfig.getOption('hubmapToken')
+      globalConfig.getOption('hubmapToken'),
     ]).pipe(
       take(1),
       tap(([endpoint, token]) => {
@@ -244,7 +276,7 @@ export class ApiEndpointDataSourceService implements DataSource {
         }
       }),
       switchMap(() => method(requestParams)),
-      map(data => reviver ? reviver(data) : data)
+      map((data) => (reviver ? reviver(data) : data))
     );
   }
 }

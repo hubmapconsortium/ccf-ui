@@ -1,11 +1,24 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable no-underscore-dangle */
 import {
-  AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, HostBinding, Input, OnDestroy, Output, ViewChild,
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  EventEmitter,
+  HostBinding,
+  Input,
+  OnDestroy,
+  Output,
+  ViewChild,
 } from '@angular/core';
-import { BodyUI, NodeClickEvent, NodeDragEvent, SpatialSceneNode } from 'ccf-body-ui';
+import {
+  BodyUI,
+  NodeClickEvent,
+  NodeDragEvent,
+  SpatialSceneNode,
+} from 'ccf-body-ui';
 import { Subscription } from 'rxjs';
-
 
 interface XYZTriplet<T = number> {
   x: T;
@@ -20,7 +33,7 @@ interface XYZTriplet<T = number> {
   selector: 'ccf-body-ui',
   templateUrl: './body-ui.component.html',
   styleUrls: ['./body-ui.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BodyUiComponent implements AfterViewInit, OnDestroy {
   /** HTML class name */
@@ -130,20 +143,21 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
   private _rotationX = 0;
   private _zoom = 9.5;
   private _target: [number, number, number] = [0, 0, 0];
-  private _bounds: XYZTriplet;
+  private _bounds!: XYZTriplet;
   private _scene: SpatialSceneNode[] = [];
   private subscriptions: Subscription[] = [];
-  private _camera: string;
+  private _camera!: string;
 
   /**
    * Instance of the body UI class for rendering the deckGL scene
    */
-  bodyUI: BodyUI;
+  bodyUI!: BodyUI;
 
   /**
    * Reference to the div we are using to mount the body UI to.
    */
-  @ViewChild('bodyCanvas', { read: ElementRef }) bodyCanvas: ElementRef<HTMLCanvasElement>;
+  @ViewChild('bodyCanvas', { read: ElementRef })
+    bodyCanvas!: ElementRef<HTMLCanvasElement>;
 
   /**
    * Performs setup required after initialization
@@ -178,9 +192,9 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
       minRotationX: -75,
       maxRotationX: 75,
       interactive: this.interactive,
-      camera: this.camera
+      camera: this.camera,
     });
-    canvas.addEventListener('contextmenu', evt => evt.preventDefault());
+    canvas.addEventListener('contextmenu', (evt) => evt.preventDefault());
     await bodyUI.initialize();
     this.bodyUI = bodyUI;
     (window as unknown as { bodyUI: unknown }).bodyUI = bodyUI;
@@ -194,11 +208,17 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
       this.bodyUI.setTarget(this.target);
     }
     this.subscriptions = [
-      this.bodyUI.sceneRotation$.subscribe((rotation) => this.rotationChange.next(rotation)),
+      this.bodyUI.sceneRotation$.subscribe((rotation) =>
+        this.rotationChange.next(rotation)
+      ),
       this.bodyUI.nodeDrag$.subscribe((event) => this.nodeDrag.emit(event)),
       this.bodyUI.nodeClick$.subscribe((event) => this.nodeClick.emit(event)),
-      this.bodyUI.nodeHoverStart$.subscribe((event) => this.nodeHoverStart.emit(event)),
-      this.bodyUI.nodeHoverStop$.subscribe((event) => this.nodeHoverStop.emit(event))
+      this.bodyUI.nodeHoverStart$.subscribe((event) =>
+        this.nodeHoverStart.emit(event)
+      ),
+      this.bodyUI.nodeHoverStop$.subscribe((event) =>
+        this.nodeHoverStop.emit(event)
+      ),
     ];
     this.initialized.emit();
   }
@@ -210,7 +230,7 @@ export class BodyUiComponent implements AfterViewInit, OnDestroy {
   }
 
   private clearSubscriptions(): void {
-    this.subscriptions.forEach(s => s.unsubscribe());
+    this.subscriptions.forEach((s) => s.unsubscribe());
     this.subscriptions = [];
   }
 

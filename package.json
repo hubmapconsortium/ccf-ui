@@ -26,6 +26,7 @@
     "@angular/platform-browser-dynamic": "^17.0.9",
     "@angular/router": "^17.0.9",
     "@angular/youtube-player": "17.0",
+    "@ccf-openapi/ng-client": "^1.2.0",
     "@comunica/query-sparql-rdfjs": "^2.8.1",
     "@deck.gl/core": "~8.8.20",
     "@deck.gl/geo-layers": "~8.8.20",

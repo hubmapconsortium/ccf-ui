@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, ChangeDetectorRef, HostBinding } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  HostBinding,
+  OnDestroy,
+} from '@angular/core';
 import { Store } from '@ngxs/store';
 import { Subscription } from 'rxjs';
 
@@ -14,7 +20,7 @@ export type KVList<T = unknown> = KVPair<T>[];
   selector: 'ccf-store-debug',
   templateUrl: './store-debug.component.html',
   styleUrls: ['./store-debug.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StoreDebugComponent implements OnDestroy {
   /** HTML class name */
@@ -25,8 +31,13 @@ export class StoreDebugComponent implements OnDestroy {
    */
   get data(): KVList<KVList> {
     const states: KVList<Record<string, unknown>> = Object.entries(this.root);
-    const stateValues: KVList<KVList> = states.map(([key, values]) => [key, Object.entries(values)]);
-    const statesWithData = stateValues.filter(([_key, values]) => values.length > 0);
+    const stateValues: KVList<KVList> = states.map(([key, values]) => [
+      key,
+      Object.entries(values),
+    ]);
+    const statesWithData = stateValues.filter(
+      ([_key, values]) => values.length > 0
+    );
     return statesWithData;
   }
 
@@ -44,7 +55,7 @@ export class StoreDebugComponent implements OnDestroy {
    * @param cdr Change detection for this component.
    */
   constructor(store: Store, cdr: ChangeDetectorRef) {
-    const sub = store.subscribe(root => {
+    const sub = store.subscribe((root) => {
       this.root = root as Record<string, Record<string, unknown>>;
       cdr.markForCheck();
     });

@@ -1,4 +1,12 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, OnInit, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  HostBinding,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 
 /**
  * Slider for setting opacity on an anatomical structure
@@ -7,10 +15,9 @@ import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, O
   selector: 'ccf-opacity-slider',
   templateUrl: './opacity-slider.component.html',
   styleUrls: ['./opacity-slider.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OpacitySliderComponent implements OnInit {
-
   /**
    * HTML class name
    */
@@ -46,7 +53,7 @@ export class OpacitySliderComponent implements OnInit {
    */
   @Output() readonly sliderChanged = new EventEmitter<string>();
 
-  prevOpacity: number;
+  prevOpacity!: number;
 
   ngOnInit(): void {
     if (this.visible) {

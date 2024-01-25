@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Inject,
+  OnInit,
+} from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { DocumentationContent } from '../info-button/info-button.service';
 
@@ -18,7 +23,7 @@ export interface InfoDialogData {
   selector: 'ccf-info-dialog',
   templateUrl: './info-dialog.component.html',
   styleUrls: ['./info-dialog.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InfoDialogComponent implements OnInit {
   /**
@@ -41,7 +46,7 @@ export class InfoDialogComponent implements OnInit {
    */
   constructor(
     public dialogRef: MatDialogRef<InfoDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: InfoDialogData,
+    @Inject(MAT_DIALOG_DATA) public data: InfoDialogData
   ) {
     this.documentationContents = data.content || [];
     this.infoTitle = data.title || '';
@@ -61,7 +66,9 @@ export class InfoDialogComponent implements OnInit {
    * Closes info dialog component
    */
   close(): void {
-    document.getElementsByClassName('modal-animated')[0]?.classList.add('modal-animate-fade-out');
+    document
+      .getElementsByClassName('modal-animated')[0]
+      ?.classList.add('modal-animate-fade-out');
 
     setTimeout(() => {
       this.dialogRef.close();

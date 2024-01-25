@@ -1,5 +1,11 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
-
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  HostBinding,
+  Input,
+  Output,
+} from '@angular/core';
 
 /**
  * Base interface of items in the spatial search list
@@ -12,7 +18,6 @@ export interface SpatialSearchListItem {
   description: string;
 }
 
-
 /**
  * Displays a list of spatial searches
  */
@@ -20,7 +25,7 @@ export interface SpatialSearchListItem {
   selector: 'ccf-spatial-search-list',
   templateUrl: './spatial-search-list.component.html',
   styleUrls: ['./spatial-search-list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SpatialSearchListComponent<T extends SpatialSearchListItem> {
   /** HTML class */
@@ -56,10 +61,10 @@ export class SpatialSearchListComponent<T extends SpatialSearchListItem> {
    * @param selected What to set the selected state to
    */
   updateItemSelection(index: number, selected: boolean): void {
-    const newItems = this.items = [...this.items];
+    const newItems = (this.items = [...this.items]);
     newItems[index] = { ...newItems[index], selected };
 
-    const selectedItems = newItems.filter(item => item.selected);
+    const selectedItems = newItems.filter((item) => item.selected);
     this.selectionChanged.emit(selectedItems);
   }
 
@@ -69,7 +74,7 @@ export class SpatialSearchListComponent<T extends SpatialSearchListItem> {
    * @param index Index of the item to remove
    */
   removeItem(index: number): void {
-    const newItems = this.items = [...this.items];
+    const newItems = (this.items = [...this.items]);
     const [item] = newItems.splice(index, 1);
     this.itemRemoved.emit(item);
   }

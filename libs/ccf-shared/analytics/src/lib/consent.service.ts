@@ -1,9 +1,7 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { ReplaySubject } from 'rxjs';
 
-
 export type Consent = 'not-set' | 'given' | 'rescinded';
-
 
 @Injectable()
 export class ConsentService implements OnDestroy {

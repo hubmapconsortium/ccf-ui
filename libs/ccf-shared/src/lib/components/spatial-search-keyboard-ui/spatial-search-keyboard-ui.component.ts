@@ -1,5 +1,11 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
-
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  HostBinding,
+  Input,
+  Output,
+} from '@angular/core';
 
 /**
  * Keyboard control UI for spatial search
@@ -8,7 +14,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, O
   selector: 'ccf-spatial-search-keyboard-ui',
   templateUrl: './spatial-search-keyboard-ui.component.html',
   styleUrls: ['./spatial-search-keyboard-ui.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SpatialSearchKeyboardUIComponent {
   /** HTML class */
@@ -18,7 +24,7 @@ export class SpatialSearchKeyboardUIComponent {
   @Input() currentKey?: string;
 
   /** True if shift key is pressed */
-  @Input() shiftPressed: boolean;
+  @Input() shiftPressed!: boolean;
 
   /** Emits when a key is clicked */
   @Output() readonly keyClicked = new EventEmitter<string>();
@@ -30,27 +36,27 @@ export class SpatialSearchKeyboardUIComponent {
   keyMap = [
     {
       key: 'w',
-      direction: 'north'
+      direction: 'north',
     },
     {
       key: 's',
-      direction: 'south'
+      direction: 'south',
     },
     {
       key: 'a',
-      direction: 'west'
+      direction: 'west',
     },
     {
       key: 'd',
-      direction: 'east'
+      direction: 'east',
     },
     {
       key: 'e',
-      direction: 'north_east'
+      direction: 'north_east',
     },
     {
       key: 'q',
-      direction: 'south_west'
-    }
+      direction: 'south_west',
+    },
   ];
 }

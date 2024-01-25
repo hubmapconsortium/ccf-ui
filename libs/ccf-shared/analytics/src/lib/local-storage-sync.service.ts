@@ -3,12 +3,13 @@ import { Subscription } from 'rxjs';
 
 import { Consent, ConsentService } from './consent.service';
 
-
-export const LOCAL_STORAGE_CONSENT_KEY = new InjectionToken('Key under which consent is stored', {
-  providedIn: 'root',
-  factory: () => 'ALLOW_TELEMETRY'
-});
-
+export const LOCAL_STORAGE_CONSENT_KEY = new InjectionToken(
+  'Key under which consent is stored',
+  {
+    providedIn: 'root',
+    factory: () => 'ALLOW_TELEMETRY',
+  }
+);
 
 @Injectable()
 export class LocalStorageSyncService implements OnDestroy {
@@ -21,11 +22,15 @@ export class LocalStorageSyncService implements OnDestroy {
   ) {
     try {
       this.storage = localStorage;
-    } catch (_error) { /* Ignored */ }
+    } catch (_error) {
+      /* Ignored */
+    }
 
     consentService.setConsent(this.loadConsent());
     this.subscriptions.add(
-      consentService.consentChange.subscribe(consent => this.saveConsent(consent))
+      consentService.consentChange.subscribe((consent) =>
+        this.saveConsent(consent)
+      )
     );
   }
 

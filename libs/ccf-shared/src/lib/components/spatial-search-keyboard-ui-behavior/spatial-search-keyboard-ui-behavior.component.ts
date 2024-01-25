@@ -1,4 +1,12 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, HostListener, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  HostBinding,
+  HostListener,
+  Input,
+  Output,
+} from '@angular/core';
 
 export interface Position {
   x: number;
@@ -6,18 +14,18 @@ export interface Position {
   z: number;
 }
 
-
 /**
  * Behavioral component for spatial search keyboard UI
  */
 @Component({
   selector: 'ccf-spatial-search-keyboard-ui-behavior',
   templateUrl: './spatial-search-keyboard-ui-behavior.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SpatialSearchKeyboardUIBehaviorComponent {
   /** HTML class */
-  @HostBinding('class') readonly className = 'ccf-spatial-search-keyboard-ui-behavior';
+  @HostBinding('class') readonly className =
+    'ccf-spatial-search-keyboard-ui-behavior';
 
   /** Amount the position shifts for each key press */
   @Input() delta = 1;
@@ -26,7 +34,7 @@ export class SpatialSearchKeyboardUIBehaviorComponent {
   @Input() shiftDelta = 2;
 
   /** Current position of spatial search */
-  @Input() position: Position;
+  @Input() position!: Position;
 
   @Input() disablePositionChange = false;
 
@@ -37,7 +45,7 @@ export class SpatialSearchKeyboardUIBehaviorComponent {
   currentKey?: string;
 
   /** Current delta */
-  currentDelta: number;
+  currentDelta!: number;
 
   /** True while shift key is pressed */
   shiftPressed = false;
@@ -54,22 +62,40 @@ export class SpatialSearchKeyboardUIBehaviorComponent {
       this.currentKey = key.toLowerCase();
       switch (this.currentKey) {
         case 'q':
-          this.position = { ...this.position, z: this.position.z + this.currentDelta };
+          this.position = {
+            ...this.position,
+            z: this.position.z + this.currentDelta,
+          };
           break;
         case 'e':
-          this.position = { ...this.position, z: this.position.z - this.currentDelta };
+          this.position = {
+            ...this.position,
+            z: this.position.z - this.currentDelta,
+          };
           break;
         case 'w':
-          this.position = { ...this.position, y: this.position.y + this.currentDelta };
+          this.position = {
+            ...this.position,
+            y: this.position.y + this.currentDelta,
+          };
           break;
         case 's':
-          this.position = { ...this.position, y: this.position.y - this.currentDelta };
+          this.position = {
+            ...this.position,
+            y: this.position.y - this.currentDelta,
+          };
           break;
         case 'a':
-          this.position = { ...this.position, x: this.position.x - this.currentDelta };
+          this.position = {
+            ...this.position,
+            x: this.position.x - this.currentDelta,
+          };
           break;
         case 'd':
-          this.position = { ...this.position, x: this.position.x + this.currentDelta };
+          this.position = {
+            ...this.position,
+            x: this.position.x + this.currentDelta,
+          };
           break;
         default:
           break;

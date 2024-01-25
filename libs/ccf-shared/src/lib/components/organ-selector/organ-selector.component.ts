@@ -1,6 +1,16 @@
 import {
-  AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, HostBinding, Input,
-  OnChanges, OnDestroy, Output, SimpleChanges, ViewChild
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  EventEmitter,
+  HostBinding,
+  Input,
+  OnChanges,
+  OnDestroy,
+  Output,
+  SimpleChanges,
+  ViewChild,
 } from '@angular/core';
 import { ResizeSensor } from 'css-element-queries';
 
@@ -13,14 +23,14 @@ export const ALL_POSSIBLE_ORGANS = [
     organ: 'Skin',
     name: 'Skin',
     hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0002097'
+    id: 'http://purl.obolibrary.org/obo/UBERON_0002097',
   },
   {
     src: 'app:brain',
     organ: 'Brain',
     name: 'Brain',
     hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0000955'
+    id: 'http://purl.obolibrary.org/obo/UBERON_0000955',
   },
   {
     disabled: true,
@@ -28,14 +38,14 @@ export const ALL_POSSIBLE_ORGANS = [
     organ: 'Lymph Node',
     name: 'Lymph Node',
     hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0000029'
+    id: 'http://purl.obolibrary.org/obo/UBERON_0000029',
   },
   {
     src: 'app:lymph-nodes',
     organ: 'Lymph Node',
     name: 'Lymph Node',
     hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0002509'
+    id: 'http://purl.obolibrary.org/obo/UBERON_0002509',
   },
   {
     disabled: true,
@@ -44,7 +54,7 @@ export const ALL_POSSIBLE_ORGANS = [
     name: 'Eye, L',
     side: 'left',
     hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0000970'
+    id: 'http://purl.obolibrary.org/obo/UBERON_0000970',
   },
   {
     src: 'app:eye',
@@ -52,7 +62,7 @@ export const ALL_POSSIBLE_ORGANS = [
     name: 'Eye, L',
     side: 'left',
     hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0004548'
+    id: 'http://purl.obolibrary.org/obo/UBERON_0004548',
   },
   {
     src: 'app:eye',
@@ -60,7 +70,7 @@ export const ALL_POSSIBLE_ORGANS = [
     name: 'Eye, R',
     side: 'right',
     hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0004549'
+    id: 'http://purl.obolibrary.org/obo/UBERON_0004549',
   },
   {
     disabled: true,
@@ -70,7 +80,7 @@ export const ALL_POSSIBLE_ORGANS = [
     side: 'left',
     hasSex: false,
     sex: 'female',
-    id: 'http://purl.obolibrary.org/obo/UBERON_0003889'
+    id: 'http://purl.obolibrary.org/obo/UBERON_0003889',
   },
   {
     src: 'app:fallopian-tube-left',
@@ -79,7 +89,7 @@ export const ALL_POSSIBLE_ORGANS = [
     side: 'left',
     hasSex: false,
     sex: 'female',
-    id: 'http://purl.obolibrary.org/obo/UBERON_0001303'
+    id: 'http://purl.obolibrary.org/obo/UBERON_0001303',
   },
   {
     src: 'app:fallopian-tube-right',
@@ -88,14 +98,14 @@ export const ALL_POSSIBLE_ORGANS = [
     side: 'right',
     hasSex: false,
     sex: 'female',
-    id: 'http://purl.obolibrary.org/obo/UBERON_0001302'
+    id: 'http://purl.obolibrary.org/obo/UBERON_0001302',
   },
   {
     src: 'app:heart',
     organ: 'Heart',
     name: 'Heart',
     hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0000948'
+    id: 'http://purl.obolibrary.org/obo/UBERON_0000948',
   },
   {
     disabled: true,
@@ -104,7 +114,7 @@ export const ALL_POSSIBLE_ORGANS = [
     name: 'Kidney, L',
     side: 'left',
     hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0002113'
+    id: 'http://purl.obolibrary.org/obo/UBERON_0002113',
   },
   {
     src: 'app:kidney-left',
@@ -112,7 +122,7 @@ export const ALL_POSSIBLE_ORGANS = [
     name: 'Kidney, L',
     side: 'left',
     hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0004538'
+    id: 'http://purl.obolibrary.org/obo/UBERON_0004538',
   },
   {
     src: 'app:kidney-right',
@@ -120,7 +130,7 @@ export const ALL_POSSIBLE_ORGANS = [
     name: 'Kidney, R',
     side: 'right',
     hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0004539'
+    id: 'http://purl.obolibrary.org/obo/UBERON_0004539',
   },
   {
     disabled: true,
@@ -129,7 +139,7 @@ export const ALL_POSSIBLE_ORGANS = [
     name: 'Knee, L',
     side: 'left',
     hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0001465'
+    id: 'http://purl.obolibrary.org/obo/UBERON_0001465',
   },
   {
     src: 'app:knee',
@@ -137,7 +147,7 @@ export const ALL_POSSIBLE_ORGANS = [
     name: 'Knee, L',
     side: 'left',
     hasSex: true,
-    id: 'http://purl.org/sig/ont/fma/fma24978'
+    id: 'http://purl.org/sig/ont/fma/fma24978',
   },
   {
     src: 'app:knee',
@@ -145,14 +155,14 @@ export const ALL_POSSIBLE_ORGANS = [
     name: 'Knee, R',
     side: 'right',
     hasSex: true,
-    id: 'http://purl.org/sig/ont/fma/fma24977'
+    id: 'http://purl.org/sig/ont/fma/fma24977',
   },
   {
     src: 'app:liver',
     organ: 'Liver',
     name: 'Liver',
     hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0002107'
+    id: 'http://purl.obolibrary.org/obo/UBERON_0002107',
   },
   {
     disabled: true,
@@ -160,14 +170,14 @@ export const ALL_POSSIBLE_ORGANS = [
     organ: 'Lung',
     name: 'Lungs',
     hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0002048'
+    id: 'http://purl.obolibrary.org/obo/UBERON_0002048',
   },
   {
     src: 'app:lung',
     organ: 'Lung',
     name: 'Lungs',
     hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0001004'
+    id: 'http://purl.obolibrary.org/obo/UBERON_0001004',
   },
   {
     disabled: true,
@@ -177,7 +187,7 @@ export const ALL_POSSIBLE_ORGANS = [
     side: 'left',
     hasSex: false,
     sex: 'female',
-    id: 'http://purl.obolibrary.org/obo/UBERON_0001911'
+    id: 'http://purl.obolibrary.org/obo/UBERON_0001911',
   },
   {
     src: 'app:mammary-gland',
@@ -186,7 +196,7 @@ export const ALL_POSSIBLE_ORGANS = [
     side: 'left',
     hasSex: false,
     sex: 'female',
-    id: 'http://purl.org/sig/ont/fma/fma57991'
+    id: 'http://purl.org/sig/ont/fma/fma57991',
   },
   {
     src: 'app:mammary-gland',
@@ -195,7 +205,7 @@ export const ALL_POSSIBLE_ORGANS = [
     side: 'right',
     hasSex: false,
     sex: 'female',
-    id: 'http://purl.org/sig/ont/fma/fma57987'
+    id: 'http://purl.org/sig/ont/fma/fma57987',
   },
   {
     disabled: true,
@@ -205,7 +215,7 @@ export const ALL_POSSIBLE_ORGANS = [
     side: 'left',
     hasSex: false,
     sex: 'female',
-    id: 'http://purl.obolibrary.org/obo/UBERON_0000992'
+    id: 'http://purl.obolibrary.org/obo/UBERON_0000992',
   },
   {
     src: 'app:ovary-left',
@@ -214,7 +224,7 @@ export const ALL_POSSIBLE_ORGANS = [
     side: 'left',
     hasSex: false,
     sex: 'female',
-    id: 'http://purl.org/sig/ont/fma/fma7214'
+    id: 'http://purl.org/sig/ont/fma/fma7214',
   },
   {
     src: 'app:ovary-right',
@@ -223,21 +233,21 @@ export const ALL_POSSIBLE_ORGANS = [
     side: 'right',
     hasSex: false,
     sex: 'female',
-    id: 'http://purl.org/sig/ont/fma/fma7213'
+    id: 'http://purl.org/sig/ont/fma/fma7213',
   },
   {
     src: 'app:larynx',
     organ: 'Larynx',
     name: 'Larynx',
     hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0001737'
+    id: 'http://purl.obolibrary.org/obo/UBERON_0001737',
   },
   {
     src: 'app:main-bronchus',
     organ: 'Main Bronchus',
     name: 'Main Bronchus',
     hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0002182'
+    id: 'http://purl.obolibrary.org/obo/UBERON_0002182',
   },
   {
     disabled: true,
@@ -246,7 +256,7 @@ export const ALL_POSSIBLE_ORGANS = [
     name: 'Palatine Tonsil, L',
     side: 'left',
     hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0002373'
+    id: 'http://purl.obolibrary.org/obo/UBERON_0002373',
   },
   {
     src: 'app:palatine-tonsil',
@@ -254,7 +264,7 @@ export const ALL_POSSIBLE_ORGANS = [
     name: 'Palatine Tonsil, L',
     side: 'left',
     hasSex: true,
-    id: 'http://purl.org/sig/ont/fma/fma54974'
+    id: 'http://purl.org/sig/ont/fma/fma54974',
   },
   {
     src: 'app:palatine-tonsil',
@@ -262,21 +272,21 @@ export const ALL_POSSIBLE_ORGANS = [
     name: 'Palatine Tonsil, R',
     side: 'right',
     hasSex: true,
-    id: 'http://purl.org/sig/ont/fma/fma54973'
+    id: 'http://purl.org/sig/ont/fma/fma54973',
   },
   {
     src: 'app:pancreas',
     organ: 'Pancreas',
     name: 'Pancreas',
     hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0001264'
+    id: 'http://purl.obolibrary.org/obo/UBERON_0001264',
   },
   {
     src: 'app:pelvis-f',
     organ: 'Pelvis',
     name: 'Pelvis',
     hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0001270'
+    id: 'http://purl.obolibrary.org/obo/UBERON_0001270',
   },
   {
     src: 'app:placenta',
@@ -284,7 +294,7 @@ export const ALL_POSSIBLE_ORGANS = [
     name: 'Placenta',
     hasSex: false,
     sex: 'female',
-    id: 'http://purl.obolibrary.org/obo/UBERON_0001987'
+    id: 'http://purl.obolibrary.org/obo/UBERON_0001987',
   },
   {
     src: 'app:prostate',
@@ -293,7 +303,7 @@ export const ALL_POSSIBLE_ORGANS = [
     hasSex: false,
     sex: 'male',
     id: 'http://purl.obolibrary.org/obo/UBERON_0002367',
-    disabled: true
+    disabled: true,
   },
   {
     src: 'app:prostate',
@@ -301,49 +311,49 @@ export const ALL_POSSIBLE_ORGANS = [
     name: 'Prostate',
     hasSex: false,
     sex: 'male',
-    id: 'http://purl.obolibrary.org/obo/UBERON_0000079'
+    id: 'http://purl.obolibrary.org/obo/UBERON_0000079',
   },
   {
     src: 'app:small-intestine',
     organ: 'Small Intestine',
     name: 'Small Intestine',
     hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0002108'
+    id: 'http://purl.obolibrary.org/obo/UBERON_0002108',
   },
   {
     src: 'app:large-intestine',
     organ: 'Large Intestine',
     name: 'Large Intestine',
     hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0000059'
+    id: 'http://purl.obolibrary.org/obo/UBERON_0000059',
   },
   {
     src: 'app:spinal-cord',
     organ: 'Spinal Cord',
     name: 'Spinal Cord',
     hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0002240'
+    id: 'http://purl.obolibrary.org/obo/UBERON_0002240',
   },
   {
     src: 'app:spleen',
     organ: 'Spleen',
     name: 'Spleen',
     hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0002106'
+    id: 'http://purl.obolibrary.org/obo/UBERON_0002106',
   },
   {
     src: 'app:thymus',
     organ: 'Thymus',
     name: 'Thymus',
     hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0002370'
+    id: 'http://purl.obolibrary.org/obo/UBERON_0002370',
   },
   {
     src: 'app:trachea',
     organ: 'Trachea',
     name: 'Trachea',
     hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0003126'
+    id: 'http://purl.obolibrary.org/obo/UBERON_0003126',
   },
   {
     disabled: true,
@@ -352,7 +362,7 @@ export const ALL_POSSIBLE_ORGANS = [
     name: 'Ureter, L',
     side: 'left',
     hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0000056'
+    id: 'http://purl.obolibrary.org/obo/UBERON_0000056',
   },
   {
     src: 'app:ureter-left',
@@ -360,7 +370,7 @@ export const ALL_POSSIBLE_ORGANS = [
     name: 'Ureter, L',
     side: 'left',
     hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0001223'
+    id: 'http://purl.obolibrary.org/obo/UBERON_0001223',
   },
   {
     src: 'app:ureter-right',
@@ -368,14 +378,14 @@ export const ALL_POSSIBLE_ORGANS = [
     name: 'Ureter, R',
     side: 'right',
     hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0001222'
+    id: 'http://purl.obolibrary.org/obo/UBERON_0001222',
   },
   {
     src: 'app:bladder',
     organ: 'Urinary Bladder',
     name: 'Urinary Bladder',
     hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0001255'
+    id: 'http://purl.obolibrary.org/obo/UBERON_0001255',
   },
   {
     src: 'app:uterus',
@@ -383,14 +393,14 @@ export const ALL_POSSIBLE_ORGANS = [
     name: 'Uterus',
     hasSex: false,
     sex: 'female',
-    id: 'http://purl.obolibrary.org/obo/UBERON_0000995'
+    id: 'http://purl.obolibrary.org/obo/UBERON_0000995',
   },
   {
     src: 'app:vasculature-thick',
     organ: 'Blood Vasculature',
     name: 'Blood Vasculature',
     hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0004537'
+    id: 'http://purl.obolibrary.org/obo/UBERON_0004537',
   },
   {
     disabled: true,
@@ -398,20 +408,21 @@ export const ALL_POSSIBLE_ORGANS = [
     organ: 'Blood Vasculature',
     name: 'Blood Vasculature',
     hasSex: true,
-    id: 'http://purl.obolibrary.org/obo/UBERON_0002049'
-  }
+    id: 'http://purl.obolibrary.org/obo/UBERON_0002049',
+  },
 ].sort((a, b) => a.name.localeCompare(b.name)) as OrganInfo[];
 
 /**
  * All organs which have not been disabled
  */
-export const ALL_ORGANS = ALL_POSSIBLE_ORGANS.filter(organ => organ.disabled !== true);
+export const ALL_ORGANS = ALL_POSSIBLE_ORGANS.filter(
+  (organ) => organ.disabled !== true
+);
 
 /**
  * Contains the organ name and url of the icon svg
  */
 export interface OrganInfo {
-
   /**
    * Used to fetch the url of the organ icon
    */
@@ -451,6 +462,8 @@ export interface OrganInfo {
    * UBERON id for the organ
    */
   id?: string;
+
+  numResults?: number;
 }
 
 /**
@@ -460,15 +473,17 @@ export interface OrganInfo {
   selector: 'ccf-organ-selector',
   templateUrl: './organ-selector.component.html',
   styleUrls: ['./organ-selector.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OrganSelectorComponent implements AfterViewInit, OnChanges, OnDestroy {
   /** HTML class */
   @HostBinding('class') readonly clsName = 'ccf-organ-selector';
 
-  @ViewChild('carouselContainer', { static: true }) carouselContainer: ElementRef<HTMLElement>;
-  @ViewChild('itemlist', { static: true }) itemList: ElementRef<HTMLElement>;
-  @ViewChild('itemcontainer', { static: true }) itemContainer: ElementRef<HTMLElement>;
+  @ViewChild('carouselContainer', { static: true })
+    carouselContainer!: ElementRef<HTMLElement>;
+  @ViewChild('itemlist', { static: true }) itemList!: ElementRef<HTMLElement>;
+  @ViewChild('itemcontainer', { static: true })
+    itemContainer!: ElementRef<HTMLElement>;
 
   /**
    * If multiple selections should be allowed
@@ -520,7 +535,7 @@ export class OrganSelectorComponent implements AfterViewInit, OnChanges, OnDestr
   /**
    * Detects resizing of carousel
    */
-  private sensor: ResizeSensor;
+  private sensor!: ResizeSensor;
 
   // eslint-disable-next-line
   @Input()
@@ -534,7 +549,7 @@ export class OrganSelectorComponent implements AfterViewInit, OnChanges, OnDestr
     return this._occurenceData;
   }
 
-  private _occurenceData: Record<string, number>;
+  private _occurenceData!: Record<string, number>;
 
   /**
    * Set resize sensor on carousel
@@ -580,7 +595,7 @@ export class OrganSelectorComponent implements AfterViewInit, OnChanges, OnDestr
   shift(dir: string): void {
     const { itemList } = this;
     let val = parseInt(itemList.nativeElement.style.left, 10) || 0;
-    if (this.onLeft && dir === 'left' || this.onRight && dir === 'right') {
+    if ((this.onLeft && dir === 'left') || (this.onRight && dir === 'right')) {
       return;
     }
     val = dir === 'right' ? val - this.step : val + this.step;
@@ -620,7 +635,9 @@ export class OrganSelectorComponent implements AfterViewInit, OnChanges, OnDestr
       this.selectedOrgans = [organ];
     } else {
       if (this.selectedOrgans.includes(organ)) {
-        this.selectedOrgans = this.selectedOrgans.filter((selectedOrgan) => organ !== selectedOrgan);
+        this.selectedOrgans = this.selectedOrgans.filter(
+          (selectedOrgan) => organ !== selectedOrgan
+        );
       } else {
         this.selectedOrgans = this.selectedOrgans.concat([organ]);
       }
@@ -644,13 +661,19 @@ export class OrganSelectorComponent implements AfterViewInit, OnChanges, OnDestr
   set(): void {
     const { itemList, itemContainer, carouselContainer } = this;
     const val = parseInt(itemList.nativeElement.style.left, 10) || 0;
-    if (itemList.nativeElement.offsetWidth >= this.organList.length * this.step) {
+    if (
+      itemList.nativeElement.offsetWidth >=
+      this.organList.length * this.step
+    ) {
       itemList.nativeElement.style.left = '0px';
       this.onLeft = true;
       this.onRight = true;
     } else {
       this.setLeftRight(val);
-      const listLength = this.step * Math.floor(carouselContainer.nativeElement.offsetWidth / this.step) - 64;
+      const listLength =
+        this.step *
+          Math.floor(carouselContainer.nativeElement.offsetWidth / this.step) -
+        64;
       itemContainer.nativeElement.style.width = `${listLength}px`;
     }
   }
@@ -660,7 +683,10 @@ export class OrganSelectorComponent implements AfterViewInit, OnChanges, OnDestr
    */
   setWidth(): void {
     const { itemContainer, carouselContainer } = this;
-    const listLength = this.step * Math.floor(carouselContainer.nativeElement.offsetWidth / this.step) - 64;
+    const listLength =
+      this.step *
+        Math.floor(carouselContainer.nativeElement.offsetWidth / this.step) -
+      64;
     itemContainer.nativeElement.style.width = `${listLength}px`;
   }
 
@@ -670,6 +696,11 @@ export class OrganSelectorComponent implements AfterViewInit, OnChanges, OnDestr
   setLeftRight(val: number): void {
     const { itemContainer } = this;
     this.onLeft = val === 0 ? true : false;
-    this.onRight = val <= (itemContainer.nativeElement.offsetWidth - this.organList.length * this.step) ? true : false;
+    this.onRight =
+      val <=
+      itemContainer.nativeElement.offsetWidth -
+        this.organList.length * this.step
+        ? true
+        : false;
   }
 }

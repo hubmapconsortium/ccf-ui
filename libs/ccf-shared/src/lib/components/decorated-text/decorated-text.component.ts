@@ -1,7 +1,13 @@
-import { ChangeDetectionStrategy, Component, HostBinding, Input, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  HostBinding,
+  Input,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 
 import { DecoratedRange, normalize } from './decorated-range';
-
 
 // Reexport DecoratedRange
 export { DecoratedRange };
@@ -26,7 +32,6 @@ interface StackOp {
   removed: DecoratedRange[];
 }
 
-
 /**
  * Class to display text with additional styling on ranges of the text.
  */
@@ -34,7 +39,7 @@ interface StackOp {
   selector: 'ccf-decorated-text',
   templateUrl: './decorated-text.component.html',
   styleUrls: ['./decorated-text.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DecoratedTextComponent implements OnChanges {
   /** HTML class name */
@@ -43,7 +48,7 @@ export class DecoratedTextComponent implements OnChanges {
   /**
    * Text to display
    */
-  @Input() text: string;
+  @Input() text!: string;
 
   /**
    * Classes and styles to apply to ranges of the text.
@@ -75,12 +80,14 @@ export class DecoratedTextComponent implements OnChanges {
    */
   private createSegments(): Segment[] {
     const { text } = this;
-    if (!text) { // No styling can be applied to empty text fields
+    if (!text) {
+      // No styling can be applied to empty text fields
       return [this.makeUndecoratedSegment(text)];
     }
 
     const decorations = this.getNormalizedDecorations();
-    if (decorations.length === 0) { // No styling available
+    if (decorations.length === 0) {
+      // No styling available
       return [this.makeUndecoratedSegment(text)];
     }
 
@@ -97,9 +104,9 @@ export class DecoratedTextComponent implements OnChanges {
 
     // Build segments based on the stack operations
     for (const op of stackOps) {
-      segments.push(this.makeDecoratedSegment(
-        text.slice(lastIndex, op.index), stack
-      ));
+      segments.push(
+        this.makeDecoratedSegment(text.slice(lastIndex, op.index), stack)
+      );
 
       lastIndex = op.index;
       stack = this.updateStack(stack, op);
@@ -107,9 +114,7 @@ export class DecoratedTextComponent implements OnChanges {
 
     // Push the last segment if not already done
     if (lastIndex !== text.length) {
-      segments.push(this.makeDecoratedSegment(
-        text.slice(lastIndex), stack
-      ));
+      segments.push(this.makeDecoratedSegment(text.slice(lastIndex), stack));
     }
 
     return segments;
@@ -123,7 +128,8 @@ export class DecoratedTextComponent implements OnChanges {
    */
   private createStackOps(ranges: DecoratedRange[]): StackOp[] {
     const ops: Record<number, StackOp> = {};
-    const getOp = (index: number) => (ops[index] ??= { index, added: [], removed: [] });
+    const getOp = (index: number) =>
+      (ops[index] ??= { index, added: [], removed: [] });
 
     for (const range of ranges) {
       getOp(range.start).added.push(range);
@@ -132,7 +138,7 @@ export class DecoratedTextComponent implements OnChanges {
 
     return Object.entries(ops)
       .sort((i1, i2) => +i1[0] - +i2[0]) // Sort by index
-      .map(entry => entry[1]);
+      .map((entry) => entry[1]);
   }
 
   /**
@@ -143,11 +149,13 @@ export class DecoratedTextComponent implements OnChanges {
    * @returns The new stack
    */
   private updateStack(stack: DecoratedRange[], op: StackOp): DecoratedRange[] {
-    return stack
-      .filter(item => !op.removed.includes(item))
-      // Note - A new array is created by the above filter statement
-      // so it is safe to modify it with concat
-      .concat(op.added);
+    return (
+      stack
+        .filter((item) => !op.removed.includes(item))
+        // Note - A new array is created by the above filter statement
+        // so it is safe to modify it with concat
+        .concat(op.added)
+    );
   }
 
   /**
@@ -156,12 +164,17 @@ export class DecoratedTextComponent implements OnChanges {
    * @returns The normalized ranges with properties filled
    */
   private getNormalizedDecorations(): DecoratedRange[] {
-    const { decorations = [], text: { length } } = this;
-    return decorations
-      // Turn partials into full objects
-      .map(range => normalize(range, length))
-      // Remove empty and out of bounds ranges
-      .filter(range => range.start < length && range.start < range.end);
+    const {
+      decorations = [],
+      text: { length },
+    } = this;
+    return (
+      decorations
+        // Turn partials into full objects
+        .map((range) => normalize(range, length))
+        // Remove empty and out of bounds ranges
+        .filter((range) => range.start < length && range.start < range.end)
+    );
   }
 
   /**
@@ -181,7 +194,10 @@ export class DecoratedTextComponent implements OnChanges {
    * @param decorations Decorations for this segment
    * @returns A decorated segment
    */
-  private makeDecoratedSegment(text: string, decorations: DecoratedRange[]): Segment {
+  private makeDecoratedSegment(
+    text: string,
+    decorations: DecoratedRange[]
+  ): Segment {
     const classes = decorations.reduce<string[]>(
       (result, range) => result.concat(range.classes),
       []

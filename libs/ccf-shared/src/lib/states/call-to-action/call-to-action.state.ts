@@ -7,7 +7,10 @@ import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
 import { CallToActionBehaviorComponent } from '../../components/call-to-action-behavior/call-to-action-behavior.component';
-import { DocumentationContent, InfoButtonService } from '../../components/info/info-button/info-button.service';
+import {
+  DocumentationContent,
+  InfoButtonService,
+} from '../../components/info/info-button/info-button.service';
 import { InfoDialogComponent } from '../../components/info/info-dialog/info-dialog.component';
 import { LocalStorageService } from '../../services/local-storage/local-storage.service';
 import { CloseDialog, LearnMore, OpenDialog } from './call-to-action.actions';
@@ -22,7 +25,6 @@ export interface CallToActionModel {
   imageUrl: string;
   expirationDate: string;
   popupShown: boolean;
-
 }
 
 /**
@@ -46,11 +48,9 @@ const SPATIAL_SEARCH_README = 'assets/docs/SPATIAL_SEARCH_README.md';
     callToAction: 'Learn More',
     imageUrl: 'assets/images/spatial_search.gif',
     expirationDate: 'Dec 1, 2022',
-    popupShown: false
-  }
+    popupShown: false,
+  },
 })
-
-
 /**
  * State that controls the data and behavior for the CallToAction Component
  */
@@ -75,12 +75,14 @@ export class CallToActionState implements NgxsOnInit {
     private readonly storage: LocalStorageService,
     private readonly infoService: InfoButtonService,
     private readonly http: HttpClient
-  ) { }
-
+  ) {}
 
   ngxsOnInit(ctx: StateContext<CallToActionModel>): void {
     const { expirationDate, popupShown } = ctx.getState();
-    const popupShownStr = this.storage.getItem(POPUP_SHOWN_STORAGE_KEY, `${popupShown}`);
+    const popupShownStr = this.storage.getItem(
+      POPUP_SHOWN_STORAGE_KEY,
+      `${popupShown}`
+    );
     const pastExpiration = CallToActionState.ctaDatePassed(expirationDate);
     const showPopup = popupShownStr !== 'true' && !pastExpiration;
     if (showPopup) {
@@ -91,16 +93,16 @@ export class CallToActionState implements NgxsOnInit {
   /**
    * Returns observable containting info from the markup
    */
-  private getDialogData(): Observable<DocumentationContent[]>{
-    return this.http.get(SPATIAL_SEARCH_README, { responseType: 'text' }).pipe(map(data =>
-      this.infoService.parseMarkdown(data)
-    ));
+  private getDialogData(): Observable<DocumentationContent[]> {
+    return this.http
+      .get(SPATIAL_SEARCH_README, { responseType: 'text' })
+      .pipe(map((data) => this.infoService.parseMarkdown(data)));
   }
 
   /**
    * Opens Learn more dialog
    */
-  launchLearnMore(content: DocumentationContent[]): void{
+  launchLearnMore(content: DocumentationContent[]): void {
     this.dialog.open(InfoDialogComponent, {
       autoFocus: false,
       panelClass: 'modal-animated',
@@ -108,8 +110,8 @@ export class CallToActionState implements NgxsOnInit {
       data: {
         title: 'Spatial Search',
         content: content,
-        videoID: 'UfxMpzatowE'
-      }
+        videoID: 'UfxMpzatowE',
+      },
     });
   }
 
@@ -118,13 +120,13 @@ export class CallToActionState implements NgxsOnInit {
    * @param _ctx
    */
   @Action(LearnMore)
-  learnMore(_ctx: StateContext<CallToActionModel>): Observable<DocumentationContent[]> {
+  learnMore(
+    _ctx: StateContext<CallToActionModel>
+  ): Observable<DocumentationContent[]> {
     this.dialog.closeAll();
     this.ga.event('open_learn_more', 'call_to_action');
 
-    return this.getDialogData().pipe(
-      tap(data => this.launchLearnMore(data))
-    );
+    return this.getDialogData().pipe(tap((data) => this.launchLearnMore(data)));
   }
 
   /**
@@ -137,7 +139,7 @@ export class CallToActionState implements NgxsOnInit {
       autoFocus: false,
       panelClass: 'modal-animated',
       width: '30.75rem',
-      height: '36.688rem'
+      height: '36.688rem',
     });
 
     this.ga.event('open', 'call_to_action');

@@ -1,13 +1,18 @@
-import { ChangeDetectionStrategy, Component, ElementRef, HostBinding, Inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  HostBinding,
+  Inject,
+} from '@angular/core';
 import { MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
-import { ConsentService, Consent } from 'ccf-shared/analytics';
-
+import { Consent, ConsentService } from 'ccf-shared/analytics';
 
 @Component({
   selector: 'ccf-tracking-popup',
   templateUrl: './tracking-popup.component.html',
   styleUrls: ['./tracking-popup.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TrackingPopupComponent {
   @HostBinding('class') readonly clsName = 'ccf-tracking-popup';
@@ -18,8 +23,12 @@ export class TrackingPopupComponent {
 
   container: HTMLElement;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
-  constructor(elementRef: ElementRef<HTMLElement>, readonly consentService: ConsentService, @Inject(MAT_SNACK_BAR_DATA) public data: any) {
+  constructor(
+    elementRef: ElementRef<HTMLElement>,
+    readonly consentService: ConsentService,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    @Inject(MAT_SNACK_BAR_DATA) public data: any
+  ) {
     this.container = elementRef.nativeElement;
   }
 
@@ -38,7 +47,9 @@ export class TrackingPopupComponent {
     if (allowTelemetry === 'not-set') {
       return true;
     } else {
-      return button === 'opt-in' ? allowTelemetry === 'rescinded' : allowTelemetry === 'given';
+      return button === 'opt-in'
+        ? allowTelemetry === 'rescinded'
+        : allowTelemetry === 'given';
     }
   }
 }

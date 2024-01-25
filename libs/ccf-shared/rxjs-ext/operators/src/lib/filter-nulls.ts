@@ -1,7 +1,6 @@
 import { OperatorFunction } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
-
 /**
  * Removes all `null` and `undefined` values from a stream.
  *

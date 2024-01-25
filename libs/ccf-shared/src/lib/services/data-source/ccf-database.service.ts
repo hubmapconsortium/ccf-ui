@@ -1,18 +1,15 @@
 import { Injectable, isDevMode } from '@angular/core';
 import { CCFDatabase, CCFDatabaseOptions } from 'ccf-database';
-import { releaseProxy, Remote, wrap } from 'comlink';
+import { Remote, releaseProxy, wrap } from 'comlink';
 import { Observable, Unsubscribable, using } from 'rxjs';
 import { filter, map, shareReplay, switchMap } from 'rxjs/operators';
 
 import { GlobalConfigState } from '../../config/global-config.state';
 import { DataSourceLike, DelegateDataSource } from './data-source';
 
-
-
 interface CCFDatabaseManager extends Unsubscribable {
   database: CCFDatabase | Remote<CCFDatabase>;
 }
-
 
 @Injectable()
 abstract class CCFDatabaseDataSourceBaseService extends DelegateDataSource {
@@ -23,21 +20,27 @@ abstract class CCFDatabaseDataSourceBaseService extends DelegateDataSource {
     super();
 
     this.impl$ = this.database$ = globalConfig.config$.pipe(
-      source => source as Observable<CCFDatabaseOptions>,
-      filter(config => Object.keys(config).length > 0),
-      switchMap(config => using(
-        () => this.createDatabase(config),
-        (manager: CCFDatabaseManager) => this.connectDatabase(manager, config)
-      )),
-      map(manager => manager.database),
+      (source) => source as Observable<CCFDatabaseOptions>,
+      filter((config) => Object.keys(config).length > 0),
+      switchMap((config) =>
+        using(
+          () => this.createDatabase(config),
+          (manager) =>
+            this.connectDatabase(manager as CCFDatabaseManager, config)
+        )
+      ),
+      map((manager) => manager.database),
       shareReplay(1)
     );
   }
 
-  protected abstract createDatabase(config: CCFDatabaseOptions): CCFDatabaseManager;
+  protected abstract createDatabase(
+    config: CCFDatabaseOptions
+  ): CCFDatabaseManager;
 
   private async connectDatabase(
-    manager: CCFDatabaseManager, config: CCFDatabaseOptions
+    manager: CCFDatabaseManager,
+    config: CCFDatabaseOptions
   ): Promise<CCFDatabaseManager> {
     const cacheResults = !isDevMode(); // Do not cache while in dev mode
     await manager.database.connect(config, cacheResults);
@@ -45,15 +48,14 @@ abstract class CCFDatabaseDataSourceBaseService extends DelegateDataSource {
   }
 }
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CCFDatabaseDataSourceService extends CCFDatabaseDataSourceBaseService {
   protected createDatabase(config: CCFDatabaseOptions): CCFDatabaseManager {
     return {
       database: new CCFDatabase(config),
-      unsubscribe: () => undefined
+      unsubscribe: () => undefined,
     };
   }
 }
@@ -71,7 +73,7 @@ export abstract class WorkerCCFDatabaseDataSourceService extends CCFDatabaseData
       unsubscribe: () => {
         database[releaseProxy]();
         worker.terminate();
-      }
+      },
     };
   }
 }

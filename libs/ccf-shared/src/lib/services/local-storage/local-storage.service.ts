@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 
-
 /**
  * Service to handle local storage
  */
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LocalStorageService {
   static storage = (() => {
@@ -19,17 +18,19 @@ export class LocalStorageService {
 
       return storage;
     } catch (error) {
-      const full = error instanceof DOMException && (
+      const full =
+        error instanceof DOMException &&
         // everything except Firefox
-        error.code === 22 ||
-        // Firefox
-        error.code === 1014 ||
-        // test name field too, because code might not be present
-        // everything except Firefox
-        error.name === 'QuotaExceededError' ||
-        // Firefox
-        error.name === 'NS_ERROR_DOM_QUOTA_REACHED'
-      ) && (storage && storage.length !== 0);
+        (error.code === 22 ||
+          // Firefox
+          error.code === 1014 ||
+          // test name field too, because code might not be present
+          // everything except Firefox
+          error.name === 'QuotaExceededError' ||
+          // Firefox
+          error.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
+        storage &&
+        storage.length !== 0;
 
       return full ? storage : undefined;
     }
@@ -57,8 +58,13 @@ export class LocalStorageService {
    * @param defaultValue
    * @returns the value
    */
-  getItem<D extends string | null = null>(key: string, defaultValue?: D): string | D {
-    return LocalStorageService.storage?.getItem(key) ?? defaultValue ?? null as D;
+  getItem<D extends string | null = null>(
+    key: string,
+    defaultValue?: D
+  ): string | D {
+    return (
+      LocalStorageService.storage?.getItem(key) ?? defaultValue ?? (null as D)
+    );
   }
 
   /**

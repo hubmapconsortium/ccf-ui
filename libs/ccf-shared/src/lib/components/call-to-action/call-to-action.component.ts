@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  HostBinding,
+  Input,
+  Output,
+} from '@angular/core';
 
 /**
  * Info button component: Information icon displays project details when clicked.
@@ -7,7 +14,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, O
   selector: 'ccf-call-to-action',
   templateUrl: './call-to-action.component.html',
   styleUrls: ['./call-to-action.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CallToActionComponent {
   /**HTML class */
@@ -15,37 +22,32 @@ export class CallToActionComponent {
   /**
    * Title of the info dialog
    */
-  @Input() infoTitle: string;
+  @Input() infoTitle!: string;
 
   /**
    * Whether the information is for the RUI or EUI
    */
-  @Input() imageUrl: string;
+  @Input() imageUrl!: string;
 
   /**
    * Message to be displayed under image
    */
-  @Input() message: string;
+  @Input() message!: string;
 
   /**
    * Label for the button
    */
-  @Input() callToAction: string;
-
+  @Input() callToAction!: string;
 
   /**
-  *  Emmitter for component to pass info to parent
-  * */
+   *  Emmitter for component to pass info to parent
+   * */
   @Output() readonly callToActionClicked = new EventEmitter<void>();
 
-
   /**
-  *  Emmitter for component to pass info to parent
-  * */
+   *  Emmitter for component to pass info to parent
+   * */
   @Output() readonly closeClicked = new EventEmitter<void>();
-
-
-
 
   /**
    * Function to handle the close button click action
@@ -53,7 +55,6 @@ export class CallToActionComponent {
   close(): void {
     this.closeClicked.emit();
   }
-
 
   /**
    * Detects button click and reads markdown function

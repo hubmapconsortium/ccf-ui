@@ -1,18 +1,20 @@
 import { Immutable } from '@angular-ru/common/typings';
-import { Injectable } from '@angular/core';
 import { Computed, StateRepository } from '@angular-ru/ngxs/decorators';
 import { NgxsImmutableDataRepository } from '@angular-ru/ngxs/repositories';
-import { ImmutablePatchValue, ImmutableStateValue } from '@angular-ru/ngxs/typings';
+import {
+  ImmutablePatchValue,
+  ImmutableStateValue,
+} from '@angular-ru/ngxs/typings';
+import { Injectable } from '@angular/core';
 import { State } from '@ngxs/store';
 import { filterNulls } from 'ccf-shared/rxjs-ext/operators';
-import { Observable } from 'rxjs';
+import { Observable, OperatorFunction } from 'rxjs';
 import { distinctUntilChanged, pluck, shareReplay } from 'rxjs/operators';
-
 
 @StateRepository()
 @State({
   name: 'globalConfig',
-  defaults: null
+  defaults: null,
 })
 @Injectable()
 export class GlobalConfigState<T> extends NgxsImmutableDataRepository<T> {
@@ -33,15 +35,22 @@ export class GlobalConfigState<T> extends NgxsImmutableDataRepository<T> {
 
   getProperty<R>(path: PropertyKey[]): Observable<R> {
     return this.config$.pipe(
-      pluck(...path as [string]),
+      pluck(...(path as [string])) as OperatorFunction<Immutable<T>, R>,
       distinctUntilChanged(),
       shareReplay(1)
-    ) as Observable<R>;
+    );
   }
 
   getOption<K1 extends keyof T>(k1: K1): Observable<T[K1]>;
-  getOption<K1 extends keyof T, K2 extends keyof T[K1]>(k1: K1, k2: K2): Observable<T[K1][K2]>;
-  getOption<K1 extends keyof T, K2 extends keyof T[K1], K3 extends keyof T[K1][K2]>(k1: K1, k2: K2, k3: K3): Observable<T[K1][K2][K3]>;
+  getOption<K1 extends keyof T, K2 extends keyof T[K1]>(
+    k1: K1,
+    k2: K2
+  ): Observable<T[K1][K2]>;
+  getOption<
+    K1 extends keyof T,
+    K2 extends keyof T[K1],
+    K3 extends keyof T[K1][K2]
+  >(k1: K1, k2: K2, k3: K3): Observable<T[K1][K2][K3]>;
   getOption<R>(...path: (string | number)[]): Observable<R>;
   getOption(...path: (string | number)[]): Observable<unknown> {
     const key = this.getPathKey(path);

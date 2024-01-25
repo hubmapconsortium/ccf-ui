@@ -35,24 +35,19 @@
         "libs/ccf-database/src/public-api.ts"
       ],
       "ccf-shared": [
-        "dist/ccf-shared/ccf-shared",
-        "dist/ccf-shared"
+        "libs/ccf-shared/src/public-api.ts"
       ],
       "ccf-shared/analytics": [
-        "dist/ccf-shared/ccf-shared/analytics",
-        "dist/ccf-shared/analytics"
+        "libs/ccf-shared/analytics/src/public-api.ts"
       ],
       "ccf-shared/rxjs-ext": [
-        "dist/ccf-shared/ccf-shared/rxjs-ext",
-        "dist/ccf-shared/rxjs-ext"
+        "libs/ccf-shared/rxjs-ext/src/public-api.ts"
       ],
       "ccf-shared/rxjs-ext/operators": [
-        "dist/ccf-shared/ccf-shared/rxjs-ext/operators",
-        "dist/ccf-shared/rxjs-ext/operators"
+        "libs/ccf-shared/rxjs-ext/operators/src/public-api.ts"
       ],
       "ccf-shared/web-components": [
-        "dist/ccf-shared/ccf-shared/web-components",
-        "dist/ccf-shared/web-components"
+        "libs/ccf-shared/web-components/src/public-api.ts"
       ],
       "stream": [
         "./node_modules/stream-browserify"

@@ -1,9 +1,12 @@
 import { Inject, Injectable, OnDestroy } from '@angular/core';
-import { IGoogleAnalyticsSettings, NGX_GOOGLE_ANALYTICS_SETTINGS_TOKEN, NGX_WINDOW } from 'ngx-google-analytics';
+import {
+  IGoogleAnalyticsSettings,
+  NGX_GOOGLE_ANALYTICS_SETTINGS_TOKEN,
+  NGX_WINDOW,
+} from 'ngx-google-analytics';
 import { Subscription } from 'rxjs';
 
 import { ConsentService } from './consent.service';
-
 
 @Injectable()
 export class GoogleAnalyticsSyncService implements OnDestroy {
@@ -13,13 +16,16 @@ export class GoogleAnalyticsSyncService implements OnDestroy {
   constructor(
     consentService: ConsentService,
     @Inject(NGX_WINDOW) private readonly window: Record<string, boolean> | null,
-    @Inject(NGX_GOOGLE_ANALYTICS_SETTINGS_TOKEN) { trackingCode }: IGoogleAnalyticsSettings
+    @Inject(NGX_GOOGLE_ANALYTICS_SETTINGS_TOKEN)
+    { trackingCode }: IGoogleAnalyticsSettings
   ) {
     this.token = trackingCode;
 
-    this.subscriptions.add(consentService.consentChange.subscribe(
-      consent => this.toggleGoogleAnalytics(consent === 'rescinded')
-    ));
+    this.subscriptions.add(
+      consentService.consentChange.subscribe((consent) =>
+        this.toggleGoogleAnalytics(consent === 'rescinded')
+      )
+    );
   }
 
   ngOnDestroy(): void {

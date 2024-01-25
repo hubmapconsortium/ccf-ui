@@ -1,6 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
 
 /**
  * The structure to define how each documentation panel
@@ -21,23 +21,29 @@ export interface PanelData {
   videoID: string;
 }
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class InfoButtonService {
-
   /** Subject to send the documentation data to the component when its done processing */
-  panelContent: BehaviorSubject<PanelData> = new BehaviorSubject<PanelData>({ content: [], infoTitle: '', videoID: '' });
+  panelContent: BehaviorSubject<PanelData> = new BehaviorSubject<PanelData>({
+    content: [],
+    infoTitle: '',
+    videoID: '',
+  });
 
-  constructor(private readonly http: HttpClient) { }
+  constructor(private readonly http: HttpClient) {}
 
   /**
    * Read the markdown file to split it by h1 tags and update the panel title and videoID.
    */
   updateData(url: string, videoID: string, infoTitle: string): void {
     this.http.get(url, { responseType: 'text' }).subscribe((data: string) => {
-      const panelContent: PanelData = { content: this.parseMarkdown(data), infoTitle: infoTitle, videoID: videoID };
+      const panelContent: PanelData = {
+        content: this.parseMarkdown(data),
+        infoTitle: infoTitle,
+        videoID: videoID,
+      };
       this.panelContent.next(panelContent);
     });
   }
@@ -58,7 +64,7 @@ export class InfoButtonService {
         const headerAndContent: string[] = split.split(newLine);
         markdownContent.push({
           title: headerAndContent[0],
-          content: headerAndContent.splice(1).join(newLine)
+          content: headerAndContent.splice(1).join(newLine),
         });
       }
     }

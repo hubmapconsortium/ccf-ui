@@ -1,16 +1,21 @@
-<div class="container" [class.expanded]="expanded" [class.error]="error" [matTooltipDisabled]="multiselect" matTooltip="Select the organ your tissue block is from." #carouselContainer>
-  <mat-icon *ngIf="!expanded" class="carousel-left-icon" (touchstart)="scroll('left')" (touchend)="stopScroll()" (click)="shift('left')" (mousedown)="scroll('left')" (mouseup)="stopScroll()" [class.disabled]="onLeft">chevron_left</mat-icon>
+<div class="container" [class.expanded]="expanded" [class.error]="error" [matTooltipDisabled]="multiselect"
+  matTooltip="Select the organ your tissue block is from." #carouselContainer>
+  <mat-icon *ngIf="!expanded" class="carousel-left-icon" (touchstart)="scroll('left')" (touchend)="stopScroll()"
+    (click)="shift('left')" (mousedown)="scroll('left')" (mouseup)="stopScroll()"
+    [class.disabled]="onLeft">chevron_left</mat-icon>
   <div class="carousel-item-container" #itemcontainer>
     <div class="carousel-item-list" #itemlist>
-      <div *ngFor="let organ of organList" class="carousel-item" [class.disabled]="organ.disabled" (click)="selectOrgan(organ)"
-          [class.selected]="isSelected(organ)">
-          <mat-icon class="carousel-icon" svgIcon="{{organ.src}}"></mat-icon>
-          <div class="carousel-text-container">
-            <div class="carousel-text">{{ organ.name }}</div>
-            <div class="num-results" *ngIf="organ.numResults !== undefined">{{ occurenceData[organ.id] || 0 }}</div>
-          </div>
+      <div *ngFor="let organ of organList" class="carousel-item" [class.disabled]="organ.disabled"
+        (click)="selectOrgan(organ)" [class.selected]="isSelected(organ)">
+        <mat-icon class="carousel-icon" svgIcon="{{organ.src}}"></mat-icon>
+        <div class="carousel-text-container">
+          <div class="carousel-text">{{ organ.name }}</div>
+          <div class="num-results" *ngIf="organ.numResults !== undefined">{{ occurenceData[organ.id ?? ''] || 0 }}</div>
+        </div>
       </div>
     </div>
   </div>
-  <mat-icon *ngIf="!expanded" class="carousel-right-icon" (touchstart)="scroll('right')" (touchend)="stopScroll()" (click)="shift('right')" (mousedown)="scroll('right')" (mouseup)="stopScroll()" [class.disabled]="onRight">chevron_right</mat-icon>
+  <mat-icon *ngIf="!expanded" class="carousel-right-icon" (touchstart)="scroll('right')" (touchend)="stopScroll()"
+    (click)="shift('right')" (mousedown)="scroll('right')" (mouseup)="stopScroll()"
+    [class.disabled]="onRight">chevron_right</mat-icon>
 </div>

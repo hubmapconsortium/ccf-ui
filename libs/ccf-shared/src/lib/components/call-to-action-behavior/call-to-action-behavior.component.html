@@ -1,3 +1,4 @@
-<ccf-call-to-action [infoTitle]="title$ | async" [message]="message$ | async" [callToAction]="callToAction$ | async"
-  [imageUrl]="imageUrl$ | async" (callToActionClicked)="learnMore()" (closeClicked)="close()">
+<ccf-call-to-action [infoTitle]="(title$ | async) ?? ''" [message]="(message$ | async) ?? ''"
+  [callToAction]="(callToAction$ | async) ?? ''" [imageUrl]="(imageUrl$ | async) ?? ''"
+  (callToActionClicked)="learnMore()" (closeClicked)="close()">
 </ccf-call-to-action>
