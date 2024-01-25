@@ -1,7 +1,7 @@
 import { EventEmitter } from 'events';
 import jsonld from 'jsonld';
 import { JsonLd, Url } from 'jsonld/jsonld-spec';
-import { DataFactory, Parser, Store, Quad } from 'n3';
+import { DataFactory, Parser, Quad, Store } from 'n3';
 import * as rdf from 'rdf-js';
 import { RdfXmlParser } from 'rdfxml-streaming-parser';
 import { Readable } from 'readable-stream';
@@ -11,11 +11,27 @@ export * from 'n3';
 // Temporary solution for using the new readQuads function on Store until the @types are updated
 type OTerm = rdf.Term | string | null;
 interface QuadReader {
-  readQuads(subject: OTerm, predicate: OTerm, object: OTerm, graph: OTerm): Generator<Quad>;
+  readQuads(
+    subject: OTerm,
+    predicate: OTerm,
+    object: OTerm,
+    graph: OTerm
+  ): Generator<Quad>;
 }
 
-export function readQuads(store: Store, subject: OTerm, predicate: OTerm, object: OTerm, graph: OTerm): Generator<Quad> {
-  return (store as unknown as QuadReader).readQuads(subject, predicate, object, graph);
+export function readQuads(
+  store: Store,
+  subject: OTerm,
+  predicate: OTerm,
+  object: OTerm,
+  graph: OTerm
+): Generator<Quad> {
+  return (store as unknown as QuadReader).readQuads(
+    subject,
+    predicate,
+    object,
+    graph
+  );
 }
 
 /**
@@ -24,7 +40,9 @@ export function readQuads(store: Store, subject: OTerm, predicate: OTerm, object
  * @param readStream The input stream.
  * @returns A promise that resolves to an array of values when the stream completes.
  */
-export function streamToArray<T = unknown>(readStream: EventEmitter): Promise<T[]> {
+export function streamToArray<T = unknown>(
+  readStream: EventEmitter
+): Promise<T[]> {
   return new Promise((resolve, reject) => {
     const chunks: T[] = [];
     readStream
@@ -54,7 +72,7 @@ export function arrayToStream<T>(arr: T[]): Readable {
     objectMode: true,
     read(): void {
       this.push(i < length ? arr[i++] : null);
-    }
+    },
   });
 }
 
@@ -67,7 +85,8 @@ export function arrayToStream<T>(arr: T[]): Readable {
  * @returns A promise that resolves when the data has been added.
  */
 export async function addJsonLdToStore(
-  uri: JsonLd | Url, store: rdf.Sink<EventEmitter, EventEmitter>
+  uri: JsonLd | Url,
+  store: rdf.Sink<EventEmitter, EventEmitter>
 ): Promise<rdf.Sink<EventEmitter, EventEmitter>> {
   let jsonLdData: JsonLd | undefined;
   if (typeof uri === 'string') {
@@ -95,7 +114,8 @@ export async function addJsonLdToStore(
  * @returns A promise that resolves when the data has been added.
  */
 export async function addRdfXmlToStore(
-  uri: string, store: rdf.Sink<EventEmitter, EventEmitter>
+  uri: string,
+  store: rdf.Sink<EventEmitter, EventEmitter>
 ): Promise<rdf.Sink<EventEmitter, EventEmitter>> {
   let xmlData: string | undefined;
   if (typeof uri === 'string' && uri?.startsWith('http')) {
@@ -108,10 +128,15 @@ export async function addRdfXmlToStore(
   }
 
   if (xmlData) {
-    const xmlParser = new RdfXmlParser({ dataFactory: DataFactory, strict: true });
-    const result = new Promise<rdf.Sink<EventEmitter, EventEmitter>>(resolve => {
-      xmlParser.once('end', () => resolve(store));
+    const xmlParser = new RdfXmlParser({
+      dataFactory: DataFactory,
+      strict: true,
     });
+    const result = new Promise<rdf.Sink<EventEmitter, EventEmitter>>(
+      (resolve) => {
+        xmlParser.once('end', () => resolve(store));
+      }
+    );
 
     store.import(xmlParser);
     xmlParser.write(xmlData);
@@ -131,7 +156,8 @@ export async function addRdfXmlToStore(
  * @returns A promise that resolves when the data has been added.
  */
 export async function addN3ToStore(
-  uri: string | Url, store: rdf.Sink<EventEmitter, EventEmitter>
+  uri: string | Url,
+  store: rdf.Sink<EventEmitter, EventEmitter>
 ): Promise<rdf.Sink<EventEmitter, EventEmitter>> {
   let data: string | undefined;
   if (typeof uri === 'string' && uri?.startsWith('http')) {
@@ -153,12 +179,14 @@ export function serializeN3Store(store: Store): string {
   // eslint-disable-next-line @typescript-eslint/no-unused-expressions
   store.size; // this causes the store to compute the size before we serialize it
   const storeData = Object.assign({} as Record<string, unknown>, store);
-  // eslint-disable-next-line no-underscore-dangle
-  delete storeData._factory;
+  delete storeData['_factory'];
   return JSON.stringify(storeData);
 }
 
-export function deserializeN3Store(serializedStore: string, factory?: rdf.DataFactory): Store {
+export function deserializeN3Store(
+  serializedStore: string,
+  factory?: rdf.DataFactory
+): Store {
   const storeData = JSON.parse(serializedStore);
   const store = new Store();
   // eslint-disable-next-line @typescript-eslint/naming-convention

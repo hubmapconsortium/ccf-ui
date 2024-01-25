@@ -28,20 +28,11 @@
       "dom"
     ],
     "paths": {
-      "ccf-api": [
-        "dist/ccf-api/ccf-api",
-        "dist/ccf-api"
-      ],
       "ccf-body-ui": [
-        "dist/ccf-body-ui/ccf-body-ui",
-        "dist/ccf-body-ui"
+        "libs/ccf-body-ui/src/public-api.ts"
       ],
       "ccf-database": [
-        "dist/ccf-database/ccf-database",
-        "dist/ccf-database"
-      ],
-      "ccf-openapi/angular-client": [
-        "dist/ccf-openapi/angular-client"
+        "libs/ccf-database/src/public-api.ts"
       ],
       "ccf-shared": [
         "dist/ccf-shared/ccf-shared",
@@ -67,11 +58,7 @@
         "./node_modules/stream-browserify"
       ],
       "triple-store-utils": [
-        "dist/triple-store-utils"
-      ],
-      "triple-store-utils-not-fixed": [
-        "dist/triple-store-utils/triple-store-utils",
-        "dist/triple-store-utils"
+        "libs/triple-store-utils/src/public-api.ts"
       ]
     },
     "useDefineForClassFields": false,
