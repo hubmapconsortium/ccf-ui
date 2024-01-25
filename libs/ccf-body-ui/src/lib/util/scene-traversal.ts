@@ -1,11 +1,18 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { Matrix4 } from '@math.gl/core';
 
-
-export type SceneTraversalVisitor = (child, modelMatrix: Matrix4, parentMatrix: Matrix4) => boolean;
+export type SceneTraversalVisitor = (
+  child,
+  modelMatrix: Matrix4,
+  parentMatrix: Matrix4
+) => boolean;
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export function traverseScene(scene, worldMatrix: Matrix4, visitor: SceneTraversalVisitor): boolean {
+export function traverseScene(
+  scene,
+  worldMatrix: Matrix4,
+  visitor: SceneTraversalVisitor
+): boolean {
   if (!worldMatrix) {
     worldMatrix = new Matrix4(Matrix4.IDENTITY);
   }
@@ -22,7 +29,9 @@ export function traverseScene(scene, worldMatrix: Matrix4, visitor: SceneTravers
     }
 
     if (scene.rotation) {
-      const rotationMatrix = new Matrix4(Matrix4.IDENTITY).fromQuaternion(scene.rotation);
+      const rotationMatrix = new Matrix4(Matrix4.IDENTITY).fromQuaternion(
+        scene.rotation
+      );
       matrix.multiplyRight(rotationMatrix);
     }
 
@@ -34,7 +43,7 @@ export function traverseScene(scene, worldMatrix: Matrix4, visitor: SceneTravers
   if (visitor(scene, modelMatrix, worldMatrix) === false) {
     return false;
   }
-  for (const child of (scene.nodes || scene.children || [])) {
+  for (const child of scene.nodes || scene.children || []) {
     if (traverseScene(child, modelMatrix, visitor) === false) {
       return false;
     }

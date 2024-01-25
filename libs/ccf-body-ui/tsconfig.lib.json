@@ -1,26 +1,19 @@
 {
-  "extends": "../../tsconfig.base.json",
+  "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
-    "declarationMap": true,
     "declaration": true,
+    "declarationMap": true,
     "inlineSources": true,
-    "lib": [
-      "dom",
-      "es2018",
-      "webworker"
-    ]
-  },
-  "angularCompilerOptions": {
-    "skipTemplateCodegen": true,
-    "strictMetadataEmit": true,
-    "enableResourceInlining": true
+    "types": []
   },
   "exclude": [
-    "src/test.ts",
-    "**/*.spec.ts"
+    "src/test-setup.ts",
+    "**/*.spec.ts",
+    "jest.config.ts",
+    "**/*.test.ts",
+    "**/*.stories.ts",
+    "**/*.stories.js"
   ],
-  "include": [
-    "**/*.ts"
-  ]
+  "include": ["**/*.ts"]
 }

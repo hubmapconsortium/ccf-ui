@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { JsonLdObj } from 'jsonld/jsonld-spec';
 
-
 export interface SpatialPlacementJsonLd extends JsonLdObj {
   '@context'?: string;
   '@id': string;
