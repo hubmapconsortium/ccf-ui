@@ -1,6 +1,0 @@
-generatorName: javascript
-# https://github.com/OpenAPITools/openapi-generator/blob/master/docs/generators/javascript.md
-additionalProperties:
-  projectName: "@ccf-openapi/js-client"
-  useES6: true
-  usePromises: true
