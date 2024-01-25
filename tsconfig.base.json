@@ -1,0 +1,88 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "./dist/out-tsc",
+    "noImplicitAny": false,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noFallthroughCasesInSwitch": true,
+    "strictNullChecks": true,
+    "strictBindCallApply": true,
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "module": "es2020",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "importHelpers": true,
+    "skipLibCheck": true,
+    "target": "ES2022",
+    "typeRoots": [
+      "node_modules/@types",
+      "node_modules/@danmarshall"
+    ],
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "paths": {
+      "ccf-api": [
+        "dist/ccf-api/ccf-api",
+        "dist/ccf-api"
+      ],
+      "ccf-body-ui": [
+        "dist/ccf-body-ui/ccf-body-ui",
+        "dist/ccf-body-ui"
+      ],
+      "ccf-database": [
+        "dist/ccf-database/ccf-database",
+        "dist/ccf-database"
+      ],
+      "ccf-openapi/angular-client": [
+        "dist/ccf-openapi/angular-client"
+      ],
+      "ccf-shared": [
+        "dist/ccf-shared/ccf-shared",
+        "dist/ccf-shared"
+      ],
+      "ccf-shared/analytics": [
+        "dist/ccf-shared/ccf-shared/analytics",
+        "dist/ccf-shared/analytics"
+      ],
+      "ccf-shared/rxjs-ext": [
+        "dist/ccf-shared/ccf-shared/rxjs-ext",
+        "dist/ccf-shared/rxjs-ext"
+      ],
+      "ccf-shared/rxjs-ext/operators": [
+        "dist/ccf-shared/ccf-shared/rxjs-ext/operators",
+        "dist/ccf-shared/rxjs-ext/operators"
+      ],
+      "ccf-shared/web-components": [
+        "dist/ccf-shared/ccf-shared/web-components",
+        "dist/ccf-shared/web-components"
+      ],
+      "stream": [
+        "./node_modules/stream-browserify"
+      ],
+      "triple-store-utils": [
+        "dist/triple-store-utils"
+      ],
+      "triple-store-utils-not-fixed": [
+        "dist/triple-store-utils/triple-store-utils",
+        "dist/triple-store-utils"
+      ]
+    },
+    "useDefineForClassFields": false,
+    "rootDir": "."
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true
+  },
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
+}

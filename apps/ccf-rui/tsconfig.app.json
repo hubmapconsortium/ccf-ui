@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "../../dist/out-tsc",
+    "types": [],
+    "skipLibCheck": true
+  },
+  "exclude": [
+    "src/test.ts",
+    "e2e/**/*",
+    "**/*.spec.ts",
+    "**/*.worker.ts"
+  ]
+}

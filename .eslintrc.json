@@ -1,18 +1,10 @@
 {
   "root": true,
-  "ignorePatterns": [
-    "projects/**/*"
-  ],
+  "ignorePatterns": ["**/*"],
   "overrides": [
     {
-      "files": [
-        "*.ts"
-      ],
+      "files": ["*.ts"],
       "parserOptions": {
-        "project": [
-          "tsconfig.json",
-          "e2e/tsconfig.json"
-        ],
         "createDefaultProgram": true
       },
       "extends": [
@@ -22,17 +14,10 @@
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {
-        // Eslint rules
         "arrow-body-style": "error",
-        "curly": [
-          "error",
-          "all"
-        ],
+        "curly": ["error", "all"],
         "default-case-last": "error",
-        "eol-last": [
-          "error",
-          "always"
-        ],
+        "eol-last": ["error", "always"],
         "grouped-accessor-pairs": "error",
         "guard-for-in": "warn",
         "no-alert": "error",
@@ -62,9 +47,6 @@
         "no-whitespace-before-property": "error",
         "prefer-object-spread": "warn",
         "require-atomic-updates": "error",
-
-
-        // Disabled eslint rules superseded by @typescript-eslint rules or the TS compiler itself
         "brace-style": "off",
         "func-call-spacing": "off",
         "indent": "off",
@@ -79,15 +61,9 @@
         "quotes": "off",
         "semi": "off",
         "space-before-function-paren": "off",
-
-
-        // @typescript-eslint rules
         "@typescript-eslint/array-type": "error",
         "@typescript-eslint/ban-tslint-comment": "warn",
-        "@typescript-eslint/brace-style": [
-          "error",
-          "1tbs"
-        ],
+        "@typescript-eslint/brace-style": ["error", "1tbs"],
         "@typescript-eslint/consistent-type-assertions": [
           "error",
           {
@@ -124,27 +100,17 @@
             "default": [
               "static-field",
               "static-method",
-
               "public-decorated-field",
               "public-instance-field",
               "public-abstract-field",
-
               "signature",
-
               "protected-field",
               "private-field",
               "field",
-
               "constructor",
-
               "method"
             ],
-            "interfaces": [
-              "field",
-              "signature",
-              "constructor",
-              "method"
-            ]
+            "interfaces": ["field", "signature", "constructor", "method"]
           }
         ],
         "@typescript-eslint/naming-convention": [
@@ -153,7 +119,6 @@
             "selector": "default",
             "format": ["camelCase"]
           },
-
           {
             "selector": "classProperty",
             "modifiers": ["readonly"],
@@ -216,14 +181,8 @@
         "@typescript-eslint/prefer-nullish-coalescing": "error",
         "@typescript-eslint/prefer-optional-chain": "error",
         "@typescript-eslint/prefer-reduce-type-parameter": "error",
-        "@typescript-eslint/quotes": [
-          "error",
-          "single"
-        ],
-        "@typescript-eslint/return-await": [
-          "error",
-          "in-try-catch"
-        ],
+        "@typescript-eslint/quotes": ["error", "single"],
+        "@typescript-eslint/return-await": ["error", "in-try-catch"],
         "@typescript-eslint/semi": "error",
         "@typescript-eslint/space-before-function-paren": [
           "error",
@@ -235,18 +194,12 @@
         ],
         "@typescript-eslint/switch-exhaustiveness-check": "error",
         "@typescript-eslint/type-annotation-spacing": "error",
-
-
-        // @angular-eslint rules
         "@angular-eslint/no-queries-metadata-property": "error",
         "@angular-eslint/prefer-on-push-component-change-detection": "warn",
         "@angular-eslint/prefer-output-readonly": "warn",
         "@angular-eslint/relative-url-prefix": "error",
         "@angular-eslint/use-component-selector": "error",
         "@angular-eslint/use-component-view-encapsulation": "error",
-
-
-        // Per repo @angular-eslint rules
         "@angular-eslint/component-selector": [
           "error",
           {
@@ -266,13 +219,28 @@
       }
     },
     {
-      "files": [
-        "*.html"
-      ],
-      "extends": [
-        "plugin:@angular-eslint/template/recommended"
-      ],
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
       "rules": {}
+    },
+    {
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "rules": {
+        "@nx/enforce-module-boundaries": [
+          "error",
+          {
+            "enforceBuildableLibDependency": true,
+            "allow": [],
+            "depConstraints": [
+              {
+                "sourceTag": "*",
+                "onlyDependOnLibsWithTags": ["*"]
+              }
+            ]
+          }
+        ]
+      }
     }
-  ]
+  ],
+  "plugins": ["@nx"]
 }

@@ -1,0 +1,159 @@
+{
+  "name": "ccf-eui",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "generators": {
+    "@schematics/angular:component": {
+      "style": "scss"
+    }
+  },
+  "sourceRoot": "apps/ccf-eui/src",
+  "prefix": "ccf",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "options": {
+        "outputPath": "dist/apps/ccf-eui",
+        "index": "apps/ccf-eui/src/index.html",
+        "main": "apps/ccf-eui/src/main.ts",
+        "polyfills": "apps/ccf-eui/src/polyfills.ts",
+        "tsConfig": "apps/ccf-eui/tsconfig.app.json",
+        "assets": [
+          "apps/ccf-eui/src/favicon.ico",
+          "apps/ccf-eui/src/assets"
+        ],
+        "styles": [
+          "apps/ccf-eui/src/styles.scss"
+        ],
+        "stylePreprocessorOptions": {
+          "includePaths": [
+            "node_modules/swiper"
+          ]
+        },
+        "scripts": [
+          {
+            "input": "node_modules/document-register-element/build/document-register-element.js"
+          }
+        ],
+        "webWorkerTsConfig": "projects/ccf-eui/tsconfig.worker.json",
+        "vendorChunk": true,
+        "extractLicenses": false,
+        "buildOptimizer": false,
+        "sourceMap": true,
+        "optimization": false,
+        "namedChunks": true
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/ccf-eui/src/environments/environment.ts",
+              "with": "apps/ccf-eui/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "none",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "buildOptimizer": true,
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "2mb",
+              "maximumError": "5mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "6kb",
+              "maximumError": "10kb"
+            }
+          ]
+        },
+        "staging": {
+          "fileReplacements": [
+            {
+              "replace": "apps/ccf-eui/src/environments/environment.ts",
+              "with": "apps/ccf-eui/src/environments/environment.staging.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "none",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "buildOptimizer": true,
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "2mb",
+              "maximumError": "5mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "6kb",
+              "maximumError": "10kb"
+            }
+          ]
+        }
+      },
+      "defaultConfiguration": ""
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "options": {
+        "browserTarget": "ccf-eui:build"
+      },
+      "configurations": {
+        "production": {
+          "browserTarget": "ccf-eui:build:production"
+        },
+        "staging": {
+          "browserTarget": "ccf-eui:build:staging"
+        }
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "ccf-eui:build"
+      }
+    },
+    "test": {
+      "executor": "@angular-devkit/build-angular:karma",
+      "options": {
+        "main": "apps/ccf-eui/src/test.ts",
+        "polyfills": "apps/ccf-eui/src/polyfills.ts",
+        "tsConfig": "apps/ccf-eui/tsconfig.spec.json",
+        "karmaConfig": "apps/ccf-eui/karma.conf.js",
+        "assets": [
+          "apps/ccf-eui/src/favicon.ico",
+          "apps/ccf-eui/src/assets"
+        ],
+        "codeCoverage": true,
+        "codeCoverageExclude": [
+          "**/e2e/**/*",
+          "**/test.ts",
+          "**/polyfills.ts",
+          "**/environments/**/*.ts",
+          "**/*.module.ts"
+        ],
+        "styles": [
+          "apps/ccf-eui/src/styles.scss"
+        ],
+        "scripts": []
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/ccf-eui/**/*.ts",
+          "apps/ccf-eui/**/*.html"
+        ]
+      }
+    }
+  }
+}

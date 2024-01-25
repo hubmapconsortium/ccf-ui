@@ -1,0 +1,43 @@
+{
+  "name": "triple-store-utils",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/triple-store-utils/src",
+  "prefix": "lib",
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:package",
+      "options": {
+        "tsConfig": "libs/triple-store-utils/tsconfig.lib.json",
+        "project": "libs/triple-store-utils/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/triple-store-utils/tsconfig.lib.prod.json"
+        }
+      }
+    },
+    "test": {
+      "executor": "@angular-devkit/build-angular:karma",
+      "options": {
+        "main": "libs/triple-store-utils/src/test.ts",
+        "tsConfig": "libs/triple-store-utils/tsconfig.spec.json",
+        "karmaConfig": "libs/triple-store-utils/karma.conf.js",
+        "codeCoverage": true,
+        "codeCoverageExclude": [
+          "**/src/test.ts",
+          "**/*.module.ts"
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/triple-store-utils/**/*.ts",
+          "libs/triple-store-utils/**/*.html"
+        ]
+      }
+    }
+  }
+}

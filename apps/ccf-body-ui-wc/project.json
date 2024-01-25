@@ -1,0 +1,125 @@
+{
+  "name": "ccf-body-ui-wc",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "generators": {
+    "@schematics/angular:component": {
+      "style": "scss"
+    },
+    "@schematics/angular:application": {
+      "strict": true
+    }
+  },
+  "sourceRoot": "apps/ccf-body-ui-wc/src",
+  "prefix": "ccf",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "options": {
+        "outputPath": "dist/apps/ccf-body-ui-wc",
+        "index": "apps/ccf-body-ui-wc/src/index.html",
+        "main": "apps/ccf-body-ui-wc/src/main.ts",
+        "polyfills": "apps/ccf-body-ui-wc/src/polyfills.ts",
+        "tsConfig": "apps/ccf-body-ui-wc/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/ccf-body-ui-wc/src/favicon.ico",
+          "apps/ccf-body-ui-wc/src/assets"
+        ],
+        "styles": ["apps/ccf-body-ui-wc/src/styles.scss"],
+        "scripts": [
+          {
+            "input": "node_modules/document-register-element/build/document-register-element.js"
+          }
+        ]
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "1mb",
+              "maximumError": "5mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/ccf-body-ui-wc/src/environments/environment.ts",
+              "with": "apps/ccf-body-ui-wc/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "ccf-body-ui-wc:build:production"
+        },
+        "development": {
+          "browserTarget": "ccf-body-ui-wc:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "ccf-body-ui-wc:build"
+      }
+    },
+    "test": {
+      "executor": "@angular-devkit/build-angular:karma",
+      "options": {
+        "main": "apps/ccf-body-ui-wc/src/test.ts",
+        "polyfills": "apps/ccf-body-ui-wc/src/polyfills.ts",
+        "tsConfig": "apps/ccf-body-ui-wc/tsconfig.spec.json",
+        "karmaConfig": "apps/ccf-body-ui-wc/karma.conf.js",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/ccf-body-ui-wc/src/favicon.ico",
+          "apps/ccf-body-ui-wc/src/assets"
+        ],
+        "codeCoverage": true,
+        "codeCoverageExclude": [
+          "**/e2e/**/*",
+          "**/test.ts",
+          "**/polyfills.ts",
+          "**/environments/**/*.ts",
+          "**/*.module.ts"
+        ],
+        "styles": ["apps/ccf-body-ui-wc/src/styles.scss"],
+        "scripts": [
+          {
+            "input": "node_modules/document-register-element/build/document-register-element.js"
+          }
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/ccf-body-ui-wc/**/*.ts",
+          "apps/ccf-body-ui-wc/**/*.html"
+        ]
+      }
+    }
+  }
+}

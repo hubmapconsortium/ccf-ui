@@ -1,0 +1,152 @@
+{
+  "name": "ccf-rui",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "generators": {
+    "@schematics/angular:component": {
+      "style": "scss"
+    }
+  },
+  "sourceRoot": "apps/ccf-rui/src",
+  "prefix": "ccf",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "options": {
+        "outputPath": "dist/apps/ccf-rui",
+        "index": "apps/ccf-rui/src/index.html",
+        "main": "apps/ccf-rui/src/main.ts",
+        "polyfills": "apps/ccf-rui/src/polyfills.ts",
+        "tsConfig": "apps/ccf-rui/tsconfig.app.json",
+        "assets": [
+          "apps/ccf-rui/src/favicon.ico",
+          "apps/ccf-rui/src/assets"
+        ],
+        "styles": [
+          "apps/ccf-rui/src/styles.scss"
+        ],
+        "scripts": [
+          {
+            "input": "node_modules/document-register-element/build/document-register-element.js"
+          }
+        ],
+        "vendorChunk": true,
+        "extractLicenses": false,
+        "buildOptimizer": false,
+        "sourceMap": true,
+        "optimization": false,
+        "namedChunks": true
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/ccf-rui/src/environments/environment.ts",
+              "with": "apps/ccf-rui/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "none",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "buildOptimizer": true,
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "2mb",
+              "maximumError": "5mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "6kb",
+              "maximumError": "10kb"
+            }
+          ]
+        },
+        "staging": {
+          "fileReplacements": [
+            {
+              "replace": "apps/ccf-rui/src/environments/environment.ts",
+              "with": "apps/ccf-rui/src/environments/environment.staging.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "none",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "buildOptimizer": true,
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "2mb",
+              "maximumError": "5mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "6kb",
+              "maximumError": "10kb"
+            }
+          ]
+        }
+      },
+      "defaultConfiguration": ""
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "options": {
+        "browserTarget": "ccf-rui:build"
+      },
+      "configurations": {
+        "production": {
+          "browserTarget": "ccf-rui:build:production"
+        },
+        "staging": {
+          "browserTarget": "ccf-rui:build:staging"
+        }
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "ccf-rui:build"
+      }
+    },
+    "test": {
+      "executor": "@angular-devkit/build-angular:karma",
+      "options": {
+        "main": "apps/ccf-rui/src/test.ts",
+        "polyfills": "apps/ccf-rui/src/polyfills.ts",
+        "tsConfig": "apps/ccf-rui/tsconfig.spec.json",
+        "karmaConfig": "apps/ccf-rui/karma.conf.js",
+        "assets": [
+          "apps/ccf-rui/src/favicon.ico",
+          "apps/ccf-rui/src/assets"
+        ],
+        "codeCoverage": true,
+        "codeCoverageExclude": [
+          "projects/ccf-rui/src/test.ts",
+          "projects/ccf-rui/src/polyfills.ts",
+          "projects/ccf-rui/src/environments/**/*.ts",
+          "projects/ccf-rui/src/app/**/*.module.ts"
+        ],
+        "styles": [
+          "apps/ccf-rui/src/styles.scss"
+        ],
+        "scripts": []
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/ccf-rui/**/*.ts",
+          "apps/ccf-rui/**/*.html"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "name": "ccf-rui-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/ccf-rui-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@angular-devkit/build-angular:protractor",
+      "options": {
+        "protractorConfig": "apps/ccf-rui-e2e/protractor.conf.js",
+        "devServerTarget": "ccf-rui:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "ccf-rui:serve:production"
+        },
+        "staging": {
+          "devServerTarget": "ccf-rui:serve:staging"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": [
+        "{options.outputFile}"
+      ]
+    }
+  },
+  "implicitDependencies": [
+    "ccf-rui"
+  ],
+  "tags": []
+}
