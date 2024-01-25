@@ -1,9 +1,8 @@
 import { DatabaseStatus } from '../interfaces';
 import { CCFDatabase } from '../ccf-database';
 
-
 export class CCFDatabaseStatusTracker {
-  status: 'Ready' | 'Loading' | 'Error';
+  status: 'Ready' | 'Loading' | 'Error' = 'Loading';
   message?: string;
   loadTime?: number;
   timestamp?: string;
@@ -16,9 +15,12 @@ export class CCFDatabaseStatusTracker {
     return {
       status: this.status,
       message: this.message,
-      checkback: this.status === 'Ready' || this.status === 'Error' ? 60 * 60 * 1000 : 2000,
+      checkback:
+        this.status === 'Ready' || this.status === 'Error'
+          ? 60 * 60 * 1000
+          : 2000,
       loadTime: this.loadTime,
-      timestamp: this.timestamp
+      timestamp: this.timestamp,
     };
   }
 
@@ -27,7 +29,8 @@ export class CCFDatabaseStatusTracker {
     this.message = 'Loading database';
 
     const startTime = Date.now();
-    return this.database.connect()
+    return this.database
+      .connect()
       .then(async (loaded) => {
         if (loaded) {
           // Warm up the database

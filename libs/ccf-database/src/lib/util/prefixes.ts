@@ -13,7 +13,7 @@ export const PREFIXES = {
   rdf: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
   rdfs: 'http://www.w3.org/2000/01/rdf-schema#',
   dc: 'http://purl.org/dc/elements/1.1/',
-  dcterms: 'http://purl.org/dc/terms/'
+  dcterms: 'http://purl.org/dc/terms/',
 };
 
 /** Prefix factory. */
@@ -21,7 +21,7 @@ export const prefixer = Util.prefixes(PREFIXES, DataFactory);
 
 export const rdf = {
   x: prefixer('rdf'),
-  type: prefixer('rdf')('type')
+  type: prefixer('rdf')('type'),
 };
 
 export const rdfs = {
@@ -29,7 +29,7 @@ export const rdfs = {
   label: prefixer('rdfs')('label'),
   comment: prefixer('rdfs')('comment'),
   isDefinedBy: prefixer('rdfs')('isDefinedBy'),
-  seeAlso: prefixer('rdfs')('seeAlso')
+  seeAlso: prefixer('rdfs')('seeAlso'),
 };
 
 /** CCF id helper. */
@@ -75,7 +75,7 @@ export const entity = {
   biomarkerTerms: ccfx('has_biomarker_term'),
 
   technology: ccfx('technology'),
-  thumbnail: ccfx('thumbnail')
+  thumbnail: ccfx('thumbnail'),
 };
 
 /** CCF specific ids. */
@@ -87,21 +87,23 @@ export const ccf = {
     parent: ccfx('ccf_part_of'),
     children: ccfx('ccf_part_of'),
     rui_rank: ccfx('rui_rank'),
-    synonymLabels: DataFactory.namedNode('http://www.geneontology.org/formats/oboInOwl#hasExactSynonym')
+    synonymLabels: DataFactory.namedNode(
+      'http://www.geneontology.org/formats/oboInOwl#hasExactSynonym'
+    ),
   },
   asctb: {
     part_of: ccfx('ccf_part_of'),
     ct_is_a: ccfx('ccf_ct_isa'),
     located_in: ccfx('ccf_located_in'),
     characterizes: ccfx('ccf_characterizes'),
-    bm_located_in: ccfx('ccf_bm_located_in')
+    bm_located_in: ccfx('ccf_bm_located_in'),
   },
   spatial: {
     Female: prefixer('base')('VHFemale'),
     Male: prefixer('base')('VHMale'),
     BothSexes: prefixer('base')('VHBothSexes'),
     FemaleOrgans: prefixer('base')('VHFemaleOrgans'),
-    MaleOrgans: prefixer('base')('VHMaleOrgans')
+    MaleOrgans: prefixer('base')('VHMaleOrgans'),
   },
   SpatialObjectReference: ccfx('spatial_object_reference'),
   SpatialEntity: ccfx('spatial_entity'),
@@ -109,11 +111,11 @@ export const ccf = {
   spatialObjectReference: {
     file: ccfx('file_url'),
     file_format: ccfx('file_format'),
-    file_subpath: ccfx('file_subpath')
+    file_subpath: ccfx('file_subpath'),
   },
   extractionSet: {
     label: prefixer('rdfs')('label'),
-    rui_rank: ccfx('rui_rank')
+    rui_rank: ccfx('rui_rank'),
   },
   spatialEntity: {
     label: prefixer('rdfs')('label'),
@@ -139,7 +141,7 @@ export const ccf = {
     y_dimension: ccfx('y_dimension'),
     z_dimension: ccfx('z_dimension'),
     dimension_units: ccfx('dimension_unit'),
-    object: ccfx('has_object_reference')
+    object: ccfx('has_object_reference'),
   },
   spatialPlacement: {
     source: ccfx('placement_for'),
@@ -161,30 +163,30 @@ export const ccf = {
     x_translation: ccfx('x_translation'),
     y_translation: ccfx('y_translation'),
     z_translation: ccfx('z_translation'),
-    translation_units: ccfx('translation_unit')
-  }
+    translation_units: ccfx('translation_unit'),
+  },
 };
 
 /** Uberon specific ids. */
 export const uberon = {
   x: prefixer('uberon'),
-  body: prefixer('uberon')('0013702')
+  body: prefixer('uberon')('0013702'),
 };
 
 /** CL specific ids. */
 export const cl = {
   x: prefixer('cl'),
-  cell: prefixer('cl')('0000000')
+  cell: prefixer('cl')('0000000'),
 };
 
 /** FMA specific ids. */
 export const fma = {
-  x: prefixer('fma')
+  x: prefixer('fma'),
 };
 
 /** LMHA specific ids. */
 export const lmha = {
-  x: prefixer('lmha')
+  x: prefixer('lmha'),
 };
 
 /** RUI accessors. */
@@ -238,5 +240,5 @@ export const rui = {
   ureter_left: uberon.x('0001223'),
   ureter_right: uberon.x('0001222'),
   urinary_bladder: uberon.x('0001255'),
-  uterus: uberon.x('0000995')
+  uterus: uberon.x('0000995'),
 };

@@ -3,7 +3,6 @@ import { Matrix4, toRadians } from '@math.gl/core';
 import { SpatialSceneNode } from '../ccf-spatial-scene';
 import { SpatialEntity, SpatialPlacement } from '../spatial-types';
 
-
 type Color = [number, number, number, number];
 const gray: Color = [204, 204, 204, 255];
 const red: Color = [213, 0, 0, 255];
@@ -17,7 +16,10 @@ const blue: Color = [41, 121, 255, 255];
  * @param placement the Spatial Placement where the cube is placed
  * @returns a set of scene nodes for the body-ui
  */
-export function getTissueBlockScene(node: SpatialEntity, placement: SpatialPlacement): SpatialSceneNode[] {
+export function getTissueBlockScene(
+  node: SpatialEntity,
+  placement: SpatialPlacement
+): SpatialSceneNode[] {
   const sceneWidth = node.x_dimension / 1000;
   const sceneHeight = node.y_dimension / 1000;
   const sceneDepth = node.z_dimension / 1000;
@@ -51,11 +53,13 @@ export function getTissueBlockScene(node: SpatialEntity, placement: SpatialPlace
       geometry: 'sphere',
       transformMatrix: new Matrix4(Matrix4.IDENTITY)
         .translate([cube.x, cube.y, cube.z])
-        .rotateXYZ([cube.rx, cube.ry, cube.rz]).multiplyRight(
+        .rotateXYZ([cube.rx, cube.ry, cube.rz])
+        .multiplyRight(
           new Matrix4(Matrix4.IDENTITY)
-            .translate([- cube.sx / 2, - cube.sy / 2, - cube.sz / 2])
-            .scale(originRadius)),
-      color: gray
+            .translate([-cube.sx / 2, -cube.sy / 2, -cube.sz / 2])
+            .scale(originRadius)
+        ),
+      color: gray,
     },
     // Carbon Rod X Axis
     {
@@ -66,11 +70,13 @@ export function getTissueBlockScene(node: SpatialEntity, placement: SpatialPlace
       transformMatrix: new Matrix4(Matrix4.IDENTITY)
         .translate([cube.x, cube.y, cube.z])
         .rotateXYZ([cube.rx, cube.ry, cube.rz])
-        .multiplyRight(new Matrix4(Matrix4.IDENTITY)
-          .translate([0, - cube.sy / 2, - cube.sz / 2])
-          .rotateZ(toRadians(-90))
-          .scale([sphereLineRadius, cube.sx, sphereLineRadius])),
-      color: red
+        .multiplyRight(
+          new Matrix4(Matrix4.IDENTITY)
+            .translate([0, -cube.sy / 2, -cube.sz / 2])
+            .rotateZ(toRadians(-90))
+            .scale([sphereLineRadius, cube.sx, sphereLineRadius])
+        ),
+      color: red,
     },
     // Carbon Rod Y Axis
     {
@@ -78,14 +84,15 @@ export function getTissueBlockScene(node: SpatialEntity, placement: SpatialPlace
       '@type': 'SpatialSceneNode',
       unpickable: true,
       geometry: 'cylinder',
-      transformMatrix:
-      new Matrix4(Matrix4.IDENTITY)
+      transformMatrix: new Matrix4(Matrix4.IDENTITY)
         .translate([cube.x, cube.y, cube.z])
         .rotateXYZ([cube.rx, cube.ry, cube.rz])
-        .multiplyRight(new Matrix4(Matrix4.IDENTITY)
-          .translate([- cube.sx / 2, 0, - cube.sz / 2])
-          .scale([sphereLineRadius, cube.sy, sphereLineRadius])),
-      color: green
+        .multiplyRight(
+          new Matrix4(Matrix4.IDENTITY)
+            .translate([-cube.sx / 2, 0, -cube.sz / 2])
+            .scale([sphereLineRadius, cube.sy, sphereLineRadius])
+        ),
+      color: green,
     },
     // Carbon Rod Z Axis
     {
@@ -96,11 +103,13 @@ export function getTissueBlockScene(node: SpatialEntity, placement: SpatialPlace
       transformMatrix: new Matrix4(Matrix4.IDENTITY)
         .translate([cube.x, cube.y, cube.z])
         .rotateXYZ([cube.rx, cube.ry, cube.rz])
-        .multiplyRight(new Matrix4(Matrix4.IDENTITY)
-          .translate([- cube.sx / 2, - cube.sy / 2, 0])
-          .rotateX(toRadians(90))
-          .scale([sphereLineRadius, cube.sz, sphereLineRadius])),
-      color: blue
+        .multiplyRight(
+          new Matrix4(Matrix4.IDENTITY)
+            .translate([-cube.sx / 2, -cube.sy / 2, 0])
+            .rotateX(toRadians(90))
+            .scale([sphereLineRadius, cube.sz, sphereLineRadius])
+        ),
+      color: blue,
     },
     // Cube Positive X Axis (D)
     {
@@ -109,10 +118,14 @@ export function getTissueBlockScene(node: SpatialEntity, placement: SpatialPlace
       unpickable: true,
       geometry: 'cylinder',
       transformMatrix: new Matrix4(Matrix4.IDENTITY)
-        .translate([cube.x + cube.radius + sphereLineLength / 2, cube.y, cube.z])
+        .translate([
+          cube.x + cube.radius + sphereLineLength / 2,
+          cube.y,
+          cube.z,
+        ])
         .rotateZ(toRadians(-90))
         .scale([sphereLineRadius, sphereLineLength, sphereLineRadius]),
-      color: red
+      color: red,
     },
     {
       '@id': 'http://purl.org/ccf/latest/ccf.owl#CubeXDCone',
@@ -123,7 +136,7 @@ export function getTissueBlockScene(node: SpatialEntity, placement: SpatialPlace
         .translate([cube.x + cube.radius + sphereLineLength, cube.y, cube.z])
         .rotateZ(toRadians(-90))
         .scale([sphereConeRadius, sphereConeRadius * 3, sphereConeRadius]),
-      color: red
+      color: red,
     },
     {
       '@id': 'http://purl.org/ccf/latest/ccf.owl#CubeXDLabel',
@@ -132,9 +145,13 @@ export function getTissueBlockScene(node: SpatialEntity, placement: SpatialPlace
       geometry: 'text',
       text: 'D',
       transformMatrix: new Matrix4(Matrix4.IDENTITY)
-        .translate([cube.x + cube.radius + sphereLineLength + sphereConeRadius * 3, cube.y, cube.z])
+        .translate([
+          cube.x + cube.radius + sphereLineLength + sphereConeRadius * 3,
+          cube.y,
+          cube.z,
+        ])
         .scale(sphereConeRadius),
-      color: red
+      color: red,
     },
     // Cube Negative X Axis (A)
     {
@@ -143,10 +160,14 @@ export function getTissueBlockScene(node: SpatialEntity, placement: SpatialPlace
       unpickable: true,
       geometry: 'cylinder',
       transformMatrix: new Matrix4(Matrix4.IDENTITY)
-        .translate([cube.x - cube.radius - sphereLineLength / 2, cube.y, cube.z])
+        .translate([
+          cube.x - cube.radius - sphereLineLength / 2,
+          cube.y,
+          cube.z,
+        ])
         .rotateZ(toRadians(-90))
         .scale([sphereLineRadius, sphereLineLength, sphereLineRadius]),
-      color: red
+      color: red,
     },
     {
       '@id': 'http://purl.org/ccf/latest/ccf.owl#CubeXACone',
@@ -157,7 +178,7 @@ export function getTissueBlockScene(node: SpatialEntity, placement: SpatialPlace
         .translate([cube.x - cube.radius - sphereLineLength, cube.y, cube.z])
         .rotateZ(toRadians(90))
         .scale([sphereConeRadius, sphereConeRadius * 3, sphereConeRadius]),
-      color: red
+      color: red,
     },
     {
       '@id': 'http://purl.org/ccf/latest/ccf.owl#CubeXALabel',
@@ -166,9 +187,13 @@ export function getTissueBlockScene(node: SpatialEntity, placement: SpatialPlace
       geometry: 'text',
       text: 'A',
       transformMatrix: new Matrix4(Matrix4.IDENTITY)
-        .translate([cube.x - cube.radius - sphereLineLength - sphereConeRadius * 3.5, cube.y, cube.z])
+        .translate([
+          cube.x - cube.radius - sphereLineLength - sphereConeRadius * 3.5,
+          cube.y,
+          cube.z,
+        ])
         .scale(sphereConeRadius),
-      color: red
+      color: red,
     },
     // Cube Positive Y Axis (W)
     {
@@ -177,9 +202,13 @@ export function getTissueBlockScene(node: SpatialEntity, placement: SpatialPlace
       unpickable: true,
       geometry: 'cylinder',
       transformMatrix: new Matrix4(Matrix4.IDENTITY)
-        .translate([cube.x, cube.y + cube.radius + sphereLineLength / 2, cube.z])
+        .translate([
+          cube.x,
+          cube.y + cube.radius + sphereLineLength / 2,
+          cube.z,
+        ])
         .scale([sphereLineRadius, sphereLineLength, sphereLineRadius]),
-      color: green
+      color: green,
     },
     {
       '@id': 'http://purl.org/ccf/latest/ccf.owl#CubeYWCone',
@@ -189,7 +218,7 @@ export function getTissueBlockScene(node: SpatialEntity, placement: SpatialPlace
       transformMatrix: new Matrix4(Matrix4.IDENTITY)
         .translate([cube.x, cube.y + cube.radius + sphereLineLength, cube.z])
         .scale([sphereConeRadius, sphereConeRadius * 3, sphereConeRadius]),
-      color: green
+      color: green,
     },
     {
       '@id': 'http://purl.org/ccf/latest/ccf.owl#CubeYWLabel',
@@ -198,9 +227,13 @@ export function getTissueBlockScene(node: SpatialEntity, placement: SpatialPlace
       geometry: 'text',
       text: 'W',
       transformMatrix: new Matrix4(Matrix4.IDENTITY)
-        .translate([cube.x, cube.y + cube.radius + sphereLineLength + sphereConeRadius * 3, cube.z])
+        .translate([
+          cube.x,
+          cube.y + cube.radius + sphereLineLength + sphereConeRadius * 3,
+          cube.z,
+        ])
         .scale(sphereConeRadius),
-      color: green
+      color: green,
     },
     // Cube Negative Y Axis (S)
     {
@@ -209,9 +242,13 @@ export function getTissueBlockScene(node: SpatialEntity, placement: SpatialPlace
       unpickable: true,
       geometry: 'cylinder',
       transformMatrix: new Matrix4(Matrix4.IDENTITY)
-        .translate([cube.x, cube.y - cube.radius - sphereLineLength / 2, cube.z])
+        .translate([
+          cube.x,
+          cube.y - cube.radius - sphereLineLength / 2,
+          cube.z,
+        ])
         .scale([sphereLineRadius, sphereLineLength, sphereLineRadius]),
-      color: green
+      color: green,
     },
     {
       '@id': 'http://purl.org/ccf/latest/ccf.owl#CubeYSCone',
@@ -222,7 +259,7 @@ export function getTissueBlockScene(node: SpatialEntity, placement: SpatialPlace
         .translate([cube.x, cube.y - cube.radius - sphereLineLength, cube.z])
         .rotateZ(toRadians(180))
         .scale([sphereConeRadius, sphereConeRadius * 3, sphereConeRadius]),
-      color: green
+      color: green,
     },
     {
       '@id': 'http://purl.org/ccf/latest/ccf.owl#CubeYSLabel',
@@ -231,9 +268,13 @@ export function getTissueBlockScene(node: SpatialEntity, placement: SpatialPlace
       geometry: 'text',
       text: 'S',
       transformMatrix: new Matrix4(Matrix4.IDENTITY)
-        .translate([cube.x, cube.y - cube.radius - sphereLineLength - sphereConeRadius * 3.5, cube.z])
+        .translate([
+          cube.x,
+          cube.y - cube.radius - sphereLineLength - sphereConeRadius * 3.5,
+          cube.z,
+        ])
         .scale(sphereConeRadius),
-      color: green
+      color: green,
     },
     // Cube Positive Z Axis (Q)
     {
@@ -242,10 +283,14 @@ export function getTissueBlockScene(node: SpatialEntity, placement: SpatialPlace
       unpickable: true,
       geometry: 'cylinder',
       transformMatrix: new Matrix4(Matrix4.IDENTITY)
-        .translate([cube.x, cube.y, cube.z + cube.radius + sphereLineLength / 2])
+        .translate([
+          cube.x,
+          cube.y,
+          cube.z + cube.radius + sphereLineLength / 2,
+        ])
         .rotateX(toRadians(90))
         .scale([sphereLineRadius, sphereLineLength, sphereLineRadius]),
-      color: blue
+      color: blue,
     },
     {
       '@id': 'http://purl.org/ccf/latest/ccf.owl#CubeZQCone',
@@ -256,7 +301,7 @@ export function getTissueBlockScene(node: SpatialEntity, placement: SpatialPlace
         .translate([cube.x, cube.y, cube.z + cube.radius + sphereLineLength])
         .rotateX(toRadians(90))
         .scale([sphereConeRadius, sphereConeRadius * 3, sphereConeRadius]),
-      color: blue
+      color: blue,
     },
     {
       '@id': 'http://purl.org/ccf/latest/ccf.owl#CubeZQLabel',
@@ -265,9 +310,13 @@ export function getTissueBlockScene(node: SpatialEntity, placement: SpatialPlace
       geometry: 'text',
       text: 'Q',
       transformMatrix: new Matrix4(Matrix4.IDENTITY)
-        .translate([cube.x, cube.y, cube.z + cube.radius + sphereLineLength + sphereConeRadius * 3])
+        .translate([
+          cube.x,
+          cube.y,
+          cube.z + cube.radius + sphereLineLength + sphereConeRadius * 3,
+        ])
         .scale(sphereConeRadius),
-      color: blue
+      color: blue,
     },
     // Cube Negative Z Axis (E)
     {
@@ -276,10 +325,14 @@ export function getTissueBlockScene(node: SpatialEntity, placement: SpatialPlace
       unpickable: true,
       geometry: 'cylinder',
       transformMatrix: new Matrix4(Matrix4.IDENTITY)
-        .translate([cube.x, cube.y, cube.z - cube.radius - sphereLineLength / 2])
+        .translate([
+          cube.x,
+          cube.y,
+          cube.z - cube.radius - sphereLineLength / 2,
+        ])
         .rotateX(toRadians(-90))
         .scale([sphereLineRadius, sphereLineLength, sphereLineRadius]),
-      color: blue
+      color: blue,
     },
     {
       '@id': 'http://purl.org/ccf/latest/ccf.owl#CubeZECone',
@@ -290,7 +343,7 @@ export function getTissueBlockScene(node: SpatialEntity, placement: SpatialPlace
         .translate([cube.x, cube.y, cube.z - cube.radius - sphereLineLength])
         .rotateX(toRadians(-90))
         .scale([sphereConeRadius, sphereConeRadius * 3, sphereConeRadius]),
-      color: blue
+      color: blue,
     },
     {
       '@id': 'http://purl.org/ccf/latest/ccf.owl#CubeZELabel',
@@ -299,9 +352,13 @@ export function getTissueBlockScene(node: SpatialEntity, placement: SpatialPlace
       geometry: 'text',
       text: 'E',
       transformMatrix: new Matrix4(Matrix4.IDENTITY)
-        .translate([cube.x, cube.y, cube.z - cube.radius - sphereLineLength - sphereConeRadius * 3.5])
+        .translate([
+          cube.x,
+          cube.y,
+          cube.z - cube.radius - sphereLineLength - sphereConeRadius * 3.5,
+        ])
         .scale(sphereConeRadius),
-      color: blue
-    }
+      color: blue,
+    },
   ];
 }

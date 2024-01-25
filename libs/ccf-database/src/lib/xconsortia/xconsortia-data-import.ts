@@ -15,10 +15,14 @@ interface SearchResultJson {
 const PER_API_SEARCH_REQUEST_COUNT = 10000;
 
 const INCLUDED_DATA_FIELDS = [
-  'uuid', 'entity_type',
-  'hubmap_id', 'sennet_id',
-  'group_uuid', 'group_name',
-  'last_modified_timestamp', 'created_by_user_displayname',
+  'uuid',
+  'entity_type',
+  'hubmap_id',
+  'sennet_id',
+  'group_uuid',
+  'group_name',
+  'last_modified_timestamp',
+  'created_by_user_displayname',
   'donor',
   'source',
   'descendants.entity_type',
@@ -33,13 +37,14 @@ const INCLUDED_DATA_FIELDS = [
   'descendants.dataset_type',
   'descendants.thumbnail_file',
   'descendants.metadata.files.rel_path',
-  'rui_location', 'sample_category'
+  'rui_location',
+  'sample_category',
 ];
 
 const DEFAULT_API_SEARCH_QUERY: unknown = {
   exists: {
-    field: 'rui_location'
-  }
+    field: 'rui_location',
+  },
 };
 
 function getApiSearchHeaders(token?: string): Headers {
@@ -63,15 +68,16 @@ function getApiSearchBody(from: number, size: number, query?: unknown): string {
     docvalue_fields: [],
     query: query ?? DEFAULT_API_SEARCH_QUERY,
     _source: {
-      includes: INCLUDED_DATA_FIELDS
-    }
+      includes: INCLUDED_DATA_FIELDS,
+    },
   };
 
   return JSON.stringify(bodyObj);
 }
 
 async function doSearchRequest(
-  url: string, init?: RequestInit
+  url: string,
+  init?: RequestInit
 ): Promise<SearchResultJson | undefined> {
   try {
     const res = await fetch(url, init);
@@ -91,12 +97,18 @@ async function doSearchRequest(
 }
 
 async function doApiSearch(
-  url: string, token?: string, query?: unknown
+  url: string,
+  token?: string,
+  query?: unknown
 ): Promise<SearchResultJson | undefined> {
   const perReqCount = PER_API_SEARCH_REQUEST_COUNT;
   const headers = getApiSearchHeaders(token);
   const body = getApiSearchBody(0, perReqCount, query);
-  const firstResult = await doSearchRequest(url, { method: 'POST', headers, body });
+  const firstResult = await doSearchRequest(url, {
+    method: 'POST',
+    headers,
+    body,
+  });
   if (!firstResult) {
     return undefined;
   }
@@ -108,25 +120,27 @@ async function doApiSearch(
 
   const requests: Promise<SearchResultJson | undefined>[] = [];
   for (let from = perReqCount; from < totalCount; from += perReqCount) {
-    requests.push(doSearchRequest(url, {
-      method: 'POST',
-      headers,
-      body: getApiSearchBody(from, perReqCount, query)
-    }));
+    requests.push(
+      doSearchRequest(url, {
+        method: 'POST',
+        headers,
+        body: getApiSearchBody(from, perReqCount, query),
+      })
+    );
   }
 
   const results = await Promise.all(requests);
-  if (results.some(res => !res)) {
+  if (results.some((res) => !res)) {
     return undefined;
   }
 
-  const items = results.map(res => res!.hits.hits);
+  const items = results.map((res) => res!.hits.hits);
   return {
     ...firstResult,
     hits: {
       ...firstResult.hits,
       hits: firstResult.hits.hits.concat(...items),
-    }
+    },
   };
 }
 
@@ -142,8 +156,12 @@ async function doApiSearch(
  * @returns CCF-compatible JSON-LD data or undefined on error
  */
 export async function searchXConsortia(
-  dataUrl: string, serviceType: 'static' | 'search-api',
-  query?: unknown, serviceToken?: string, _assetsApi = '', _portalUrl = ''
+  dataUrl: string,
+  serviceType: 'static' | 'search-api',
+  query?: unknown,
+  serviceToken?: string,
+  _assetsApi = '',
+  _portalUrl = ''
 ): Promise<JsonLd | undefined> {
   let hubmapData: SearchResultJson | undefined;
   if (serviceType === 'static') {

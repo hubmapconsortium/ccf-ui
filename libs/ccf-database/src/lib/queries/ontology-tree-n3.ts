@@ -201,7 +201,12 @@ export function getBiomarkerTreeModel(store: Store): OntologyTreeModel {
     const bm = quad.object.value;
     const iri = quad.subject.id;
     if (!nodes[bm]) {
-      nodes[bm] = formBiomarkerNode(bm, bm[0].toUpperCase() + bm.slice(1), 'biomarkers', []);
+      nodes[bm] = formBiomarkerNode(
+        bm,
+        bm[0].toUpperCase() + bm.slice(1),
+        'biomarkers',
+        []
+      );
       nodes['biomarkers'].children.push(bm);
     }
     nodes[bm].children.push(iri);
@@ -224,7 +229,9 @@ export function getBiomarkerTreeModel(store: Store): OntologyTreeModel {
 
     for (const node of Object.values(nodes)) {
       if (node.children.length > 1) {
-        node.children.sort((a, b) => nodes[a]?.label.localeCompare(nodes[b]?.label));
+        node.children.sort((a, b) =>
+          nodes[a]?.label.localeCompare(nodes[b]?.label)
+        );
       }
     }
 
@@ -233,6 +240,6 @@ export function getBiomarkerTreeModel(store: Store): OntologyTreeModel {
 
   return {
     root: 'biomarkers',
-    nodes
+    nodes,
   };
 }

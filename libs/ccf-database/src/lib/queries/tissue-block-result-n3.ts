@@ -1,20 +1,24 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Store } from 'triple-store-utils';
-import { DatasetResult, DonorResult, TissueBlockResult, TissueSectionResult } from '../interfaces';
+import {
+  DatasetResult,
+  DonorResult,
+  TissueBlockResult,
+  TissueSectionResult,
+} from '../interfaces';
 import { getEntries, getMappedResult } from '../util/n3-functions';
 import { entity } from '../util/prefixes';
-
 
 /** Entity iri to property path. */
 const listResultSet: { [iri: string]: string } = {
   [entity.label.id]: 'label',
   [entity.description.id]: 'description',
-  [entity.link.id]: 'link'
+  [entity.link.id]: 'link',
 };
 
 const donorResultSet: { [iri: string]: string } = {
   ...listResultSet,
-  [entity.providerName.id]: 'providerName'
+  [entity.providerName.id]: 'providerName',
 };
 
 const datasetResultSet: { [iri: string]: string } = {
@@ -72,9 +76,16 @@ export function getDatasetResult(store: Store, iri: string): DatasetResult {
  * @param iri The entity id.
  * @returns The list data.
  */
-export function getTissueSectionResult(store: Store, iri: string): TissueSectionResult {
+export function getTissueSectionResult(
+  store: Store,
+  iri: string
+): TissueSectionResult {
   // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-  const result = { '@id': iri, '@type': 'Sample', datasets: [] as DatasetResult[] } as TissueSectionResult;
+  const result = {
+    '@id': iri,
+    '@type': 'Sample',
+    datasets: [] as DatasetResult[],
+  } as TissueSectionResult;
   for (const [key, value] of getEntries(store, iri, tissueSectionResultSet)) {
     if (key === 'datasets') {
       const dataset = getDatasetResult(store, value as string);
@@ -93,10 +104,16 @@ export function getTissueSectionResult(store: Store, iri: string): TissueSection
  * @param iri The entity id.
  * @returns The list data.
  */
-export function getTissueBlockResult(store: Store, iri: string): TissueBlockResult {
+export function getTissueBlockResult(
+  store: Store,
+  iri: string
+): TissueBlockResult {
   // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-  const result = { '@id': iri, '@type': 'Sample',
-    sections: [] as TissueSectionResult[], datasets: [] as DatasetResult[]
+  const result = {
+    '@id': iri,
+    '@type': 'Sample',
+    sections: [] as TissueSectionResult[],
+    datasets: [] as DatasetResult[],
   } as TissueBlockResult;
   for (const [key, value] of getEntries(store, iri, tissueBlockResultSet)) {
     if (key === 'sections') {

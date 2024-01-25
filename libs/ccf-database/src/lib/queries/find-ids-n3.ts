@@ -1,14 +1,23 @@
 import isFinite from 'lodash/isFinite';
 import { fromRdf } from 'rdf-literal';
-import { DataFactory, Literal, readQuads, Store, Term } from 'triple-store-utils';
+import {
+  DataFactory,
+  Literal,
+  readQuads,
+  Store,
+  Term,
+} from 'triple-store-utils';
 
 import { CCFSpatialGraph } from '../ccf-spatial-graph';
 import { Filter, SpatialSearch } from '../interfaces';
 import { ccf, entity, rui } from '../util/prefixes';
 import { filterByProbingSphere } from './spatial-search-n3';
 
-
-function filterWithDonor(store: Store, seen: Set<string>, callback: (donorsSeen: Set<string>) => Set<string>): Set<string> {
+function filterWithDonor(
+  store: Store,
+  seen: Set<string>,
+  callback: (donorsSeen: Set<string>) => Set<string>
+): Set<string> {
   const donor2entity = new Map<string, string[]>();
   const donors = new Set<string>();
   for (const subject of seen) {
@@ -32,11 +41,21 @@ function filterWithDonor(store: Store, seen: Set<string>, callback: (donorsSeen:
   return newSeen;
 }
 
-function filterWithSpatialEntity(store: Store, seen: Set<string>, callback: (entitiesSeen: Set<string>) => Set<string>): Set<string> {
+function filterWithSpatialEntity(
+  store: Store,
+  seen: Set<string>,
+  callback: (entitiesSeen: Set<string>) => Set<string>
+): Set<string> {
   const spatial2entity = new Map<string, string[]>();
   const entities = new Set<string>();
   for (const subject of seen) {
-    for (const quad of readQuads(store, subject, entity.spatialEntity, null, null)) {
+    for (const quad of readQuads(
+      store,
+      subject,
+      entity.spatialEntity,
+      null,
+      null
+    )) {
       entities.add(quad.object.id);
       if (!spatial2entity.has(quad.object.id)) {
         spatial2entity.set(quad.object.id, [subject]);
@@ -56,7 +75,11 @@ function filterWithSpatialEntity(store: Store, seen: Set<string>, callback: (ent
   return newSeen;
 }
 
-function filterWithDataset(store: Store, seen: Set<string>, callback: (datasetsSeen: Set<string>) => Set<string>): Set<string> {
+function filterWithDataset(
+  store: Store,
+  seen: Set<string>,
+  callback: (datasetsSeen: Set<string>) => Set<string>
+): Set<string> {
   const dataset2entity = new Map<string, string[]>();
   const datasets = new Set<string>();
 
@@ -95,7 +118,11 @@ function filterWithDataset(store: Store, seen: Set<string>, callback: (datasetsS
  * @param filter The filter to limit objects.
  * @returns A set of all ids matching the filter.
  */
-export function findIds(store: Store, graph: CCFSpatialGraph, filter: Filter): Set<string> {
+export function findIds(
+  store: Store,
+  graph: CCFSpatialGraph,
+  filter: Filter
+): Set<string> {
   let seen = getAllEntities(store);
   if (seen.size > 0) {
     seen = filterByHasSpatialEntity(store, seen);
@@ -150,8 +177,12 @@ export function findIds(store: Store, graph: CCFSpatialGraph, filter: Filter): S
       );
     }
   }
-  if (seen.size > 0 && filter.ageRange?.length === 2 &&
-    isFinite(filter.ageRange[0]) && isFinite(filter.ageRange[1])) {
+  if (
+    seen.size > 0 &&
+    filter.ageRange?.length === 2 &&
+    isFinite(filter.ageRange[0]) &&
+    isFinite(filter.ageRange[1])
+  ) {
     const maxAge = Math.max(...filter.ageRange);
     const minAge = Math.min(...filter.ageRange);
 
@@ -162,8 +193,12 @@ export function findIds(store: Store, graph: CCFSpatialGraph, filter: Filter): S
       );
     }
   }
-  if (seen.size > 0 && filter.bmiRange?.length === 2 &&
-    isFinite(filter.bmiRange[0]) && isFinite(filter.bmiRange[1])) {
+  if (
+    seen.size > 0 &&
+    filter.bmiRange?.length === 2 &&
+    isFinite(filter.bmiRange[0]) &&
+    isFinite(filter.bmiRange[1])
+  ) {
     const maxBMI = Math.max(...filter.bmiRange);
     const minBMI = Math.min(...filter.bmiRange);
 
@@ -196,7 +231,10 @@ function getAllEntities(store: Store): Set<string> {
  * @param newSeen The second set to add ids to.
  * @returns The callback function.
  */
-function differenceCallback(seen: Set<string>, newSeen: Set<string>): (term: Term) => void {
+function differenceCallback(
+  seen: Set<string>,
+  newSeen: Set<string>
+): (term: Term) => void {
   return function (term: Term) {
     if (seen.has(term.id)) {
       newSeen.add(term.id);
@@ -212,9 +250,18 @@ function differenceCallback(seen: Set<string>, newSeen: Set<string>): (term: Ter
  * @param sex Sex to filter on.
  * @returns The subset of ids with the specified sex.
  */
-function filterBySex(store: Store, seen: Set<string>, sex: 'Male' | 'Female'): Set<string> {
+function filterBySex(
+  store: Store,
+  seen: Set<string>,
+  sex: 'Male' | 'Female'
+): Set<string> {
   const newSeen = new Set<string>();
-  store.forSubjects(differenceCallback(seen, newSeen), entity.sex, entity[sex], null);
+  store.forSubjects(
+    differenceCallback(seen, newSeen),
+    entity.sex,
+    entity[sex],
+    null
+  );
   return newSeen;
 }
 
@@ -226,11 +273,20 @@ function filterBySex(store: Store, seen: Set<string>, sex: 'Male' | 'Female'): S
  * @param consortiums Consortiums to filter on.
  * @returns The subset of ids with the specified consortiums.
  */
-function filterByConsortiumName(store: Store, seen: Set<string>, consortiums: string[]): Set<string> {
+function filterByConsortiumName(
+  store: Store,
+  seen: Set<string>,
+  consortiums: string[]
+): Set<string> {
   const newSeen = new Set<string>();
   for (const consortium of consortiums) {
     const literal = DataFactory.literal(consortium);
-    store.forSubjects(differenceCallback(seen, newSeen), entity.consortiumName, literal, null);
+    store.forSubjects(
+      differenceCallback(seen, newSeen),
+      entity.consortiumName,
+      literal,
+      null
+    );
   }
   return newSeen;
 }
@@ -243,11 +299,20 @@ function filterByConsortiumName(store: Store, seen: Set<string>, consortiums: st
  * @param groupNames Group names to filter on.
  * @returns The subset of ids with the specified group names.
  */
-function filterByGroupName(store: Store, seen: Set<string>, groupNames: string[]): Set<string> {
+function filterByGroupName(
+  store: Store,
+  seen: Set<string>,
+  groupNames: string[]
+): Set<string> {
   const newSeen = new Set<string>();
   for (const groupName of groupNames) {
     const literal = DataFactory.literal(groupName);
-    store.forSubjects(differenceCallback(seen, newSeen), entity.providerName, literal, null);
+    store.forSubjects(
+      differenceCallback(seen, newSeen),
+      entity.providerName,
+      literal,
+      null
+    );
   }
   return newSeen;
 }
@@ -260,11 +325,20 @@ function filterByGroupName(store: Store, seen: Set<string>, groupNames: string[]
  * @param technologies Technology names to filter on.
  * @returns The subset of ids with the specified technology names.
  */
-function filterByTechnology(store: Store, seen: Set<string>, technologies: string[]): Set<string> {
+function filterByTechnology(
+  store: Store,
+  seen: Set<string>,
+  technologies: string[]
+): Set<string> {
   const newSeen = new Set<string>();
   for (const technology of technologies) {
     const literal = DataFactory.literal(technology);
-    store.forSubjects(differenceCallback(seen, newSeen), entity.technology, literal, null);
+    store.forSubjects(
+      differenceCallback(seen, newSeen),
+      entity.technology,
+      literal,
+      null
+    );
   }
   return newSeen;
 }
@@ -277,11 +351,20 @@ function filterByTechnology(store: Store, seen: Set<string>, technologies: strin
  * @param terms Ontology terms to filter on.
  * @returns The subset of ids with the specified ontology terms.
  */
-function filterByOntologyTerms(store: Store, seen: Set<string>, terms: string[]): Set<string> {
+function filterByOntologyTerms(
+  store: Store,
+  seen: Set<string>,
+  terms: string[]
+): Set<string> {
   const newSeen = new Set<string>();
   for (const term of terms) {
     const namedNode = DataFactory.namedNode(term);
-    store.forSubjects(differenceCallback(seen, newSeen), ccf.spatialEntity.ccf_annotations, namedNode, null);
+    store.forSubjects(
+      differenceCallback(seen, newSeen),
+      ccf.spatialEntity.ccf_annotations,
+      namedNode,
+      null
+    );
   }
   return newSeen;
 }
@@ -294,12 +377,21 @@ function filterByOntologyTerms(store: Store, seen: Set<string>, terms: string[])
  * @param terms Cell type terms to filter on.
  * @returns The subset of ids with the specified cell type terms.
  */
-function filterByCellTypeTerms(store: Store, seen: Set<string>, terms: string[]): Set<string> {
+function filterByCellTypeTerms(
+  store: Store,
+  seen: Set<string>,
+  terms: string[]
+): Set<string> {
   const asTerms = new Set<string>();
   for (const term of terms) {
-    store.forObjects((asTerm) => {
-      asTerms.add(asTerm.id);
-    }, term, ccf.asctb.located_in, null);
+    store.forObjects(
+      (asTerm) => {
+        asTerms.add(asTerm.id);
+      },
+      term,
+      ccf.asctb.located_in,
+      null
+    );
     if (term === rui.cell.id) {
       asTerms.add(rui.body.id);
     }
@@ -315,12 +407,21 @@ function filterByCellTypeTerms(store: Store, seen: Set<string>, terms: string[])
  * @param terms Biomarker terms to filter on.
  * @returns The subset of ids with the specified biomarker terms.
  */
-function filterByBiomarkerTerms(store: Store, seen: Set<string>, terms: string[]): Set<string> {
+function filterByBiomarkerTerms(
+  store: Store,
+  seen: Set<string>,
+  terms: string[]
+): Set<string> {
   const asTerms = new Set<string>();
   for (const term of terms) {
-    store.forObjects((asTerm) => {
-      asTerms.add(asTerm.id);
-    }, term, ccf.asctb.bm_located_in, null);
+    store.forObjects(
+      (asTerm) => {
+        asTerms.add(asTerm.id);
+      },
+      term,
+      ccf.asctb.bm_located_in,
+      null
+    );
     if (term === 'http://purl.org/ccf/biomarkers') {
       asTerms.add(rui.body.id);
     }
@@ -337,7 +438,12 @@ function filterByBiomarkerTerms(store: Store, seen: Set<string>, terms: string[]
  * @param maxAge Maximum age.
  * @returns The subset of ids with the specified age.
  */
-function filterByAge(store: Store, seen: Set<string>, minAge: number, maxAge: number): Set<string> {
+function filterByAge(
+  store: Store,
+  seen: Set<string>,
+  minAge: number,
+  maxAge: number
+): Set<string> {
   const newSeen = new Set<string>();
   for (const subject of seen) {
     for (const quad of readQuads(store, subject, entity.age, null, null)) {
@@ -359,7 +465,12 @@ function filterByAge(store: Store, seen: Set<string>, minAge: number, maxAge: nu
  * @param maxBMI Maximum BMI.
  * @returns The subset of ids with the specified BMI.
  */
-function filterByBMI(store: Store, seen: Set<string>, minBMI: number, maxBMI: number): Set<string> {
+function filterByBMI(
+  store: Store,
+  seen: Set<string>,
+  minBMI: number,
+  maxBMI: number
+): Set<string> {
   const newSeen = new Set<string>();
   for (const subject of seen) {
     for (const quad of readQuads(store, subject, entity.bmi, null, null)) {
@@ -380,18 +491,32 @@ function filterByBMI(store: Store, seen: Set<string>, minBMI: number, maxBMI: nu
  * @param hasSpatialEntity Whether the filtered objects should have a spatial entity.
  * @returns The subset of ids with/without spatial entities.
  */
-function filterByHasSpatialEntity(store: Store, seen: Set<string>, hasSpatialEntity = true): Set<string> {
+function filterByHasSpatialEntity(
+  store: Store,
+  seen: Set<string>,
+  hasSpatialEntity = true
+): Set<string> {
   const newSeen = new Set<string>();
-  store.forSubjects(differenceCallback(seen, newSeen), entity.spatialEntity, null, null);
+  store.forSubjects(
+    differenceCallback(seen, newSeen),
+    entity.spatialEntity,
+    null,
+    null
+  );
   if (!hasSpatialEntity) {
     const notNewSeen = new Set<string>();
-    seen.forEach((s) => !newSeen.has(s) ? notNewSeen.add(s) : undefined);
+    seen.forEach((s) => (!newSeen.has(s) ? notNewSeen.add(s) : undefined));
     return notNewSeen;
   }
   return newSeen;
 }
 
-function filterBySpatialSearches(store: Store, graph: CCFSpatialGraph, seen: Set<string>, spatialSearches: SpatialSearch[]): Set<string> {
+function filterBySpatialSearches(
+  store: Store,
+  graph: CCFSpatialGraph,
+  seen: Set<string>,
+  spatialSearches: SpatialSearch[]
+): Set<string> {
   const newSeen = new Set<string>();
   for (const search of spatialSearches) {
     const thisSeen = filterByProbingSphere(store, graph, seen, search);

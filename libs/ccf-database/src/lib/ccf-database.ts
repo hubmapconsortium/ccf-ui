@@ -3,27 +3,51 @@ import * as idb from 'idb-keyval';
 import { JsonLd } from 'jsonld/jsonld-spec';
 import hash from 'object-hash';
 import {
-  addJsonLdToStore, addN3ToStore, addRdfXmlToStore, DataFactory, deserializeN3Store, Quad, serializeN3Store, Store
+  addJsonLdToStore,
+  addN3ToStore,
+  addRdfXmlToStore,
+  DataFactory,
+  deserializeN3Store,
+  Quad,
+  serializeN3Store,
+  Store,
 } from 'triple-store-utils';
 
 import { CCFSpatialGraph } from './ccf-spatial-graph';
 import { CCFSpatialScene, SpatialSceneNode } from './ccf-spatial-scene';
-import { searchXConsortia } from './xconsortia/xconsortia-data-import';
-import { AggregateResult, DatabaseStatus, Filter, OntologyTreeModel, TissueBlockResult } from './interfaces';
-import { getAggregateResults, getDatasetTechnologyNames, getProviderNames } from './queries/aggregate-results-n3';
+import {
+  AggregateResult,
+  DatabaseStatus,
+  Filter,
+  OntologyTreeModel,
+  TissueBlockResult,
+} from './interfaces';
+import {
+  getAggregateResults,
+  getDatasetTechnologyNames,
+  getProviderNames,
+} from './queries/aggregate-results-n3';
 import { findIds } from './queries/find-ids-n3';
-import { getBiomarkerTermOccurences, getCellTypeTermOccurences, getOntologyTermOccurences } from './queries/ontology-term-occurences-n3';
-import { getAnatomicalStructureTreeModel, getBiomarkerTreeModel, getCellTypeTreeModel } from './queries/ontology-tree-n3';
+import {
+  getBiomarkerTermOccurences,
+  getCellTypeTermOccurences,
+  getOntologyTermOccurences,
+} from './queries/ontology-term-occurences-n3';
+import {
+  getAnatomicalStructureTreeModel,
+  getBiomarkerTreeModel,
+  getCellTypeTreeModel,
+} from './queries/ontology-tree-n3';
 import { getSpatialEntityForEntity } from './queries/spatial-result-n3';
 import { getTissueBlockResult } from './queries/tissue-block-result-n3';
 import { FlatSpatialPlacement, SpatialEntity } from './spatial-types';
 import { CCFDatabaseStatusTracker } from './util/ccf-database-status-tracker';
-import { patchJsonLd } from './util/patch-jsonld';
-import { enrichRuiLocations } from './util/enrich-rui-locations';
 import { getBmLocatedInAs } from './util/enrich-bm-located-in-as';
+import { enrichRuiLocations } from './util/enrich-rui-locations';
+import { patchJsonLd } from './util/patch-jsonld';
+import { searchXConsortia } from './xconsortia/xconsortia-data-import';
 
 const { delMany, get, setMany } = idb;
-
 
 /** Database initialization options. */
 export interface CCFDatabaseOptions {
@@ -32,7 +56,7 @@ export interface CCFDatabaseOptions {
   /** Context. */
   ccfContextUrl: string;
   /** A list of data sources (in n3, rdf, xml, owl, or jsonld format) */
-  dataSources: (string|JsonLd)[];
+  dataSources: (string | JsonLd)[];
   /** Data service type. */
   hubmapDataService: 'static' | 'search-api';
   /** HuBMAP Elastic Search Query */
@@ -55,7 +79,7 @@ export const DEFAULT_CCF_DB_OPTIONS: CCFDatabaseOptions = {
   hubmapDataService: 'static',
   hubmapPortalUrl: 'https://portal.hubmapconsortium.org/',
   hubmapDataUrl: '',
-  hubmapAssetsUrl: 'https://assets.hubmapconsortium.org'
+  hubmapAssetsUrl: 'https://assets.hubmapconsortium.org',
 };
 
 /** Database provider. */
@@ -69,7 +93,7 @@ export class CCFDatabase {
   /** If the database is initialized */
   private initializing?: Promise<void>;
 
-  private status: CCFDatabaseStatusTracker;
+  private status!: CCFDatabaseStatusTracker;
 
   /**
    * Creates an instance of ccfdatabase.
@@ -88,7 +112,10 @@ export class CCFDatabase {
    * @param [options] Options used to initialize.
    * @returns A promise resolving to true if data has been loaded into the database.
    */
-  async connect(options?: CCFDatabaseOptions, cached = false): Promise<boolean> {
+  async connect(
+    options?: CCFDatabaseOptions,
+    cached = false
+  ): Promise<boolean> {
     if (options) {
       this.options = options;
     }
@@ -111,7 +138,7 @@ export class CCFDatabase {
       respectType: false,
       unorderedArrays: true,
       unorderedObjects: true,
-      unorderedSets: true
+      unorderedSets: true,
     });
     const lastModifiedKey = `ccf-database.last_modified.${optionsHash}`;
     const ccfDatabaseKey = `ccf-database.${optionsHash}`;
@@ -119,7 +146,10 @@ export class CCFDatabase {
     const lastModified = await get(lastModifiedKey).catch(() => undefined);
     let serializedDb: string | undefined;
 
-    if (lastModified && start - new Date(+lastModified).getTime() > 60*60*1000) {
+    if (
+      lastModified &&
+      start - new Date(+lastModified).getTime() > 60 * 60 * 1000
+    ) {
       await delMany([ccfDatabaseKey, lastModifiedKey]).catch(() => undefined);
     } else {
       serializedDb = await get(ccfDatabaseKey).catch(() => undefined);
@@ -132,7 +162,7 @@ export class CCFDatabase {
 
       setMany([
         [ccfDatabaseKey, this.serialize()],
-        [lastModifiedKey, '' + start]
+        [lastModifiedKey, '' + start],
       ]).catch(() => undefined);
     }
   }
@@ -144,14 +174,16 @@ export class CCFDatabase {
    */
   private async doConnect(): Promise<void> {
     const ops: Promise<unknown>[] = [];
-    const sources: (string|JsonLd)[] = this.options.dataSources?.concat() ?? [];
+    const sources: (string | JsonLd)[] =
+      this.options.dataSources?.concat() ?? [];
 
     const ccfOwlUrl = this.options.ccfOwlUrl;
     if (ccfOwlUrl.startsWith('{')) {
       // serialized n3 store was provided as the ccfOwlUrl
       this.store = deserializeN3Store(ccfOwlUrl, DataFactory);
     } else if (ccfOwlUrl.endsWith('.n3store.json')) {
-      const storeString = await fetch(ccfOwlUrl).then(r => r.text())
+      const storeString = await fetch(ccfOwlUrl)
+        .then((r) => r.text())
         .catch(() => console.log('Couldn\'t locate serialized store.'));
       if (storeString) {
         this.store = deserializeN3Store(storeString, DataFactory);
@@ -167,18 +199,20 @@ export class CCFDatabase {
       if (this.options.hubmapDataUrl.endsWith('jsonld')) {
         sources.push(this.options.hubmapDataUrl);
       } else {
-        ops.push(searchXConsortia(
-          this.options.hubmapDataUrl,
-          this.options.hubmapDataService,
-          this.options.hubmapQuery,
-          this.options.hubmapToken
-        ).then((jsonld) => {
-          if (jsonld) {
-            return this.addDataSources([jsonld]);
-          } else {
-            return undefined;
-          }
-        }));
+        ops.push(
+          searchXConsortia(
+            this.options.hubmapDataUrl,
+            this.options.hubmapDataService,
+            this.options.hubmapQuery,
+            this.options.hubmapToken
+          ).then((jsonld) => {
+            if (jsonld) {
+              return this.addDataSources([jsonld]);
+            } else {
+              return undefined;
+            }
+          })
+        );
       }
     }
     ops.push(this.addDataSources(sources));
@@ -186,22 +220,34 @@ export class CCFDatabase {
     await this.synchronize();
   }
 
-  async addDataSources(sources: (string|JsonLd)[], inputStore?: Store): Promise<this> {
+  async addDataSources(
+    sources: (string | JsonLd)[],
+    inputStore?: Store
+  ): Promise<this> {
     const store: Store = inputStore ?? this.store;
     await Promise.all(
       sources.map(async (source) => {
         if (typeof source === 'string') {
-          if ((source.startsWith('http') || source.startsWith('assets/')) && source.includes('jsonld')) {
+          if (
+            (source.startsWith('http') || source.startsWith('assets/')) &&
+            source.includes('jsonld')
+          ) {
             const sourceUrl = source;
-            source = await fetch(sourceUrl).then(r => r.text()).catch((err) => {
-              console.log(`Error fetching ${sourceUrl}`, err);
-              return '[]';
-            });
+            source = await fetch(sourceUrl)
+              .then((r) => r.text())
+              .catch((err) => {
+                console.log(`Error fetching ${sourceUrl}`, err);
+                return '[]';
+              });
             source = patchJsonLd(source);
             await addJsonLdToStore(source, store);
           } else if (source.endsWith('n3')) {
             await addN3ToStore(source, store);
-          } else if (source.endsWith('rdf') || source.endsWith('owl') || source.endsWith('xml')) {
+          } else if (
+            source.endsWith('rdf') ||
+            source.endsWith('owl') ||
+            source.endsWith('xml')
+          ) {
             await addRdfXmlToStore(source, store);
           } else {
             // Passthrough assumes a JSON-LD response
@@ -219,7 +265,7 @@ export class CCFDatabase {
 
   async synchronize(): Promise<this> {
     // Add a small delay to allow the triple store to settle
-    await new Promise(r => {
+    await new Promise((r) => {
       setTimeout(r, 500);
     });
     this.graph.createGraph();
@@ -235,7 +281,7 @@ export class CCFDatabase {
     this.store = deserializeN3Store(value, DataFactory);
     this.graph = new CCFSpatialGraph(this);
     this.scene = new CCFSpatialScene(this);
-    await new Promise(r => {
+    await new Promise((r) => {
       setTimeout(r, 10);
     });
   }
@@ -279,7 +325,9 @@ export class CCFDatabase {
   getSpatialEntities(filter?: Filter): SpatialEntity[] {
     // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
     filter = { ...filter, hasSpatialEntity: true } as Filter;
-    return [...this.getIds(filter)].map((s) => getSpatialEntityForEntity(this.store, s) as SpatialEntity);
+    return [...this.getIds(filter)].map(
+      (s) => getSpatialEntityForEntity(this.store, s) as SpatialEntity
+    );
   }
 
   async getDatabaseStatus(): Promise<DatabaseStatus> {
@@ -316,7 +364,9 @@ export class CCFDatabase {
   async getTissueBlockResults(filter?: Filter): Promise<TissueBlockResult[]> {
     // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
     filter = { ...filter, hasSpatialEntity: true } as Filter;
-    return [...this.getIds(filter)].map((s) => getTissueBlockResult(this.store, s));
+    return [...this.getIds(filter)].map((s) =>
+      getTissueBlockResult(this.store, s)
+    );
   }
 
   /**
@@ -335,7 +385,9 @@ export class CCFDatabase {
    * @param [filter] The filter.
    * @returns Ontology term counts.
    */
-  async getOntologyTermOccurences(filter?: Filter): Promise<Record<string, number>> {
+  async getOntologyTermOccurences(
+    filter?: Filter
+  ): Promise<Record<string, number>> {
     return getOntologyTermOccurences(this.getIds(filter), this.store);
   }
 
@@ -345,7 +397,9 @@ export class CCFDatabase {
    * @param [filter] The filter.
    * @returns Cell type term counts.
    */
-  async getCellTypeTermOccurences(filter?: Filter): Promise<Record<string, number>> {
+  async getCellTypeTermOccurences(
+    filter?: Filter
+  ): Promise<Record<string, number>> {
     return getCellTypeTermOccurences(this.getIds(filter), this.store);
   }
 
@@ -355,10 +409,11 @@ export class CCFDatabase {
    * @param [filter] The filter.
    * @returns Cell type term counts.
    */
-  async getBiomarkerTermOccurences(filter?: Filter): Promise<Record<string, number>> {
+  async getBiomarkerTermOccurences(
+    filter?: Filter
+  ): Promise<Record<string, number>> {
     return getBiomarkerTermOccurences(this.getIds(filter), this.store);
   }
-
 
   /**
    * Get ontology term tree nodes
@@ -414,12 +469,18 @@ export class CCFDatabase {
    * @param [filter] The filter.
    * @returns A list of Spatial Scene Nodes for the 3D Scene
    */
-  async getReferenceOrganScene(organIri: string, filter?: Filter): Promise<SpatialSceneNode[]> {
+  async getReferenceOrganScene(
+    organIri: string,
+    filter?: Filter
+  ): Promise<SpatialSceneNode[]> {
     this.graph.createGraph();
     return this.scene.getReferenceOrganScene(organIri, filter);
   }
 
-  async getSpatialPlacement(source: SpatialEntity, targetIri: string): Promise<FlatSpatialPlacement | undefined> {
+  async getSpatialPlacement(
+    source: SpatialEntity,
+    targetIri: string
+  ): Promise<FlatSpatialPlacement | undefined> {
     return this.graph.getSpatialPlacement(source, targetIri);
   }
 }

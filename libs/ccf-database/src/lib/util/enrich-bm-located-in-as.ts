@@ -37,9 +37,11 @@ WHERE {
 export async function getBmLocatedInAs(): Promise<JsonLd> {
   const url = `${SPARQL_ENDPOINT}?query=${encodeURIComponent(query)}`;
   return fetch(url, {
-    headers: { ['Accept']: 'application/ld+json' }
-  }).then(r => r.json()).catch((err) => {
-    console.log('Error querying lod.humanatlas.io', err);
-    return [];
-  });
+    headers: { ['Accept']: 'application/ld+json' },
+  })
+    .then((r) => r.json())
+    .catch((err) => {
+      console.log('Error querying lod.humanatlas.io', err);
+      return [];
+    });
 }

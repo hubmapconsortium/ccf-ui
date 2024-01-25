@@ -17,11 +17,15 @@ const blue: Color = [41, 121, 255, 255];
  * @param sphere the Spatial Search that defines where and how big the probing sphere is
  * @returns a set of scene nodes for the body-ui
  */
-export function getProbingSphereScene(node: SpatialEntity, sphere?: SpatialSearch): SpatialSceneNode[] {
+export function getProbingSphereScene(
+  node: SpatialEntity,
+  sphere?: SpatialSearch
+): SpatialSceneNode[] {
   const sceneWidth = node.x_dimension / 1000;
   const sceneHeight = node.y_dimension / 1000;
   const sceneDepth = node.z_dimension / 1000;
-  const defaultSphereRadius = Math.max(sceneWidth, sceneHeight, sceneDepth) * 0.07;
+  const defaultSphereRadius =
+    Math.max(sceneWidth, sceneHeight, sceneDepth) * 0.07;
   const sphereLineRadius = defaultSphereRadius * 0.05;
   const sphereLineLength = defaultSphereRadius * 2;
   const sphereConeRadius = sphereLineRadius * 4;
@@ -32,7 +36,7 @@ export function getProbingSphereScene(node: SpatialEntity, sphere?: SpatialSearc
       radius: defaultSphereRadius,
       x: sceneWidth / 2,
       y: sceneHeight / 2,
-      z: sceneDepth / 2
+      z: sceneDepth / 2,
     };
   } else {
     sphere = {
@@ -40,7 +44,7 @@ export function getProbingSphereScene(node: SpatialEntity, sphere?: SpatialSearc
       radius: sphere.radius / 1000,
       x: sphere.x / 1000,
       y: sphere.y / 1000,
-      z: sphere.z / 1000
+      z: sphere.z / 1000,
     };
   }
 
@@ -51,8 +55,10 @@ export function getProbingSphereScene(node: SpatialEntity, sphere?: SpatialSearc
       '@type': 'SpatialSceneNode',
       unpickable: false,
       geometry: 'sphere',
-      transformMatrix: new Matrix4(Matrix4.IDENTITY).translate([sphere.x, sphere.y, sphere.z]).scale(sphere.radius),
-      color: gold
+      transformMatrix: new Matrix4(Matrix4.IDENTITY)
+        .translate([sphere.x, sphere.y, sphere.z])
+        .scale(sphere.radius),
+      color: gold,
     },
     // Probing Sphere Positive X Axis (D)
     {
@@ -61,10 +67,14 @@ export function getProbingSphereScene(node: SpatialEntity, sphere?: SpatialSearc
       unpickable: true,
       geometry: 'cylinder',
       transformMatrix: new Matrix4(Matrix4.IDENTITY)
-        .translate([sphere.x + sphere.radius + sphereLineLength / 2, sphere.y, sphere.z])
+        .translate([
+          sphere.x + sphere.radius + sphereLineLength / 2,
+          sphere.y,
+          sphere.z,
+        ])
         .rotateZ(toRadians(-90))
         .scale([sphereLineRadius, sphereLineLength, sphereLineRadius]),
-      color: red
+      color: red,
     },
     {
       '@id': 'http://purl.org/ccf/latest/ccf.owl#ProbingsphereXDCone',
@@ -72,10 +82,14 @@ export function getProbingSphereScene(node: SpatialEntity, sphere?: SpatialSearc
       unpickable: true,
       geometry: 'cone',
       transformMatrix: new Matrix4(Matrix4.IDENTITY)
-        .translate([sphere.x + sphere.radius + sphereLineLength, sphere.y, sphere.z])
+        .translate([
+          sphere.x + sphere.radius + sphereLineLength,
+          sphere.y,
+          sphere.z,
+        ])
         .rotateZ(toRadians(-90))
-        .scale([ sphereConeRadius, sphereConeRadius * 3, sphereConeRadius ]),
-      color: red
+        .scale([sphereConeRadius, sphereConeRadius * 3, sphereConeRadius]),
+      color: red,
     },
     {
       '@id': 'http://purl.org/ccf/latest/ccf.owl#ProbingsphereXDLabel',
@@ -84,9 +98,13 @@ export function getProbingSphereScene(node: SpatialEntity, sphere?: SpatialSearc
       geometry: 'text',
       text: 'D',
       transformMatrix: new Matrix4(Matrix4.IDENTITY)
-        .translate([sphere.x + sphere.radius + sphereLineLength + sphereConeRadius * 3, sphere.y, sphere.z])
+        .translate([
+          sphere.x + sphere.radius + sphereLineLength + sphereConeRadius * 3,
+          sphere.y,
+          sphere.z,
+        ])
         .scale(sphereConeRadius),
-      color: red
+      color: red,
     },
     // Probing Sphere Negative X Axis (A)
     {
@@ -95,10 +113,14 @@ export function getProbingSphereScene(node: SpatialEntity, sphere?: SpatialSearc
       unpickable: true,
       geometry: 'cylinder',
       transformMatrix: new Matrix4(Matrix4.IDENTITY)
-        .translate([sphere.x - sphere.radius - sphereLineLength / 2, sphere.y, sphere.z])
+        .translate([
+          sphere.x - sphere.radius - sphereLineLength / 2,
+          sphere.y,
+          sphere.z,
+        ])
         .rotateZ(toRadians(-90))
         .scale([sphereLineRadius, sphereLineLength, sphereLineRadius]),
-      color: red
+      color: red,
     },
     {
       '@id': 'http://purl.org/ccf/latest/ccf.owl#ProbingsphereXACone',
@@ -106,10 +128,14 @@ export function getProbingSphereScene(node: SpatialEntity, sphere?: SpatialSearc
       unpickable: true,
       geometry: 'cone',
       transformMatrix: new Matrix4(Matrix4.IDENTITY)
-        .translate([sphere.x - sphere.radius - sphereLineLength, sphere.y, sphere.z])
+        .translate([
+          sphere.x - sphere.radius - sphereLineLength,
+          sphere.y,
+          sphere.z,
+        ])
         .rotateZ(toRadians(90))
-        .scale([ sphereConeRadius, sphereConeRadius * 3, sphereConeRadius ]),
-      color: red
+        .scale([sphereConeRadius, sphereConeRadius * 3, sphereConeRadius]),
+      color: red,
     },
     {
       '@id': 'http://purl.org/ccf/latest/ccf.owl#ProbingsphereXALabel',
@@ -118,9 +144,13 @@ export function getProbingSphereScene(node: SpatialEntity, sphere?: SpatialSearc
       geometry: 'text',
       text: 'A',
       transformMatrix: new Matrix4(Matrix4.IDENTITY)
-        .translate([sphere.x - sphere.radius - sphereLineLength - sphereConeRadius * 3.5, sphere.y, sphere.z])
+        .translate([
+          sphere.x - sphere.radius - sphereLineLength - sphereConeRadius * 3.5,
+          sphere.y,
+          sphere.z,
+        ])
         .scale(sphereConeRadius),
-      color: red
+      color: red,
     },
     // Probing Sphere Positive Y Axis (W)
     {
@@ -129,9 +159,13 @@ export function getProbingSphereScene(node: SpatialEntity, sphere?: SpatialSearc
       unpickable: true,
       geometry: 'cylinder',
       transformMatrix: new Matrix4(Matrix4.IDENTITY)
-        .translate([sphere.x, sphere.y + sphere.radius + sphereLineLength / 2, sphere.z])
+        .translate([
+          sphere.x,
+          sphere.y + sphere.radius + sphereLineLength / 2,
+          sphere.z,
+        ])
         .scale([sphereLineRadius, sphereLineLength, sphereLineRadius]),
-      color: green
+      color: green,
     },
     {
       '@id': 'http://purl.org/ccf/latest/ccf.owl#ProbingsphereYWCone',
@@ -139,9 +173,13 @@ export function getProbingSphereScene(node: SpatialEntity, sphere?: SpatialSearc
       unpickable: true,
       geometry: 'cone',
       transformMatrix: new Matrix4(Matrix4.IDENTITY)
-        .translate([sphere.x, sphere.y + sphere.radius + sphereLineLength, sphere.z])
-        .scale([ sphereConeRadius, sphereConeRadius * 3, sphereConeRadius ]),
-      color: green
+        .translate([
+          sphere.x,
+          sphere.y + sphere.radius + sphereLineLength,
+          sphere.z,
+        ])
+        .scale([sphereConeRadius, sphereConeRadius * 3, sphereConeRadius]),
+      color: green,
     },
     {
       '@id': 'http://purl.org/ccf/latest/ccf.owl#ProbingsphereYWLabel',
@@ -150,9 +188,13 @@ export function getProbingSphereScene(node: SpatialEntity, sphere?: SpatialSearc
       geometry: 'text',
       text: 'W',
       transformMatrix: new Matrix4(Matrix4.IDENTITY)
-        .translate([sphere.x, sphere.y + sphere.radius + sphereLineLength + sphereConeRadius * 3, sphere.z])
+        .translate([
+          sphere.x,
+          sphere.y + sphere.radius + sphereLineLength + sphereConeRadius * 3,
+          sphere.z,
+        ])
         .scale(sphereConeRadius),
-      color: green
+      color: green,
     },
     // Probing Sphere Negative Y Axis (S)
     {
@@ -161,9 +203,13 @@ export function getProbingSphereScene(node: SpatialEntity, sphere?: SpatialSearc
       unpickable: true,
       geometry: 'cylinder',
       transformMatrix: new Matrix4(Matrix4.IDENTITY)
-        .translate([sphere.x, sphere.y - sphere.radius - sphereLineLength / 2, sphere.z])
+        .translate([
+          sphere.x,
+          sphere.y - sphere.radius - sphereLineLength / 2,
+          sphere.z,
+        ])
         .scale([sphereLineRadius, sphereLineLength, sphereLineRadius]),
-      color: green
+      color: green,
     },
     {
       '@id': 'http://purl.org/ccf/latest/ccf.owl#ProbingsphereYSCone',
@@ -171,10 +217,14 @@ export function getProbingSphereScene(node: SpatialEntity, sphere?: SpatialSearc
       unpickable: true,
       geometry: 'cone',
       transformMatrix: new Matrix4(Matrix4.IDENTITY)
-        .translate([sphere.x, sphere.y - sphere.radius - sphereLineLength, sphere.z])
+        .translate([
+          sphere.x,
+          sphere.y - sphere.radius - sphereLineLength,
+          sphere.z,
+        ])
         .rotateZ(toRadians(180))
-        .scale([ sphereConeRadius, sphereConeRadius * 3, sphereConeRadius ]),
-      color: green
+        .scale([sphereConeRadius, sphereConeRadius * 3, sphereConeRadius]),
+      color: green,
     },
     {
       '@id': 'http://purl.org/ccf/latest/ccf.owl#ProbingsphereYSLabel',
@@ -183,9 +233,13 @@ export function getProbingSphereScene(node: SpatialEntity, sphere?: SpatialSearc
       geometry: 'text',
       text: 'S',
       transformMatrix: new Matrix4(Matrix4.IDENTITY)
-        .translate([sphere.x, sphere.y - sphere.radius - sphereLineLength - sphereConeRadius * 3.5, sphere.z])
+        .translate([
+          sphere.x,
+          sphere.y - sphere.radius - sphereLineLength - sphereConeRadius * 3.5,
+          sphere.z,
+        ])
         .scale(sphereConeRadius),
-      color: green
+      color: green,
     },
     // Probing Sphere Positive Z Axis (Q)
     {
@@ -194,10 +248,14 @@ export function getProbingSphereScene(node: SpatialEntity, sphere?: SpatialSearc
       unpickable: true,
       geometry: 'cylinder',
       transformMatrix: new Matrix4(Matrix4.IDENTITY)
-        .translate([sphere.x, sphere.y, sphere.z + sphere.radius + sphereLineLength / 2])
+        .translate([
+          sphere.x,
+          sphere.y,
+          sphere.z + sphere.radius + sphereLineLength / 2,
+        ])
         .rotateX(toRadians(90))
         .scale([sphereLineRadius, sphereLineLength, sphereLineRadius]),
-      color: blue
+      color: blue,
     },
     {
       '@id': 'http://purl.org/ccf/latest/ccf.owl#ProbingsphereZQCone',
@@ -205,10 +263,14 @@ export function getProbingSphereScene(node: SpatialEntity, sphere?: SpatialSearc
       unpickable: true,
       geometry: 'cone',
       transformMatrix: new Matrix4(Matrix4.IDENTITY)
-        .translate([sphere.x, sphere.y, sphere.z + sphere.radius + sphereLineLength])
+        .translate([
+          sphere.x,
+          sphere.y,
+          sphere.z + sphere.radius + sphereLineLength,
+        ])
         .rotateX(toRadians(90))
-        .scale([ sphereConeRadius, sphereConeRadius * 3, sphereConeRadius ]),
-      color: blue
+        .scale([sphereConeRadius, sphereConeRadius * 3, sphereConeRadius]),
+      color: blue,
     },
     {
       '@id': 'http://purl.org/ccf/latest/ccf.owl#ProbingsphereZQLabel',
@@ -217,9 +279,13 @@ export function getProbingSphereScene(node: SpatialEntity, sphere?: SpatialSearc
       geometry: 'text',
       text: 'Q',
       transformMatrix: new Matrix4(Matrix4.IDENTITY)
-        .translate([sphere.x, sphere.y, sphere.z + sphere.radius + sphereLineLength + sphereConeRadius * 3])
+        .translate([
+          sphere.x,
+          sphere.y,
+          sphere.z + sphere.radius + sphereLineLength + sphereConeRadius * 3,
+        ])
         .scale(sphereConeRadius),
-      color: blue
+      color: blue,
     },
     // Probing Sphere Negative Z Axis (E)
     {
@@ -228,10 +294,14 @@ export function getProbingSphereScene(node: SpatialEntity, sphere?: SpatialSearc
       unpickable: true,
       geometry: 'cylinder',
       transformMatrix: new Matrix4(Matrix4.IDENTITY)
-        .translate([sphere.x, sphere.y, sphere.z - sphere.radius - sphereLineLength / 2])
+        .translate([
+          sphere.x,
+          sphere.y,
+          sphere.z - sphere.radius - sphereLineLength / 2,
+        ])
         .rotateX(toRadians(-90))
         .scale([sphereLineRadius, sphereLineLength, sphereLineRadius]),
-      color: blue
+      color: blue,
     },
     {
       '@id': 'http://purl.org/ccf/latest/ccf.owl#ProbingsphereZECone',
@@ -239,10 +309,14 @@ export function getProbingSphereScene(node: SpatialEntity, sphere?: SpatialSearc
       unpickable: true,
       geometry: 'cone',
       transformMatrix: new Matrix4(Matrix4.IDENTITY)
-        .translate([sphere.x, sphere.y, sphere.z - sphere.radius - sphereLineLength])
+        .translate([
+          sphere.x,
+          sphere.y,
+          sphere.z - sphere.radius - sphereLineLength,
+        ])
         .rotateX(toRadians(-90))
-        .scale([ sphereConeRadius, sphereConeRadius * 3, sphereConeRadius ]),
-      color: blue
+        .scale([sphereConeRadius, sphereConeRadius * 3, sphereConeRadius]),
+      color: blue,
     },
     {
       '@id': 'http://purl.org/ccf/latest/ccf.owl#ProbingsphereZELabel',
@@ -251,9 +325,13 @@ export function getProbingSphereScene(node: SpatialEntity, sphere?: SpatialSearc
       geometry: 'text',
       text: 'E',
       transformMatrix: new Matrix4(Matrix4.IDENTITY)
-        .translate([sphere.x, sphere.y, sphere.z - sphere.radius - sphereLineLength - sphereConeRadius * 3.5])
+        .translate([
+          sphere.x,
+          sphere.y,
+          sphere.z - sphere.radius - sphereLineLength - sphereConeRadius * 3.5,
+        ])
         .scale(sphereConeRadius),
-      color: blue
-    }
+      color: blue,
+    },
   ];
 }

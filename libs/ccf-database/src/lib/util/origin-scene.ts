@@ -3,7 +3,6 @@ import { Matrix4, toRadians } from '@math.gl/core';
 import { SpatialSceneNode } from '../ccf-spatial-scene';
 import { SpatialEntity } from '../spatial-types';
 
-
 type Color = [number, number, number, number];
 const gray: Color = [204, 204, 204, 255];
 const red: Color = [213, 0, 0, 255];
@@ -17,13 +16,19 @@ const blue: Color = [41, 121, 255, 255];
  * @param centered whether to center the organ at the origin point
  * @returns a set of scene nodes for the body-ui
  */
-export function getOriginScene(node: SpatialEntity, includeLetters = false, centered = false): SpatialSceneNode[] {
+export function getOriginScene(
+  node: SpatialEntity,
+  includeLetters = false,
+  centered = false
+): SpatialSceneNode[] {
   const sceneWidth = node.x_dimension / 1000;
   const sceneHeight = node.y_dimension / 1000;
   const sceneDepth = node.z_dimension / 1000;
   const originRadius = Math.max(sceneWidth, sceneHeight, sceneDepth) * 0.05;
   const lineRadius = originRadius * 0.1;
-  const globalTranslation = centered ? [ sceneWidth, sceneHeight, sceneDepth ].map(n => n * -0.5) : [ 0, 0, 0 ];
+  const globalTranslation = centered
+    ? [sceneWidth, sceneHeight, sceneDepth].map((n) => n * -0.5)
+    : [0, 0, 0];
 
   return [
     // Origin Sphere
@@ -35,7 +40,7 @@ export function getOriginScene(node: SpatialEntity, includeLetters = false, cent
       transformMatrix: new Matrix4(Matrix4.IDENTITY)
         .translate(globalTranslation)
         .scale(originRadius),
-      color: gray
+      color: gray,
     },
     // Origin X Axis
     {
@@ -48,7 +53,7 @@ export function getOriginScene(node: SpatialEntity, includeLetters = false, cent
         .translate([sceneWidth / 2, 0, 0])
         .rotateZ(toRadians(-90))
         .scale([lineRadius, sceneWidth, lineRadius]),
-      color: red
+      color: red,
     },
     {
       '@id': 'http://purl.org/ccf/latest/ccf.owl#OriginXCone',
@@ -59,8 +64,8 @@ export function getOriginScene(node: SpatialEntity, includeLetters = false, cent
         .translate(globalTranslation)
         .translate([sceneWidth, 0, 0])
         .rotateZ(toRadians(-90))
-        .scale([ originRadius, originRadius * 3, originRadius ]),
-      color: red
+        .scale([originRadius, originRadius * 3, originRadius]),
+      color: red,
     },
     {
       '@id': 'http://purl.org/ccf/latest/ccf.owl#OriginXALabel',
@@ -72,7 +77,7 @@ export function getOriginScene(node: SpatialEntity, includeLetters = false, cent
         .translate(globalTranslation)
         .translate([-originRadius * 2, 0, 0])
         .scale(originRadius),
-      color: red
+      color: red,
     },
     {
       '@id': 'http://purl.org/ccf/latest/ccf.owl#OriginXDLabel',
@@ -84,7 +89,7 @@ export function getOriginScene(node: SpatialEntity, includeLetters = false, cent
         .translate(globalTranslation)
         .translate([sceneWidth + originRadius * 2, 0, 0])
         .scale(originRadius),
-      color: red
+      color: red,
     },
     // Origin Y Axis
     {
@@ -96,7 +101,7 @@ export function getOriginScene(node: SpatialEntity, includeLetters = false, cent
         .translate(globalTranslation)
         .translate([0, sceneHeight / 2, 0])
         .scale([lineRadius, sceneHeight, lineRadius]),
-      color: green
+      color: green,
     },
     {
       '@id': 'http://purl.org/ccf/latest/ccf.owl#OriginYCone',
@@ -106,8 +111,8 @@ export function getOriginScene(node: SpatialEntity, includeLetters = false, cent
       transformMatrix: new Matrix4(Matrix4.IDENTITY)
         .translate(globalTranslation)
         .translate([0, sceneHeight, 0])
-        .scale([ originRadius, originRadius * 3, originRadius ]),
-      color: green
+        .scale([originRadius, originRadius * 3, originRadius]),
+      color: green,
     },
     {
       '@id': 'http://purl.org/ccf/latest/ccf.owl#OriginYSLabel',
@@ -119,7 +124,7 @@ export function getOriginScene(node: SpatialEntity, includeLetters = false, cent
         .translate(globalTranslation)
         .translate([originRadius * 1.5, originRadius * 1.5, 0])
         .scale(originRadius),
-      color: green
+      color: green,
     },
     {
       '@id': 'http://purl.org/ccf/latest/ccf.owl#OriginYWLabel',
@@ -131,7 +136,7 @@ export function getOriginScene(node: SpatialEntity, includeLetters = false, cent
         .translate(globalTranslation)
         .translate([0, sceneHeight + originRadius * 2, 0])
         .scale(originRadius),
-      color: green
+      color: green,
     },
     // Origin Z Axis
     {
@@ -144,7 +149,7 @@ export function getOriginScene(node: SpatialEntity, includeLetters = false, cent
         .translate([0, 0, sceneDepth / 2])
         .rotateX(toRadians(90))
         .scale([lineRadius, sceneDepth, lineRadius]),
-      color: blue
+      color: blue,
     },
     {
       '@id': 'http://purl.org/ccf/latest/ccf.owl#OriginZCone',
@@ -155,8 +160,8 @@ export function getOriginScene(node: SpatialEntity, includeLetters = false, cent
         .translate(globalTranslation)
         .translate([0, 0, sceneDepth])
         .rotateX(toRadians(90))
-        .scale([ originRadius, originRadius * 3, originRadius ]),
-      color: blue
+        .scale([originRadius, originRadius * 3, originRadius]),
+      color: blue,
     },
     {
       '@id': 'http://purl.org/ccf/latest/ccf.owl#OriginZQLabel',
@@ -166,9 +171,9 @@ export function getOriginScene(node: SpatialEntity, includeLetters = false, cent
       text: 'Q',
       transformMatrix: new Matrix4(Matrix4.IDENTITY)
         .translate(globalTranslation)
-        .translate([originRadius * 1.5, - originRadius * 1.5, 0])
+        .translate([originRadius * 1.5, -originRadius * 1.5, 0])
         .scale(originRadius),
-      color: blue
+      color: blue,
     },
     {
       '@id': 'http://purl.org/ccf/latest/ccf.owl#OriginZELabel',
@@ -180,8 +185,10 @@ export function getOriginScene(node: SpatialEntity, includeLetters = false, cent
         .translate(globalTranslation)
         .translate([0, 0, sceneDepth + originRadius * 2])
         .scale(originRadius),
-      color: blue
-    }
-  // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
-  ].filter(n => (includeLetters && n.geometry === 'text' && n.text) || !n.text) as SpatialSceneNode[];
+      color: blue,
+    },
+  ].filter(
+    // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+    (n) => (includeLetters && n.geometry === 'text' && n.text) || !n.text
+  ) as SpatialSceneNode[];
 }

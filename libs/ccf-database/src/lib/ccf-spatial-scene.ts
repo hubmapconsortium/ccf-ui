@@ -4,13 +4,22 @@ import { Matrix4, toRadians } from '@math.gl/core';
 import { CCFDatabase } from './ccf-database';
 import { Filter } from './interfaces';
 import {
-  getAnatomicalStructures, getExtractionSet, getExtractionSets, getReferenceOrgans, getSpatialEntity,
+  getAnatomicalStructures,
+  getExtractionSet,
+  getExtractionSets,
+  getReferenceOrgans,
+  getSpatialEntity,
 } from './queries/spatial-result-n3';
 import { ExtractionSet, SpatialEntity } from './spatial-types';
 import { ccf } from './util/prefixes';
 
-
-export type SpatialSceneGeometry = 'sphere' | 'cube' | 'wireframe' | 'text' | 'cone' | 'cylinder';
+export type SpatialSceneGeometry =
+  | 'sphere'
+  | 'cube'
+  | 'wireframe'
+  | 'text'
+  | 'cone'
+  | 'cylinder';
 
 export interface SpatialSceneNode {
   '@id': string;
@@ -37,7 +46,6 @@ export interface SpatialSceneNode {
 }
 
 export class CCFSpatialScene {
-
   constructor(private db: CCFDatabase) {}
 
   getSpatialEntity(iri: string): SpatialEntity {
@@ -77,17 +85,18 @@ export class CCFSpatialScene {
     let organSet = this.getReferenceOrgans();
     switch (filter?.sex) {
       case 'Male':
-        organSet = organSet.filter(s => s.sex === 'Male');
+        organSet = organSet.filter((s) => s.sex === 'Male');
         break;
       case 'Female':
-        organSet = organSet.filter(s => s.sex === 'Female');
+        organSet = organSet.filter((s) => s.sex === 'Female');
         break;
       case 'Both':
       default:
         break;
     }
     if (filter?.debug) {
-      organSet = organSet.map(o => [ [o], this.getAnatomicalStructures(o['@id'])])
+      organSet = organSet
+        .map((o) => [[o], this.getAnatomicalStructures(o['@id'])])
         .reduce<SpatialEntity[]>((acc, [organ, structures]) => acc.concat(structures.length > 0 ? structures : organ), []);
     }
     return organSet;
@@ -98,9 +107,15 @@ export class CCFSpatialScene {
     const skinNodes: SpatialSceneNode[] = [];
     let nodes: (SpatialSceneNode | undefined)[] = [
       ...this.getReferenceOrganSets(filter).map((organ) => {
-        const isSkin = organ.representation_of === 'http://purl.obolibrary.org/obo/UBERON_0002097';
+        const isSkin =
+          organ.representation_of ===
+          'http://purl.obolibrary.org/obo/UBERON_0002097';
         const sceneNode = this.getSceneNode(organ, body, {
-          color: [255, 255, 255, 255], opacity: isSkin ? 0.5 : 0.2, unpickable: true, _lighting: 'pbr', zoomBasedOpacity: !isSkin
+          color: [255, 255, 255, 255],
+          opacity: isSkin ? 0.5 : 0.2,
+          unpickable: true,
+          _lighting: 'pbr',
+          zoomBasedOpacity: !isSkin,
         });
         if (isSkin && sceneNode) {
           skinNodes.push(sceneNode);
@@ -108,7 +123,7 @@ export class CCFSpatialScene {
         } else {
           return sceneNode;
         }
-      })
+      }),
     ];
     if (skinNodes.length > 0) {
       nodes = [...skinNodes, ...nodes];
@@ -117,31 +132,64 @@ export class CCFSpatialScene {
     if (filter?.debug) {
       // Debug bounding boxes
       nodes = nodes.concat([
-        this.getSceneNode(this.getSpatialEntity(ccf.base('VHRightKidney').id), body, { color: [0, 0, 255, 0.5*255], geometry: 'wireframe' }),
-        this.getSceneNode(this.getSpatialEntity(ccf.base('VHLeftKidney').id), body, { color: [255, 0, 0, 0.5*255], geometry: 'wireframe' }),
-        this.getSceneNode(this.getSpatialEntity(ccf.base('VHSpleenCC1').id), body, { color: [0, 255, 0, 0.5*255], geometry: 'wireframe' }),
-        this.getSceneNode(this.getSpatialEntity(ccf.base('VHSpleenCC2').id), body, { color: [0, 255, 0, 0.5*255], geometry: 'wireframe' }),
-        this.getSceneNode(this.getSpatialEntity(ccf.base('VHSpleenCC3').id), body, { color: [0, 255, 0, 0.5*255], geometry: 'wireframe' })
+        this.getSceneNode(
+          this.getSpatialEntity(ccf.base('VHRightKidney').id),
+          body,
+          { color: [0, 0, 255, 0.5 * 255], geometry: 'wireframe' }
+        ),
+        this.getSceneNode(
+          this.getSpatialEntity(ccf.base('VHLeftKidney').id),
+          body,
+          { color: [255, 0, 0, 0.5 * 255], geometry: 'wireframe' }
+        ),
+        this.getSceneNode(
+          this.getSpatialEntity(ccf.base('VHSpleenCC1').id),
+          body,
+          { color: [0, 255, 0, 0.5 * 255], geometry: 'wireframe' }
+        ),
+        this.getSceneNode(
+          this.getSpatialEntity(ccf.base('VHSpleenCC2').id),
+          body,
+          { color: [0, 255, 0, 0.5 * 255], geometry: 'wireframe' }
+        ),
+        this.getSceneNode(
+          this.getSpatialEntity(ccf.base('VHSpleenCC3').id),
+          body,
+          { color: [0, 255, 0, 0.5 * 255], geometry: 'wireframe' }
+        ),
       ]);
     }
 
-    return nodes.filter(s => s !== undefined) as SpatialSceneNode[];
+    return nodes.filter((s) => s !== undefined) as SpatialSceneNode[];
   }
 
-  getReferenceOrganScene(organIri: string, filter?: Filter): SpatialSceneNode[] {
-    const hasSexFilter = filter?.sex !== undefined && filter?.sex?.toLowerCase() !== 'both';
-    const organs = this.getReferenceOrgans().filter((o) => o.representation_of === organIri && (!hasSexFilter || o.sex === filter?.sex));
+  getReferenceOrganScene(
+    organIri: string,
+    filter?: Filter
+  ): SpatialSceneNode[] {
+    const hasSexFilter =
+      filter?.sex !== undefined && filter?.sex?.toLowerCase() !== 'both';
+    const organs = this.getReferenceOrgans().filter(
+      (o) =>
+        o.representation_of === organIri &&
+        (!hasSexFilter || o.sex === filter?.sex)
+    );
     if (organs.length > 0) {
       const organ = organs[0];
-      const isSkin = organ.representation_of === 'http://purl.obolibrary.org/obo/UBERON_0002097';
+      const isSkin =
+        organ.representation_of ===
+        'http://purl.obolibrary.org/obo/UBERON_0002097';
       const organNode = this.getSceneNode(organ, organ, {
-        color: [255, 255, 255, 255], opacity: isSkin ? 0.5 : 0.2, unpickable: true, _lighting: 'pbr'
+        color: [255, 255, 255, 255],
+        opacity: isSkin ? 0.5 : 0.2,
+        unpickable: true,
+        _lighting: 'pbr',
       }) as SpatialSceneNode;
 
       const scene = (this.db.getSpatialEntities(filter) ?? []).map((entity) =>
-        this.getSceneNode(entity, organ, { color: [255, 255, 255, 0.9*255] })
+        this.getSceneNode(entity, organ, { color: [255, 255, 255, 0.9 * 255] })
       ) as SpatialSceneNode[];
-      return [organNode].concat(scene).filter(n => n !== undefined);
+      return [organNode].concat(scene).filter((n) => n !== undefined);
     } else {
       return [];
     }
@@ -149,18 +197,31 @@ export class CCFSpatialScene {
 
   getEntitySceneNodes(filter?: Filter): SpatialSceneNode[] {
     const body = this.getReferenceBody(filter);
-    return this.db.getSpatialEntities(filter).map((entity) =>
-      this.getSceneNode(entity, body, { color: [255, 255, 255, 0.9*255] })
-    ).filter(s => s !== undefined) as SpatialSceneNode[];
+    return this.db
+      .getSpatialEntities(filter)
+      .map((entity) =>
+        this.getSceneNode(entity, body, { color: [255, 255, 255, 0.9 * 255] })
+      )
+      .filter((s) => s !== undefined) as SpatialSceneNode[];
   }
 
-  getSceneNode(source: SpatialEntity, target: SpatialEntity, nodeAttrs: Partial<SpatialSceneNode> = {}): SpatialSceneNode | undefined {
+  getSceneNode(
+    source: SpatialEntity,
+    target: SpatialEntity,
+    nodeAttrs: Partial<SpatialSceneNode> = {}
+  ): SpatialSceneNode | undefined {
     const has3dObject = source?.object?.file_format?.startsWith('model/gltf');
-    const sourceID = has3dObject && source.object ? source.object['@id'] : source['@id'];
-    let transform = this.db.graph.getTransformationMatrix(sourceID, target['@id']);
+    const sourceID =
+      has3dObject && source.object ? source.object['@id'] : source['@id'];
+    let transform = this.db.graph.getTransformationMatrix(
+      sourceID,
+      target['@id']
+    );
     if (transform) {
       if (has3dObject) {
-        transform = new Matrix4(Matrix4.IDENTITY).rotateX(toRadians(90)).multiplyLeft(transform);
+        transform = new Matrix4(Matrix4.IDENTITY)
+          .rotateX(toRadians(90))
+          .multiplyLeft(transform);
       } else {
         // Scale visible bounding boxes to the desired dimensions
         let factor: number;
@@ -176,11 +237,16 @@ export class CCFSpatialScene {
             factor = 1;
             break;
         }
-        const scale = [source.x_dimension, source.y_dimension, source.z_dimension].map(dim => dim * factor / 2);
+        const scale = [
+          source.x_dimension,
+          source.y_dimension,
+          source.z_dimension,
+        ].map((dim) => (dim * factor) / 2);
         transform.scale(scale);
       }
       return {
-        '@id': source['@id'], '@type': 'SpatialSceneNode',
+        '@id': source['@id'],
+        '@type': 'SpatialSceneNode',
         entityId: source.entityId,
         ccf_annotations: source.ccf_annotations,
         representation_of: source.representation_of,
@@ -190,7 +256,7 @@ export class CCFSpatialScene {
         scenegraphNode: has3dObject ? source.object?.file_subpath : undefined,
         transformMatrix: transform,
         tooltip: source.label,
-        ...nodeAttrs
+        ...nodeAttrs,
       };
     } else {
       return undefined;
@@ -200,7 +266,7 @@ export class CCFSpatialScene {
   getScene(filter?: Filter): SpatialSceneNode[] {
     return [
       ...this.getReferenceSceneNodes(filter),
-      ...this.getEntitySceneNodes(filter)
+      ...this.getEntitySceneNodes(filter),
     ];
   }
 }
