@@ -22,10 +22,10 @@ export class TermOccurrenceListComponent {
   /**
    * Holds title for section
    */
-  @Input() title: string;
+  @Input() title!: string;
 
   /**
    * Text to be included in the tool tip
    */
-  @Input() toolTipText: string;
+  @Input() toolTipText!: string;
 }

@@ -19,5 +19,5 @@ export class SpinnerOverlayComponent {
   @Input() @HostBinding('class.active') active = false;
 
   /** Optional text description displayed alongside the spinner. */
-  @Input() text: string;
+  @Input() text!: string;
 }

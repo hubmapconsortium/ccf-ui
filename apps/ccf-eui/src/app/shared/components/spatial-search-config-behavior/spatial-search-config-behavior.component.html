@@ -1,4 +1,5 @@
-<ccf-spatial-search-config [sex]="sex$ | async" [organs]="organs$ | async" [selectedOrgan]="selectedOrgan$ | async"
-  (updateSex)="updateSex($event)" (updateOrgan)="updateOrgan($event.id)" (closeDialog)="close()"
-  (buttonClicked)="buttonClicked()" (infoClicked)="onDialogButtonClick()">
+<ccf-spatial-search-config [sex]="(sex$ | async) ?? 'male'" [organs]="(organs$ | async) ?? []"
+  [selectedOrgan]="(selectedOrgan$ | async) ?? undefined" (updateSex)="updateSex($event)"
+  (updateOrgan)="updateOrgan($event.id)" (closeDialog)="close()" (buttonClicked)="buttonClicked()"
+  (infoClicked)="onDialogButtonClick()">
 </ccf-spatial-search-config>

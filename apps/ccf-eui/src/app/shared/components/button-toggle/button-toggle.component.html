@@ -5,7 +5,7 @@
   [value]="item"
   (change)="toggleSelection($event.value)"
   >
-    <div class="tooltip-content-container" [matTooltip]="enableTooltip && tooltips[i]">
+    <div class="tooltip-content-container" [matTooltip]="tooltips[i]" [matTooltipDisabled]="!enableTooltip">
 
       <mat-icon [class.hidden]="!isItemSelected(item)">done</mat-icon>
       <span> {{item}}</span>

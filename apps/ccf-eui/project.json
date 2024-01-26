@@ -35,7 +35,7 @@
             "input": "node_modules/document-register-element/build/document-register-element.js"
           }
         ],
-        "webWorkerTsConfig": "projects/ccf-eui/tsconfig.worker.json",
+        "webWorkerTsConfig": "apps/ccf-eui/tsconfig.worker.json",
         "vendorChunk": true,
         "extractLicenses": false,
         "buildOptimizer": false,

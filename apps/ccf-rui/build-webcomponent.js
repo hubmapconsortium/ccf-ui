@@ -9,5 +9,5 @@ const concat = require('concat');
     './dist/ccf-rui/main.js'
   ];
   await concat(files, './dist/ccf-rui/wc.js');
-  await fs.copy('./projects/ccf-rui/src/webcomponent-example.html', 'dist/ccf-rui/webcomponent-example.html');
+  await fs.copy('./apps/ccf-rui/src/webcomponent-example.html', 'dist/apps/ccf-rui/webcomponent-example.html');
 })();

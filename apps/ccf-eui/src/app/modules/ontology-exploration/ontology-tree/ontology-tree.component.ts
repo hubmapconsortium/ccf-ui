@@ -43,14 +43,14 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
    * Input of ontology filter, used for changing the ontology selections
    * from outside this component.
    */
-  @Input() ontologyFilter: string[];
+  @Input() ontologyFilter!: string[];
 
   /**
    * The root node IRI of the tree
    */
-  @Input() rootNode: string;
+  @Input() rootNode!: string;
 
-  @Input() showtoggle: boolean;
+  @Input() showtoggle!: boolean;
   /**
    * The node like objects to display in the tree.
    */
@@ -103,7 +103,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
   /**
    * Storage for the getter / setter
    */
-  private _occurenceData: Record<string, number>;
+  private _occurenceData!: Record<string, number>;
 
   /**
    * Term Data is a record of terms that the app currently has data for.
@@ -121,18 +121,18 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
     return this._termData;
   }
 
-  @Input() header: boolean;
+  @Input() header!: boolean;
 
-  @Input() menuOptions: string[];
+  @Input() menuOptions!: string[];
 
-  @Input() tooltips: string[];
+  @Input() tooltips!: string[];
 
-  selectedtoggleOptions: string[];
+  selectedtoggleOptions!: string[];
 
   /**
    * Storage for the getter / setter
    */
-  private _termData: Record<string, number>;
+  private _termData!: Record<string, number>;
 
   atScrollBottom = false;
 
@@ -221,17 +221,17 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.ontologyFilter) {
-      const ontologyFilter: string[] = changes.ontologyFilter.currentValue as string[];
+    if (changes['ontologyFilter']) {
+      const ontologyFilter: string[] = changes['ontologyFilter'].currentValue as string[];
       if (ontologyFilter?.length >= 0) {
         this.selectByIDs(ontologyFilter);
       }
     }
-    if (changes.rootNode) {
-      const rootNode = changes.rootNode.currentValue;
+    if (changes['rootNode']) {
+      const rootNode = changes['rootNode'].currentValue;
       this.selectByIDs([rootNode]);
     }
-    if (changes.nodes) {
+    if (changes['nodes']) {
       this.selectByIDs([this.rootNode]);
     }
   }
@@ -439,7 +439,7 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
    *
    * @param event The scroll event.
    */
-  onScroll(event: UIEvent): void {
+  onScroll(event: Event): void {
     if (!event.target) {
       return;
     }

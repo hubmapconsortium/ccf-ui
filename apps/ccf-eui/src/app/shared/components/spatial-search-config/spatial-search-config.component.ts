@@ -11,19 +11,19 @@ export type Sex = 'male' | 'female';
   selector: 'ccf-spatial-search-config',
   templateUrl: './spatial-search-config.component.html',
   styleUrls: ['./spatial-search-config.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SpatialSearchConfigComponent {
   @HostBinding('class') readonly className = 'ccf-spatial-search-config';
 
   /** Selectable organs */
-  @Input() organs: OrganInfo[];
+  @Input() organs!: OrganInfo[];
 
   /** Currently selected organ */
   @Input() selectedOrgan?: OrganInfo;
 
   /** Currently selected sex */
-  @Input() sex: Sex;
+  @Input() sex!: Sex;
 
   /** Emits when sex is updated */
   @Output() readonly updateSex = new EventEmitter<Sex>();

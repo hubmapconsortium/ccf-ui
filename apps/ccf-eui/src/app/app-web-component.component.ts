@@ -68,7 +68,7 @@ function parseFilter(value: unknown): string | Partial<Filter> {
     }
   }
 
-  if (typeof value === 'object') {
+  if (typeof value === 'object' && value !== null) {
     const sexOptions = ['Both', 'Male', 'Female'];
     // predefine name as 'filter' and obj as value. 'this' is set to undefined
     const checkProp = checkOptionalProperty.bind(undefined, 'filter', value);
@@ -94,26 +94,26 @@ function parseFilter(value: unknown): string | Partial<Filter> {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppWebComponent extends BaseWebComponent {
-  @Input() baseHref: string;
-  @Input() dataSources: string | string[];
-  @Input() selectedOrgans: string[];
+  @Input() baseHref!: string;
+  @Input() dataSources!: string | string[];
+  @Input() selectedOrgans!: string[];
 
-  @Input() hubmapDataService: string;
-  @Input() hubmapDataUrl: string;
-  @Input() hubmapAssetUrl: string;
-  @Input() hubmapToken: string;
-  @Input() hubmapPortalUrl: string;
+  @Input() hubmapDataService!: string;
+  @Input() hubmapDataUrl!: string;
+  @Input() hubmapAssetUrl!: string;
+  @Input() hubmapToken!: string;
+  @Input() hubmapPortalUrl!: string;
 
-  @Input() useRemoteApi: string | boolean;
-  @Input() remoteApiEndpoint: string;
-  @Input() theme: string;
-  @Input() header: string | boolean;
-  @Input() homeUrl: string;
-  @Input() logoTooltip: string;
-  @Input() loginDisabled: boolean;
-  @Input() filter: string | Partial<Filter>;
+  @Input() useRemoteApi!: string | boolean;
+  @Input() remoteApiEndpoint!: string;
+  @Input() theme!: string;
+  @Input() header!: string | boolean;
+  @Input() homeUrl!: string;
+  @Input() logoTooltip!: string;
+  @Input() loginDisabled!: boolean;
+  @Input() filter!: string | Partial<Filter>;
 
-  initialized: boolean;
+  override initialized!: boolean;
 
   constructor(
     configStore: GlobalConfigState<GenericGlobalConfig>,

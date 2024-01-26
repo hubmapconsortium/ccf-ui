@@ -1,10 +1,9 @@
-import { NgModule } from '@angular/core';
 import { NgxsDataPluginModule } from '@angular-ru/ngxs';
+import { NgModule } from '@angular/core';
 import { NgxsDispatchPluginModule } from '@ngxs-labs/dispatch-decorator';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { NgxsModule } from '@ngxs/store';
-import { GlobalConfigState } from 'ccf-shared';
-import { CallToActionState } from 'projects/ccf-shared/src/public-api';
+import { CallToActionState, GlobalConfigState } from 'ccf-shared';
 
 import { environment } from '../../../environments/environment';
 import { ColorAssignmentState } from './color-assignment/color-assignment.state';
@@ -14,7 +13,6 @@ import { ListResultsState } from './list-results/list-results.state';
 import { SceneState } from './scene/scene.state';
 import { SpatialSearchFilterState } from './spatial-search-filter/spatial-search-filter.state';
 import { SpatialSearchUiState } from './spatial-search-ui/spatial-search-ui.state';
-
 
 /**
  * States shared across the entire app.
@@ -28,7 +26,7 @@ export const ROOT_STATES = [
   SceneState,
   CallToActionState,
   SpatialSearchUiState,
-  SpatialSearchFilterState
+  SpatialSearchFilterState,
 ];
 
 @NgModule({
@@ -39,8 +37,8 @@ export const ROOT_STATES = [
     NgxsModule.forRoot(ROOT_STATES, {
       developmentMode: !environment.production,
       selectorOptions: {
-        injectContainerState: false
-      }
+        injectContainerState: false,
+      },
       // Consider setting compatibility and executionStrategy
       // https://www.ngxs.io/advanced/options
     }),
@@ -49,8 +47,8 @@ export const ROOT_STATES = [
 
     // Logger plugin must be last!
     NgxsLoggerPluginModule.forRoot({
-      disabled: environment.production
-    })
-  ]
+      disabled: environment.production,
+    }),
+  ],
 })
-export class StoreModule { }
+export class StoreModule {}

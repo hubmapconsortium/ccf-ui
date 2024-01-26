@@ -7,7 +7,6 @@ import { at } from 'lodash';
 import { Observable, ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-
 /**
  * Search result interface type for the search results
  */
@@ -28,13 +27,13 @@ export interface SearchResult {
 @Injectable()
 export class OntologySearchService {
   private readonly treeModel$ = new ReplaySubject<OntologyTreeModel>(1);
-  private treeModel: OntologyTreeModel;
+  private treeModel!: OntologyTreeModel;
 
   /** All nodes in the ontology tree. */
-  public readonly nodes$ = this.treeModel$.pipe(map(state => Object.values(state.nodes)));
+  public readonly nodes$ = this.treeModel$.pipe(map((state) => Object.values(state.nodes)));
 
   /** Root node of the ontology tree. */
-  public readonly rootNode$ = this.treeModel$.pipe(map(state => state.nodes[state.root]));
+  public readonly rootNode$ = this.treeModel$.pipe(map((state) => state.nodes[state.root]));
 
   setTreeModel(treeModel: OntologyTreeModel): void {
     this.treeModel$.next(treeModel);
@@ -48,9 +47,7 @@ export class OntologySearchService {
    * @returns an array of search-results
    */
   filter(value: string): Observable<SearchResult[]> {
-    return this.nodes$.pipe(
-      map(nodes => this.lookup(nodes, value.toLowerCase()))
-    );
+    return this.nodes$.pipe(map((nodes) => this.lookup(nodes, value.toLowerCase())));
   }
 
   /**
@@ -64,14 +61,14 @@ export class OntologySearchService {
     const searchResults = new Map<string, SearchResult>();
 
     if (nodes) {
-      nodes.forEach((node: OntologyTreeNode) => {
+      nodes.forEach((node) => {
         const condition = node.label.toLowerCase().includes(searchValue);
 
         if (condition && !searchResults.get(node.id)) {
           searchResults.set(node.id, {
             index: this.getIndexOfMatch(node.label, searchValue),
             displayLabel: this.formatLabel(node.label, searchValue),
-            node
+            node: node as OntologyTreeNode,
           });
         } else {
           const match = node.synonymLabels.find((label) => label.toLowerCase().includes(searchValue));
@@ -80,7 +77,7 @@ export class OntologySearchService {
             searchResults.set(node.id, {
               index: this.getIndexOfMatch(node.label + ' (' + match + ')', searchValue),
               displayLabel: this.formatLabel(node.label + ' (' + match + ')', searchValue),
-              node
+              node: node as OntologyTreeNode,
             });
           }
         }
@@ -113,7 +110,7 @@ export class OntologySearchService {
     return [
       label.slice(0, index),
       label.slice(index, index + searchValue.length),
-      label.slice(index + searchValue.length)
+      label.slice(index + searchValue.length),
     ];
   }
 

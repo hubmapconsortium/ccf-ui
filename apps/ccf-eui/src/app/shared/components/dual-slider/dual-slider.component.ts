@@ -22,28 +22,28 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
   /**
    * Reference to the template for the slider popover.
    */
-  @ViewChild(CdkPortal, { static: true }) popoverPortal: CdkPortal;
+  @ViewChild(CdkPortal, { static: true }) popoverPortal!: CdkPortal;
 
   /**
    * Reference to the popover element.
    * This is undefined until the slider popover is initialized.
    */
-  @ViewChild('popover', { read: ElementRef, static: false }) popoverElement: ElementRef<HTMLElement>;
+  @ViewChild('popover', { read: ElementRef, static: false }) popoverElement!: ElementRef<HTMLElement>;
 
   /**
    * Which criteria the slider is selecting for.
    */
-  @Input() label: string;
+  @Input() label!: string;
 
   /**
    * The lower and upper range of the slider.
    */
-  @Input() valueRange: number[];
+  @Input() valueRange!: number[];
 
   /**
    * The current range selected.
    */
-  @Input() selection: number[];
+  @Input() selection!: number[];
 
   /**
    * Emits the new selection range when a change is made to it.
@@ -58,17 +58,17 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
   /**
    * Slider options.
    */
-  options: Options;
+  options!: Options;
 
   /**
    * Value bound to the slider's low pointer value.
    */
-  lowValue: number;
+  lowValue!: number;
 
   /**
    * Value bound to the slider's high pointer value.
    */
-  highValue: number;
+  highValue!: number;
 
   /**
    * Determines if slider contents are visible (used for fade-in effect).
@@ -122,10 +122,10 @@ export class DualSliderComponent implements OnDestroy, OnChanges {
    * @param changes Changes that have been made to the slider properties.
    */
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.valueRange) {
+    if (changes['valueRange']) {
       this.optionsChanged();
     }
-    if (changes.selection) {
+    if (changes['selection']) {
       // Detect when selection is changed and update low/high value.
       this.lowValue = Math.min(...this.selection);
       this.highValue = Math.max(...this.selection);

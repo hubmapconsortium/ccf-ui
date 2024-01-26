@@ -1,7 +1,7 @@
 {
   "$schema": "../../node_modules/@compodoc/compodoc/src/config/schema.json",
   "name": "Library ccf-body-ui documentation",
-  "tsconfig": "./projects/ccf-body-ui/tsconfig.compodoc.json",
+  "tsconfig": "./apps/ccf-body-ui/tsconfig.compodoc.json",
   "output": "./docs/ccf-body-ui",
   "silent": true,
   "coverageTestThresholdFail": false

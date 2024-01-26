@@ -23,9 +23,9 @@ import { SpatialSearchUiComponent } from './spatial-search-ui.component';
     MatDividerModule,
     MatButtonModule,
     InfoButtonModule,
-    TermOccurrenceListModule
+    TermOccurrenceListModule,
   ],
   declarations: [SpatialSearchUiComponent],
-  exports: [SpatialSearchUiComponent]
+  exports: [SpatialSearchUiComponent],
 })
-export class SpatialSearchUiModule { }
+export class SpatialSearchUiModule {}

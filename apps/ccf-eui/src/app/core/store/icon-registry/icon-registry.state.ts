@@ -1,14 +1,12 @@
+import { DataAction, StateRepository } from '@angular-ru/ngxs/decorators';
+import { NgxsDataRepository } from '@angular-ru/ngxs/repositories';
 import { Injectable, Optional } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-browser';
-import { DataAction, StateRepository } from '@angular-ru/ngxs/decorators';
-import { NgxsDataRepository } from '@angular-ru/ngxs/repositories';
 import { State } from '@ngxs/store';
 
-import { DEFAULT_ICONS } from './default-icons';
-import { AppOptions } from 'ccf-api';
 import { GlobalConfigState } from 'ccf-shared';
-
+import { DEFAULT_ICONS } from './default-icons';
 
 /**
  * Object definition for registering new svg icons.
@@ -35,7 +33,6 @@ export interface IconDefinition {
   html?: SafeHtml;
 }
 
-
 /**
  * State handling the registration of icons for use with `mat-icon`.
  */
@@ -52,15 +49,16 @@ export class IconRegistryState extends NgxsDataRepository<void> {
   constructor(
     @Optional() private readonly registry: MatIconRegistry | null,
     sanitizer: DomSanitizer,
-    private readonly globalConfig: GlobalConfigState<AppOptions>
+    private readonly globalConfig: GlobalConfigState<{ baseHref: string }>
   ) {
     super();
-    this.globalConfig.getOption('baseHref').subscribe((ref: string) => {
+    this.globalConfig.getOption('baseHref').subscribe((ref) => {
       for (const { name, namespace, url, html } of DEFAULT_ICONS) {
         const safeDef: IconDefinition = {
-          name, namespace,
+          name,
+          namespace,
           url: ref + url && sanitizer.bypassSecurityTrustResourceUrl(ref + url),
-          html: html && sanitizer.bypassSecurityTrustHtml(html)
+          html: html && sanitizer.bypassSecurityTrustHtml(html),
         };
 
         this.registerIconImpl(safeDef);
@@ -137,6 +135,6 @@ export class IconRegistryState extends NgxsDataRepository<void> {
    */
   private getArguments({ name, namespace, url, html }: IconDefinition): unknown[] {
     const args: unknown[] = [namespace, name, url ?? html];
-    return args.filter(value => !!value);
+    return args.filter((value) => !!value);
   }
 }

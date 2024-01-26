@@ -9,5 +9,5 @@ const concat = require('concat');
     './dist/ccf-organ-info/main.js'
   ];
   await concat(files, './dist/ccf-organ-info/wc.js');
-  await fs.copy('./projects/ccf-organ-info/src/webcomponent-example.html', 'dist/ccf-organ-info/webcomponent-example.html');
+  await fs.copy('./apps/ccf-organ-info/src/webcomponent-example.html', 'dist/apps/ccf-organ-info/webcomponent-example.html');
 })();

@@ -7,7 +7,7 @@ import { Injectable, ElementRef } from '@angular/core';
   providedIn: 'root'
 })
 export class AppRootOverlayContainer extends OverlayContainer {
-  private rootElement: ElementRef<HTMLElement>;
+  private rootElement!: ElementRef<HTMLElement>;
   private attached = false;
 
   setRootElement(el: ElementRef<HTMLElement>): void {
@@ -24,7 +24,7 @@ export class AppRootOverlayContainer extends OverlayContainer {
   }
 
   // eslint-disable-next-line @typescript-eslint/naming-convention
-  protected _createContainer(): void {
+  protected override _createContainer(): void {
     super._createContainer();
     this.appendToRoot();
   }

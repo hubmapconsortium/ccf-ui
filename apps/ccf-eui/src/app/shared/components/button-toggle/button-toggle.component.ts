@@ -13,12 +13,12 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonToggleComponent {
-  @Input() menuOptions: string[];
+  @Input() menuOptions!: string[];
 
   @Input() selectedItems?: string[] = [];
 
   @Input() enableTooltip = false;
-  @Input() tooltips = [];
+  @Input() tooltips: string[] = [];
 
   /**
    * Any time a button is clicked, event is emitted.

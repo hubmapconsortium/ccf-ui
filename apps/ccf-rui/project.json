@@ -128,10 +128,10 @@
         ],
         "codeCoverage": true,
         "codeCoverageExclude": [
-          "projects/ccf-rui/src/test.ts",
-          "projects/ccf-rui/src/polyfills.ts",
-          "projects/ccf-rui/src/environments/**/*.ts",
-          "projects/ccf-rui/src/app/**/*.module.ts"
+          "apps/ccf-rui/src/test.ts",
+          "apps/ccf-rui/src/polyfills.ts",
+          "apps/ccf-rui/src/environments/**/*.ts",
+          "apps/ccf-rui/src/app/**/*.module.ts"
         ],
         "styles": [
           "apps/ccf-rui/src/styles.scss"

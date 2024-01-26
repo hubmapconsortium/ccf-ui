@@ -209,7 +209,7 @@ export class DataState extends NgxsDataRepository<DataStateModel> implements Ngx
     this._providerFilterQueryStatus$.next(DataQueryState.Completed);
   }
 
-  ngxsOnInit(): void {
+  override ngxsOnInit(): void {
     const { ontologyTermsFullData$, ontologyTermOccurencesData$, cellTypeTermsFullData$, biomarkerTermsFullData$, cellTypeTermOccurencesData$, biomarkerTermOccurencesData$, source, snapshot: { filter } } = this;
     if (filter === DEFAULT_FILTER) {
       // Common case - Reuse the result of the regular query

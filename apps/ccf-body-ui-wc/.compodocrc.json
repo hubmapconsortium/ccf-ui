@@ -1,7 +1,7 @@
 {
   "$schema": "../../node_modules/@compodoc/compodoc/src/config/schema.json",
   "name": "Application ccf-body-ui-wc documentation",
-  "tsconfig": "./projects/ccf-body-ui-wc/tsconfig.compodoc.json",
+  "tsconfig": "./apps/ccf-body-ui-wc/tsconfig.compodoc.json",
   "output": "./docs/ccf-body-ui-wc",
   "silent": true,
   "coverageTestThresholdFail": false

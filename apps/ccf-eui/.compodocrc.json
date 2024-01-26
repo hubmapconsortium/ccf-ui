@@ -1,7 +1,7 @@
 {
   "$schema": "../../node_modules/@compodoc/compodoc/src/config/schema.json",
   "name": "Application ccf-eui documentation",
-  "tsconfig": "./projects/ccf-eui/tsconfig.compodoc.json",
+  "tsconfig": "./apps/ccf-eui/tsconfig.compodoc.json",
   "output": "./docs/ccf-eui",
   "silent": true,
   "coverageTestThresholdFail": false

@@ -15,9 +15,9 @@ import { SpatialSearchConfigComponent } from './spatial-search-config.component'
     MatSelectModule,
     MatIconModule,
     MatRadioModule,
-    MatButtonModule
+    MatButtonModule,
   ],
   declarations: [SpatialSearchConfigComponent],
-  exports: [SpatialSearchConfigComponent]
+  exports: [SpatialSearchConfigComponent],
 })
-export class SpatialSearchConfigModule { }
+export class SpatialSearchConfigModule {}

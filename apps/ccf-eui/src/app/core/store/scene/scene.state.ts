@@ -76,12 +76,12 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
   readonly highlightedId$ = this.state$.pipe(map(x => x?.highlightedId), distinctUntilChanged());
 
   /** The data state */
-  private dataState: DataState;
+  private dataState!: DataState;
 
   /** Color assignments state */
-  private colorAssignments: ColorAssignmentState;
+  private colorAssignments!: ColorAssignmentState;
 
-  private listResults: ListResultsState;
+  private listResults!: ListResultsState;
 
 
   /**
@@ -163,7 +163,7 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
   /**
    * Initializes this state service.
    */
-  ngxsOnInit(): void {
+  override ngxsOnInit(): void {
     super.ngxsOnInit();
 
     // Injecting page and model states in the constructor breaks things!?

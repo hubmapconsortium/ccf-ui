@@ -20,22 +20,22 @@ export class FiltersContentComponent implements OnChanges {
   /**
    * Determines if the filters are visible
    */
-  @Input() hidden: boolean;
+  @Input() hidden!: boolean;
 
   /**
    * Allows the filters to be set from outside the component
    */
-  @Input() filters: Record<string, unknown | unknown[]>;
+  @Input() filters?: Record<string, unknown | unknown[]>;
 
   /**
    * List of technologies in the data
    */
-  @Input() technologyFilters: string[];
+  @Input() technologyFilters!: string[];
 
   /**
    * List of providers in the data
    */
-  @Input() providerFilters: string[];
+  @Input() providerFilters!: string[];
 
   /**
    * List of spatial searches
@@ -61,6 +61,26 @@ export class FiltersContentComponent implements OnChanges {
    * Emits the filters to be applied
    */
   @Output() readonly applyFilters = new EventEmitter<Record<string, unknown>>();
+
+  get sex(): Sex {
+    return this.getFilterValue<string>('sex', 'male')?.toLowerCase() as Sex;
+  }
+
+  get ageRange(): number[] {
+    return this.getFilterValue<number[]>('ageRange', []);
+  }
+
+  get bmiRange(): number[] {
+    return this.getFilterValue<number[]>('bmiRange', []);
+  }
+
+  get technologies(): string[] {
+    return this.getFilterValue<string[]>('technologies', []);
+  }
+
+  get tmc(): string[] {
+    return this.getFilterValue<string[]>('tmc', []);
+  }
 
   /**
    * Creates an instance of filters content component.
@@ -126,11 +146,15 @@ export class FiltersContentComponent implements OnChanges {
    * Updates sex to `Both` if there is a mismatch between the current selection and the sex
    */
   updateSexFromSelection(items: SpatialSearchFilterItem[]): void {
-    const currentSex = (this.filters['sex'] as string)?.toLowerCase() as Sex;
+    const currentSex = this.sex;
     const selectedSexes = new Set(items.map(item => item.sex));
 
     if (items.length > 0 && (selectedSexes.size > 1 || !selectedSexes.has(currentSex))) {
       this.updateFilter('Both', 'sex');
     }
+  }
+
+  private getFilterValue<T>(key: string, defaultValue: T): T {
+    return (this.filters?.[key] as T | undefined) ?? defaultValue;
   }
 }

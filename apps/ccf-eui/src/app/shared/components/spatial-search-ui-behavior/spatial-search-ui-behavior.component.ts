@@ -17,13 +17,9 @@ import {
 } from '../../../core/store/spatial-search-ui/spatial-search-ui.actions';
 import { SpatialSearchUiSelectors } from '../../../core/store/spatial-search-ui/spatial-search-ui.selectors';
 import { Position, RadiusSettings, TermResult } from '../../../core/store/spatial-search-ui/spatial-search-ui.state';
-import {
-  SpatialSearchConfigBehaviorComponent,
-} from '../spatial-search-config-behavior/spatial-search-config-behavior.component';
+import { SpatialSearchConfigBehaviorComponent } from '../spatial-search-config-behavior/spatial-search-config-behavior.component';
 import { Sex } from '../spatial-search-config/spatial-search-config.component';
 import { SpatialSearchUiComponent } from '../spatial-search-ui/spatial-search-ui.component';
-import { AppOptions } from 'ccf-api';
-
 
 /**
  * Behavioral component for Spatial Search UI
@@ -31,45 +27,44 @@ import { AppOptions } from 'ccf-api';
 @Component({
   selector: 'ccf-spatial-search-ui-behavior',
   templateUrl: './spatial-search-ui-behavior.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SpatialSearchUiBehaviorComponent {
-
   @Select(SpatialSearchUiSelectors.scene)
-  readonly scene$: Observable<SpatialSceneNode[]>;
+  readonly scene$!: Observable<SpatialSceneNode[]>;
 
   @Select(SpatialSearchUiSelectors.sceneBounds)
-  readonly sceneBounds$: Observable<Position>;
+  readonly sceneBounds$!: Observable<Position>;
 
   @Select(SpatialSearchUiSelectors.sceneTarget)
-  readonly sceneTarget$: Observable<Position>;
+  readonly sceneTarget$!: Observable<Position>;
 
   @Select(SpatialSearchUiSelectors.sex)
-  readonly sex$: Observable<Sex>;
+  readonly sex$!: Observable<Sex>;
 
   @Select(SpatialSearchUiSelectors.organ)
-  readonly organ$: Observable<OrganInfo | undefined>;
+  readonly organ$!: Observable<OrganInfo | undefined>;
 
   @Select(SpatialSearchUiSelectors.position)
-  readonly position$: Observable<Position>;
+  readonly position$!: Observable<Position>;
 
   @Select(SpatialSearchUiSelectors.defaultPosition)
-  readonly defaultPosition$: Observable<Position>;
+  readonly defaultPosition$!: Observable<Position>;
 
   @Select(SpatialSearchUiSelectors.radius)
-  readonly radius$: Observable<number>;
+  readonly radius$!: Observable<number>;
 
   @Select(SpatialSearchUiSelectors.radiusSettings)
-  readonly radiusSettings$: Observable<RadiusSettings>;
+  readonly radiusSettings$!: Observable<RadiusSettings>;
 
   @Select(SpatialSearchUiSelectors.tissueBlocks)
-  readonly tissueBlocks$: Observable<TissueBlockResult[]>;
+  readonly tissueBlocks$!: Observable<TissueBlockResult[]>;
 
   @Select(SpatialSearchUiSelectors.anatomicalStructures)
-  readonly anatomicalStructures$: Observable<TermResult[]>;
+  readonly anatomicalStructures$!: Observable<TermResult[]>;
 
   @Select(SpatialSearchUiSelectors.cellTypes)
-  readonly cellTypes$: Observable<TermResult[]>;
+  readonly cellTypes$!: Observable<TermResult[]>;
 
   @Dispatch()
   readonly updatePosition = actionAsFn(SetPosition);
@@ -87,7 +82,7 @@ export class SpatialSearchUiBehaviorComponent {
   readonly resetRadius = actionAsFn(ResetRadius);
 
   /** Data to be displayed in the info panel */
-  panelData: PanelData;
+  panelData!: PanelData;
 
   baseHref = '';
 
@@ -98,9 +93,9 @@ export class SpatialSearchUiBehaviorComponent {
     private readonly dialogRef: MatDialogRef<SpatialSearchUiComponent>,
     public dialog: MatDialog,
     private readonly infoService: InfoButtonService,
-    private readonly globalConfig: GlobalConfigState<AppOptions>
+    private readonly globalConfig: GlobalConfigState<{ baseHref: string }>
   ) {
-    this.globalConfig.getOption('baseHref').subscribe((ref: string) => {
+    this.globalConfig.getOption('baseHref').subscribe((ref) => {
       this.baseHref = ref;
     });
   }
@@ -118,8 +113,8 @@ export class SpatialSearchUiBehaviorComponent {
       data: {
         title: data.infoTitle,
         content: data.content,
-        videoID: data.videoID
-      }
+        videoID: data.videoID,
+      },
     });
   }
 
@@ -127,14 +122,20 @@ export class SpatialSearchUiBehaviorComponent {
    * Updates dialog with spatial search information
    */
   onDialogButtonClick(): void {
-    this.infoService.updateData(this.baseHref + 'assets/docs/SPATIAL_SEARCH_README.md', 'UfxMpzatowE', 'Spatial Search');
+    this.infoService.updateData(
+      this.baseHref + 'assets/docs/SPATIAL_SEARCH_README.md',
+      'UfxMpzatowE',
+      'Spatial Search'
+    );
     const panelContent$ = this.infoService.panelContent.asObservable();
-    this.subscriptions.add(panelContent$.subscribe(data => {
-      if (data.content.length) {
-        this.panelData = data;
-        this.launchInfoDialog(this.panelData);
-      }
-    }));
+    this.subscriptions.add(
+      panelContent$.subscribe((data) => {
+        if (data.content.length) {
+          this.panelData = data;
+          this.launchInfoDialog(this.panelData);
+        }
+      })
+    );
   }
 
   /**

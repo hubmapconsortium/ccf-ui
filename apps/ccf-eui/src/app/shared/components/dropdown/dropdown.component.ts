@@ -15,17 +15,17 @@ export class DropdownComponent {
   /**
    * What the component is selecting for.
    */
-  @Input() label: string;
+  @Input() label!: string;
 
   /**
    * Choices displayed in the dropdown menu.
    */
-  @Input() options: string[];
+  @Input() options!: string[];
 
   /**
    * Current option selected.
    */
-  @Input() selection: string;
+  @Input() selection!: string;
 
   /**
    * Emits the new selected option when selection is changed.

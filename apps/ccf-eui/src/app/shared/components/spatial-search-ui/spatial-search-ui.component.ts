@@ -1,11 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  HostBinding,
-  Input,
-  Output
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
 import { SpatialSceneNode } from 'ccf-body-ui';
 import { TissueBlockResult } from 'ccf-database';
 import { OrganInfo } from 'ccf-shared';
@@ -19,48 +12,47 @@ import { Position, RadiusSettings, TermResult } from '../../../core/store/spatia
   selector: 'ccf-spatial-search-ui',
   templateUrl: './spatial-search-ui.component.html',
   styleUrls: ['./spatial-search-ui.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-
 export class SpatialSearchUiComponent {
   /** HTML Class */
   @HostBinding('class') readonly className = 'ccf-spatial-search-ui';
 
   /** Nodes in the scene */
-  @Input() readonly scene: SpatialSceneNode[];
+  @Input() scene!: SpatialSceneNode[];
 
   /** Bounds of the scene */
-  @Input() readonly sceneBounds: Position;
+  @Input() sceneBounds!: Position;
 
   /** Scene target */
-  @Input() readonly sceneTarget: [number, number, number];
+  @Input() sceneTarget!: [number, number, number];
 
   /** Current selected sex */
-  @Input() readonly sex: string;
+  @Input() sex!: string;
 
   /** Current selected organ */
-  @Input() readonly referenceOrgan: OrganInfo;
+  @Input() referenceOrgan!: OrganInfo;
 
   /** Current sphere radius setting */
-  @Input() readonly radius: number;
+  @Input() radius!: number;
 
   /** Maximum, minimum, and default sphere radius values */
-  @Input() readonly radiusSettings: RadiusSettings;
+  @Input() radiusSettings!: RadiusSettings;
 
   /** Starting position of sphere */
-  @Input() readonly defaultPosition: Position;
+  @Input() defaultPosition!: Position;
 
   /** Current position of sphere */
-  @Input() readonly position: Position;
+  @Input() position!: Position;
 
   /** Tissue blocks within the sphere radius */
-  @Input() readonly tissueBlocks: TissueBlockResult[];
+  @Input() tissueBlocks!: TissueBlockResult[];
 
   /** Anatomical structures within the sphere radius */
-  @Input() readonly anatomicalStructures: TermResult[];
+  @Input() anatomicalStructures!: TermResult[];
 
   /** Cell types within the sphere radius */
-  @Input() readonly cellTypes: TermResult[];
+  @Input() cellTypes!: TermResult[];
 
   /** Emits when run spatial search button clicked */
   @Output() readonly addSpatialSearch = new EventEmitter();

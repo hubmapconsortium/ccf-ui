@@ -9,18 +9,18 @@ import { GoogleAnalyticsService } from 'ngx-google-analytics';
   selector: 'ccf-checkbox',
   templateUrl: './checkbox.component.html',
   styleUrls: ['./checkbox.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CheckboxComponent {
   /**
    * The label that describes the overall question the checkbox is asking
    */
-  @Input() label: string;
+  @Input() label!: string;
 
   /**
    * Used to generate the individual checkboxes and their individual labels
    */
-  @Input() options: string[];
+  @Input() options!: string[];
 
   /**
    * A list of the checkboxes the user has checked. To be updated any time a checkbox changes.
@@ -42,7 +42,7 @@ export class CheckboxComponent {
    *
    * @param ga Analytics service
    */
-  constructor(private readonly ga: GoogleAnalyticsService) { }
+  constructor(private readonly ga: GoogleAnalyticsService) {}
 
   /**
    * This method captures checkbox events and decides whether to add or remove a filter selection based on the checked property
@@ -57,7 +57,7 @@ export class CheckboxComponent {
       this.selection = [...this.selection, option];
       this.ga.event('filter_added', 'filter_checkbox', option);
     } else {
-      this.selection = this.selection.filter(selection => selection !== option);
+      this.selection = this.selection.filter((selection) => selection !== option);
       this.ga.event('filter_removed', 'filter_checkbox', option);
     }
 

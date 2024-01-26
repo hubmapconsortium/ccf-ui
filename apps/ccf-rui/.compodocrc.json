@@ -1,7 +1,7 @@
 {
   "$schema": "../../node_modules/@compodoc/compodoc/src/config/schema.json",
   "name": "Application ccf-rui documentation",
-  "tsconfig": "./projects/ccf-rui/tsconfig.compodoc.json",
+  "tsconfig": "./apps/ccf-rui/tsconfig.compodoc.json",
   "output": "./docs/ccf-rui",
   "silent": true,
   "coverageTestThresholdFail": false

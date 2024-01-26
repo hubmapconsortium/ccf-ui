@@ -3,11 +3,11 @@ const concat = require('concat');
 
 (async function build() {
   const files = [
-    './dist/ccf-ui/runtime.js',
-    './dist/ccf-ui/polyfills.js',
-    './dist/ccf-ui/scripts.js',
-    './dist/ccf-ui/main.js'
+    './dist/apps/ccf-ui/runtime.js',
+    './dist/apps/ccf-ui/polyfills.js',
+    './dist/apps/ccf-ui/scripts.js',
+    './dist/apps/ccf-ui/main.js'
   ];
   await concat(files, './dist/ccf-ui/wc.js');
-  await fs.copy('./projects/ccf-eui/src/webcomponent-example.html', 'dist/ccf-ui/webcomponent-example.html');
+  await fs.copy('./apps/ccf-eui/src/webcomponent-example.html', 'dist/apps/ccf-ui/webcomponent-example.html');
 })();

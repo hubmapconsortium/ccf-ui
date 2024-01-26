@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
-import { AppOptions } from 'ccf-api';
 import { DatasetResult } from 'ccf-database';
 import { GlobalConfigState } from 'ccf-shared';
 import { SwiperOptions } from 'swiper';
@@ -14,7 +13,6 @@ const nextUid = (() => {
   };
 })();
 
-
 /**
  * Carousel containing sample thumbnails in expanded donor cards
  */
@@ -22,7 +20,7 @@ const nextUid = (() => {
   selector: 'ccf-thumbnail-carousel',
   templateUrl: './thumbnail-carousel.component.html',
   styleUrls: ['./thumbnail-carousel.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ThumbnailCarouselComponent {
   /**
@@ -33,7 +31,7 @@ export class ThumbnailCarouselComponent {
   /**
    * Items to show in the carousel
    */
-  @Input() data: DatasetResult[];
+  @Input() data!: DatasetResult[];
 
   /**
    * Outputs the result whose link was clicked
@@ -68,7 +66,7 @@ export class ThumbnailCarouselComponent {
     slidesOffsetAfter: 4,
     slidesPerView: 'auto',
     spaceBetween: 4,
-    watchOverflow: true
+    watchOverflow: true,
   };
 
   /**
@@ -78,15 +76,15 @@ export class ThumbnailCarouselComponent {
     // Normally I would have prefered referencing the elements themselves instead of using selectors
     // However in this case it does not work with angular swiper
     prevEl: '#' + this.prevButtonId,
-    nextEl: '#' + this.nextButtonId
+    nextEl: '#' + this.nextButtonId,
   };
 
   readonly baseHref$ = this.globalConfig.getOption('baseHref');
 
   baseHref = '';
 
-  constructor(private readonly globalConfig: GlobalConfigState<AppOptions>) {
-    this.baseHref$.subscribe((ref: string) => this.setUrl(ref));
+  constructor(private readonly globalConfig: GlobalConfigState<{ baseHref: string }>) {
+    this.baseHref$.subscribe((ref) => this.setUrl(ref));
   }
 
   /**

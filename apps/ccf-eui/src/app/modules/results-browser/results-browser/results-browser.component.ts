@@ -21,21 +21,21 @@ export class ResultsBrowserComponent {
   /**
    * Input array of List Results to display
    */
-  @Input() listResults: Immutable<ListResult[]>;
+  @Input() listResults!: Immutable<ListResult[]>;
 
   /**
    * Input used to add a list of stats at the top the results browser
    */
-  @Input() aggregateData: Immutable<AggregateResult[]>;
+  @Input() aggregateData!: Immutable<AggregateResult[]>;
 
   /**
    * Input allowing the title of the result browser to be set outside of the component
    */
-  @Input() resultLabel: string;
+  @Input() resultLabel!: string;
 
-  @Input() highlighted: string;
+  @Input() highlighted!: string;
 
-  @Input() header: boolean;
+  @Input() header!: boolean;
 
   /**
    * Output emitting the result that was clicked on and its relevant information.
@@ -99,7 +99,7 @@ export class ResultsBrowserComponent {
    *
    * @param event The scroll event.
    */
-  onScroll(event: UIEvent): void {
+  onScroll(event: Event): void {
     if (!event.target) {
       return;
     }
@@ -114,5 +114,9 @@ export class ResultsBrowserComponent {
 
   handleUnhover(): void {
     this.itemUnhovered.emit();
+  }
+
+  asMutable<T>(value: Immutable<T>): T {
+    return value as T;
   }
 }

@@ -16,7 +16,7 @@ import { ConsentService } from 'ccf-shared/analytics';
 import { Observable, ReplaySubject, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { BodyUiComponent } from '../../../ccf-shared/src/lib/components/body-ui/body-ui.component';
+import { BodyUiComponent } from 'ccf-shared';
 import { environment } from '../environments/environment';
 import { OntologySelection } from './core/models/ontology-selection';
 import { AppRootOverlayContainer } from './core/services/app-root-overlay/app-root-overlay.service';
@@ -26,14 +26,12 @@ import { DataStateSelectors } from './core/store/data/data.selectors';
 import { DataQueryState, DataState } from './core/store/data/data.state';
 import { ListResultsState } from './core/store/list-results/list-results.state';
 import { SceneState } from './core/store/scene/scene.state';
-import {
-  RemoveSearch,
-  SetSelectedSearches,
-} from './core/store/spatial-search-filter/spatial-search-filter.actions';
+import { RemoveSearch, SetSelectedSearches } from './core/store/spatial-search-filter/spatial-search-filter.actions';
 import { SpatialSearchFilterSelectors } from './core/store/spatial-search-filter/spatial-search-filter.selectors';
 import { SpatialSearchFilterItem } from './core/store/spatial-search-filter/spatial-search-filter.state';
 import { FiltersPopoverComponent } from './modules/filters/filters-popover/filters-popover.component';
 import { DrawerComponent } from './shared/components/drawer/drawer/drawer.component';
+import { Immutable } from '@angular-ru/common/typings';
 
 interface AppOptions extends CCFDatabaseOptions {
   theme?: string;
@@ -43,8 +41,9 @@ interface AppOptions extends CCFDatabaseOptions {
   selectedOrgans?: string[];
   loginEnabled?: boolean;
   baseHref?: string;
+  filter?: Partial<Filter>;
+  loginDisabled?: boolean;
 }
-
 
 /**
  * This is the main angular component that all the other components branch off from.
@@ -57,20 +56,19 @@ interface AppOptions extends CCFDatabaseOptions {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent implements OnInit {
-  @ViewChild('bodyUI', { static: false }) bodyUI: BodyUiComponent;
-
+  @ViewChild('bodyUI', { static: false }) bodyUI!: BodyUiComponent;
 
   @Select(DataStateSelectors.cellTypesTreeModel)
-  readonly cellTypeTreeModel$: Observable<OntologyTreeModel>;
+  readonly cellTypeTreeModel$!: Observable<OntologyTreeModel>;
 
   @Select(DataStateSelectors.anatomicalStructuresTreeModel)
-  readonly ontologyTreeModel$: Observable<OntologyTreeModel>;
+  readonly ontologyTreeModel$!: Observable<OntologyTreeModel>;
 
   @Select(DataStateSelectors.biomarkersTreeModel)
-  readonly biomarkersTreeModel$: Observable<OntologyTreeModel>;
+  readonly biomarkersTreeModel$!: Observable<OntologyTreeModel>;
 
   @Select(SpatialSearchFilterSelectors.items)
-  readonly selectableSearches$: Observable<SpatialSearchFilterItem>;
+  readonly selectableSearches$!: Observable<SpatialSearchFilterItem>;
 
   @Dispatch()
   readonly setSelectedSearches = actionAsFn(SetSelectedSearches);
@@ -124,12 +122,9 @@ export class AppComponent implements OnInit {
   }
 
   /** Emits true whenever the overlay spinner should activate. */
-  readonly spinnerActive$ = this.data.queryStatus$.pipe(
-    map(state => state === DataQueryState.Running)
-  );
+  readonly spinnerActive$ = this.data.queryStatus$.pipe(map((state) => state === DataQueryState.Running));
 
-  readonly loadingMessage$ = this.data.state$.pipe(map(x => x?.statusMessage));
-
+  readonly loadingMessage$ = this.data.state$.pipe(map((x) => x?.statusMessage));
 
   readonly ontologyTerms$: Observable<readonly string[]>;
   readonly cellTypeTerms$: Observable<readonly string[]>;
@@ -176,23 +171,20 @@ export class AppComponent implements OnInit {
     data.filter$.subscribe();
     data.technologyFilterData$.subscribe();
     data.providerFilterData$.subscribe();
-    this.ontologyTerms$ = data.filter$.pipe(map(x => x?.ontologyTerms));
-    this.cellTypeTerms$ = data.filter$.pipe(map(x => x?.cellTypeTerms));
-    this.biomarkerTerms$ = data.filter$.pipe(map(x => x?.biomarkerTerms));
-    this.filter$.subscribe((filter: Partial<Filter>)=> data.updateFilter(filter));
-    this.baseHref$.subscribe(ref => this.globalConfig.patchState({ baseHref: ref ?? '' }));
+    this.ontologyTerms$ = data.filter$.pipe(map((x) => x?.ontologyTerms));
+    this.cellTypeTerms$ = data.filter$.pipe(map((x) => x?.cellTypeTerms));
+    this.biomarkerTerms$ = data.filter$.pipe(map((x) => x?.biomarkerTerms));
+    this.filter$.subscribe((filter = {}) => data.updateFilter(filter));
+    this.baseHref$.subscribe((ref) => this.globalConfig.patchState({ baseHref: ref ?? '' }));
 
-    combineLatest([scene.referenceOrgans$, this.selectedOrgans$]).subscribe(
-      ([refOrgans, selected]: [OrganInfo[], string[]]) => {
-        scene.setSelectedReferenceOrgansWithDefaults(refOrgans, selected);
-      });
-    combineLatest([this.theme$, this.themeMode$]).subscribe(
-      ([theme, mode]) => {
-        this.theming.setTheme(`${theme}-theme-${mode}`);
-        cdr.markForCheck();
-      }
-    );
-    this.selectedtoggleOptions=this.menuOptions;
+    combineLatest([scene.referenceOrgans$, this.selectedOrgans$]).subscribe(([refOrgans, selected]) => {
+      scene.setSelectedReferenceOrgansWithDefaults(refOrgans as OrganInfo[], selected ?? []);
+    });
+    combineLatest([this.theme$, this.themeMode$]).subscribe(([theme, mode]) => {
+      this.theming.setTheme(`${theme}-theme-${mode}`);
+      cdr.markForCheck();
+    });
+    this.selectedtoggleOptions = this.menuOptions;
   }
 
   ngOnInit(): void {
@@ -200,9 +192,9 @@ export class AppComponent implements OnInit {
       data: {
         preClose: () => {
           snackBar.dismiss();
-        }
+        },
       },
-      duration: this.consentService.consent === 'not-set' ? Infinity : 3000
+      duration: this.consentService.consent === 'not-set' ? Infinity : 3000,
     });
 
     if (window.matchMedia) {
@@ -214,7 +206,7 @@ export class AppComponent implements OnInit {
       }
 
       // Listens for changes in user theme preference
-      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
         this.themeMode$.next(e.matches ? 'dark' : 'light');
       });
     } else {
@@ -229,11 +221,7 @@ export class AppComponent implements OnInit {
    * @param right The right drawer component gets passed in so we can call it's methods to control it's state
    * @param filterbox The filter's popover component gets passed in so we can control it's popover's state
    */
-  reset(
-    left: DrawerComponent,
-    right: DrawerComponent,
-    filterbox: FiltersPopoverComponent
-  ): void {
+  reset(left: DrawerComponent, right: DrawerComponent, filterbox: FiltersPopoverComponent): void {
     left.open();
     left.closeExpanded();
     right.open();
@@ -262,23 +250,26 @@ export class AppComponent implements OnInit {
    *
    * @param ontologySelection the list of currently selected organ nodes
    */
-  ontologySelected(ontologySelection: OntologySelection[] | undefined, type: 'anatomical-structures' | 'cell-type' | 'biomarkers'): void {
+  ontologySelected(
+    ontologySelection: OntologySelection[] | undefined,
+    type: 'anatomical-structures' | 'cell-type' | 'biomarkers'
+  ): void {
     if (ontologySelection) {
       if (type === 'anatomical-structures') {
-        this.data.updateFilter({ ontologyTerms: ontologySelection.map(selection => selection.id) });
+        this.data.updateFilter({ ontologyTerms: ontologySelection.map((selection) => selection.id) });
         this.ontologySelectionLabel = this.createSelectionLabel(ontologySelection);
       } else if (type === 'cell-type') {
-        this.data.updateFilter({ cellTypeTerms: ontologySelection.map(selection => selection.id) });
+        this.data.updateFilter({ cellTypeTerms: ontologySelection.map((selection) => selection.id) });
         this.cellTypeSelectionLabel = this.createSelectionLabel(ontologySelection);
       } else if (type === 'biomarkers') {
-        this.data.updateFilter({ biomarkerTerms: ontologySelection.map(selection => selection.id) });
+        this.data.updateFilter({ biomarkerTerms: ontologySelection.map((selection) => selection.id) });
         this.biomarkerSelectionLabel = this.createSelectionLabel(ontologySelection);
       }
 
       this.selectionLabel = [
         this.ontologySelectionLabel || 'body',
         this.cellTypeSelectionLabel || 'cell',
-        this.biomarkerSelectionLabel || 'biomarker'
+        this.biomarkerSelectionLabel || 'biomarker',
       ].join(' | ');
 
       if (ontologySelection[0] && ontologySelection[0].label === 'body') {
@@ -323,7 +314,7 @@ export class AppComponent implements OnInit {
    * @param url The url
    */
   openiFrameViewer(url: string): void {
-    const isWhitelisted = this.acceptableViewerDomains.some(domain => url?.startsWith(domain));
+    const isWhitelisted = this.acceptableViewerDomains.some((domain) => url?.startsWith(domain));
     if (isWhitelisted) {
       this.url = url;
       this.viewerOpen = !!url;
@@ -355,5 +346,9 @@ export class AppComponent implements OnInit {
 
   toggleSelection(value) {
     this.selectedtoggleOptions = value;
+  }
+
+  asMutable<T>(value: Immutable<T>): T {
+    return value as T;
   }
 }

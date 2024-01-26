@@ -10,23 +10,21 @@ import { SetOrgan, SetSex } from '../../../core/store/spatial-search-ui/spatial-
 import { SpatialSearchUiSelectors } from '../../../core/store/spatial-search-ui/spatial-search-ui.selectors';
 import { Sex, SpatialSearchConfigComponent } from '../spatial-search-config/spatial-search-config.component';
 import { SpatialSearchUiBehaviorComponent } from '../spatial-search-ui-behavior/spatial-search-ui-behavior.component';
-import { AppOptions } from 'ccf-api';
-
 
 @Component({
   selector: 'ccf-spatial-search-config-behavior',
   templateUrl: './spatial-search-config-behavior.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SpatialSearchConfigBehaviorComponent implements OnDestroy {
   @Select(SpatialSearchUiSelectors.sex)
-  readonly sex$: Observable<Sex>;
+  readonly sex$!: Observable<Sex>;
 
   @Select(SpatialSearchUiSelectors.organ)
-  readonly selectedOrgan$: Observable<OrganInfo | undefined>;
+  readonly selectedOrgan$!: Observable<OrganInfo | undefined>;
 
   @Select(SpatialSearchUiSelectors.organs)
-  readonly organs$: Observable<OrganInfo[]>;
+  readonly organs$!: Observable<OrganInfo[]>;
 
   @Dispatch()
   readonly updateSex = actionAsFn(SetSex);
@@ -34,7 +32,7 @@ export class SpatialSearchConfigBehaviorComponent implements OnDestroy {
   @Dispatch()
   readonly updateOrgan = actionAsFn(SetOrgan);
 
-  panelData: PanelData;
+  panelData!: PanelData;
 
   baseHref = '';
 
@@ -47,9 +45,9 @@ export class SpatialSearchConfigBehaviorComponent implements OnDestroy {
     private readonly dialogRef: MatDialogRef<SpatialSearchConfigComponent>,
     private readonly spatialSearchDialog: MatDialog,
     private readonly infoService: InfoButtonService,
-    private readonly globalConfig: GlobalConfigState<AppOptions>
+    private readonly globalConfig: GlobalConfigState<{ baseHref: string }>
   ) {
-    this.globalConfig.getOption('baseHref').subscribe((ref: string) => {
+    this.globalConfig.getOption('baseHref').subscribe((ref) => {
       this.baseHref = ref;
     });
   }
@@ -72,20 +70,26 @@ export class SpatialSearchConfigBehaviorComponent implements OnDestroy {
       data: {
         title: data.infoTitle,
         content: data.content,
-        videoID: data.videoID
-      }
+        videoID: data.videoID,
+      },
     });
   }
 
   onDialogButtonClick(): void {
-    this.infoService.updateData(this.baseHref + 'assets/docs/SPATIAL_SEARCH_README.md', 'UfxMpzatowE', 'Spatial Search');
+    this.infoService.updateData(
+      this.baseHref + 'assets/docs/SPATIAL_SEARCH_README.md',
+      'UfxMpzatowE',
+      'Spatial Search'
+    );
     const panelContent$ = this.infoService.panelContent.asObservable();
-    this.dialogSubs.add(panelContent$.subscribe(data => {
-      if (data.content.length) {
-        this.panelData = data;
-        this.launchInfoDialog(this.panelData);
-      }
-    }));
+    this.dialogSubs.add(
+      panelContent$.subscribe((data) => {
+        if (data.content.length) {
+          this.panelData = data;
+          this.launchInfoDialog(this.panelData);
+        }
+      })
+    );
   }
 
   ngOnDestroy(): void {

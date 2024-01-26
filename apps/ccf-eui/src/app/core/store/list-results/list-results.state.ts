@@ -31,10 +31,10 @@ export class ListResultsState extends NgxsImmutableDataRepository<ListResultsSta
 
 
   /** The data state */
-  private dataState: DataState;
+  private dataState!: DataState;
 
   /** Color assignments state */
-  private colorAssignments: ColorAssignmentState;
+  private colorAssignments!: ColorAssignmentState;
 
   /**
    * Creates an instance of scene state.
@@ -77,7 +77,7 @@ export class ListResultsState extends NgxsImmutableDataRepository<ListResultsSta
   /**
    * Initializes this state service.
    */
-  ngxsOnInit(): void {
+  override ngxsOnInit(): void {
     super.ngxsOnInit();
 
     // Injecting page and model states in the constructor breaks things!?

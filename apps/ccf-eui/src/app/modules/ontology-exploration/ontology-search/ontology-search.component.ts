@@ -20,7 +20,7 @@ import { OntologySearchService, SearchResult } from '../../../core/services/onto
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OntologySearchComponent implements OnInit {
-  @Input() placeholderText: string;
+  @Input() placeholderText!: string;
 
   /**
    * Output event-emitter which emits the id of the OntologyTreeNode whose label was
@@ -42,7 +42,7 @@ export class OntologySearchComponent implements OnInit {
   /**
    * Observable which provides the filtered search results
    */
-  filteredResults$: Observable<SearchResult[]>;
+  filteredResults$!: Observable<SearchResult[]>;
 
   /**
    * Creates an instance of ontology search component.

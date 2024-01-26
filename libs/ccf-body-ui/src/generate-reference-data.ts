@@ -21,8 +21,8 @@ if (argv.length >= 2) {
   main(argv[2], argv.length > 3 ? argv[3] : undefined);
 } else {
   const msg = (
-    'ts-node --project projects/ccf-body-ui/tsconfig.cli.json' +
-    'projects/ccf-body-ui/src/generate-reference-data.ts <input jsonld> <output jsonld>'
+    'ts-node --project apps/ccf-body-ui/tsconfig.cli.json' +
+    'apps/ccf-body-ui/src/generate-reference-data.ts <input jsonld> <output jsonld>'
   );
   console.log(msg);
 }

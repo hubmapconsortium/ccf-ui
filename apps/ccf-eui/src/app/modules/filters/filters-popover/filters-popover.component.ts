@@ -18,23 +18,23 @@ export class FiltersPopoverComponent {
   /**
    * Allows the filters to be set from outside the component, and still render / function normally
    */
-  @Input() filters: Record<string, unknown | unknown[]>;
+  @Input() filters!: Record<string, unknown | unknown[]>;
 
   /**
    * Keeps track of whether or not the containing drawer is expanded
    * Because the styles need to change accordingly
    */
-  @Input() drawerExpanded: boolean;
+  @Input() drawerExpanded!: boolean;
 
   /**
    * List of technologies in the data
    */
-  @Input() technologyFilters: string[];
+  @Input() technologyFilters!: string[];
 
   /**
    * List of providers in the data
    */
-  @Input() providerFilters: string[];
+  @Input() providerFilters!: string[];
 
   /**
    * List of spatial searches

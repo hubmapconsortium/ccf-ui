@@ -8,28 +8,27 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output
   selector: 'ccf-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent implements OnInit {
-
   /**
    * URL to Portal site
    */
-  @Input() homeUrl: string;
+  @Input() homeUrl!: string;
 
-  @Input() loginDisabled: boolean;
+  @Input() loginDisabled!: boolean;
 
-  @Input() logoTooltip: string;
+  @Input() logoTooltip!: string;
 
   /**
    * Is the user logged in?
    */
-  @Input() loggedIn: boolean;
+  @Input() loggedIn!: boolean;
 
   /**
    * Current filter settings
    */
-  @Input() filters: Record<string, unknown[] | unknown>;
+  @Input() filters!: Record<string, unknown[] | unknown>;
 
   @Input() baseRef = '';
 

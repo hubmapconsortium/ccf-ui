@@ -1,7 +1,7 @@
 {
   "$schema": "../../node_modules/@compodoc/compodoc/src/config/schema.json",
   "name": "Application ccf-organ-info documentation",
-  "tsconfig": "./projects/ccf-organ-info/tsconfig.compodoc.json",
+  "tsconfig": "./apps/ccf-organ-info/tsconfig.compodoc.json",
   "output": "./docs/ccf-organ-info",
   "silent": true,
   "coverageTestThresholdFail": false
