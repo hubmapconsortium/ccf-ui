@@ -1,9 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 import { NgxsDataPluginModule } from '@angular-ru/ngxs';
 import { NgxsModule } from '@ngxs/store';
-import { CCFDatabaseDataSourceService, DataSourceService, GlobalConfigState } from 'ccf-shared';
+import { CCFDatabaseDataSourceService, DataSourceService, GlobalConfigState, DEFAULT_FILTER } from 'ccf-shared';
 
-import { DataState, DEFAULT_FILTER } from './data.state';
+import { DataState } from './data.state';
 
 describe('DataState', () => {
   let dataState: DataState;
