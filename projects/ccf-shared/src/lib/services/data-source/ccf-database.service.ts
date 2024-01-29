@@ -7,7 +7,7 @@ import { filter, map, shareReplay, switchMap } from 'rxjs/operators';
 import { GlobalConfigState } from '../../config/global-config.state';
 import { ApiEndpointDataSourceService } from './api-endpoint.service';
 import { DataSource, DataSourceDataType, DataSourceLike, DataSourceMethod, DelegateDataSource, ForwardingDataSource } from './data-source';
-import _ from 'lodash';
+import isEqual from 'lodash/isEqual';
 
 /** Default values for filters. */
 export const DEFAULT_FILTER: Filter = {
@@ -139,7 +139,7 @@ export class MixedCCfDatabaseDatasourceService extends ForwardingDataSource {
   }
 
   private isDefaultFilter(value?: Filter): boolean {
-    return _.isEqual(value, DEFAULT_FILTER);
+    return isEqual(value, DEFAULT_FILTER);
   }
 }
 
