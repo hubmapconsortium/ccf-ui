@@ -21,13 +21,13 @@ export class RegistrationMetadataComponent {
   @Output() readonly registrationSelected = new EventEmitter<void>();
 
   /** Checks if first and last name has been entered */
-  nameValid: boolean;
+  nameValid!: boolean;
 
   /** Orcid URI converted to regular id */
   orcId?: string;
 
   /** Text to inform user if a registration file has been uploaded */
-  uploadText: string;
+  uploadText!: string;
 
   /** Form control for validating orcid id */
   orcidControl = new FormControl('', [Validators.pattern('^[a-zA-Z0-9]{4}(-[a-zA-Z0-9]{4}){3}$')]);

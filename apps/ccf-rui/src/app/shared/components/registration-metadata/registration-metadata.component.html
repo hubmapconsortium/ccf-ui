@@ -1,12 +1,13 @@
 <div class="author-section">
   <h2 class="section-title">Author Data</h2>
 
-  <ccf-name-input [name]="page.user$ | async" (nameChange)="page.setUserName($event); checkNameValid($event)">
+  <ccf-name-input [name]="$any(page.user$ | async)" (nameChange)="page.setUserName($event); checkNameValid($event)">
   </ccf-name-input>
 
   <mat-form-field class="orcid-input">
     <mat-label>ORCID identifier (optional)</mat-label>
-    <input matInput class="input" [value]="orcId" [formControl]="orcidControl" (input)="updateOrcid($event.target.value)" matTooltip="Add ORCID id." maxlength="19">
+    <input matInput class="input" [value]="orcId" [formControl]="orcidControl"
+      (input)="updateOrcid($any($event.target).value)" matTooltip="Add ORCID id." maxlength="19">
     <mat-error *ngIf="orcidControl.invalid">{{getErrorMessage()}}</mat-error>
   </mat-form-field>
 </div>
@@ -38,7 +39,8 @@
   <div class="upload-registration">
     <div class="label">Upload previous registration data (optional):</div>
 
-    <ccf-json-file-reader (parsedJson)="handleRegistrationUpload($event)" label="Upload" matTooltip="Upload a preexisting registration"></ccf-json-file-reader>
+    <ccf-json-file-reader (parsedJson)="handleRegistrationUpload($any($event))" label="Upload"
+      matTooltip="Upload a preexisting registration"></ccf-json-file-reader>
 
     <div>{{uploadText}}</div>
 

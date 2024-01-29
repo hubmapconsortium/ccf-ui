@@ -38,7 +38,7 @@ class InitializationState {
     this.resolve = resolve;
   });
   /** Resolve function for the promise. */
-  private resolve: () => void;
+  private resolve!: () => void;
 
   /**
    * Sets the state to true and
@@ -156,8 +156,7 @@ export class DrawerComponent implements AfterViewInit, OnDestroy {
   @Output() readonly stateChange = new EventEmitter<void>(true);
 
   /** Current open/close animation state. */
-  @HostBinding('@openClose')
-  openedState: OpenedState = 'closed';
+  @HostBinding('@openClose') openedState: OpenedState = 'closed';
 
   /** Expanded/collapsed state parameters. */
   @HostBinding('@expandCollapse')

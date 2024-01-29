@@ -84,7 +84,7 @@ export class ReferenceDataState extends NgxsImmutableDataRepository<ReferenceDat
   /**
    * Initializes this state service.
    */
-  ngxsOnInit(): void {
+  override ngxsOnInit(): void {
     super.ngxsOnInit();
 
     this.getSourceDB().subscribe(db => {

@@ -16,9 +16,9 @@ export class HeaderComponent {
   /** HTML class name */
   @HostBinding('class') readonly clsName = 'ccf-header';
 
-  @Input() homeUrl: string;
+  @Input() homeUrl!: string;
 
-  @Input() logoTooltip: string;
+  @Input() logoTooltip!: string;
 
   /**
    * Creates an instance of header component.

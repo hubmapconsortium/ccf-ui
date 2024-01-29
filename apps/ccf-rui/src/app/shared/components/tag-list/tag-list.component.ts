@@ -20,7 +20,7 @@ export class TagListComponent {
   /**
    * The tags
    */
-  @Input() tags: Tag[];
+  @Input() tags!: Tag[];
 
   /**
    * Emits when a tag is removed

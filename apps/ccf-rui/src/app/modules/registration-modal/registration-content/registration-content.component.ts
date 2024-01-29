@@ -29,22 +29,22 @@ export class RegistrationContentComponent {
   organList = RUI_ORGANS;
 
   /** Whether sex has been selected */
-  sexSelected: boolean;
+  sexSelected!: boolean;
 
   /** Whether an organ has been selected */
-  organSelected: boolean;
+  organSelected!: boolean;
 
   /** Current sex selected */
-  currentSex: string;
+  currentSex!: string;
 
   /** Current organ selected */
-  currentOrgan: OrganInfo;
+  currentOrgan!: OrganInfo;
 
   /** Checks if the user has entered a first and last name */
-  nameValid: boolean;
+  nameValid!: boolean;
 
   /** Checks if the entered orcid is valid */
-  orcidValid: boolean;
+  orcidValid!: boolean;
 
   /** Checks if a preexisting registration was uploaded */
   registrationSelected: boolean;
@@ -78,8 +78,8 @@ export class RegistrationContentComponent {
       cdr.markForCheck();
     });
     dialogRef.disableClose = true;
-    this.page.organOptions$.subscribe((options: OrganInfo[]) => {
-      this.organList = options;
+    this.page.organOptions$.subscribe((options) => {
+      this.organList = options as OrganInfo[];
       cdr.markForCheck();
     });
   }

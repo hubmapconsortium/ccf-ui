@@ -59,11 +59,11 @@ export class AppComponent implements OnDestroy, OnInit {
   readonly homeUrl$ = this.globalConfig.getOption('homeUrl');
   readonly logoTooltip$ = this.globalConfig.getOption('logoTooltip');
 
-  theme: string;
+  theme!: string;
 
-  homeUrl: string;
+  homeUrl!: string;
 
-  logoTooltip: string;
+  logoTooltip!: string;
 
   /** All subscriptions managed by the container. */
   private readonly subscriptions = new Subscription();
@@ -79,14 +79,14 @@ export class AppComponent implements OnDestroy, OnInit {
         this.registrationStarted = registrationStarted;
       })
     );
-    this.theme$.subscribe((theme: string) => {
-      this.theme = theme;
+    this.theme$.subscribe((theme) => {
+      this.theme = theme ?? 'light';
     });
-    this.globalConfig.getOption('homeUrl').subscribe((url: string) => {
-      this.homeUrl = url;
+    this.globalConfig.getOption('homeUrl').subscribe((url) => {
+      this.homeUrl = url ?? '';
     });
-    this.globalConfig.getOption('logoTooltip').subscribe((tooltip: string) => {
-      this.logoTooltip = tooltip;
+    this.globalConfig.getOption('logoTooltip').subscribe((tooltip) => {
+      this.logoTooltip = tooltip ?? '';
     });
 
     combineLatest([this.theme$, this.themeMode$]).subscribe(

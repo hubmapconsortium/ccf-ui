@@ -49,7 +49,7 @@ export class TagSearchComponent implements OnDestroy {
   @Output() readonly added = new EventEmitter<Tag[]>();
 
   /** Element for close search button */
-  @ViewChild('closeSearch', { read: ElementRef, static: false }) closeSearch: ElementRef<HTMLElement>;
+  @ViewChild('closeSearch', { read: ElementRef, static: false }) closeSearch!: ElementRef<HTMLElement>;
 
   /** Mapping for pluralizing the result total count */
   readonly countMapping = {

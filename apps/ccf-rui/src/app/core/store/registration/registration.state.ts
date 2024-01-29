@@ -106,16 +106,16 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
   }
 
   /** Reference to the page state */
-  private page: PageState;
+  private page!: PageState;
 
   /** Reference to the model state */
-  private model: ModelState;
+  private model!: ModelState;
 
   /** Reference to the AS Tag state */
-  private tags: AnatomicalStructureTagState;
+  private tags!: AnatomicalStructureTagState;
 
   /** Reference to the reference data state */
-  private refData: ReferenceDataState;
+  private refData!: ReferenceDataState;
 
   /**
    * Creates an instance of registration state.
@@ -133,7 +133,7 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
   /**
    * Initializes this state service.
    */
-  ngxsOnInit(): void {
+  override ngxsOnInit(): void {
     super.ngxsOnInit();
 
     // Injecting page and model states in the constructor breaks things!?

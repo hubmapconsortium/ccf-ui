@@ -38,14 +38,14 @@ export class ContainerComponent implements AfterViewInit, OnDestroy {
 
   /** Drawer components in this container. */
   @ContentChildren(DrawerComponent, { descendants: true })
-  private drawers: QueryList<DrawerComponent>;
+  private drawers!: QueryList<DrawerComponent>;
 
   /** Content component if provided already wrapped. */
   @ContentChildren(ContentComponent, { descendants: true })
-  private content1: QueryList<ContentComponent>;
+  private content1!: QueryList<ContentComponent>;
   /** Content component if provided without wrapping. */
   @ViewChildren(ContentComponent)
-  private content2: QueryList<ContentComponent>;
+  private content2!: QueryList<ContentComponent>;
   /** Resolves the content component. */
   private get content(): ContentComponent {
     return this.content1.first ?? this.content2.first;

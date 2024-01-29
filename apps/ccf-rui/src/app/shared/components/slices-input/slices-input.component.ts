@@ -57,10 +57,10 @@ export class SlicesInputComponent {
   /**
    * Limits the length of the input if needed and updates values when an input changes
    *
-   * @param input InputEvent from the input element which contains the new value
+   * @param input Event from the input element which contains the new value
    * @param key Name of the dimension to be updated
    */
-  updateSlicesData(input: InputEvent, key: string): void {
+  updateSlicesData(input: KeyboardEvent, key: string): void {
     const { value: strValue } = input.target as HTMLInputElement;
     this.slicesConfig = { ...this.slicesConfig, [key]: strValue !== '' ? +strValue : NaN };
     this.ga.event('slice_config_update', 'slice_input', key, this.slicesConfig[key]);

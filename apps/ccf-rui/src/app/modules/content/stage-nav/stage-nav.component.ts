@@ -38,10 +38,10 @@ export class StageNavComponent {
   @Output() readonly view3DChange = new EventEmitter<boolean>();
 
   /** Label for dropdown */
-  @ViewChild('label', { static: true }) labelRef: ElementRef<HTMLElement>;
+  @ViewChild('label', { static: true }) labelRef!: ElementRef<HTMLElement>;
 
   /** Options dropdown */
-  @ViewChild('options', { static: true }) optionsRef: ElementRef<HTMLElement>;
+  @ViewChild('options', { static: true }) optionsRef!: ElementRef<HTMLElement>;
 
   /** Whether this component shows a dropdown menu or an options bar */
   isDropdownActive = false;

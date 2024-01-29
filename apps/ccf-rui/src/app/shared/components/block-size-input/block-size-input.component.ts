@@ -54,10 +54,10 @@ export class BlockSizeInputComponent {
   /**
    * Updates values when an input changes
    *
-   * @param input InputEvent from the input element which contains the new value
+   * @param input Event from the input element which contains the new value
    * @param key Name of the dimension to be updated
    */
-  updateBlockSizes(input: InputEvent, key: string): void {
+  updateBlockSizes(input: KeyboardEvent, key: string): void {
     const inputTarget = input.target as HTMLInputElement;
     this.blockSize = { ...this.blockSize, [key]: +inputTarget.value };
     this.ga.event('block_size_change', 'block_size_input', key, this.blockSize[key]);

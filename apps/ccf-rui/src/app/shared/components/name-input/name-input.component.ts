@@ -94,7 +94,7 @@ export class NameInputComponent {
    * @param input InputEvent from the input element which contains the new value
    * @param key firstName or lastName
    */
-  updateName(input: InputEvent, key: string): void {
+  updateName(input: Event, key: string): void {
     const inputTarget = input.target as HTMLInputElement;
     this.name = { ...this.name, [key]: inputTarget.value };
     this.ga.event('name_updated', 'name_input', key);

@@ -11,7 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
     CommonModule,
     YouTubePlayerModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
   ],
   exports: [ VideoModalComponent ]
 })

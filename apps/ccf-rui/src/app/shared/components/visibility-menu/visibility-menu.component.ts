@@ -30,7 +30,7 @@ export class VisibilityMenuComponent {
   /**
    * Items to be displayed in the visibility menu
    */
-  @Input() items: VisibilityItem[];
+  @Input() items!: VisibilityItem[];
 
   /**
    * The currently selected item

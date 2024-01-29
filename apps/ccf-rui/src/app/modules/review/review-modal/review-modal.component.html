@@ -16,7 +16,9 @@
       </mat-dialog-content>
 
       <div class="footer">
-        <button mat-button class="download-button" (click)="dialogRef.close(true)">{{ registrationCallbackSet ? 'REGISTER' : 'DOWNLOAD REGISTRATION DATA' }}</button>
+        <button mat-button class="download-button" (click)="dialogRef.close(true)">
+          {{ registrationCallbackSet ? 'REGISTER' : 'DOWNLOAD REGISTRATION DATA' }}
+        </button>
       </div>
     </div>
   </div>

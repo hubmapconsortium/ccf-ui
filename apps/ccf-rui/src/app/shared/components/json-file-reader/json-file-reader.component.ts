@@ -13,7 +13,7 @@ export class JsonFileReaderComponent {
   @HostBinding('class') readonly clsName = 'ccf-json-file-reader';
 
   /** File Input element, used to manually trigger the click event. */
-  @ViewChild('fileInput') fileInput: ElementRef<HTMLElement>;
+  @ViewChild('fileInput') fileInput!: ElementRef<HTMLElement>;
 
   /** Allows the label on the upload button to be customized. */
   @Input() label = 'Upload';
@@ -42,7 +42,7 @@ export class JsonFileReaderComponent {
    *
    * @param event file input event
    */
-  handleFile(event: InputEvent): void {
+  handleFile(event: Event): void {
     const inputTarget = event.target as HTMLInputElement;
     if (!inputTarget.files) {
       return;

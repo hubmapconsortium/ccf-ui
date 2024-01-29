@@ -1,3 +1,4 @@
-<button [class.disabled]="disabled" mat-button  class="review-button" (click)="registerButtonClick($event)" [matTooltip]="disabled ? 'Required: Enter valid user info, select an organ and position tissue block inside organ.' : 'Review registration and submit/download.'">
-    {{ registrationCallbackSet ? 'Review and Register' : 'Review and Download' }}
+<button [class.disabled]="disabled" mat-button class="review-button" (click)="registerButtonClick($event)"
+  [matTooltip]="disabled ? 'Required: Enter valid user info, select an organ and position tissue block inside organ.' : 'Review registration and submit/download.'">
+  {{ registrationCallbackSet ? 'Review and Register' : 'Review and Download' }}
 </button>

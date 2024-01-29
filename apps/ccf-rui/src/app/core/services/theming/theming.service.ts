@@ -10,8 +10,8 @@ export const DEFAULT_THEME = new InjectionToken<string>('Default theme class');
  */
 @Injectable()
 export class ThemingService {
-  private element: ElementRef<unknown>;
-  private injector: Injector;
+  private element!: ElementRef<unknown>;
+  private injector!: Injector;
   /** Default theme class. */
   private defaultTheme: string;
   /** Currently active theme class. */

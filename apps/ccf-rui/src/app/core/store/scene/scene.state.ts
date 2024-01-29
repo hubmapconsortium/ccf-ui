@@ -9,7 +9,6 @@ import { NgxsOnInit, State } from '@ngxs/store';
 import { AABB, Vec3 } from 'cannon-es';
 import { SpatialEntityJsonLd, SpatialSceneNode } from 'ccf-body-ui';
 import { SpatialEntity, SpatialPlacement, getOriginScene, getTissueBlockScene } from 'ccf-database';
-import { Position } from 'ccf-shared';
 import { Observable, combineLatest, of } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment';
@@ -133,7 +132,8 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
   get previousRegistrationNodes$(): Observable<SpatialSceneNode[]> {
     return combineLatest([this.model.organIri$, this.model.showPrevious$, this.registration.previousRegistrations$]).pipe(
       map(([organIri, showPrevious, previousRegistrations]) =>
-        showPrevious ? previousRegistrations.map((entity: SpatialEntityJsonLd): SpatialSceneNode => {
+        showPrevious ? previousRegistrations.map((e): SpatialSceneNode => {
+          const entity = e as SpatialEntityJsonLd;
           const p = Array.isArray(entity.placement) ? entity.placement[0] : entity.placement;
           if (p.target === organIri) {
             const organDimensions = this.model.snapshot.organDimensions;
@@ -159,26 +159,28 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
 
   @Computed()
   get spatialKeyBoardAxis$(): Observable<SpatialSceneNode[]>{
-    return combineLatest([this.model.organIri$.pipe(filter(organIri=>organIri!=='')), this.model.position$]).pipe(map(([organIri, position]: [string, Position]) => {
-      const organEntity = this.getOrganSpatialEntity(organIri);
-      const blockSize = this.model.snapshot.blockSize;
-      const rotation = this.model.snapshot.rotation;
-      return organEntity ? getTissueBlockScene({
-        x_dimension: blockSize.x,
-        y_dimension: blockSize.y,
-        z_dimension: blockSize.z
-      } as SpatialEntity, {
-        x_translation: position.x - organEntity.x_dimension / 2,
-        y_translation: position.y - organEntity.y_dimension / 2,
-        z_translation: position.z - organEntity.z_dimension / 2,
+    return combineLatest([this.model.organIri$.pipe(filter(organIri=>organIri!=='')), this.model.position$]).pipe(
+      map(([organIri, position]) => {
+        const organEntity = this.getOrganSpatialEntity(organIri ?? '');
+        const blockSize = this.model.snapshot.blockSize;
+        const rotation = this.model.snapshot.rotation;
+        return organEntity ? getTissueBlockScene({
+          x_dimension: blockSize.x,
+          y_dimension: blockSize.y,
+          z_dimension: blockSize.z
+        } as SpatialEntity, {
+          x_translation: position.x - organEntity.x_dimension / 2,
+          y_translation: position.y - organEntity.y_dimension / 2,
+          z_translation: position.z - organEntity.z_dimension / 2,
 
-        x_rotation: rotation.x,
-        y_rotation: rotation.y,
-        z_rotation: rotation.z,
+          x_rotation: rotation.x,
+          y_rotation: rotation.y,
+          z_rotation: rotation.z,
 
-        x_scaling: 1, y_scaling: 1, z_scaling: 1,
-      } as SpatialPlacement): [];
-    }));
+          x_scaling: 1, y_scaling: 1, z_scaling: 1,
+        } as SpatialPlacement): [];
+      })
+    );
   }
 
   @Computed()
@@ -245,9 +247,9 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
   ]);
 
   /** Reference to the model state */
-  private model: ModelState;
-  private registration: RegistrationState;
-  private referenceData: ReferenceDataState;
+  private model!: ModelState;
+  private registration!: RegistrationState;
+  private referenceData!: ReferenceDataState;
 
   /**
    * Creates an instance of scene state.
@@ -263,7 +265,7 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
   /**
    * Initializes this state service.
    */
-  ngxsOnInit(): void {
+  override ngxsOnInit(): void {
     super.ngxsOnInit();
 
     // Injecting page and model states in the constructor breaks things!?

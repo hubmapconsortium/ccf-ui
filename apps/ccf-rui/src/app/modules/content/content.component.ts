@@ -60,7 +60,7 @@ export class ContentComponent implements OnInit, OnDestroy {
   showDebugButtons = !environment.production;
 
   /** Resize detection */
-  private sensor: ResizeSensor;
+  private sensor!: ResizeSensor;
 
   /**
    * Creates an instance of content component.

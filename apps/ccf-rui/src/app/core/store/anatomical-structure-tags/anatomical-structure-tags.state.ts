@@ -72,11 +72,11 @@ export class AnatomicalStructureTagState extends NgxsDataEntityCollectionsReposi
   }
 
   /** Reference to the model state */
-  private model: ModelState;
+  private model!: ModelState;
   /** Reference to the scene state */
-  private scene: SceneState;
+  private scene!: SceneState;
 
-  private page: PageState;
+  private page!: PageState;
 
   /**
    * Creates an instance of scene state.
@@ -92,7 +92,7 @@ export class AnatomicalStructureTagState extends NgxsDataEntityCollectionsReposi
   /**
    * Initializes this state service.
    */
-  ngxsOnInit(): void {
+  override ngxsOnInit(): void {
     super.ngxsOnInit();
 
     // Injecting page and model states in the constructor breaks things!?

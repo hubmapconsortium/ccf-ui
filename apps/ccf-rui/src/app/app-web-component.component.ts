@@ -31,22 +31,20 @@ function parseOrgan(value: unknown): string | Organ {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppWebComponent extends BaseWebComponent {
-  @Input() baseHref: string;
-  @Input() useDownload: string | boolean;
-  @Input() user: string | User;
-  @Input() organ: string | Organ;
-  @Input() editRegistration: string | SpatialEntityJsonLd;
-  @Input() register: string | RegistrationCallback;
-  @Input() cancelRegistration: string | CancelRegistrationCallback;
-  @Input() fetchPreviousRegistrations: string | FetchPreviousRegistrationsCallback;
-  @Input() skipUnsavedChangesConfirmation: string | boolean;
-  @Input() theme: string;
-  @Input() header: string | boolean;
-  @Input() homeUrl: string;
-  @Input() logoTooltip: string;
-  @Input() organOptions: string | string[];
-
-  initialized: boolean;
+  @Input() baseHref!: string;
+  @Input() useDownload!: string | boolean;
+  @Input() user!: string | User;
+  @Input() organ!: string | Organ;
+  @Input() editRegistration!: string | SpatialEntityJsonLd;
+  @Input() register!: string | RegistrationCallback;
+  @Input() cancelRegistration!: string | CancelRegistrationCallback;
+  @Input() fetchPreviousRegistrations!: string | FetchPreviousRegistrationsCallback;
+  @Input() skipUnsavedChangesConfirmation!: string | boolean;
+  @Input() theme!: string;
+  @Input() header!: string | boolean;
+  @Input() homeUrl!: string;
+  @Input() logoTooltip!: string;
+  @Input() organOptions!: string | string[];
 
   constructor(
     configStore: GlobalConfigState<GlobalConfig>,

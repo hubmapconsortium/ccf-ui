@@ -1,5 +1,7 @@
 <div class="modal">
   <div class="title">Start Registration</div>
   <ccf-registration-metadata (registrationSelected)="handleRegistrationSelect()"></ccf-registration-metadata>
-  <button [class.disabled]="!organSelected || !nameValid || !orcidValid" mat-button class="registration-button" (click)="registerButtonClick($event)" [matTooltip]="!organSelected || !nameValid ? 'Required: Enter first and last name, and select an organ' : ''">Continue</button>
+  <button [class.disabled]="!organSelected || !nameValid || !orcidValid" mat-button class="registration-button"
+    (click)="registerButtonClick($event)"
+    [matTooltip]="!organSelected || !nameValid ? 'Required: Enter first and last name, and select an organ' : ''">Continue</button>
 </div>

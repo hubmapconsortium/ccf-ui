@@ -1,5 +1,6 @@
 <ccf-registration-modal></ccf-registration-modal>
-<ccf-header [class.header-hidden]="(header$ | async) === false" [logoTooltip]="logoTooltip$ | async" [homeUrl]="homeUrl$ | async"></ccf-header>
+<ccf-header [class.header-hidden]="(header$ | async) === false" [logoTooltip]="(logoTooltip$ | async) ?? ''"
+  [homeUrl]="(homeUrl$ | async) ?? ''"></ccf-header>
 
 <ccf-drawer-container>
   <ccf-drawer opened>
@@ -8,7 +9,8 @@
     <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
   </ccf-drawer>
   <ccf-drawer position="end" opened>
-    <ccf-right-sidebar [modalClosed]="registrationStarted" (registrationExpanded)="registrationToggle($event)"></ccf-right-sidebar>
+    <ccf-right-sidebar [modalClosed]="registrationStarted"
+      (registrationExpanded)="registrationToggle($event)"></ccf-right-sidebar>
     <ccf-drawer-toggle-button></ccf-drawer-toggle-button>
   </ccf-drawer>
 

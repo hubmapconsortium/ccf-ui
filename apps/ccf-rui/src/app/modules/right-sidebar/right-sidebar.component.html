@@ -1,9 +1,11 @@
 <div class='info-button-container'>
-  <ccf-info-button videoID="j4f9_xdBrK0" infoTitle="CCF Registration User Interface" documentationUrl="assets/docs/README.md"></ccf-info-button>
+  <ccf-info-button videoID="j4f9_xdBrK0" infoTitle="CCF Registration User Interface"
+    documentationUrl="assets/docs/README.md"></ccf-info-button>
 </div>
 <div class="scroll-wrapper">
   <div class="container">
-    <mat-expansion-panel class="registration-metadata-panel" (opened)="registrationExpanded.emit(true)" (closed)="registrationExpanded.emit(false)">
+    <mat-expansion-panel class="registration-metadata-panel" (opened)="registrationExpanded.emit(true)"
+      (closed)="registrationExpanded.emit(false)">
       <mat-expansion-panel-header class="header">
         <mat-panel-title matTooltip="">Registration Metadata</mat-panel-title>
       </mat-expansion-panel-header>
@@ -19,13 +21,14 @@
         <mat-panel-title matTooltip="">Tissue Block Controls</mat-panel-title>
       </mat-expansion-panel-header>
 
-      <ccf-block-size-input [blockSize]="model.blockSize$ | async" (blockSizeChange)="model.setBlockSize($event)">
+      <ccf-block-size-input [blockSize]="(model.blockSize$ | async)!" (blockSizeChange)="model.setBlockSize($event)">
       </ccf-block-size-input>
 
-      <ccf-slices-input [slicesConfig]="model.slicesConfig$ | async" (slicesConfigChange)="model.setSlicesConfig($event)">
+      <ccf-slices-input [slicesConfig]="$any(model.slicesConfig$ | async)"
+        (slicesConfigChange)="model.setSlicesConfig($event)">
       </ccf-slices-input>
 
-      <ccf-rotation-slider [rotation]="model.rotation$ | async" (rotationChange)="model.setRotation($event)">
+      <ccf-rotation-slider [rotation]="$any(model.rotation$ | async)" (rotationChange)="model.setRotation($event)">
       </ccf-rotation-slider>
 
     </mat-expansion-panel>
@@ -33,14 +36,16 @@
     <mat-divider></mat-divider>
     <mat-expansion-panel class="tags-container" [expanded]="true">
       <mat-expansion-panel-header class="header">
-        <mat-panel-title matTooltip="Review tags generated via collision detection. Add or delete tags as needed.">Anatomical Structure Tags</mat-panel-title>
+        <mat-panel-title
+          matTooltip="Review tags generated via collision detection. Add or delete tags as needed.">Anatomical Structure
+          Tags</mat-panel-title>
       </mat-expansion-panel-header>
 
       <ccf-tag-search [search]="astags.searchExternal" (added)="astags.addTags($event)">
       </ccf-tag-search>
 
-      <ccf-tag-list *ngIf="(model.organ$ | async)?.name; else: tagListPlaceholder" class="tag-list" [tags]="astags.tags$ | async"
-                    (tagRemoved)="astags.removeTag($event)">
+      <ccf-tag-list *ngIf="(model.organ$ | async)?.name; else: tagListPlaceholder" class="tag-list"
+        [tags]="(astags.tags$ | async) ?? []" (tagRemoved)="astags.removeTag($event)">
       </ccf-tag-list>
       <ng-template #tagListPlaceholder>
       </ng-template>
@@ -56,10 +61,11 @@
 
     <div class="filler"></div>
 
-    <ccf-review-button class="review-button" [registrationCallbackSet]="page.registrationCallbackSet$ | async" [displayErrors]="registration.displayErrors$ | async"
-                       [userValid]="registration.valid$ | async" [metaData]="(registration.metadata$ | async) ?? []"
-                       (registerData)="registration.register()"
-                       (enterErrorMode)="registration.setDisplayErrors(!registration.isValid)">
+    <ccf-review-button class="review-button"
+      [registrationCallbackSet]="(page.registrationCallbackSet$ | async) ?? false"
+      [displayErrors]="(registration.displayErrors$ | async) ?? false"
+      [userValid]="(registration.valid$ | async) ?? false" [metaData]="(registration.metadata$ | async) ?? []"
+      (registerData)="registration.register()" (enterErrorMode)="registration.setDisplayErrors(!registration.isValid)">
     </ccf-review-button>
   </div>
 </div>

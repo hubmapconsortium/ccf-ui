@@ -55,7 +55,7 @@ export class IconRegistryState extends NgxsDataRepository<void> {
     super();
   }
 
-  ngxsOnInit(): void {
+  override ngxsOnInit(): void {
     // Register html icons as they don't depend on baseHref
     DEFAULT_ICONS
       .filter(def => def.html !== undefined)

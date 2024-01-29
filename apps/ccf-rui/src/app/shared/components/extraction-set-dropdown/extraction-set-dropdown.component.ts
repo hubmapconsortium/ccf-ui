@@ -25,12 +25,12 @@ export class ExtractionSetDropdownComponent {
   /**
    * Extraction sets to be displayed as options
    */
-  @Input() sets: ExtractionSet[];
+  @Input() sets!: ExtractionSet[];
 
   /**
    * The currently selected extraction set
    */
-  selected: ExtractionSet;
+  selected!: ExtractionSet;
 
   /**
    * Creates an instance of extraction set dropdown component.

@@ -100,7 +100,7 @@ export class PageState extends NgxsImmutableDataRepository<PageStateModel> {
   /**
    * Initializes this service.
    */
-  ngxsOnInit(): void {
+  override ngxsOnInit(): void {
     super.ngxsOnInit();
 
     combineLatest([this.reg.state$, this.globalConfig.config$]).pipe(

@@ -22,7 +22,7 @@ export class RightSidebarComponent {
   /** Whether or not the initial registration modal has been closed */
   @Input() modalClosed = false;
 
-  @Output() registrationExpanded = new EventEmitter<boolean>();
+  @Output() readonly registrationExpanded = new EventEmitter<boolean>();
 
   /**
    * Creates an instance of right sidebar component.

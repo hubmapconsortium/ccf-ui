@@ -1,13 +1,10 @@
 import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
-import { SpatialEntityJsonLd } from 'ccf-body-ui';
-import { combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { VisibilityItem } from '../../core/models/visibility-item';
 import { ModelState } from '../../core/store/model/model.state';
 import { PageState } from '../../core/store/page/page.state';
 import { RegistrationState } from '../../core/store/registration/registration.state';
-import { RUI_ORGANS } from './../../core/store/model/model.state';
 
 
 /**

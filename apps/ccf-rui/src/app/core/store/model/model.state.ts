@@ -168,9 +168,9 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
   }
 
   /** Reference to the reference data state */
-  private referenceData: ReferenceDataState;
+  private referenceData!: ReferenceDataState;
 
-  private page: PageState;
+  private page!: PageState;
 
   /**
    * Creates an instance of model state.
@@ -188,7 +188,7 @@ export class ModelState extends NgxsImmutableDataRepository<ModelStateModel> {
   /**
    * Initializes this state service.
    */
-  ngxsOnInit(): void {
+  override ngxsOnInit(): void {
     super.ngxsOnInit();
 
     this.referenceData = this.injector.get(ReferenceDataState);
