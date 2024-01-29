@@ -7,7 +7,7 @@ import { filter, map, shareReplay, switchMap } from 'rxjs/operators';
 import { GlobalConfigState } from '../../config/global-config.state';
 import { ApiEndpointDataSourceService } from './api-endpoint.service';
 import { DataSource, DataSourceDataType, DataSourceLike, DataSourceMethod, DelegateDataSource, ForwardingDataSource } from './data-source';
-import isEqual from 'lodash/isEqual';
+import { isEqual } from 'lodash';
 
 /** Default values for filters. */
 export const DEFAULT_FILTER: Filter = {
