@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
-import { DEFAULT_FILTER } from '../../../core/store/data/data.state';
+import { DEFAULT_FILTER } from 'ccf-shared';
 import { SpatialSearchFilterItem } from '../../../core/store/spatial-search-filter/spatial-search-filter.state';
 import { Sex } from '../../../shared/components/spatial-search-config/spatial-search-config.component';
 

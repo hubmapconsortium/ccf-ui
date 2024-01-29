@@ -1,31 +1,16 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable @typescript-eslint/naming-convention */
-import { Injectable } from '@angular/core';
 import { DataAction, Payload, StateRepository } from '@angular-ru/ngxs/decorators';
 import { NgxsDataRepository } from '@angular-ru/ngxs/repositories';
+import { Injectable } from '@angular/core';
 import { Action, NgxsOnInit, State } from '@ngxs/store';
 import { bind } from 'bind-decorator';
 import { AggregateResult, DatabaseStatus, Filter, OntologyTreeModel, SpatialSceneNode, TissueBlockResult } from 'ccf-database';
-import { DataSourceService } from 'ccf-shared';
-import { combineLatest, defer, ObservableInput, ObservedValueOf, OperatorFunction, ReplaySubject, Subject } from 'rxjs';
-import { delay, distinct, filter as rxjsFilter, map, publishReplay, refCount, repeat, switchMap, take, takeWhile, tap } from 'rxjs/operators';
+import { DEFAULT_FILTER, DataSourceService } from 'ccf-shared';
+import { ObservableInput, ObservedValueOf, OperatorFunction, ReplaySubject, Subject, combineLatest, defer } from 'rxjs';
+import { delay, distinct, map, publishReplay, refCount, repeat, filter as rxjsFilter, switchMap, take, takeWhile, tap } from 'rxjs/operators';
 import { UpdateFilter } from './data.actions';
-
-
-/** Default values for filters. */
-export const DEFAULT_FILTER: Filter = {
-  sex: 'Both',
-  ageRange: [1, 110],
-  bmiRange: [13, 83],
-  consortiums: [],
-  tmc: [],
-  technologies: [],
-  ontologyTerms: ['http://purl.obolibrary.org/obo/UBERON_0013702'],
-  cellTypeTerms: ['http://purl.obolibrary.org/obo/CL_0000000'],
-  biomarkerTerms: ['http://purl.org/ccf/biomarkers'],
-  spatialSearches: []
-};
 
 /** Current state of data queries. */
 // eslint-disable-next-line no-shadow

@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Matrix4 } from '@math.gl/core';
 import {
-  AggregateResult, Filter, OntologyTreeModel, OntologyTreeNode, SpatialEntity, SpatialSceneNode, TissueBlockResult,
+  AggregateResult, Filter, OntologyTreeModel,
+  SpatialEntity, SpatialSceneNode, TissueBlockResult
 } from 'ccf-database';
-import { DatabaseStatus, DefaultService, MinMax, SpatialSearch, SpatialSceneNode as RawSpatialSceneNode } from 'ccf-openapi/angular-client';
-import { combineLatest, Observable, of, Subject } from 'rxjs';
+import { DatabaseStatus, DefaultService, MinMax, SpatialSceneNode as RawSpatialSceneNode, SpatialSearch } from 'ccf-openapi/angular-client';
+import { Observable, Subject, combineLatest } from 'rxjs';
 import { map, switchMap, take, tap } from 'rxjs/operators';
 import { Cacheable } from 'ts-cacheable';
 
@@ -20,14 +21,14 @@ export interface ApiEndpointDataSourceOptions {
 // Not exported from ts-cacheable!?
 type IObservableCacheConfig = NonNullable<Parameters<typeof Cacheable>[0]>;
 
-type RequestMethod<P, T> = (params: P) => Observable<T>;
-type DataReviver<T, U> = (data: T) => U;
+export type RequestMethod<P, T> = (params: P) => Observable<T>;
+export type DataReviver<T, U> = (data: T) => U;
 
-interface DefaultParams {
+export interface DefaultParams {
   token?: string;
 }
 
-interface FilterParams {
+export interface FilterParams {
   age?: MinMax;
   ageRange?: string;
   bmi?: MinMax;
@@ -61,7 +62,7 @@ function cast<T>(): (data: unknown) => T {
   return data => data as T;
 }
 
-function rangeToMinMax(
+export function rangeToMinMax(
   range: [number, number] | undefined,
   low: number, high: number
 ): MinMax | undefined {
@@ -71,7 +72,7 @@ function rangeToMinMax(
   } : undefined;
 }
 
-function filterToParams(filter?: Filter): FilterParams {
+export function filterToParams(filter?: Filter): FilterParams {
   return {
     age: rangeToMinMax(filter?.ageRange, 1, 110),
     bmi: rangeToMinMax(filter?.bmiRange, 13, 83),

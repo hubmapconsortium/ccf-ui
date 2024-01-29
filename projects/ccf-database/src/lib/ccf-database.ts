@@ -8,7 +8,6 @@ import {
 
 import { CCFSpatialGraph } from './ccf-spatial-graph';
 import { CCFSpatialScene, SpatialSceneNode } from './ccf-spatial-scene';
-import { searchXConsortia } from './xconsortia/xconsortia-data-import';
 import { AggregateResult, DatabaseStatus, Filter, OntologyTreeModel, TissueBlockResult } from './interfaces';
 import { getAggregateResults, getDatasetTechnologyNames, getProviderNames } from './queries/aggregate-results-n3';
 import { findIds } from './queries/find-ids-n3';
@@ -18,9 +17,10 @@ import { getSpatialEntityForEntity } from './queries/spatial-result-n3';
 import { getTissueBlockResult } from './queries/tissue-block-result-n3';
 import { FlatSpatialPlacement, SpatialEntity } from './spatial-types';
 import { CCFDatabaseStatusTracker } from './util/ccf-database-status-tracker';
-import { patchJsonLd } from './util/patch-jsonld';
-import { enrichRuiLocations } from './util/enrich-rui-locations';
 import { getBmLocatedInAs } from './util/enrich-bm-located-in-as';
+import { enrichRuiLocations } from './util/enrich-rui-locations';
+import { patchJsonLd } from './util/patch-jsonld';
+import { searchXConsortia } from './xconsortia/xconsortia-data-import';
 
 const { delMany, get, setMany } = idb;
 
