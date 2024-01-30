@@ -1,3 +1,11 @@
-<span class="slide-label" [class.disabled]="disabled" [class.highlighted]="left" (click)="left ? '' : toggle.toggle(); updateToggle(true);">{{labels[0].charAt(0).toUpperCase() + labels[0].slice(1)}}</span>
-<mat-slide-toggle [disabled]="disabled" [checked]="!left" hideIcon (change)="updateToggle(!$event.checked)" class="slider" #toggle></mat-slide-toggle>
-<span class="slide-label" [class.disabled]="disabled" [class.highlighted]="!left" (click)="!left ? '' : toggle.toggle(); updateToggle(false)">{{labels[1].charAt(0).toUpperCase() + labels[1].slice(1)}}</span>
+<span class="slide-label" [class.disabled]="disabled" [class.highlighted]="left"
+  (click)="left ? '' : toggle.toggle(); updateToggle(true);">
+  {{labels[0].charAt(0).toUpperCase() + labels[0].slice(1)}}
+</span>
+<mat-slide-toggle [disabled]="disabled" [checked]="!left" hideIcon (change)="updateToggle(!$event.checked)"
+  class="slider" #toggle>
+</mat-slide-toggle>
+<span class="slide-label" [class.disabled]="disabled" [class.highlighted]="!left"
+  (click)="!left ? '' : toggle.toggle(); updateToggle(false)">
+  {{labels[1].charAt(0).toUpperCase() + labels[1].slice(1)}}
+</span>

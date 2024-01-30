@@ -50,23 +50,21 @@ export class AppWebComponent extends BaseWebComponent {
   @Input() organIri?: string;
   @Input() sex?: 'Both' | 'Male' | 'Female' = 'Female';
   @Input() side?: 'Left' | 'Right' = 'Left';
-  @Input() dataSources: string | string[];
-  @Input() highlightProviders: string | string[];
+  @Input() dataSources!: string | string[];
+  @Input() highlightProviders!: string | string[];
 
-  @Input() hubmapDataService: string;
-  @Input() hubmapDataUrl: string;
-  @Input() hubmapAssetUrl: string;
-  @Input() hubmapToken: string;
-  @Input() hubmapPortalUrl: string;
+  @Input() hubmapDataService!: string;
+  @Input() hubmapDataUrl!: string;
+  @Input() hubmapAssetUrl!: string;
+  @Input() hubmapToken!: string;
+  @Input() hubmapPortalUrl!: string;
 
-  @Input() useRemoteApi: string | boolean;
-  @Input() remoteApiEndpoint: string;
+  @Input() useRemoteApi!: string | boolean;
+  @Input() remoteApiEndpoint!: string;
 
   @Output() readonly sexChange = new EventEmitter<'Male' | 'Female'>();
   @Output() readonly sideChange = new EventEmitter<'Left' | 'Right'>();
-  @Output() nodeClicked = new EventEmitter();
-
-  initialized: boolean;
+  @Output() readonly nodeClicked = new EventEmitter();
 
   constructor(
     configStore: GlobalConfigState<GenericGlobalConfig>,

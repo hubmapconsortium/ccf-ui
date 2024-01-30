@@ -13,8 +13,8 @@ import { GoogleAnalyticsService } from 'ngx-google-analytics';
 })
 export class OrganComponent implements AfterViewChecked, OnChanges {
   @Input() organ?: SpatialEntity;
-  @Input() scene: SpatialSceneNode[];
-  @Input() organIri: string;
+  @Input() scene!: SpatialSceneNode[];
+  @Input() organIri!: string;
   @Input() sex?: 'Male' | 'Female' | 'Both';
   @Input() side?: 'Left' | 'Right';
   @Input() blocks?: TissueBlockResult[];
@@ -26,8 +26,8 @@ export class OrganComponent implements AfterViewChecked, OnChanges {
 
   @ViewChild('bodyUI', { static: true }) readonly bodyUI!: BodyUiComponent;
 
-  highlightedNodeId: string;
-  filteredBlocks: string[];
+  highlightedNodeId!: string;
+  filteredBlocks!: string[];
 
   constructor(readonly ga: GoogleAnalyticsService) { }
 

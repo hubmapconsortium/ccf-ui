@@ -1,11 +1,13 @@
 <div class="container">
   <div class="left" #left>
-    <ccf-organ [blocks]="blocks$ | async" [filter]="filter$ | async" [sex]="sex$ | async" [side]="side$ | async" [organ]="organ$ | async" [scene]="(scene$ | async) ?? []"
-               (sexChange)="updateInput('sex', $event); sexChange.emit($event)" (nodeClick)="nodeClicked.emit($event)" (sideChange)="updateInput('side', $event); sideChange.emit($event)">
+    <ccf-organ [blocks]="(blocks$ | async) ?? []" [filter]="$any(filter$ | async)" [sex]="(sex$ | async)!"
+      [side]="$any(side$ | async)" [organ]="(organ$ | async) ?? undefined" [scene]="(scene$ | async) ?? []"
+      (sexChange)="updateInput('sex', $event); sexChange.emit($event)" (nodeClick)="nodeClicked.emit($event)"
+      (sideChange)="updateInput('side', $event); sideChange.emit($event)">
     </ccf-organ>
   </div>
   <div class="right" #right>
-    <ccf-stats-list [statsLabel]="statsLabel$ | async" [stats]="stats$ | async">
+    <ccf-stats-list [statsLabel]="(statsLabel$ | async) ?? ''" [stats]="(stats$ | async) ?? []">
     </ccf-stats-list>
     <ccf-link-cards></ccf-link-cards>
   </div>

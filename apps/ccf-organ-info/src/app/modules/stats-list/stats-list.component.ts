@@ -8,6 +8,6 @@ import { AggregateResult } from 'ccf-database';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StatsListComponent {
-  @Input() statsLabel: string;
-  @Input() stats: AggregateResult[];
+  @Input() statsLabel!: string;
+  @Input() stats!: AggregateResult[];
 }

@@ -1,5 +1,13 @@
 import { Immutable } from '@angular-ru/common/typings';
-import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { SpatialSceneNode } from 'ccf-body-ui';
 import { AggregateResult, SpatialEntity, TissueBlockResult } from 'ccf-database';
 import { GlobalConfigState, OrganInfo } from 'ccf-shared';
@@ -9,7 +17,6 @@ import { map, shareReplay, startWith, switchMap, tap } from 'rxjs/operators';
 
 import { OrganLookupService } from './core/services/organ-lookup/organ-lookup.service';
 
-
 interface GlobalConfig {
   organIri?: string;
   side?: string;
@@ -17,28 +24,26 @@ interface GlobalConfig {
   highlightProviders?: string[];
 }
 
-const EMPTY_SCENE = [
-  { color: [0, 0, 0, 0], opacity: 0.001 }
-];
-
+const EMPTY_SCENE = [{ color: [0, 0, 0, 0], opacity: 0.001 }];
 
 @Component({
   selector: 'ccf-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent implements AfterViewInit {
-  @ViewChild('left', { read: ElementRef, static: true }) left: ElementRef<HTMLElement>;
-  @ViewChild('right', { read: ElementRef, static: true }) right: ElementRef<HTMLElement>;
+  @ViewChild('left', { read: ElementRef, static: true }) left!: ElementRef<HTMLElement>;
+  @ViewChild('right', { read: ElementRef, static: true }) right!: ElementRef<HTMLElement>;
 
   @Output() readonly sexChange = new EventEmitter<'Male' | 'Female'>();
   @Output() readonly sideChange = new EventEmitter<'Left' | 'Right'>();
-  @Output() nodeClicked = new EventEmitter();
+  @Output() readonly nodeClicked = new EventEmitter();
   readonly sex$ = this.configState.getOption('sex');
   readonly side$ = this.configState.getOption('side');
-  readonly filter$ = this.configState.getOption('highlightProviders')
-    .pipe(map((providers: string[]) => ({ tmc: providers })));
+  readonly filter$ = this.configState
+    .getOption('highlightProviders')
+    .pipe(map((providers) => ({ tmc: providers ?? [] })));
   readonly organInfo$: Observable<OrganInfo | undefined>;
   readonly organ$: Observable<SpatialEntity | undefined>;
   readonly scene$: Observable<SpatialSceneNode[]>;
@@ -55,23 +60,20 @@ export class AppComponent implements AfterViewInit {
     private readonly configState: GlobalConfigState<GlobalConfig>
   ) {
     this.organInfo$ = configState.config$.pipe(
-      tap(config => (this.latestConfig = config)),
-      switchMap(config => lookup.getOrganInfo(
-        config.organIri ?? '',
-        config.side?.toLowerCase?.() as OrganInfo['side'],
-        config.sex
-      )),
-      tap(info => this.logOrganLookup(info)),
-      tap(info => (this.latestOrganInfo = info)),
+      tap((config) => (this.latestConfig = config)),
+      switchMap((config) =>
+        lookup.getOrganInfo(config.organIri ?? '', config.side?.toLowerCase?.() as OrganInfo['side'], config.sex)
+      ),
+      tap((info) => this.logOrganLookup(info)),
+      tap((info) => (this.latestOrganInfo = info)),
       shareReplay(1)
     );
 
     this.organ$ = this.organInfo$.pipe(
-      switchMap(info => info ? lookup.getOrgan(
-        info,
-        info.hasSex ? this.latestConfig.sex : undefined
-      ) : of(undefined)),
-      tap(organ => {
+      switchMap((info) =>
+        info ? lookup.getOrgan(info, info.hasSex ? this.latestConfig.sex : undefined) : of(undefined)
+      ),
+      tap((organ) => {
         if (organ && this.latestOrganInfo) {
           const newSex = this.latestOrganInfo?.hasSex ? organ.sex : undefined;
           if (newSex !== this.latestConfig.sex) {
@@ -86,17 +88,17 @@ export class AppComponent implements AfterViewInit {
     );
 
     this.scene$ = this.organ$.pipe(
-      switchMap((organ) => organ && this.latestOrganInfo ? lookup.getOrganScene(
-        this.latestOrganInfo,
-        organ.sex
-      ) : of(EMPTY_SCENE as SpatialSceneNode[]))
+      switchMap((organ) =>
+        organ && this.latestOrganInfo
+          ? lookup.getOrganScene(this.latestOrganInfo, organ.sex)
+          : of(EMPTY_SCENE as SpatialSceneNode[])
+      )
     );
 
     this.stats$ = this.organ$.pipe(
-      switchMap(organ => organ && this.latestOrganInfo ? lookup.getOrganStats(
-        this.latestOrganInfo,
-        organ.sex
-      ) : of([]))
+      switchMap((organ) =>
+        organ && this.latestOrganInfo ? lookup.getOrganStats(this.latestOrganInfo, organ.sex) : of([])
+      )
     );
 
     this.statsLabel$ = this.organ$.pipe(
@@ -105,10 +107,7 @@ export class AppComponent implements AfterViewInit {
     );
 
     this.blocks$ = this.organ$.pipe(
-      switchMap(organ => organ && this.latestOrganInfo ? lookup.getBlocks(
-        this.latestOrganInfo,
-        organ.sex
-      ) : of([]))
+      switchMap((organ) => (organ && this.latestOrganInfo ? lookup.getBlocks(this.latestOrganInfo, organ.sex) : of([])))
     );
   }
 
@@ -129,7 +128,7 @@ export class AppComponent implements AfterViewInit {
       const side = info.side ? info.side.charAt(0).toUpperCase() + info.side.slice(1) : undefined;
       parts = [sex, info.organ, side];
     }
-    return parts.filter(seg => !!seg).join(', ');
+    return parts.filter((seg) => !!seg).join(', ');
   }
 
   private logOrganLookup(info: OrganInfo | undefined): void {

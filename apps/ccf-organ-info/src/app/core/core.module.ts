@@ -1,6 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
-import { CcfApiConfiguration, CcfApiModule } from 'ccf-openapi/angular-client';
+import { CcfApiConfiguration, CcfApiModule } from '@ccf-openapi/ng-client';
 import { DataSourceService } from 'ccf-shared';
 import { AnalyticsModule } from 'ccf-shared/analytics';
 
