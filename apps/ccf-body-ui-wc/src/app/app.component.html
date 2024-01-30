@@ -1,11 +1,4 @@
-<ccf-body-ui
-  #bodyUI
-  [scene]="scene$ | async"
-  [interactive]="true"
-  camera="perspective"
-  class="body-ui"
-  (nodeClick)="onClick.emit($event)"
-  (nodeHoverStart)="onMouseEnter.emit($event)"
-  (nodeHoverStop)="onMouseLeave.emit($event)"
->
+<ccf-body-ui #bodyUI [scene]="(scene$ | async) ?? []" [interactive]="true" camera="perspective" class="body-ui"
+  (nodeClick)="onClick.emit($event)" (nodeHoverStart)="onMouseEnter.emit($event)"
+  (nodeHoverStop)="onMouseLeave.emit($event)">
 </ccf-body-ui>

@@ -1,11 +1,9 @@
-import { DEFAULT_CCF_DB_OPTIONS } from './../../../../../../ccf-database/src/lib/ccf-database';
-/* eslint-disable @typescript-eslint/no-shadow */
-import { LocationStrategy } from '@angular/common';
 import { Injectable, OnDestroy } from '@angular/core';
 import {
   AggregateResult,
   CCFDatabase,
   CCFDatabaseOptions,
+  DEFAULT_CCF_DB_OPTIONS,
   Filter,
   OntologyTreeModel,
   SpatialEntity,
@@ -15,23 +13,13 @@ import {
 import { GlobalConfigState } from 'ccf-shared';
 import { Remote } from 'comlink';
 import { Observable, Subscription, Unsubscribable, using } from 'rxjs';
-import {
-  distinctUntilChanged,
-  filter,
-  map,
-  shareReplay,
-  switchMap,
-  take,
-} from 'rxjs/operators';
+import { distinctUntilChanged, map, filter as rxFilter, shareReplay, switchMap, take } from 'rxjs/operators';
 
 import { environment } from '../../../../environments/environment';
 
 type DataSource = Remote<CCFDatabase> | CCFDatabase;
 
-function compareConfig(
-  previous: CCFDatabaseOptions,
-  current: CCFDatabaseOptions
-): boolean {
+function compareConfig(previous: CCFDatabaseOptions, current: CCFDatabaseOptions): boolean {
   return previous === current;
 }
 
@@ -45,30 +33,23 @@ export class DataSourceService implements OnDestroy {
   /** The underlying database. */
   dataSource: Observable<DataSource>;
   /** Database initialization options. */
-  dbOptions: CCFDatabaseOptions;
+  dbOptions!: CCFDatabaseOptions;
 
   private readonly subscriptions = new Subscription();
 
   /**
    * Creates an instance of data source service.
    */
-  constructor(
-    private readonly locator: LocationStrategy,
-    private readonly globalConfig: GlobalConfigState<CCFDatabaseOptions>
-  ) {
+  constructor(globalConfig: GlobalConfigState<CCFDatabaseOptions>) {
     this.dataSource = globalConfig.getOption('data').pipe(
       map((data) => ({ ...DEFAULT_CCF_DB_OPTIONS, dataSources: data })),
-      filter((config) => Object.keys(config).length > 0),
+      rxFilter((config) => Object.keys(config).length > 0),
       map((config) => config as unknown as CCFDatabaseOptions),
       distinctUntilChanged(compareConfig),
       switchMap((config) =>
         using(
           () => this.createDataSource(),
-          (resource) =>
-            this.connectDataSource(
-              (resource as unknown as { source: DataSource }).source,
-              config
-            )
+          (resource) => this.connectDataSource((resource as unknown as { source: DataSource }).source, config)
         )
       ),
       shareReplay(1)
@@ -113,9 +94,7 @@ export class DataSourceService implements OnDestroy {
    * @param [filter] Currently applied filter.
    * @returns An observable emitting the results.
    */
-  getOntologyTermOccurences(
-    filter?: Filter
-  ): Observable<Record<string, number>> {
+  getOntologyTermOccurences(filter?: Filter): Observable<Record<string, number>> {
     return this.dataSource.pipe(
       switchMap((db) => db.getOntologyTermOccurences(filter)),
       take(1)
@@ -128,9 +107,7 @@ export class DataSourceService implements OnDestroy {
    * @param [filter] Currently applied filter.
    * @returns An observable emitting the results.
    */
-  getCellTypeTermOccurences(
-    filter?: Filter
-  ): Observable<Record<string, number>> {
+  getCellTypeTermOccurences(filter?: Filter): Observable<Record<string, number>> {
     return this.dataSource.pipe(
       switchMap((db) => db.getCellTypeTermOccurences(filter)),
       take(1)
@@ -186,10 +163,7 @@ export class DataSourceService implements OnDestroy {
     );
   }
 
-  getOrganScene(
-    organ: string,
-    filter?: Filter
-  ): Observable<SpatialSceneNode[]> {
+  getOrganScene(organ: string, filter?: Filter): Observable<SpatialSceneNode[]> {
     return this.dataSource.pipe(
       switchMap((db) => db.getReferenceOrganScene(organ, filter)),
       take(1)
@@ -203,19 +177,14 @@ export class DataSourceService implements OnDestroy {
     return { source, unsubscribe };
   }
 
-  private async connectDataSource(
-    source: DataSource,
-    config: CCFDatabaseOptions
-  ): Promise<DataSource> {
+  private async connectDataSource(source: DataSource, config: CCFDatabaseOptions): Promise<DataSource> {
     const start = new Date().getTime();
 
     await source.connect(config, false);
 
     if (!environment.production) {
       // eslint-disable-next-line no-console
-      console.info(
-        `Loaded CCF database in ${(new Date().getTime() - start) / 1000}s`
-      );
+      console.info(`Loaded CCF database in ${(new Date().getTime() - start) / 1000}s`);
       // eslint-disable-next-line no-console
       console.log(source);
     }

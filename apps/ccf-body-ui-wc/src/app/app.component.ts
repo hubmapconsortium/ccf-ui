@@ -1,17 +1,10 @@
 /* eslint-disable @angular-eslint/no-output-on-prefix */
-import { FilteredSceneService } from './core/services/filtered-scene/filtered-scene.service';
-import {
-  Component,
-  EventEmitter,
-  Output,
-  ViewChild,
-  ChangeDetectorRef,
-  ChangeDetectionStrategy,
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { BodyUiComponent, GlobalConfigState } from 'ccf-shared';
-import { take, tap } from 'rxjs/operators';
 import { JsonLdObj } from 'jsonld/jsonld-spec';
-import { lastValueFrom } from 'rxjs/internal/lastValueFrom';
+import { lastValueFrom } from 'rxjs';
+import { take, tap } from 'rxjs/operators';
+import { FilteredSceneService } from './core/services/filtered-scene/filtered-scene.service';
 
 export interface GlobalConfig {
   highlightID?: string;
@@ -45,11 +38,11 @@ export class AppComponent {
   private async reset(): Promise<void> {
     const { bodyUI } = this;
 
-    // eslint-disable-next-line no-promise-executor-return
-    await new Promise((resolve) => setTimeout(resolve, 200));
+    await new Promise((resolve) => {
+      setTimeout(resolve, 200);
+    });
     const organs = await lastValueFrom(this.organs$.pipe(take(1)));
-    const hasZoomingNode =
-      !!bodyUI.scene?.find((node) => node.zoomToOnLoad) ?? false;
+    const hasZoomingNode = !!bodyUI.scene?.find((node) => node.zoomToOnLoad) ?? false;
 
     bodyUI.rotation = 0;
     bodyUI.rotationX = 0;

@@ -4,11 +4,7 @@ import { combineLatest, MonoTypeOperatorFunction, Observable } from 'rxjs';
 
 export type Color = [number, number, number, number];
 
-function highlightIfMatching(
-  entity: SpatialSceneNode,
-  id: string | undefined,
-  color: Color
-): SpatialSceneNode {
+function highlightIfMatching(entity: SpatialSceneNode, id: string | undefined, color: Color): SpatialSceneNode {
   return entity.entityId !== id ? entity : { ...entity, color };
 }
 
@@ -19,8 +15,6 @@ export function hightlight(
   const idWithInitalValue = id.pipe(startWith(''));
   return (source) =>
     combineLatest([source, idWithInitalValue]).pipe(
-      map(([entities, iD]) =>
-        entities.map((entity) => highlightIfMatching(entity, iD, color))
-      )
+      map(([entities, iD]) => entities.map((entity) => highlightIfMatching(entity, iD, color)))
     );
 }
