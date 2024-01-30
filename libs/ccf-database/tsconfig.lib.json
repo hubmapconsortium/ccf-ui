@@ -8,9 +8,9 @@
     "types": []
   },
   "exclude": [
-    "src/test-setup.ts",
+    "src/test.ts",
     "**/*.spec.ts",
-    "jest.config.ts",
+    "karma.conf.js",
     "**/*.test.ts",
     "**/*.stories.ts",
     "**/*.stories.js"
