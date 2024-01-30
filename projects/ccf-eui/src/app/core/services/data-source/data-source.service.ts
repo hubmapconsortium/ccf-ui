@@ -1,6 +1,8 @@
 import { Injectable, ProviderToken } from '@angular/core';
 import {
-  ApiEndpointDataSourceService, CCFDatabaseDataSourceService, DataSourceLike, InjectorDelegateDataSourceService, MixedCCfDatabaseDatasourceService
+  ApiEndpointDataSourceService, CCFDatabaseDataSourceService, DataSourceLike,
+  HybridCCfDatabaseDatasourceService,
+  InjectorDelegateDataSourceService
 } from 'ccf-shared';
 
 import { environment } from '../../../../environments/environment';
@@ -23,7 +25,7 @@ export class DelegateDataSourceService extends InjectorDelegateDataSourceService
 
     if (useRemoteApi && !!remoteApiEndpoint) {
       if (dataSources && dataSources.length > 0) {
-        return MixedCCfDatabaseDatasourceService;
+        return HybridCCfDatabaseDatasourceService;
       } else {
         return ApiEndpointDataSourceService;
       }

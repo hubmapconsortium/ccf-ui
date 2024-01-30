@@ -13,7 +13,7 @@ import { GlobalConfigState } from '../../config/global-config.state';
 import { DataSource } from './data-source';
 
 
-export interface ApiEndpointDataSourceOptions {
+interface ApiEndpointDataSourceOptions {
   remoteApiEndpoint: string;
   hubmapToken?: string;
 }
@@ -21,14 +21,14 @@ export interface ApiEndpointDataSourceOptions {
 // Not exported from ts-cacheable!?
 type IObservableCacheConfig = NonNullable<Parameters<typeof Cacheable>[0]>;
 
-export type RequestMethod<P, T> = (params: P) => Observable<T>;
-export type DataReviver<T, U> = (data: T) => U;
+type RequestMethod<P, T> = (params: P) => Observable<T>;
+type DataReviver<T, U> = (data: T) => U;
 
-export interface DefaultParams {
+interface DefaultParams {
   token?: string;
 }
 
-export interface FilterParams {
+interface FilterParams {
   age?: MinMax;
   ageRange?: string;
   bmi?: MinMax;
@@ -62,7 +62,7 @@ function cast<T>(): (data: unknown) => T {
   return data => data as T;
 }
 
-export function rangeToMinMax(
+function rangeToMinMax(
   range: [number, number] | undefined,
   low: number, high: number
 ): MinMax | undefined {
@@ -72,7 +72,7 @@ export function rangeToMinMax(
   } : undefined;
 }
 
-export function filterToParams(filter?: Filter): FilterParams {
+function filterToParams(filter?: Filter): FilterParams {
   return {
     age: rangeToMinMax(filter?.ageRange, 1, 110),
     bmi: rangeToMinMax(filter?.bmiRange, 13, 83),

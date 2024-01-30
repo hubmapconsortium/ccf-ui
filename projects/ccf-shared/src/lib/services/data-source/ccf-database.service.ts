@@ -7,7 +7,6 @@ import { filter, map, shareReplay, switchMap } from 'rxjs/operators';
 import { GlobalConfigState } from '../../config/global-config.state';
 import { ApiEndpointDataSourceService } from './api-endpoint.service';
 import { DataSource, DataSourceDataType, DataSourceLike, DataSourceMethod, DelegateDataSource, ForwardingDataSource } from './data-source';
-import { isEqual } from 'lodash';
 
 /** Default values for filters. */
 export const DEFAULT_FILTER: Filter = {
@@ -91,8 +90,6 @@ export abstract class WorkerCCFDatabaseDataSourceService extends CCFDatabaseData
 }
 
 const REMOTE_METHODS: (keyof DataSource)[] = [
-  'getProviderNames',
-  'getDatasetTechnologyNames',
   'getOntologyTreeModel',
   'getCellTypeTreeModel',
   'getBiomarkerTreeModel',
@@ -113,7 +110,7 @@ const FILTER_METHODS_ARG_1: (keyof DataSource)[] = [
 @Injectable({
   providedIn: 'root'
 })
-export class MixedCCfDatabaseDatasourceService extends ForwardingDataSource {
+export class HybridCCfDatabaseDatasourceService extends ForwardingDataSource {
   constructor(
     private readonly remote: ApiEndpointDataSourceService,
     private readonly local: CCFDatabaseDataSourceService,
@@ -126,20 +123,16 @@ export class MixedCCfDatabaseDatasourceService extends ForwardingDataSource {
   ): Observable<DataSourceDataType<K>> {
     type AnyFunction = (...rest: unknown[]) => ObservableInput<unknown>;
     type Res = Observable<DataSourceDataType<K>>;
-    const source = this.isRemoteCall(method, args) ? this.remote : this.local;
+    const source = this.isRemoteCall(method) ? this.remote : this.local;
     return (source[method] as AnyFunction)(...args) as Res;
   }
 
-  private isRemoteCall(method: keyof DataSource, args: unknown[]): boolean {
+  private isRemoteCall(method: keyof DataSource): boolean {
     return (
       REMOTE_METHODS.includes(method) ||
-      (FILTER_METHODS_ARG_0.includes(method) && this.isDefaultFilter(args[0] as Filter)) ||
-      (FILTER_METHODS_ARG_1.includes(method) && this.isDefaultFilter(args[1] as Filter))
+      (FILTER_METHODS_ARG_0.includes(method)) ||
+      (FILTER_METHODS_ARG_1.includes(method))
     );
-  }
-
-  private isDefaultFilter(value?: Filter): boolean {
-    return isEqual(value, DEFAULT_FILTER);
   }
 }
 

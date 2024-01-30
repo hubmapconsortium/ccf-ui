@@ -1,7 +1,7 @@
-import { TestBed } from '@angular/core/testing';
 import { NgxsDataPluginModule } from '@angular-ru/ngxs';
+import { TestBed } from '@angular/core/testing';
 import { NgxsModule } from '@ngxs/store';
-import { CCFDatabaseDataSourceService, DataSourceService, GlobalConfigState, DEFAULT_FILTER } from 'ccf-shared';
+import { CCFDatabaseDataSourceService, DEFAULT_FILTER, DataSourceService, GlobalConfigState } from 'ccf-shared';
 
 import { DataState } from './data.state';
 
