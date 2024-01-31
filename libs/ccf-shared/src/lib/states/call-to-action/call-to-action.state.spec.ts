@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { StateContext } from '@ngxs/store';
-import { LocalStorageService } from 'ccf-shared';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { of } from 'rxjs';
 
 import { DocumentationContent, InfoButtonService } from '../../components/info/info-button/info-button.service';
+import { LocalStorageService } from '../../services/local-storage/local-storage.service';
 import { CallToActionModel, CallToActionState } from './call-to-action.state';
 
 describe('CallToActionState', () => {

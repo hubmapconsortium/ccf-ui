@@ -20,7 +20,7 @@
     "test": {
       "executor": "@angular-devkit/build-angular:karma",
       "options": {
-        "main": "libs/ccf-shared/src/test.ts",
+        "main": "libs/ccf-shared/test.ts",
         "tsConfig": "libs/ccf-shared/tsconfig.spec.json",
         "karmaConfig": "libs/ccf-shared/karma.conf.js",
         "codeCoverage": true,

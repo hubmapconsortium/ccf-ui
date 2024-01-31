@@ -6,7 +6,7 @@ class TestGlobalsService extends GlobalsService {
     super();
   }
 
-  findGlobalObject(): GlobalThis | undefined {
+  override findGlobalObject(): GlobalThis | undefined {
     return this.globals as GlobalThis | undefined;
   }
 }
