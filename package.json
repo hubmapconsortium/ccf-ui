@@ -119,7 +119,7 @@
     "idb-keyval": "^6.2.1",
     "jsonld": "^8.2.0",
     "lodash": "^4.17.21",
-    "lru-cache": "^10.0.0",
+    "lru-cache": "^10.2.0",
     "n3": "^1.17.0",
     "ngx-google-analytics": "^14.0.1",
     "ngx-markdown": "^17.1.1",
