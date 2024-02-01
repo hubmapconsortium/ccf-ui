@@ -17,7 +17,7 @@ describe('SlicesInputComponent', () => {
       }
     });
 
-    const mockEvent = { target: { value: 20 } } as unknown as InputEvent;
+    const mockEvent = { target: { value: 20 } } as unknown as KeyboardEvent;
     instance.updateSlicesData(mockEvent, 'thickness');
 
     expect(instance.slicesConfig.thickness).toBe(20);

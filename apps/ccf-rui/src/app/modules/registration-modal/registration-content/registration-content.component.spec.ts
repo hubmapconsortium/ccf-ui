@@ -3,6 +3,7 @@ import { OrganInfo } from 'ccf-shared';
 import { of } from 'rxjs';
 import { Shallow } from 'shallow-render';
 
+import { Immutable } from '@angular-ru/common/typings';
 import { ModelState } from '../../../core/store/model/model.state';
 import { PageState } from '../../../core/store/page/page.state';
 import { RegistrationContentComponent } from './registration-content.component';
@@ -17,17 +18,16 @@ describe('RegistrationContentComponent', () => {
   const mockPageState = jasmine.createSpyObj<PageState>(
     'PageState', ['setUserName', 'registrationStarted', 'isOrcidValid']
   );
-  const mockMatDialog = jasmine.createSpyObj<MatDialogRef<unknown, boolean>>(
+  const mockMatDialog = jasmine.createSpyObj<MatDialogRef<unknown, unknown>>(
     'DialogRef', ['close']
   );
 
   beforeEach(() => {
-
     shallow = new Shallow(RegistrationContentComponent, RegistrationContentModule)
       .mock(ModelState, {
         ...mockModelState,
         sex$: of('male' as 'male' | 'female'),
-        organ$: of({ src: '' })
+        organ$: of({ src: '' } as Immutable<OrganInfo>)
       })
       .mock(PageState, {
         ...mockPageState,

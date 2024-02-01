@@ -18,7 +18,7 @@ describe('BlockSizeInputComponent', () => {
       }
     });
 
-    const mockEvent = { target: { value: 5 } } as unknown as InputEvent;
+    const mockEvent = { target: { value: 5 } } as unknown as KeyboardEvent;
     instance.updateBlockSizes(mockEvent, 'z');
 
     expect(instance.blockSize.z).toBe(5);

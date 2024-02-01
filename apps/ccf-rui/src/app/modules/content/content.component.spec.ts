@@ -2,7 +2,7 @@ import * as resizeSensorModule from 'css-element-queries';
 import { from, of } from 'rxjs';
 import { Shallow } from 'shallow-render';
 
-import { ModelState } from '../../core/store/model/model.state';
+import { ModelState, ViewSide, ViewType } from '../../core/store/model/model.state';
 import { PageState } from '../../core/store/page/page.state';
 import { RegistrationState } from '../../core/store/registration/registration.state';
 import { SceneState } from '../../core/store/scene/scene.state';
@@ -33,8 +33,8 @@ describe('ContentComponent', () => {
     shallow = new Shallow(ContentComponent, ContentModule)
       .mock(ModelState, {
         ...mockModelState,
-        viewType$: of('register'),
-        viewSide$: of('anterior'),
+        viewType$: of('register' as ViewType),
+        viewSide$: of('anterior' as ViewSide),
         position$: of({ x: 0, y: 0, z: 0 }),
         organDimensions$: of({ x: 0, y: 0, z: 0 }),
         defaultPosition: { x: 0, y: 0, z: 0 }

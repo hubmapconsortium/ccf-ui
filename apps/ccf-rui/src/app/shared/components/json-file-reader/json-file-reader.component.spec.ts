@@ -3,7 +3,6 @@ import { Shallow } from 'shallow-render';
 import { JsonFileReaderComponent } from './json-file-reader.component';
 import { JsonFileReaderModule } from './json-file-reader.module';
 
-
 describe('JsonFileReaderComponent', () => {
   let shallow: Shallow<JsonFileReaderComponent>;
   let fileReaderInstance: jasmine.SpyObj<FileReader>;
@@ -47,7 +46,7 @@ describe('JsonFileReaderComponent', () => {
     const blob: Blob = new Blob(['abc']);
     const event = { target: { files: [blob] } } as unknown as InputEvent;
     instance.handleFile(event);
-    fileReaderInstance.onload?.call(fileReaderInstance, undefined as unknown);
+    fileReaderInstance.onload?.call(fileReaderInstance, undefined as unknown as ProgressEvent<FileReader>);
     expect(outputs.parsedJson.emit).toHaveBeenCalledWith('abc');
   });
 

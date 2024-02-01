@@ -3,7 +3,7 @@ import { of } from 'rxjs';
 import { Shallow } from 'shallow-render';
 
 import { VisibilityItem } from '../../core/models/visibility-item';
-import { ModelState } from '../../core/store/model/model.state';
+import { ModelState, ViewSide, ViewType } from '../../core/store/model/model.state';
 import { PageState } from '../../core/store/page/page.state';
 import { RegistrationState } from '../../core/store/registration/registration.state';
 import { LeftSidebarComponent } from './left-sidebar.component';
@@ -30,8 +30,8 @@ describe('LeftSidebarComponent', () => {
     shallow = new Shallow(LeftSidebarComponent, LeftSidebarModule)
       .mock(ModelState, {
         ...mockModelState,
-        viewType$: of('register'),
-        viewSide$: of('anterior'),
+        viewType$: of('register' as ViewType),
+        viewSide$: of('anterior' as ViewSide),
         sex$: of('male' as 'male' | 'female'),
         side$: of('left' as 'left' | 'right'),
         organ$: of({ src: 'app:heart', name: 'Heart' } as OrganInfo),
