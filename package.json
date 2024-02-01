@@ -84,7 +84,7 @@
     "@angular/router": "^17.0.9",
     "@angular/youtube-player": "17.0",
     "@comunica/query-sparql-rdfjs": "^2.8.1",
-    "@deck.gl/core": "~8.8.20",
+    "@deck.gl/core": "~8.9.34",
     "@deck.gl/geo-layers": "~8.8.20",
     "@deck.gl/layers": "~8.8.20",
     "@deck.gl/mesh-layers": "~8.8.20",
