@@ -2,10 +2,7 @@ import { Immutable } from '@angular-ru/common/typings';
 import { NgModule } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
-import {
-  BrowserAnimationsModule,
-  NoopAnimationsModule,
-} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxsModule, Store } from '@ngxs/store';
 import { GlobalConfigState } from 'ccf-shared';
 import { ConsentService } from 'ccf-shared/analytics';
@@ -17,7 +14,7 @@ import { AppComponent } from './app.component';
 import { AppModule } from './app.module';
 import { OntologySelection } from './core/models/ontology-selection';
 import { ThemingService } from './core/services/theming/theming.service';
-import { DataState } from './core/store/data/data.state';
+import { DataState, DataStateModel } from './core/store/data/data.state';
 import { ListResultsState } from './core/store/list-results/list-results.state';
 import { SceneState } from './core/store/scene/scene.state';
 import { StoreModule } from './core/store/store.module';
@@ -42,7 +39,7 @@ describe('AppComponent', () => {
     consortiums: [],
     tmc: [],
     spatialSearches: [],
-    technologies: []
+    technologies: [],
   };
   const testTreeStr: OntologyTreeModel = {
     root: 'a',
@@ -64,21 +61,10 @@ describe('AppComponent', () => {
       imports: [NgxsModule.forRoot([DataState], {})],
     });
 
-    const mockConsentService = jasmine.createSpyObj<ConsentService>([
-      'setConsent',
-    ]);
-    left = jasmine.createSpyObj<DrawerComponent>('Drawer', [
-      'open',
-      'closeExpanded',
-    ]);
-    right = jasmine.createSpyObj<DrawerComponent>('Drawer', [
-      'open',
-      'closeExpanded',
-    ]);
-    filterbox = jasmine.createSpyObj<FiltersPopoverComponent>(
-      'FiltersPopover',
-      ['removeBox']
-    );
+    const mockConsentService = jasmine.createSpyObj<ConsentService>(['setConsent']);
+    left = jasmine.createSpyObj<DrawerComponent>('Drawer', ['open', 'closeExpanded']);
+    right = jasmine.createSpyObj<DrawerComponent>('Drawer', ['open', 'closeExpanded']);
+    filterbox = jasmine.createSpyObj<FiltersPopoverComponent>('FiltersPopover', ['removeBox']);
     shallow = new Shallow(AppComponent, AppModule)
       .replaceModule(BrowserAnimationsModule, NoopAnimationsModule)
       .replaceModule(StoreModule, EmptyModule)
@@ -88,12 +74,12 @@ describe('AppComponent', () => {
       .mock(SceneState, {
         referenceOrgans$: of([]),
         selectedReferenceOrgans$: of([]),
-        setSelectedReferenceOrgansWithDefaults: ()=>null,
-        scene$: of([])
+        setSelectedReferenceOrgansWithDefaults: () => null,
+        scene$: of([]),
       })
       .mock(DataState, {
-        state$: of({ status: 'Ready' }),
-        databaseReady$: of('Ready'),
+        state$: of({ status: 'Ready' } as DataStateModel),
+        databaseReady$: of('Ready' as const),
         filter$: of(testFilter),
         tissueBlockData$: of(),
         aggregateData$: of(),
@@ -105,31 +91,26 @@ describe('AppComponent', () => {
         sceneData$: of(),
         technologyFilterData$: of(),
         providerFilterData$: of(),
-        updateFilter: () => undefined
+        updateFilter: () => undefined,
       })
       .mock(ConsentService, {
         ...mockConsentService,
         consent: 'not-set',
       })
       .mock(MatSnackBar, {
-        openFromComponent: (): MatSnackBarRef<unknown> =>
-          ({} as unknown as MatSnackBarRef<unknown>),
+        openFromComponent: (): MatSnackBarRef<unknown> => ({} as unknown as MatSnackBarRef<unknown>),
       })
       .mock(ThemingService, {
         initialize: () => undefined,
         getTheme: () => 'theme',
         setTheme: () => undefined,
       })
-      // .mock(DataStateSelectors, {
-      //   anatomicalStructuresTreeModel: () => testTreeStr,
-      //   cellTypesTreeModel: () => testTreeStr,
-      // })
       .mock(GlobalConfigState, {
         snapshot: {},
         config$: new Observable<Immutable<unknown>>(),
         patchConfig: () => undefined,
         getOption: () => of(undefined),
-        patchState: () => undefined
+        patchState: () => undefined,
       });
   });
 
@@ -235,8 +216,8 @@ describe('AppComponent', () => {
     inject(Store).reset({
       data: {
         anatomicalStructuresTreeModel: testTreeStr,
-        cellTypesTreeModel: testTreeStr
-      }
+        cellTypesTreeModel: testTreeStr,
+      },
     });
 
     expect(instance.selectedtoggleOptions).toBeDefined();
@@ -247,10 +228,10 @@ describe('AppComponent', () => {
     inject(Store).reset({
       data: {
         anatomicalStructuresTreeModel: testTreeStr,
-        cellTypesTreeModel: testTreeStr
-      }
+        cellTypesTreeModel: testTreeStr,
+      },
     });
-    instance.selectedtoggleOptions=['body','cell'];
+    instance.selectedtoggleOptions = ['body', 'cell'];
     instance.toggleSelection('body');
 
     expect(instance.selectedtoggleOptions).toBeDefined();

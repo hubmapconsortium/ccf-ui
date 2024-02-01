@@ -1,11 +1,10 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { OntologyTreeModel, OntologyTreeNode } from 'ccf-database';
 
-import { OntologySelection } from '../../../core/models/ontology-selection';
+import { Observable } from 'rxjs/internal/Observable';
+import { tap } from 'rxjs/operators';
 import { OntologySearchService } from '../../../core/services/ontology-search/ontology-search.service';
 import { OntologyTreeComponent } from '../ontology-tree/ontology-tree.component';
-import { tap } from 'rxjs/operators';
-import { Observable } from 'rxjs/internal/Observable';
 
 
 /**

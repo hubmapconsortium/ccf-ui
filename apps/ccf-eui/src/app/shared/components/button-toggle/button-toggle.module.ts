@@ -5,11 +5,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
-
-
 @NgModule({
-  imports: [CommonModule,MatIconModule,MatButtonToggleModule, MatTooltipModule],
+  imports: [CommonModule, MatIconModule, MatButtonToggleModule, MatTooltipModule],
   declarations: [ButtonToggleComponent],
-  exports: [ButtonToggleComponent]
+  exports: [ButtonToggleComponent],
 })
-export class ButtonToggleModule { }
+export class ButtonToggleModule {}

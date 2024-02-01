@@ -25,7 +25,7 @@ describe('FiltersContentComponent', () => {
     instance.filters = {};
 
     instance.updateFilter('value', 'test');
-    expect(instance.filters.test).toBe('value');
+    expect(instance.filters['test']).toBe('value');
   });
 
   it('should emit the filter change when updateFilter is called', async () => {
@@ -54,10 +54,10 @@ describe('FiltersContentComponent', () => {
   it('should refresh all filter settings', async () => {
     const { instance } = await shallow.render({ bind: {} });
     instance.refreshFilters();
-    expect(instance.filters.sex).toEqual('Both');
-    expect(instance.filters.ageRange).toEqual([1, 110]);
-    expect(instance.filters.bmiRange).toEqual([13, 83]);
-    expect(instance.filters.technologies).toEqual([]);
-    expect(instance.filters.tmc).toEqual([]);
+    expect(instance.filters?.['sex']).toEqual('Both');
+    expect(instance.filters?.['ageRange']).toEqual([1, 110]);
+    expect(instance.filters?.['bmiRange']).toEqual([13, 83]);
+    expect(instance.filters?.['technologies']).toEqual([]);
+    expect(instance.filters?.['tmc']).toEqual([]);
   });
 });
