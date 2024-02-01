@@ -113,7 +113,7 @@
     "file-saver": "^2.0.5",
     "fs-extra": "^11.1.1",
     "graphology": "^0.20.0",
-    "graphology-shortest-path": "^1.4.1",
+    "graphology-shortest-path": "^2.0.2",
     "helmet": "^7.0.0",
     "hex-rgb": "^5.0.0",
     "idb-keyval": "^6.2.1",
