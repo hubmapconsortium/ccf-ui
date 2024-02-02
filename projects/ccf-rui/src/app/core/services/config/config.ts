@@ -27,6 +27,8 @@ export interface GlobalConfig {
   homeUrl?: string;
   logoTooltip?: string;
   organOptions?: string[];
+
+  collisionsEndpoint?: string;
 }
 
 export interface OrganConfig {

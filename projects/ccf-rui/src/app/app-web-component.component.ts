@@ -45,6 +45,7 @@ export class AppWebComponent extends BaseWebComponent {
   @Input() homeUrl: string;
   @Input() logoTooltip: string;
   @Input() organOptions: string | string[];
+  @Input() collisionsEndpoint: string;
 
   initialized: boolean;
 
