@@ -120,6 +120,9 @@
           "apps/ccf-body-ui-wc/**/*.html"
         ]
       }
+    },
+    "build-webcomponent": {
+      "command": "node tools/scripts/build-webcomponent.mjs ccf-body-ui-wc"
     }
   }
 }
