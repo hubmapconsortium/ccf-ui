@@ -3,15 +3,15 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Computed, StateRepository } from '@angular-ru/ngxs/decorators';
 import { NgxsImmutableDataRepository } from '@angular-ru/ngxs/repositories';
+import { HttpClient } from '@angular/common/http';
 import { Injectable, Injector } from '@angular/core';
 import { Matrix4, toRadians } from '@math.gl/core';
 import { NgxsOnInit, State } from '@ngxs/store';
-import { AABB, Vec3 } from 'cannon-es';
 import { SpatialEntityJsonLd, SpatialSceneNode } from 'ccf-body-ui';
 import { SpatialEntity, SpatialPlacement, getOriginScene, getTissueBlockScene } from 'ccf-database';
 import { Position } from 'ccf-shared';
-import { Observable, combineLatest, of } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+import { Observable, combineLatest, defer, of } from 'rxjs';
+import { filter, map, share, startWith, switchMap, throttleTime } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment';
 import { ModelState } from '../model/model.state';
 import { RegistrationState } from '../registration/registration.state';
@@ -27,15 +27,9 @@ export interface SceneStateModel {
   showCollisions: boolean;
 }
 
-function getNodeBbox(model: SpatialSceneNode): AABB {
-  const mat = new Matrix4(model.transformMatrix);
-  const lowerBound = mat.transformAsPoint([-1, -1, -1], []);
-  const upperBound = mat.transformAsPoint([1, 1, 1], []);
-  return new AABB({
-    lowerBound: new Vec3(...lowerBound.map((n, i) => Math.min(n, upperBound[i]))),
-    upperBound: new Vec3(...upperBound.map((n, i) => Math.max(n, lowerBound[i])))
-  });
-}
+const NODE_COLLISION_THROTTLE_DURATION = 100;
+
+const DEFAULT_ENDPOINT = 'https://pfn8zf2gtu.us-east-2.awsapprunner.com/get-collisions';
 
 /**
  * 3d Scene state
@@ -49,7 +43,6 @@ function getNodeBbox(model: SpatialSceneNode): AABB {
 })
 @Injectable()
 export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> implements NgxsOnInit {
-
   @Computed()
   get nodes$(): Observable<SpatialSceneNode[]> {
     return combineLatest([
@@ -85,7 +78,7 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
         const organ = this.getOrganSpatialEntity(organIri as string);
         const originScene = organIri ? getOriginScene(organ, false, true) : [];
         const organScene = this.createSceneNodes(organIri as string, [...anatomicalStructures, ...extractionSites] as VisibilityItem[]);
-        return [ ...originScene, ...organScene ];
+        return [...originScene, ...organScene];
       })
     );
   }
@@ -120,12 +113,15 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
 
   @Computed()
   get nodeCollisions$(): Observable<SpatialSceneNode[]> {
-    return combineLatest([this.referenceOrganSimpleNodes$, this.placementCube$]).pipe(
-      filter(([_nodes, placement]) => placement.length > 0),
-      map(([nodes, placement]) => {
-        const bbox = getNodeBbox(placement[0]);
-        return nodes.filter((model) => bbox.overlaps(getNodeBbox(model)));
-      })
+    const collisions$ = defer(() => this.registration.throttledJsonld$).pipe(
+      switchMap((jsonld) => this.getCollisions(jsonld)),
+      startWith([])
+    ) as Observable<object[]>;
+
+    return combineLatest([this.referenceOrganSimpleNodes$, collisions$]).pipe(
+      throttleTime(NODE_COLLISION_THROTTLE_DURATION, undefined, { leading: true, trailing: true }),
+      map(([nodes, collisions]) => this.filterNodeCollisions(nodes, collisions)),
+      share()
     );
   }
 
@@ -158,8 +154,8 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
   }
 
   @Computed()
-  get spatialKeyBoardAxis$(): Observable<SpatialSceneNode[]>{
-    return combineLatest([this.model.organIri$.pipe(filter(organIri=>organIri!=='')), this.model.position$]).pipe(map(([organIri, position]: [string, Position]) => {
+  get spatialKeyBoardAxis$(): Observable<SpatialSceneNode[]> {
+    return combineLatest([this.model.organIri$.pipe(filter(organIri => organIri !== '')), this.model.position$]).pipe(map(([organIri, position]: [string, Position]) => {
       const organEntity = this.getOrganSpatialEntity(organIri);
       const blockSize = this.model.snapshot.blockSize;
       const rotation = this.model.snapshot.rotation;
@@ -177,7 +173,7 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
         z_rotation: rotation.z,
 
         x_scaling: 1, y_scaling: 1, z_scaling: 1,
-      } as SpatialPlacement): [];
+      } as SpatialPlacement) : [];
     }));
   }
 
@@ -255,7 +251,8 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
    * @param injector Injector service used to lazy load page and model state
    */
   constructor(
-    private readonly injector: Injector
+    private readonly injector: Injector,
+    private readonly http: HttpClient
   ) {
     super();
   }
@@ -302,5 +299,14 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
     return db.organSpatialEntities[organIri] as SpatialEntity;
   }
 
+  private getCollisions(jsonld: unknown): Observable<unknown> {
+    return this.http.post(DEFAULT_ENDPOINT, JSON.stringify(jsonld), {
+      headers: { 'Content-Type': 'application/json' }
+    });
+  }
 
+  private filterNodeCollisions(nodes: SpatialSceneNode[], collisions: object[]): SpatialSceneNode[] {
+    const collidedIds = new Set(collisions.map(node => node['id']));
+    return nodes.filter(node => collidedIds.has(node['@id']));
+  }
 }

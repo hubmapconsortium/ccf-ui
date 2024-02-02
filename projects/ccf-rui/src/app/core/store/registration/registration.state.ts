@@ -9,8 +9,8 @@ import { SpatialEntityJsonLd } from 'ccf-body-ui';
 import { GlobalConfigState, OrganInfo } from 'ccf-shared';
 import { filterNulls } from 'ccf-shared/rxjs-ext/operators';
 import { saveAs } from 'file-saver';
-import { combineLatest, Observable } from 'rxjs';
-import { map, startWith, switchMap, take, tap } from 'rxjs/operators';
+import { Observable, combineLatest } from 'rxjs';
+import { map, startWith, switchMap, take, tap, throttleTime } from 'rxjs/operators';
 import { v4 as uuidV4 } from 'uuid';
 
 import { Tag } from '../../models/anatomical-structure-tag';
@@ -35,6 +35,8 @@ export interface RegistrationStateModel {
   /** Registration provided by user */
   initialRegistration?: SpatialEntityJsonLd;
 }
+
+const JSONLD_THROTTLE_DURATION = 100;
 
 
 /**
@@ -65,6 +67,14 @@ export class RegistrationState extends NgxsImmutableDataRepository<RegistrationS
   @Computed()
   get jsonld$(): Observable<Record<string, unknown>> {
     return combineLatest([this.page.state$, this.model.state$, this.tags.tags$]).pipe(
+      map(([page, model, tags]) => this.buildJsonLd(page, model, tags))
+    );
+  }
+
+  @Computed()
+  get throttledJsonld$(): Observable<Record<string, unknown>> {
+    return combineLatest([this.page.state$, this.model.state$, this.tags.tags$]).pipe(
+      throttleTime(JSONLD_THROTTLE_DURATION, undefined, { leading: false, trailing: true }),
       map(([page, model, tags]) => this.buildJsonLd(page, model, tags))
     );
   }
