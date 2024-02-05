@@ -590,7 +590,6 @@ import {
 
 import { CCFSpatialGraph } from &#x27;./ccf-spatial-graph&#x27;;
 import { CCFSpatialScene, SpatialSceneNode } from &#x27;./ccf-spatial-scene&#x27;;
-import { searchXConsortia } from &#x27;./xconsortia/xconsortia-data-import&#x27;;
 import { AggregateResult, DatabaseStatus, Filter, OntologyTreeModel, TissueBlockResult } from &#x27;./interfaces&#x27;;
 import { getAggregateResults, getDatasetTechnologyNames, getProviderNames } from &#x27;./queries/aggregate-results-n3&#x27;;
 import { findIds } from &#x27;./queries/find-ids-n3&#x27;;
@@ -600,9 +599,10 @@ import { getSpatialEntityForEntity } from &#x27;./queries/spatial-result-n3&#x27
 import { getTissueBlockResult } from &#x27;./queries/tissue-block-result-n3&#x27;;
 import { FlatSpatialPlacement, SpatialEntity } from &#x27;./spatial-types&#x27;;
 import { CCFDatabaseStatusTracker } from &#x27;./util/ccf-database-status-tracker&#x27;;
-import { patchJsonLd } from &#x27;./util/patch-jsonld&#x27;;
-import { enrichRuiLocations } from &#x27;./util/enrich-rui-locations&#x27;;
 import { getBmLocatedInAs } from &#x27;./util/enrich-bm-located-in-as&#x27;;
+import { enrichRuiLocations } from &#x27;./util/enrich-rui-locations&#x27;;
+import { patchJsonLd } from &#x27;./util/patch-jsonld&#x27;;
+import { searchXConsortia } from &#x27;./xconsortia/xconsortia-data-import&#x27;;
 
 const { delMany, get, setMany } &#x3D; idb;
 

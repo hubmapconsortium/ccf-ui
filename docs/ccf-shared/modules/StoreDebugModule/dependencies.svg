@@ -24,13 +24,13 @@
 <title>cluster_StoreDebugModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="156,-70 156,-268 340,-268 340,-70 156,-70"/>
 </g>
-<g id="clust5" class="cluster">
-<title>cluster_StoreDebugModule_exports</title>
-<polygon fill="none" stroke="black" points="164,-208 164,-260 332,-260 332,-208 164,-208"/>
-</g>
 <g id="clust2" class="cluster">
 <title>cluster_StoreDebugModule_declarations</title>
 <polygon fill="none" stroke="black" points="166,-78 166,-130 330,-130 330,-78 166,-78"/>
+</g>
+<g id="clust5" class="cluster">
+<title>cluster_StoreDebugModule_exports</title>
+<polygon fill="none" stroke="black" points="164,-208 164,-260 332,-260 332,-208 164,-208"/>
 </g>
 <!-- StoreDebugComponent -->
 <g id="node1" class="node">

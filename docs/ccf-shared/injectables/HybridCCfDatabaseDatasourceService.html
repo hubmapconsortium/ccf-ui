@@ -98,7 +98,7 @@
 
 <ol class="breadcrumb">
   <li class="breadcrumb-item">Injectables</li>
-  <li class="breadcrumb-item" >CCFDatabaseDataSourceService</li>
+  <li class="breadcrumb-item" >HybridCCfDatabaseDatasourceService</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -131,7 +131,7 @@
                 <h3>Extends</h3>
             </p>
             <p class="comment">
-                            <code><a href="../injectables/CCFDatabaseDataSourceBaseService.html" target="_self" >CCFDatabaseDataSourceBaseService</a></code>
+                            <code><a href="../classes/ForwardingDataSource.html" target="_self" >ForwardingDataSource</a></code>
             </p>
 
 
@@ -139,25 +139,6 @@
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Properties</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                    <span class="modifier">Readonly</span>
-                                <a href="#database$" >database$</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Readonly</span>
-                                <a href="#impl$" >impl$</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
 
                 <tr>
                     <td class="col-md-4">
@@ -169,16 +150,11 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Protected</span>
-                                <a href="#createDatabase" >createDatabase</a>
+                                <a href="#forwardCall" >forwardCall</a>
                             </li>
                             <li>
                                     <span class="modifier">Private</span>
-                                    <span class="modifier">Async</span>
-                                <a href="#connectDatabase" >connectDatabase</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Protected</span>
-                                <a href="#forwardCall" >forwardCall</a>
+                                <a href="#isRemoteCall" >isRemoteCall</a>
                             </li>
                             <li>
                                 <a href="#getAggregateResults" >getAggregateResults</a>
@@ -234,175 +210,72 @@
     </table>
 </section>
 
+            <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(remote: <a href="../injectables/ApiEndpointDataSourceService.html" target="_self">ApiEndpointDataSourceService</a>, local: <a href="../injectables/CCFDatabaseDataSourceService.html" target="_self">CCFDatabaseDataSourceService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/ccf-database.service.ts:88</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>remote</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ApiEndpointDataSourceService.html" target="_self" >ApiEndpointDataSourceService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>local</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/CCFDatabaseDataSourceService.html" target="_self" >CCFDatabaseDataSourceService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
 
             <section data-compodoc="block-methods">
     
     <h3 id="methods">
         Methods
     </h3>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="createDatabase"></a>
-                    <span class="name">
-                            <span class="modifier">Protected</span>
-                        <span ><b>createDatabase</b></span>
-                        <a href="#createDatabase"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>createDatabase(config: CCFDatabaseOptions)</code>
-                </td>
-            </tr>
-
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Inherited from         <code><a href="../injectables/CCFDatabaseDataSourceBaseService.html" target="_self" >CCFDatabaseDataSourceBaseService</a></code>
-</div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../injectables/CCFDatabaseDataSourceBaseService.html#source" target="_self" >CCFDatabaseDataSourceBaseService:52</a></code>
-</div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                            <div class="io-description">
-                                <b>Parameters :</b>
-                                
-                                <table class="params">
-                                    <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                                <td>Type</td>
-                                            <td>Optional</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                                <td>config</td>
-                                            <td>
-                                                        <code>CCFDatabaseOptions</code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        <div class="io-description">
-                            <b>Returns : </b>        <code><a href="../interfaces/CCFDatabaseManager.html" target="_self" >CCFDatabaseManager</a></code>
-
-                        </div>
-                            <div class="io-description">
-                                
-                            </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="connectDatabase"></a>
-                    <span class="name">
-                            <span class="modifier">Private</span>
-                            <span class="modifier">Async</span>
-                        <span ><b>connectDatabase</b></span>
-                        <a href="#connectDatabase"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>connectDatabase(manager: <a href="../interfaces/CCFDatabaseManager.html" target="_self">CCFDatabaseManager</a>, config: CCFDatabaseOptions)</code>
-                </td>
-            </tr>
-
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Inherited from         <code><a href="../injectables/CCFDatabaseDataSourceBaseService.html" target="_self" >CCFDatabaseDataSourceBaseService</a></code>
-</div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../injectables/CCFDatabaseDataSourceBaseService.html#source" target="_self" >CCFDatabaseDataSourceBaseService:38</a></code>
-</div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                            <div class="io-description">
-                                <b>Parameters :</b>
-                                
-                                <table class="params">
-                                    <thead>
-                                        <tr>
-                                            <td>Name</td>
-                                                <td>Type</td>
-                                            <td>Optional</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                                <td>manager</td>
-                                            <td>
-                                                            <code><a href="../interfaces/CCFDatabaseManager.html" target="_self" >CCFDatabaseManager</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                        <tr>
-                                                <td>config</td>
-                                            <td>
-                                                        <code>CCFDatabaseOptions</code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        <div class="io-description">
-                            <b>Returns : </b>        <code><a href="../interfaces/CCFDatabaseManager.html" target="_self" >Promise&lt;CCFDatabaseManager&gt;</a></code>
-
-                        </div>
-                            <div class="io-description">
-                                
-                            </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -431,7 +304,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../classes/ForwardingDataSource.html#source" target="_self" >ForwardingDataSource:103</a></code>
+                                <div class="io-line">Defined in         <code><a href="../classes/ForwardingDataSource.html#source" target="_self" >ForwardingDataSource:96</a></code>
 </div>
                         </td>
                     </tr>
@@ -489,6 +362,71 @@
                             </div>
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="../interfaces/DataSource.html" target="_self" >Observable&lt;DataSourceDataType&lt;K&gt;&gt;</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isRemoteCall"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>isRemoteCall</b></span>
+                        <a href="#isRemoteCall"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>isRemoteCall(method)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="105"
+                                    class="link-to-prism">projects/ccf-shared/src/lib/services/data-source/ccf-database.service.ts:105</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>method</td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
                         </div>
                             <div class="io-description">
@@ -1323,80 +1261,6 @@
         </tbody>
     </table>
 </section>
-            <section data-compodoc="block-properties">
-    
-    <h3 id="inputs">
-        Properties
-    </h3>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="database$"></a>
-                    <span class="name">
-                            <span class="modifier">Readonly</span>
-                        <span ><b>database$</b></span>
-                        <a href="#database$"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>    <code>Observable&lt;CCFDatabase | Remote&gt;</code>
-
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <div class="io-line">Inherited from         <code><a href="../injectables/CCFDatabaseDataSourceBaseService.html" target="_self" >CCFDatabaseDataSourceBaseService</a></code>
-</div>
-                            </td>
-                        </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../injectables/CCFDatabaseDataSourceBaseService.html#source" target="_self" >CCFDatabaseDataSourceBaseService:19</a></code>
-</div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="impl$"></a>
-                    <span class="name">
-                            <span class="modifier">Readonly</span>
-                        <span ><b>impl$</b></span>
-                        <a href="#impl$"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../interfaces/DataSource.html" target="_self" >Observable&lt;DataSourceLike&gt;</a></code>
-
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <div class="io-line">Inherited from         <code><a href="../classes/DelegateDataSource.html" target="_self" >DelegateDataSource</a></code>
-</div>
-                            </td>
-                        </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../classes/DelegateDataSource.html#source" target="_self" >DelegateDataSource:18</a></code>
-</div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-</section>
 
     </div>
 
@@ -1555,7 +1419,7 @@ export class HybridCCfDatabaseDatasourceService extends ForwardingDataSource {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
-            var COMPODOC_CURRENT_PAGE_URL = 'CCFDatabaseDataSourceService.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'HybridCCfDatabaseDatasourceService.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

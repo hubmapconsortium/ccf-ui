@@ -210,14 +210,13 @@
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, isDevMode } from &#x27;@angular/core&#x27;;
 import { CCFDatabase, CCFDatabaseOptions } from &#x27;ccf-database&#x27;;
-import { releaseProxy, Remote, wrap } from &#x27;comlink&#x27;;
-import { Observable, Unsubscribable, using } from &#x27;rxjs&#x27;;
+import { Remote, releaseProxy, wrap } from &#x27;comlink&#x27;;
+import { Observable, ObservableInput, Unsubscribable, using } from &#x27;rxjs&#x27;;
 import { filter, map, shareReplay, switchMap } from &#x27;rxjs/operators&#x27;;
 
 import { GlobalConfigState } from &#x27;../../config/global-config.state&#x27;;
-import { DataSourceLike, DelegateDataSource } from &#x27;./data-source&#x27;;
-
-
+import { ApiEndpointDataSourceService } from &#x27;./api-endpoint.service&#x27;;
+import { DataSource, DataSourceDataType, DataSourceLike, DataSourceMethod, DelegateDataSource, ForwardingDataSource } from &#x27;./data-source&#x27;;
 
 interface CCFDatabaseManager extends Unsubscribable {
   database: CCFDatabase | Remote&lt;CCFDatabase&gt;;
@@ -285,6 +284,40 @@ export abstract class WorkerCCFDatabaseDataSourceService extends CCFDatabaseData
     };
   }
 }
+
+const REMOTE_METHODS: (keyof DataSource)[] &#x3D; [
+  &#x27;getOntologyTreeModel&#x27;,
+  &#x27;getCellTypeTreeModel&#x27;,
+  &#x27;getBiomarkerTreeModel&#x27;,
+  &#x27;getReferenceOrgans&#x27;,
+];
+
+@Injectable({
+  providedIn: &#x27;root&#x27;
+})
+export class HybridCCfDatabaseDatasourceService extends ForwardingDataSource {
+  constructor(
+    private readonly remote: ApiEndpointDataSourceService,
+    private readonly local: CCFDatabaseDataSourceService,
+  ) {
+    super();
+  }
+
+  protected forwardCall&lt;K extends keyof DataSource&gt;(
+    method: K, ...args: Parameters&lt;DataSourceMethod&lt;K&gt;&gt;
+  ): Observable&lt;DataSourceDataType&lt;K&gt;&gt; {
+    type AnyFunction &#x3D; (...rest: unknown[]) &#x3D;&gt; ObservableInput&lt;unknown&gt;;
+    type Res &#x3D; Observable&lt;DataSourceDataType&lt;K&gt;&gt;;
+    const source &#x3D; this.isRemoteCall(method) ? this.remote : this.local;
+    return (source[method] as AnyFunction)(...args) as Res;
+  }
+
+  private isRemoteCall(method: keyof DataSource): boolean {
+    return REMOTE_METHODS.includes(method);
+  }
+}
+
+
 </code></pre>
     </div>
 </div>

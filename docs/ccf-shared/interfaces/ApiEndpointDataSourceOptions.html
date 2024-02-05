@@ -250,10 +250,11 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
 import { Matrix4 } from &#x27;@math.gl/core&#x27;;
 import {
-  AggregateResult, Filter, OntologyTreeModel, OntologyTreeNode, SpatialEntity, SpatialSceneNode, TissueBlockResult,
+  AggregateResult, Filter, OntologyTreeModel,
+  SpatialEntity, SpatialSceneNode, TissueBlockResult
 } from &#x27;ccf-database&#x27;;
-import { DatabaseStatus, DefaultService, MinMax, SpatialSearch, SpatialSceneNode as RawSpatialSceneNode } from &#x27;ccf-openapi/angular-client&#x27;;
-import { combineLatest, Observable, of, Subject } from &#x27;rxjs&#x27;;
+import { DatabaseStatus, DefaultService, MinMax, SpatialSceneNode as RawSpatialSceneNode, SpatialSearch } from &#x27;ccf-openapi/angular-client&#x27;;
+import { Observable, Subject, combineLatest } from &#x27;rxjs&#x27;;
 import { map, switchMap, take, tap } from &#x27;rxjs/operators&#x27;;
 import { Cacheable } from &#x27;ts-cacheable&#x27;;
 
@@ -261,7 +262,7 @@ import { GlobalConfigState } from &#x27;../../config/global-config.state&#x27;;
 import { DataSource } from &#x27;./data-source&#x27;;
 
 
-export interface ApiEndpointDataSourceOptions {
+interface ApiEndpointDataSourceOptions {
   remoteApiEndpoint: string;
   hubmapToken?: string;
 }

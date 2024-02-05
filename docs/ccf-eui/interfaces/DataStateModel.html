@@ -428,15 +428,15 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
-import { DataAction, Payload, StateRepository } from &#x27;@angular-ru/ngxs/decorators&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { DataAction, Payload, StateRepository } from &#x27;@angular-ru/ngxs/decorators&#x27;;
 import { NgxsDataRepository } from &#x27;@angular-ru/ngxs/repositories&#x27;;
+import { Injectable } from &#x27;@angular/core&#x27;;
 import { Action, NgxsOnInit, State } from &#x27;@ngxs/store&#x27;;
 import { bind } from &#x27;bind-decorator&#x27;;
 import { AggregateResult, DatabaseStatus, Filter, OntologyTreeModel, SpatialSceneNode, TissueBlockResult } from &#x27;ccf-database&#x27;;
 import { DataSourceService } from &#x27;ccf-shared&#x27;;
-import { combineLatest, defer, ObservableInput, ObservedValueOf, OperatorFunction, ReplaySubject, Subject } from &#x27;rxjs&#x27;;
-import { delay, distinct, filter as rxjsFilter, map, publishReplay, refCount, repeat, switchMap, take, takeWhile, tap } from &#x27;rxjs/operators&#x27;;
+import { ObservableInput, ObservedValueOf, OperatorFunction, ReplaySubject, Subject, combineLatest, defer } from &#x27;rxjs&#x27;;
+import { delay, distinct, map, publishReplay, refCount, repeat, filter as rxjsFilter, switchMap, take, takeWhile, tap } from &#x27;rxjs/operators&#x27;;
 import { UpdateFilter } from &#x27;./data.actions&#x27;;
 
 

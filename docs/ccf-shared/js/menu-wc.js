@@ -429,6 +429,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     <a href="injectables/GoogleAnalyticsSyncService.html" data-type="entity-link" >GoogleAnalyticsSyncService</a>
                                 </li>
                                 <li class="link">
+                                    <a href="injectables/HybridCCfDatabaseDatasourceService.html" data-type="entity-link" >HybridCCfDatabaseDatasourceService</a>
+                                </li>
+                                <li class="link">
                                     <a href="injectables/InfoButtonService.html" data-type="entity-link" >InfoButtonService</a>
                                 </li>
                                 <li class="link">
