@@ -67,7 +67,8 @@
     "compodoc": {
       "inputs": [
         "production"
-      ]
+      ],
+      "cache": true
     }
   }
 }
