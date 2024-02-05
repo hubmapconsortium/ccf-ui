@@ -6,8 +6,6 @@ import * as rdf from 'rdf-js';
 import { RdfXmlParser } from 'rdfxml-streaming-parser';
 import { Readable } from 'readable-stream';
 
-export * from 'n3';
-
 // Temporary solution for using the new readQuads function on Store until the @types are updated
 type OTerm = rdf.Term | string | null;
 interface QuadReader {

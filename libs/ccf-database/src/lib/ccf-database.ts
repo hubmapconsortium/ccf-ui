@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/quotes */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/member-ordering */
 import * as idb from 'idb-keyval';
 import { JsonLd } from 'jsonld/jsonld-spec';
@@ -170,7 +167,7 @@ export class CCFDatabase {
     } else if (ccfOwlUrl.endsWith('.n3store.json')) {
       const storeString = await fetch(ccfOwlUrl)
         .then((r) => r.text())
-        .catch(() => console.log("Couldn't locate serialized store."));
+        .catch(() => console.log('Couldn\'t locate serialized store.'));
       if (storeString) {
         this.store = deserializeN3Store(storeString, DataFactory);
       }
