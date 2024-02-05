@@ -312,10 +312,21 @@ window.addEventListener('DOMContentLoaded', () => {
   organInfo.sex = 'Female';
   organInfo.side = 'Right';
   organInfo.dataSources = ['https://.....jsonld', 'https://.....jsonld'];
+  organInfo.highlightProviders: ["Provider1", "Provider2"]
   organInfo.hubmapDataService = 'search-api';
-  organInfo.hubmapPortalUrl = 'https://.....';
   organInfo.hubmapDataUrl = 'https://.....';
   organInfo.hubmapAssetUrl = 'https://.....';
+  organInfo.hubmapToken = 'token';
+  organInfo.hubmapPortalUrl = 'https://.....';
+  organInfo.useRemoteApi = true;
+  organInfo.remoteApiEndpoint = 'https://.....';
+  organInfo.donorLabel="Sources"
+  organInfo.ruiUrl="https://...."
+  organInfo.euiUrl="https://...."
+  organInfo.asctbUrl="https://...."
+  organInfo.hra-portalUrl="https://...."
+  organInfo.online-courseUrl="https://...."
+  organInfo.paperUrl="https://...."
 });
 ```
 
@@ -327,10 +338,22 @@ This format of configuration only works with certain data types, namely strings 
   organ-iri="http://purl.obolibrary.org/obo/UBERON_0004538"
   sex="Female"
   side="Right"
+  data-sources="['https://.....jsonld', 'https://.....jsonld']"
+  highlight-providers="['Provider1', 'Provider2']"
   hubmap-data-service="search-api"
-  hubmap-portal-url="https://...."
   hubmap-data-url="https://...."
   hubmap-asset-url="https://...."
+  hubmap-portal-url="https://...."
+  hubmap-token="token"
+  use-remote-api="true"
+  remote-api-endpoint="https://....."
+  donor-label="Sources"
+  rui-url="https://...."
+  eui-url="https://...."
+  asctb-url="https://...."
+  hra-portal-url="https://...."
+  online-course-url="https://...."
+  paper-url="https://...."
 ></ccf-organ-info>
 ````
 
@@ -341,17 +364,16 @@ Full ORGAN-INFO Example
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>HuBMAP CCF Organ Info</title>
-  <base href="./">
+  <title>HuBMAP CCF Organ Info Component</title>
+  <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
-  <link href="styles.css" rel="stylesheet">
-  <script src="wc.js" async></script>
 </head>
+
 <body class="mat-typography">
-  <ccf-eui
+  <ccf-organ-info
     organ-iri="http://purl.obolibrary.org/obo/UBERON_0004538"
     sex="Female"
     side="Right"
@@ -359,23 +381,35 @@ Full ORGAN-INFO Example
     hubmap-portal-url="https://portal.test.hubmapconsortium.org/"
     hubmap-data-url="https://search.api.hubmapconsortium.org/v3/entities/search"
     hubmap-asset-url="https://assets.test.hubmapconsortium.org"
-  ></ccf-eui>
+    highlight-providers="TMC-Vanderbilt"
+    use-remote-api="true"
+    donor-label="Sources"
+  ></ccf-organ-info>
 </body>
+
 </html>
 ````
 
 The following options are available for configuration
 
 - `organIri: string` - A url to load data from.
-- `sex: 'Female' | 'Male'` - The sex of the selected organ.
+- `sex: 'Both' | 'Female' | 'Male'` - The sex of the selected organ.
 - `side: 'Left' | 'Right'` - The selected organ side.
-- `dataSources: string[]` - A list of data sources (in .jsonld format)
+- `dataSources: string | string[]` - A list of data sources (in .jsonld format).
+- `highlightProviders: string | string[]` - List of provider(s) to highlight samples from.
 - `hubmapDataService: 'static' | 'search-api'` - Data service type.
-- `hubmapPortalUrl: string` - Hubmap Portal url.
 - `hubmapDataUrl: string` - Hubmap data url.
-- `hubmapAssetsUrl: string` - Hubmap assets api url.
+- `hubmapAssetUrl: string` - Hubmap assets api url.
 - `hubmapToken: string` - Hubmap service token.
-
+- `useRemoteApi: string | boolean` - Whether to use a remote api.
+- `remoteApiEndpoint: string` - Remote api url endpoint.
+- `donorLabel: string` - Label for Donors entry in organ statistics.
+- `ruiUrl: string` - Url for Register Tissue button.
+- `euiUrl: string` - Url for Explore Tissue button.
+- `asctbUrl: string` - Url for ASCT+B Reporter button.
+- `hraPortalUrl: string` - Url for HRA Portal button.
+- `onlineCourseUrl: string` - Url for Online Course button.
+- `paperUrl: string` - Url for Paper button.
 
 # Embedding the CCF-BODY-UI-WC
 

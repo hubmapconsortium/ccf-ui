@@ -62,6 +62,14 @@ export class AppWebComponent extends BaseWebComponent {
   @Input() useRemoteApi: string | boolean;
   @Input() remoteApiEndpoint: string;
 
+  @Input() donorLabel: string;
+  @Input() ruiUrl: string;
+  @Input() euiUrl: string;
+  @Input() asctbUrl: string;
+  @Input() hraPortalUrl: string;
+  @Input() onlineCourseUrl: string;
+  @Input() paperUrl: string;
+
   @Output() readonly sexChange = new EventEmitter<'Male' | 'Female'>();
   @Output() readonly sideChange = new EventEmitter<'Left' | 'Right'>();
   @Output() nodeClicked = new EventEmitter();
