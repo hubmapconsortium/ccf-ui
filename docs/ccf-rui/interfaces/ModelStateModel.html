@@ -962,7 +962,7 @@ import { filterNulls } from &#x27;ccf-shared/rxjs-ext/operators&#x27;;
 import { sortBy } from &#x27;lodash&#x27;;
 import { GoogleAnalyticsService } from &#x27;ngx-google-analytics&#x27;;
 import { EMPTY, Observable } from &#x27;rxjs&#x27;;
-import { delay, distinctUntilChanged, filter, map, skipUntil, switchMap, tap, throttleTime } from &#x27;rxjs/operators&#x27;;
+import { delay, distinct, distinctUntilChanged, filter, map, skipUntil, switchMap, tap, throttleTime } from &#x27;rxjs/operators&#x27;;
 
 import { ExtractionSet } from &#x27;../../models/extraction-set&#x27;;
 import { VisibilityItem } from &#x27;../../models/visibility-item&#x27;;
@@ -1069,37 +1069,37 @@ export const RUI_ORGANS &#x3D; ALL_ORGANS;
 @Injectable()
 export class ModelState extends NgxsImmutableDataRepository&lt;ModelStateModel&gt; {
   /** Identifier observable */
-  readonly id$ &#x3D; this.state$.pipe(map(x &#x3D;&gt; x?.id));
+  readonly id$ &#x3D; this.state$.pipe(map(x &#x3D;&gt; x?.id), distinct());
   /** Block size observable */
-  readonly blockSize$ &#x3D; this.state$.pipe(map(x &#x3D;&gt; x?.blockSize));
+  readonly blockSize$ &#x3D; this.state$.pipe(map(x &#x3D;&gt; x?.blockSize), distinct());
   /** Rotation observable */
-  readonly rotation$ &#x3D; this.state$.pipe(map(x &#x3D;&gt; x?.rotation));
+  readonly rotation$ &#x3D; this.state$.pipe(map(x &#x3D;&gt; x?.rotation), distinct());
   /** Position observable */
-  readonly position$ &#x3D; this.state$.pipe(map(x &#x3D;&gt; x?.position));
+  readonly position$ &#x3D; this.state$.pipe(map(x &#x3D;&gt; x?.position), distinct());
   /** Slice configuration observable */
-  readonly slicesConfig$ &#x3D; this.state$.pipe(map(x &#x3D;&gt; x?.slicesConfig));
+  readonly slicesConfig$ &#x3D; this.state$.pipe(map(x &#x3D;&gt; x?.slicesConfig), distinct());
   /** View type observable */
-  readonly viewType$ &#x3D; this.state$.pipe(map(x &#x3D;&gt; x?.viewType));
+  readonly viewType$ &#x3D; this.state$.pipe(map(x &#x3D;&gt; x?.viewType), distinct());
   /** View side observable */
-  readonly viewSide$ &#x3D; this.state$.pipe(map(x &#x3D;&gt; x?.viewSide));
+  readonly viewSide$ &#x3D; this.state$.pipe(map(x &#x3D;&gt; x?.viewSide), distinct());
   /** Organ observable */
-  readonly organ$ &#x3D; this.state$.pipe(map(x &#x3D;&gt; x?.organ));
+  readonly organ$ &#x3D; this.state$.pipe(map(x &#x3D;&gt; x?.organ), distinct());
   /** Organ IRI observable */
-  readonly organIri$ &#x3D; this.state$.pipe(map(x &#x3D;&gt; x?.organIri));
+  readonly organIri$ &#x3D; this.state$.pipe(map(x &#x3D;&gt; x?.organIri), distinct());
   /** Organ IRI observable */
-  readonly organDimensions$ &#x3D; this.state$.pipe(map(x &#x3D;&gt; x?.organDimensions));
+  readonly organDimensions$ &#x3D; this.state$.pipe(map(x &#x3D;&gt; x?.organDimensions), distinct());
   /** Sex observable */
-  readonly sex$ &#x3D; this.state$.pipe(map(x &#x3D;&gt; x?.sex));
+  readonly sex$ &#x3D; this.state$.pipe(map(x &#x3D;&gt; x?.sex), distinct());
   /** Side observable */
-  readonly side$ &#x3D; this.state$.pipe(map(x &#x3D;&gt; x?.side));
+  readonly side$ &#x3D; this.state$.pipe(map(x &#x3D;&gt; x?.side), distinct());
   /** Show previous observable */
-  readonly showPrevious$ &#x3D; this.state$.pipe(map(x &#x3D;&gt; x?.showPrevious));
+  readonly showPrevious$ &#x3D; this.state$.pipe(map(x &#x3D;&gt; x?.showPrevious), distinct());
   /** Extraction sites observable */
-  readonly extractionSites$ &#x3D; this.state$.pipe(map(x &#x3D;&gt; x?.extractionSites));
+  readonly extractionSites$ &#x3D; this.state$.pipe(map(x &#x3D;&gt; x?.extractionSites), distinct());
   /** Anatomical structures observable */
-  readonly anatomicalStructures$ &#x3D; this.state$.pipe(map(x &#x3D;&gt; x?.anatomicalStructures));
+  readonly anatomicalStructures$ &#x3D; this.state$.pipe(map(x &#x3D;&gt; x?.anatomicalStructures), distinct());
   /** Extraction sets observable */
-  readonly extractionSets$ &#x3D; this.state$.pipe(map(x &#x3D;&gt; x?.extractionSets));
+  readonly extractionSets$ &#x3D; this.state$.pipe(map(x &#x3D;&gt; x?.extractionSets), distinct());
 
   @Computed()
   get modelChanged$(): Observable&lt;void&gt; {

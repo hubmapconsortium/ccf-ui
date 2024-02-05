@@ -188,6 +188,18 @@
                             </li>
                             <li>
                                     <span class="modifier">Private</span>
+                                <a href="#filterNodeBBox" >filterNodeBBox</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#filterNodeCollisions" >filterNodeCollisions</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#getCollisions" >getCollisions</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
                                 <a href="#getOrganSpatialEntity" >getOrganSpatialEntity</a>
                             </li>
                             <li>
@@ -239,6 +251,9 @@
                                 <li>
                                     <a href="#rotation$" >rotation$</a>
                                 </li>
+                                <li>
+                                    <a href="#collisions$" >collisions$</a>
+                                </li>
                             </ul>
                         </td>
                     </tr>
@@ -252,12 +267,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(injector: Injector)</code>
+<code>constructor(injector: Injector, http: HttpClient, globalConfig: <a href="../interfaces/GlobalConfig.html" target="_self">GlobalConfigState&lt;GlobalConfig&gt;</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="250" class="link-to-prism">projects/ccf-rui/src/app/core/store/scene/scene.state.ts:250</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="275" class="link-to-prism">projects/ccf-rui/src/app/core/store/scene/scene.state.ts:275</a></div>
                             </td>
                         </tr>
 
@@ -291,6 +306,34 @@
                                                         <td>
                                                                 <p>Injector service used to lazy load page and model state</p>
 
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>http</td>
+                                                  
+                                                        <td>
+                                                                    <code>HttpClient</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>globalConfig</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../interfaces/GlobalConfig.html" target="_self" >GlobalConfigState&lt;GlobalConfig&gt;</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
                                                         </td>
                                                 </tr>
                                         </tbody>
@@ -329,8 +372,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="276"
-                                    class="link-to-prism">projects/ccf-rui/src/app/core/store/scene/scene.state.ts:276</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="303"
+                                    class="link-to-prism">projects/ccf-rui/src/app/core/store/scene/scene.state.ts:303</a></div>
                         </td>
                     </tr>
 
@@ -392,6 +435,233 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="filterNodeBBox"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>filterNodeBBox</b></span>
+                        <a href="#filterNodeBBox"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>filterNodeBBox(nodes: SpatialSceneNode[], placement: SpatialSceneNode)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="348"
+                                    class="link-to-prism">projects/ccf-rui/src/app/core/store/scene/scene.state.ts:348</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>nodes</td>
+                                            <td>
+                                                        <code>SpatialSceneNode[]</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>placement</td>
+                                            <td>
+                                                        <code>SpatialSceneNode</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>SpatialSceneNode[]</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filterNodeCollisions"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>filterNodeCollisions</b></span>
+                        <a href="#filterNodeCollisions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>filterNodeCollisions(nodes: SpatialSceneNode[], collisions: <a href="../interfaces/Collision.html" target="_self">Collision[]</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="343"
+                                    class="link-to-prism">projects/ccf-rui/src/app/core/store/scene/scene.state.ts:343</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>nodes</td>
+                                            <td>
+                                                        <code>SpatialSceneNode[]</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>collisions</td>
+                                            <td>
+                                                            <code><a href="../interfaces/Collision.html" target="_self" >Collision[]</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>SpatialSceneNode[]</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getCollisions"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>getCollisions</b></span>
+                        <a href="#getCollisions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getCollisions(jsonld)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="332"
+                                    class="link-to-prism">projects/ccf-rui/src/app/core/store/scene/scene.state.ts:332</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>jsonld</td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Observable&lt;[] | undefined&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="getOrganSpatialEntity"></a>
                     <span class="name">
                             <span class="modifier">Private</span>
@@ -410,8 +680,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="300"
-                                    class="link-to-prism">projects/ccf-rui/src/app/core/store/scene/scene.state.ts:300</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="327"
+                                    class="link-to-prism">projects/ccf-rui/src/app/core/store/scene/scene.state.ts:327</a></div>
                         </td>
                     </tr>
 
@@ -477,8 +747,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="266"
-                                    class="link-to-prism">projects/ccf-rui/src/app/core/store/scene/scene.state.ts:266</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="293"
+                                    class="link-to-prism">projects/ccf-rui/src/app/core/store/scene/scene.state.ts:293</a></div>
                         </td>
                     </tr>
 
@@ -540,7 +810,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="232" class="link-to-prism">projects/ccf-rui/src/app/core/store/scene/scene.state.ts:232</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="249" class="link-to-prism">projects/ccf-rui/src/app/core/store/scene/scene.state.ts:249</a></div>
                         </td>
                     </tr>
 
@@ -567,7 +837,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="248" class="link-to-prism">projects/ccf-rui/src/app/core/store/scene/scene.state.ts:248</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="265" class="link-to-prism">projects/ccf-rui/src/app/core/store/scene/scene.state.ts:265</a></div>
                         </td>
                     </tr>
 
@@ -600,7 +870,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="250" class="link-to-prism">projects/ccf-rui/src/app/core/store/scene/scene.state.ts:250</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="267" class="link-to-prism">projects/ccf-rui/src/app/core/store/scene/scene.state.ts:267</a></div>
                         </td>
                     </tr>
 
@@ -627,7 +897,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="249" class="link-to-prism">projects/ccf-rui/src/app/core/store/scene/scene.state.ts:249</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="266" class="link-to-prism">projects/ccf-rui/src/app/core/store/scene/scene.state.ts:266</a></div>
                         </td>
                     </tr>
 
@@ -656,7 +926,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">projects/ccf-rui/src/app/core/store/scene/scene.state.ts:54</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">projects/ccf-rui/src/app/core/store/scene/scene.state.ts:64</a></div>
                                 </td>
                             </tr>
 
@@ -678,7 +948,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">projects/ccf-rui/src/app/core/store/scene/scene.state.ts:65</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">projects/ccf-rui/src/app/core/store/scene/scene.state.ts:75</a></div>
                                 </td>
                             </tr>
 
@@ -700,7 +970,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">projects/ccf-rui/src/app/core/store/scene/scene.state.ts:82</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">projects/ccf-rui/src/app/core/store/scene/scene.state.ts:92</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -733,7 +1003,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">projects/ccf-rui/src/app/core/store/scene/scene.state.ts:94</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">projects/ccf-rui/src/app/core/store/scene/scene.state.ts:104</a></div>
                                 </td>
                             </tr>
 
@@ -755,7 +1025,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="122" class="link-to-prism">projects/ccf-rui/src/app/core/store/scene/scene.state.ts:122</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="133" class="link-to-prism">projects/ccf-rui/src/app/core/store/scene/scene.state.ts:133</a></div>
                                 </td>
                             </tr>
 
@@ -777,7 +1047,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="133" class="link-to-prism">projects/ccf-rui/src/app/core/store/scene/scene.state.ts:133</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="149" class="link-to-prism">projects/ccf-rui/src/app/core/store/scene/scene.state.ts:149</a></div>
                                 </td>
                             </tr>
 
@@ -799,7 +1069,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="161" class="link-to-prism">projects/ccf-rui/src/app/core/store/scene/scene.state.ts:161</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="177" class="link-to-prism">projects/ccf-rui/src/app/core/store/scene/scene.state.ts:177</a></div>
                                 </td>
                             </tr>
 
@@ -821,7 +1091,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="185" class="link-to-prism">projects/ccf-rui/src/app/core/store/scene/scene.state.ts:185</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="201" class="link-to-prism">projects/ccf-rui/src/app/core/store/scene/scene.state.ts:201</a></div>
                                 </td>
                             </tr>
 
@@ -843,7 +1113,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="192" class="link-to-prism">projects/ccf-rui/src/app/core/store/scene/scene.state.ts:192</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="209" class="link-to-prism">projects/ccf-rui/src/app/core/store/scene/scene.state.ts:209</a></div>
                                 </td>
                             </tr>
 
@@ -865,7 +1135,29 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="210" class="link-to-prism">projects/ccf-rui/src/app/core/store/scene/scene.state.ts:210</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="227" class="link-to-prism">projects/ccf-rui/src/app/core/store/scene/scene.state.ts:227</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="collisions$"></a>
+                        <span class="name"><b>collisions$</b><a href="#collisions$"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>collisions$()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="270" class="link-to-prism">projects/ccf-rui/src/app/core/store/scene/scene.state.ts:270</a></div>
                                 </td>
                             </tr>
 
@@ -878,16 +1170,19 @@
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Computed, StateRepository } from &#x27;@angular-ru/ngxs/decorators&#x27;;
 import { NgxsImmutableDataRepository } from &#x27;@angular-ru/ngxs/repositories&#x27;;
+import { HttpClient } from &#x27;@angular/common/http&#x27;;
 import { Injectable, Injector } from &#x27;@angular/core&#x27;;
 import { Matrix4, toRadians } from &#x27;@math.gl/core&#x27;;
 import { NgxsOnInit, State } from &#x27;@ngxs/store&#x27;;
 import { AABB, Vec3 } from &#x27;cannon-es&#x27;;
 import { SpatialEntityJsonLd, SpatialSceneNode } from &#x27;ccf-body-ui&#x27;;
 import { SpatialEntity, SpatialPlacement, getOriginScene, getTissueBlockScene } from &#x27;ccf-database&#x27;;
-import { Position } from &#x27;ccf-shared&#x27;;
-import { Observable, combineLatest, of } from &#x27;rxjs&#x27;;
-import { filter, map } from &#x27;rxjs/operators&#x27;;
+import { GlobalConfigState, Position } from &#x27;ccf-shared&#x27;;
+import { isEqual } from &#x27;lodash&#x27;;
+import { Observable, combineLatest, defer, of } from &#x27;rxjs&#x27;;
+import { catchError, concatMap, distinctUntilChanged, filter, map, share, startWith, switchMap, take, throttleTime } from &#x27;rxjs/operators&#x27;;
 import { environment } from &#x27;../../../../environments/environment&#x27;;
+import { GlobalConfig } from &#x27;../../services/config/config&#x27;;
 import { ModelState } from &#x27;../model/model.state&#x27;;
 import { RegistrationState } from &#x27;../registration/registration.state&#x27;;
 import { VisibilityItem } from &#x27;./../../models/visibility-item&#x27;;
@@ -901,6 +1196,14 @@ import { ReferenceDataState } from &#x27;./../reference-data/reference-data.stat
 export interface SceneStateModel {
   showCollisions: boolean;
 }
+
+interface Collision {
+  id: string;
+}
+
+const NODE_COLLISION_THROTTLE_DURATION &#x3D; 10;
+
+const DEFAULT_COLLISIONS_ENDPOINT &#x3D; &#x27;https://pfn8zf2gtu.us-east-2.awsapprunner.com/get-collisions&#x27;;
 
 function getNodeBbox(model: SpatialSceneNode): AABB {
   const mat &#x3D; new Matrix4(model.transformMatrix);
@@ -924,7 +1227,6 @@ function getNodeBbox(model: SpatialSceneNode): AABB {
 })
 @Injectable()
 export class SceneState extends NgxsImmutableDataRepository&lt;SceneStateModel&gt; implements NgxsOnInit {
-
   @Computed()
   get nodes$(): Observable&lt;SpatialSceneNode[]&gt; {
     return combineLatest([
@@ -960,7 +1262,7 @@ export class SceneState extends NgxsImmutableDataRepository&lt;SceneStateModel&g
         const organ &#x3D; this.getOrganSpatialEntity(organIri as string);
         const originScene &#x3D; organIri ? getOriginScene(organ, false, true) : [];
         const organScene &#x3D; this.createSceneNodes(organIri as string, [...anatomicalStructures, ...extractionSites] as VisibilityItem[]);
-        return [ ...originScene, ...organScene ];
+        return [...originScene, ...organScene];
       })
     );
   }
@@ -989,18 +1291,24 @@ export class SceneState extends NgxsImmutableDataRepository&lt;SceneStateModel&g
             }
           })
           .reduce&lt;SpatialSceneNode[]&gt;((acc, nodes) &#x3D;&gt; acc.concat(nodes), [])
-      )
+      ),
+      distinctUntilChanged(isEqual)
     );
   }
 
   @Computed()
   get nodeCollisions$(): Observable&lt;SpatialSceneNode[]&gt; {
-    return combineLatest([this.referenceOrganSimpleNodes$, this.placementCube$]).pipe(
-      filter(([_nodes, placement]) &#x3D;&gt; placement.length &gt; 0),
-      map(([nodes, placement]) &#x3D;&gt; {
-        const bbox &#x3D; getNodeBbox(placement[0]);
-        return nodes.filter((model) &#x3D;&gt; bbox.overlaps(getNodeBbox(model)));
-      })
+    return combineLatest([this.referenceOrganSimpleNodes$, this.collisions$, this.placementCube$]).pipe(
+      throttleTime(NODE_COLLISION_THROTTLE_DURATION, undefined, { leading: true, trailing: true }),
+      map(([nodes, collisions, placement]) &#x3D;&gt; {
+        if (collisions !&#x3D;&#x3D; undefined) {
+          return this.filterNodeCollisions(nodes, collisions);
+        } else if (placement.length &gt; 0) {
+          return this.filterNodeBBox(nodes, placement[0]);
+        }
+        return [];
+      }),
+      share()
     );
   }
 
@@ -1033,8 +1341,8 @@ export class SceneState extends NgxsImmutableDataRepository&lt;SceneStateModel&g
   }
 
   @Computed()
-  get spatialKeyBoardAxis$(): Observable&lt;SpatialSceneNode[]&gt;{
-    return combineLatest([this.model.organIri$.pipe(filter(organIri&#x3D;&gt;organIri!&#x3D;&#x3D;&#x27;&#x27;)), this.model.position$]).pipe(map(([organIri, position]: [string, Position]) &#x3D;&gt; {
+  get spatialKeyBoardAxis$(): Observable&lt;SpatialSceneNode[]&gt; {
+    return combineLatest([this.model.organIri$.pipe(filter(organIri &#x3D;&gt; organIri !&#x3D;&#x3D; &#x27;&#x27;)), this.model.position$]).pipe(map(([organIri, position]: [string, Position]) &#x3D;&gt; {
       const organEntity &#x3D; this.getOrganSpatialEntity(organIri);
       const blockSize &#x3D; this.model.snapshot.blockSize;
       const rotation &#x3D; this.model.snapshot.rotation;
@@ -1052,14 +1360,15 @@ export class SceneState extends NgxsImmutableDataRepository&lt;SceneStateModel&g
         z_rotation: rotation.z,
 
         x_scaling: 1, y_scaling: 1, z_scaling: 1,
-      } as SpatialPlacement): [];
+      } as SpatialPlacement) : [];
     }));
   }
 
   @Computed()
-  get placementCube$(): Observable&lt;SpatialSceneNode[]&gt; | [] {
+  get placementCube$(): Observable&lt;SpatialSceneNode[]&gt; {
     return combineLatest([this.model.viewType$, this.model.blockSize$, this.model.rotation$, this.model.position$, this.model.organ$]).pipe(
-      map(([_viewType, _blockSize, _rotation, _position, organ]) &#x3D;&gt; organ.src &#x3D;&#x3D;&#x3D; &#x27;&#x27; ? [] : [this.placementCube])
+      map(([_viewType, _blockSize, _rotation, _position, organ]) &#x3D;&gt; organ.src &#x3D;&#x3D;&#x3D; &#x27;&#x27; ? [] : [this.placementCube]),
+      distinctUntilChanged(isEqual)
     );
   }
 
@@ -1124,13 +1433,23 @@ export class SceneState extends NgxsImmutableDataRepository&lt;SceneStateModel&g
   private registration: RegistrationState;
   private referenceData: ReferenceDataState;
 
+  @Computed()
+  private get collisions$(): Observable&lt;Collision[] | undefined&gt; {
+    return defer(() &#x3D;&gt; this.registration.throttledJsonld$).pipe(
+      concatMap((jsonld) &#x3D;&gt; this.getCollisions(jsonld)),
+      startWith([])
+    );
+  }
+
   /**
    * Creates an instance of scene state.
    *
    * @param injector Injector service used to lazy load page and model state
    */
   constructor(
-    private readonly injector: Injector
+    private readonly injector: Injector,
+    private readonly http: HttpClient,
+    private readonly globalConfig: GlobalConfigState&lt;GlobalConfig&gt;,
   ) {
     super();
   }
@@ -1177,7 +1496,26 @@ export class SceneState extends NgxsImmutableDataRepository&lt;SceneStateModel&g
     return db.organSpatialEntities[organIri] as SpatialEntity;
   }
 
+  private getCollisions(jsonld: unknown): Observable&lt;Collision[] | undefined&gt; {
+    return this.globalConfig.getOption(&#x27;collisionsEndpoint&#x27;).pipe(
+      switchMap((endpoint &#x3D; DEFAULT_COLLISIONS_ENDPOINT) &#x3D;&gt; this.http.post&lt;Collision[]&gt;(
+        endpoint, JSON.stringify(jsonld),
+        { headers: { &#x27;Content-Type&#x27;: &#x27;application/json&#x27; } }
+      )),
+      catchError(() &#x3D;&gt; of(undefined)),
+      take(1)
+    );
+  }
 
+  private filterNodeCollisions(nodes: SpatialSceneNode[], collisions: Collision[]): SpatialSceneNode[] {
+    const collidedIds &#x3D; new Set(collisions.map(node &#x3D;&gt; node.id));
+    return nodes.filter(node &#x3D;&gt; collidedIds.has(node[&#x27;@id&#x27;]));
+  }
+
+  private filterNodeBBox(nodes: SpatialSceneNode[], placement: SpatialSceneNode): SpatialSceneNode[] {
+    const bbox &#x3D; getNodeBbox(placement);
+    return nodes.filter((model) &#x3D;&gt; bbox.overlaps(getNodeBbox(model)));
+  }
 }
 </code></pre>
     </div>

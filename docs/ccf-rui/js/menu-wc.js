@@ -628,6 +628,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="interfaces/BlockSize.html" data-type="entity-link" >BlockSize</a>
                             </li>
                             <li class="link">
+                                <a href="interfaces/Collision.html" data-type="entity-link" >Collision</a>
+                            </li>
+                            <li class="link">
                                 <a href="interfaces/ContentContainerChanged.html" data-type="entity-link" >ContentContainerChanged</a>
                             </li>
                             <li class="link">

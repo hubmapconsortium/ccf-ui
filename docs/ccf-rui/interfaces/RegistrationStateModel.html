@@ -366,8 +366,8 @@ import { SpatialEntityJsonLd } from &#x27;ccf-body-ui&#x27;;
 import { GlobalConfigState, OrganInfo } from &#x27;ccf-shared&#x27;;
 import { filterNulls } from &#x27;ccf-shared/rxjs-ext/operators&#x27;;
 import { saveAs } from &#x27;file-saver&#x27;;
-import { combineLatest, Observable } from &#x27;rxjs&#x27;;
-import { map, startWith, switchMap, take, tap } from &#x27;rxjs/operators&#x27;;
+import { Observable, combineLatest } from &#x27;rxjs&#x27;;
+import { distinctUntilChanged, map, startWith, switchMap, take, tap, throttleTime } from &#x27;rxjs/operators&#x27;;
 import { v4 as uuidV4 } from &#x27;uuid&#x27;;
 
 import { Tag } from &#x27;../../models/anatomical-structure-tag&#x27;;
@@ -377,6 +377,7 @@ import { AnatomicalStructureTagState } from &#x27;../anatomical-structure-tags/a
 import { ModelState, ModelStateModel, RUI_ORGANS, XYZTriplet } from &#x27;../model/model.state&#x27;;
 import { PageState, PageStateModel } from &#x27;../page/page.state&#x27;;
 import { ReferenceDataState } from &#x27;../reference-data/reference-data.state&#x27;;
+import { isEqual } from &#x27;lodash&#x27;;
 
 
 /**
@@ -392,6 +393,8 @@ export interface RegistrationStateModel {
   /** Registration provided by user */
   initialRegistration?: SpatialEntityJsonLd;
 }
+
+const JSONLD_THROTTLE_DURATION &#x3D; 100;
 
 
 /**
@@ -422,6 +425,15 @@ export class RegistrationState extends NgxsImmutableDataRepository&lt;Registrati
   @Computed()
   get jsonld$(): Observable&lt;Record&lt;string, unknown&gt;&gt; {
     return combineLatest([this.page.state$, this.model.state$, this.tags.tags$]).pipe(
+      map(([page, model, tags]) &#x3D;&gt; this.buildJsonLd(page, model, tags))
+    );
+  }
+
+  @Computed()
+  get throttledJsonld$(): Observable&lt;Record&lt;string, unknown&gt;&gt; {
+    return combineLatest([this.page.state$, this.model.state$, this.tags.tags$]).pipe(
+      throttleTime(JSONLD_THROTTLE_DURATION, undefined, { leading: true, trailing: true }),
+      distinctUntilChanged(isEqual),
       map(([page, model, tags]) &#x3D;&gt; this.buildJsonLd(page, model, tags))
     );
   }

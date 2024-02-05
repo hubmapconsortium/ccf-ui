@@ -280,7 +280,7 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, Component } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectionStrategy, Component, Input, OnInit } from &#x27;@angular/core&#x27;;
 
 interface LinkCard {
   body: string;
@@ -294,7 +294,14 @@ interface LinkCard {
   styleUrls: [&#x27;./link-cards.component.scss&#x27;],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LinkCardsComponent {
+export class LinkCardsComponent implements OnInit {
+  @Input() ruiUrl: string;
+  @Input() euiUrl: string;
+  @Input() asctbUrl: string;
+  @Input() hraPortalUrl: string;
+  @Input() onlineCourseUrl: string;
+  @Input() paperUrl: string;
+
   linkCards: LinkCard[] &#x3D; [
     {
       body: &#x27;Add tissue blocks using the HRA Registration User Interface (RUI).&#x27;,
@@ -330,6 +337,13 @@ export class LinkCardsComponent {
       buttonUrl: &#x27;https://www.nature.com/articles/s41556-021-00788-6&#x27;
     }
   ];
+
+  ngOnInit() {
+    const linkUrls &#x3D; [this.ruiUrl, this.euiUrl, this.asctbUrl];
+    const deepDivesUrls &#x3D; [this.hraPortalUrl, this.onlineCourseUrl, this.paperUrl];
+    this.linkCards &#x3D; this.linkCards.map((card, index) &#x3D;&gt; ({ ...card, buttonUrl: linkUrls[index] ?? card.buttonUrl }));
+    this.deepDives &#x3D; this.deepDives.map((card, index) &#x3D;&gt; ({ ...card, buttonUrl: deepDivesUrls[index] ?? card.buttonUrl }));
+  }
 
   goToURL(url: string): void {
     window.open(url, &#x27;_blank&#x27;);
