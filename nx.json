@@ -63,6 +63,11 @@
         "{workspaceRoot}/dist/{projectRoot}/webcomponent-example.html"
       ],
       "cache": true
+    },
+    "compodoc": {
+      "inputs": [
+        "production"
+      ]
     }
   }
 }

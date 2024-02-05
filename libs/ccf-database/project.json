@@ -38,6 +38,24 @@
           "libs/ccf-database/**/*.html"
         ]
       }
+    },
+    "compodoc": {
+      "executor": "@twittwer/compodoc:compodoc",
+      "options": {
+        "tsConfig": "libs/ccf-database/tsconfig.lib.json",
+        "outputPath": "dist/compodoc/ccf-database"
+      },
+      "configurations": {
+        "ci": {
+          "silent": true
+        },
+        "serve": {
+          "watch": true,
+          "disableCoverage": false,
+          "disablePrivate": false,
+          "disableInternal": false
+        }
+      }
     }
   }
 }

@@ -157,6 +157,24 @@
     },
     "build-webcomponent": {
       "command": "node tools/scripts/build-webcomponent.mjs ccf-eui"
+    },
+    "compodoc": {
+      "executor": "@twittwer/compodoc:compodoc",
+      "options": {
+        "tsConfig": "apps/ccf-eui/tsconfig.json",
+        "outputPath": "dist/compodoc/ccf-eui"
+      },
+      "configurations": {
+        "ci": {
+          "silent": true
+        },
+        "serve": {
+          "watch": true,
+          "disableCoverage": false,
+          "disablePrivate": false,
+          "disableInternal": false
+        }
+      }
     }
   }
 }

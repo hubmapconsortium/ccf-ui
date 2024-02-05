@@ -38,6 +38,24 @@
           "libs/ccf-shared/**/*.html"
         ]
       }
+    },
+    "compodoc": {
+      "executor": "@twittwer/compodoc:compodoc",
+      "options": {
+        "tsConfig": "libs/ccf-shared/tsconfig.lib.json",
+        "outputPath": "dist/compodoc/ccf-shared"
+      },
+      "configurations": {
+        "ci": {
+          "silent": true
+        },
+        "serve": {
+          "watch": true,
+          "disableCoverage": false,
+          "disablePrivate": false,
+          "disableInternal": false
+        }
+      }
     }
   }
 }

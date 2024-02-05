@@ -1,8 +1,0 @@
-{
-  "$schema": "../../node_modules/@compodoc/compodoc/src/config/schema.json",
-  "name": "Library ccf-shared documentation",
-  "tsconfig": "./apps/ccf-shared/tsconfig.compodoc.json",
-  "output": "./docs/ccf-shared",
-  "silent": true,
-  "coverageTestThresholdFail": false
-}

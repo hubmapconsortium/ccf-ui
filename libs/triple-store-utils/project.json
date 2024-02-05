@@ -38,6 +38,24 @@
           "libs/triple-store-utils/**/*.html"
         ]
       }
+    },
+    "compodoc": {
+      "executor": "@twittwer/compodoc:compodoc",
+      "options": {
+        "tsConfig": "libs/triple-store-utils/tsconfig.lib.json",
+        "outputPath": "dist/compodoc/triple-store-utils"
+      },
+      "configurations": {
+        "ci": {
+          "silent": true
+        },
+        "serve": {
+          "watch": true,
+          "disableCoverage": false,
+          "disablePrivate": false,
+          "disableInternal": false
+        }
+      }
     }
   }
 }

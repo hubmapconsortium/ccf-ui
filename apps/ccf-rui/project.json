@@ -150,6 +150,24 @@
     },
     "build-webcomponent": {
       "command": "node tools/scripts/build-webcomponent.mjs ccf-rui"
+    },
+    "compodoc": {
+      "executor": "@twittwer/compodoc:compodoc",
+      "options": {
+        "tsConfig": "apps/ccf-rui/tsconfig.json",
+        "outputPath": "dist/compodoc/ccf-rui"
+      },
+      "configurations": {
+        "ci": {
+          "silent": true
+        },
+        "serve": {
+          "watch": true,
+          "disableCoverage": false,
+          "disablePrivate": false,
+          "disableInternal": false
+        }
+      }
     }
   }
 }

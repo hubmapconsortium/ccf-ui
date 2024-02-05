@@ -123,6 +123,24 @@
     },
     "build-webcomponent": {
       "command": "node tools/scripts/build-webcomponent.mjs ccf-body-ui-wc"
+    },
+    "compodoc": {
+      "executor": "@twittwer/compodoc:compodoc",
+      "options": {
+        "tsConfig": "apps/ccf-body-ui-wc/tsconfig.json",
+        "outputPath": "dist/compodoc/ccf-body-ui-wc"
+      },
+      "configurations": {
+        "ci": {
+          "silent": true
+        },
+        "serve": {
+          "watch": true,
+          "disableCoverage": false,
+          "disablePrivate": false,
+          "disableInternal": false
+        }
+      }
     }
   }
 }
