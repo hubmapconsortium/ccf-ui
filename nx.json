@@ -50,6 +50,19 @@
         "^production"
       ],
       "cache": true
+    },
+    "build-webcomponent": {
+      "dependsOn": [
+        "build"
+      ],
+      "inputs": [
+        "{projectRoot}/src/webcomponent-example.html"
+      ],
+      "outputs": [
+        "{workspaceRoot}/dist/{projectRoot}/wc.js",
+        "{workspaceRoot}/dist/{projectRoot}/webcomponent-example.html"
+      ],
+      "cache": true
     }
   }
 }

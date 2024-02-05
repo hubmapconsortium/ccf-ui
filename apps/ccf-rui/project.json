@@ -147,6 +147,9 @@
           "apps/ccf-rui/**/*.html"
         ]
       }
+    },
+    "build-webcomponent": {
+      "command": "node tools/scripts/build-webcomponent.mjs ccf-rui"
     }
   }
 }

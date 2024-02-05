@@ -148,6 +148,9 @@
           "apps/ccf-organ-info/**/*.html"
         ]
       }
+    },
+    "build-webcomponent": {
+      "command": "node tools/scripts/build-webcomponent.mjs ccf-organ-info"
     }
   }
 }

@@ -53,7 +53,7 @@
               "with": "apps/ccf-body-ui-wc/src/environments/environment.prod.ts"
             }
           ],
-          "outputHashing": "all"
+          "outputHashing": "none"
         },
         "development": {
           "buildOptimizer": false,

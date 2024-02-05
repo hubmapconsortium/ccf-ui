@@ -4,13 +4,14 @@ import { argv, exit } from 'node:process';
 import { glob } from 'glob';
 
 async function build(app_name) {
-  const appDir = `./apps/${app_name}`;
+  const exampleHtmlFile = 'webcomponent-example.html'
+  const srcDir = `./apps/${app_name}/src`;
   const distDir = `./dist/apps/${app_name}`;
   const jsFiles = await glob([
-    `${distDir}/runtime.*.js`,
-    `${distDir}/polyfills.*.js`,
-    `${distDir}/scripts.*.js`,
-    `${distDir}/main.*.js`,
+    `${distDir}/runtime*.js`,
+    `${distDir}/polyfills*.js`,
+    `${distDir}/scripts*.js`,
+    `${distDir}/main*.js`,
   ]);
 
   if (jsFiles.length !== 4) {
@@ -19,7 +20,7 @@ async function build(app_name) {
   }
 
   await concat(jsFiles, `${distDir}/wc.js`);
-  await copyFile(`${appDir}/src/webcomponent-example.html`, `${distDir}/webcomponent-example.html`);
+  await copyFile(`${srcDir}/${exampleHtmlFile}`, `${distDir}/${exampleHtmlFile}`);
 }
 
 async function main() {
