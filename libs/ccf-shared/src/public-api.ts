@@ -45,7 +45,11 @@ export * from './lib/components/tracking-popup/tracking-popup.component';
 export * from './lib/services/data-source/data-source';
 export * from './lib/services/data-source/data-source.service';
 export * from './lib/services/data-source/api-endpoint.service';
-export * from './lib/services/data-source/ccf-database.service';
+export {
+  CCFDatabaseDataSourceService,
+  HybridCCfDatabaseDatasourceService,
+  WorkerCCFDatabaseDataSourceService,
+} from './lib/services/data-source/ccf-database.service';
 export * from './lib/services/data-source/injector-delegate.service';
 
 export * from './lib/components/call-to-action-behavior/call-to-action-behavior.component';

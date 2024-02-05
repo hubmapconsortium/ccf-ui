@@ -20,7 +20,7 @@ interface CCFDatabaseManager extends Unsubscribable {
 }
 
 @Injectable()
-abstract class CCFDatabaseDataSourceBaseService extends DelegateDataSource {
+export abstract class CCFDatabaseDataSourceBaseService extends DelegateDataSource {
   readonly impl$: Observable<DataSourceLike>;
   readonly database$: Observable<CCFDatabase | Remote<CCFDatabase>>;
 
