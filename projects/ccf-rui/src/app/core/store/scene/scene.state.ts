@@ -7,12 +7,15 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, Injector } from '@angular/core';
 import { Matrix4, toRadians } from '@math.gl/core';
 import { NgxsOnInit, State } from '@ngxs/store';
+import { AABB, Vec3 } from 'cannon-es';
 import { SpatialEntityJsonLd, SpatialSceneNode } from 'ccf-body-ui';
 import { SpatialEntity, SpatialPlacement, getOriginScene, getTissueBlockScene } from 'ccf-database';
-import { Position } from 'ccf-shared';
+import { GlobalConfigState, Position } from 'ccf-shared';
+import { isEqual } from 'lodash';
 import { Observable, combineLatest, defer, of } from 'rxjs';
-import { filter, map, share, startWith, switchMap, throttleTime } from 'rxjs/operators';
+import { catchError, concatMap, distinctUntilChanged, filter, map, share, startWith, switchMap, take, throttleTime } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment';
+import { GlobalConfig } from '../../services/config/config';
 import { ModelState } from '../model/model.state';
 import { RegistrationState } from '../registration/registration.state';
 import { VisibilityItem } from './../../models/visibility-item';
@@ -27,9 +30,23 @@ export interface SceneStateModel {
   showCollisions: boolean;
 }
 
-const NODE_COLLISION_THROTTLE_DURATION = 100;
+interface Collision {
+  id: string;
+}
 
-const DEFAULT_ENDPOINT = 'https://pfn8zf2gtu.us-east-2.awsapprunner.com/get-collisions';
+const NODE_COLLISION_THROTTLE_DURATION = 10;
+
+const DEFAULT_COLLISIONS_ENDPOINT = 'https://pfn8zf2gtu.us-east-2.awsapprunner.com/get-collisions';
+
+function getNodeBbox(model: SpatialSceneNode): AABB {
+  const mat = new Matrix4(model.transformMatrix);
+  const lowerBound = mat.transformAsPoint([-1, -1, -1], []);
+  const upperBound = mat.transformAsPoint([1, 1, 1], []);
+  return new AABB({
+    lowerBound: new Vec3(...lowerBound.map((n, i) => Math.min(n, upperBound[i]))),
+    upperBound: new Vec3(...upperBound.map((n, i) => Math.max(n, lowerBound[i])))
+  });
+}
 
 /**
  * 3d Scene state
@@ -107,20 +124,23 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
             }
           })
           .reduce<SpatialSceneNode[]>((acc, nodes) => acc.concat(nodes), [])
-      )
+      ),
+      distinctUntilChanged(isEqual)
     );
   }
 
   @Computed()
   get nodeCollisions$(): Observable<SpatialSceneNode[]> {
-    const collisions$ = defer(() => this.registration.throttledJsonld$).pipe(
-      switchMap((jsonld) => this.getCollisions(jsonld)),
-      startWith([])
-    ) as Observable<object[]>;
-
-    return combineLatest([this.referenceOrganSimpleNodes$, collisions$]).pipe(
+    return combineLatest([this.referenceOrganSimpleNodes$, this.collisions$, this.placementCube$]).pipe(
       throttleTime(NODE_COLLISION_THROTTLE_DURATION, undefined, { leading: true, trailing: true }),
-      map(([nodes, collisions]) => this.filterNodeCollisions(nodes, collisions)),
+      map(([nodes, collisions, placement]) => {
+        if (collisions !== undefined) {
+          return this.filterNodeCollisions(nodes, collisions);
+        } else if (placement.length > 0) {
+          return this.filterNodeBBox(nodes, placement[0]);
+        }
+        return [];
+      }),
       share()
     );
   }
@@ -178,9 +198,10 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
   }
 
   @Computed()
-  get placementCube$(): Observable<SpatialSceneNode[]> | [] {
+  get placementCube$(): Observable<SpatialSceneNode[]> {
     return combineLatest([this.model.viewType$, this.model.blockSize$, this.model.rotation$, this.model.position$, this.model.organ$]).pipe(
-      map(([_viewType, _blockSize, _rotation, _position, organ]) => organ.src === '' ? [] : [this.placementCube])
+      map(([_viewType, _blockSize, _rotation, _position, organ]) => organ.src === '' ? [] : [this.placementCube]),
+      distinctUntilChanged(isEqual)
     );
   }
 
@@ -245,6 +266,14 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
   private registration: RegistrationState;
   private referenceData: ReferenceDataState;
 
+  @Computed()
+  private get collisions$(): Observable<Collision[] | undefined> {
+    return defer(() => this.registration.throttledJsonld$).pipe(
+      concatMap((jsonld) => this.getCollisions(jsonld)),
+      startWith([])
+    );
+  }
+
   /**
    * Creates an instance of scene state.
    *
@@ -252,7 +281,8 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
    */
   constructor(
     private readonly injector: Injector,
-    private readonly http: HttpClient
+    private readonly http: HttpClient,
+    private readonly globalConfig: GlobalConfigState<GlobalConfig>,
   ) {
     super();
   }
@@ -299,14 +329,24 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
     return db.organSpatialEntities[organIri] as SpatialEntity;
   }
 
-  private getCollisions(jsonld: unknown): Observable<unknown> {
-    return this.http.post(DEFAULT_ENDPOINT, JSON.stringify(jsonld), {
-      headers: { 'Content-Type': 'application/json' }
-    });
+  private getCollisions(jsonld: unknown): Observable<Collision[] | undefined> {
+    return this.globalConfig.getOption('collisionsEndpoint').pipe(
+      switchMap((endpoint = DEFAULT_COLLISIONS_ENDPOINT) => this.http.post<Collision[]>(
+        endpoint, JSON.stringify(jsonld),
+        { headers: { 'Content-Type': 'application/json' } }
+      )),
+      catchError(() => of(undefined)),
+      take(1)
+    );
   }
 
-  private filterNodeCollisions(nodes: SpatialSceneNode[], collisions: object[]): SpatialSceneNode[] {
-    const collidedIds = new Set(collisions.map(node => node['id']));
+  private filterNodeCollisions(nodes: SpatialSceneNode[], collisions: Collision[]): SpatialSceneNode[] {
+    const collidedIds = new Set(collisions.map(node => node.id));
     return nodes.filter(node => collidedIds.has(node['@id']));
+  }
+
+  private filterNodeBBox(nodes: SpatialSceneNode[], placement: SpatialSceneNode): SpatialSceneNode[] {
+    const bbox = getNodeBbox(placement);
+    return nodes.filter((model) => bbox.overlaps(getNodeBbox(model)));
   }
 }
