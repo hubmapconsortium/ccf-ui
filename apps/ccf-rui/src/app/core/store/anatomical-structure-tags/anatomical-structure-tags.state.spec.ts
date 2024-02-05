@@ -2,9 +2,10 @@ import { NgxsDataPluginModule } from '@angular-ru/ngxs';
 import { TestBed } from '@angular/core/testing';
 import { NgxsModule, Store } from '@ngxs/store';
 import { GlobalConfigState } from 'ccf-shared';
-import { lastValueFrom, Observable, of } from 'rxjs';
+import { Observable, lastValueFrom, of } from 'rxjs';
 import { take } from 'rxjs/operators';
 
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { PageState } from '../page/page.state';
 import { ReferenceDataState } from '../reference-data/reference-data.state';
 import { RegistrationState } from '../registration/registration.state';
@@ -24,6 +25,7 @@ describe('AnatomicalStructureTagsState', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
+        HttpClientTestingModule,
         NgxsDataPluginModule.forRoot(),
         NgxsModule.forRoot([AnatomicalStructureTagState, SceneState, ModelState, GlobalConfigState])
       ],

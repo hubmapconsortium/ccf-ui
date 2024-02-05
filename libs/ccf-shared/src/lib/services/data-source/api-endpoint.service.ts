@@ -69,13 +69,9 @@ function cast<T>(): (data: unknown) => T {
   return (data) => data as T;
 }
 
-function rangeToMinMax(
-  range: [number, number] | undefined,
-  low: number,
-  high: number
-): MinMax | undefined {
+function rangeToMinMax(range: [number, number] | undefined, low: number, high: number): MinMax | undefined {
   return range
-    ? { min: range[0] > low ? range[0] : undefined, max: range[1] < high ? range[1] : undefined, }
+    ? { min: range[0] > low ? range[0] : undefined, max: range[1] < high ? range[1] : undefined }
     : undefined;
 }
 
@@ -94,9 +90,7 @@ function filterToParams(filter?: Filter): FilterParams {
   };
 }
 
-function spatialSceneNodeReviver(
-  nodes: RawSpatialSceneNode[]
-): SpatialSceneNode[] {
+function spatialSceneNodeReviver(nodes: RawSpatialSceneNode[]): SpatialSceneNode[] {
   return nodes.map((node) => ({
     ...(node as SpatialSceneNode),
     transformMatrix: new Matrix4(node.transformMatrix ?? []),
@@ -130,22 +124,12 @@ export class ApiEndpointDataSourceService implements DataSource {
 
   @Cacheable(CACHE_CONFIG_NO_PARAMS)
   getOntologyTreeModel(): Observable<OntologyTreeModel> {
-    return this.doRequest(
-      (params) => this.api.ontologyTreeModel(params),
-      undefined,
-      {},
-      cast<OntologyTreeModel>()
-    );
+    return this.doRequest((params) => this.api.ontologyTreeModel(params), undefined, {}, cast<OntologyTreeModel>());
   }
 
   @Cacheable(CACHE_CONFIG_NO_PARAMS)
   getCellTypeTreeModel(): Observable<OntologyTreeModel> {
-    return this.doRequest(
-      (params) => this.api.cellTypeTreeModel(params),
-      undefined,
-      {},
-      cast<OntologyTreeModel>()
-    );
+    return this.doRequest((params) => this.api.cellTypeTreeModel(params), undefined, {}, cast<OntologyTreeModel>());
   }
 
   /**
@@ -155,87 +139,46 @@ export class ApiEndpointDataSourceService implements DataSource {
    */
   @Cacheable(CACHE_CONFIG_NO_PARAMS)
   getBiomarkerTreeModel(): Observable<OntologyTreeModel> {
-    return this.doRequest(
-      (params) => this.api.biomarkerTreeModel(params),
-      undefined,
-      {},
-      cast<OntologyTreeModel>()
-    );
+    return this.doRequest((params) => this.api.biomarkerTreeModel(params), undefined, {}, cast<OntologyTreeModel>());
   }
 
   @Cacheable(CACHE_CONFIG_NO_PARAMS)
   getReferenceOrgans(): Observable<SpatialEntity[]> {
-    return this.doRequest(
-      (params) => this.api.referenceOrgans(params),
-      undefined,
-      {},
-      cast<SpatialEntity[]>()
-    );
+    return this.doRequest((params) => this.api.referenceOrgans(params), undefined, {}, cast<SpatialEntity[]>());
   }
 
   @Cacheable(CACHE_CONFIG_PARAMS)
   getTissueBlockResults(filter?: Filter): Observable<TissueBlockResult[]> {
-    return this.doRequest(
-      (params) => this.api.tissueBlocks(params),
-      filter,
-      {},
-      cast<TissueBlockResult[]>()
-    );
+    return this.doRequest((params) => this.api.tissueBlocks(params), filter, {}, cast<TissueBlockResult[]>());
   }
 
   @Cacheable(CACHE_CONFIG_PARAMS)
   getAggregateResults(filter?: Filter): Observable<AggregateResult[]> {
-    return this.doRequest(
-      (params) => this.api.aggregateResults(params),
-      filter
-    );
+    return this.doRequest((params) => this.api.aggregateResults(params), filter);
   }
 
   @Cacheable(CACHE_CONFIG_PARAMS)
-  getOntologyTermOccurences(
-    filter?: Filter
-  ): Observable<Record<string, number>> {
-    return this.doRequest(
-      (params) => this.api.ontologyTermOccurences(params),
-      filter
-    );
+  getOntologyTermOccurences(filter?: Filter): Observable<Record<string, number>> {
+    return this.doRequest((params) => this.api.ontologyTermOccurences(params), filter);
   }
 
   @Cacheable(CACHE_CONFIG_PARAMS)
-  getCellTypeTermOccurences(
-    filter?: Filter
-  ): Observable<Record<string, number>> {
-    return this.doRequest(
-      (params) => this.api.cellTypeTermOccurences(params),
-      filter
-    );
+  getCellTypeTermOccurences(filter?: Filter): Observable<Record<string, number>> {
+    return this.doRequest((params) => this.api.cellTypeTermOccurences(params), filter);
   }
 
   @Cacheable(CACHE_CONFIG_PARAMS)
-  getBiomarkerTermOccurences(
-    filter?: Filter
-  ): Observable<Record<string, number>> {
-    return this.doRequest(
-      (params) => this.api.biomarkerTermOccurences(params),
-      filter
-    );
+  getBiomarkerTermOccurences(filter?: Filter): Observable<Record<string, number>> {
+    return this.doRequest((params) => this.api.biomarkerTermOccurences(params), filter);
   }
 
   @Cacheable(CACHE_CONFIG_PARAMS)
   getScene(filter?: Filter): Observable<SpatialSceneNode[]> {
-    return this.doRequest(
-      (params) => this.api.scene(params),
-      filter,
-      {},
-      spatialSceneNodeReviver
-    );
+    return this.doRequest((params) => this.api.scene(params), filter, {}, spatialSceneNodeReviver);
   }
 
   @Cacheable(CACHE_CONFIG_PARAMS)
-  getReferenceOrganScene(
-    organIri: string,
-    filter?: Filter
-  ): Observable<SpatialSceneNode[]> {
+  getReferenceOrganScene(organIri: string, filter?: Filter): Observable<SpatialSceneNode[]> {
     return this.doRequest(
       (params) => this.api.referenceOrganScene(params),
       filter,
@@ -264,10 +207,7 @@ export class ApiEndpointDataSourceService implements DataSource {
     const { api, globalConfig } = this;
     const requestParams = { ...filterToParams(filter), ...params };
 
-    return combineLatest([
-      globalConfig.getOption('remoteApiEndpoint'),
-      globalConfig.getOption('hubmapToken'),
-    ]).pipe(
+    return combineLatest([globalConfig.getOption('remoteApiEndpoint'), globalConfig.getOption('hubmapToken')]).pipe(
       take(1),
       tap(([endpoint, token]) => {
         api.configuration.basePath = endpoint;

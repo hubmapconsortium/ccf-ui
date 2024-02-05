@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/quotes */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/member-ordering */
 import * as idb from 'idb-keyval';
 import { JsonLd } from 'jsonld/jsonld-spec';
@@ -15,18 +18,8 @@ import {
 
 import { CCFSpatialGraph } from './ccf-spatial-graph';
 import { CCFSpatialScene, SpatialSceneNode } from './ccf-spatial-scene';
-import {
-  AggregateResult,
-  DatabaseStatus,
-  Filter,
-  OntologyTreeModel,
-  TissueBlockResult,
-} from './interfaces';
-import {
-  getAggregateResults,
-  getDatasetTechnologyNames,
-  getProviderNames,
-} from './queries/aggregate-results-n3';
+import { AggregateResult, DatabaseStatus, Filter, OntologyTreeModel, TissueBlockResult } from './interfaces';
+import { getAggregateResults, getDatasetTechnologyNames, getProviderNames } from './queries/aggregate-results-n3';
 import { findIds } from './queries/find-ids-n3';
 import {
   getBiomarkerTermOccurences,
@@ -112,10 +105,7 @@ export class CCFDatabase {
    * @param [options] Options used to initialize.
    * @returns A promise resolving to true if data has been loaded into the database.
    */
-  async connect(
-    options?: CCFDatabaseOptions,
-    cached = false
-  ): Promise<boolean> {
+  async connect(options?: CCFDatabaseOptions, cached = false): Promise<boolean> {
     if (options) {
       this.options = options;
     }
@@ -146,10 +136,7 @@ export class CCFDatabase {
     const lastModified = await get(lastModifiedKey).catch(() => undefined);
     let serializedDb: string | undefined;
 
-    if (
-      lastModified &&
-      start - new Date(+lastModified).getTime() > 60 * 60 * 1000
-    ) {
+    if (lastModified && start - new Date(+lastModified).getTime() > 60 * 60 * 1000) {
       await delMany([ccfDatabaseKey, lastModifiedKey]).catch(() => undefined);
     } else {
       serializedDb = await get(ccfDatabaseKey).catch(() => undefined);
@@ -174,8 +161,7 @@ export class CCFDatabase {
    */
   private async doConnect(): Promise<void> {
     const ops: Promise<unknown>[] = [];
-    const sources: (string | JsonLd)[] =
-      this.options.dataSources?.concat() ?? [];
+    const sources: (string | JsonLd)[] = this.options.dataSources?.concat() ?? [];
 
     const ccfOwlUrl = this.options.ccfOwlUrl;
     if (ccfOwlUrl.startsWith('{')) {
@@ -184,7 +170,7 @@ export class CCFDatabase {
     } else if (ccfOwlUrl.endsWith('.n3store.json')) {
       const storeString = await fetch(ccfOwlUrl)
         .then((r) => r.text())
-        .catch(() => console.log('Couldn\'t locate serialized store.'));
+        .catch(() => console.log("Couldn't locate serialized store."));
       if (storeString) {
         this.store = deserializeN3Store(storeString, DataFactory);
       }
@@ -220,18 +206,12 @@ export class CCFDatabase {
     await this.synchronize();
   }
 
-  async addDataSources(
-    sources: (string | JsonLd)[],
-    inputStore?: Store
-  ): Promise<this> {
+  async addDataSources(sources: (string | JsonLd)[], inputStore?: Store): Promise<this> {
     const store: Store = inputStore ?? this.store;
     await Promise.all(
       sources.map(async (source) => {
         if (typeof source === 'string') {
-          if (
-            (source.startsWith('http') || source.startsWith('assets/')) &&
-            source.includes('jsonld')
-          ) {
+          if ((source.startsWith('http') || source.startsWith('assets/')) && source.includes('jsonld')) {
             const sourceUrl = source;
             source = await fetch(sourceUrl)
               .then((r) => r.text())
@@ -243,11 +223,7 @@ export class CCFDatabase {
             await addJsonLdToStore(source, store);
           } else if (source.endsWith('n3')) {
             await addN3ToStore(source, store);
-          } else if (
-            source.endsWith('rdf') ||
-            source.endsWith('owl') ||
-            source.endsWith('xml')
-          ) {
+          } else if (source.endsWith('rdf') || source.endsWith('owl') || source.endsWith('xml')) {
             await addRdfXmlToStore(source, store);
           } else {
             // Passthrough assumes a JSON-LD response
@@ -325,9 +301,7 @@ export class CCFDatabase {
   getSpatialEntities(filter?: Filter): SpatialEntity[] {
     // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
     filter = { ...filter, hasSpatialEntity: true } as Filter;
-    return [...this.getIds(filter)].map(
-      (s) => getSpatialEntityForEntity(this.store, s) as SpatialEntity
-    );
+    return [...this.getIds(filter)].map((s) => getSpatialEntityForEntity(this.store, s) as SpatialEntity);
   }
 
   async getDatabaseStatus(): Promise<DatabaseStatus> {
@@ -364,9 +338,7 @@ export class CCFDatabase {
   async getTissueBlockResults(filter?: Filter): Promise<TissueBlockResult[]> {
     // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
     filter = { ...filter, hasSpatialEntity: true } as Filter;
-    return [...this.getIds(filter)].map((s) =>
-      getTissueBlockResult(this.store, s)
-    );
+    return [...this.getIds(filter)].map((s) => getTissueBlockResult(this.store, s));
   }
 
   /**
@@ -385,9 +357,7 @@ export class CCFDatabase {
    * @param [filter] The filter.
    * @returns Ontology term counts.
    */
-  async getOntologyTermOccurences(
-    filter?: Filter
-  ): Promise<Record<string, number>> {
+  async getOntologyTermOccurences(filter?: Filter): Promise<Record<string, number>> {
     return getOntologyTermOccurences(this.getIds(filter), this.store);
   }
 
@@ -397,9 +367,7 @@ export class CCFDatabase {
    * @param [filter] The filter.
    * @returns Cell type term counts.
    */
-  async getCellTypeTermOccurences(
-    filter?: Filter
-  ): Promise<Record<string, number>> {
+  async getCellTypeTermOccurences(filter?: Filter): Promise<Record<string, number>> {
     return getCellTypeTermOccurences(this.getIds(filter), this.store);
   }
 
@@ -409,9 +377,7 @@ export class CCFDatabase {
    * @param [filter] The filter.
    * @returns Cell type term counts.
    */
-  async getBiomarkerTermOccurences(
-    filter?: Filter
-  ): Promise<Record<string, number>> {
+  async getBiomarkerTermOccurences(filter?: Filter): Promise<Record<string, number>> {
     return getBiomarkerTermOccurences(this.getIds(filter), this.store);
   }
 
@@ -469,18 +435,12 @@ export class CCFDatabase {
    * @param [filter] The filter.
    * @returns A list of Spatial Scene Nodes for the 3D Scene
    */
-  async getReferenceOrganScene(
-    organIri: string,
-    filter?: Filter
-  ): Promise<SpatialSceneNode[]> {
+  async getReferenceOrganScene(organIri: string, filter?: Filter): Promise<SpatialSceneNode[]> {
     this.graph.createGraph();
     return this.scene.getReferenceOrganScene(organIri, filter);
   }
 
-  async getSpatialPlacement(
-    source: SpatialEntity,
-    targetIri: string
-  ): Promise<FlatSpatialPlacement | undefined> {
+  async getSpatialPlacement(source: SpatialEntity, targetIri: string): Promise<FlatSpatialPlacement | undefined> {
     return this.graph.getSpatialPlacement(source, targetIri);
   }
 }

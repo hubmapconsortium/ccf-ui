@@ -12,7 +12,7 @@ import { SpatialSceneNode } from 'ccf-body-ui';
 import { AggregateResult, SpatialEntity, TissueBlockResult } from 'ccf-database';
 import { GlobalConfigState, OrganInfo } from 'ccf-shared';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
-import { Observable, of } from 'rxjs';
+import { Observable, combineLatest, of } from 'rxjs';
 import { map, shareReplay, startWith, switchMap, tap } from 'rxjs/operators';
 
 import { OrganLookupService } from './core/services/organ-lookup/organ-lookup.service';
@@ -22,6 +22,13 @@ interface GlobalConfig {
   side?: string;
   sex?: 'Both' | 'Male' | 'Female';
   highlightProviders?: string[];
+  donorLabel?: string;
+  ruiUrl?: string;
+  euiUrl?: string;
+  asctbUrl?: string;
+  hraPortalUrl?: string;
+  onlineCourseUrl?: string;
+  paperUrl?: string;
 }
 
 const EMPTY_SCENE = [{ color: [0, 0, 0, 0], opacity: 0.001 }];
@@ -44,12 +51,22 @@ export class AppComponent implements AfterViewInit {
   readonly filter$ = this.configState
     .getOption('highlightProviders')
     .pipe(map((providers) => ({ tmc: providers ?? [] })));
+  readonly donorLabel$ = this.configState.getOption('donorLabel');
+  readonly ruiUrl$ = this.configState.getOption('ruiUrl');
+  readonly euiUrl$ = this.configState.getOption('euiUrl');
+  readonly asctbUrl$ = this.configState.getOption('asctbUrl');
+  readonly hraPortalUrl$ = this.configState.getOption('hraPortalUrl');
+  readonly onlineCourseUrl$ = this.configState.getOption('onlineCourseUrl');
+  readonly paperUrl$ = this.configState.getOption('paperUrl');
+
   readonly organInfo$: Observable<OrganInfo | undefined>;
   readonly organ$: Observable<SpatialEntity | undefined>;
   readonly scene$: Observable<SpatialSceneNode[]>;
   readonly stats$: Observable<AggregateResult[]>;
   readonly statsLabel$: Observable<string>;
   readonly blocks$: Observable<TissueBlockResult[]>;
+
+  stats: AggregateResult[] = [];
 
   private latestConfig: Immutable<GlobalConfig> = {};
   private latestOrganInfo?: OrganInfo;
@@ -95,9 +112,17 @@ export class AppComponent implements AfterViewInit {
       )
     );
 
-    this.stats$ = this.organ$.pipe(
-      switchMap((organ) =>
-        organ && this.latestOrganInfo ? lookup.getOrganStats(this.latestOrganInfo, organ.sex) : of([])
+    this.stats$ = combineLatest([this.organ$, this.donorLabel$]).pipe(
+      switchMap(([organ, donorLabel]) =>
+        organ && this.latestOrganInfo ?
+          lookup.getOrganStats(this.latestOrganInfo, organ.sex).pipe(
+            map(agg =>
+              agg.map(result =>
+                donorLabel && result.label === 'Donors' ?
+                  { ...result, label: donorLabel } : result
+              )
+            )
+          ) : of([])
       )
     );
 

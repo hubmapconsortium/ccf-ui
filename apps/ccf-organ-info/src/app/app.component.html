@@ -9,6 +9,14 @@
   <div class="right" #right>
     <ccf-stats-list [statsLabel]="(statsLabel$ | async) ?? ''" [stats]="(stats$ | async) ?? []">
     </ccf-stats-list>
-    <ccf-link-cards></ccf-link-cards>
+    <ccf-link-cards
+      [ruiUrl]="(ruiUrl$ | async) ?? ''"
+      [euiUrl]="(euiUrl$ | async) ?? ''"
+      [asctbUrl]="(asctbUrl$ | async) ?? ''"
+      [hraPortalUrl]="(hraPortalUrl$ | async) ?? ''"
+      [onlineCourseUrl]="(onlineCourseUrl$ | async) ?? ''"
+      [paperUrl]="(paperUrl$ | async) ?? ''"
+      >
+    </ccf-link-cards>
   </div>
 </div>

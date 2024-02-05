@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 
 interface LinkCard {
   body: string;
@@ -12,7 +12,14 @@ interface LinkCard {
   styleUrls: ['./link-cards.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LinkCardsComponent {
+export class LinkCardsComponent implements OnInit {
+  @Input() ruiUrl!: string;
+  @Input() euiUrl!: string;
+  @Input() asctbUrl!: string;
+  @Input() hraPortalUrl!: string;
+  @Input() onlineCourseUrl!: string;
+  @Input() paperUrl!: string;
+
   linkCards: LinkCard[] = [
     {
       body: 'Add tissue blocks using the HRA Registration User Interface (RUI).',
@@ -48,6 +55,13 @@ export class LinkCardsComponent {
       buttonUrl: 'https://www.nature.com/articles/s41556-021-00788-6'
     }
   ];
+
+  ngOnInit() {
+    const linkUrls = [this.ruiUrl, this.euiUrl, this.asctbUrl];
+    const deepDivesUrls = [this.hraPortalUrl, this.onlineCourseUrl, this.paperUrl];
+    this.linkCards = this.linkCards.map((card, index) => ({ ...card, buttonUrl: linkUrls[index] ?? card.buttonUrl }));
+    this.deepDives = this.deepDives.map((card, index) => ({ ...card, buttonUrl: deepDivesUrls[index] ?? card.buttonUrl }));
+  }
 
   goToURL(url: string): void {
     window.open(url, '_blank');
