@@ -10,10 +10,6 @@ export const environment = {
   dbOptions: {
     ccfOwlUrl: 'https://apps.humanatlas.io/hra-api/v1/ccf.owl.n3store.json',
     ccfContextUrl: 'https://hubmapconsortium.github.io/ccf-ontology/ccf-context.jsonld',
-    // dataSources: [
-    //   'https://hubmapconsortium.github.io/hra-registrations/federated/rui_locations.jsonld',
-    //   'https://apps.humanatlas.io/hra-api/v1/gtex/rui_locations.jsonld'
-    // ],
     hubmapDataService: 'search-api',
     hubmapDataUrl: 'https://search.api.hubmapconsortium.org/v3/entities/search',
     hubmapToken: localStorage.getItem('HUBMAP_TOKEN') ?? '',

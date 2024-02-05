@@ -1,5 +1,5 @@
 import { Injectable, isDevMode } from '@angular/core';
-import { CCFDatabase, CCFDatabaseOptions, Filter } from 'ccf-database';
+import { CCFDatabase, CCFDatabaseOptions } from 'ccf-database';
 import { Remote, releaseProxy, wrap } from 'comlink';
 import { Observable, ObservableInput, Unsubscribable, using } from 'rxjs';
 import { filter, map, shareReplay, switchMap } from 'rxjs/operators';
@@ -7,20 +7,6 @@ import { filter, map, shareReplay, switchMap } from 'rxjs/operators';
 import { GlobalConfigState } from '../../config/global-config.state';
 import { ApiEndpointDataSourceService } from './api-endpoint.service';
 import { DataSource, DataSourceDataType, DataSourceLike, DataSourceMethod, DelegateDataSource, ForwardingDataSource } from './data-source';
-
-/** Default values for filters. */
-export const DEFAULT_FILTER: Filter = {
-  sex: 'Both',
-  ageRange: [1, 110],
-  bmiRange: [13, 83],
-  consortiums: [],
-  tmc: [],
-  technologies: [],
-  ontologyTerms: ['http://purl.obolibrary.org/obo/UBERON_0013702'],
-  cellTypeTerms: ['http://purl.obolibrary.org/obo/CL_0000000'],
-  biomarkerTerms: ['http://purl.org/ccf/biomarkers'],
-  spatialSearches: []
-};
 
 interface CCFDatabaseManager extends Unsubscribable {
   database: CCFDatabase | Remote<CCFDatabase>;
@@ -95,17 +81,6 @@ const REMOTE_METHODS: (keyof DataSource)[] = [
   'getBiomarkerTreeModel',
   'getReferenceOrgans',
 ];
-const FILTER_METHODS_ARG_0: (keyof DataSource)[] = [
-  'getTissueBlockResults',
-  'getAggregateResults',
-  'getOntologyTermOccurences',
-  'getCellTypeTermOccurences',
-  'getBiomarkerTermOccurences',
-  'getScene',
-];
-const FILTER_METHODS_ARG_1: (keyof DataSource)[] = [
-  'getReferenceOrganScene',
-];
 
 @Injectable({
   providedIn: 'root'
@@ -128,11 +103,7 @@ export class HybridCCfDatabaseDatasourceService extends ForwardingDataSource {
   }
 
   private isRemoteCall(method: keyof DataSource): boolean {
-    return (
-      REMOTE_METHODS.includes(method) ||
-      (FILTER_METHODS_ARG_0.includes(method)) ||
-      (FILTER_METHODS_ARG_1.includes(method))
-    );
+    return REMOTE_METHODS.includes(method);
   }
 }
 
