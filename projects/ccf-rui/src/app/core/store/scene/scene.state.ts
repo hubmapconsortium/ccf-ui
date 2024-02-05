@@ -3,16 +3,19 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Computed, StateRepository } from '@angular-ru/ngxs/decorators';
 import { NgxsImmutableDataRepository } from '@angular-ru/ngxs/repositories';
+import { HttpClient } from '@angular/common/http';
 import { Injectable, Injector } from '@angular/core';
 import { Matrix4, toRadians } from '@math.gl/core';
 import { NgxsOnInit, State } from '@ngxs/store';
 import { AABB, Vec3 } from 'cannon-es';
 import { SpatialEntityJsonLd, SpatialSceneNode } from 'ccf-body-ui';
 import { SpatialEntity, SpatialPlacement, getOriginScene, getTissueBlockScene } from 'ccf-database';
-import { Position } from 'ccf-shared';
-import { Observable, combineLatest, of } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+import { GlobalConfigState, Position } from 'ccf-shared';
+import { isEqual } from 'lodash';
+import { Observable, combineLatest, defer, of } from 'rxjs';
+import { catchError, concatMap, distinctUntilChanged, filter, map, share, startWith, switchMap, take, throttleTime } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment';
+import { GlobalConfig } from '../../services/config/config';
 import { ModelState } from '../model/model.state';
 import { RegistrationState } from '../registration/registration.state';
 import { VisibilityItem } from './../../models/visibility-item';
@@ -26,6 +29,14 @@ import { ReferenceDataState } from './../reference-data/reference-data.state';
 export interface SceneStateModel {
   showCollisions: boolean;
 }
+
+interface Collision {
+  id: string;
+}
+
+const NODE_COLLISION_THROTTLE_DURATION = 10;
+
+const DEFAULT_COLLISIONS_ENDPOINT = 'https://pfn8zf2gtu.us-east-2.awsapprunner.com/get-collisions';
 
 function getNodeBbox(model: SpatialSceneNode): AABB {
   const mat = new Matrix4(model.transformMatrix);
@@ -49,7 +60,6 @@ function getNodeBbox(model: SpatialSceneNode): AABB {
 })
 @Injectable()
 export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> implements NgxsOnInit {
-
   @Computed()
   get nodes$(): Observable<SpatialSceneNode[]> {
     return combineLatest([
@@ -85,7 +95,7 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
         const organ = this.getOrganSpatialEntity(organIri as string);
         const originScene = organIri ? getOriginScene(organ, false, true) : [];
         const organScene = this.createSceneNodes(organIri as string, [...anatomicalStructures, ...extractionSites] as VisibilityItem[]);
-        return [ ...originScene, ...organScene ];
+        return [...originScene, ...organScene];
       })
     );
   }
@@ -114,18 +124,24 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
             }
           })
           .reduce<SpatialSceneNode[]>((acc, nodes) => acc.concat(nodes), [])
-      )
+      ),
+      distinctUntilChanged(isEqual)
     );
   }
 
   @Computed()
   get nodeCollisions$(): Observable<SpatialSceneNode[]> {
-    return combineLatest([this.referenceOrganSimpleNodes$, this.placementCube$]).pipe(
-      filter(([_nodes, placement]) => placement.length > 0),
-      map(([nodes, placement]) => {
-        const bbox = getNodeBbox(placement[0]);
-        return nodes.filter((model) => bbox.overlaps(getNodeBbox(model)));
-      })
+    return combineLatest([this.referenceOrganSimpleNodes$, this.collisions$, this.placementCube$]).pipe(
+      throttleTime(NODE_COLLISION_THROTTLE_DURATION, undefined, { leading: true, trailing: true }),
+      map(([nodes, collisions, placement]) => {
+        if (collisions !== undefined) {
+          return this.filterNodeCollisions(nodes, collisions);
+        } else if (placement.length > 0) {
+          return this.filterNodeBBox(nodes, placement[0]);
+        }
+        return [];
+      }),
+      share()
     );
   }
 
@@ -158,8 +174,8 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
   }
 
   @Computed()
-  get spatialKeyBoardAxis$(): Observable<SpatialSceneNode[]>{
-    return combineLatest([this.model.organIri$.pipe(filter(organIri=>organIri!=='')), this.model.position$]).pipe(map(([organIri, position]: [string, Position]) => {
+  get spatialKeyBoardAxis$(): Observable<SpatialSceneNode[]> {
+    return combineLatest([this.model.organIri$.pipe(filter(organIri => organIri !== '')), this.model.position$]).pipe(map(([organIri, position]: [string, Position]) => {
       const organEntity = this.getOrganSpatialEntity(organIri);
       const blockSize = this.model.snapshot.blockSize;
       const rotation = this.model.snapshot.rotation;
@@ -177,14 +193,15 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
         z_rotation: rotation.z,
 
         x_scaling: 1, y_scaling: 1, z_scaling: 1,
-      } as SpatialPlacement): [];
+      } as SpatialPlacement) : [];
     }));
   }
 
   @Computed()
-  get placementCube$(): Observable<SpatialSceneNode[]> | [] {
+  get placementCube$(): Observable<SpatialSceneNode[]> {
     return combineLatest([this.model.viewType$, this.model.blockSize$, this.model.rotation$, this.model.position$, this.model.organ$]).pipe(
-      map(([_viewType, _blockSize, _rotation, _position, organ]) => organ.src === '' ? [] : [this.placementCube])
+      map(([_viewType, _blockSize, _rotation, _position, organ]) => organ.src === '' ? [] : [this.placementCube]),
+      distinctUntilChanged(isEqual)
     );
   }
 
@@ -249,13 +266,23 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
   private registration: RegistrationState;
   private referenceData: ReferenceDataState;
 
+  @Computed()
+  private get collisions$(): Observable<Collision[] | undefined> {
+    return defer(() => this.registration.throttledJsonld$).pipe(
+      concatMap((jsonld) => this.getCollisions(jsonld)),
+      startWith([])
+    );
+  }
+
   /**
    * Creates an instance of scene state.
    *
    * @param injector Injector service used to lazy load page and model state
    */
   constructor(
-    private readonly injector: Injector
+    private readonly injector: Injector,
+    private readonly http: HttpClient,
+    private readonly globalConfig: GlobalConfigState<GlobalConfig>,
   ) {
     super();
   }
@@ -302,5 +329,24 @@ export class SceneState extends NgxsImmutableDataRepository<SceneStateModel> imp
     return db.organSpatialEntities[organIri] as SpatialEntity;
   }
 
+  private getCollisions(jsonld: unknown): Observable<Collision[] | undefined> {
+    return this.globalConfig.getOption('collisionsEndpoint').pipe(
+      switchMap((endpoint = DEFAULT_COLLISIONS_ENDPOINT) => this.http.post<Collision[]>(
+        endpoint, JSON.stringify(jsonld),
+        { headers: { 'Content-Type': 'application/json' } }
+      )),
+      catchError(() => of(undefined)),
+      take(1)
+    );
+  }
 
+  private filterNodeCollisions(nodes: SpatialSceneNode[], collisions: Collision[]): SpatialSceneNode[] {
+    const collidedIds = new Set(collisions.map(node => node.id));
+    return nodes.filter(node => collidedIds.has(node['@id']));
+  }
+
+  private filterNodeBBox(nodes: SpatialSceneNode[], placement: SpatialSceneNode): SpatialSceneNode[] {
+    const bbox = getNodeBbox(placement);
+    return nodes.filter((model) => bbox.overlaps(getNodeBbox(model)));
+  }
 }
