@@ -1,5 +1,0 @@
-generatorName: python
-# https://github.com/OpenAPITools/openapi-generator/blob/master/docs/generators/python.md
-additionalProperties:
-  packageName: ccf_openapi_client
-  projectName: ccf-openapi

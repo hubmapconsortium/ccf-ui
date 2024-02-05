@@ -1,0 +1,42 @@
+<div class="top-bar">
+  <ccf-stage-nav [useDropdownMenu]="isNarrowView" [view3D]="(is3DView$ | async) ?? false"
+    [side]="(model.viewSide$ | async)!" (view3DChange)="setViewType($event)"
+    (sideChange)="model.setViewSide($any($event))">
+  </ccf-stage-nav>
+  <mat-icon matRipple [matRippleCentered]="true" [matRippleUnbounded]="true" matRippleColor="rgba(204, 204, 204, 0.25)"
+    class="icon reset" (click)="resetStage()">refresh</mat-icon>
+</div>
+
+<div class="main-content">
+  <ccf-body-ui class="body-ui" *ngIf="(model.viewType$ | async) === '3d'" [scene]="(scene.nodes$ | async) ?? []"
+    [rotation]="(scene.rotation$ | async) ?? 0"
+    (rotationChange)="gizmo.rotation = $event[0]; gizmo.rotationX = $event[1]" [bounds]="(bounds$ | async)!"
+    [zoom]="11.5" [interactive]="true" camera="perspective"></ccf-body-ui>
+
+  <ccf-body-ui class="body-ui" *ngIf="(model.viewType$ | async) === 'register'"
+    [scene]="(scene.rotatedNodes$ | async) ?? []" [interactive]="false" [bounds]="(bounds$ | async)!" [zoom]="11.5"
+    (nodeDrag)="handleNodeDrag($event)" camera="orthographic"></ccf-body-ui>
+  <div class="gizmo-area">
+    <ccf-body-ui class="gizmo" [scene]="(scene.gizmo$ | async)!" [rotation]="(scene.rotation$ | async) ?? 0"
+      [interactive]="false" [zoom]="9.5" #gizmo></ccf-body-ui>
+    <ccf-spatial-search-keyboard-ui-behavior *ngIf="page.registrationStarted$| async" [delta]="1" [shiftDelta]="2"
+      [position]="(position$ | async)!"
+      [disablePositionChange]="disablePositionChange"></ccf-spatial-search-keyboard-ui-behavior>
+    <div class="position-display">
+      <div class="position">
+        <div class="x">X: {{ (position$ | async)?.x }}</div>
+        <div class="y">Y: {{ (position$ | async)?.y }}</div>
+        <div class="z">Z: {{ (position$ | async)?.z }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ccf-store-debug *ngIf="showDebugButtons && debugMode" class="debug">
+</ccf-store-debug>
+<div *ngIf="showDebugButtons"
+  style="position: absolute; bottom: 1rem; display: flex; flex-direction: row; justify-content: space-between; width: 7rem;">
+  <button style="width: 3rem; font-size: .7rem;" (click)="debugMode = !debugMode">State</button>
+  <button (click)="registration.setUseRegistrationCallback(true);">Use callback</button>
+  <button (click)="registration.setUseRegistrationCallback(false);">Use download</button>
+</div>

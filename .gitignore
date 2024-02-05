@@ -50,7 +50,6 @@ yarn-error.log
 testem.log
 /typings
 svgo.config.js
-.nx
 
 # System Files
 .DS_Store
@@ -59,4 +58,7 @@ Thumbs.db
 .scannerwork/
 
 # Development data
-projects/ccf-eui/src/assets/dev-data
+apps/ccf-eui/src/assets/dev-data
+
+
+.nx/cache

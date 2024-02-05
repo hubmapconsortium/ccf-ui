@@ -1,0 +1,61 @@
+{
+  "name": "ccf-database",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/ccf-database/src",
+  "prefix": "lib",
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:package",
+      "options": {
+        "tsConfig": "libs/ccf-database/tsconfig.lib.json",
+        "project": "libs/ccf-database/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/ccf-database/tsconfig.lib.prod.json"
+        }
+      }
+    },
+    "test": {
+      "executor": "@angular-devkit/build-angular:karma",
+      "options": {
+        "main": "libs/ccf-database/src/test.ts",
+        "tsConfig": "libs/ccf-database/tsconfig.spec.json",
+        "karmaConfig": "libs/ccf-database/karma.conf.js",
+        "codeCoverage": true,
+        "codeCoverageExclude": [
+          "**/src/test.ts",
+          "**/*.module.ts"
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/ccf-database/**/*.ts",
+          "libs/ccf-database/**/*.html"
+        ]
+      }
+    },
+    "compodoc": {
+      "executor": "@twittwer/compodoc:compodoc",
+      "options": {
+        "tsConfig": "libs/ccf-database/tsconfig.lib.json",
+        "outputPath": "dist/compodoc/ccf-database"
+      },
+      "configurations": {
+        "ci": {
+          "silent": true
+        },
+        "serve": {
+          "watch": true,
+          "disableCoverage": false,
+          "disablePrivate": false,
+          "disableInternal": false
+        }
+      }
+    }
+  }
+}

@@ -1,8 +1,0 @@
-{
-  "$schema": "../../node_modules/@compodoc/compodoc/src/config/schema.json",
-  "name": "Library ccf-database documentation",
-  "tsconfig": "./projects/ccf-database/tsconfig.compodoc.json",
-  "output": "./docs/ccf-database",
-  "silent": true,
-  "coverageTestThresholdFail": false
-}

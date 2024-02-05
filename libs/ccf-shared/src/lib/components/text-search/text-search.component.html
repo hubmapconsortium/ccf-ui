@@ -1,0 +1,22 @@
+<form class="form">
+  <mat-form-field class="form-field" appearance="outline">
+    <ng-container matPrefix>
+      <ng-content select="[matPrefix]"></ng-content>
+    </ng-container>
+
+    <input matInput type="search" class="input" [placeholder]="placeholder" [formControl]="controller"
+           [matAutocomplete]="auto">
+
+    <mat-autocomplete class="autocomplete" [displayWith]="optionDisplay" (optionSelected)="optionSelected.emit($event.option.value)"
+                      #auto="matAutocomplete">
+      <mat-option *ngFor="let option of options | async; trackBy: optionId">
+        <ccf-decorated-text [text]="option.label" [decorations]="option.decorations">
+        </ccf-decorated-text>
+      </mat-option>
+    </mat-autocomplete>
+
+    <ng-container matSuffix>
+      <ng-content select="[matSuffix]"></ng-content>
+    </ng-container>
+  </mat-form-field>
+</form>

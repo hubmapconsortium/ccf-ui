@@ -1,0 +1,20 @@
+<div class="link-cards-container" gaCategory="link-cards">
+  <div class="link-card" *ngFor="let card of linkCards">
+    <div class="link-card-content">
+      <div class="body">{{ card.body }}</div>
+      <div class="link-button btn" gaEvent="visit-link" [gaLabel]="card.buttonUrl" (click)="goToURL(card.buttonUrl)">
+        {{ card.buttonTitle }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="deep-dive-section" gaCategory="deep-dive">
+  <div class="title">Human Reference Atlas (HRA) Deep Dive</div>
+  <div class="button-container">
+    <div *ngFor="let button of deepDives" class="btn-outline btn" gaEvent="visit-link" [gaLabel]="button.buttonUrl"
+      (click)="goToURL(button.buttonUrl)">
+      {{ button.buttonTitle }}
+    </div>
+  </div>
+</div>

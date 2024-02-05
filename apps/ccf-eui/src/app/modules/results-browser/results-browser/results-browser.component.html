@@ -1,0 +1,19 @@
+<div class="results-browser-container">
+  <div class="stat-box">
+    <div id="title">{{ resultLabel }}</div>
+    <div class="stat-row" *ngFor="let stat of aggregateData">
+      <div class="stat-value">{{stat.count}}</div>
+      <div class="stat-label">{{stat.label}}</div>
+    </div>
+  </div>
+
+  <div class="results-browser-list" [class.header-hidden]="!header" (scroll)="onScroll($event)">
+    <div class="browser-item-container" (mouseenter)="handleHover(result.tissueBlock.spatialEntityId)"
+      (mouseleave)="handleUnhover()" *ngFor="let result of listResults">
+      <ccf-donor-card [tissueBlock]="asMutable(result.tissueBlock)" [selected]="result.selected" [color]="result.color ?? ''"
+        (checked)="handleSelection(result, $event)" (linkClick)="handleLinkClick($event)"
+        [highlighted]="result.tissueBlock.spatialEntityId === highlighted"></ccf-donor-card>
+    </div>
+  </div>
+  <div class="scroll-gradient" [class.hidden]="!!atScrollBottom"></div>
+</div>

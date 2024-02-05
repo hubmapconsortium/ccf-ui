@@ -1,0 +1,38 @@
+<div class="scroll-wrapper">
+  <div class="container">
+    <mat-expansion-panel class="anatomical-structures-menu" [expanded]="organSelected$ | async">
+      <mat-expansion-panel-header class="expansion-header">
+        <mat-panel-title class="expansion-title"
+          matTooltip="Use opacity icons to change visibility of anatomical structures">Anatomical
+          Structures</mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <div class="expansion-content">
+        <ccf-visibility-menu [items]="$any(model.anatomicalStructures$ | async) ?? []"
+          (itemsChange)="model.setAnatomicalStructures($event)">
+        </ccf-visibility-menu>
+      </div>
+    </mat-expansion-panel>
+
+    <mat-divider></mat-divider>
+
+    <mat-expansion-panel class="extraction-menu" [expanded]="organSelected$ | async">
+      <mat-expansion-panel-header class="expansion-header">
+        <mat-panel-title
+          matTooltip="Some organs have predefined landmarks to guide manual tissue registration--you can turn these on/off."
+          class="expansion-title">Landmarks</mat-panel-title>
+      </mat-expansion-panel-header>
+      <div *ngIf="organSelected$ | async" class="expansion-content">
+        <ccf-extraction-set-dropdown [sets]="$any(model.extractionSets$ | async)"
+          (setChange)="model.setExtractionSites($event.sites)" #dropdown>
+        </ccf-extraction-set-dropdown>
+        <ccf-visibility-menu [items]="$any(model.extractionSites$ | async)"
+          (itemsChange)="model.setExtractionSites($event)" (hover)="updateExtractionSiteTooltip($event)">
+        </ccf-visibility-menu>
+      </div>
+    </mat-expansion-panel>
+    <div class="extraction-site-tooltip mat-elevation-z8" *ngIf="extractionSiteTooltip.length > 0">
+      {{ extractionSiteTooltip }}
+    </div>
+  </div>
+</div>

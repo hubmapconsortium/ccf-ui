@@ -1,0 +1,61 @@
+{
+  "name": "ccf-body-ui",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/ccf-body-ui/src",
+  "prefix": "lib",
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:package",
+      "options": {
+        "tsConfig": "libs/ccf-body-ui/tsconfig.lib.json",
+        "project": "libs/ccf-body-ui/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/ccf-body-ui/tsconfig.lib.prod.json"
+        }
+      }
+    },
+    "test": {
+      "executor": "@angular-devkit/build-angular:karma",
+      "options": {
+        "main": "libs/ccf-body-ui/src/test.ts",
+        "tsConfig": "libs/ccf-body-ui/tsconfig.spec.json",
+        "karmaConfig": "libs/ccf-body-ui/karma.conf.js",
+        "codeCoverage": true,
+        "codeCoverageExclude": [
+          "**/src/test.ts",
+          "**/*.module.ts"
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/ccf-body-ui/**/*.ts",
+          "libs/ccf-body-ui/**/*.html"
+        ]
+      }
+    },
+    "compodoc": {
+      "executor": "@twittwer/compodoc:compodoc",
+      "options": {
+        "tsConfig": "libs/ccf-body-ui/tsconfig.lib.json",
+        "outputPath": "dist/compodoc/ccf-body-ui"
+      },
+      "configurations": {
+        "ci": {
+          "silent": true
+        },
+        "serve": {
+          "watch": true,
+          "disableCoverage": false,
+          "disablePrivate": false,
+          "disableInternal": false
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,48 @@
+<div class="header">
+  <span class="text title" matTooltip="Use sliders below to rotate tissue block for registration">Tissue Block
+    Rotation</span>
+  <div class="filler"></div>
+  <div class="refresh-button-container">
+    <mat-icon matRipple [matRippleCentered]="true" [matRippleUnbounded]="true" class="icon reset"
+      (click)="resetRotation('x'); resetRotation('y'); resetRotation('z')">refresh</mat-icon>
+  </div>
+</div>
+
+<div class="slider-box red">
+  <span class="text label">X</span>
+  <div class="slider-container">
+    <mat-slider class="slider" [max]="180" [min]="-180" disableRipple discrete>
+      <input class="slider-x" matSliderThumb [value]="rotation.x" (input)="changeRotation(sliderX.value, 'x')" #sliderX>
+    </mat-slider>
+  </div>
+  <mat-form-field>
+    <input matInput class="input" type="number" [value]="rotation.x" [min]="-180" [max]="180"
+      (change)="changeRotation($any($event.target).value, 'x')">
+  </mat-form-field>
+</div>
+
+<div class="slider-box green">
+  <span class="text label">Y</span>
+  <div class="slider-container">
+    <mat-slider class="slider" [max]="180" [min]="-180" disableRipple discrete>
+      <input class="slider-y" matSliderThumb [value]="rotation.y" (input)="changeRotation(sliderY.value, 'y')" #sliderY>
+    </mat-slider>
+  </div>
+  <mat-form-field>
+    <input matInput class="input" type="number" [value]="rotation.y" [min]="-180" [max]="180"
+      (change)="changeRotation($any($event.target).value, 'y')">
+  </mat-form-field>
+</div>
+
+<div class="slider-box blue">
+  <span class="text label">Z</span>
+  <div class="slider-container">
+    <mat-slider class="slider" [max]="180" [min]="-180" disableRipple discrete>
+      <input class="slider-z" matSliderThumb [value]="rotation.z" (input)="changeRotation(sliderZ.value, 'z')" #sliderZ>
+    </mat-slider>
+  </div>
+  <mat-form-field>
+    <input matInput class="input" type="number" [value]="rotation.z" [min]="-180" [max]="180"
+      (change)="changeRotation($any($event.target).value, 'z')">
+  </mat-form-field>
+</div>

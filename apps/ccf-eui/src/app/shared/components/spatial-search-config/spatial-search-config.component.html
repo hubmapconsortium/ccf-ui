@@ -1,0 +1,36 @@
+<div class="header">
+  <div class="header-left">
+    <div class="title">Configure Spatial Search</div>
+    <button class="info" mat-icon-button (click)="infoClicked.emit()">
+      <mat-icon>info</mat-icon>
+    </button>
+  </div>
+  <button class="close" mat-icon-button (click)="closeDialog.emit()">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+
+<div class="sex-toggle">
+  <div class="label">Donor Sex: </div>
+  <mat-radio-group class="radio-group" [(ngModel)]="sex" (change)="updateSex.emit($event.value)">
+    <mat-radio-button class="radio" value="male">Male</mat-radio-button>
+    <mat-radio-button class="radio" value="female">Female</mat-radio-button>
+  </mat-radio-group>
+</div>
+
+<div class="organ-selector">
+  <div class="label">Select an organ</div>
+  <mat-form-field class="form-field" appearance="fill" subscriptSizing="dynamic">
+    <div *ngIf="!selectedOrgan" class="label">Organs</div>
+    <mat-select disableOptionCentering="true" panelClass="organ-select" [(value)]="selectedOrgan"
+      (selectionChange)="updateOrgan.emit($event.value)" hideSingleSelectionIndicator="true">
+      <mat-option class="organ-select-option" *ngFor="let organ of organs" [value]="organ">
+        {{organ.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<button class="continue-button" [class.disabled]="!selectedOrgan" mat-button (click)="buttonClicked.emit()">
+  Continue
+</button>

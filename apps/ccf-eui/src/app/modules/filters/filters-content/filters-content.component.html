@@ -1,0 +1,36 @@
+<div class="patient-filters" [class.hidden]="hidden">
+  <ccf-dropdown label="Sex" [options]="['Both', 'Male', 'Female']" [selection]="sex"
+    (selectionChange)="updateFilter($event, 'sex')"></ccf-dropdown>
+
+  <ccf-dual-slider label="Age" [valueRange]="[1, 110]" [selection]="ageRange"
+    (selectionChange)="updateFilter($event, 'ageRange')"></ccf-dual-slider>
+  <ccf-dual-slider label="BMI" [valueRange]="[13, 83]" [selection]="bmiRange"
+    (selectionChange)="updateFilter($event, 'bmiRange')"></ccf-dual-slider>
+</div>
+
+<div class="filter assays" [class.hidden]="hidden">
+  <ccf-checkbox label="Assay Types" [columns]="5" [options]="technologyFilters" [selection]="technologies"
+    (selectionChange)="updateFilter($event, 'technologies')"></ccf-checkbox>
+</div>
+
+<div class="filter providers" [class.hidden]="hidden">
+  <ccf-checkbox label="Tissue Providers" [columns]="3" [options]="providerFilters" [selection]="tmc"
+    (selectionChange)="updateFilter($event, 'tmc')"></ccf-checkbox>
+</div>
+
+<div *ngIf="spatialSearchFilters.length > 0" class="filter spatial-locations" [class.hidden]="hidden">
+  <ccf-spatial-search-list label="Spatial Locations" [items]="spatialSearchFilters"
+    (selectionChanged)="updateSearchSelection($event)"
+    (itemRemoved)="spatialSearchRemoved.emit($event.id)">
+  </ccf-spatial-search-list>
+</div>
+
+<div class="button-container" [class.hidden]="hidden">
+  <ccf-run-spatial-search></ccf-run-spatial-search>
+  <div class="right-group">
+    <button class="outline-button" mat-button (click)="applyButtonClick()">Apply Filters</button>
+    <div class="refresh-icon">
+      <mat-icon class="icon refresh" (click)="refreshFilters()">refresh</mat-icon>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,174 @@
+{
+  "name": "ccf-organ-info",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "generators": {
+    "@schematics/angular:component": {
+      "style": "scss"
+    },
+    "@schematics/angular:application": {
+      "strict": true
+    }
+  },
+  "sourceRoot": "apps/ccf-organ-info/src",
+  "prefix": "app",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "options": {
+        "outputPath": "dist/apps/ccf-organ-info",
+        "index": "apps/ccf-organ-info/src/index.html",
+        "main": "apps/ccf-organ-info/src/main.ts",
+        "polyfills": "apps/ccf-organ-info/src/polyfills.ts",
+        "tsConfig": "apps/ccf-organ-info/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/ccf-organ-info/src/favicon.ico",
+          "apps/ccf-organ-info/src/assets"
+        ],
+        "styles": [
+          "apps/ccf-organ-info/src/styles.scss"
+        ],
+        "scripts": [
+          {
+            "input": "node_modules/document-register-element/build/document-register-element.js"
+          }
+        ]
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "2mb",
+              "maximumError": "5mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "6kb",
+              "maximumError": "10kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/ccf-organ-info/src/environments/environment.ts",
+              "with": "apps/ccf-organ-info/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "none"
+        },
+        "staging": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "2mb",
+              "maximumError": "5mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "6kb",
+              "maximumError": "10kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/ccf-organ-info/src/environments/environment.ts",
+              "with": "apps/ccf-organ-info/src/environments/environment.staging.ts"
+            }
+          ],
+          "outputHashing": "none"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "ccf-organ-info:build:production"
+        },
+        "staging": {
+          "browserTarget": "ccf-organ-info:build:staging"
+        },
+        "development": {
+          "browserTarget": "ccf-organ-info:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "ccf-organ-info:build"
+      }
+    },
+    "test": {
+      "executor": "@angular-devkit/build-angular:karma",
+      "options": {
+        "main": "apps/ccf-organ-info/src/test.ts",
+        "polyfills": "apps/ccf-organ-info/src/polyfills.ts",
+        "tsConfig": "apps/ccf-organ-info/tsconfig.spec.json",
+        "karmaConfig": "apps/ccf-organ-info/karma.conf.js",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/ccf-organ-info/src/favicon.ico",
+          "apps/ccf-organ-info/src/assets"
+        ],
+        "codeCoverage": true,
+        "codeCoverageExclude": [
+          "**/e2e/**/*",
+          "**/test.ts",
+          "**/polyfills.ts",
+          "**/environments/**/*.ts",
+          "**/*.module.ts"
+        ],
+        "styles": [
+          "apps/ccf-organ-info/src/styles.scss"
+        ],
+        "scripts": [
+          {
+            "input": "node_modules/document-register-element/build/document-register-element.js"
+          }
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/ccf-organ-info/**/*.ts",
+          "apps/ccf-organ-info/**/*.html"
+        ]
+      }
+    },
+    "build-webcomponent": {
+      "command": "node tools/scripts/build-webcomponent.mjs ccf-organ-info"
+    },
+    "compodoc": {
+      "executor": "@twittwer/compodoc:compodoc",
+      "options": {
+        "tsConfig": "apps/ccf-organ-info/tsconfig.json",
+        "outputPath": "dist/compodoc/ccf-organ-info"
+      },
+      "configurations": {
+        "ci": {
+          "silent": true
+        },
+        "serve": {
+          "watch": true,
+          "disableCoverage": false,
+          "disablePrivate": false,
+          "disableInternal": false
+        }
+      }
+    }
+  }
+}

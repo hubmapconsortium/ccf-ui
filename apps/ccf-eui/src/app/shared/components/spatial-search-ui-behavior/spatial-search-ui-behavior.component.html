@@ -1,0 +1,10 @@
+<ccf-spatial-search-ui *ngIf="organ$ | async as organ" [sex]="(sex$ | async)!" [referenceOrgan]="organ"
+  [radius]="(radius$ | async) ?? 0" [radiusSettings]="(radiusSettings$ | async)!"
+  [defaultPosition]="(defaultPosition$ | async)!" [position]="(position$ | async)!" [scene]="(scene$ | async)!"
+  [sceneBounds]="(sceneBounds$ | async)!" [sceneTarget]="$any(sceneTarget$ | async)!" [tissueBlocks]="(tissueBlocks$ | async)!"
+  [anatomicalStructures]="(anatomicalStructures$ | async) ?? []" [cellTypes]="(cellTypes$ | async) ?? []"
+  (addSpatialSearch)="addSpatialSearch()" (radiusChange)="updateRadius($event)" (resetPosition)="resetPosition()"
+  (resetSphere)="resetRadius()" (positionChange)="updatePosition($event)" (closeSpatialSearch)="close()"
+  (editReferenceOrganClicked)="openSpatialSearchConfig()" (infoClicked)="onDialogButtonClick()"
+  (nodeClicked)="moveToNode($event)">
+</ccf-spatial-search-ui>
