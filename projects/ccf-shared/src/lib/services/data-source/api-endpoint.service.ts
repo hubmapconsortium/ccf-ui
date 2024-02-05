@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Matrix4 } from '@math.gl/core';
 import {
-  AggregateResult, Filter, OntologyTreeModel, OntologyTreeNode, SpatialEntity, SpatialSceneNode, TissueBlockResult,
+  AggregateResult, Filter, OntologyTreeModel,
+  SpatialEntity, SpatialSceneNode, TissueBlockResult
 } from 'ccf-database';
-import { DatabaseStatus, DefaultService, MinMax, SpatialSearch, SpatialSceneNode as RawSpatialSceneNode } from 'ccf-openapi/angular-client';
-import { combineLatest, Observable, of, Subject } from 'rxjs';
+import { DatabaseStatus, DefaultService, MinMax, SpatialSceneNode as RawSpatialSceneNode, SpatialSearch } from 'ccf-openapi/angular-client';
+import { Observable, Subject, combineLatest } from 'rxjs';
 import { map, switchMap, take, tap } from 'rxjs/operators';
 import { Cacheable } from 'ts-cacheable';
 
@@ -12,7 +13,7 @@ import { GlobalConfigState } from '../../config/global-config.state';
 import { DataSource } from './data-source';
 
 
-export interface ApiEndpointDataSourceOptions {
+interface ApiEndpointDataSourceOptions {
   remoteApiEndpoint: string;
   hubmapToken?: string;
 }
