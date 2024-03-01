@@ -93,7 +93,7 @@
     "@loaders.gl/gltf": "~3.2.10",
     "@luma.gl/core": "~8.5.16",
     "@math.gl/core": "~3.6.3",
-    "@math.gl/culling": "~3.5.7",
+    "@math.gl/culling": "~4.0.0",
     "@ngxs-labs/dispatch-decorator": "^5.0.0",
     "@ngxs/logger-plugin": "^3.8.2",
     "@ngxs/storage-plugin": "^3.8.2",
