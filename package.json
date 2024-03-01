@@ -108,7 +108,7 @@
     "cors": "^2.8.5",
     "css-element-queries": "^1.2.3",
     "document-register-element": "^1.14.10",
-    "dotenv": "^16.3.1",
+    "dotenv": "^16.4.5",
     "express": "^4.18.2",
     "file-saver": "^2.0.5",
     "fs-extra": "^11.1.1",
