@@ -54,7 +54,7 @@ jobs:
           mkdir -p dist/ccf-ui
           cp -r dist/ccf-body-ui-wc dist/ccf-ui/body-ui
 
-      - uses: jsmrcaga/action-netlify-deploy@v1.8.0
+      - uses: jsmrcaga/action-netlify-deploy@v2.2.0
         id: deploy
         with:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
