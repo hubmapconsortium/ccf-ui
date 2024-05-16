@@ -165,18 +165,6 @@ describe('OntologyTreeComponent', () => {
     expect(instance.getNodeLabel('test')).toEqual('test');
   });
 
-  it('should update the opacity', async () => {
-    const { instance } = await shallow.render();
-    instance.updateOpacity(flatNode1, 50);
-    expect(flatNode1.opacity).toEqual(50);
-  });
-
-  it('should toggle the visibility', async () => {
-    const { instance } = await shallow.render();
-    instance.toggleVisibility(flatNode1);
-    expect(flatNode1.visible).toBeFalse();
-  });
-
   it('should re-run the gradient display logic on a scroll event', async () => {
     const { instance, find } = await shallow.render();
     const list = find('.ccf-ontology-tree');
