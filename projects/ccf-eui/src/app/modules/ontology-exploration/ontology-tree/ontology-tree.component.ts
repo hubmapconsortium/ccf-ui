@@ -207,10 +207,6 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
    */
   selectedNodes: FlatNode[] = [];
 
-  highlightedNode: FlatNode | undefined;
-
-
-
   /**
    * Expand the body node when the component is initialized.
    */
@@ -371,67 +367,6 @@ export class OntologyTreeComponent implements OnInit, OnChanges {
     if (emit) {
       this.nodeSelected.emit(this.selectedNodes.map(selectedNode => selectedNode?.original));
     }
-  }
-
-  /**
-   * Sets the current highlighted node to the moused over node (reveals opacity slider)
-   *
-   * @param node
-   */
-  mouseOver(node: FlatNode): void {
-    this.highlightedNode = node;
-  }
-
-  /**
-   * Deselects the highlighted node on mouse out
-   */
-  mouseOut(): void {
-    this.highlightedNode = undefined;
-  }
-
-  /**
-   * Sets the opacity of a node
-   *
-   * @param node The node to be updated
-   * @param value Opacity value
-   */
-  updateOpacity(node: FlatNode, value: number | undefined): void {
-    node.opacity = value;
-    this.ga.event('opacity_update', 'ontology_tree', node.label, value);
-    this.nodeChanged.emit(node);
-  }
-
-  /**
-   * Resets node to default opacity and visibility
-   *
-   * @param node The node to be reset
-   */
-  resetNode(node: FlatNode): void {
-    node.opacity = 20;
-    node.visible = true;
-    this.ga.event('node_reset', 'ontology_tree', node.label);
-    this.nodeChanged.emit(node);
-  }
-
-  /**
-   * Toggles visibility of a node
-   *
-   * @param node The node to be toggled
-   */
-  toggleVisibility(node: FlatNode): void {
-    node.visible = node.visible === true ? false : true;
-    this.ga.event('visibility_update', 'ontology_tree', node.label, +node.visible);
-    this.nodeChanged.emit(node);
-  }
-
-  /**
-   * Used to properly set the position of the slider popup on the ontology tree
-   *
-   * @param level Current level of a node in the ontology tree
-   * @returns left indent value
-   */
-  getLeftIndent(level: number): string {
-    return `${level * -1.5}rem`;
   }
 
   /**

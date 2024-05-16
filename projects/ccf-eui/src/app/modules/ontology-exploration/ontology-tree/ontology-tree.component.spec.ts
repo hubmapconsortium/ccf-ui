@@ -40,11 +40,6 @@ describe('OntologyTreeComponent', () => {
     expect(instance.nodes).toEqual([node1, node2]);
   });
 
-  it('should return left indent', async () => {
-    const { instance } = await shallow.render();
-    expect(instance.getLeftIndent(1)).toEqual('-1.5rem');
-  });
-
   it('should set children', async () => {
     const { instance } = await shallow.render();
     instance.getChildren = ()=>[];
@@ -157,24 +152,6 @@ describe('OntologyTreeComponent', () => {
     expect(instance.isInnerNode(1, flatNode2)).toBeFalse();
   });
 
-  it('should change highlightedNode when moused over', async () => {
-    const { instance } = await shallow.render();
-    instance.mouseOver(flatNode1);
-    expect(instance.highlightedNode).toEqual(flatNode1);
-  });
-
-  it('should remove highlightedNode when moused out', async () => {
-    const { instance } = await shallow.render();
-    instance.mouseOut();
-    expect(instance.highlightedNode).toBeUndefined();
-  });
-
-  it('should reset the node', async () => {
-    const { instance, outputs } = await shallow.render();
-    instance.resetNode(flatNode1);
-    expect(outputs.nodeChanged.emit).toHaveBeenCalled();
-  });
-
   it('should return number of children when getNumResults is called', async () => {
     const { instance } = await shallow.render();
     expect(instance.getCountLabel(flatNode1)).toEqual('');
@@ -186,18 +163,6 @@ describe('OntologyTreeComponent', () => {
     const label = instance.getNodeLabel('body');
     expect(label).toEqual('Anatomical Structures (AS)');
     expect(instance.getNodeLabel('test')).toEqual('test');
-  });
-
-  it('should update the opacity', async () => {
-    const { instance } = await shallow.render();
-    instance.updateOpacity(flatNode1, 50);
-    expect(flatNode1.opacity).toEqual(50);
-  });
-
-  it('should toggle the visibility', async () => {
-    const { instance } = await shallow.render();
-    instance.toggleVisibility(flatNode1);
-    expect(flatNode1.visible).toBeFalse();
   });
 
   it('should re-run the gradient display logic on a scroll event', async () => {
