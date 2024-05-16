@@ -40,11 +40,6 @@ describe('OntologyTreeComponent', () => {
     expect(instance.nodes).toEqual([node1, node2]);
   });
 
-  it('should return left indent', async () => {
-    const { instance } = await shallow.render();
-    expect(instance.getLeftIndent(1)).toEqual('-1.5rem');
-  });
-
   it('should set children', async () => {
     const { instance } = await shallow.render();
     instance.getChildren = ()=>[];
@@ -155,24 +150,6 @@ describe('OntologyTreeComponent', () => {
   it('isInnerNode should return false when a node cannot be expanded', async () => {
     const { instance } = await shallow.render();
     expect(instance.isInnerNode(1, flatNode2)).toBeFalse();
-  });
-
-  it('should change highlightedNode when moused over', async () => {
-    const { instance } = await shallow.render();
-    instance.mouseOver(flatNode1);
-    expect(instance.highlightedNode).toEqual(flatNode1);
-  });
-
-  it('should remove highlightedNode when moused out', async () => {
-    const { instance } = await shallow.render();
-    instance.mouseOut();
-    expect(instance.highlightedNode).toBeUndefined();
-  });
-
-  it('should reset the node', async () => {
-    const { instance, outputs } = await shallow.render();
-    instance.resetNode(flatNode1);
-    expect(outputs.nodeChanged.emit).toHaveBeenCalled();
   });
 
   it('should return number of children when getNumResults is called', async () => {

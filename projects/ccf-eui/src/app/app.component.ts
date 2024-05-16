@@ -23,7 +23,7 @@ import { AppRootOverlayContainer } from './core/services/app-root-overlay/app-ro
 import { ThemingService } from './core/services/theming/theming.service';
 import { actionAsFn } from './core/store/action-as-fn';
 import { DataStateSelectors } from './core/store/data/data.selectors';
-import { DataQueryState, DataState } from './core/store/data/data.state';
+import { DataState } from './core/store/data/data.state';
 import { ListResultsState } from './core/store/list-results/list-results.state';
 import { SceneState } from './core/store/scene/scene.state';
 import {
@@ -123,9 +123,7 @@ export class AppComponent implements OnInit {
   }
 
   /** Emits true whenever the overlay spinner should activate. */
-  readonly spinnerActive$ = this.data.queryStatus$.pipe(
-    map(state => state === DataQueryState.Running)
-  );
+  readonly spinnerActive$ = this.data.state$.pipe(map((state) => state?.status !== 'Ready'));
 
   readonly loadingMessage$ = this.data.state$.pipe(map(x => x?.statusMessage));
 
