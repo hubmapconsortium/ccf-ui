@@ -406,7 +406,7 @@ import { AppRootOverlayContainer } from &#x27;./core/services/app-root-overlay/a
 import { ThemingService } from &#x27;./core/services/theming/theming.service&#x27;;
 import { actionAsFn } from &#x27;./core/store/action-as-fn&#x27;;
 import { DataStateSelectors } from &#x27;./core/store/data/data.selectors&#x27;;
-import { DataQueryState, DataState } from &#x27;./core/store/data/data.state&#x27;;
+import { DataState } from &#x27;./core/store/data/data.state&#x27;;
 import { ListResultsState } from &#x27;./core/store/list-results/list-results.state&#x27;;
 import { SceneState } from &#x27;./core/store/scene/scene.state&#x27;;
 import {
@@ -506,9 +506,7 @@ export class AppComponent implements OnInit {
   }
 
   /** Emits true whenever the overlay spinner should activate. */
-  readonly spinnerActive$ &#x3D; this.data.queryStatus$.pipe(
-    map(state &#x3D;&gt; state &#x3D;&#x3D;&#x3D; DataQueryState.Running)
-  );
+  readonly spinnerActive$ &#x3D; this.data.state$.pipe(map((state) &#x3D;&gt; state?.status !&#x3D;&#x3D; &#x27;Ready&#x27;));
 
   readonly loadingMessage$ &#x3D; this.data.state$.pipe(map(x &#x3D;&gt; x?.statusMessage));
 

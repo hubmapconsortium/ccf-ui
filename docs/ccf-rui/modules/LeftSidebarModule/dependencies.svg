@@ -28,13 +28,13 @@
 <title>cluster_LeftSidebarModule_imports</title>
 <polygon fill="none" stroke="black" points="188,-78 188,-130 874,-130 874,-78 188,-78"/>
 </g>
-<g id="clust5" class="cluster">
-<title>cluster_LeftSidebarModule_exports</title>
-<polygon fill="none" stroke="black" points="272,-208 272,-260 438,-260 438,-208 272,-208"/>
-</g>
 <g id="clust2" class="cluster">
 <title>cluster_LeftSidebarModule_declarations</title>
 <polygon fill="none" stroke="black" points="16,-78 16,-130 180,-130 180,-78 16,-78"/>
+</g>
+<g id="clust5" class="cluster">
+<title>cluster_LeftSidebarModule_exports</title>
+<polygon fill="none" stroke="black" points="272,-208 272,-260 438,-260 438,-208 272,-208"/>
 </g>
 <!-- LeftSidebarComponent -->
 <g id="node1" class="node">

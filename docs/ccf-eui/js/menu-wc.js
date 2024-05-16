@@ -291,13 +291,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/OntologyTreeModule.html" data-type="entity-link" >OntologyTreeModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
-                                            'data-bs-target="#components-links-module-OntologyTreeModule-23f4a82ac5452f7b41a8f2b1351c17caa4be7e5873b10cc02ab3961e22cb51352b34697a103bc2f7a281f3cb9ba63f2c427d78dbb3d218a2b971959eee8e0a01"' : 'data-bs-target="#xs-components-links-module-OntologyTreeModule-23f4a82ac5452f7b41a8f2b1351c17caa4be7e5873b10cc02ab3961e22cb51352b34697a103bc2f7a281f3cb9ba63f2c427d78dbb3d218a2b971959eee8e0a01"' }>
+                                            'data-bs-target="#components-links-module-OntologyTreeModule-bb99780e49a3eef08fb38dbfd02f960a8ff5744f8fbd9e24305334bad8023d179fdc29d3aa54b9c3579cfe9dae0ff5179ab6135035e8db938530833e0e18dc76"' : 'data-bs-target="#xs-components-links-module-OntologyTreeModule-bb99780e49a3eef08fb38dbfd02f960a8ff5744f8fbd9e24305334bad8023d179fdc29d3aa54b9c3579cfe9dae0ff5179ab6135035e8db938530833e0e18dc76"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-OntologyTreeModule-23f4a82ac5452f7b41a8f2b1351c17caa4be7e5873b10cc02ab3961e22cb51352b34697a103bc2f7a281f3cb9ba63f2c427d78dbb3d218a2b971959eee8e0a01"' :
-                                            'id="xs-components-links-module-OntologyTreeModule-23f4a82ac5452f7b41a8f2b1351c17caa4be7e5873b10cc02ab3961e22cb51352b34697a103bc2f7a281f3cb9ba63f2c427d78dbb3d218a2b971959eee8e0a01"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-OntologyTreeModule-bb99780e49a3eef08fb38dbfd02f960a8ff5744f8fbd9e24305334bad8023d179fdc29d3aa54b9c3579cfe9dae0ff5179ab6135035e8db938530833e0e18dc76"' :
+                                            'id="xs-components-links-module-OntologyTreeModule-bb99780e49a3eef08fb38dbfd02f960a8ff5744f8fbd9e24305334bad8023d179fdc29d3aa54b9c3579cfe9dae0ff5179ab6135035e8db938530833e0e18dc76"' }>
                                             <li class="link">
                                                 <a href="components/OntologyTreeComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >OntologyTreeComponent</a>
                                             </li>

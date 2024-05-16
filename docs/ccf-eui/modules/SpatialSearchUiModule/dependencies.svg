@@ -24,6 +24,10 @@
 <title>cluster_SpatialSearchUiModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="8,-70 8,-268 582,-268 582,-70 8,-70"/>
 </g>
+<g id="clust5" class="cluster">
+<title>cluster_SpatialSearchUiModule_exports</title>
+<polygon fill="none" stroke="black" points="186,-208 186,-260 378,-260 378,-208 186,-208"/>
+</g>
 <g id="clust2" class="cluster">
 <title>cluster_SpatialSearchUiModule_declarations</title>
 <polygon fill="none" stroke="black" points="386,-78 386,-130 574,-130 574,-78 386,-78"/>
@@ -31,10 +35,6 @@
 <g id="clust4" class="cluster">
 <title>cluster_SpatialSearchUiModule_imports</title>
 <polygon fill="none" stroke="black" points="16,-78 16,-130 378,-130 378,-78 16,-78"/>
-</g>
-<g id="clust5" class="cluster">
-<title>cluster_SpatialSearchUiModule_exports</title>
-<polygon fill="none" stroke="black" points="186,-208 186,-260 378,-260 378,-208 186,-208"/>
 </g>
 <!-- SpatialSearchUiComponent -->
 <g id="node1" class="node">
